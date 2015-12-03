@@ -1,10 +1,10 @@
 ### Architecture
 
-#### Processes
+#### Processes & Threads
 
 - Ethcore
-  - BlockQueue
-  - BlockChain [.BlockImporter, .MessageDispatcher]
+  - BlockQueue 
+  - *BlockChain* [.BlockImporter, .MessageDispatcher]
   - IPC (just routes calls to BlockChain and BlockQueue)
 - EthcoreSealer
   - TransactionQueue
