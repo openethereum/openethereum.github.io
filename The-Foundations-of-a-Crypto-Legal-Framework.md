@@ -14,7 +14,7 @@ There are three key pillars of a crypto-law ecosystem such as that of Ethereum:
 
 - **Identity** (1) 
 - **Assets** (n)
-- **Information** (or meta-data - inf)
+- **Data** (inf)
 
 ### Identity
 
@@ -26,15 +26,41 @@ The thing these all have in common is that they provide a service to ascertain t
 
 ### Assets
 
-Asset encoding within a crypto-legal system is to attempt to model ownership over a particular amount of a class of "stuff". Assets that initial contracts will model will typically be those we are already used to; real-world item classes (cars, rooms), commodities, stocks and currencies. One important difference between assets and identity is that assets tend to be strictly fungible or, at least, generally interchangeable. In terms of platonic philosophy, assets are prototypes or classes of things or stuff, rather than the individual instances themselves.
+Asset encoding within a crypto-legal system is to attempt to model ownership over a particular amount of a class of "stuff". Assets that initial contracts will model will typically be those we are already used to; real-world item classes (SKUs, make & models), commodities, stocks and currencies. One important difference between assets and identity is that assets tend to be strictly fungible or, at least, generally interchangeable. In terms of platonic philosophy, assets are prototypes or classes of things or stuff, rather than the individual instances themselves.
 
 Aside from "real" asset tracking, infrastructure will be built to track purely virtual assets. Indeed, Ethereum already has a low-level virtual asset built-in; the Ether "token". However, it is generally too low-level to be for much use for most crypto-law applications.
 
 Asset contracts will be implemented in a multitude of manners, not least as a centralised commodity repository (see e.g. Digix Global) and as a purely algorithmic currency (Gavcoin?). Supply-chain platforms implemented within Ethereum would include components that ascribed "asset-class" meaning within contracts.
 
-### Information
+### Data
 
-Information-class contracts are those which ascribe information to other contracts or entities within the ecosystem or otherwise supply "global" information, perhaps about externalities. In the first group, we might ascribe particular pieces of information to an identity (is it a real person? what is their name?) or an asset (it is physical? how much does it weigh?). In the second group, we typically think about oracles; contracts which describe external information inside Ethereum - e.g. the current market price of Ether in terms of Euros. However, in principle, it could be many things.
+Data contracts are those which ascribe information to other entities within the ecosystem or otherwise supply "global" information, perhaps about externalities. In the first group, we might ascribe particular pieces of information to an identity (is it a real person? what is their name?) or an asset (it is physical? how much does it weigh?). In the second group, we typically think about oracles; contracts which describe external information inside Ethereum - e.g. the current market price of Ether in terms of Euros. However, in principle, the information could be entirely internal; metadata concerning a currency for example such as its name and code.
 
+Data-infrastructure differs from the other two pillars in that it provides no directly referencable or manipulatable concepts; rather it exists solely to add richness of meaning to other existential entities, be they asset-classes or identities.
 
-### Building on the Pillars
+Ethereum, perhaps now unsurprisingly, also contains a few built-in pure information services, too. For example, the EVM operation codes allowing a contract to retrieve the blocknumber and timestamp provide global information points. While a timestamp is a relatively high-level piece of information, it sits essentially alone against the other information-giving operation codes such as the block number.
+
+## Building on the Pillars
+
+While contracts that provide pure services concerning each one of these pillars will be extremely useful, these should be considered but simply a palette from which the crypto-lawyer may mix an appropriate shade. Combinations of these base layer services will lead to far greater, more meaningful and more relevant services being provides in this ecosystem.
+
+### Data + Assets
+- **Asset Classification** The simplest combination of data and assets, this would just be data attached to assets to express attributes, perhaps in a structured fashion.
+- **Pegged Currency** Through the combination of the primitives of a data-feed and an asset class, we can create an economic model of a currency which tracks a real-world value feed, such as the US Dollar. There are several possible ways of implementing this including through CFD-shares and so called "stable/volatile-coin" dualisms.
+
+### Assets + Identity
+- **Certification** Through attaching a particular non-ownership relationship between an identity and an asset, we can synthesis the notion of certification. The essential meaning is that while identity X (e.g. "Organic") does not own asset-class Y (e.g. coffee beans in my shipment) it associates the its intrinsic notion with it, the meaning being to label my shipment of coffee beans as having been grown "organically".
+- **Asset Tracking** We may apply the relationship inversely: taking an asset class and creating an identity for it, changing the situation from "A pint of beer" to "*this* pint of beer" in a process we might call *instancing*. This can happen when I purchase a particular item or when an item's configuration alters from a pristine state. A smartphone, for example, prior to purchase could easily be consider a fungible asset class each item being not intrinsically different to any other. Following purchase it becomes intrinsically mine along with the data, phone plan and wear that identify it.
+
+### Identity + Information
+- **Reputation** 
+- **Badges**
+- **Trusted Oracles**
+
+### The Rest
+- **Online Exchange** (Pegged Currency + Assets)
+- Marketplace (Reputation + Online Exchange)
+- Credit Rating, KYC (Reputation)
+- Truth Engine (Data + Reputation)
+- Trade Finance (Credit Rating + Pegged Currency)
+- "Supply-chain-on-blockchain" (Certification + Asset-tracking)
