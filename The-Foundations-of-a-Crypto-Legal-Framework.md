@@ -46,7 +46,9 @@ While contracts that provide pure services concerning each one of these pillars 
 
 ### Data + Assets
 - **Asset Classification** The simplest combination of data and assets, this would just be data attached to assets to express attributes, perhaps in a structured fashion.
+- **Insurance** A kind of escrow service where assets are dispersed after a period of time depending a particular data series. The initial applications of this will see the data series coming from e.g. weather reports, but we can imagine it combined with Identity for having insurance against theft through authorised police reports. A special type of insurance is the contract-for-difference, where you're insuring the value of the value of an asset against another. CFDs form a very useful financial instrument, potentially an simple way of implementing a Pegged Currency.
 - **Pegged Currency** Through the combination of the primitives of a data-feed and an asset class, we can create an economic model of a currency which tracks a real-world value feed, such as the US Dollar. There are several possible ways of implementing this including through CFD-shares and so called "stable/volatile-coin" dualisms.
+- **Gaming** Insurance where the incoming data is a random series morphed to have the risk characteristics the party(-ies) choose.
 
 ### Assets + Identity
 - **Certification** Through attaching a particular non-ownership relationship between an identity and an asset, we can synthesise the notion of certification. The essential meaning is that while identity X (e.g. "Organic") does not own asset-class Y (e.g. coffee beans in my shipment) it associates its intrinsic notion with it, labelling my shipment of coffee beans as having been grown organically.
@@ -67,5 +69,12 @@ We can recombine many of these service classes into higher-order crypto-law conc
 - **"Real" Marketplace** (Reputation + Escrow + Virtual Retail) Through the use of a reputation system and escrow, we can imagine a largely trustless decentralised retail system for trading on- and off-chain assets.
 - **Truth Engine** (Data + Reputation) Through having reputation-weighted voting over the validity of particular statements (perhaps backed with an adversarial evidence-submission system). A prediction market provides another, more complex and economically-robust, mechanism to implement such a thing. The Truth Engine is a critical component of many high-level crypto-legal mechanisms such as a crypto-Court.
 - **Court** (Truth Engine + Escrow) A theoretical minimal court includes a truth engine to determine the correct course of action together with a "bailiff"; the bailiff component may ultimately be implemented through a ubiquitous system of bonded identities. At present, the most obvious bailiff comes from a per-transaction Escrow service, which holds the assets and has the power to transfer them to any other party.
-- Trade Finance (Credit Rating + Pegged Currency)
-- "Supply-chain-on-blockchain" (Certification + Asset-tracking)
+- Trade Finance (Credit Rating + Currency + Asset Tracking) Trade-finance systems, providing favourable credit for predetermined low-risk assets tied up in shipping provide liquidity to the global economy with trillions of dollars at any one time. Existing systems are implemented in "civil law" (makes me think of "snail mail") through complex, costly and forgeable contracts known as letters of credit. Through a combination of financial primitives and asset-tracking, such contracts can be synthesised within a crypto-law system more cheaply, flexibly and reliably.
+- "Transparent Supply-Chain" (Certification + Asset-tracking) Being able to attach unforgeable attributes to real-world commodities such as pharmaceuticals, foodstuffs and luxury goods allows for a number of high-value problems to be solved or assuaged, including counterfeiting, redirection, shrinkage and mislabelling.
+
+
+### Conclusion
+
+While far from complete, I've tried to map out some of the ways in which we can take some primitive crypto-legal notions and build a system with useful primitives that perhaps some of the first "programmer-lawyers" can take to. Notably missing are IoT (which probably just adds an extra dimension to the notion of identity) and DAOs (which are really just the corporations in the crypto-legal world of identities).
+
+If anyone fancies it, it would be nice to see a visual DAG of all this :)
