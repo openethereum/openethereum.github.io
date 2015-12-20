@@ -7,7 +7,7 @@
   - Passes all consensus tests.
 - **Civility** Fully actor-based `eth`-like implementation.
   - Follows from Parity codebase.
-- **Fluidity** Build on Basic on-chain PoA consensus client.
+- **Fluidity** On-chain PoA consensus algorithm.
   - Follows from Comity codebase.
 - **Purity** EIP101-like implementation.
   - Forked from Comity codebase.
