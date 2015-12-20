@@ -1,8 +1,8 @@
 # Ethcore Software Strategy
 
-## Timeline
+## Release Timeline
 
-- *Parity* v1 _Jan 2016_ Basic `eth`-like implementation.
+- *Parity* _Jan 2016_ Basic `eth`-like implementation.
   - Uses libevmjit, libethash, `ethminer`.
   - Passes all consensus tests.
 - *Civility* Fully actor-based `eth`-like implementation.
