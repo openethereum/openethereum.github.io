@@ -1,4 +1,21 @@
-### Architecture
+# Ethcore Software Strategy
+
+## Timeline
+
+- *Parity* v1 _Jan 2016_ Basic `eth`-like implementation.
+  - Uses libevmjit, libethash, `ethminer`.
+  - Passes all consensus tests.
+- *Civility* Fully actor-based `eth`-like implementation.
+  - Follows from Parity codebase.
+- *Fluidity* Build on Basic on-chain PoA consensus client.
+  - Follows from Comity codebase.
+- *Purity* EIP101-like implementation.
+  - Forked from Comity codebase.
+  - Precursor to Serenity.
+- *Density* Scalable PoA variant.
+  - Basic chain-fibre implementation.
+
+## Civility Architecture
 
 #### Processes & Threads
 
