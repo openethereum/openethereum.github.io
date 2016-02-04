@@ -2,6 +2,8 @@
 
 ### Quick Start with Docker
 
+Docker's great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For a quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. You can use similar instructions to get things working on pretty much any Linux installation or a Mac Homebrew system, but that's left as an exercise to the reader for now.
+
 *NOTE*: Ensure you have docker to begin with.
 
 ```
