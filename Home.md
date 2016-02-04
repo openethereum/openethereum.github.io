@@ -64,6 +64,13 @@ cargo run --release -- --help
 
 Have fun.
 
+### Quick Start with the one-line installer:
 
+If you are using OS X or Ubuntu you can try the one-line installer script:
 
+```
+bash <(curl install-parity.ethcore.io -L)
+```
+
+This will install and configure the Parity client for you. On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com).
 
