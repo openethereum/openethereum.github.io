@@ -39,13 +39,13 @@ cargo build
 You can run the unit tests with:
 
 ```
-cargo test --features ethcore
+cargo test --release -p ethcore-util && cargo test -p ethcore
 ```
 
 You can run the consensus tests with:
 
 ```
-cargo test --features ethcore/json-tests
+cargo test --release --features ethcore/json-tests -p ethcore
 ```
 
 You can start a client and sync with the network with:
@@ -54,7 +54,13 @@ You can start a client and sync with the network with:
 cargo run --release
 ```
 
+To get help on the command line options for the `parity` client, use `--help`:
 
+```
+cargo run --release -- --help
+```
+
+Have fun.
 
 
 
