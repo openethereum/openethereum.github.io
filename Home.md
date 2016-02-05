@@ -1,8 +1,10 @@
 # Parity
 
-### Quick Start with Docker
+## Quick Start
 
-Docker's great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For a quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. You can use similar instructions to get things working on pretty much any Linux installation or a Mac Homebrew system, but that's left as an exercise to the reader for now.
+### Docker Environment
+
+Docker's great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. However, you don't strictly need docker - similar instructions can almost certainly be used to get things working on pretty much any Linux installation or a Mac Homebrew system, but don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) with 6 months of cruft caking it up. Rather, get the docker image working and then figure out what the differences are.
 
 *NOTE*: Ensure you have docker to begin with.
 
