@@ -24,12 +24,12 @@ Then run the dependency install script:
 bash <(curl https://raw.githubusercontent.com/ethcore/parity/master/install-deps.sh -L)
 ```
 
-This will download and install all the build dependencies, in our case, that's Git, Make and GCC/G++, librocksdb, and Rust nightly.
+This will download and install all the build dependencies, in our case, that's Git, Make and GCC/G++, librocksdb, and Rust nightly. (It'll also prompt you whether you want to get and built parity & netstats. You can answer no to that as we'll do it here anyway.)
 
 Next, grab the parity repository:
 
 ```
-git clone git@github.com:ethcore/parity && cd parity
+git clone https://github.com/ethcore/parity && cd parity
 ```
 
 You can build with:
@@ -69,9 +69,9 @@ Have fun.
 If you are using OS X or Ubuntu you can try the one-line installer script:
 
 ```
-bash <(curl install-parity.ethcore.io -L)
+bash <(curl https://raw.githubusercontent.com/ethcore/parity/master/get-deps.sh -L)
 ```
 
 This will install and configure the Parity client for you. 
 
-On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9)
+On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
