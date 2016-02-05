@@ -70,6 +70,8 @@ Have fun.
 
 ### Quick Start with the one-line installer:
 
+**NOTE: Prior to making our first tagged repository release, this probably won't work. This message will be removed after that happens.**
+
 If you are using OS X or Ubuntu you can try the one-line installer script:
 
 ```
