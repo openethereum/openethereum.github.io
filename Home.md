@@ -14,7 +14,9 @@ docker run -it ubuntu bash
 
 This will give you a temporary docker environment.
 
-Next grab curl.
+### Install and Build Parity
+
+Now grab curl.
 
 ```
 apt-get install curl -y
