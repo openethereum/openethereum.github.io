@@ -81,3 +81,22 @@ bash <(curl https://raw.githubusercontent.com/ethcore/parity/master/get-deps.sh 
 This will install and configure the Parity client for you. 
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
+
+### Start the parity Client 
+Start the client with `parity` other options are;
+
+```
+Usage:
+  parity [options]
+  parity [options] <enode>...
+
+Options:
+  -l --logging LOGGING     Specify the logging level.
+  -j --jsonrpc             Enable the JSON-RPC API sever.
+  --jsonrpc-url URL        Specify URL for JSON-RPC API server [default: 127.0.0.1:8545].
+
+  --cache-pref-size BYTES  Specify the prefered size of the blockchain cache in bytes [default: 16384].
+  --cache-max-size BYTES   Specify the maximum size of the blockchain cache in bytes [default: 262144].
+
+  -h --help                Show this screen.
+```
