@@ -100,3 +100,13 @@ Options:
 
   -h --help                Show this screen.
 ```
+
+### JSON-RPC API
+
+You can do most of the examples on [Ethereum's JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC):
+
+````
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xYOUR_ADDRESS_HERE", "latest"],"id":1}'
+````
+
+(make sure you begin with parity -j)
