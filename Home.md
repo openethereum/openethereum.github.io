@@ -14,21 +14,15 @@ docker run -it ubuntu bash
 
 This will give you a temporary docker environment.
 
+### Grab Rust
+
+This will download and install Rust:
+
+```
+curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh
+```
+
 ### Install and Build Parity
-
-Now grab curl.
-
-```
-apt-get install curl -y
-```
-
-Then run the dependency install script:
-
-```
-bash <(curl https://raw.githubusercontent.com/ethcore/parity/master/install-deps.sh -L)
-```
-
-This will download and install all the build dependencies, in our case, that's Git, Make and GCC/G++, librocksdb, and Rust nightly. (It'll also prompt you whether you want to get and built parity & netstats. You can answer no to that as we'll do it here anyway.)
 
 Next, grab the parity repository:
 
@@ -70,8 +64,6 @@ Have fun.
 
 ### Quick Start with the one-line installer:
 
-**NOTE: Prior to making our first tagged repository release, this probably won't work. This message will be removed after that happens.**
-
 If you are using OS X or Ubuntu you can try the one-line installer script:
 
 ```
@@ -82,7 +74,8 @@ This will install and configure the Parity client for you.
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
-### Start the parity Client 
+### Start the parity Client
+
 Start the client with `parity` other options are;
 
 ```
@@ -103,10 +96,10 @@ Options:
 
 ### JSON-RPC API
 
-You can do most of the examples on [Ethereum's JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC):
+Assuming you start with JSONRPC API enabled (`parity -j`), then you can do most of the examples on [Ethereum's JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC):
 
 ````
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xYOUR_ADDRESS_HERE", "latest"],"id":1}'
 ````
 
-(make sure you begin with parity -j)
+Have fun!
