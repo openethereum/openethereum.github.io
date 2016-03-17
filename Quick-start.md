@@ -74,23 +74,11 @@ On Ubuntu this script will also offer to install the [Netstats client](https://g
 
 ### Start the parity Client
 
-Start the client with `parity` other options are;
+Start the client with `parity`. By default it will connect to other nodes on the Ethereum Homestead network and download the blockchain. You can instead connect to the Morden testnet with `parity --chain morden`. By default it will run in archive mode saving all intermediate from previous blocks; to avoid doing this (and freeing up a couple of gigs of disk space) use a pruning option e.g. `parity --pruning fast`.
 
-```
-Usage:
-  parity [options]
-  parity [options] <enode>...
+You can override the normal boot nodes and connect to your own nodes by using `parity --bootnodes ...`, e.g. you might run a local `geth` node and sync from that by running `parity --bootnodes enode://YOU_GETH_NODE_ID_HERE@127.0.0.1:30303`. You need to check geth's output to figure out what node ID is.
 
-Options:
-  -l --logging LOGGING     Specify the logging level.
-  -j --jsonrpc             Enable the JSON-RPC API sever.
-  --jsonrpc-url URL        Specify URL for JSON-RPC API server [default: 127.0.0.1:8545].
-
-  --cache-pref-size BYTES  Specify the prefered size of the blockchain cache in bytes [default: 16384].
-  --cache-max-size BYTES   Specify the maximum size of the blockchain cache in bytes [default: 262144].
-
-  -h --help                Show this screen.
-```
+Use `parity --help` to get help on other options.
 
 ### JSON-RPC API
 
