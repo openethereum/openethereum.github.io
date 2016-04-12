@@ -90,7 +90,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xYOU
 
 ### Javascript Console
 
-Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/JavaScript-API) for interacting with an Ethereum client. Now, Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. Turns out this is super easy; once you have node/NPM installed, you'll just need to install the latest web3 module:
+Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/JavaScript-API) for interacting with an Ethereum client. Now, Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. You'll need to have JSONRPC enabled by running Parity with the `-j` flag. Once you have node/NPM installed, you'll just need to install the latest web3 module:
 
 ```bash
 $ npm install web3
@@ -111,4 +111,7 @@ After this point, you'll be able to use the web3 API from with this environment,
 743397
 ```
 
-Have fun!
+### Experimental browser support
+
+In the most recent version of Parity, you can also use the Google Chrome console for web3 development. You'll need to run Parity with the `-jw` flags to enable the web integration interface. With this done, head to [http://localhost:8080/](http://localhost:8080/) and you'll be able to use Chrome's builtin console right away.
+
