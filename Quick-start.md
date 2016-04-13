@@ -84,7 +84,7 @@ On Ubuntu this script will also offer to install the [Netstats client](https://g
 
 There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](github.com/ethcore/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?
 
-## Using Parity
+# Using Parity
 
 Assuming you installed Parity, you can start the client with a simple `parity`. By default it will connect to other nodes on the Ethereum Homestead network and synchronise the blockchain. You can instead connect to the Morden testnet with `parity --testnet`. By default it will run in archive mode saving all intermediate information from previous blocks; to avoid doing this (and freeing up a couple of gigs of disk space) use a pruning option e.g. `parity --pruning=fast`.
 
@@ -94,7 +94,7 @@ You can override the normal boot nodes and connect to your own nodes by using `p
 
 Use `parity --help` to get help on other options.
 
-### JSON-RPC API
+## JSON-RPC API
 
 Assuming you start with JSONRPC API enabled (`parity -j`), then you can do most of the examples on [Ethereum's JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC):
 
@@ -102,9 +102,11 @@ Assuming you start with JSONRPC API enabled (`parity -j`), then you can do most 
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xYOUR_ADDRESS_HERE", "latest"],"id":1}'
 ````
 
-### Javascript Console
+## Javascript Console
 
 Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/JavaScript-API) for interacting with an Ethereum client.
+
+### Node.js CLI Console
 
 Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. You'll need to have JSONRPC enabled by running Parity with the `-j` flag. Once you have node/NPM installed, you'll just need to install the latest web3 module:
 
@@ -127,6 +129,6 @@ After this point, you'll be able to use the web3 API from with this environment,
 743397
 ```
 
-#### Experimental Browser Support
+### Chrome Browser Console
 
 In Parity version 1.1 and above, you can also use the Google Chrome console for web3 development. You'll need to run Parity with the `-jw` flags to enable the web integration interface. With this done, head to [http://localhost:8080/](http://localhost:8080/) and you'll be able to use Chrome's builtin console right away.
