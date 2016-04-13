@@ -37,10 +37,10 @@ cargo build
 You can run the unit tests with:
 
 ```
-cargo test --release -p ethcore-util && cargo test -p ethcore
+./test.sh
 ```
 
-You can run the consensus tests with:
+You can run just the consensus tests with:
 
 ```
 cargo test --release --features ethcore/json-tests -p ethcore
@@ -71,6 +71,10 @@ bash <(curl https://raw.githubusercontent.com/ethcore/parity/master/get-deps.sh 
 This will install and configure the Parity client for you. 
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
+
+### Ubuntu Snappy on Raspberry Pi/ARM
+
+There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](github.com/ethcore/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?
 
 ### Start the parity Client
 
