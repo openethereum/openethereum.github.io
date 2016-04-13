@@ -1,8 +1,10 @@
 # Quick Start
 
-### Docker Environment
+There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our binary releases for Ubuntu and Mac/Homebrew or, if you're on an Ubuntu Snappy platform, just use our Snappy App. We don't currently support Windows, but that is planned in issue [#462](https://github.com/ethcore/parity/issues/462). Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
-Docker's great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. However, you don't strictly need docker - similar instructions can almost certainly be used to get things working on pretty much any Linux installation or a Mac Homebrew system, but don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) with 6 months of cruft caking it up. Rather, get the docker image working and then figure out what the differences are.
+## Quick Start: Building from the CLI
+
+Docker is great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. However, you don't need Docker - similar instructions can be used to get things working on pretty much any Linux installation or a Mac Homebrew system, just don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) or *nix with 6 months of cruft caking it up. Rather, get the docker image working and then figure out what the differences are.
 
 *NOTE*: Ensure you have docker to begin with.
 
@@ -14,7 +16,7 @@ This will give you a temporary docker environment.
 
 ### Grab Rust
 
-This will download and install Rust:
+NOTE: If you already have Rust in your environment, you don't need to bother with this. This will download and install Rust:
 
 ```
 curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh
@@ -22,7 +24,7 @@ curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | 
 
 ### Install and Build Parity
 
-Next, grab the parity repository:
+Next, grab the Parity repository:
 
 ```
 git clone https://github.com/ethcore/parity && cd parity
@@ -46,6 +48,12 @@ You can run just the consensus tests with:
 cargo test --release --features ethcore/json-tests -p ethcore
 ```
 
+To install Parity, just build it and copy it to `/usr/bin`:
+
+```
+cargo build --release && cp target/release/parity /usr/bin
+```
+
 You can start a client and sync with the network with:
 
 ```
@@ -58,11 +66,11 @@ To get help on the command line options for the `parity` client, use `--help`:
 cargo run --release -- --help
 ```
 
-Have fun.
+## Quick Start with the One-line Binary Installer:
 
-### Quick Start with the one-line installer:
+This method is way faster than building, though you won't get the cutting edge features and it only works on Ubuntu and Mac with Homebrew installed.
 
-If you are using OS X or Ubuntu you can try the one-line installer script:
+To use the script just run:
 
 ```
 bash <(curl https://raw.githubusercontent.com/ethcore/parity/master/get-deps.sh -L)
@@ -72,13 +80,15 @@ This will install and configure the Parity client for you.
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
-### Ubuntu Snappy on Raspberry Pi/ARM
+## Quick Start with Ubuntu Snappy on Raspberry Pi
 
 There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](github.com/ethcore/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?
 
-### Start the parity Client
+## Using Parity
 
-Start the client with `parity`. By default it will connect to other nodes on the Ethereum Homestead network and download the blockchain. You can instead connect to the Morden testnet with `parity --chain morden`. By default it will run in archive mode saving all intermediate from previous blocks; to avoid doing this (and freeing up a couple of gigs of disk space) use a pruning option e.g. `parity --pruning fast`.
+Assuming you installed Parity, you can start the client with a simple `parity`. By default it will connect to other nodes on the Ethereum Homestead network and synchronise the blockchain. You can instead connect to the Morden testnet with `parity --testnet`. By default it will run in archive mode saving all intermediate information from previous blocks; to avoid doing this (and freeing up a couple of gigs of disk space) use a pruning option e.g. `parity --pruning=fast`.
+
+If you want to interact with Parity at all, you'll want to enable the JSONRPC interface; to do that use `parity -j`. On recent (1.1.x) builds, there is also the Web interface; you can enable both with `parity -jw`.
 
 You can override the normal boot nodes and connect to your own nodes by using `parity --bootnodes ...`, e.g. you might run a local `geth` node and sync from that by running `parity --bootnodes enode://YOU_GETH_NODE_ID_HERE@127.0.0.1:30303`. You need to check geth's output to figure out what node ID is.
 
@@ -94,7 +104,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xYOU
 
 ### Javascript Console
 
-Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/JavaScript-API) for interacting with an Ethereum client. Now, Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. You'll need to have JSONRPC enabled by running Parity with the `-j` flag. Once you have node/NPM installed, you'll just need to install the latest web3 module:
+Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/JavaScript-API) for interacting with an Ethereum client.
+
+Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. You'll need to have JSONRPC enabled by running Parity with the `-j` flag. Once you have node/NPM installed, you'll just need to install the latest web3 module:
 
 ```bash
 $ npm install web3
@@ -115,7 +127,6 @@ After this point, you'll be able to use the web3 API from with this environment,
 743397
 ```
 
-### Experimental browser support
+#### Experimental Browser Support
 
-In the most recent version of Parity, you can also use the Google Chrome console for web3 development. You'll need to run Parity with the `-jw` flags to enable the web integration interface. With this done, head to [http://localhost:8080/](http://localhost:8080/) and you'll be able to use Chrome's builtin console right away.
-
+In Parity version 1.1 and above, you can also use the Google Chrome console for web3 development. You'll need to run Parity with the `-jw` flags to enable the web integration interface. With this done, head to [http://localhost:8080/](http://localhost:8080/) and you'll be able to use Chrome's builtin console right away.
