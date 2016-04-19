@@ -30,6 +30,12 @@ Next, grab the Parity repository:
 git clone https://github.com/ethcore/parity && cd parity
 ```
 
+For tests, also update submodules:
+```
+git submodule init
+git submodule update
+```
+
 You can build with:
 
 ```
