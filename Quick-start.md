@@ -54,10 +54,10 @@ You can run just the consensus tests with:
 cargo test --release --features ethcore/json-tests -p ethcore
 ```
 
-To install Parity, just build it and copy it to `/usr/bin`:
+To install Parity, just build it and copy it to `/usr/local/bin`:
 
 ```
-cargo build --release && cp target/release/parity /usr/bin
+cargo build --release && cp target/release/parity /usr/local/bin
 ```
 
 You can start a client and sync with the network with:
