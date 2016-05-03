@@ -1,7 +1,5 @@
 This is yet to be fleshed out.
 
-For now:
-
 ### Panickers
 
 Panics are a pain; in principle, we write code expecting that they will never occur (or at least, we should!). However, with code churn and different coders working in the same code, it's all too easy to find a panic (often written by someone else) and wonder why the author thought that it could never happen. When such a panic happens at run-time it can be as difficult to track down the reason for failure as for a segmentation fault.
