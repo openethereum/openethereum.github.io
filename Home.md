@@ -34,7 +34,7 @@ Maximise references, minimise copying and holding copies. Rust makes it safe. Wh
 
 #### Security and Reliability
 
-Two sides of the same coin, we want to protect our processes from each other and the (possibly malicious) outside world. Through leveraging process isolation, sophisticated memory management and OS-level protection primitives we provide the most secure Ethereum implementation in the world.
+Two sides of the same coin, we want to protect our processes from each other and the (possibly malicious) outside world. Through leveraging process isolation, sophisticated memory management and OS-level protection primitives we provide the most secure Ethereum implementation in the world. Through Rust's language-level memory and thread guarantees and a disciplined approach to exception-handling we can state with a high degree of certainty that our code *cannot* crash.
 
 #### Test, Document and Review
 
