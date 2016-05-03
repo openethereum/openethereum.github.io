@@ -18,14 +18,25 @@ Which is very important when you're coding to a formal specification.
 
 Isolatable code means easier code in which to track problems and harder code to make wrong with additional features.
 
-#### Minimise Footprint
+#### Drive Forward
 
-#### Maximise Performance
-
-#### Design for Use
+A steady release cycle, once every 6-7 weeks with a master/beta/stable pipeline provides users with certainty and helps us structure feature-inclusion in a disciplined fashion.
 
 ## Our Priorities
 
 #### Compatibility
 
 Where standards (published or de facto) exist, we strive to honour them. e.g. in the case of CLI options, wherever we share a feature with geth, Parity supports `geth`'s CLI option for that feature. e.g. in order to set the destination address (i.e. the account which will be credited with any mining rewards), you can use either of `--etherbase` (in geth dialect) or `--author` (the Parity variant). Parity doesn't care.
+
+#### Minimum Footprint, Maximum Performance
+
+Maximise references, minimise copying and holding copies. Rust makes it safe. When there are dynamic data structures, provide means for keeping them under control.
+
+#### Security and Reliability
+
+Two sides of the same coin, we want to protect our processes from each other and the (possibly malicious) outside world. Through leveraging process isolation, sophisticated memory management and OS-level protection primitives we provide the most secure Ethereum implementation in the world.
+
+#### Test, Document and Review
+
+Our codebase is lovely. So lovely we frequently get compliments from newcomers. And we want to keep it that way. We strive for 100% coverage of documentation, unit tests and code reviews.
+
