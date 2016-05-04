@@ -1,4 +1,4 @@
-Parity supports private network configuration via [chain specification](https://github.com/ethereum/wiki/wiki/Ethereum-Chain-Spec-Format) files provided with `--chain`. The best way to create such a configuration is to use Frontier or Morden specification and tweak it for your needs. Parity repo contains examples and actual frontier/morden specifications [here](https://github.com/ethcore/parity/tree/master/ethcore/res/ethereum). You can also set up a [Proof of Authority Chain](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains).
+Parity supports private chain and private network configuration via [chain specification](https://github.com/ethereum/wiki/wiki/Ethereum-Chain-Spec-Format) files provided with `--chain`. The best way to create such a configuration is to use Frontier or Morden specification and tweak it for your needs. Parity repo contains examples and actual frontier/morden specifications [here](https://github.com/ethcore/parity/tree/master/ethcore/res/ethereum). You can also set up a [Proof of Authority Chain](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains).
 
 ### Notes
 
