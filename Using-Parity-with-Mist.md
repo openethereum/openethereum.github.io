@@ -7,3 +7,14 @@ parity --geth
 ```
 
 Once it's happily churning away on the network, just run the Ethereum Wallet as you would otherwise and it'll magically use your Parity installation.
+
+### Troubleshooting
+
+#### Blank window
+
+If you're running the wallet and seeing only a blank white/black window, your GPU is probably on the blacklist. One workaround is to run Mist with no blacklist:
+
+```
+./Ethereum-Wallet --ignore-gpu-blacklist
+```
+
