@@ -19,6 +19,9 @@ Just use `import`:
 parity import $HOME/ethereum-chain-backup.rlp
 ```
 
+###### How do I backup/restore my keys?
+See [Backing-up-&-Restoring].
+
 ###### How do I import my chain from Geth?
 On 1.2 and above, use Geth's export feature along with Parity's import:
 ```bash
