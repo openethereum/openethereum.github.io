@@ -23,21 +23,4 @@ parity import $HOME/ethereum-chain-backup.rlp
 See [[Backing-up-&-Restoring]].
 
 ###### How do I import my chain from Geth?
-On 1.2 and above, use Geth's export feature along with Parity's import:
-```bash
-mkfifo /tmp/chain.rlp && geth export /tmp/chain.rlp && sleep 1 && parity import /tmp/chain.rlp
-```
-
-Prior to 1.2, you need to run Parity and then have Geth connect to it. First run Parity without peer discovery and with a simple node key:
-
-```bash
-echo 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 > /tmp/nodekey
-parity --no-discovery --bootnodes "" --node-key $(cat /tmp/nodekey)
-```
-
-Then run Geth telling it to connect to Parity:
-
-```bash
-geth --bootnodes "enode://$(cat /tmp/nodekey)@127.0.0.1:30303" --nodiscover --maxpeers 1
-```
-
+See [[Importing a Chain from Geth]].
