@@ -26,3 +26,5 @@ It then proceeds to download the chunks, starting with the first and places each
 The downloaded data is checked to make sure (a) the root is as the partial header chain dictates and (b) X random samplings of the headerchain result in good PoW data (X == total blocks / 50) (c) Y random walks result in all hashes being found (Y = 1000?).
 
 The receipts/blocks are downloaded in a second phase and inserted into the database; receipts are checked against the blocks referencing them; blocks are checked against the header chain.
+
+Following this, the remaining blocks are downloaded as per PV63.
