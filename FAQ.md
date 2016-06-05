@@ -26,5 +26,7 @@ See [[Backing-up-&-Restoring]].
 See [[Importing a Chain from Geth]].
 
 ###### When I start parity with the `homestead_test.json` I get a 0 block chain, but loading `ethminer` never mines a block.
-
 `homestead_test.json` is a file meant for testing on a chain very similar to the Homestead chain. As such it is of equivalent (substantial) difficulty to mine on it. Rather what you need is something of minimal mining difficulty, like Morden. See more instructions [here](https://github.com/ethcore/parity/wiki/Private-chains).
+
+###### All my `eth_sendTransaction` calls only return "0x00000000...000000000" as a return value.
+You're probably trying to send from a locked account. Ensure you use the `--unlock` (to specify which account(s) to unlock) and `--password` (to pass in the file contain any passwords needed to unlock those acocunts) so that the account(s) from which you're sending the transaction are unlocked.
