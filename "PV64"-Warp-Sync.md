@@ -11,9 +11,9 @@ Snapshots have four kinds of compressing transformations done:
 
 - For the headerchain, `parentHash` and `number` may be removed as they're rebuildable on the destination client.
 
-- In both cases, the two basic hashes RLP("") and RLP(0x80) (empty string and empty list resp.) are replaced by a much shorter escape string and the process reversed on decode.
+- In all cases, the two basic hashes RLP("") and RLP(0x80) (empty string and empty list resp.) are replaced by a much shorter escape string and the process reversed on decode.
 
-- In both cases, a general-purpose deterministic compression algorithm (e.g. snappy) is used to create the final snapshot.
+- In all cases, a general-purpose deterministic compression algorithm (e.g. snappy) is caps the process to create the final snapshot data.
 
 The snapshot is then split into 16MB chunks and each chunk hashed. A final snapshot-manifest contains all the chunks' hashes and is itself hashed to give the snapshot-hash.
 
