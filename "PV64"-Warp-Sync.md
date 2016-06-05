@@ -15,7 +15,7 @@ Snapshots have four kinds of compressing transformations done:
 
 - In all cases, a general-purpose deterministic compression algorithm (e.g. snappy) is caps the process to create the final snapshot data.
 
-The snapshot is then split into 16MB chunks and each chunk hashed. A final snapshot-manifest contains all the chunks' hashes and is itself hashed to give the snapshot-hash.
+The snapshot is then split into 16MB chunks and each chunk hashed (GAV: or perhaps put the final compression after the 16MB chunking to facilitate pipelining at the decode stage?). A final snapshot-manifest contains all the chunks' hashes and is itself hashed to give the snapshot-hash.
 
 On handshake, the latest snapshot-hash is exchanged along with TD for the snapshot; the manifest is then downloaded by the syncing peer.
 
