@@ -24,3 +24,7 @@ See [[Backing-up-&-Restoring]].
 
 ###### How do I import my chain from Geth?
 See [[Importing a Chain from Geth]].
+
+###### When I start parity with the `homestead_test.json` I get a 0 block chain, but loading `ethminer` never mines a block.
+
+`homestead_test.json` is a file meant for testing on a chain very similar to the Homestead chain. As such it is of equivalent (substantial) difficulty to mine on it. Rather what you need is something of minimal mining difficulty, like Morden. See more instructions [here](https://github.com/ethcore/parity/wiki/Private-chains).
