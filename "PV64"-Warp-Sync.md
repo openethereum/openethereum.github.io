@@ -5,7 +5,7 @@ Snapshot is two-part:
 - Part I: All nodes in the state trie. Just the nodes (i.e. not their hashes), concatenated RLP. Also all headers.
 - Part II: All uncles, transactions and receipts. Again, concatenated RLP.
 
-Snapshots have three kinds of compressing transformations done:
+Snapshots have four kinds of compressing transformations done:
 
 - For the state trie, hashes are dismissed in favour if indices: All nodes are concatenated in a depth-first-search and their hash added to an array. A map of hash->array_index is then built. The concatenated RLP is then re-traversed, backwards, and all hashes looked up in the mapping and replaced with RLP(reversed_index) (`reversed_index = total_nodes - 1 - index`) before being pushed into a secondary, final, dump. This yields a concatenated RLP dump of nodes where no such node  references an as-yet-unknown node.
 
