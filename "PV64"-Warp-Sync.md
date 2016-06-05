@@ -19,12 +19,15 @@ The snapshot is then split into 16MB chunks and each chunk hashed (GAV: or perha
 
 On handshake, the latest snapshot-hash is exchanged along with TD for the snapshot; the manifest is then downloaded by the syncing peer.
 
-The sync strategy is to connect to as many PV64 peers as possible (Parity, initially, but hopefully other clients will implement this, too). That peer should request manifests from other peers to minimise the chance of being duped with dodgy data from a single malicious (and self-harming) node. A headerchain is also requested along with the manifest to help guarantee the state data's validity.
+The sync strategy is to connect to as many PV64 peers as possible (Parity, initially, but hopefully other clients will implement this, too). That peer should request manifests from other peers to minimise the chance of being duped with dodgy data from a single malicious (and self-harming) node. The full header chain is downloaded with the state trie to help guarantee the state data's validity.
 
-It then proceeds to download the chunks, starting with the first and places each decompressed node into a map of hash->index. This map is used to reinsert the correct hash into later, referencing, nodes.
+It then proceeds to download the chunks, starting with the first, and places each decompressed node into a map of hash->index. This map is used to reinsert the correct hash into later, referencing, nodes. This stage can be pipelined substantially.
 
 The downloaded data is checked to make sure (a) the root is as the partial header chain dictates and (b) X random samplings of the headerchain result in good PoW data (X == total blocks / 50) (c) Y random walks result in all hashes being found (Y = 1000?).
 
+Following this, the remaining blocks are downloaded and interpreted as per PV63.
+
 The receipts/blocks are downloaded in a second phase and inserted into the database; receipts are checked against the blocks referencing them; blocks are checked against the header chain.
 
-Following this, the remaining blocks are downloaded as per PV63.
+Parity and Dapps should be mostly usable after the first phase is complete. The second phase should then proceed progressively.
+
