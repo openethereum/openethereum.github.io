@@ -1,25 +1,23 @@
-Every N blocks (N is fixed, probably between 1000 and 30000) a new consensus critical snapshot is made.
+Every N blocks (N is fixed, probably between 1000 and 30000) a new consensus critical snapshot is made by all nodes.
 
 Snapshot is two-part:
 
-- Part I: All nodes in the state trie. Just the nodes (i.e. not their hashes), concatenated RLP. Also all headers.
-- Part II: All uncles, transactions and receipts. Again, concatenated RLP.
+- Part I: All nodes in the state trie and N headers. For the trie, it's just the nodes (i.e. not their hashes) taken as a concatenated RLP.
+- Part II: All blocks and receipts. Again, concatenated RLP.
 
 Snapshots have four kinds of compressing transformations done:
 
-- For the state trie, hashes are dismissed in favour if indices: All nodes are concatenated in a depth-first-search and their hash added to an array. A map of hash->array_index is then built. The concatenated RLP is then re-traversed, backwards, and all hashes looked up in the mapping and replaced with RLP(reversed_index) (`reversed_index = total_nodes - 1 - index`) before being pushed into a secondary, final, dump. This yields a concatenated RLP dump of nodes where, reading forwards, no node references an as-yet-unknown node. This property is important when decoding.
+- For the state trie, hashes are dismissed in favour of indices: All nodes are concatenated in a depth-first-search and their hash added to an array; child tries (i.e. contract storage) are output in-place. A map of `hash -> array_index` is then built. The concatenated RLP is then re-traversed, _in reverse_, and all hashes looked up in the mapping and replaced with `RLP(reversed_index)`, where `reversed_index = total_nodes - 1 - index`, before being pushed into a secondary, final, dump. This yields a concatenated RLP dump of nodes where, reading forwards, no node references an as-yet-unknown node. This property is important when decoding.
 
-- For the headerchain, `parentHash` and `number` may be removed as they're rebuildable on the destination client.
+- For the headerchain, `parentHash` and `number` are replaced by `0x80` (RLP empty string) (since they're rebuildable on the destination client assuming all headers are given in order).
 
-- In all cases, the two basic hashes RLP("") and RLP(0x80) (empty string and empty list resp.) are replaced by a much shorter escape string and the process reversed on decode.
+- In all cases, the two basic hashes `SHA3("")` and `SHA3(RLP([]))` (for encoding no contract code, empty storage, empty transaction-trie, empty receipt-trie, no uncles) are replaced by a much shorter escape string (TBD, possibly an RLP dead code, e.g. `0x8100`/`0x8101`) and the process reversed on decode.
 
-- In all cases, a general-purpose deterministic compression algorithm (e.g. snappy) is caps the process to create the final snapshot data.
-
-The snapshot is then split into 16MB chunks and each chunk hashed (GAV: or perhaps put the final compression after the 16MB chunking to facilitate pipelining at the decode stage?). A final snapshot-manifest contains all the chunks' hashes and is itself hashed to give the snapshot-hash.
+The snapshot, as it stands, is then split into 16MB chunks; each chunk is then compressed with a general-purpose deterministic compression algorithm (TBD, perhaps Snappy). A final snapshot-manifest contains all these compressed chunks' hashes and is itself hashed to give the snapshot-hash.
 
 On handshake, the latest snapshot-hash is exchanged along with TD for the snapshot; the manifest is then downloaded by the syncing peer.
 
-The sync strategy is to connect to as many PV64 peers as possible (Parity, initially, but hopefully other clients will implement this, too). That peer should request manifests from other peers to minimise the chance of being duped with dodgy data from a single malicious (and self-harming) node. The full header chain is downloaded with the state trie to help guarantee the state data's validity.
+The sync strategy is to connect to as many PV64 peers as possible (Parity, initially, but hopefully other clients will implement this, too). That peer should request manifests from other peers to minimise the chance of being duped with dodgy data from a single malicious (and self-harming - you always have to match the bandwidth you trick the victim to lose) node. The header-chain is used to help guarantee the state data's validity.
 
 It then proceeds to download the chunks, starting with the first, and places each decompressed node into a map of hash->index. This map is used to reinsert the correct hash into later, referencing, nodes. This stage can be pipelined substantially.
 
