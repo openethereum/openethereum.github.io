@@ -30,3 +30,6 @@ See [[Importing a Chain from Geth]].
 
 ###### All my `eth_sendTransaction` calls only return "0x00000000...000000000" as a return value.
 You're probably trying to send from a locked account. Ensure you use the `--unlock` (to specify which account(s) to unlock) and `--password` (to pass in the file contain any passwords needed to unlock those acocunts) so that the account(s) from which you're sending the transaction are unlocked.
+
+###### How do I import a key made in myetherwallet.com|geth|...
+Simply copy it into your `$HOME/.ethereum` directory.
