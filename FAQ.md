@@ -1,5 +1,5 @@
-###### How do I build and install?
-Once you have the source directory and Rust installed, just use cargo and copy the resulting binary:
+###### How do I build the cutting-edge version of Parity?
+Once you have cloned the source directory and installed Rust, just use cargo and copy the resulting binary:
 ```bash
 cargo build --release && cp target/release/parity /usr/local/bin
 ```
