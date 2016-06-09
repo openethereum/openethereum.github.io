@@ -29,6 +29,6 @@ The receipts/blocks are downloaded in a second phase and inserted into the datab
 
 Parity and Dapps should be mostly usable after the first phase is complete. The second phase should then proceed progressively.
 
-== Alternative state trie snapshot ==
+###  Alternative state trie snapshot
 
 Instead of storing trie nodes just save trie values and key hashes. When restoring from the snapshot just re-insert all values by key hash. No additional trie validation is required.
