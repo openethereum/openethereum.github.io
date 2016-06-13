@@ -16,10 +16,19 @@ This will give you a temporary docker environment.
 
 ### Grab Rust
 
-NOTE: If you already have Rust in your environment, you don't need to bother with this. This will download and install Rust:
+NOTE: If you already have Rust in your environment, you don't need to bother with this. 
+
+
+This will download and install Rust on Linux and OS X:
 
 ```
-curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh
+curl https://sh.rustup.rs -sSf | sh
+```
+
+If you are using Windows make sure you have Visual Studio 2015 with C++ support installed, download and run [rustup](x86_64-pc-windows-msvc) and use the following command to setup msvc toolchain:
+
+```
+rustup default stable-x86_64-pc-windows-msvc
 ```
 
 ### Install and Build Parity
