@@ -25,7 +25,7 @@ This will download and install Rust on Linux and OS X:
 curl https://sh.rustup.rs -sSf | sh
 ```
 
-If you are using Windows make sure you have Visual Studio 2015 with C++ support installed, download and run [rustup](x86_64-pc-windows-msvc) and use the following command to setup msvc toolchain:
+If you are using Windows make sure you have Visual Studio 2015 with C++ support installed, download and run [rustup](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe) and use the following command to setup msvc toolchain:
 
 ```
 rustup default stable-x86_64-pc-windows-msvc
