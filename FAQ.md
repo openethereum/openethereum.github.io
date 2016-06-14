@@ -7,6 +7,9 @@ cargo build --release && cp target/release/parity /usr/local/bin
 ###### How do I do a cross-build for ARM/Raspberry Pi?
 See the documentation for [docker build for ARM](https://github.com/ethcore/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
 
+###### Why do my transactions not get mined?
+Your gas price is probably too low. Try increasing the gas price to 20Gwei by appending `, gasPrice: 20000000000` into your transaction spec or `sendTransaction` options.
+
 ###### Why doesn't `--geth` option work?
 It's only available on version 1.2 and above. Check `parity --version` to make sure you're not on an older version.
 
