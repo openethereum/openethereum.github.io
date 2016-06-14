@@ -4,6 +4,9 @@ Once you have cloned the source directory and installed Rust, just use cargo and
 cargo build --release && cp target/release/parity /usr/local/bin
 ```
 
+###### How do I do a cross-build for ARM/Raspberry Pi?
+See the documentation for [docker build for ARM](https://github.com/ethcore/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
+
 ###### Why doesn't `--geth` option work?
 It's only available on version 1.2 and above. Check `parity --version` to make sure you're not on an older version.
 
