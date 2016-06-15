@@ -13,6 +13,9 @@ Your gas price is probably too low. Try increasing the gas price to 20Gwei by ap
 ###### Why doesn't `--geth` option work?
 It's only available on version 1.2 and above. Check `parity --version` to make sure you're not on an older version.
 
+###### Where can I find parity's local files in Windows?
+In Windows, the $HOME parameter is equivalent to C:\Users\{CurrentUser}. Parity's local files live in $HOME/.parity
+
 ###### How do I backup my blockchain?
 You can just export it to a file:
 ```bash
