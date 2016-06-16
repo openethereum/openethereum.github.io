@@ -25,10 +25,17 @@ git submodule update
 ```
 Then you just run `./test.sh`. You can run individual tests with `cargo test -p <package-name>`.
 
+#### Basic Operation
+
+###### How do I enable pruning?
+State-trie pruning was introduced in Parity 1.1 and is considered in a late beta testing stage, but is not yet considered production-ready. To enable it, start `parity` using `--pruning=fast` for your first sync.
+
+###### How do I enable tracing?
+Transaction tracing, available in Parity 1.1 and above, enables all `CALL`/`CREATE` information (i.e. "internal transactions") to be efficiently searched and filtered. To enable it, start `parity` using `--tracing` for your first sync.
 
 #### Backup, Restore and Files
 
-###### Where can I find Parity's local files in Windows?
+###### Where can I find Parity's local files?
 In Windows, the $HOME parameter is equivalent to C:\Users\{CurrentUser}. Parity's local files live in $HOME/.parity
 
 ###### How do I backup my blockchain?
