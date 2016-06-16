@@ -52,6 +52,9 @@ Simply copy it into your `$HOME/.ethereum/keystore` directory. Parity will impor
 
 #### Mining and Transacting
 
+###### None of my JSONRPC requests work - they all fail with no output. WTF?
+As a safeguard against a certain type of attack, Parity requires you to use a special content type. Just add `-H "Content-Type: application/json"` to your `curl` command.
+
 ###### When I start Parity with the `homestead_test.json` I get a 0 block chain, but loading `ethminer` never mines a block.
 `homestead_test.json` is a file meant for testing on a chain very similar to the Homestead chain. As such it is of equivalent (substantial) difficulty to mine on it. Rather what you need is something of minimal mining difficulty, like Morden. See more instructions [here](https://github.com/ethcore/parity/wiki/Private-chains).
 
