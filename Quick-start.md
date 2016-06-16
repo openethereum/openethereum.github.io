@@ -114,7 +114,7 @@ Use `parity --help` to get help on other options.
 Assuming you start with JSONRPC API enabled (`parity -j`), then you can do most of the examples on [Ethereum's JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC). e.g.:
 
 ````
-> curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x0037a6b811ffeb6e072da21179d11b1406371c63", "latest"],"id":1}' http://127.0.0.1:8545
+> curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x0037a6b811ffeb6e072da21179d11b1406371c63", "latest"],"id":1}' http://127.0.0.1:8545
 {"jsonrpc":"2.0","result":"0x0406c5a45045137507eb","id":1}
 ````
 
