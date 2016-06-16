@@ -16,6 +16,15 @@ Make sure you have set up your 64-bit variables in the build shell before issuin
 "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\amd64\vcvars64.bat"
 ````
 
+###### How do I build and run tests?
+First make sure you have the cross-client consensus tests installed:
+```
+git submodule init
+git submodule update
+```
+Then you just run `./test.sh`. You can run individual tests with `cargo test -p <package-name>`.
+
+
 #### Backup, Restore and Files
 
 ###### Where can I find Parity's local files in Windows?
