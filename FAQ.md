@@ -7,6 +7,13 @@ cargo build --release && cp target/release/parity /usr/local/bin
 ###### How do I do a cross-build for ARM/Raspberry Pi?
 See the documentation for [docker build for ARM](https://github.com/ethcore/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
 
+###### Trying to build on Windows, I get `link failed` mentioning `kernel32.lib`?
+Make sure you have set up your 64-bit variables in the build shell before issuing `cargo build`:
+
+````
+"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\amd64\vcvars64.bat"
+````
+
 ###### Why do my transactions not get mined?
 Your gas price is probably too low. Try increasing the gas price to 20Gwei by appending `, gasPrice: 20000000000` into your transaction spec or `sendTransaction` options.
 
