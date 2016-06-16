@@ -1,6 +1,6 @@
 #### Building Parity
 
-###### How do I build the cutting-edge version of Parity?
+   How do I build the cutting-edge version of Parity?
 Once you have cloned the source directory and installed Rust, just use cargo and copy the resulting binary:
 ```bash
 cargo build --release
