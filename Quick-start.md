@@ -103,7 +103,7 @@ There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository
 
 Assuming you installed Parity, you can start the client with a simple `parity`. By default it will connect to other nodes on the Ethereum Homestead network and synchronise the blockchain. You can instead connect to the Morden testnet with `parity --testnet`. By default it will run in archive mode saving all intermediate information from previous blocks; to avoid doing this (and freeing up a couple of gigs of disk space) use a pruning option e.g. `parity --pruning=fast`.
 
-If you want to interact with Parity at all, you'll want to enable the JSONRPC interface; to do that use `parity -j`. On recent (1.1.x) builds, there is also the Web interface; you can enable both with `parity -jw`.
+If you want to interact with Parity at all, you'll want to enable the JSONRPC interface; to do that use `parity -j`. As well, there is also the Web interface; you can enable both with `parity -jw`. Since recent builds (1.2 and higher), running parity with `-jw` options are the default, thus no need to explicit. 
 
 You can override the normal boot nodes and connect to your own nodes by using `parity --bootnodes ...`, e.g. you might run a local `geth` node and sync from that by running `parity --bootnodes enode://YOU_GETH_NODE_ID_HERE@127.0.0.1:30303`. You need to check geth's output to figure out what node ID is.
 
