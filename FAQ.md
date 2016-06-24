@@ -11,7 +11,7 @@ cargo build --release
 - On Mac/Linux: `cp -f target/release/parity /usr/local/bin`
 
 ##### How do I upgrade Parity to the latest cutting-edge version?
-Simply follow the instructions above to build & install. Nothing additional is needed.
+Simply follow the instructions above to build & install. The new version will replace the old. Nothing additional is needed.
 
 ##### How do I do a cross-build for ARM/Raspberry Pi?
 See the documentation for [docker build for ARM](https://github.com/ethcore/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
