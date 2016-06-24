@@ -37,7 +37,7 @@ TODO
 Once you have a synced Parity node running the JSONRPC interface, you'll be able to mine with `ethminer`. You'll probably want to set the destination address (where the rewards go). If you have an address already, great. If you don't, then you can make one in Parity with:
 
 ```
-parity address new
+parity account new
 ```
 
 You'll be asked for a password and be given an address. Once done, you should run parity and tell it to mine to that address when required. Supposing your address is `0037a6b811ffeb6e072da21179d11b1406371c63`, then you would run:
