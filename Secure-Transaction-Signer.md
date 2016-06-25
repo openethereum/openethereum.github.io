@@ -2,9 +2,11 @@ Parity 1.2 and above comes with the experimental Secure Transaction Signer frame
 
 When run with the signer, RPC endpoints that use your secret keys like `eth_sendTransaction` become privileged and no longer work as before. Instead the transactions gets placed into a queue. The transactions stay in the queue until the user (that's you) either confirms that they should be signed (and possibly provide the password), or that they should be cancelled.
 
+![The built-in Parity Signer UI](https://cloud.githubusercontent.com/assets/138296/16358885/1a5485da-3b22-11e6-9e65-26418e14f108.png)
+
 The interface that you confirm or cancel transaction through is called the *Signer UI*. Parity ships with a standard Signer UI which runs over HTTP. Point a browser to http://127.0.0.1:8180/ while Parity is running and you'll see it. There is also a Chrome extension which integrates much of Parity including the transaction signer into the Chrome browser. You can find it on the Chrome app store.
 
-![The Parity Chrome extension, which includes a Signer UI](https://cloud.githubusercontent.com/assets/138296/16358848/5d91b94a-3b21-11e6-88c2-1cc9301ec41e.png)
+![The Parity Chrome extension, which includes a Signer UI](https://cloud.githubusercontent.com/assets/138296/16358887/59327b7c-3b22-11e6-862c-17a59a0e5155.png)
 
 To prevent Dapps masquerading as Signer UIs, and to prevent Signer UIs from stealing each others unlocked secrets, Parity uses two levels of authentication tokens. When you first set up a new Signer UI you will be asked to input a Signer UI Token to prove that you wish to use this software to confirm transactions for signing. You can get such a key from Parity's output console or by running `parity signer new-token`. It cannot be automated since it's important that it doesn't happen without your knowledge.
 
