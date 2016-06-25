@@ -4,8 +4,7 @@ When run with the signer, RPC endpoints that use your secret keys like `eth_send
 
 The interface that you confirm or cancel transaction through is called the *Signer UI*. Parity ships with a standard Signer UI which runs over HTTP. Point a browser to http://127.0.0.1:8180/ while Parity is running and you'll see it. There is also a Chrome extension which integrates much of Parity including the transaction signer into the Chrome browser. You can find it on the Chrome app store.
 
-<div style="text-align:center">![The Parity Chrome extension, which includes a Signer UI](https://cloud.githubusercontent.com/assets/138296/16358848/5d91b94a-3b21-11e6-88c2-1cc9301ec41e.png)</div>
-
+![The Parity Chrome extension, which includes a Signer UI](https://cloud.githubusercontent.com/assets/138296/16358848/5d91b94a-3b21-11e6-88c2-1cc9301ec41e.png)
 
 To prevent Dapps masquerading as Signer UIs, and to prevent Signer UIs from stealing each others unlocked secrets, Parity uses two levels of authentication tokens. When you first set up a new Signer UI you will be asked to input a Signer UI Token to prove that you wish to use this software to confirm transactions for signing. You can get such a key from Parity's output console or by running `parity signer new-token`. It cannot be automated since it's important that it doesn't happen without your knowledge.
 
