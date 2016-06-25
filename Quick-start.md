@@ -18,27 +18,29 @@ This will give you a temporary docker environment.
 
 NOTE: If you already have Rust in your environment, you don't need to bother with this. 
 
-
 This will download and install Rust on Linux and OS X:
 
 ```
 curl https://sh.rustup.rs -sSf | sh
 ```
 
-If you are using Windows make sure you have Visual Studio 2015 with C++ support installed, download and run [rustup](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe) and use the following command to setup msvc toolchain:
+If you are using Windows make sure you have Visual Studio 2015 with C++ support installed. Ensure you run all of the next stuff in the `VS2015 x64 Native Tools Command Prompt`.
+
+**NOTE**: We do not support the GNU toolset on Windows. Do not install it, and do not install any Rust version that uses it. If you see `x86_64-pc-windows-gnu` anywhere, you've done it wrong!
+
+Download and run [rustup](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe) and use the following command to setup the MSVC toolchain:
 
 ```
 rustup default stable-x86_64-pc-windows-msvc
 ```
-
-**NOTE**: We do not support the GNU toolset on Windows. Do not install it, and do not install any Rust version that uses it. If you see `x86_64-pc-windows-gnu` anywhere, you've done it wrong!
 
 ### Install and Build Parity
 
 Next, grab the Parity repository:
 
 ```
-git clone https://github.com/ethcore/parity && cd parity
+git clone https://github.com/ethcore/parity
+cd parity
 ```
 
 For tests, also update submodules:
@@ -65,10 +67,17 @@ You can run just the consensus tests with:
 cargo test --release --features ethcore/json-tests -p ethcore
 ```
 
-To install Parity, just build it and copy it to `/usr/local/bin`:
+To install Parity on Linux and Mac OS, just build it and copy it to `/usr/local/bin`:
 
 ```
 cargo build --release && cp target/release/parity /usr/local/bin
+```
+
+For Windows, use `copy` it into `C:/Windows`:
+
+```
+cargo build --release
+copy target/release/parity C:/Windows
 ```
 
 You can start a client and sync with the network with:
