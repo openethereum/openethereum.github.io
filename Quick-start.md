@@ -31,6 +31,8 @@ If you are using Windows make sure you have Visual Studio 2015 with C++ support 
 rustup default stable-x86_64-pc-windows-msvc
 ```
 
+**NOTE**: We do not support the GNU toolset on Windows. Do not install it, and do not install any Rust version that uses it. If you see `x86_64-pc-windows-gnu` anywhere, you've done it wrong!
+
 ### Install and Build Parity
 
 Next, grab the Parity repository:
