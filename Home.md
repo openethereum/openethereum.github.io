@@ -8,7 +8,7 @@ Some help:
 - If you want to use the Ethereum Foundation Wallet with your Parity installation, see the guide to [[Using Parity with Mist]].
 - If you're interested in mining with Parity, see the [[Mining]] guide.
 - If you'd like to use the Web3 Javascript interface with Parity, see the [[Developers]] guide.
-- If you're interested in hacking on the Parity code base see the [[Coding-guide]].
+- If you're interested in hacking on the Parity code base see the [[Coding guide]].
 - For [[Private chains]] and [[Proof of Authority Chains]], you might find the [Ethereum Chain Spec Format](https://github.com/ethereum/wiki/wiki/Ethereum-Chain-Spec-Format) useful.
 
 # Our Tenets
