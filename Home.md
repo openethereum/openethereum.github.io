@@ -4,7 +4,7 @@ Parity is an Ethereum client, written from the ground-up for correctness-verifia
 
 Some help:
 - If you want to get a node up and running with Parity, see the [[Quick-start]] guide, or browse the [[Articles Index]].
-- Frequently asked questions are answer on the [[FAQ]].
+- Frequently asked questions are answered on the [[FAQ]].
 - If you want to use the Ethereum Foundation Wallet with your Parity installation, see the guide to [[Using Parity with Mist]].
 - If you're interested in mining with Parity, see the [[Mining]] guide.
 - If you'd like to use the Web3 Javascript interface with Parity, see the [[Developers]] guide.
