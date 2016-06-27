@@ -44,7 +44,7 @@ Transaction tracing, available in Parity 1.1 and above, enables all `CALL`/`CREA
 #### Backup, Restore and Files
 
 ##### Where can I find Parity's local files?
-In Windows, the $HOME parameter is equivalent to C:\Users\{CurrentUser}. Parity's local files live in $HOME/.parity
+In Windows, the `$HOME` parameter is equivalent to `C:\Users\{CurrentUser}`. Parity's local files live in `$HOME/.parity` making it `C:\Users\{CurrentUser}\.parity`.
 
 ##### How do I backup my blockchain?
 You can just export it to a file:
