@@ -91,5 +91,7 @@ You're probably trying to send from a locked account. Ensure you use the `--unlo
 
 #### Testnet & Private Chains
 
-##### When I switched to a testnet, my main chain wallets still appear. Using testnet may mess my accounts?
+##### When I switched to a testnet, my main chain wallets still appear. Might it be unsafe?
 Parity does not ([yet](https://github.com/ethcore/parity/issues/1221)) bother distinguishing keystores between the different networks. To avoid potential cross-network transaction-replay attacks, ensure all private networks have a reasonably high number for the `accountStartNonce` parameter. Morden has the value of `"0x0100000"`, which is considered safe.
+
+Note, the security of `--unlock` for an active mainnet account is unchanged, regardless of which network you are on. You are heavily discouraged from ever using `--unlock` and instead use the [Secure Transaction Signer].
