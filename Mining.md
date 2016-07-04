@@ -30,7 +30,10 @@ sudo apt-get install ethminer
 
 ### Mac OS X Homebrew
 
-TODO
+```
+brew tap ethcore/ethcore
+brew install parity
+```
 
 ## Starting it
 
@@ -43,7 +46,7 @@ parity account new
 You'll be asked for a password and be given an address. Once done, you should run parity and tell it to mine to that address when required. Supposing your address is `0037a6b811ffeb6e072da21179d11b1406371c63`, then you would run:
 
 ```
-parity --author 0037a6b811ffeb6e072da21179d11b1406371c63 -j
+parity --author 0037a6b811ffeb6e072da21179d11b1406371c63
 ```
 
 Once Parity is running and synced, running `ethminer` with work without any further configuration. e.g. run `ethminer -G --opencl-device 0` to GPU mine on the first OpenCL device found.
