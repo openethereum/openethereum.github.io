@@ -18,15 +18,15 @@ All pull requests should start labelled with either 'A0-pleasereview', 'A1-inpro
 - A0-pleasereview: Pull request needs code review.
 - A1-inprogress: Pull request is in progress. No review needed at this stage.
 - A2-clasignoffneeded: Pull request requires author to sign off on CLA before review/merge can begin.
-- A2-gotissues: Pull request is reviewed and have significant issues.
-- A3-justtoobig: Pull request is too large. It should be broken down into smaller PRs.
-- A4-grumble: Pull request has minor issues that must be addressed before merging. This may require only replying to comments.
-- A5-mustntgrumble: Pull request has areas for improvement. The author need not be address them before merging.
+- A2-gotissues: Pull request is reviewed and has significant issues which must be addressed. Once addressed, author should relabel as A0-pleasereview.
+- A3-justtoobig: Pull request is too large. It should be broken down into smaller PRs; when reduced in size PR may be relabelled as A0-pleasereview.
+- A4-grumble: Pull request has minor issues that must be addressed before merging. This may require only replying to comments. Pull request should be relabelled as A0-pleasereview to get a final sign-off from a reviewer.
+- A5-mustntgrumble: Pull request has areas for improvement. The author need not address them before merging.
 - A6-looksgoodcantmerge: Pull request is reviewed well, but cannot be merged due to conflicts.
 - A7-backport: Pull request is already reviewed well in another branch.
 - A7-looksgood: Pull request is reviewed well.
 - A8-onice: Pull request is reviewed well, but should not yet be merged.
-- A9-insubstantial: Pull request requires no code review (e.g. a subrepository hash update).
+- A9-insubstantial: Pull request requires no code review (e.g. a sub-repository hash update).
 
 ### 'F' group
 
