@@ -3,7 +3,7 @@ This page is to explain the conventions over Parity's labelling system.
 Labels are split into 4 groups.
 
 - 'A' group is used for code-review status and are applicable only to Pull Requests.
-- 'F' group is used to encode the type (and accordingly severity) of issues; they are applicable only within the Issue Tracker.
+- 'F' group is used to encode the type (and accordingly the severity) of issues; they are applicable only within the Issue Tracker.
 - 'P' group is to denote priority. They are generally relevant only to issues, though may in principle be used on pull-requests.
 - 'Z' group are reasons for why something is a non-issue. They are applicable only within the Issue Tracker.
 
