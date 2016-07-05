@@ -33,15 +33,15 @@ All pull requests should start labelled with either 'A0-pleasereview', 'A1-inpro
 Issues should have only one of these. Do not combine; if multiple labels are equally applicable to an issue, use the one with the lowest number.
 
 - F0-consensus: Issue can lead to a consensus failure.
-- F1-security: A security flaw: This can lead to failure of some security-sensitive feature.
-- F2-bug: A bug. The client fails to follow expected behaviour.
-- F2-build: A bug with the build. Client fails to build on a supported platform.
-- F3-annoyance: Client behaves within expectations, however this behaviour is nonetheless really annoying.
+- F1-security: The client fails to follow expected, security-sensitive, behaviour.
+- F2-bug: The client fails to follow expected behaviour.
+- F2-build: The client fails to build on a supported platform.
+- F3-annoyance: The client behaves within expectations, however this "expected behaviour" itself is at issue. Annoyances are small enhancements which dramatically improve the usability of the client.
 - F4-tests: Tests need fixing, improving or augmenting.
 - F5-documentation: Documentation needs fixing, improving or augmenting.
 - F6-refactor: Code needs refactoring.
 - F7-footprint: An enhancement to provide a smaller (system load, memory, network or disk) footprint.
-- F7-optimisation: An enhancement to provide better overall performance in terms of time-to-completion of a task.
+- F7-optimisation: An enhancement to provide better overall performance in terms of time-to-completion for a task.
 - F8-enhancement: An additional feature.
 - F9-release: A specific release. All such issues should be templated on [1387](https://github.com/ethcore/parity/issues/1387).
 
@@ -54,7 +54,6 @@ Typically used only to annotate issues, however P0 and P2 may reasonably be used
 - P5-sometimesoon: Issue is worth doing soon.
 - P7-nicetohave: Issue is worth doing eventually.
 - P9-somedaymaybe: Issue might be worth doing eventually.
-
 
 ### 'Z' group
 
