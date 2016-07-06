@@ -15,6 +15,9 @@
 - [JSONRPC Guide](JSONRPC)
 - [Tracing API](Using transaction tracing API)
 
-## [Hacking on Parity](Developers)
+## Hacking on Parity
 - [[Coding Guide]]
 - [[Labelling]]
+- [Gitter](https://gitter.im/ethcore/parity)
+- [GitHub](https://github.com/ethcore/parity)
+- [Website](https://parity.io)
