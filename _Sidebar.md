@@ -1,1 +1,1 @@
-[[Home]]
+[Parity](Home)
