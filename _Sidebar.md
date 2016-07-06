@@ -5,5 +5,5 @@
 - [[Mining]]
 - [[Private chains]]
 
-## Developing
+## [Developing](Developers)
 - [[Coding guide]]
