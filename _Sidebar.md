@@ -5,7 +5,7 @@
 - [[Mining]]
 - [[Private chains]]
 
-## Developing Parity Dapps
+## Developing Dapps
 - [[
 
 ## [Hacking on Parity](Developers)
