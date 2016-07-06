@@ -5,4 +5,4 @@
 - [Private chains](Private-chains)
 
 ## Developing
-- [[Coding]]
+- [[Coding guide]]
