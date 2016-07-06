@@ -1,2 +1,2 @@
-**[Parity](Home)**
+#[Parity](Home)
 - [Get Started](Quick-start)
