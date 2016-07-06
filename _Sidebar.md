@@ -1,8 +1,8 @@
 #[Parity](Home)
 - [[FAQ]]
-- [Get Started](Quick-start)
+- [[Quick start]]
 - [[Mining]]
-- [Private chains](Private-chains)
+- [[Private chains]]
 
 ## Developing
 - [[Coding guide]]
