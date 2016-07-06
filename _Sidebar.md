@@ -1,9 +1,11 @@
 #[Parity](Home)
-- [[FAQ]]
 - [[Quick start]]
-- [Using Mist](Using parity with mist)
-- [[Mining]]
-- [[Private chains]]
+- [[FAQ]]
+
+## Using Parity
+- [With Mist](Using parity with mist)
+- [For mining](Mining)
+- [For private chains](Private chains)
 
 ## Developing Dapps
 - [[
