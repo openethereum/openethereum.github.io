@@ -1,7 +1,6 @@
 #[Parity](Home)
 - [[Quick start]]
 - [[FAQ]]
-- [[Secure Transaction Signer]]
 
 ## Using Parity
 - [With Mist](Using parity with mist)
@@ -21,3 +20,6 @@
 - [Gitter](https://gitter.im/ethcore/parity)
 - [GitHub](https://github.com/ethcore/parity)
 - [Website](https://parity.io)
+
+## Technologies
+- [[Secure Transaction Signer]]
