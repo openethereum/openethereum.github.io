@@ -5,6 +5,9 @@
 - [[Mining]]
 - [[Private chains]]
 
-## [Developing](Developers)
+## Developing Parity Dapps
+- [[
+
+## [Hacking on Parity](Developers)
 - [[Coding guide]]
 - [[Labelling]]
