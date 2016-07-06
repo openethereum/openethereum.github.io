@@ -1,7 +1,7 @@
 #[Parity](Home)
 - [[FAQ]]
 - [[Quick start]]
-- [[Using Mist]]
+- [Using Mist](Using parity with mist)
 - [[Mining]]
 - [[Private chains]]
 
