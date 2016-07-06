@@ -1,4 +1,5 @@
 #[Parity](Home)
-- [Get Started](Quick-start)
 - [FAQ]
-- 
+- [Get Started](Quick-start)
+- [Mining]
+- [Private chains](Private-chains)
