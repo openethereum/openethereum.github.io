@@ -3,3 +3,6 @@
 - [Get Started](Quick-start)
 - [[Mining]]
 - [Private chains](Private-chains)
+
+## Developing
+- [[Coding]]
