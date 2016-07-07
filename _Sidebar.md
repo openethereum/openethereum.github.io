@@ -7,7 +7,7 @@
 - [For Mining](Mining)
 - [For Private Chains](Private Chains)
 - [For PoA Chains](Proof of Authority Chains)
-- [Coming From Geth](Importing a chain from Geth)
+- [Coming from Geth](Importing a chain from Geth)
 - [[Backing-up & Restoring]]
 
 ## Developing Dapps
