@@ -1,3 +1,10 @@
+####Using transaction tracing API
+
+In order to use tracing parity must be fully synced with flags `$ parity --tracing on`.
+
+***
+
+
 * [trace_filter](#trace_filter)
 * [trace_get](#trace_get)
 * [trace_transaction](#trace_transaction)
