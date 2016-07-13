@@ -89,7 +89,7 @@ cargo run --release
 To get help on the command line options for the `parity` client, use `--help`:
 
 ```
-cargo run --release -- --help
+cargo run --release --help
 ```
 
 ## Quick Start with the One-line Binary Installer:
