@@ -108,7 +108,7 @@ On Ubuntu this script will also offer to install the [Netstats client](https://g
 
 ## Quick Start with Ubuntu Snappy on Raspberry Pi
 
-There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](github.com/ethcore/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?
+There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](https://github.com/ethcore/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?
 
 # Using Parity
 
