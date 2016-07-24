@@ -10,7 +10,7 @@ If you wish to make your `parity` binary into a true "Parity Classic" binary (an
 
 with the string:
 
-`                           testnet [default: classic].  `
+`                           testnet [default: classic].&nbsp;&nbsp;`
 
 NOTE: There are two invisible spaces after the `.`: don't forget them!
 
