@@ -10,8 +10,8 @@ If you wish to make your `parity` binary into a true "Parity Classic" binary (an
 
 with the string:
 
-`                           testnet [default: classic].  `
+`                           testnet   [default: classic].`
 
-NOTE: There are two spaces after the `.`: don't forget them!
+NOTE: There are three spaces after the `testnet`: don't forget them!
 
 You can rename the resulting `parity` binary to `parity-classic` and hey presto you now have a 100% Classic-compatible Parity client.
