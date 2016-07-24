@@ -4,13 +4,13 @@
 
 ### Parity Classic
 
-If you wish to make your `parity` binary into a true "Parity Classic" binary (and thus default to starting in Classic mode), simply open the `parity` binary in your favourite editor (`vi`/`vim` works ok) and replace all occurances of the string:
+If you wish to make your `parity` binary into a true "Parity Classic" binary (and thus default to starting in Classic mode), simply open the `parity` binary in your favourite editor (`vi`/`vim` works ok) and replace the one occurance of the string:
 
-`                           testnet [default: homestead].`
+`testnet [default: homestead].`
 
 with the string:
 
-`                           testnet [default: classic].  `
+`testnet [default: classic].  `
 
 NOTE: There are two invisible spaces after the `.`: don't forget them!
 
