@@ -9,6 +9,7 @@
 - [For PoA Chains](Proof of Authority Chains)
 - [Coming from Geth](Importing a chain from Geth)
 - [[Backing-up & Restoring]]
+- [[Ethereum Classic]]
 
 ## Developing Dapps
 - [JSONRPC Guide](JSONRPC)
