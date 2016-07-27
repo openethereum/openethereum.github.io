@@ -955,7 +955,7 @@ params: [
   - `number`: `QUANTITY` - the block number. `null` when its pending block.
   - `hash`: `DATA`, 32 Bytes - hash of the block. `null` when its pending block.
   - `parentHash`: `DATA`, 32 Bytes - hash of the parent block.
-  - `sealFields`: an array of the fields for the block's seal or `null` when its pending block. For Ethash, this is the `mixHash` followed by the `nonce`.
+  - `sealFields`: an array of the fields for the block's seal or `null` when its pending block. For Ethash, this is the `mixHash` (`DATA`, 32 Bytes) followed by the `nonce` (`DATA`, 8 Bytes).
   - `sha3Uncles`: `DATA`, 32 Bytes - SHA3 of the uncles data in the block.
   - `logsBloom`: `DATA`, 256 Bytes - the bloom filter for the logs of the block. `null` when its pending block.
   - `transactionsRoot`: `DATA`, 32 Bytes - the root of the transaction trie of the block.
@@ -986,7 +986,7 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
     "number": "0x1b4", // 436
     "hash": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331",
     "parentHash": "0x9646252be9520f6e71339a8df9c55e4d7619deeb018d2a3f2d21fc165dde5eb5",
-    "nonce": "0xe04d296d2460cfb8472af2c5fd05b5a214109c25688d3704aed5484f9a7792f2",
+    "sealFields": ["0xe04d296d2460cfb8472af2c5fd05b5a214109c25688d3704aed5484f9a7792f2", "0x0000000000000042"],
     "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
     "logsBloom": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331",
     "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
