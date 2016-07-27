@@ -955,7 +955,7 @@ params: [
   - `number`: `QUANTITY` - the block number. `null` when its pending block.
   - `hash`: `DATA`, 32 Bytes - hash of the block. `null` when its pending block.
   - `parentHash`: `DATA`, 32 Bytes - hash of the parent block.
-  - `nonce`: `DATA`, 8 Bytes - hash of the generated proof-of-work. `null` when its pending block.
+  - `sealFields`: an array of the fields for the block's seal or `null` when its pending block. For Ethash, this is the `mixHash` followed by the `nonce`.
   - `sha3Uncles`: `DATA`, 32 Bytes - SHA3 of the uncles data in the block.
   - `logsBloom`: `DATA`, 256 Bytes - the bloom filter for the logs of the block. `null` when its pending block.
   - `transactionsRoot`: `DATA`, 32 Bytes - the root of the transaction trie of the block.
