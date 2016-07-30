@@ -525,7 +525,7 @@ params: [
 
 ##### Returns
 
-`DATA` - the value at this storage position.
+`DATA`, 32 Bytes - the value at this storage position.
 
 
 ##### Example
@@ -537,7 +537,7 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
 {
   "id":1,
   "jsonrpc": "2.0",
-  "result": "0x03"
+  "result": "0x0000000000000000000000000000000000000000000000000000000000000003"
 }
 ```
 
