@@ -1,6 +1,6 @@
 # Quick Start
 
-There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our binary releases for Ubuntu and Mac/Homebrew or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Support for Windows was added in version 1.2, as planned in issue [#462](https://github.com/ethcore/parity/issues/462). Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
+There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our binary releases for Ubuntu and Mac/Homebrew or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Support for Windows was added in version 1.2. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
 ## Quick Start: Building from the CLI
 
