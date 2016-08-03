@@ -1,4 +1,4 @@
-Parity provides an `InstantSeal` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Secure Transaction Signer](https://github.com/ethcore/parity/wiki/Secure-Transaction-Signer)) and all blocks will be accepted.
+Parity provides an `InstantSeal` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Secure Transaction Signer](Secure Transaction Signer)) and all blocks will be accepted.
 
 To use it, the following example spec can be passed to `--chain` option where `accounts` contains a custom account with lots of Ether.
 ```
