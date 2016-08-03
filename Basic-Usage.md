@@ -1,12 +1,12 @@
 # Basic Usage
 
-To use Parity simply run `parity` and then head on to [http://localhost:8080/](http://localhost:8080/) or another port specified by `--dapps-port PORT` option. This will bring up an UI that can be used to monitor Ethereum blockchain syncing progress and use Mist wallet or any other dapps. Once the syncing is complete, transactions can be sent. Before relaying any transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it. This is done by clicking the extension button and following the instructions.
+To use Parity simply run `parity` and then head on to [http://localhost:8080/](http://localhost:8080/) or another port specified by `--dapps-port PORT` option. This will bring up an UI that can be used to monitor Ethereum blockchain syncing progress and use Mist wallet or any other dapps. Once the syncing is complete, transactions can be sent. Before relaying a transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it. This is done by clicking the extension button and following the instructions.
 
-You can instead connect to the Morden testnet with `parity --testnet`.
+You can also connect to the Morden testnet with `parity --testnet`.
 
 You can override the normal boot nodes and connect to your own nodes by using `parity --bootnodes ...`, e.g. you might run a local `geth` node and sync from that by running `parity --bootnodes enode://YOU_GETH_NODE_ID_HERE@127.0.0.1:30303`. You need to check geth's output to figure out what node ID is.
 
-Use `parity --help` to get help on other options.
+Use `parity --help` to find out about other available options.
 
 ## JSON-RPC API
 
