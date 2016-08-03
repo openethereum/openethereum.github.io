@@ -1,6 +1,6 @@
 #[Parity](Home)
 - [[Setup]]
-- [[Quick start]]
+- [[Basic Usage]]
 - [[FAQ]]
 
 ## Using Parity
