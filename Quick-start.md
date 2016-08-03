@@ -4,7 +4,7 @@ There are a few ways of proceeding here. You can build Parity from the sources; 
 
 ## Quick Start: Using a binary
 
-To use Parity simply run `parity` and then head on to `localhost:8080` or another port specified by `--dapps-port PORT` option. This will bring up an UI that can be used to monitor syncing progress and use Mist wallet or any other dapps. Once the syncing is complete, transactions can be sent. Before relaying any transaction Parity Signer UI has to be used to sign it. This is done by clicking the extension button and following the instructions.
+To use Parity simply run `parity` and then head on to `localhost:8080` or another port specified by `--dapps-port PORT` option. This will bring up an UI that can be used to monitor syncing progress and use Mist wallet or any other dapps. Once the syncing is complete, transactions can be sent. Before relaying any transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it. This is done by clicking the extension button and following the instructions.
 
 ## Quick Start: Building from the CLI
 
