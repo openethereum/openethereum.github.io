@@ -1,4 +1,5 @@
 #[Parity](Home)
+- [[Setup]]
 - [[Quick start]]
 - [[FAQ]]
 
@@ -14,7 +15,7 @@
 ## Developing Dapps
 - [JSONRPC Guide](JSONRPC)
 - [Tracing API](Using transaction tracing API)
-- [Private development chain](Private development chain)
+- [[Private development chain]]
 
 ## Hacking on Parity
 - [[Coding Guide]]
