@@ -2,10 +2,6 @@
 
 There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/ethcore/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
-## Quick Start: Using a binary
-
-To use Parity simply run `parity` and then head on to `localhost:8080` or another port specified by `--dapps-port PORT` option. This will bring up an UI that can be used to monitor syncing progress and use Mist wallet or any other dapps. Once the syncing is complete, transactions can be sent. Before relaying any transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it. This is done by clicking the extension button and following the instructions.
-
 ## Quick Start: Building from the CLI
 
 Docker is great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. However, you don't need Docker - similar instructions can be used to get things working on pretty much any Linux installation or a Mac Homebrew system, just don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) or *nix with 6 months of cruft caking it up. Rather, get the docker image working and then figure out what the differences are.
@@ -116,9 +112,9 @@ There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository
 
 # Using Parity
 
-Assuming you installed Parity, you can start the client with a simple `parity`. By default it will connect to other nodes on the Ethereum Homestead network and synchronise the blockchain. You can instead connect to the Morden testnet with `parity --testnet`. By default it will run in archive mode saving all intermediate information from previous blocks; to avoid doing this (and freeing up a couple of gigs of disk space) use a pruning option e.g. `parity --pruning=fast`.
+To use Parity simply run `parity` and then head on to [http://localhost:8080/](http://localhost:8080/) or another port specified by `--dapps-port PORT` option. This will bring up an UI that can be used to monitor Ethereum blockchain syncing progress and use Mist wallet or any other dapps. Once the syncing is complete, transactions can be sent. Before relaying any transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it. This is done by clicking the extension button and following the instructions.
 
-If you want to interact with Parity at all, you'll want to enable the JSONRPC interface; to do that use `parity -j`. As well, there is also the Web interface; you can enable both with `parity -jw`. Since recent builds (1.2 and higher), running parity with `-jw` options are the default, thus no need to explicit. 
+You can instead connect to the Morden testnet with `parity --testnet`.
 
 You can override the normal boot nodes and connect to your own nodes by using `parity --bootnodes ...`, e.g. you might run a local `geth` node and sync from that by running `parity --bootnodes enode://YOU_GETH_NODE_ID_HERE@127.0.0.1:30303`. You need to check geth's output to figure out what node ID is.
 
@@ -126,7 +122,7 @@ Use `parity --help` to get help on other options.
 
 ## JSON-RPC API
 
-Assuming you start with JSONRPC API enabled (`parity -j`, the default), then you can do most of the examples on [Ethereum's JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC). e.g.:
+Assuming you start with JSONRPC API enabled (default), then [Ethereum's JSON-RPC](JSONRPC) can be used. e.g.:
 
 ````
 > curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x0037a6b811ffeb6e072da21179d11b1406371c63", "latest"],"id":1}' http://127.0.0.1:8545
@@ -159,7 +155,3 @@ After this point, you'll be able to use the web3 API from with this environment,
 > web3.eth.blockNumber
 743397
 ```
-
-### Chrome Browser Console
-
-In Parity version 1.1 and above, you can also use the Google Chrome console for web3 development. You'll need to run Parity with the `-jw` flags to enable the web integration interface. With this done, head to [http://localhost:8080/](http://localhost:8080/) and you'll be able to use Chrome's builtin console right away.
