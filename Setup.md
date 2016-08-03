@@ -1,10 +1,8 @@
-# Setup
-
-## Binaries
+# Binaries
 
 There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/ethcore/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
-## One-line Binary Installer
+# One-line Binary Installer
 
 This method is way faster than building, though you won't get the cutting edge features and it only works on Ubuntu and Mac with Homebrew installed.
 
@@ -18,11 +16,11 @@ This will install and configure the Parity client for you.
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
-## Simple build from source
+# Simple build from source
 
 To simply build Parity from source follow the instructions in the [README](https://github.com/ethcore/parity/blob/master/README.md).
 
-### Building using Docker
+## Building using Docker
 
 Docker is great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. However, you don't need Docker - similar instructions can be used to get things working on pretty much any Linux installation or a Mac Homebrew system, just don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) or *nix with 6 months of cruft caking it up. Rather, get the docker image working and then figure out what the differences are.
 
@@ -34,7 +32,7 @@ docker run -it ubuntu bash
 
 This will give you a temporary docker environment.
 
-#### Grab Rust
+### Grab Rust
 
 NOTE: If you already have Rust in your environment, you don't need to bother with this. 
 
@@ -54,7 +52,7 @@ Download and run [rustup](https://static.rust-lang.org/rustup/dist/x86_64-pc-win
 rustup default stable-x86_64-pc-windows-msvc
 ```
 
-#### Install and Build Parity
+### Install and Build Parity
 
 Next, grab the Parity repository:
 
@@ -112,6 +110,6 @@ To get help on the command line options for the `parity` client, use `--help`:
 cargo run --release --help
 ```
 
-## Ubuntu Snappy on Raspberry Pi
+# Ubuntu Snappy on Raspberry Pi
 
 There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](https://github.com/ethcore/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?
