@@ -16,7 +16,7 @@ This will install and configure the Parity client for you.
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
-# Simple build from source
+# Building from source
 
 To simply build Parity from source follow the instructions in the [README](https://github.com/ethcore/parity/blob/master/README.md).
 
