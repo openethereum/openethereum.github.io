@@ -4,7 +4,7 @@ When run with the signer, RPC endpoints that use your secret keys like `eth_send
 
 ![The built-in Parity Signer UI](https://cloud.githubusercontent.com/assets/138296/16358887/59327b7c-3b22-11e6-862c-17a59a0e5155.png)
 
-The interface that you confirm or cancel transaction through is called the *Signer UI*. Parity ships with a standard Signer UI which runs over HTTP. Point a browser to http://127.0.0.1:8180/ while Parity is running and you'll see it. There is also a Chrome extension which integrates much of Parity including the transaction signer into the Chrome browser. You can find it on the Chrome app store.
+The interface that you confirm or cancel transaction through is called the *Signer UI*. Parity ships with a standard Signer UI which runs over HTTP. Point a browser to http://127.0.0.1:8180/ while Parity is running and you'll see it. There is also a [Chrome Extension](https://chrome.google.com/webstore/detail/parity-ethereum-integrati/fgodinogimdopkigkcoelpfkbnpngalc) which integrates much of Parity including the transaction signer into the Chrome browser.
 
 ![The Parity Chrome extension, which includes a Signer UI](https://cloud.githubusercontent.com/assets/138296/16358885/1a5485da-3b22-11e6-9e65-26418e14f108.png)
 
