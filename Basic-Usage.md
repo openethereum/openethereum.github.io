@@ -1,4 +1,4 @@
-To use Parity simply run `parity` and then head on to [http://localhost:8080/](http://localhost:8080/) or another port specified by `--dapps-port PORT` option. This will bring up an UI that can be used to monitor Ethereum blockchain syncing progress and use Mist wallet or any other dapps. Once the syncing is complete, transactions can be sent. Before relaying a transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it. This is done by clicking the extension button and following the instructions.
+To use Parity run `parity` command and then head on to [http://localhost:8080/](http://localhost:8080/) or another port specified by `--dapps-port PORT` option. This will bring up the UI that can be used to monitor Ethereum blockchain syncing progress and to use Mist wallet or any other installed dapp. Once the syncing is complete, new transactions can be sent. Before relaying a transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it.
 
 You can also connect to the Morden testnet with `parity --testnet`.
 
