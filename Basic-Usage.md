@@ -1,6 +1,6 @@
 To use Parity run `parity` command and then head on to [http://localhost:8080/](http://localhost:8080/) or another port specified by `--dapps-port PORT` option. This will bring up the UI that can be used to monitor Ethereum blockchain syncing progress and to use Mist wallet or any other installed dapp. Once the syncing is complete, new transactions can be sent. Before relaying a transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it.
 
-You can also connect to the Morden testnet with `parity --testnet`.
+You can also connect to the Morden testnet with `parity --chain morden`.
 
 You can override the normal boot nodes and connect to your own nodes by using `parity --bootnodes ...`, e.g. you might run a local `geth` node and sync from that by running `parity --bootnodes enode://YOU_GETH_NODE_ID_HERE@127.0.0.1:30303`. You need to check geth's output to figure out what node ID is.
 
@@ -21,7 +21,7 @@ Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/Jav
 
 ## Node.js CLI Console
 
-Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. You'll need to have JSONRPC enabled by running Parity with the `-j` flag. Once you have node/NPM installed, you'll just need to install the latest web3 module:
+Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. Once you have node/NPM installed, you'll just need to install the latest web3 module:
 
 ```bash
 $ npm install web3
