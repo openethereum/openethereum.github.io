@@ -37,7 +37,7 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 Since Parity 1.2 state-trie pruning is enabled by default.
 
 ##### How do I enable tracing?
-Transaction tracing, available in Parity 1.1 and above, enables all `CALL`/`CREATE` information (i.e. "internal transactions") to be efficiently searched and filtered. To enable it, start `parity` using `--tracing` for your first sync.
+Transaction tracing, available in Parity 1.1 and above, enables all `CALL`/`CREATE` information (i.e. "internal transactions") to be efficiently searched and filtered. More information can be found on the dedicated [Wiki page](Using transaction tracing API).
 
 #### Backup, Restore and Files
 
