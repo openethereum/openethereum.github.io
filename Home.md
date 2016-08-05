@@ -3,7 +3,7 @@
 Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularisation, low-footprint and high-performance. To this end it utilises the Rust language, a hybrid imperative/OO/functional language with an emphasis on efficiency. It is professionally developed by Ethcore; we aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers and follow a pipelined 6-ish-week release cycle similar to the Rust compiler.
 
 Some help:
-- If you want to get a node up and running with Parity, see the [[Quick start]] guide, or browse the [[Articles Index]].
+- If you want to get a node up and running with Parity, see the [[Setup]] guide, or browse the [[Articles Index]].
 - Frequently asked questions are answered on the [[FAQ]].
 - If you want to use the Ethereum Foundation Wallet with your Parity installation, see the guide to [[Using Parity with Mist]].
 - If you're interested in mining with Parity, see the [[Mining]] guide.
