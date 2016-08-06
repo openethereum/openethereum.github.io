@@ -20,6 +20,12 @@ On Ubuntu this script will also offer to install the [Netstats client](https://g
 
 To simply build Parity from source follow the instructions in the [README](https://github.com/ethcore/parity/blob/master/README.md).
 
+For Ethereum key management [Ethstore](https://github.com/ethcore/ethstore) can be used. To compile it use
+```
+cargo build --release -p ethstore --features='ethcore/ethstore/cli'
+```
+in the root Parity directory and for usage instructions: `./target/release/deps/ethstore --help`.
+
 ## Building using Docker
 
 Docker is great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. However, you don't need Docker - similar instructions can be used to get things working on pretty much any Linux installation or a Mac Homebrew system, just don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) or *nix with 6 months of cruft caking it up. Rather, get the docker image working and then figure out what the differences are.
