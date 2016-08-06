@@ -1,6 +1,6 @@
 As of Parity version 1.3.0 ("Acuity"), Parity supports state snapshotting. This allows for an extremely fast "synchronisation" that skips almost all of the block processing, simply injecting the appropriate data directly into the database.
 
-*NOTE*: At present, snapshotting does not place all of the block or receipt data into the database. This means you will not get information relating to transactions more than a few days old. This is fine for some usages such as mining, but if you have or need access to historical transaction data (e.g. if you have an account that you've been using with Geth and wish to browse sent transactions) then you probably want to sync normally.
+**NOTE**: At present, snapshotting does not place all of the block or receipt data into the database. This means you will not get information relating to transactions more than a few days old. This is fine for some usages such as mining, but if you have or need access to historical transaction data (e.g. if you have an account that you've been using with Geth and wish to browse sent transactions) then you probably want to sync normally.
 
 To use a snapshot sync, you first need to download a snapshot. You can do this via Bittorrent. There are different snapshots for the standard Ethereum mainnet and the Classic networks:
 
