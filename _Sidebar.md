@@ -1,5 +1,6 @@
 #[Parity](Home)
 - [[Setup]]
+- [[Getting Synced]]
 - [[Basic Usage]]
 - [[FAQ]]
 
