@@ -1,16 +1,19 @@
 # The `trace` Module
 
-####Using transaction tracing API
+The trace module is for getting a deeper insight into transaction processing. It includes two sets of calls; the transaction trace filtering API and the ad-hoc tracing API.
 
-In order to use tracing parity must be fully synced with flags `$ parity --tracing on`.
+## The Transaction-Trace Filtering API
+
+These APIs allow you to get a full *externality* trace on any transaction executed throughout the Parity chain. Unlike the log filtering API, you are able to search and filter based only upon address information. Information returned includes the execution of all `CREATE`s, `SUICIDE`s and all variants of `CALL` together with input data, output data, gas usage, amount transferred and the success status of each individual action.
+
+In order to use these API Parity must be fully synced with flags `$ parity --tracing on`.
 
 ***
 
-
-* [trace_filter](#trace_filter)
-* [trace_get](#trace_get)
-* [trace_transaction](#trace_transaction)
-* [trace_block](#trace_block)
+- `trace_filter` `()` *returns* `` ???
+- `trace_get` `()` *returns* `` ???
+- `trace_transaction` `()` *returns* `` ???
+- `trace_block` `()` *returns* `` ???
 
 ***
 
@@ -239,3 +242,18 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_block","params":["latest"]
 ```
 
 ***
+
+
+## The Ad-hoc Tracing API
+
+The ad-hoc tracing API allows you to perform a number of different diagnostics on calls or transactions, either historical ones from the chain or hypothetical ones not yet mined. The diagnostics include:
+
+- `trace` **Transaction trace**. An equivalent trace to that in the previous section.
+- `vmTrace` **Virtual Machine execution trace**. Provides a full trace of the VM's state throughout the execution of the transaction, including for any subcalls.
+- `stateDiff` **State difference**. Provides information detailing all altered portions of the Ethereum state made due to the execution of the transaction.
+
+There are three means of providing a transaction to execute; either providing the same information as when making a call using `eth_call` (see `trace_call`), through providing raw, signed, transaction data as when using `eth_sendRawTransaction` (see `trace_rawTransaction`) or simply a transaction hash for a previously mined transaction (see `trace_replayTransaction`). In the latter case, your node must be in archive mode or the transaction should be within the most recent 1000 blocks.
+
+- `trace_call` `()` *returns* ``
+- `trace_rawTransaction` `()` *returns* ``
+- `trace_replayTransaction` `()` *returns* ``
