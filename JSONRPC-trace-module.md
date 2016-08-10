@@ -1,4 +1,4 @@
-# The `trace` module
+# The `trace` Module
 
 ####Using transaction tracing API
 
