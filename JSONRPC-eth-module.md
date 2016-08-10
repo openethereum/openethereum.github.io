@@ -14,10 +14,10 @@ When requests are made that act on the state of Ethereum, the last parameter det
 
 The following options are possible for the `defaultBlock` parameter:
 
-- `QUANTITY`/`INT` - an integer block number
-- `STR "earliest"` for the earliest/genesis block
-- `STR "latest"` - for the latest mined block
-- `STR "pending"` - for the pending state/transactions
+- `QUANTITY`/`INT` - an integer block number;
+- `STR "earliest"` for the earliest/genesis block;
+- `STR "latest"` - for the latest mined block;
+- `STR "pending"` - for the pending state/transactions.
 
 ## JSON-RPC methods
 
