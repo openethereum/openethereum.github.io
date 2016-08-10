@@ -15,6 +15,8 @@
 
 ## Developing Dapps
 - [JSONRPC Guide](JSONRPC)
+  - [web3 & net](JSONRPC-web3-and-net-modules)
+  - [eth](JSONRPC-eth-module)
   - [ethcore](JSONRPC-ethcore-module)
   - [trace](JSONRPC-trace-module)
 - [[Private development chain]]
