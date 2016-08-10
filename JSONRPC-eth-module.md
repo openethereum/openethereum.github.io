@@ -2,7 +2,7 @@
 
 ## The default block parameter
 
-The following methods have an extra default block parameter:
+The following methods have an optional extra `defaultBlock` parameter:
 
 - [eth_getBalance](#eth_getbalance)
 - [eth_getCode](#eth_getcode)
@@ -10,14 +10,14 @@ The following methods have an extra default block parameter:
 - [eth_getStorageAt](#eth_getstorageat)
 - [eth_call](#eth_call)
 
-When requests are made that act on the state of ethereum, the last default block parameter determines the height of the block.
+When requests are made that act on the state of Ethereum, the last parameter determines the height of the block.
 
-The following options are possible for the defaultBlock parameter:
+The following options are possible for the `defaultBlock` parameter:
 
-- `HEX String` - an integer block number
-- `String "earliest"` for the earliest/genesis block
-- `String "latest"` - for the latest mined block
-- `String "pending"` - for the pending state/transactions
+- `QUANTITY`/`INT` - an integer block number
+- `STR "earliest"` for the earliest/genesis block
+- `STR "latest"` - for the latest mined block
+- `STR "pending"` - for the pending state/transactions
 
 ## JSON-RPC methods
 
