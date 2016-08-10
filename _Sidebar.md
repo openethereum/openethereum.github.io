@@ -18,6 +18,7 @@
   - [web3 & net](JSONRPC-web3-and-net-modules)
   - [eth](JSONRPC-eth-module)
   - [ethcore](JSONRPC-ethcore-module)
+  - [ethcore_set](JSONRPC-ethcore-set-module)
   - [trace](JSONRPC-trace-module)
 - [[Private development chain]]
 
