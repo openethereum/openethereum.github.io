@@ -16,7 +16,7 @@
 ## Developing Dapps
 - [JSONRPC Guide](JSONRPC)
   - [ethcore](JSONRPC-ethcore-module)
-  - [trace](Using transaction tracing API)
+  - [trace](JSONRPC-trace-module)
 - [[Private development chain]]
 
 ## Hacking on Parity
