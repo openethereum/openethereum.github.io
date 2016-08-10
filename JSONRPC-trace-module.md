@@ -1,3 +1,5 @@
+# The `trace` module
+
 ####Using transaction tracing API
 
 In order to use tracing parity must be fully synced with flags `$ parity --tracing on`.
