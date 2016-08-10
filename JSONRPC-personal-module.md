@@ -1,4 +1,4 @@
-* The `personal` Module
+# The `personal` Module
 
 - `personal_signerEnabled` `()` *returns* ``
 - `personal_listAccounts` `()` *returns* ``
