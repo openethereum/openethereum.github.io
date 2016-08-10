@@ -3,10 +3,6 @@
 * [web3_clientVersion](#web3_clientversion)
 * [web3_sha3](#web3_sha3)
 
-***
-
-## JSON RPC API Reference
-
 #### web3_clientVersion
 
 Returns the current client version.
@@ -69,10 +65,6 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
 * [net_version](#net_version)
 * [net_peerCount](#net_peercount)
 * [net_listening](#net_listening)
-
-***
-
-## JSON RPC API Reference
 
 #### net_version
 
