@@ -17,6 +17,7 @@
 - [JSONRPC Guide](JSONRPC)
   - [web3 & net](JSONRPC-web3-and-net-modules)
   - [eth](JSONRPC-eth-module)
+  - [personal](JSONRPC-personal-module)
   - [ethcore](JSONRPC-ethcore-module)
   - [ethcore_set](JSONRPC-ethcore_set-module)
   - [trace](JSONRPC-trace-module)
