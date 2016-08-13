@@ -21,7 +21,7 @@ Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/Jav
 
 ## Node.js CLI Console
 
-Parity doesn't include a Javascript interpreter but if you want to use an interactive Jaavscript console, you can install [node/NPM](http://nodejs.org) and use its console. Once you have node/NPM installed, you'll just need to install the latest web3 module:
+Parity doesn't include a Javascript interpreter but if you want to use an interactive Javascript console, you can install [node/NPM](http://nodejs.org) and use its console. Once you have node/NPM installed, you'll just need to install the latest web3 module:
 
 ```bash
 $ npm install web3
