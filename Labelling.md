@@ -1,10 +1,11 @@
 This page is to explain the conventions over Parity's labelling system.
 
-Labels are split into 4 groups.
+Labels are split into 5 groups.
 
 - 'A' group is used for code-review status and are applicable only to Pull Requests.
 - 'F' group is used to encode the type (and accordingly the severity) of issues; they are applicable only within the Issue Tracker.
 - 'P' group is to denote priority. They are generally relevant only to issues, though may in principle be used on pull-requests.
+- 'Q' group is to denote difficulty.
 - 'Z' group are reasons for why something is a non-issue. They are applicable only within the Issue Tracker.
 
 As such, a pull request must have a single label from the 'A' group and may additionally have a single label from the 'P' group (though typically will not). 
@@ -54,6 +55,16 @@ Typically used only to annotate issues, however P0 and P2 may reasonably be used
 - ![P5-sometimesoon](http://i.imgur.com/kuqWYX5.png) Issue is worth doing soon.
 - ![P7-nicetohave](http://i.imgur.com/Bcf2wnY.png) Issue is worth doing eventually.
 - ![P9-somedaymaybe](http://i.imgur.com/5JWp6Uz.png) Issue might be worth doing eventually.
+
+### 'Q' group
+
+Used to annotate difficulty of issues
+
+- ![Q0-trivial](https://www.dropbox.com/s/ig1hoqez740wb7k/Screenshot%202016-08-20%2022.51.05.png?dl=1)
+- ![Q2-easy](https://www.dropbox.com/s/k62z9te2fun74v8/Screenshot%202016-08-20%2022.52.25.png?dl=1)
+- ![Q5-substantial](https://www.dropbox.com/s/e257o8peayn3nzd/Screenshot%202016-08-20%2022.52.41.png?dl=1)
+- ![Q7-involved](https://www.dropbox.com/s/f7m70g1jm4ys2c1/Screenshot%202016-08-20%2022.52.57.png?dl=1)
+- ![Q9-epic](https://www.dropbox.com/s/xsyxm3eriwfw18v/Screenshot%202016-08-20%2022.53.13.png?dl=1)
 
 ### 'Z' group
 
