@@ -1,11 +1,6 @@
 Parity supports private chain and private network configuration via [chain specification](https://github.com/ethereum/wiki/wiki/Ethereum-Chain-Spec-Format) files provided with `--chain`. The best way to create such a configuration is to use Frontier or Morden specification and tweak it for your needs. Parity repo contains examples and actual frontier/morden specifications [here](https://github.com/ethcore/parity/tree/master/ethcore/res/ethereum). You can also set up a [Proof of Authority Chain](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains).
 
-### Notes
-
-The chain specification format is a work in progress and was changed a number of times between Parity releases. Currently the `beta` branch of the repository contains spec files that are compatible with Parity 1.1 and `master` branch is compatible with Parity 1.2. E.g. this [morden.json] (https://github.com/ethcore/parity/blob/beta/ethcore/res/ethereum/morden.json) file can be used as reference for parity 1.1
-and this [morden.json] (https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/morden.json) is compatible with the latest version.
-
-### Example spec file for Parity 1.2
+### Example spec file
 
 Here is an example file for private network. This a basic Morden config with a few parameters changed:
 
