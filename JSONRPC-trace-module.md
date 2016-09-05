@@ -10,10 +10,10 @@ In order to use these API Parity must be fully synced with flags `$ parity --tra
 
 ***
 
-- `trace_filter` `()` *returns* `` ???
-- `trace_get` `()` *returns* `` ???
-- `trace_transaction` `()` *returns* `` ???
-- `trace_block` `()` *returns* `` ???
+* [trace_filter](#trace_filter)
+* [trace_get](#trace_get)
+* [trace_transaction](#trace_transaction)
+* [trace_block](#trace_block)
 
 ***
 
@@ -61,20 +61,18 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_filter","params":[{"fromBl
   "id":74,
   "jsonrpc": "2.0",
   "result": [{
+    "type": "call",
     "action": {
-      "call": {
-        "from":"0x0000000000000000000000000000000000000004",
-        "to":"0x0000000000000000000000000000000000000005",
-        "value":"0x06",
-        "gas":"0x07",
-        "input":"0x1234"
-      }
+      "from":"0x0000000000000000000000000000000000000004",
+      "to":"0x0000000000000000000000000000000000000005",
+      "value":"0x06",
+      "gas":"0x07",
+      "input":"0x1234",
+      "callType":"call"
     },
     "result": {
-      "call": {
-        "gasUsed":"0x08",
-        "output":"0x5678"
-      }
+      "gasUsed":"0x08",
+      "output":"0x5678"
     },
     "traceAddress":["0x2"],
     "subtraces":3,
@@ -114,23 +112,21 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_get","params":["0x00000000
   "id":74,
   "jsonrpc": "2.0",
   "result": {
+    "type": "call",
     "action": {
-      "call": {
-        "from":"0x0000000000000000000000000000000000000004",
-        "to":"0x0000000000000000000000000000000000000005",
-        "value":"0x06",
-        "gas":"0x07",
-        "input":"0x1234"
-      }
+      "from":"0x0000000000000000000000000000000000000004",
+      "to":"0x0000000000000000000000000000000000000005",
+      "value":"0x06",
+      "gas":"0x07",
+      "input":"0x1234",
+      "callType":"call"
     },
     "result": {
-      "call": {
-        "gasUsed":"0x08",
-        "output":"0x5678"
-      }
+      "gasUsed":"0x08",
+      "output":"0x5678"
     },
-    "traceAddress":["0x0a"],
-    "subtraces":0,
+    "traceAddress":["0x2"],
+    "subtraces":3,
     "transactionPosition":"0x0b",
     "transactionHash":"0x000000000000000000000000000000000000000000000000000000000000000c",
     "blockNumber":"0x0d",
@@ -165,23 +161,21 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_transaction","params":["0x
   "id":74,
   "jsonrpc": "2.0",
   "result": [{
+    "type": "call",
     "action": {
-      "call": {
-        "from":"0x0000000000000000000000000000000000000004",
-        "to":"0x0000000000000000000000000000000000000005",
-        "value":"0x06",
-        "gas":"0x07",
-        "input":"0x1234"
-      }
+      "from":"0x0000000000000000000000000000000000000004",
+      "to":"0x0000000000000000000000000000000000000005",
+      "value":"0x06",
+      "gas":"0x07",
+      "input":"0x1234",
+      "callType":"call"
     },
     "result": {
-      "call": {
-        "gasUsed":"0x08",
-        "output":"0x5678"
-      }
+      "gasUsed":"0x08",
+      "output":"0x5678"
     },
-    "traceAddress":[],
-    "subtraces":0,
+    "traceAddress":["0x2"],
+    "subtraces":3,
     "transactionPosition":"0x0b",
     "transactionHash":"0x000000000000000000000000000000000000000000000000000000000000000c",
     "blockNumber":"0x0d",
@@ -216,30 +210,67 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_block","params":["latest"]
   "id":74,
   "jsonrpc": "2.0",
   "result": [{
+    "type": "call",
     "action": {
-      "call": {
-        "from":"0x0000000000000000000000000000000000000004",
-        "to":"0x0000000000000000000000000000000000000005",
-        "value":"0x06",
-        "gas":"0x07",
-        "input":"0x1234"
-      }
+      "from":"0x0000000000000000000000000000000000000004",
+      "to":"0x0000000000000000000000000000000000000005",
+      "value":"0x06",
+      "gas":"0x07",
+      "input":"0x1234",
+      "callType":"call"
     },
     "result": {
-      "call": {
-        "gasUsed":"0x08",
-        "output":"0x5678"
-      }
+      "gasUsed":"0x08",
+      "output":"0x5678"
     },
-    "traceAddress":[],
-    "subtraces":0,
-    "transactionPosition":"0x00",
+    "traceAddress":["0x2"],
+    "subtraces":3,
+    "transactionPosition":"0x0b",
     "transactionHash":"0x000000000000000000000000000000000000000000000000000000000000000c",
     "blockNumber":"0x0d",
     "blockHash":"0x000000000000000000000000000000000000000000000000000000000000000e"
   }]
 }
 ```
+
+***
+
+##### Fields description
+
+- `type` - *String* - one of: `call`, `create`, `suicide`
+- `action` - *Object*
+- for `call` it's `Object` with the following fields:
+    - `from` - *Address* - sender
+    - `to` - *Address* - receiver
+    - `value` - *Integer* - call value
+    - `gas` - *Integer* - call gas
+    - `input` - *Bytes* - transaction input
+    - `callType`
+  - for `create` it's `Object` with the following fields:
+    - `from` - *Address* - sender
+    - `value` - *Integer* - value
+    - `gas` - *Integer* - gas
+    - `init` - *Bytes* - contract init code
+  - for `suicide` it's `Object` with the following fields:
+    - `address` - *Address* - address of the contract which commited suicide
+    - `refundAddress` - *Address* - address which received funds of suicided contract
+    - `balance` - *Integer* - balance of the contract
+- `result` - *Object* - exists only if action is successfull
+  - for `call` it's `Object` with the following fields:
+    - `gasUsed` - *Integer*
+    - `output` - *Bytes*
+  - for `create` it's `Object` with the following fields:
+    - `gasUsed` - *Integer*
+    - `code` - *Bytes* - new contract's code
+    - `address` - *Address* - new contract's address
+  - for `suicide` it's `null`
+- `error` - *String* - exists only if action has failed
+- `traceAddress` - *Array* - trace address within transaction
+- `subtraces` - *Integer* - number of subtraces
+- `transactionPosition` - *Integer* - transaction position within block
+- `transactionHash` - *H256* - transaction hash
+- `blockNumber` - *Integer* - block in which transaction was mined
+- `blockHash` - *H256* - block hash
 
 ***
 
