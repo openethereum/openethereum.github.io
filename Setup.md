@@ -22,7 +22,7 @@ To simply build Parity from source follow the instructions in the [README](https
 
 For Ethereum key management [Ethstore](https://github.com/ethcore/ethstore) can be used. To compile it use
 ```
-cargo build --release -p ethstore --features='ethcore/ethstore/cli'
+cargo build --release -p ethstore --features=ethstore-cli
 ```
 in the root Parity directory and for usage instructions: `./target/release/deps/ethstore --help`.
 
