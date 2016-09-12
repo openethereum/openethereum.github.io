@@ -37,3 +37,13 @@ To use it, the following example spec can be passed to `--chain` option where `a
 }
 ```
 When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors '*'` option has to be added as well.
+
+##Docker
+To start a preconfigured Parity node running a [Proof of Authority](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains) chain in docker, run
+```bash
+docker pull ethcore/parity-poa
+docker run -p 8545:8545 -d ethcore/parity-poa 
+```
+
+##Vagrant
+There is a [Vagrant Box](https://github.com/jesuscript/vagrant-eth-env) that creates and starts a preconfigured Parity node running a [Proof of Authority](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains) chain, in case you are looking for a minimal configuration setup. 
