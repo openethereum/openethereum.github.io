@@ -43,7 +43,7 @@ Each block chunk is an rlp-encoded list of the following format:
 ]
 ```
 
-The blocks within are assumed to be sequential, so that their abridged RLP can be assembled into entire blocks simply using the metadata at the beginning.
+The blocks within must be sequential, so that their abridged RLP can be assembled into entire blocks simply using the metadata at the beginning.
 
 ## Abridged block RLP
 
@@ -76,15 +76,22 @@ An abridged block takes the following form:
 
 ## Block Chunk Generation
 
-Definitions:
+*Definitions:*
+
 Let NUM(X) denote the number of block X.
+
 Let HASH(X) denote the hash of block X.
+
 Let TD(X) denote the total difficulty of block X.
 
-Algorithm:
+*Algorithm:*
+
 Let B be the most recent block.
+
 Let B<sub>target</sub> = B. 
+
 Let B<sub>finish</sub> = `B - 30000 + 1`.
+
 Let S<sub>current</sub> = 0. 
 
 Walk backwards from block B until reaching B<sub>finish</sub> . 
