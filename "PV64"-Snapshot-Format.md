@@ -1,11 +1,12 @@
 # Overview
 
-Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync.
+Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
 
 The snapshot format is three-part: block chunks, state chunks, and the manifest.
 Every chunk is run through snappy compression, and then hashed. Before compression, chunks are created to be approximately `CHUNK_SIZE` bytes. 
 
 `CHUNK_SIZE` = `4MiB`, but this may be subject to change.
+All data structures should be assumed to be RLP-encoded unless specified otherwise.
 
 ## Manifest
 This contains metadata about the snapshot itself, and is used to coordinate snapshots between nodes.
@@ -21,6 +22,9 @@ The manifest is an rlp-encoded list of the following format:
     block_hash: B_32, // the best block in the snapshot's hash.
 ]
 ```
+
+The chunk hashes here are not the hashes of the raw chunk data, but rather of their snappy-compressed data.
+This is a canonical identifier for any given chunk.
 
 # Block chunks
 
@@ -128,7 +132,7 @@ More formally, it is an RLP list in the following format:
   - if `0x01`, the account has code, and `code` stores an arbitrary-length list of bytes containing the code.
   - if `0x02`, the account has code, and `code` stores a 32-byte big-endian integer which is the hash of the code. The code's hash must be substituted if and only if another account which has a lower address hash (when comparing as big-endian 32-byte unsigned integers) has the exact same code.
 
-`storage` is a list of the entire account's storage, where the items are lists of length two -- the first item being `sha3(key)`, and the second item being the storage value. This storage list must be sorted in ascending order by key-hash.
+`storage` is a list of the entire account's storage, where the items are RLP lists of length two -- the first item being `sha3(key)`, and the second item being the storage value. This storage list must be sorted in ascending order by key-hash.
 
 ## Validity
 
@@ -139,7 +143,7 @@ We define the internal size S<sub>C</sub> of a chunk C to be the sum of the size
 Any given chunk C has a valid internal size S<sub>C</sub> if and only if S<sub>C</sub> <= `CHUNK_SIZE` or it contains only one inner list.
 
 A set of state chunks S is valid if and only if:
-  0. for any two arbitrary selected account hashes A<sub>1</sub> and A<sub>2</sub> from any given state chunk S<sub>i</sub>, where A<sub>1</sub> < A<sub>2</sub> when comparing as an unsigned 32-byte big-endian integer, there exists no A<sub>3</sub> from another state chunk S<sub>j</sub> such that A<sub>1</sub> < A<sub>3</sub> < A<sub>2</sub> .
+  0. for any two arbitrary selected account hashes A<sub>1</sub> and A<sub>2</sub> from any given state chunk S<sub>i</sub> , where A<sub>1</sub> < A<sub>2</sub> when comparing as an unsigned 32-byte big-endian integer, there exists no A<sub>3</sub> from another state chunk S<sub>j</sub> such that A<sub>1</sub> < A<sub>3</sub> < A<sub>2</sub> .
   0. there is no other valid configuration of chunks containing the same data such that for each chunk C<sub>i</sub> , except the one containing the highest address hash (when treating each as an unsigned 32-byte big-endian integer), S<sub>C<sub>i</sub></sub> is a valid internal size. In plainer terms, every chunk except the last must be "maximally packed".
 
 The `state_chunks` list in the snapshot manifest must be sorted by the first address contained within.
