@@ -68,15 +68,28 @@ An abridged block takes the following form:
 ```
 
 ## Block Chunk Generation
+
+Definitions:
+Let NUM(X) denote the number of block X.
+Let HASH(X) denote the hash of block X.
+Let TD(X) denote the total difficulty of block X.
+
+Algorithm:
 Let B be the most recent block.
 Let B<sub>target</sub> = B. 
+Let B<sub>finish</sub> = `B - 30000 + 1`.
 Let S<sub>current</sub> = 0. 
 
-Walk backwards from block `B` until reaching `B - 30000`.
+Walk backwards from block B until reaching B<sub>finish</sub> . 
 
-For each block B<sub>x</sub>, generate the list
-`[abridged: AB, receipts: RC]` D<sub>x</sub>, note its size, S<sub>x</sub>, and set S<sub>current</sub> to S<sub>x</sub>.
-If S<sub>current</sub> > `CHUNK_SIZE`, let S<sub>current</sub> = S<sub>current</sub> - `CHUNK_SIZE` and then
-  build the chunk [ NUM(B<sub>x+1</sub>), HASH(B<sub>x+1</sub>), TD(B<sub>x + 1</sub>), D<sub>x + 1</sub>, D<sub>x + 2</sub>, ..., D<sub>B<sub>target</sub></sub> ]. Set B<sub>target</sub> = B<sub>x</sub>.
+For each block B<sub>x</sub>: 
+  - generate the list `[abridged: AB, receipts: RC]` D<sub>x</sub>
+  - Note its size: S<sub>x</sub> = SIZE(D<sub>x</sub>). 
+  - Set S<sub>current</sub> to S<sub>x</sub>.
+  - If S<sub>current</sub> > `CHUNK_SIZE`:
+    - Let S<sub>current</sub> = S<sub>current</sub> - `CHUNK_SIZE`
+    - Build the chunk [ NUM(B<sub>x+1</sub>), HASH(B<sub>x+1</sub>), TD(B<sub>x + 1</sub>), D<sub>x + 1</sub>, D<sub>x + 2</sub>, ..., D<sub>B<sub>target</sub></sub> ]
+    - Set B<sub>target</sub> = B<sub>x</sub>.
 
-At the end, if S<sub>current</sub> > 0, write out the remaining chunk from block `B - 30000` to B<sub>target</sub>.
+At the end, if S<sub>current</sub> > 0, write out the remaining chunk from block B<sub>finish</sub> to B<sub>target</sub>:
+   [ NUM(B<sub>finish</sub>), HASH(B<sub>finish</sub>), TD(B<sub>finish</sub>), D<sub>finish</sub>, ..., D<sub>B<sub>target</sub></sub> ]
