@@ -1,34 +1,82 @@
-Every N blocks (N is fixed, probably between 1000 and 30000) a new consensus critical snapshot is made by all nodes.
+Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync.
 
-Snapshot is two-part:
+The snapshot format is three-part: block chunks, state chunks, and the manifest.
+Every chunk is run through snappy compression, and then hashed. Before compression, chunks are created to be approximately `CHUNK_SIZE` bytes. 
 
-- Part I: All nodes in the state trie and N headers. For the trie, it's just the nodes (i.e. not their hashes) taken as a concatenated RLP.
-- Part II: All blocks and receipts. Again, concatenated RLP.
+`CHUNK_SIZE` = `4MiB`, but this may be subject to change.
 
-Snapshots have four kinds of compressing transformations done:
+## Manifest
+This contains metadata about the snapshot itself, and is used to coordinate snapshots between nodes.
+Every snapshot will have a unique manifest, so two identical manifests will refer to the same snapshot.
 
-- For the state trie, hashes are dismissed in favour of indices: All nodes are concatenated in a depth-first-search and their hash added to an array; child tries (i.e. contract storage) are output in-place. A map of `hash -> array_index` is then built. The concatenated RLP is then re-traversed, _in reverse_, and all hashes looked up in the mapping and replaced with `RLP(reversed_index)`, where `reversed_index = total_nodes - 1 - index`, before being pushed into a secondary, final, dump. This yields a concatenated RLP dump of nodes where, reading forwards, no node references an as-yet-unknown node. This property is important when decoding.
+The manifest is an rlp-encoded list of the following format:
+```
+[
+    state_hashes: [hash_1: B_32, hash_2: B_32, ...], // a list of all the state chunks in this snapshot
+    block_hashes: [hash_1: B_32, hash_2: B_32, ...], // a list of all the block chunks in this snapshot
+    state_root: B_32, // the root which the rebuilt state trie should have. used to ensure validity
+    block_number: P, // the number of the best block in the snapshot; the one which the state coordinates to.
+    block_hash: B_32, // the best block in the snapshot's hash.
+]
+```
 
-- For the headerchain, `parentHash` and `number` are replaced by `0x80` (RLP empty string) (since they're rebuildable on the destination client assuming all headers are given in order).
+## Block chunks
+Block chunks contain raw block data: blocks themselves, and their transaction receipts. The blocks are stored in the "abridged block" format (referred to by `AB`), and the the receipts are stored in a list: `[receipt_1: P, receipt_2: P, ...]` (referred to by `RC`).
 
-- In all cases, the two basic hashes `SHA3("")` and `SHA3(RLP([]))` (for encoding no contract code, empty storage, empty transaction-trie, empty receipt-trie, no uncles) are replaced by a much shorter escape string (TBD, possibly an RLP dead code, e.g. `0x8100`/`0x8101`) and the process reversed on decode.
+Each block chunk is an rlp-encoded list of the following format:
+```
+[
+    number: P, // number of the first block in the chunk
+    hash: B_32, // hash of the first block in the chunk
+    td: B_32, // total difficulty of the first block in the chunk
+    [abridged_1: AB, receipts_1: RC], // The abridged RLP for the first block, and its receipts.
+    [abridged_2: AB, receipts_2: RC], // The abridged RLP for the second block, and its receipts.
+    [abridged_3: AB, receipts_3: RC], // ... and so on.
+    ...
+]
+```
 
-The snapshot, as it stands, is then split into 16MB chunks; each chunk is then compressed with a general-purpose deterministic compression algorithm (TBD, perhaps Snappy). A final snapshot-manifest contains all these compressed chunks' hashes and is itself hashed to give the snapshot-hash.
+The blocks within are assumed to be sequential, so that their abridged RLP can be assembled into entire blocks simply using the metadata at the beginning.
 
-On handshake, the latest snapshot-hash is exchanged along with TD for the snapshot; the manifest is then downloaded by the syncing peer.
+## Abridged block RLP
 
-The sync strategy is to connect to as many PV64 peers as possible (Parity, initially, but hopefully other clients will implement this, too). That peer should request manifests from other peers to minimise the chance of being duped with dodgy data from a single malicious (and self-harming - you always have to match the bandwidth you trick the victim to lose) node. The header-chain is used to help guarantee the state data's validity.
+This differs from the standard block RLP format by omitting some fields which can be reproduced from the metadata at the beginning of the block chunk.
 
-It then proceeds to download the chunks, starting with the first, and places each decompressed node into a map of hash->index. This map is used to reinsert the correct hash into later, referencing, nodes. This stage can be pipelined substantially.
+An abridged block takes the following form:
+```
+[
+    // some header fields
+    author: B_20,
+    state_root: B_32,
+    transactions_root: B_32,
+    receipts_root: B_32,
+    log_bloom: B_256,
+    difficulty: B_32,
+    gas_limit: B_32,
+    gas_used: B_32,
+    timestamp: P,
+    extra_data: P,
 
-The downloaded data is checked to make sure (a) the root is as the partial header chain dictates and (b) X random samplings of the headerchain result in good PoW data (X == total blocks / 50) (c) Y random walks result in all hashes being found (Y = 1000?).
+    // uncles and transactions inline
+    [tx_1: P, tx_2: P, ...],
+    [uncle_1: P, uncle_2: P, ...],
 
-Following this, the remaining blocks are downloaded and interpreted as per PV63.
+    // Seal fields
+    mix_hash: B_32,
+    nonce: B_8,
+]
+```
 
-The receipts/blocks are downloaded in a second phase and inserted into the database; receipts are checked against the blocks referencing them; blocks are checked against the header chain.
+## Block Chunk Generation
+Let B be the most recent block.
+Let B<sub>target</sub> = B. 
+Let S<sub>current</sub> = 0. 
 
-Parity and Dapps should be mostly usable after the first phase is complete. The second phase should then proceed progressively.
+Walk backwards from block `B` until reaching `B - 30000`.
 
-###  Alternative state trie snapshot
+For each block B<sub>x</sub>, generate the list
+`[abridged: AB, receipts: RC]` D<sub>x</sub>, note its size, S<sub>x</sub>, and set S<sub>current</sub> to S<sub>x</sub>.
+If S<sub>current</sub> > `CHUNK_SIZE`, let S<sub>current</sub> = S<sub>current</sub> - `CHUNK_SIZE` and then
+  build the chunk [ NUM(B<sub>x+1</sub>), HASH(B<sub>x+1</sub>), TD(B<sub>x + 1</sub>), D<sub>x + 1</sub>, D<sub>x + 2</sub>, ..., D<sub>B<sub>target</sub></sub> ]. Set B<sub>target</sub> = B<sub>x</sub>.
 
-Instead of storing trie nodes just save trie values and key hashes. When restoring from the snapshot just re-insert all values by key hash. No additional trie validation is required.
+At the end, if S<sub>current</sub> > 0, write out the remaining chunk from block `B - 30000` to B<sub>target</sub>.
