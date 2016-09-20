@@ -1,3 +1,5 @@
+# Overview
+
 Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync.
 
 The snapshot format is three-part: block chunks, state chunks, and the manifest.
@@ -20,7 +22,8 @@ The manifest is an rlp-encoded list of the following format:
 ]
 ```
 
-## Block chunks
+# Block chunks
+
 Block chunks contain raw block data: blocks themselves, and their transaction receipts. The blocks are stored in the "abridged block" format (referred to by `AB`), and the the receipts are stored in a list: `[receipt_1: P, receipt_2: P, ...]` (referred to by `RC`).
 
 Each block chunk is an rlp-encoded list of the following format:
@@ -85,7 +88,7 @@ Walk backwards from block B until reaching B<sub>finish</sub> .
 For each block B<sub>x</sub>: 
   - generate the list `[abridged: AB, receipts: RC]` D<sub>x</sub>
   - Note its size: S<sub>x</sub> = SIZE(D<sub>x</sub>). 
-  - Set S<sub>current</sub> to S<sub>x</sub>.
+  - S<sub>x</sub> = S<sub>x</sub> + S<sub>current</sub>.
   - If S<sub>current</sub> > `CHUNK_SIZE`:
     - Let S<sub>current</sub> = S<sub>current</sub> - `CHUNK_SIZE`
     - Build the chunk [ NUM(B<sub>x+1</sub>), HASH(B<sub>x+1</sub>), TD(B<sub>x + 1</sub>), D<sub>x + 1</sub>, D<sub>x + 2</sub>, ..., D<sub>B<sub>target</sub></sub> ]
@@ -93,3 +96,50 @@ For each block B<sub>x</sub>:
 
 At the end, if S<sub>current</sub> > 0, write out the remaining chunk from block B<sub>finish</sub> to B<sub>target</sub>:
    [ NUM(B<sub>finish</sub>), HASH(B<sub>finish</sub>), TD(B<sub>finish</sub>), D<sub>finish</sub>, ..., D<sub>B<sub>target</sub></sub> ]
+
+The manifest's `block_chunks` list must contain the chunks' hashes in an ordering such that the hash of any given chunk precedes no hashes of any other chunk which contains blocks with a higher number.
+
+# State Chunks
+
+State chunks store the entire state of a given block. A "rich" account structure is used to save space.
+Each state chunk consists of a list of lists, each with two items: an address' `sha3` hash and a rich account structure correlating with it.
+
+`[ [hash1: B_32, acc_1: P],  [hash_2: B_32, acc_2: P], ... ]`.
+
+The accounts in the list must be sorted in ascending order by address hash.
+
+## Rich Account
+
+The rich account structure encodes the usual account data such as the nonce, balance, and code, as well as the full storage.
+
+More formally, it is an RLP list in the following format:
+```
+[
+    nonce: B_32,
+    balance: B_32,
+    code_flag: B_1,
+    code: P,
+    storage: [[keyhash1: B_32, val1: B_32], [keyhash2: B_32, val2: B_32], ...]
+]
+```
+
+`code_flag` is a single byte which will determine what the `code` data will be:
+  - if `0x00`, the account has no code and `code` is the single byte `0x80`, signifying RLP empty data.
+  - if `0x01`, the account has code, and `code` stores an arbitrary-length list of bytes containing the code.
+  - if `0x02`, the account has code, and `code` stores a 32-byte big-endian integer which is the hash of the code. The code's hash must be substituted if and only if another account which has a lower address hash (when comparing as big-endian 32-byte unsigned integers) has the exact same code.
+
+`storage` is a list of the entire account's storage, where the items are lists of length two -- the first item being `sha3(key)`, and the second item being the storage value. This storage list must be sorted in ascending order by key-hash.
+
+## Validity
+
+Aside from those given above, there are a couple more requirements for a set of valid state chunks.
+
+We define the internal size S<sub>C</sub> of a chunk C to be the sum of the sizes of the RLP lists contained within.
+
+Any given chunk C has a valid internal size S<sub>C</sub> if and only if S<sub>C</sub> <= `CHUNK_SIZE` or it contains only one inner list.
+
+A set of state chunks S is valid if and only if:
+  0. for any two arbitrary selected account hashes A<sub>1</sub> and A<sub>2</sub> from any given state chunk S<sub>i</sub>, where A<sub>1</sub> < A<sub>2</sub> when comparing as an unsigned 32-byte big-endian integer, there exists no A<sub>3</sub> from another state chunk S<sub>j</sub> such that A<sub>1</sub> < A<sub>3</sub> < A<sub>2</sub>.
+  0. there is no other valid configuration of chunks containing the same data such that for each chunk C<sub>i</sub>, except the one containing the highest address hash (when treating each as an unsigned 32-byte big-endian integer), S<sub>C<sub>i</sub></sub> is a valid internal size. In plainer terms, every chunk except the last must be "maximally packed".
+
+The `state_chunks` list in the snapshot manifest must be sorted by the first address contained within.
