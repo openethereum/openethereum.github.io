@@ -8,7 +8,7 @@ If you don't care about historical transaction information, just use our [state-
 
 On 1.2 and above, use Geth's export feature along with Parity's import:
 ```bash
-mkfifo /tmp/chain.rlp && geth export /tmp/chain.rlp &;
+mkfifo /tmp/chain.rlp && geth export /tmp/chain.rlp &
 
 sleep 1 && parity import /tmp/chain.rlp
 ```
