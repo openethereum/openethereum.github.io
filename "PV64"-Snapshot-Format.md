@@ -99,7 +99,7 @@ Walk backwards from block B until reaching B<sub>finish</sub> .
 For each block B<sub>x</sub>: 
   - generate the list `[abridged: AB, receipts: RC]` D<sub>x</sub>
   - Note its size: S<sub>x</sub> = SIZE(D<sub>x</sub>). 
-  - S<sub>x</sub> = S<sub>x</sub> + S<sub>current</sub>.
+  - S<sub>current</sub> = S<sub>current</sub> + S<sub>x</sub>.
   - If S<sub>current</sub> > `CHUNK_SIZE`:
     - Let S<sub>current</sub> = S<sub>current</sub> - `CHUNK_SIZE`
     - Build the chunk [ NUM(B<sub>x+1</sub>), HASH(B<sub>x+1</sub>), TD(B<sub>x + 1</sub>), D<sub>x + 1</sub>, D<sub>x + 2</sub>, ..., D<sub>B<sub>target</sub></sub> ]
