@@ -55,8 +55,6 @@ An abridged block takes the following form:
     // some header fields
     author: B_20,
     state_root: B_32,
-    transactions_root: B_32,
-    receipts_root: B_32,
     log_bloom: B_256,
     difficulty: B_32,
     gas_limit: B_32,
