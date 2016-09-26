@@ -2,19 +2,19 @@
 
 ## JSON-RPC methods
 
-* [personal_signerEnabled](#personal_signerEnabled)
-* [personal_listAccounts](#personal_listAccounts)
-* [personal_newAccount](#personal_newAccount)
-* [personal_newAccountFromPhrase](#personal_newAccountFromPhrase)
-* [personal_newAccountFromWallet](#personal_newAccountFromWallet)
-* [personal_unlockAccount](#personal_unlockAccount)
-* [personal_signAndSendTransaction](#personal_signAndSendTransaction)
-* [personal_setAccountName](#personal_setAccountName)
-* [personal_setAccountMeta](#personal_setAccountMeta)
-* [personal_accountsInfo](#personal_accountsInfo)
-* [personal_requestsToConfirm](#personal_requestsToConfirm)
-* [personal_confirmRequest](#personal_confirmRequest)
-* [personal_rejectRequest](#personal_rejectRequest)
+* [personal_signerEnabled](#personal_signerenabled)
+* [personal_listAccounts](#personal_listaccounts)
+* [personal_newAccount](#personal_newaccount)
+* [personal_newAccountFromPhrase](#personal_newaccountfromphrase)
+* [personal_newAccountFromWallet](#personal_newaccountfromwallet)
+* [personal_unlockAccount](#personal_unlockaccount)
+* [personal_signAndSendTransaction](#personal_signandsendtransaction)
+* [personal_setAccountName](#personal_setaccountname)
+* [personal_setAccountMeta](#personal_setaccountmeta)
+* [personal_accountsInfo](#personal_accountsinfo)
+* [personal_requestsToConfirm](#personal_requeststoconfirm)
+* [personal_confirmRequest](#personal_confirmrequest)
+* [personal_rejectRequest](#personal_rejectrequest)
 
 ## JSON RPC API Reference
 
