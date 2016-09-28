@@ -33,6 +33,11 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 
 #### Basic Operation
 
+##### Parity doesn't start on Windows; fails with "api-ms-win-crt-math-l1-1-0.dll missing".
+![parity_error](https://cloud.githubusercontent.com/assets/2982011/18855854/1d3b2c22-8424-11e6-8329-1dbe5edf6a5a.png)
+
+Install the following windows update: https://support.microsoft.com/en-us/kb/2999226
+
 ##### How do I enable pruning?
 Since Parity 1.2 state-trie pruning is enabled by default.
 
