@@ -9,7 +9,7 @@ This method is way faster than building, though you won't get the cutting edge f
 To use the script just run:
 
 ```
-bash <(curl https://raw.githubusercontent.com/ethcore/parity/master/install-deps.sh -L)
+bash <(curl https://raw.githubusercontent.com/ethcore/scripts/master/install-deps.sh -L)
 ```
 
 This will install and configure the Parity client for you. 
