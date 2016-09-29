@@ -1,5 +1,3 @@
-Parity 1.2 and above comes with the experimental Secure Transaction Signer framework. To ensure this is enabled in Parity 1.2, run Parity with the `--signer` flag (or use `parity ui`, which enables it by default). For Parity 1.3, it is enabled by default.
-
 When run with the signer, RPC endpoints that use your secret keys like `eth_sendTransaction` become privileged and no longer work as before. Instead the transactions gets placed into a queue. The transactions stay in the queue until the user (that's you) either confirms that they should be signed (and possibly provide the password), or that they should be cancelled.
 
 ![The built-in Parity Signer UI](https://cloud.githubusercontent.com/assets/138296/16358887/59327b7c-3b22-11e6-862c-17a59a0e5155.png)
