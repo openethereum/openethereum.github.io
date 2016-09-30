@@ -1,5 +1,7 @@
 Parity supports private chain and private network configuration via [chain specification](https://github.com/ethereum/wiki/wiki/Ethereum-Chain-Spec-Format) files provided with `--chain`. The best way to create such a configuration is to use Frontier or Morden specification and tweak it for your needs. Parity repo contains examples and actual frontier/morden specifications [here](https://github.com/ethcore/parity/tree/master/ethcore/res/ethereum). You can also set up a [Proof of Authority Chain](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains).
 
+Parity does not include the usual `buitlin` contracts by default. These are necessary when writing new contracts in Solidity, since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below.
+
 ### Example spec file
 
 Here is an example file for private network. This a basic Morden config with a few parameters changed:
