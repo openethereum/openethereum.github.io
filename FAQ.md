@@ -13,6 +13,9 @@ cargo build --release
 ##### How do I upgrade Parity to the latest cutting-edge version?
 Simply follow the instructions above to build & install. The new version will replace the old. Nothing additional is needed.
 
+##### I'm getting build errors?
+Make sure you are using the latest stable rust compiler. Update with `rustup update` when using rustup or `multirust update` when using multirust.
+
 ##### How do I do a cross-build for ARM/Raspberry Pi?
 See the documentation for [docker build for ARM](https://github.com/ethcore/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
 
