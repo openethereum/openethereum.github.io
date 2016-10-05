@@ -6,8 +6,8 @@ To use a snapshot sync, you first need to download a snapshot. You can do this v
 
 (NOTE: As of Parity 1.4.0 these snapshots are no longer valid. As the snapshot format may be subject to change, these are not guaranteed to work with every version of Parity)
 
-- **Standard mainnet** magnet:?xt=urn:btih:E9B318B15016AAD261E925FF19AE14B30D1BACA3&dn=mainnet-2021235.snapshot
-- **Classic** magnet:?xt=urn:btih:EAA20FC76D0C14B14FC43FC99EE3E0078B0B2161&dn=classic-2019364.snapshot
+- **Standard mainnet** <nobr>magnet:?xt=urn:btih:E9B318B15016AAD261E925FF19AE14B30D1BACA3&dn=mainnet-2021235.snapshot</nobr>
+- **Classic** <nobr>magnet:?xt=urn:btih:EAA20FC76D0C14B14FC43FC99EE3E0078B0B2161&dn=classic-2019364.snapshot</nobr>
 
 With your snapshot downloaded, simply run Parity telling it to restore from the snapshot in question. For example, to restore the mainnet use:
 
