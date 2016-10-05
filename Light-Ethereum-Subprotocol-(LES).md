@@ -1,7 +1,7 @@
 The Light Ethereum Subprotocol (LES) is the protocol used by "light" clients, which only download block headers as they appear and fetch other parts of the blockchain on-demand. They provide full functionality in terms of safely accessing the blockchain, but do not mine and therefore do not take part in the consensus process. Full and archive nodes can also support the LES protocol besides ETH in order to be able to serve light nodes.
 It has been decided to create a separate sub-protocol in order to avoid interference with the consensus-critical ETH network and make it easier to update during the development phase. Some of the LES protocol messages are similar to the "new sync model" (ETH62/63) of the [Ethereum Wire Protocol](https://github.com/ethereum/wiki/wiki/Ethereum-Wire-Protocol), with the addition of a few new fields (see below).
 
-This version of the spec may differ from the one at [Felföldi Zsolt's fork of geth](https://github.com/zsfelfoldi/go-ethereum/wiki/Light-Ethereum-Subprotocol-%28LES%29), which is the original source of this page. This version will house useful adjustments to the protocol which are eventually intended to be merged upstream so there aren't competing versions of the protocol.
+This version of the spec may differ from the one at [Zsolt Felföldi's fork of geth](https://github.com/zsfelfoldi/go-ethereum/wiki/Light-Ethereum-Subprotocol-%28LES%29), which is the original source of this page. This version will house useful adjustments to the protocol which are eventually intended to be merged upstream so there aren't competing versions of the protocol.
 
 ### Request ID
 
@@ -75,7 +75,32 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 **HeaderProofs**
 [`+0x0e`, `reqID`: `P`, `BV`: `P`, [`blockHeader`, [`node_1`, `node_2`...]], ...] Return a set of structures, each containing a block header and a Merkle proof proving the header hash and belonging TD against a given CHT requested in `GetHeaderProofs`
 
+**GetBlockDeltas**
+[`+0x10`, `reqID`: `P`, [`blockhash1`: B_32], [`blockhash2`: B_32], ...] Require peer to return a `BlockDeltas` message, containing a set of block delta structures, each containing a list of altered trie nodes and contract code.
+
+**BlockDeltas**
+[`+0x11`, `reqID`: `P`, [[`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...]], ... ] Return a list of block deltas, each corresponding to the block hash. Each block delta contains a list of altered trie nodes (in no particular order) and contract code within the block.
+
+**GetTransactionProof**
+[`+0x12`, `reqID`: `P`, [`blockhash`: B_32, `from`: B_20, `transaction`: B], ...] Request the peer to execute and prove the given transactions as though they were coming from the given address and at the state corresponding to the given block hash and return merkle proofs which can be used to re-enact the transactions locally.
+
+**TransactionProofs**
+[`+0x13`, `reqID`: `P`, [[`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...]], ...] Return a list of transaction proofs, each corresponding to the requested transaction. Each transaction proof consists of a set of required trie nodes (from various tries, in no particular order) and code.
+
 ### Transaction relaying
 
 **SendTransactions**
 [`+0x0c`, `txdata_1`, `txdata_2`, ...] Require peer to add a set of transactions into its transaction pool and relay them to the ETH network.
+
+### Dynamic capabilities
+
+**Capabilities**
+[`+0x0f`, `reqID`: `P`, [`key_0`, `value_0`], [`key_1, `value_1`], ...] Broadcast new capabilities to a peer.
+This can be done impromptu or as part of a request. Potential key, value pairs are:
+* "firstBlock" `B_32`. The first block (by hash) which queries may request state data for. 
+* "lastBlock" `B_32`. The last block (by hash) which queries may request state data for.
+* "blockBodies" `bool`. Indicates whether this peer can serve block bodies.
+* "receipts" `bool`. Indicates whether this peer can serve receipts.
+
+Keys may be omitted, in which case they should be assumed to hold the previous value sent or an arbitrary value if there is no previous.
+Broadcasted capabilities are not binding, i.e. a peer which claims to have a capability may not actually and can't be held responsible for not having it. They are meant to be only hints.
