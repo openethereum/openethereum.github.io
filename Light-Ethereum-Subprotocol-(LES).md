@@ -95,7 +95,7 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 ### Dynamic capabilities
 
 **Capabilities**
-[`+0x0f`, `reqID`: `P`, [`key_0`, `value_0`], [`key_1, `value_1`], ...] Broadcast new capabilities to a peer.
+[`+0x0f`, `reqID`: `P`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Broadcast new capabilities to a peer.
 This can be done impromptu or as part of a request. Potential key, value pairs are:
 * "firstBlock" `B_32`. The first block (by hash) which queries may request state data for. 
 * "lastBlock" `B_32`. The last block (by hash) which queries may request state data for.
