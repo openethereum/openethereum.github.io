@@ -36,6 +36,16 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 
 #### Basic Operation
 
+##### What can I do when Parity has trouble getting in sync?
+Parity is running but seems to remain at the same block for a long time.
+
+1. Make sure you have up to date version of Parity.
+2. Wait a bit longer.
+3. Check if your system clock is synced using NTP.
+4. Make sure your network does not block UDP traffic.
+
+If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/ethcore/parity/issues/2447).
+
 ##### Parity doesn't start on Windows; fails with "api-ms-win-crt-math-l1-1-0.dll missing".
 ![parity_error](https://cloud.githubusercontent.com/assets/2982011/18855854/1d3b2c22-8424-11e6-8329-1dbe5edf6a5a.png)
 
