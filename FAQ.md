@@ -40,9 +40,9 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 Parity is running but seems to remain at the same block for a long time.
 
 1. Make sure you have up to date version of Parity.
-2. Wait a bit longer.
-3. Check if your system clock is synced using NTP.
-4. Make sure your network does not block UDP traffic.
+2. Check if your system clock is synced using NTP.
+3. Make sure your network does not block UDP traffic.
+4. Wait a bit longer.
 
 If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/ethcore/parity/issues/2447).
 
