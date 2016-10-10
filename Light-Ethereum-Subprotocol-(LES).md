@@ -79,13 +79,13 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 [`+0x10`, `reqID`: `P`, [`blockhash1`: B_32], [`blockhash2`: B_32], ...] Require peer to return a `BlockDeltas` message, containing a set of block delta structures, each containing a list of altered trie nodes and contract code.
 
 **BlockDeltas**
-[`+0x11`, `reqID`: `P`, [[`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...]], ... ] Return a list of block deltas, each corresponding to the block hash. Each block delta contains a list of altered trie nodes (in no particular order) and contract code within the block.
+[`+0x11`, `reqID`: `P`, [ [`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...] ], ... ] Return a list of block deltas, each corresponding to the block hash. Each block delta contains a list of altered trie nodes (in no particular order) and contract code within the block.
 
 **GetTransactionProof**
 [`+0x12`, `reqID`: `P`, [`blockhash`: B_32, `from`: B_20, `transaction`: B], ...] Request the peer to execute and prove the given transactions as though they were coming from the given address and at the state corresponding to the given block hash and return merkle proofs which can be used to re-enact the transactions locally.
 
 **TransactionProofs**
-[`+0x13`, `reqID`: `P`, [[`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...]], ...] Return a list of transaction proofs, each corresponding to the requested transaction. Each transaction proof consists of a set of required trie nodes (from various tries, in no particular order) and code.
+[`+0x13`, `reqID`: `P`, [ [`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...] ], ...] Return a list of transaction proofs, each corresponding to the requested transaction. Each transaction proof consists of a set of required trie nodes (from various tries, in no particular order) and code.
 
 ### Transaction relaying
 
