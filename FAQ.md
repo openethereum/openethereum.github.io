@@ -41,10 +41,10 @@ Parity is running but seems to remain at the same block for a long time.
 
 1. Make sure you have up to date version of Parity.
 2. Go to http://time.is/ and ensure it says "Your time is exact":
-
-![image](https://cloud.githubusercontent.com/assets/138296/19265409/5e4a89ce-8fa5-11e6-8ec6-6c72c138ee48.png)
-
-If it isn't get it synced. Your machine will not automatically do this; my machine is routinely 1-2 seconds out of sync which is enough to disrupt peer discovery.
+   
+   ![image](https://cloud.githubusercontent.com/assets/138296/19265409/5e4a89ce-8fa5-11e6-8ec6-6c72c138ee48.png)
+   
+   If it isn't get it synced. Your machine will not automatically do this; my machine is routinely 1-2 seconds out of sync which is enough to disrupt peer discovery.
 
 3. Make sure your network does not block UDP traffic.
 4. Wait a bit longer.
