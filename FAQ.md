@@ -47,7 +47,8 @@ Parity is running but seems to remain at the same block for a long time.
    If it isn't get it synced. Your machine will not automatically do this; my machine is routinely 1-2 seconds out of sync which is enough to disrupt peer discovery.
 
 3. Make sure your network does not block UDP traffic.
-4. Wait a bit longer.
+4. Remove your nodes file (`$HOME/.parity/network/nodes.json`) while Parity is not running.
+5. Wait a bit longer.
 
 If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/ethcore/parity/issues/2447).
 
