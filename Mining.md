@@ -48,6 +48,6 @@ You'll be asked for a password and be given an address. Once done, you should ru
 parity --author 0037a6b811ffeb6e072da21179d11b1406371c63
 ```
 
-Once Parity is running and synced, running `ethminer` with work without any further configuration. e.g. run `ethminer -G --opencl-device 0` to GPU mine on the first OpenCL device found.
+Once Parity is running and synced, running `ethminer` will work without any further configuration. e.g. run `ethminer -G --opencl-device 0` to GPU mine on the first OpenCL device found.
 
 Parity can push work package notifications to a set of URLs by using the option `--notify-work URLS`, where URLS should be a comma-delimited list of HTTP URLs.
