@@ -6,7 +6,7 @@ Parity does not include the usual `buitlin` contracts by default. These are nece
 
 Here is an example file for private network. This a basic Morden config with a few parameters changed:
 
-`frontierCompatibilityModeLimit` is set to 0 to enable Homestead mode from the start.
+`homesteadTransition` is set to 0 to enable Homestead mode from the start.
 `durationLimit` is set to 10 seconds.
 `networkID` is changed to avoid clashing with the main network.
 `nodes` contains a custom bootstrap node.
