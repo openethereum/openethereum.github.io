@@ -24,7 +24,7 @@ Here is an example file for private network. This a basic Morden config with a f
 				"durationLimit": "0x0a",
 				"blockReward": "0x4563918244F40000",
 				"registrar": "",
-				"frontierCompatibilityModeLimit": "0x0"
+				"homesteadTransition": "0x0"
 			}
 		}
 	},
