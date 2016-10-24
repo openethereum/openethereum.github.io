@@ -4,7 +4,7 @@ Warp Sync is an extension to the Ethereum Wire protocol, which involves sending 
 
 Warp Sync is a subprotocol built on the DevP2p networking layer, with 3-byte identifier `bam`.
 
-Documentation on the snapshot format can be found here: https://github.com/ethcore/parity/wiki/%22PV64%22-Snapshot-Format
+Documentation on the snapshot and manifest format can be found here: https://github.com/ethcore/parity/wiki/Warp-Sync-Snapshot-Format
 
 # Wire messages
 The warp protocol inherits all packets from version 63 of the `eth` wire protocol, as well as amending the status packet (`0x01`) and adding a few new ones:
