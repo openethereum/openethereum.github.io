@@ -33,4 +33,4 @@
 
 ## Technologies
 - [[Secure Transaction Signer]]
-- [["PV64" Warp Sync]]
+- [[Warp-Sync]]
