@@ -61,4 +61,6 @@ Here is an example file for private network. This a basic Morden config with a f
 }
 ```
 
-
+### Coming from Geth
+To connect to a Geth node or just use the same network setup you can use [this tool](https://github.com/keorn/parity-spec) to generate a Parity compatible chain specification file. It can be then used by supplying it to the `--chain` Parity option.
+To keep the RPC interface similar to Geth `--geth` option can be used.
