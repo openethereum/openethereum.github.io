@@ -6,6 +6,9 @@ Warp Sync is a subprotocol built on the DevP2p networking layer, with 3-byte ide
 
 Documentation on the snapshot and manifest format can be found here: https://github.com/ethcore/parity/wiki/Warp-Sync-Snapshot-Format
 
+# How do I use it?
+Easy! Just update to Parity `1.4.0` or later, and run `parity --warp`. Your client will search for peers with a warp sync snapshot and use it if one is found.
+
 # Wire messages
 The warp protocol inherits all packets from version 63 of the `eth` wire protocol, as well as amending the status packet (`0x01`) and adding a few new ones:
 
