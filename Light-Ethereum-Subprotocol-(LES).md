@@ -76,7 +76,7 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 [`+0x0e`, `reqID`: `P`, `BV`: `P`, [`blockHeader`, [`node_1`, `node_2`...]], ...] Return a set of structures, each containing a block header and a Merkle proof proving the header hash and belonging TD against a given CHT requested in `GetHeaderProofs`
 
 **GetBlockDeltas**
-[`+0x10`, `reqID`: `P`, [`blockhash1`: B_32], [`blockhash2`: B_32], ...] Require peer to return a `BlockDeltas` message, containing a set of block delta structures, each containing a list of altered trie nodes and contract code.
+[`+0x10`, `reqID`: `P`, `blockhash1`: B_32, `blockhash2`: B_32, ...] Require peer to return a `BlockDeltas` message, containing a set of block delta structures, each containing a list of altered trie nodes and contract code.
 
 **BlockDeltas**
 [`+0x11`, `reqID`: `P`, [ [`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...] ], ... ] Return a list of block deltas, each corresponding to the block hash. Each block delta contains a list of altered trie nodes (in no particular order) and contract code within the block.
