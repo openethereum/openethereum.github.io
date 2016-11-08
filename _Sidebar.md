@@ -5,6 +5,7 @@
 - [[FAQ]]
 
 ## Using Parity
+- [[Parity Wallet]]
 - [With Mist](Using parity with mist)
 - [For Mining](Mining)
 - [For Private Chains](Private Chains)
