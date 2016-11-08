@@ -16,6 +16,9 @@ This will install and configure the Parity client for you.
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
+# Experimental Installers
+There are also experimental installers for OS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/ethcore/parity/releases).
+
 # Building from source
 
 To simply build Parity from source follow the instructions in the [README](https://github.com/ethcore/parity/blob/master/README.md).
