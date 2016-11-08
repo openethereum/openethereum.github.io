@@ -2,7 +2,7 @@ As of Parity version 1.3.0 ("Acuity"), Parity supports state snapshotting. This 
 
 **NOTE**: At present, snapshotting does not place all of the block or receipt data into the database. This means you will not get information relating to transactions more than a few days old. This is fine for some usages such as mining, but if you have or need access to historical transaction data (e.g. if you have an account that you've been using with Geth and wish to browse sent transactions) then you probably want to sync normally.
 
-To use a snapshot sync, you first need to download a snapshot. When using Parity 1.4.0 or higher, you can just run with `parity --warp` to automatically fetch a recent snapshot from the network, restore from it, and continue syncing. On an older version, you'll have to download one and restore it manually via Bittorrent or other means.
+To use a snapshot sync, you first need to download a snapshot. When using Parity 1.4.0 or higher, you can just run with `parity --warp` to automatically fetch a recent snapshot from the network, restore from it, and continue syncing. On an older version, you'll have to download one via Bittorrent or other means and restore it manually.
 
 (NOTE: These snapshots are valid for Parity 1.3.0, but not 1.4.0. As the snapshot format may be subject to change, these are not guaranteed to work with every version of Parity)
 
