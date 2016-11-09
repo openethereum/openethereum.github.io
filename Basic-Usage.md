@@ -6,6 +6,8 @@ You can override the normal boot nodes and connect to your own nodes by using `p
 
 Use `parity --help` to find out about other available options.
 
+To avoid adding options on every run of Parity a config file can be placed at `$HOME/.parity/config.toml`. The file can be easily generated using [this tool](https://ethcore.github.io/parity-config-generator/).
+
 # JSON-RPC API
 
 Assuming you start with JSONRPC API enabled (default), then [Ethereum's JSON-RPC](JSONRPC) can be used. e.g.:
