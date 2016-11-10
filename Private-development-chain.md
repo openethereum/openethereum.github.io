@@ -32,18 +32,11 @@ To use it, the following example spec can be passed to `--chain` option where `a
 		"0000000000000000000000000000000000000002": { "balance": "1", "nonce": "1048576", "builtin": { "name": "sha256", "pricing": { "linear": { "base": 60, "word": 12 } } } },
 		"0000000000000000000000000000000000000003": { "balance": "1", "nonce": "1048576", "builtin": { "name": "ripemd160", "pricing": { "linear": { "base": 600, "word": 120 } } } },
 		"0000000000000000000000000000000000000004": { "balance": "1", "nonce": "1048576", "builtin": { "name": "identity", "pricing": { "linear": { "base": 15, "word": 3 } } } },
-    "16a9dfd266e3229f05a2704c13bf2e16ea23e7c3": { "balance": "1606938044258990275541962092341162602522202993782792835301376", "nonce": "1048576" }
+		"16a9dfd266e3229f05a2704c13bf2e16ea23e7c3": { "balance": "1606938044258990275541962092341162602522202993782792835301376", "nonce": "1048576" }
 	}
 }
 ```
 When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors '*'` option has to be added as well.
 
-##Docker
-To start a preconfigured Parity node running a [Proof of Authority](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains) chain in docker, run
-```bash
-docker pull ethcore/parity-poa
-docker run -p 8545:8545 -d ethcore/parity-poa 
-```
-
 ##Vagrant
-There is a [Vagrant Box](https://github.com/jesuscript/vagrant-eth-env) that creates and starts a preconfigured Parity node running a [Proof of Authority](https://github.com/ethcore/parity/wiki/Proof-of-Authority-Chains) chain, in case you are looking for a minimal configuration setup. 
+There is a [Vagrant Box](https://github.com/jesuscript/vagrant-eth-env) that creates and starts a preconfigured Parity node running this chain, in case you are looking for a minimal configuration setup. 
