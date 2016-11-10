@@ -10,7 +10,7 @@ Execute the `register(_id: bytes32)` function on the contract with a unique id (
 
 Ensure that the required fee (currently 1 ETH) is paid and that the owner address is the address you wish to use to update associated meta data.
 
-Once registered, the id field in the manifest should be updated to reflect this new id.
+Once registered, the id field in the manifest should (optionally) be updated to reflect this new id so that the registry id and the manifest id matches. (Internally Parity will only use the dapp registry id for applications retrieved via the network as to avoid conflicts)
 
 ## Adding metadata
 
