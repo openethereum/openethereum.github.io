@@ -18,7 +18,7 @@ Set the metadata for the registered dapp with the `setMeta(_id: bytes32, _key: b
 
 - `_id` is the same id your reserved when registering the dapp above
 - `_key` is the metadata key (more on this below)
-- `_value` is the actual metadata value, typically a content hash as registered via the github hint dapp
+- `_value` is the actual metadata value, which is a content hash as registered via the github hint dapp
 
 Currently available metadata keys are the following -
 
