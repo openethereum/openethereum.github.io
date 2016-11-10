@@ -6,7 +6,7 @@
 
 ## Using Parity
 - [[Parity Wallet]]
-  - [[Integrating dapps into wallet 1.4]]
+  - [[Writing Dapps for Parity]]
   - [[Parity name registry]]
   - [[Parity github hint]]
   - [[Parity dapp registry]]
