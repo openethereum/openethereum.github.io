@@ -75,7 +75,7 @@ A very simple application (displaying the blockNumber, parity.js APIs) would be 
 
 ## Network Dapps
 
-Once the developer is satisfied that the local dapp operates as intended and wants to take the next step to deploy the dapp to the network, it should be registered with 
+Once the developer is satisfied that the local dapp operates as intended and wants to take the next step to deploy the dapp to the network, it should be registered with the [dapp registry](https://github.com/ethcore/parity/wiki/Parity-dapp-registry-(and-dapp)). When loading the applications inside the UI, the underlying contract is queried for the application, manifest & image.
 
 ## Additional functions
 
