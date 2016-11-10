@@ -12,8 +12,8 @@ Images are an important part of both the Token and dapp ecosystem. It allows for
 1. Enter the Github Hint dapp
 2. Ensure you are on the first tab, i.e. "File Link"
 3. Enter the unique URL to the content. In the case of images and/or text residing on Github, it is advised to point to a specific commit, i.e. [https://github.com/ethcore/dapp-assets/blob/master/tokens/gavcoin-64x64.png](https://github.com/ethcore/dapp-assets/blob/master/tokens/gavcoin-64x64.png) is probably not a good idea (since updates to the image will create a content hash mismatch) while [https://github.com/ethcore/dapp-assets/blob/9e135f76fe9ba61e2d8ccbd72ed144c26c450780/tokens/gavcoin-64x64.png](https://github.com/ethcore/dapp-assets/blob/9e135f76fe9ba61e2d8ccbd72ed144c26c450780/tokens/gavcoin-64x64.png) is preferable
-4. In the case of Github URLs, they will be automatically change to the `raw.githubusercontent.com` version
-5. Take note of the hash once the lookup is done (this provided hash is required as metadata in contracts that allow for link storage)
+4. In the case of Github URLs, they will be automatically changed to the `raw.githubusercontent.com` version
+5. Take note of the hash once the lookup is done (this provided hash is required as metadata in contracts that allow for content storage, e.g. TokenReg or DappReg)
 6. Select the account to use as owner (owners can update the URL for a specific hash)
 7. Register.
 
@@ -31,6 +31,6 @@ To load dapps from the network, the GHH dapp can be used to register a specific 
 1. Enter the Github Hint dapp
 2. Ensure you are on the second tab, i.e. "Content Bundle"
 3. Enter the unique owner/repo (example `gavofyork/gavcoin`) as well as the specific commit (example `e960db6bada2aafca9d07a0da952d2e66f902dff`)
-4. Take note of the hash once the lookup is done (this provided hash is required as metadata in contracts that allow for content storage)
+4. Take note of the hash once the lookup is done (this provided hash is required as metadata in contracts that allow for content storage, e.g. DappReg)
 5. Select the account to use as owner (owners can update the URL for a specific hash)
 6. Register
