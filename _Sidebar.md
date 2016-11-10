@@ -6,6 +6,7 @@
 
 ## Using Parity
 - [[Parity Wallet]]
+  - [[https://github.com/ethcore/parity/wiki/Integrating-dapps-into-wallet-1.4]]
 - [With Mist](Using parity with mist)
 - [For Mining](Mining)
 - [For Private Chains](Private Chains)
