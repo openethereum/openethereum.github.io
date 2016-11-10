@@ -7,9 +7,9 @@
 ## Using Parity
 - [[Parity Wallet]]
   - [[Integrating dapps into wallet 1.4]]
-  - [[Parity name registry (and dapp)]]
-  - [[Parity github hint (and dapp)]]
-  - [[Parity dapp registry (and dapp)]]
+  - [[Parity name registry]]
+  - [[Parity github hint]]
+  - [[Parity dapp registry]]
 - [With Mist](Using parity with mist)
 - [For Mining](Mining)
 - [For Private Chains](Private Chains)
