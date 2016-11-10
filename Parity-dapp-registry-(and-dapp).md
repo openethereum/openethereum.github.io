@@ -10,6 +10,8 @@ Execute the `register(_id: bytes32)` function on the contract with a unique id (
 
 Ensure that the required fee (currently 1 ETH) is paid and that the owner address is the address you wish to use to update associated meta data.
 
+Once registered, the id field in the manifest should be updated to reflect this new id.
+
 ## Adding metadata
 
 Set the metadata for the registered dapp with the `setMeta(_id: bytes32, _key: bytes32, _value: bytes32)` function on the contract. In each case -
