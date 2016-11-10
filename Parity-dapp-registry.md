@@ -5,7 +5,7 @@ The Parity UI uses an [underlying DappReg contract](https://github.com/ethcore/c
 * Homstead: [0xD70994d7020DF8052A1124561ff548f3b88744d8](https://etherscan.io/address/0xD70994d7020DF8052A1124561ff548f3b88744d8#code)
 * Morden: [0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB](https://testnet.etherscan.io/address/0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB#code)
 
-You can find the ABI for this contract if you follow the links above.
+You can find the ABI for this contract if you follow the link for the [Homestead contract](https://etherscan.io/address/0xD70994d7020DF8052A1124561ff548f3b88744d8#code).
 
 **WARNING** There is a non-refundable fee associated with registering a dapp. Only interact with the DappReg contract if you are certain you know what you are doing and understand the risks.
 
