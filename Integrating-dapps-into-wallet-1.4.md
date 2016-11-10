@@ -77,3 +77,6 @@ A very simple application (displaying the blockNumber, parity.js APIs) would be 
 
 Once the developer is satisfied that the local dapp operates as intended and wants to take the next step to deploy the dapp to the network, it should be registered with 
 
+## Additional functions
+
+It is highly recommended that dapp developers use the Parity registry for ease of name lookups, especially when having multiple contracts on multiple chains. [The name registry](https://github.com/ethcore/parity/wiki/Parity-name-registry-(and-dapp)) makes the association of names to addresses straight forward and transparent, regardless of the chain.
