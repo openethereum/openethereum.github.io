@@ -1,6 +1,6 @@
 # Overview
 
-Dapps are an exiting way to showcase a contract or a series of contracts with a simple interface that allows users to interact with it in a secure way. This guide will provide a step-by-step guide for developers to develop dapps for their contracts and integrate these into Parity.
+Dapps are an exciting way to showcase a contract or a series of contracts with a simple interface that allows users to interact with it in a secure way. This guide will provide a step-by-step guide for developers to develop dapps for their contracts and integrate these into Parity.
 
 Parity supports 2 types of dapps - one locally hosted (ideal for dapps still in development, or those dapps that are private) and network dapps (ideal for dapps applicable to a global community.) 
 
