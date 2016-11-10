@@ -3,7 +3,7 @@
 The Parity UI uses an [underlying DappReg contract](https://github.com/ethcore/contracts/blob/master/DappReg.sol) to lookup and display dapps that have been registered on the network. Currently the contract does not have a dapp/UI yet, however it is available for both Homestead (mainnet) and Morden (testnet):
 
 * Homstead: [0xD70994d7020DF8052A1124561ff548f3b88744d8](https://etherscan.io/address/0xD70994d7020DF8052A1124561ff548f3b88744d8#code)
-* Morden: [0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB](https://testnet.etherscan.io/address/0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB)
+* Morden: [0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB](https://testnet.etherscan.io/address/0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB#code)
 
 You can find the ABI for this contract if you follow the links above.
 
