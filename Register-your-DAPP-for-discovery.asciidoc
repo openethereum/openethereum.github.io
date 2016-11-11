@@ -81,6 +81,8 @@ Once your +UID+ has been registered, you can use the +setMeta+ function on the f
 - MANIFEST
 - CONTENT
 
+NOTE: Everything is uppercase.
+
 For each, you will pass the corresponding hash we got in the previous step.
 
 Once all the transactions are processed (this can take a few minutes), your DAPP will be registered and will appear in the Applications tab in the Parity UI.
