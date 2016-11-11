@@ -77,9 +77,9 @@ Confirm your transaction and wait until it is processed.
 
 Once your +UID+ has been registered, you can use the +setMeta+ function on the following keys:
 
-- image
-- manifest
-- content
+- IMAGE
+- MANIFEST
+- CONTENT
 
 For each, you will pass the corresponding hash we got in the previous step.
 
