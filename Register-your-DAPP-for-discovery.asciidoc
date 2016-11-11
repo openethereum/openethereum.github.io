@@ -77,7 +77,7 @@ Confirm your transaction and wait until it is processed.
 
 Once your +UID+ has been registered, you can use the +setMeta+ function on the following keys:
 
-- IMAGE
+- IMG
 - MANIFEST
 - CONTENT
 
