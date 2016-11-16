@@ -37,7 +37,7 @@ password = "/path/to/password"
 
 [mining]
 author = "0x37f93cfe411fa244b87ff257085ee360fca245e8"
-# Can be changed to false if no malicious authorities are present and to avoid empty blocks.
+# false if no malicious authorities are present and to avoid empty blocks.
 force_sealing = true
 reseal_on_txs = "none"
 ```
