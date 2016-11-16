@@ -1,6 +1,17 @@
-Parity provides an `InstantSeal` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Secure Transaction Signer](Secure Transaction Signer)) and all blocks will be accepted.
+Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Secure Transaction Signer](Secure Transaction Signer)) and all blocks will be accepted. It can be simply activated by running:
+```
+parity --chain dev
+```
+The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call:
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["","password"],"id": 1}' localhost:8545
+```
 
-To use it, the following example spec can be passed to `--chain` option where `accounts` contains a custom account with lots of Ether.
+When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors '*'` option has to be added as well.
+
+## Customizing the development chain
+
+The default configuration should work fine in most cases, however it can be customized. The following example spec can be passed to `--chain` option where `accounts` contains a custom account with lots of Ether.
 ```
 {
 	"name": "Development",
@@ -36,7 +47,7 @@ To use it, the following example spec can be passed to `--chain` option where `a
 	}
 }
 ```
-When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors '*'` option has to be added as well.
 
-##Vagrant
+
+## Vagrant
 There is a [Vagrant Box](https://github.com/jesuscript/vagrant-eth-env) that creates and starts a preconfigured Parity node running this chain, in case you are looking for a minimal configuration setup. 
