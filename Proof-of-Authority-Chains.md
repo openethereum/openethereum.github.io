@@ -28,6 +28,9 @@ If you're expecting to issue blocks, make sure you have `--author` set to one of
 The configuration can also be done via the [config file](https://ethcore.github.io/parity-config-generator/) with the following fields:
 
 ```
+[parity]
+chain = "/path/to/json/spec"
+
 [account]
 unlock = ["0x37f93cfe411fa244b87ff257085ee360fca245e8"]
 password = "/path/to/password"
