@@ -95,7 +95,7 @@ See [[Importing a Chain from Geth]].
 They get imported automatically.
 
 ##### How do I import a key made outside of Geth? (e.g. myetherwallet.com)
-Simply copy it into your `$HOME/.ethereum/keystore` directory. Parity will import all keys found there.
+Simply copy it into your `$HOME/.parity/keyss` directory. Parity will import all keys found there.
 
 #### Mining and Transacting
 
