@@ -1,28 +1,63 @@
-We have an initial Proof-of-Authority consensus method, along with sealing infrastructure. Proof-of-Authority is a replacement for Proof-of-Work, which can be used for private chain setups.
+Parity supports a Proof-of-Authority consensus engine to be used with EVM based chains. Proof-of-Authority is a replacement for Proof-of-Work, which can be used for private chain setups.
 
 It does not depend on nodes solving arbitrarily difficult mathematical problems, but instead uses
-a hard-configured set of "authorities" - nodes that are explicitly allowed to create new blocks and secure the blockchain. As a result, the block creation process is much quicker than with public blockchains like Bitcoin or Ethereum - the system allows for sub-second block times. Apart from that, the PoA blockchain is irreversible and, therefore, offers near-instant transaction finality.
+a hard-configured set of "authorities" - nodes that are explicitly allowed to create new blocks and secure the blockchain. This makes it easier to maintain a private chain and keep the block issuers accountable.
 
-### Notes
-
-This method is not BFT; however, it should work well enough for development and demo purposes. Purity will include a fully compatible BFT consensus mechanism later this year.
-
-NOTE: Currently, this will seal a block whenever a new transaction comes through. To be made better we need a timer which will wait for one second after the last block before sealing a new one - better still would be to cooperatively interleave blocks with other sealing nodes. [These](https://github.com/ethcore/parity/issues/1034) [features](https://github.com/ethcore/parity/issues/1035) are planned for development soon.
-
-### Configration
+## Engine specification
 
 To run the above, chain spec JSON file provided to `--chain` has to have an engine such as this:
 
 ```
-	"engine": {
-		"BasicAuthority": {
+  "engine": {
+		"AuthorityRound": {
 			"params": {
-				"gasLimitBoundDivisor": "0x0400",
-				"durationLimit": "0x0d",
-				"authorities" : ["0x...", "0x..."]
+				"gasLimitBoundDivisor": "0x400",
+				"stepDuration": "4",
+				"authorities" : [
+					"0x37f93cfe411fa244b87ff257085ee360fca245e8",
+					"0x610a3a37b98bf0c91c35442e489c246096739324"
+				]
 			}
 		}
 	}
 ```
 
-If you're expecting to seal blocks, make sure you have `--author` set to one of the `authorities` and that said key is `--unlock`ed (with `--password` file provided). You should ensure anyone else you want sealing on the network is similarly configured.
+The `authorities` are the addresses that are able to issue blocks. `stepDuration` is the minimum block time in seconds.
+
+If you're expecting to issue blocks, make sure you have `--author` set to one of the `authorities` and that said key is `--unlock`ed (with `--password` file provided). You should ensure anyone else you want issuing on the network is similarly configured.
+The configuration can also be done be the [config file](https://ethcore.github.io/parity-config-generator/) with the following fields:
+
+```
+[account]
+unlock = ["0x37f93cfe411fa244b87ff257085ee360fca245e8"]
+password = "/path/to/password"
+
+[mining]
+author = "0x37f93cfe411fa244b87ff257085ee360fca245e8"
+force_sealing = true
+reseal_on_txs = "none"
+```
+
+If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of `authorities_count * step_duration`).
+
+Authorities do not have to reseal on transactions: `--reseal-on-txs none`.
+
+## Private centralized network setup
+When deploying PoC it is useful to get a centrally managed network going first. With Parity the nodes can be identical and simply expose the RPC interface to a central managing node, all further setup can be done via those interfaces.
+
+### Useful RPCs
+Connect the deployed nodes:
+- `parity_enode()` returns enode of the particular instance
+- `parity_addReservedPeer(enode)` adds enode to the list of reserved peers (run with `--reserved-only` to avoid other connections)
+
+Create accounts:
+- `personal_newAccount(password)` creates new account and returns its address
+- `parity_newAccountFromPhrase(password, phrase)` creates an account deterministically and returns its address (always the same for a given input)
+
+Validate the blocks:
+- `parity_setAuthor(address)` set this to one of authority addresses
+- `personal_unlockAccount(address, password, 0)` unlock that account permanently to issue blocks
+
+Further methods for actually using the nodes can be found [here](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module).
+
+
