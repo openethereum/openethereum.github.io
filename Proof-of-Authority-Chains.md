@@ -25,7 +25,7 @@ To run the above, chain spec JSON file provided to `--chain` has to have an engi
 The `authorities` are the addresses that are able to issue blocks. `stepDuration` is the minimum block time in seconds.
 
 If you're expecting to issue blocks, make sure you have `--author` set to one of the `authorities` and that said key is `--unlock`ed (with `--password` file provided). You should ensure anyone else you want issuing on the network is similarly configured.
-The configuration can also be done be the [config file](https://ethcore.github.io/parity-config-generator/) with the following fields:
+The configuration can also be done via the [config file](https://ethcore.github.io/parity-config-generator/) with the following fields:
 
 ```
 [account]
