@@ -24,8 +24,8 @@
   - [net](JSONRPC-net-module)
   - [eth](JSONRPC-eth-module)
   - [personal](JSONRPC-personal-module)
-  - [ethcore](JSONRPC-ethcore-module)
-  - [ethcore_set](JSONRPC-ethcore_set-module)
+  - [parity/parity_accounts](JSONRPC-parity-module)
+  - [parity_set](JSONRPC-parity_set-module)
   - [trace](JSONRPC-trace-module)
 - [[Private development chain]]
 
