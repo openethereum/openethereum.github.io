@@ -2,24 +2,12 @@
 
 ## JSON-RPC methods
 
-* [personal_signerEnabled](#personal_signerenabled)
 * [personal_listAccounts](#personal_listaccounts)
 * [personal_newAccount](#personal_newaccount)
-* [personal_newAccountFromPhrase](#personal_newaccountfromphrase)
-* [personal_newAccountFromWallet](#personal_newaccountfromwallet)
 * [personal_unlockAccount](#personal_unlockaccount)
 * [personal_signAndSendTransaction](#personal_signandsendtransaction)
-* [personal_setAccountName](#personal_setaccountname)
-* [personal_setAccountMeta](#personal_setaccountmeta)
-* [personal_accountsInfo](#personal_accountsinfo)
-* [personal_requestsToConfirm](#personal_requeststoconfirm)
-* [personal_confirmRequest](#personal_confirmrequest)
-* [personal_rejectRequest](#personal_rejectrequest)
 
 ## JSON RPC API Reference
-
-#### personal_signerEnabled
-Returns `true` if  Trusted Signer is enabled, `false` otherwise.
 
 #### personal_listAccounts
 Lists all stored accounts
@@ -68,41 +56,6 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
 ```
 
 
-#### personal_newAccountFromPhrase
-Creates new account from the given phrase using standard brainwallet mechanism.
-
-##### Parameters
-1. `STR` - Phrase used to generate the key for the brainwallet account
-2. `STR` - Password to use to lock the new account
-
-##### Returns
-`DATA`, 20 bytes - The identifier of the new account
-
-##### Example
-```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_newAccountFromPhrase","params":["insecure","hunter2"],"id": 22}' localhost:8545
-
-// Result
-{
-    "jsonrpc": "2.0",
-    "id":22,
-    "result": "0xfc390d8a8ddb591b010fda52f4db4945742c3809"
-}
-```
-
-
-#### personal_newAccountFromWallet
-Creates new account from the given JSON wallet
-
-##### Parameters
-1. `STR` - TODO
-2. `STR` - Password to use to lock the new account
-
-##### Returns
-`DATA`, 20 bytes - The identifier of the new account
-
-
 #### personal_unlockAccount
 Unlocks specified account for use (there can only be one unlocked account at any one time)
 
@@ -149,92 +102,3 @@ Sends transaction and signs it in a single call.  The account does not need to b
 
 ##### Returns
 `DATA`, 32 Bytes - The hash of the new transaction.
-
-
-#### personal_setAccountName
-Set an account's name
-
-##### Parameters
-1. `DATA`, 20 bytes - Account identifier
-2. `STR` - The new account name
-
-##### Returns
-Always returns `null`.
-
-##### Example
-```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_setAccountName","params":["0xfc390d8a8ddb591b010fda52f4db4945742c3809","Savings"],"id": 22}' localhost:8545
-
-// Response
-{
-    "jsonrpc": "2.0",
-    "id":22,
-    "result":null
-}
-```
-
-
-#### personal_setAccountMeta
-Set an account's metadata string
-
-##### Parameters
-1. `DATA`, 20 bytes - Account identifier
-2. `STR` - Replacement application specific metadata to link to the account
-
-##### Returns
-TODO
-
-
-#### personal_accountsInfo
-Returns account's information
-
-##### Returns
-TODO
-
-##### Example
-```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_accountsInfo","id": 22}' localhost:8545
-
-// Result
-{
-    "jsonrpc": "2.0",
-    "id":22,
-    "result":{
-        "0xfc390d8a8ddb591b010fda52f4db4945742c3809":{
-            "name":"Savings",
-            "uuid":"7fee0393-7571-2b4f-8672-862fea01a4a0",
-            "meta":"{}"
-        }
-    }
-}
-```
-
-
-#### personal_requestsToConfirm
-Returns a list of items to confirm.
-
-##### Returns
-TODO
-
-
-#### personal_confirmRequest
-Confirm specific request
-
-##### Parameters
-1. `DATA`, 32 Bytes - A request id (TODO)
-2. `TransactionModification` - TODO
-3. `STR` - Password to use to unlock the account
-
-##### Returns
-TODO
-
-#### personal_rejectRequest
-Reject a confirmation request
-
-##### Parameters
-1. `DATA`, 32 Bytes - A request id (TODO)
-
-##### Returns
-TODO
