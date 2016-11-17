@@ -26,6 +26,7 @@
   - [personal](JSONRPC-personal-module)
   - [parity / parity_accounts](JSONRPC-parity-module)
   - [parity_set](JSONRPC-parity_set-module)
+  - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
 - [[Private development chain]]
 
