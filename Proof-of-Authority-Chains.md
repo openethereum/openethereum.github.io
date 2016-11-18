@@ -6,20 +6,28 @@ a hard-configured set of "authorities" - nodes that are explicitly allowed to cr
 ## Engine specification
 
 To run the above, chain spec JSON file provided to `--chain` has to have an engine such as this:
-
 ```
-  "engine": {
-		"AuthorityRound": {
-			"params": {
-				"gasLimitBoundDivisor": "0x400",
-				"stepDuration": "4",
-				"authorities" : [
-					"0x37f93cfe411fa244b87ff257085ee360fca245e8",
-					"0x610a3a37b98bf0c91c35442e489c246096739324"
-				]
-			}
+"engine": {
+	"AuthorityRound": {
+		"params": {
+			"gasLimitBoundDivisor": "0x400",
+			"stepDuration": "2",
+			"authorities" : [
+				"0x37f93cfe411fa244b87ff257085ee360fca245e8",
+				"0x610a3a37b98bf0c91c35442e489c246096739324"
+			]
 		}
 	}
+}
+```
+and genesis seal:
+```
+"seal": {
+	"generic": {
+		"fields": 2,
+		"rlp": "0x200"
+	}
+}
 ```
 
 The `authorities` are the addresses that are able to issue blocks. `stepDuration` is the minimum block time in seconds.
