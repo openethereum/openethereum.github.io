@@ -26,9 +26,9 @@ The default configuration should work fine in most cases, however it can be cust
 	},
 	"genesis": {
 		"seal": {
-			"ethereum": {
-				"nonce": "0x00006d6f7264656e",
-				"mixHash": "0x00000000000000000000000000000000000000647572616c65787365646c6578"
+			"generic": {
+				"fields": 0,
+				"rlp": "0x0"
 			}
 		},
 		"difficulty": "0x20000",
