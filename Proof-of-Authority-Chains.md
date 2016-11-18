@@ -45,11 +45,11 @@ password = "/path/to/password"
 
 [mining]
 author = "0x37f93cfe411fa244b87ff257085ee360fca245e8"
-# false if no malicious authorities are present and to avoid empty blocks.
 reseal_on_txs = "none"
+# force_sealing = true # if malicious authorities are present.
 ```
 
-If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of `authorities_count * step_duration`).
+If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of `authorities_count * step_duration` given no network paritions).
 
 Authorities do not have to reseal on transactions: `--reseal-on-txs none`.
 
