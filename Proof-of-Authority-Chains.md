@@ -49,7 +49,7 @@ reseal_on_txs = "none"
 # force_sealing = true # if malicious authorities are present.
 ```
 
-If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of `authorities_count * step_duration` given no network paritions).
+If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of `authorities_count * step_duration` given no network partitions).
 
 Authorities do not have to reseal on transactions: `--reseal-on-txs none`.
 
