@@ -37,9 +37,9 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 #### Basic Operation
 
 #### How to delete blockchain (to initiate full re-sync) without deleting wallet info?
-`rm -rf ~/.parity/906a34e69aec8c0d`
-this will remove the local chain database
-always back up your keys (~/.parity/keys) before doing anything like that though.
+Execute `rm -rf ~/.parity/906a34e69aec8c0d`
+This will remove the local chain database.
+Always back up your keys (~/.parity/keys) before doing anything like that though.
 
 ##### What can I do when Parity has trouble getting in sync?
 Parity is running but seems to remain at the same block for a long time.
