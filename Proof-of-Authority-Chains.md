@@ -3,6 +3,8 @@ Parity supports a Proof-of-Authority consensus engine to be used with EVM based 
 It does not depend on nodes solving arbitrarily difficult mathematical problems, but instead uses
 a hard-configured set of "authorities" - nodes that are explicitly allowed to create new blocks and secure the blockchain. This makes it easier to maintain a private chain and keep the block issuers accountable.
 
+[![Gitter](https://badges.gitter.im/ethcore/parity-poa.svg)](https://gitter.im/ethcore/parity-poa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 ## Engine specification
 
 To run the above, chain spec JSON file provided to `--chain` has to have an engine such as this:
