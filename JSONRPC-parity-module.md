@@ -33,9 +33,6 @@ These are RPCs specific to the operation of Parity.
 - `parity_pendingTransactions` `()` *returns* `` ???
 - `parity_nextNonce` `()` *returns* `QUANTITY` ???
 
-### Fat DB
-- `parity_listStorageKeys` `()` *returns* `` ???
-
 ### Accounts (read-only) and Signatures
 - `parity_accounts` `()` *returns* `` ???
 - `parity_listAccounts` `()` *returns* `` ???
@@ -52,6 +49,7 @@ These are RPCs specific to the operation of Parity.
 ## JSON-RPC methods
 
 * [parity_listAccounts](#parity_listAccounts)
+* [parity_listStorageKeys](#parity_listStorageKeys)
 * [parity_newAccount](#parity_newaccount)
 * [parity_newAccountFromPhrase](#parity_newaccountfromphrase)
 * [parity_newAccountFromWallet](#parity_newaccountfromwallet)
@@ -62,27 +60,64 @@ These are RPCs specific to the operation of Parity.
 ## JSON RPC API Reference
 
 #### parity_listAccounts
-Lists all stored accounts
+Lists all stored accounts. Requires a FatDB database. 
+
+##### Parameters
+1. `QUANTITY` - Number of accounts to return.
+2. `DATA` - Starting account address. List starts from the account immediately following this account. This should be set to `null` to start from the beginning or to the last item from a previous batch to continue enumeration.
+3. `QUANTITY|TAG` - Integer block number, or the string "latest", "earliest" or "pending", see the [default block parameter](https://github.com/ethereum/wiki/wiki/JSON-RPC#the-default-block-parameter)
 
 ##### Returns
-`Array` of `DATA`, 20 bytes - A list of account identifiers.
-
+`Array` of `DATA`, 20 bytes - A list of account identifiers. The order of the returned values is unspecified.
 ##### Example
 ```js
 //Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_listAccounts","params":[],"id":83}'
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_listAccounts","params":[5, null],"id":83}'
 
 // Result
 {
     "jsonrpc": "2.0",
     "id": 83,
     "result": [
-        "0x7bf87721a96849d168de02fd6ea5986a3a147383",
-        "0xca807a90fd64deed760fb98bf0869b475c469348"
+        "0x1067dcb77e3390563819a94907adb53a402dd707",
+        "0x843fd22c88d59e57ae1856a871a5d95e95b0a656",
+        "0x2d29454cfa2f3dfa06a6ffd19eb9ef87281005f7",
+        "0x30903bb9a2e424e120176a165331ab132601560b",
+        "0xdcd0b6fa4f0a26a7b12325b0d09b5b809c5aef84"
     ],
 }
 ```
 
+#### parity_listStorageKeys
+Lists all account storage keys. Requires a FatDB database. 
+
+##### Parameters
+1. `DATA` - Account address.
+2. `QUANTITY` - Number of storage keys to return.
+3. `DATA` - Starting storage key. List starts from the key immediately following this key. This should be set to `null` to start from the beginning or to the last item from a previous batch to continue enumeration.
+4. `QUANTITY|TAG` - Integer block number, or the string "latest", "earliest" or "pending", see the [default block parameter](https://github.com/ethereum/wiki/wiki/JSON-RPC#the-default-block-parameter)
+
+##### Returns
+`Array` of `DATA`, 20 bytes - A list of storage keys. The order of the returned values is unspecified.
+
+##### Example
+```js
+//Request
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_listStorageKeys","params":["0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413", 5, null],"id":83}'
+
+// Result
+{
+    "jsonrpc": "2.0",
+    "id": 83,
+    "result": [
+        "0xdb15094c8bbcc75cca5b8a449f2d2773a1f99820ab21a8b7d61a05aa112d43c4",
+        "0x15166c0c18a3e9ac633d6fe46b5e527c99a1eb3c84d710210c5cd839c009fe8d",
+        "0x661ee31c1965b02ee935c0f2f7d78daaa9f14c2dc0382362666a0c9b64659e7e",
+        "0x9dcd180d9f2fdb4f500fc6ff8edb20ccb533ad0235cb9d3c6b07403f1ff5d30c",
+        "0xcc514b57213d8bf433c5b550a92061eae5637d287ab751a52974575d70c25663"
+    ],
+}
+```
 
 #### parity_newAccount
 Creates new account (it becomes the new current unlocked account)
