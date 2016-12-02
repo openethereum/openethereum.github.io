@@ -75,7 +75,15 @@ A very simple application (displaying the blockNumber, parity.js APIs) would be 
 
 ## Network Dapps
 
-Once the developer is satisfied that the local dapp operates as intended and wants to take the next step to deploy the dapp to the network, it should be registered with the [dapp registry](https://github.com/ethcore/parity/wiki/Parity-dapp-registry). When loading the applications inside the UI, the underlying contract is queried for the application, manifest & image.
+Once the developer is satisfied that the local dapp operates as intended and wants to take the next step to deploy the dapp to the network. For this Parity includes a Dapp Registry application to register the manifest, image & content.
+
+- It is recommended to do the deployment on the test network first
+- Register the dapp to receive a new unique network id
+- Generate the correct content hashes via the GitHubHint dapp
+- For manifests & files, the "File Link" is to be used for the content hash in the GHH dapp
+- For the actual dapp content bundle the "Content Link" option should be used in the GHH dapp
+- Edit the dapp in the Dapp Registry and supply the image, manifest & content hashes as generated in the previous steps
+- The dapp should now be visible on the Parity Applications page
 
 ## Additional functions
 
