@@ -9,7 +9,6 @@
   - [[Writing Dapps for Parity]]
   - [[Parity name registry]]
   - [[Parity github hint]]
-  - [[Parity dapp registry]]
 - [With Mist](Using parity with mist)
 - [For Mining](Mining)
 - [For Private Chains](Private Chains)
