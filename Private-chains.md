@@ -2,7 +2,7 @@ Parity supports private chain and private network configuration via [chain speci
 
 Parity does not include the usual `builtin` contracts by default. These are necessary when writing new contracts in Solidity, since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below.
 
-### Example spec file
+### Example PoW spec file
 
 Here is an example file for private network. This a basic Morden config with a few parameters changed:
 
