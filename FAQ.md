@@ -57,6 +57,10 @@ Parity is running but seems to remain at the same block for a long time.
 
 If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/ethcore/parity/issues/2447).
 
+##### Syncing is stuck around block 2,421,000 or 2,675,000
+
+These blocks are quite heavy on the IO and take a long time to import, especially on machines with HDD. Consider using `--warp` or switching to SSD drive.
+
 ##### Parity doesn't start on Windows; fails with "api-ms-win-crt-math-l1-1-0.dll missing".
 ![parity_error](https://cloud.githubusercontent.com/assets/2982011/18855854/1d3b2c22-8424-11e6-8329-1dbe5edf6a5a.png)
 
