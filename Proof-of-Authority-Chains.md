@@ -15,7 +15,7 @@ To run the above, chain spec JSON file provided to `--chain` has to have an engi
 	"AuthorityRound": {
 		"params": {
 			"gasLimitBoundDivisor": "0x400",
-			"stepDuration": "2",
+			"stepDuration": "5",
 			"authorities" : [
 				"0x37f93cfe411fa244b87ff257085ee360fca245e8",
 				"0x610a3a37b98bf0c91c35442e489c246096739324"
