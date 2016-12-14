@@ -29,7 +29,7 @@ and genesis seal:
 "seal": {
 	"generic": {
 		"fields": 2,
-		"rlp": "0x200"
+		"rlp": "0xc28080"
 	}
 }
 ```
