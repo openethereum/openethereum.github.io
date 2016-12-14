@@ -9,7 +9,7 @@ a hard-configured set of "authorities" - nodes that are explicitly allowed to cr
 
 ## Engine specification
 
-To run the above, chain spec JSON file provided to `--chain` has to have an engine such as this:
+To run the above, chain spec JSON file provided to `--chain` has to have an engine such as this (authorities can be adjusted to addresses that should issue blocks):
 ```
 "engine": {
 	"AuthorityRound": {
@@ -24,7 +24,7 @@ To run the above, chain spec JSON file provided to `--chain` has to have an engi
 	}
 }
 ```
-and genesis seal:
+and genesis seal (this should be the same for all chains):
 ```
 "seal": {
 	"generic": {
@@ -35,7 +35,7 @@ and genesis seal:
 
 The `authorities` are the addresses that are able to issue blocks. `stepDuration` is the minimum block time in seconds.
 
-If you're expecting to issue blocks, make sure you have `--author` set to one of the `authorities` and that said key is `--unlock`ed (with `--password` file provided). You should ensure anyone else you want issuing on the network is similarly configured.
+If you're expecting to issue blocks, make sure you have `--engine-signer` set to one of the `authorities` and password file is provided to `--password`. You should ensure anyone else you want issuing on the network is similarly configured.
 The configuration can also be done via the [config file](https://ethcore.github.io/parity-config-generator/) with the following fields:
 
 ```
@@ -43,11 +43,10 @@ The configuration can also be done via the [config file](https://ethcore.github.
 chain = "/path/to/json/spec"
 
 [account]
-unlock = ["0x37f93cfe411fa244b87ff257085ee360fca245e8"]
+engine_signer = ["0x37f93cfe411fa244b87ff257085ee360fca245e8"]
 password = "/path/to/password"
 
 [mining]
-author = "0x37f93cfe411fa244b87ff257085ee360fca245e8"
 reseal_on_txs = "none"
 # force_sealing = true # if malicious authorities are present.
 ```
@@ -69,8 +68,7 @@ Create accounts:
 - `parity_newAccountFromPhrase(password, phrase)` creates an account deterministically and returns its address (always the same for a given input)
 
 Validate the blocks:
-- `parity_setAuthor(address)` set this to one of authority addresses
-- `personal_unlockAccount(address, password, 0)` unlock that account permanently to issue blocks
+- `parity_setEngineSigner(address, password)` set this to one of authority addresses participate in the consensus
 
 Further methods for actually using the nodes can be found [here](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module).
 
