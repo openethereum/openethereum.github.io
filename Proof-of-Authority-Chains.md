@@ -68,7 +68,7 @@ Create accounts:
 - `parity_newAccountFromPhrase(password, phrase)` creates an account deterministically and returns its address (always the same for a given input)
 
 Validate the blocks:
-- `parity_setEngineSigner(address, password)` set this to one of authority addresses participate in the consensus
+- `parity_setEngineSigner(address, password)` set this to one of authority addresses in order to participate in the consensus
 
 Further methods for actually using the nodes can be found [here](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module).
 
