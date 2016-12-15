@@ -58,6 +58,36 @@ Further methods for actually using the nodes can be found [here](https://github.
 
 To create a Proof of Authority chain a JSON spec file should be provided to `--chain` with authorities set to correct addresses.
 
+An example template that can be used for the consensus algorithms below:
+```
+{
+	"name": "ChainName",
+	"engine": ENGINE_HERE,
+	"params": {
+		"accountStartNonce": "0x0",
+		"maximumExtraDataSize": "0x20",
+		"minGasLimit": "0x1388",
+		"networkID" : "0x2323"
+	},
+	"genesis": {
+		"seal": SEAL_HERE,
+		"difficulty": "0x20000",
+		"author": "0x0000000000000000000000000000000000000000",
+		"timestamp": "0x00",
+		"parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+		"extraData": "0x",
+		"gasLimit": "0x5B8D80"
+	},
+	"accounts": {
+		"0000000000000000000000000000000000000001": { "balance": "1", "builtin": { "name": "ecrecover", "pricing": { "linear": { "base": 3000, "word": 0 } } } },
+		"0000000000000000000000000000000000000002": { "balance": "1", "builtin": { "name": "sha256", "pricing": { "linear": { "base": 60, "word": 12 } } } },
+		"0000000000000000000000000000000000000003": { "balance": "1", "builtin": { "name": "ripemd160", "pricing": { "linear": { "base": 600, "word": 120 } } } },
+		"0000000000000000000000000000000000000004": { "balance": "1", "builtin": { "name": "identity", "pricing": { "linear": { "base": 15, "word": 3 } } } },
+		"9cce34f7ab185c7aba1b7c8140d620b4bda941d6": { "balance": "1606938044258990275541962092341162602522202993782792835301376" }
+	}
+}
+```
+
 ## Authority Round Engine
 
 Engine should be specified as follows:
@@ -89,6 +119,32 @@ The `authorities` are the addresses that are able to issue blocks. `stepDuration
 
 If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of `authorities_count * step_duration` given no network partitions).
 
+## Tendermint Engine
 
+This consensus is still experimental, please use Authority Round for more stable solution.
 
-
+```
+"engine": {
+	"AuthorityRound": {
+		"params": {
+			"gasLimitBoundDivisor": "0x400",
+			"authorities" : [
+				"0x37f93cfe411fa244b87ff257085ee360fca245e8",
+				"0x610a3a37b98bf0c91c35442e489c246096739324"
+			]
+		}
+	}
+}
+```
+and genesis seal (this should be the same for all chains):
+```
+"seal": {
+	"tendermint": {
+		"round": "0x0",
+		"proposal": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+		"precommits": [
+			"0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+		]
+	}
+}
+```
