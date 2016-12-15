@@ -32,7 +32,6 @@ password = "/path/to/password"
 [mining]
 engine_signer = ["0x37f93cfe411fa244b87ff257085ee360fca245e8"]
 reseal_on_txs = "none"
-# force_sealing = true # if malicious authorities are present.
 ```
 
 Authorities do not have to reseal on transactions: `--reseal-on-txs none`.
