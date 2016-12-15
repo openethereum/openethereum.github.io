@@ -27,8 +27,9 @@ To run the above, chain spec JSON file provided to `--chain` has to have an engi
 and genesis seal (this should be the same for all chains):
 ```
 "seal": {
-	"generic": {
-		"rlp": "0xc28080"
+	"authority_round": {
+		"step": "0x0",
+		"signature": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 	}
 }
 ```
