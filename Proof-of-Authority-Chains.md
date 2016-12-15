@@ -65,7 +65,7 @@ Connect the deployed nodes:
 
 Create accounts:
 - `personal_newAccount(password)` creates new account and returns its address
-- `parity_newAccountFromPhrase(password, phrase)` creates an account deterministically and returns its address (always the same for a given input)
+- `parity_newAccountFromPhrase(phrase, password)` creates an account deterministically and returns its address (always the same for a given input)
 
 Validate the blocks:
 - `parity_setEngineSigner(address, password)` set this to one of authority addresses in order to participate in the consensus
