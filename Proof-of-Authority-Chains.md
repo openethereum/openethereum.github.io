@@ -34,7 +34,7 @@ engine_signer = ["0x37f93cfe411fa244b87ff257085ee360fca245e8"]
 reseal_on_txs = "none"
 ```
 
-Authorities do not have to reseal on transactions: `--reseal-on-txs none`.
+Authorities reseal automatically, no need to reseal on transactions: `--reseal-on-txs none`.
 
 ## Private centralized network setup
 When deploying PoC it is useful to get a centrally managed network going first. With Parity the nodes can be identical and simply expose the RPC interface to a central managing node, all further setup can be done via those interfaces.
