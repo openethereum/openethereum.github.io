@@ -92,7 +92,7 @@ An example template that can be used for the consensus algorithms below:
 Engine should be specified as follows:
 ```
 "engine": {
-	"AuthorityRound": {
+	"authorityRound": {
 		"params": {
 			"gasLimitBoundDivisor": "0x400",
 			"stepDuration": "5",
@@ -107,7 +107,7 @@ Engine should be specified as follows:
 and genesis seal (this should be the same for all chains):
 ```
 "seal": {
-	"authority_round": {
+	"authorityRound": {
 		"step": "0x0",
 		"signature": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 	}
@@ -124,7 +124,7 @@ This consensus is still experimental, please use Authority Round for more stable
 
 ```
 "engine": {
-	"AuthorityRound": {
+	"tendermint": {
 		"params": {
 			"gasLimitBoundDivisor": "0x400",
 			"authorities" : [
