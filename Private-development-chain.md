@@ -18,7 +18,7 @@ The default configuration should work fine in most cases, however it can be cust
 {
 	"name": "DevelopmentChain",
 	"engine": {
-		"InstantSeal": null
+		"instantSeal": null
 	},
 	"params": {
 		"accountStartNonce": "0x0",
