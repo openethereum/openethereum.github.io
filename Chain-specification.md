@@ -1,6 +1,14 @@
 By default, when simply running `parity`, Parity Ethereum will connect to the official public Ethereum network. Ethereum uses EVM to perform its state transitions and proof of work to achieve consensus, however Parity makes it possible to run alternative EVM-based chains which can be specified by a JSON chain spec.
 In order to run a chain different to the official public Ethereum one, Parity has to be ran with the `--chain` option. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
+## Chain presets available
+- [`mainnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/frontier.json) (default) main Ethereum network
+- [`ropsten`|`testnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/ropsten.json) the current Ethereum test network
+- [`classic`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
+- [`classic-testnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
+- [`expanse`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
+- [`dev`](https://github.com/ethcore/parity/blob/master/ethcore/res/instant_seal.json) a development chain to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+
 ## JSON chain spec format
 A JSON file which specifies rules of a blockchain, some fields are optional which are described following the minimal example, these default to 0.
 ```
