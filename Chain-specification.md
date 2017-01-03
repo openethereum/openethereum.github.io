@@ -36,6 +36,17 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
 `"engine"` field describes the consensus engine used for a particular chain, details are explained in the [Consensus Engines] section.
 
 `"genesis"` contains the genesis block (first block in the chain) header information. `"seal"` is consensus engine specific and is further described in [[Consensus Engines]].
+`"difficulty"` difficulty of the genesis block, matters only for PoW chains
+`"gasLimit"` gas limit of the genesis, affects the initial gas limit adjustment
+Optional:
+`"author"` address of the genesis block author
+`"timestamp"` UNIX timestamp of the genesis block
+`"parentHash"` hash of the genesis "parent" block
+`"transactionsRoot"` genesis transactions root
+`"receiptsRoot"` genesis receipts root
+`"stateRoot"` genesis state root, calculated automatically from the `"accounts"` field
+`"gasUsed"` gas used in the genesis block
+`"extraData"` extra data of the genesis block
 
 `"params"` contains general chain parameters:  
 `"networkID"` DevP2P supports multiple networks, and ID is used to uniquely identify each one which is used to connect to correct peers and to prevent transaction replay across chains.  
@@ -48,7 +59,19 @@ Optional:
 `"forkBlock"` block number of the latest fork that should be checked
 `"forkCanonHash"` hash of the canonical block at `forkBlock`
 
-`"accounts"` contains optional contents of the genesis block, such as simple accounts with balances and usually the standard Ethereum builtin contracts will be present which enable usage of Solidity programming language, further explained in [[Genesis accounts]].
+`"accounts"` contains optional contents of the genesis block, such as simple accounts with balances or contracts. Usually the standard Ethereum builtin contracts will be present which enable usage of Solidity programming language:
+```
+"accounts": {
+    "0x0000000000000000000000000000000000000001": { "balance": "1", "builtin": { "name": "ecrecover", "pricing": { "linear": { "base": 3000, "word": 0 } } } },
+    "0x0000000000000000000000000000000000000002": { "balance": "1", "builtin": { "name": "sha256", "pricing": { "linear": { "base": 60, "word": 12 } } } },
+    "0x0000000000000000000000000000000000000003": { "balance": "1", "builtin": { "name": "ripemd160", "pricing": { "linear": { "base": 600, "word": 120 } } } },
+    "0x0000000000000000000000000000000000000004": { "balance": "1", "builtin": { "name": "identity", "pricing": { "linear": { "base": 15, "word": 3 } } } }
+}
+```
+Other types of accounts that can be specified:
+- simple accounts with some balance `"0x...": { "balance": "100000000000" }`
+- full account state `"0x...": { "balance": "100000000000", "nonce": "0", "code": "0x...", "storage": { "0": "0x...", ... } }`
+- contract constructor, similar to sending a transaction with bytecode `"0x..."`: { "balance": "100000000000", "constructor": "0x..." }`
 
 Optional spec fields:
 
