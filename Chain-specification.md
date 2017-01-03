@@ -7,7 +7,7 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 - [`classic`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
 - [`classic-testnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
 - [`expanse`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/ethcore/parity/blob/master/ethcore/res/instant_seal.json) a development chain to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`dev`](https://github.com/ethcore/parity/blob/master/ethcore/res/instant_seal.json) a [[Private development chain]] to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
 
 ## JSON chain spec format
 A JSON file which specifies rules of a blockchain, some fields are optional which are described following the minimal example, these default to 0.
