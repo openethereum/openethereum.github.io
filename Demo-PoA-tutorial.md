@@ -318,6 +318,10 @@ and check if it was received asking the other node:
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2", "latest"],"id":1}' localhost:8541
 ```
 
+### UI
+
+You can also use the node UIs, node 0 at `localhost:8080` and node 1 at `localhost:8081`.
+
 ## 8. Further development
 
 You can now create more accounts, send value around, write contracts and deploy them. All the tools that are used to develop and use the Ethereum network can be also used in this network.
