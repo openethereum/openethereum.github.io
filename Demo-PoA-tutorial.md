@@ -1,6 +1,6 @@
 This tutorial will walk through setting up two Parity nodes locally and sending transactions between them. If you want to learn more about different parameters specified in this tutorial please refer to the [[Chain specification]] page.
 
-Each node will act as an authority on the network issuing blocks when necessary, there will be also one additional user account with a high initial balance.
+Each node will act as an authority on the network issuing blocks when necessary, there will be also one additional user account with a high initial balance. 
 
 ## 1. Get Parity
 
@@ -206,19 +206,78 @@ The complete `demo-spec.json` should look like this:
 }
 ```
 
-## 5. Run the nodes
+## 5. Run the authority nodes
 
-Now that the spec is complete we can start the two nodes that will participate in the chain.
+Now that the spec is complete we can start the two nodes that will be running the chain. To run a node as an authority we will need to enable it to sign the consensus messages.
 
+First lets create a file with the node passwords `node.pwds`. Each line will contain a password that we used when creating the authority accounts:
+```
+node0
+node1
+```
 
-Putting it all together 
+Now we can add `engine-signer` to our config files. `node0.toml`:
+
+```
+[parity]
+chain = "demo-spec.json"
+db_path = "/tmp/parity0"
+[network]
+port = 30300
+[rpc]
+port = 8540
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+[ui]
+port = 8180
+[dapps]
+port = 8080
+[account]
+password = ["node.pwds"]
+[mining]
+engine_signer = "0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e"
+reseal_on_txs = "none"
+```
+and `node1.toml`:
+```
+[parity]
+chain = "demo-spec.json"
+db_path = "/tmp/parity1"
+[network]
+port = 30301
+[rpc]
+port = 8541
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+[ui]
+port = 8181
+[dapps]
+port = 8081
+[account]
+password = ["node.pwds"]
+[mining]
+engine_signer = "0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2"
+reseal_on_txs = "none"
+```
+
+The two nodes can now be started. Node 0:
+```
+parity --config node0.toml
+```
+and node 1:
+```
+parity --config node1.toml
+```
 
 ## 6. Connect them together
 
-In order to ensure nodes are connected to each other we will need to know their [enode addresses](https://github.com/ethereum/wiki/wiki/enode-url-format). There are two ways to obtain them:  
+In order to ensure the nodes are connected to each other we will need to know their [enode addresses](https://github.com/ethereum/wiki/wiki/enode-url-format) and inform the other node about it. There are three ways to obtain the enode:  
 - RPC
-- UI
+- UI (in the footer)
 - startup console output
+
+Once obtained they can be added either as boot nodes in the `demo-spec.json` or as reserved peers.
+
+Here we will simply use `curl`:
+
 
 ## 7. Send transactions
 
