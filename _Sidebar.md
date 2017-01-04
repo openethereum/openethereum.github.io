@@ -13,7 +13,6 @@
 - [For Mining](Mining)
 - [Coming from Geth](Importing a chain from Geth)
 - [[Backing-up & Restoring]]
-- [[Ethereum Classic]]
 - [[Community Guides]]
 
 ## Developing Dapps
