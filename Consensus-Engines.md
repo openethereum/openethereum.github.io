@@ -73,9 +73,9 @@ A PoW inspired consensus algorithm, each authority gets an assigned time slot in
 }
 ```
 
-`"gasLimitBoundDivisor"` is determines how fast the gas limit should adjust, most of the time `0x400` is fine
-`"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, too high leads to slow block issuance
-`"authorities"` is the list of addresses of the entities which will be allowed to issue blocks
+`"gasLimitBoundDivisor"` is determines how fast the gas limit should adjust, most of the time `0x400` is fine  
+`"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, too high leads to slow block issuance  
+`"authorities"` is the list of addresses of the entities which will be allowed to issue blocks  
 
 ```
 "seal": {
@@ -87,6 +87,8 @@ A PoW inspired consensus algorithm, each authority gets an assigned time slot in
 ```
 
 The genesis seal should not be changed unless a hard fork is conducted.
+
+If malicious authorities are possible then --force-sealing is advised, this will ensure that the correct chain is the longest (making it BFT with finality of authorities_count * step_duration given no network partitions).
 
 ## Tendermint
 
@@ -104,8 +106,8 @@ The genesis seal should not be changed unless a hard fork is conducted.
 }
 ```
 
-`"gasLimitBoundDivisor"` is determines how fast the gas limit should adjust, most of the time `0x400` is fine
-`"authorities"` is the list of addresses of the entities which will be allowed to issue blocks
+`"gasLimitBoundDivisor"` is determines how fast the gas limit should adjust, most of the time `0x400` is fine  
+`"authorities"` is the list of addresses of the entities which will be allowed to issue blocks  
 
 ```
 "seal": {
