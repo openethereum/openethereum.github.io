@@ -276,7 +276,14 @@ In order to ensure the nodes are connected to each other we will need to know th
 
 Once obtained they can be added either as boot nodes in the `demo-spec.json` or as reserved peers.
 
-Here we will simply use `curl`:
+Here we will simply use `curl`. Obtain node 0 enode:
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' localhost:8540
+```
+Use the "result" to add it to node 1:
+```
+
+
 
 
 ## 7. Send transactions
