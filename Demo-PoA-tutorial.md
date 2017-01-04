@@ -103,11 +103,20 @@ Alternative config files can be generated [here](https://ethcore.github.io/parit
 There are three main ways to create accounts, pick one that suits you best:
 #### RPC
 #### UI
+1. Go to `localhost:8080` in your browser and go through the initial setup.
+2. Click on "NEW ACCOUNT"
+3. Pick "Recover account from recovery phrase", this will ensure the address will be the same as in this tutorial
+4. Use the phrase "node0" and password "node0"
+5. The new created account should have address `0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e`
+6. Repeat the same process with phrase "user" and password "user" which will lead to account `0x004ec07d2329997267Ec62b4166639513386F32E`
+7. Repeat the same process on `localhost:8081` with phrase "node1" and password "node1" which will create account `0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2`
+
 #### `parity account new`
 You can also create an account without starting Parity using:
 ```
 parity account new --chain demo-spec.json -d /tmp/parity0
 ```
+This does not give you control over what address will be created, so for the remainder of the tutorial we will stick with the accounts created by the previous methods.
 
 ## 4. Complete the chain specification
 
