@@ -67,7 +67,8 @@ Optional:
 `"forkBlock"` block number of the latest fork that should be checked  
 `"forkCanonHash"` hash of the canonical block at `forkBlock`  
 
-**`"accounts"`** contains optional contents of the genesis block, such as simple accounts with balances or contracts. Usually the standard Ethereum builtin contracts will be present which enable usage of Solidity programming language:
+**`"accounts"`** contains optional contents of the genesis block, such as simple accounts with balances or contracts. Parity does not include the standard Ethereum builtin contracts by default. These are necessary when writing new contracts in Solidity, since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below:
+
 ```
 "accounts": {
     "0x0000000000000000000000000000000000000001": { "balance": "1", "builtin": { "name": "ecrecover", "pricing": { "linear": { "base": 3000, "word": 0 } } } },
