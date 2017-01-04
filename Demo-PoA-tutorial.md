@@ -4,6 +4,8 @@ Each node will act as an authority on the network issuing blocks when necessary,
 
 ## 1. Get Parity
 
+Currently available only in the master branch, please compile or or use a recent [nightly build](https://vanity-service.ethcore.io/parity-binaries?version=master&format=markdown).
+
 ## 2. Choose your chain
 
 We will run a chain with Authority Round consensus engine.
@@ -280,11 +282,20 @@ Here we will simply use `curl`. Obtain node 0 enode:
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' localhost:8540
 ```
-Use the "result" to add it to node 1:
+Add the "result" to node 1 (replace `enode://RESULT` in the command):
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' localhost:8541
 ```
 
-
-
+Now the node 1 enode:
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' localhost:8541
+```
+Add the "result" to node 0 (replace `enode://RESULT` in the command):
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' localhost:8540
+```
+Now the nodes should indicate `0/1/25 peers` in the console, which means they are connected to each other.
 
 ## 7. Send transactions
 
