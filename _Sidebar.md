@@ -11,8 +11,6 @@
   - [[Parity github hint]]
 - [With Mist](Using parity with mist)
 - [For Mining](Mining)
-- [For Private Chains](Private Chains)
-- [For PoA Chains](Proof of Authority Chains)
 - [Coming from Geth](Importing a chain from Geth)
 - [[Backing-up & Restoring]]
 - [[Ethereum Classic]]
@@ -28,6 +26,11 @@
   - [parity_set](JSONRPC-parity_set-module)
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
+
+## Parity Chains
+- [[Chain specification]]
+- [[Proof of Work Chains]]
+- [[Proof of Authority Chains]]
 - [[Private development chain]]
 
 ## Hacking on Parity
