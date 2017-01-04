@@ -1,6 +1,6 @@
 This tutorial will walk through setting up two Parity nodes locally and sending transactions between them. If you want to learn more about different parameters specified in this tutorial please refer to the [[Chain specification]] page.
 
-Each node will act as an authority on the network issuing blocks when necessary, there will be also one additional user account with a high initial balance. 
+Each node will act as an authority on the network issuing blocks when necessary, there will be also one additional user account with a high initial balance. All files produced in this tutorial can be found [here](https://github.com/keorn/parity-poa-tutorial).
 
 ## 1. Get Parity
 
