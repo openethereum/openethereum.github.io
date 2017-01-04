@@ -10,7 +10,7 @@ We will run a chain with Authority Round consensus engine.
 `"stepDuration"` is set to at least 5 second block times  
 `"authorities"` is empty right now since we are yet to create our authority accounts  
 
-`"params"` are left to be fairly standard#
+`"params"` standard for most chains
 
 `"genesis"` has some standard values for the Authority Round consensus
 
@@ -52,15 +52,96 @@ We will run a chain with Authority Round consensus engine.
 }
 ```
 
-## 3. Create accounts
+Save the above under `demo-spec.json`.
 
-Now that a bare bones chain specification is complete new accounts can be created. Parity stores accounts for each chain with a different genesis hash in a separate folder, so in order to create the accounts in the correct one we will need to run with the `--chain` option.
+## 3. Setting up the two nodes
+
+Now that a bare bones chain specification is complete the two nodes can be set up. Parity stores accounts for each chain with a different genesis hash in a separate folder, so in order to create the accounts in the correct one we will need to run with the `--chain` option.
+Normally the two nodes would be started on separate machines, however since we are using the same one we will need to resolve some possible collisions:  
+- `-d` determines the directory that a Parity instance uses for data and keys
+- `--port` determines the port via which Parity communicates with other nodes
+- `--jsonrpc-port` is the RPC port
+- `--ui-port` is the port used by the secure UI
+- `--dapps-port` is the port used by Parity Dapps
+
+Putting it all together gives us the following command to start Parity:
+```
+parity  --chain demo-spec.json -d /tmp/parity0 --port 30300 --jsonrpc-port 8540 --ui-port 8180 --dapps-port 8080
+```
+
+Since it is rather clunky we can use a config files instead. Node 0 will have this config file saved under `node0.toml`:
+```
+[parity]
+chain = "demo-spec.json"
+db_path = "/tmp/parity0"
+[network]
+port = 30300
+[rpc]
+port = 8540
+[ui]
+port = 8180
+[dapps]
+port = 8080
+```
+
+While node 1 will have config saved under `node1.toml`:
+```
+[parity]
+chain = "demo-spec.json"
+db_path = "/tmp/parity1"
+[network]
+port = 30301
+[rpc]
+port = 8541
+[ui]
+port = 8181
+[dapps]
+port = 8081
+```
+Alternative config files can be generated [here](https://ethcore.github.io/parity-config-generator/).
+
+There are three main ways to create accounts, pick one that suits you best:
+#### RPC
+#### UI
+#### `parity account new`
+You can also create an account without starting Parity using:
+```
+parity account new --chain demo-spec.json -d /tmp/parity0
+```
 
 ## 4. Complete the chain specification
 
+Now that the accounts are created we can added them to the spec file. Open `demo-spec.json` back up and add the authorities we have just created to the `"authorities"` array:
+```
+"authorities" : [
+    "0x..",
+    "0x.."
+]
+```
+
+Then add our user account to the genesis, so that we have some balance to send around:
+```
+"0x..": { "balance": "100000000" }
+```
+
+The complete spec should look like this:
+```
+```
+
+
 ## 5. Run the nodes
 
+Now that the spec is complete we can start the two nodes that will participate in the chain.
+
+
+Putting it all together 
+
 ## 6. Connect them together
+
+In order to ensure nodes are connected to each other we will need to know their [enode addresses](https://github.com/ethereum/wiki/wiki/enode-url-format). There are two ways to obtain them:  
+- RPC
+- UI
+- startup console output
 
 ## 7. Send transactions
 
