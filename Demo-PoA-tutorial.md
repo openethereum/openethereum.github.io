@@ -162,7 +162,7 @@ The accounts can be now added to the spec file. Open `demo-spec.json` back up an
 
 Then add our user account to the genesis, so that we have some balance to send around:
 ```
-"0x004ec07d2329997267Ec62b4166639513386F32E": { "balance": "100000000" }
+"0x004ec07d2329997267Ec62b4166639513386F32E": { "balance": "10000000000000000000000" }
 ```
 
 The complete `demo-spec.json` should look like this:
@@ -201,7 +201,7 @@ The complete `demo-spec.json` should look like this:
         "0x0000000000000000000000000000000000000002": { "balance": "1", "builtin": { "name": "sha256", "pricing": { "linear": { "base": 60, "word": 12 } } } },
         "0x0000000000000000000000000000000000000003": { "balance": "1", "builtin": { "name": "ripemd160", "pricing": { "linear": { "base": 600, "word": 120 } } } },
         "0x0000000000000000000000000000000000000004": { "balance": "1", "builtin": { "name": "identity", "pricing": { "linear": { "base": 15, "word": 3 } } } },
-        "0x004ec07d2329997267Ec62b4166639513386F32E": { "balance": "100000000" }
+        "0x004ec07d2329997267Ec62b4166639513386F32E": { "balance": "10000000000000000000000" }
     }
 }
 ```
@@ -288,4 +288,29 @@ Use the "result" to add it to node 1:
 
 ## 7. Send transactions
 
+Two main ways of sending transactions are the RPC and the UI.
+#### RPC
+Send some tokens from the user account to authority node0:
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e","value":"0xde0b6b3a7640000"}, "user"],"id":0}' localhost:8540
+```
+Once the request is submitted a block should be issued a few seconds later. You can check that the other account received the funds:
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e", "latest"],"id":1}' localhost:8540
+```
+We can also send some to the account that is on the other node:
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2","value":"0xde0b6b3a7640000"}, "user"],"id":0}' localhost:8540
+```
+and check if it was received asking the other node:
+```
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2", "latest"],"id":1}' localhost:8541
+```
+
+#### UI
+
 ## 8. Further development
+
+You can now create more accounts, send value around, write contracts and deploy them. All the tools that are used to develop and use the Ethereum network can be also used in this network.
+
+To deploy Parity on multiple machines you may find the [docker builds](https://hub.docker.com/r/ethcore/parity/) useful.
