@@ -119,10 +119,3 @@ Your gas price is probably too low. Try increasing the gas price to 20Gwei by ap
 
 ##### All my `eth_sendTransaction` calls only return "0x00000000...000000000" as a return value.
 You're probably trying to send from a locked account. Ensure you use the `--unlock` (to specify which account(s) to unlock) and `--password` (to pass in the file contain any passwords needed to unlock those acocunts) so that the account(s) from which you're sending the transaction are unlocked.
-
-#### Testnet & Private Chains
-
-##### When I switched to a testnet, my main chain wallets still appear. Might it be unsafe?
-Parity does not ([yet](https://github.com/ethcore/parity/issues/1221)) bother distinguishing keystores between the different networks. To avoid potential cross-network transaction-replay attacks, ensure all private networks have a reasonably high number for the `accountStartNonce` parameter. Morden has the value of `"0x0100000"`, which is considered safe.
-
-Note, the security of `--unlock` for an active mainnet account is unchanged, regardless of which network you are on. You are heavily discouraged from ever using `--unlock` and instead use the [Secure Transaction Signer](https://github.com/ethcore/parity/wiki/Secure-Transaction-Signer).
