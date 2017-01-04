@@ -92,6 +92,8 @@ If malicious authorities are possible then --force-sealing is advised, this will
 
 ## Tendermint
 
+This consensus is still experimental, please use Authority Round for more stable solution.
+
 ```
 "engine": {
     "tendermint": {
