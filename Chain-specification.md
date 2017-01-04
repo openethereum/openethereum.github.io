@@ -87,3 +87,7 @@ Optional spec fields:
 **`"dataDir"`** sets a name of the chain to be used in the data directory instead of the genesis hash
 
 **`"nodes"`** a list of boot nodes in the [enode format](https://github.com/ethereum/wiki/wiki/enode-url-format)
+
+## Coming from Geth
+To connect to a Geth node or just use the same network setup you can use [this tool](https://github.com/keorn/parity-spec) to generate a Parity compatible chain specification file. It can be then used by supplying it to the `--chain` Parity option.
+To keep the RPC interface similar to Geth `--geth` option can be used.
