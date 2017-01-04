@@ -40,5 +40,4 @@
 - [Website](https://parity.io)
 
 ## Technologies
-- [[Secure Transaction Signer]]
 - [[Warp-Sync]]
