@@ -30,6 +30,7 @@
 - [[Chain specification]]
 - [[Proof of Work Chains]]
 - [[Proof of Authority Chains]]
+  - [[Demo PoA tutorial]]
 - [[Private development chain]]
 
 ## Hacking on Parity
