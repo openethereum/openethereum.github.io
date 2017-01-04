@@ -57,7 +57,7 @@ Further methods for actually using the nodes can be found [here](https://github.
 
 To create a Proof of Authority chain a JSON spec file should be provided to `--chain` with authorities set to correct addresses.
 
-An example template that can be used for the consensus algorithms below:
+An example template that can be used for the consensus algorithms:
 ```
 {
 	"name": "ChainName",
@@ -87,63 +87,4 @@ An example template that can be used for the consensus algorithms below:
 }
 ```
 
-## Authority Round Engine
-
-Engine should be specified as follows:
-```
-"engine": {
-	"authorityRound": {
-		"params": {
-			"gasLimitBoundDivisor": "0x400",
-			"stepDuration": "5",
-			"authorities" : [
-				"0x37f93cfe411fa244b87ff257085ee360fca245e8",
-				"0x610a3a37b98bf0c91c35442e489c246096739324"
-			]
-		}
-	}
-}
-```
-and genesis seal (this should be the same for all chains):
-```
-"seal": {
-	"authorityRound": {
-		"step": "0x0",
-		"signature": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-	}
-}
-```
-
-The `authorities` are the addresses that are able to issue blocks. `stepDuration` is the minimum block time in seconds.
-
-If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of `authorities_count * step_duration` given no network partitions).
-
-## Tendermint Engine
-
-This consensus is still experimental, please use Authority Round for more stable solution.
-
-```
-"engine": {
-	"tendermint": {
-		"params": {
-			"gasLimitBoundDivisor": "0x400",
-			"authorities" : [
-				"0x37f93cfe411fa244b87ff257085ee360fca245e8",
-				"0x610a3a37b98bf0c91c35442e489c246096739324"
-			]
-		}
-	}
-}
-```
-and genesis seal (this should be the same for all chains):
-```
-"seal": {
-	"tendermint": {
-		"round": "0x0",
-		"proposal": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-		"precommits": [
-			"0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-		]
-	}
-}
-```
+The two available algorithms are the [Authority Round](https://github.com/ethcore/parity/wiki/Consensus-Engines#authority-round) and [Tendermint](https://github.com/ethcore/parity/wiki/Consensus-Engines#tendermint). More details on other chain parameters are available on the [[Chain specification]] page.
