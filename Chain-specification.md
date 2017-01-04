@@ -1,4 +1,8 @@
 By default, when simply running `parity`, Parity Ethereum will connect to the official public Ethereum network. Ethereum uses EVM to perform its state transitions and proof of work to achieve consensus, however Parity makes it possible to run alternative EVM-based chains which can be specified by a JSON chain spec.
+
+In addition to the usual [[Proof of Work Chains]], Parity also includes [[Proof of Authority Chains]] which do not require mining.
+More details on the available options can be found on the [[Consensus Engines]] page.
+
 In order to run a chain different to the official public Ethereum one, Parity has to be ran with the `--chain` option. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
