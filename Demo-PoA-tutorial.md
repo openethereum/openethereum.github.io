@@ -108,7 +108,7 @@ port = 8081
 Alternative config files can be generated [here](https://ethcore.github.io/parity-config-generator/).
 
 We will create three accounts: two authorities and one user account. There are three main ways to create accounts, pick one that suits you best:
-#### RPC
+### RPC
 Start the node 0 using `parity --config node0.toml`.
 
 RPC can accessed via `web3`, `parity.js` or simply using `curl`. This will create the first authority address:
@@ -129,7 +129,7 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
 ```
 Returned address should be `0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2`.
 
-#### UI
+### UI
 1. Start the node 0 using `parity --config node0.toml`
 2. Go to `localhost:8080` in your browser and go through the initial setup
 3. Click on "NEW ACCOUNT"
@@ -141,7 +141,7 @@ Returned address should be `0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2`.
 9. Go to `localhost:8081`
 10. Again recover from phrase "node1" and password "node1" which will create account `0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2`
 
-#### `parity account new`
+### `parity account new`
 You can also create an account without starting Parity using:
 ```
 parity account new --config node0.toml
@@ -269,7 +269,7 @@ and node 1:
 parity --config node1.toml
 ```
 
-## 6. Connect them together
+## 6. Connecting the nodes
 
 In order to ensure the nodes are connected to each other we will need to know their [enode addresses](https://github.com/ethereum/wiki/wiki/enode-url-format) and inform the other node about it. There are three ways to obtain the enode:  
 - RPC
@@ -300,7 +300,7 @@ Now the nodes should indicate `0/1/25 peers` in the console, which means they ar
 ## 7. Send transactions
 
 Two main ways of sending transactions are the RPC and the UI.
-#### RPC
+### RPC
 Send some tokens from the user account to authority node0:
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e","value":"0xde0b6b3a7640000"}, "user"],"id":0}' localhost:8540
@@ -317,8 +317,6 @@ and check if it was received asking the other node:
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2", "latest"],"id":1}' localhost:8541
 ```
-
-#### UI
 
 ## 8. Further development
 
