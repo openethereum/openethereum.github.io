@@ -8,17 +8,7 @@ Currently available only in the master branch, please compile or or use a recent
 
 ## 2. Choose your chain
 
-We will run a chain with Authority Round consensus engine.
-
-`"gasLimitBoundDivisor"` which determines gas limit adjustment has the usual Ethereum value  
-`"stepDuration"` is set to at least 5 second block times  
-`"authorities"` is empty right now since we are yet to create our authority accounts  
-
-`"params"` standard for most chains
-
-`"genesis"` has some standard values for the Authority Round consensus
-
-`"accounts"` contains the standard Ethereum builtin contracts, these should be included to use the Solidity contract writing language
+We will run a chain with Authority Round consensus engine. First we need to create a basic chain spec with all required fields.
 
 ```
 {
@@ -55,6 +45,16 @@ We will run a chain with Authority Round consensus engine.
     }
 }
 ```
+
+`"gasLimitBoundDivisor"` which determines gas limit adjustment has the usual Ethereum value  
+`"stepDuration"` is set to at least 5 second block times  
+`"authorities"` is empty right now since we are yet to create our authority accounts  
+
+`"params"` standard for most chains
+
+`"genesis"` has some standard values for the Authority Round consensus
+
+`"accounts"` contains the standard Ethereum builtin contracts, these should be included to use the Solidity contract writing language
 
 Save the above under `demo-spec.json`.
 
