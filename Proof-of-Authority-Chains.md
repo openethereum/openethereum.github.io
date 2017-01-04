@@ -15,6 +15,8 @@ a hard-configured set of "authorities" - nodes that are explicitly allowed to cr
 5. Additional nodes can connect to the network as well to use it.
 6. Use the network just as a public Ethereum network (transactions, contracts etc.).
 
+A [[Demo PoA tutorial]] describes how to set up two nodes and connect them to each other.
+
 # Running the authority nodes
 
 Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described in the next section.
