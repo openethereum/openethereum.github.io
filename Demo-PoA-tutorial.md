@@ -78,7 +78,7 @@ Since the command is becoming rather clunky we can use a config files instead, w
 ```
 [parity]
 chain = "demo-spec.json"
-db_path = "/tmp/parity0"
+base_path = "/tmp/parity0"
 [network]
 port = 30300
 [rpc]
@@ -94,7 +94,7 @@ While node 1 will have config saved under `node1.toml`:
 ```
 [parity]
 chain = "demo-spec.json"
-db_path = "/tmp/parity1"
+base_path = "/tmp/parity1"
 [network]
 port = 30301
 [rpc]
@@ -223,7 +223,7 @@ Now we can add `engine-signer` to our config files. `node0.toml`:
 ```
 [parity]
 chain = "demo-spec.json"
-db_path = "/tmp/parity0"
+base_path = "/tmp/parity0"
 [network]
 port = 30300
 [rpc]
@@ -243,7 +243,7 @@ and `node1.toml`:
 ```
 [parity]
 chain = "demo-spec.json"
-db_path = "/tmp/parity1"
+base_path = "/tmp/parity1"
 [network]
 port = 30301
 [rpc]
@@ -332,7 +332,7 @@ To add a non-authority node this simpler config can be used:
 ```
 [parity]
 chain = "demo-spec.json"
-db_path = "/tmp/parity2"
+base_path = "/tmp/parity2"
 [network]
 port = 30302
 [rpc]
