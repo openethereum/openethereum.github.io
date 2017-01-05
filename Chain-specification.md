@@ -94,7 +94,7 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
 
 Optional spec fields:
 
-+ **`"dataDir"`** sets a name of the chain to be used in the data directory instead of the genesis hash
++ **`"dataDir"`** sets a name of the chain to be used in the data directory instead of the chain name
 
 + **`"nodes"`** a list of boot nodes in the [enode format](https://github.com/ethereum/wiki/wiki/enode-url-format)
 
