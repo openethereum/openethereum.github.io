@@ -28,6 +28,7 @@
 
 ## Parity Chains
 - [[Chain specification]]
+  - [[Consensus Engines]]
 - [[Proof of Work Chains]]
 - [[Proof of Authority Chains]]
   - [[Demo PoA tutorial]]
