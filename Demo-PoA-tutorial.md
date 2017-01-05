@@ -71,7 +71,7 @@ We will also want to expose all RPC apis to make interacting with the nodes easi
 
 Putting it all together gives us the following command to start Parity:
 ```
-parity  --chain demo-spec.json -d /tmp/parity0 --port 30300 --jsonrpc-port 8540 --ui-port 8180 --dapps-port 8080 --jsonrpc-apis web3, eth, net, personal, parity, parity_set, traces, rpc, parity_accounts
+parity  --chain demo-spec.json -d /tmp/parity0 --port 30300 --jsonrpc-port 8540 --ui-port 8180 --dapps-port 8080 --jsonrpc-apis web3,eth,net,personal,parity,parity_set,traces,rpc,parity_accounts
 ```
 
 Since the command is becoming rather clunky we can use a config files instead, which are passed using `--config` option. Node 0 will have this config file saved under `node0.toml`:
@@ -327,3 +327,29 @@ You can also use the node UIs, node 0 at `localhost:8080` and node 1 at `localho
 You can now create more accounts, send value around, write contracts and deploy them. All the tools that are used to develop and use the Ethereum network can be also used in this network.
 
 To deploy Parity on multiple machines you may find the [docker builds](https://hub.docker.com/r/ethcore/parity/) useful.
+
+To add a non-authority node this simpler config can be used:
+```
+[parity]
+chain = "demo-spec.json"
+db_path = "/tmp/parity2"
+[network]
+port = 30302
+[rpc]
+port = 8542
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+[ui]
+port = 8182
+[dapps]
+port = 8082
+```
+Then the accounts and connecting the nodes can be done the same as for the authority nodes.
+
+When running nodes on separate machines most of the fields will be redundant, so the basic config will only have the chain and possibly the RPC apis:
+```
+[parity]
+chain = "demo-spec.json"
+[rpc]
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+```
+or simply running `parity --chain demo-spec.json`!
