@@ -73,9 +73,11 @@ A PoW inspired consensus algorithm, each authority gets an assigned time slot in
 }
 ```
 
-`"gasLimitBoundDivisor"` is determines how fast the gas limit should adjust, most of the time `0x400` is fine  
+`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine  
 `"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, too high leads to slow block issuance  
 `"authorities"` is the list of addresses of the entities which will be allowed to issue blocks  
+Optional:  
+`"blockReward"` determines the reward given to issuing authority  
 
 ```
 "seal": {
@@ -108,8 +110,10 @@ This consensus is still experimental, please use Authority Round for more stable
 }
 ```
 
-`"gasLimitBoundDivisor"` is determines how fast the gas limit should adjust, most of the time `0x400` is fine  
+`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine  
 `"authorities"` is the list of addresses of the entities which will be allowed to issue blocks  
+Optional:  
+`"blockReward"` determines the reward given to issuing authority  
 
 ```
 "seal": {
