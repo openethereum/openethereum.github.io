@@ -10,7 +10,7 @@ Currently available only in the master branch, please compile or use a recent [n
 
 We will run a chain with Authority Round consensus engine. First we need to create a basic chain spec with all required fields.
 
-```
+```json
 {
     "name": "DemoPoA",
     "engine": {
@@ -23,6 +23,7 @@ We will run a chain with Authority Round consensus engine. First we need to crea
         }
     },
     "params": {
+        "accountStartNonce": "0x0",
         "maximumExtraDataSize": "0x20",
         "minGasLimit": "0x1388",
         "networkID" : "0x2323"
@@ -35,7 +36,10 @@ We will run a chain with Authority Round consensus engine. First we need to crea
             }
         },
         "difficulty": "0x20000",
-        "gasLimit": "0x5B8D80"
+        "gasLimit": "0x5B8D80",
+        "author": "0x0000000000000000000000000000000000000000",
+        "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "timestamp": "0x00"
     },
     "accounts": {
         "0x0000000000000000000000000000000000000001": { "balance": "1", "builtin": { "name": "ecrecover", "pricing": { "linear": { "base": 3000, "word": 0 } } } },
