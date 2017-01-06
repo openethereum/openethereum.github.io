@@ -1071,7 +1071,7 @@ curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","metho
 
 Result see [eth_getBlockByHash](#eth_getblockbyhash)
 
-**Note**: An uncle doesn't contain individual transactions.
+**Note**: An uncle doesn't contain individual transactions, derivative uncles or size.
 
 ***
 
@@ -1096,7 +1096,7 @@ params: [
 
 See [eth_getBlockByHash](#eth_getblockbyhash)
 
-**Note**: An uncle doesn't contain individual transactions.
+**Note**: An uncle doesn't contain individual transactions, derivative uncles or size.
 
 ##### Example
 ```js
