@@ -113,19 +113,19 @@ Start the node 0 using `parity --config node0.toml`.
 
 RPC can accessed via `web3`, `parity.js` or simply using `curl`. This will create the first authority address:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["node0", "node0"],"id":0}' localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["node0", "node0"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 Returned address should be `0x00bd138abd70e2f00903268f3db08f2d25677c9e`.
 
 The user address:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["user", "user"],"id":0}' localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["user", "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 Returned address should be `0x004ec07d2329997267ec62b4166639513386f32e`.
 
 Now start the other node with `parity --config node1.toml` and create the second authority account:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["node1", "node1"],"id":0}' localhost:8541
+curl --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["node1", "node1"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8541
 ```
 Returned address should be `0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2`.
 
@@ -280,20 +280,20 @@ Once obtained they can be added either as boot nodes in the `demo-spec.json` or 
 
 Here we will simply use `curl`. Obtain node 0 enode:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 Add the "result" to node 1 (replace `enode://RESULT` in the command):
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' localhost:8541
+curl --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8541
 ```
 
 Now the node 1 enode:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' localhost:8541
+curl --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' -H "Content-Type: application/json" -X POST localhost:8541
 ```
 Add the "result" to node 0 (replace `enode://RESULT` in the command):
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 Now the nodes should indicate `0/1/25 peers` in the console, which means they are connected to each other.
 
@@ -303,19 +303,19 @@ Two main ways of sending transactions are the RPC and the UI.
 ### RPC
 Send some tokens from the user account to authority node0:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e","value":"0xde0b6b3a7640000"}, "user"],"id":0}' localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e","value":"0xde0b6b3a7640000"}, "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 Once the request is submitted a block should be issued a few seconds later. You can check that the other account received the funds:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e", "latest"],"id":1}' localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e", "latest"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 We can also send some to the account that is on the other node:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2","value":"0xde0b6b3a7640000"}, "user"],"id":0}' localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2","value":"0xde0b6b3a7640000"}, "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 and check if it was received asking the other node:
 ```
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2", "latest"],"id":1}' localhost:8541
+curl --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2", "latest"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8541
 ```
 
 ### UI
