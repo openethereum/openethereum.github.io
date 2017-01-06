@@ -33,7 +33,7 @@ Confirm a request in the signer queue
 
 ```bash
 # Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_confirmRequest","params":["0x1",{},"hunter2"],"id":1}' localhost:8545
+curl --data '{"jsonrpc":"2.0","method":"signer_confirmRequest","params":["0x1",{},"hunter2"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -62,7 +62,7 @@ Confirm a request in the signer queue providing signed request.
 
 ```bash
 # Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_confirmRequestRaw","params":["0x1","0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"],"id":1}' localhost:8545
+curl --data '{"jsonrpc":"2.0","method":"signer_confirmRequestRaw","params":["0x1","0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -90,7 +90,7 @@ none
 
 ```bash
 # Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_generateAuthorizationToken","params":[],"id":1}' localhost:8545
+curl --data '{"jsonrpc":"2.0","method":"signer_generateAuthorizationToken","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -118,7 +118,7 @@ none
 
 ```bash
 # Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_generateWebProxyAccessToken","params":[],"id":1}' localhost:8545
+curl --data '{"jsonrpc":"2.0","method":"signer_generateWebProxyAccessToken","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -146,7 +146,7 @@ Rejects a request in the signer queue
 
 ```bash
 # Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_rejectRequest","params":["0x1"],"id":1}' localhost:8545
+curl --data '{"jsonrpc":"2.0","method":"signer_rejectRequest","params":["0x1"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -174,7 +174,7 @@ none
 
 ```bash
 # Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_requestsToConfirm","params":[],"id":1}' localhost:8545
+curl --data '{"jsonrpc":"2.0","method":"signer_requestsToConfirm","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -202,7 +202,7 @@ none
 
 ```bash
 # Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_signerEnabled","params":[],"id":1}' localhost:8545
+curl --data '{"jsonrpc":"2.0","method":"signer_signerEnabled","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
