@@ -12,8 +12,6 @@
 
 ## JSON RPC API Reference
 
-***
-
 ### signer_confirmRequest
 
 Confirm a request in the signer queue
