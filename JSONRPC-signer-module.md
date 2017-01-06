@@ -61,6 +61,9 @@ Confirm a request in the signer queue providing signed request.
 #### example
 
 ```bash
+# Request
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"signer_confirmRequestRaw","params":["0x1","0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"],"id":1}' localhost:8545
+
 # Response
 {
   "id": 1,
