@@ -287,14 +287,6 @@ Add the "result" to node 1 (replace `enode://RESULT` in the command):
 curl --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8541
 ```
 
-Now the node 1 enode:
-```
-curl --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' -H "Content-Type: application/json" -X POST localhost:8541
-```
-Add the "result" to node 0 (replace `enode://RESULT` in the command):
-```
-curl --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode://RESULT"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
-```
 Now the nodes should indicate `0/1/25 peers` in the console, which means they are connected to each other.
 
 ## 7. Send transactions
