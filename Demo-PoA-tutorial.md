@@ -19,7 +19,7 @@ We will run a chain with Authority Round consensus engine. First we need to crea
                 "gasLimitBoundDivisor": "0x400",
                 "stepDuration": "5",
                 "validators" : {
-                    []
+                    "list": []
                 }
             }
         }
