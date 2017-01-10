@@ -58,7 +58,7 @@ This `Engine` does not have any parameters to be adjusted.
 
 The following `Engine`s achieve consensus by referring to a list of "validators" (referred to as authorities, when they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them.
 
-They can be either specified at genesis using a simple `"list"`:
+They can be either specified at genesis using a simple `"list"` (as shown in the Authority Round and Tendermint sections):
 ```json
 "validators": {
 	"list": [
@@ -83,7 +83,7 @@ Example contracts can be found [here](https://github.com/ethcore/contracts/tree/
 
 ## Authority Round
 
-A PoW inspired consensus algorithm, each authority gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each authority.
+A PoW inspired consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator.
 
 ```json
 "engine": {
