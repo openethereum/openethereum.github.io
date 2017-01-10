@@ -341,7 +341,7 @@ port = 8182
 [dapps]
 port = 8082
 ```
-Then the accounts and connecting the nodes can be done the same as for the authority nodes. To make sure that transactions are accepted, authorities can also run with `usd_per_tx = 0` field under `[mining]`. Any node submitting a transaction will be then able to do so for free.
+Then the accounts and connecting the nodes can be done the same as for the authority nodes. To make sure that transactions are accepted, authorities can also run with `usd_per_tx = "0"` field under `[mining]`. Any node submitting a transaction will be then able to do so for free.
 
 When running nodes on separate machines most of the fields will be redundant, so the basic config will only have the chain and possibly the RPC apis:
 ```
