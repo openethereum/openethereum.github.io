@@ -18,7 +18,9 @@ We will run a chain with Authority Round consensus engine. First we need to crea
             "params": {
                 "gasLimitBoundDivisor": "0x400",
                 "stepDuration": "5",
-                "authorities" : []
+                "validators" : {
+                    []
+                }
             }
         }
     },
@@ -48,7 +50,7 @@ We will run a chain with Authority Round consensus engine. First we need to crea
 
 `"gasLimitBoundDivisor"` which determines gas limit adjustment has the usual Ethereum value  
 `"stepDuration"` is set to at least 5 second block times  
-`"authorities"` is empty right now since we are yet to create our authority accounts  
+`"validators"` is empty right now since we are yet to create our authority accounts  
 
 `"params"` standard for most chains
 
@@ -154,12 +156,14 @@ If the account were created from phrases we should have the following setup now:
 - node 0 has the `0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e` authority account and `0x004ec07d2329997267Ec62b4166639513386F32E` user account
 - node 1 has the `0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2` authority account
 
-The accounts can be now added to the spec file. Open `demo-spec.json` back up and add the authorities we have just created to the `"authorities"` array:
+The accounts can be now added to the spec file. Open `demo-spec.json` back up and add the authorities we have just created to the `"validators"` array:
 ```
-"authorities" : [
-    "0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e",
-    "0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2"
-]
+"validators" : {
+    "list": [
+        "0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e",
+        "0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2"
+    ]
+}
 ```
 
 Then add our user account to the genesis, so that we have some balance to send around:
@@ -176,10 +180,12 @@ The complete `demo-spec.json` should look like this:
             "params": {
                 "gasLimitBoundDivisor": "0x400",
                 "stepDuration": "5",
-                "authorities" : [
-                    "0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e",
-                    "0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2"
-                ]
+                "validators" : {
+                    "list": [
+                        "0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e",
+                        "0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2"
+                    ]
+                }
             }
         }
     },
