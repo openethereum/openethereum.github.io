@@ -10,16 +10,16 @@ a hard-configured set of "authorities" - nodes that are explicitly allowed to cr
 # Setting up a Proof of Authority network
 1. Pick real world entities that should control the network, so called authorities.
 2. Each authority should run a Parity node and create an account.
-3. Authorities should exchange their account addresses and put all of them in the JSON chain specification file.
+3. Authorities should exchange their account addresses and place them in the [spec or validator contract](https://github.com/ethcore/parity/wiki/Consensus-Engines#validator-consensus).
 4. All authority nodes should run an instance Parity with the agreed on specification.
-5. Additional nodes can connect to the network as well to use it.
+5. Additional user nodes can connect to the network as well.
 6. Use the network just as a public Ethereum network (transactions, contracts etc.).
 
 A [[Demo PoA tutorial]] describes how to set up two nodes and connect them to each other.
 
 # Running the authority nodes
 
-Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described in the next section.
+Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described on the [[Chain specification]] page.
 
 If you're expecting to issue blocks, make sure you have `--engine-signer` set to an account address (`0xADDRESS`) listed in the engine configuration under `authorities` and password file for that account is provided to `--password`. Parity has a separate directory for each chain, so make sure that the account is visible on the specified chain (create an account with `--chain`, import the keys or use `--keys-path`). You should ensure anyone else you want issuing on the network is similarly configured. Each authority can only run a **single node** and to utilize the full network capacity each authority should run a node.
 The configuration can also be done via the [config file](https://ethcore.github.io/parity-config-generator/) with the following fields:
