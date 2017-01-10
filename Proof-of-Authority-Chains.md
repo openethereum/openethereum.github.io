@@ -35,7 +35,7 @@ password = ["/path/to/password"]
 [mining]
 engine_signer = "0x37f93cfe411fa244b87ff257085ee360fca245e8"
 reseal_on_txs = "none" // Authorities reseal automatically
-usd_per_tx = 0 // Allows for free transactions.
+usd_per_tx = "0" // Allows for free transactions.
 ```
 
 ## Private centralized network setup
