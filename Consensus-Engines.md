@@ -5,7 +5,7 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 
 [Original Ethereum PoW](https://github.com/ethereum/wiki/wiki/Ethash) `Engine`.
 
-```
+```json
 "engine": {
 	"Ethash": {
 		"params": {
@@ -27,7 +27,7 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 }
 ```
 
-```
+```json
 "seal": {
 	"ethereum": {
 		"nonce": "0x0000000000000042",
@@ -40,13 +40,13 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 
 `Engine` which can be used for development, as described in [[Private development chain]].
 
-```
+```json
 "engine": {
 	"instantSeal": null
 }
 ```
 
-```
+```json
 "seal": {
 	"generic": "0x0"
 }
@@ -59,7 +59,7 @@ This `Engine` does not have any parameters to be adjusted.
 The following `Engine`s achieve consensus by referring to a list of "validators" (referred to as authorities, when they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them.
 
 They can be either specified at genesis using a simple `"list"`:
-```
+```json
 "validators": {
 	"list": [
 		"0x7d577a597b2742b498cb5cf0c26cdcd726d39e6e",
@@ -69,11 +69,11 @@ They can be either specified at genesis using a simple `"list"`:
 ```
 
 The list can be also part of the blockchain state by being stored in an Ethereum contract. The contract has to have the following interface:
-```
+```json
 {"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"}
 ```
 The function `getValidators` will be called on every block to determine the current list. The switching rules are then determined by the contract implementing that method. The spec should contain the contract address:
-```
+```json
 "validators": {
 	"contract": "0x0000000000000000000000000000000000000005"
 }
@@ -85,7 +85,7 @@ Example contracts can be found [here](https://github.com/ethcore/contracts/tree/
 
 A PoW inspired consensus algorithm, each authority gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each authority.
 
-```
+```json
 "engine": {
     "authorityRound": {
         "params": {
@@ -108,7 +108,7 @@ A PoW inspired consensus algorithm, each authority gets an assigned time slot in
 Optional:  
 `"blockReward"` determines the reward given to issuing authority  
 
-```
+```json
 "seal": {
     "authorityRound": {
         "step": "0x0",
@@ -125,7 +125,7 @@ If malicious authorities are possible then --force-sealing is advised, this will
 
 This consensus is still experimental, please use Authority Round for more stable solution.
 
-```
+```json
 "engine": {
     "tendermint": {
         "params": {
@@ -150,7 +150,7 @@ Optional:
 `"precommitTimeout"`
 `"commitTimeout"`
 
-```
+```json
 "seal": {
     "tendermint": {
         "round": "0x0",
