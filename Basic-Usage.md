@@ -43,3 +43,19 @@ After this point, you'll be able to use the web3 API from with this environment,
 > web3.eth.blockNumber
 743397
 ```
+
+
+# Legacy Geth Console
+
+As of this writing, it is possible to configure parity to expose an ipc port which can be readily attached to by geth.
+
+To do this, run parity with the --geth flag, like so:
+
+    parityuser@myserver> parity --geth --warp --chain morden
+
+In the home directory of the user who ran the parity command, parity will create a .ethereum subdirectory, and an ipc file within that.
+
+You can then run geth with the attach option, passing the ipc port that parity just created, like so:
+
+    parityuser@myserver> geth attach ipc:/home/parityuser/.ethereum/geth.ipc
+
