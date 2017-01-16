@@ -92,9 +92,7 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": [
-    "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
-  ]
+  "result": ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
 }
 ```
 
@@ -136,14 +134,14 @@ Executes a new message call immediately without creating a transaction on the bl
 
 #### Parameters
 
-- `Object` - The transaction call object.
+0. `Object` - The transaction call object.
     - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
     - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
     - `gasPrice`: `Quantity` - (optional) Integer of the gasPrice used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
     - `data`: `Data` - (optional) Hash of the method signature and encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-- `BlockNumber` - Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity|Tag` - Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -214,12 +212,10 @@ Returns compiled LLL code.
 
 #### Parameters
 
-- `String` - The source code.
+0. `String` - The source code.
 
 ```js
-params: [
-  "(returnlll (suicide (caller)))"
-]
+params: ["(returnlll (suicide (caller)))"]
 ```
 
 #### Returns
@@ -250,12 +246,10 @@ Returns compiled serpent code.
 
 #### Parameters
 
-- `String` - The source code.
+0. `String` - The source code.
 
 ```js
-params: [
-  "/* some serpent */"
-]
+params: ["/* some serpent */"]
 ```
 
 #### Returns
@@ -286,12 +280,10 @@ Returns compiled solidity code.
 
 #### Parameters
 
-- `String` - The source code.
+0. `String` - The source code.
 
 ```js
-params: [
-  "contract test { function multiply(uint a) returns(uint d) {   return a * 7;   } }"
-]
+params: ["contract test { function multiply(uint a) returns(uint d) {   return a * 7;   } }"]
 ```
 
 #### Returns
@@ -322,7 +314,7 @@ Makes a call or transaction, which won't be added to the blockchain and returns 
 
 #### Parameters
 
-- `Object` - See [eth_call](#eth_call) parameters, expect that all properties are optional.
+0. `Object` - See [eth_call](#eth_call) parameters, expect that all properties are optional.
 
 #### Returns
 
@@ -382,8 +374,8 @@ Returns the balance of the account of given address.
 
 #### Parameters
 
-- `Address` - 20 Bytes - address to check for balance.
-- `BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Address` - 20 Bytes - address to check for balance.
+0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -420,8 +412,8 @@ Returns information about a block by hash.
 
 #### Parameters
 
-- `Hash` - Hash of a block.
-- `Boolean` - If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.
+0. `Hash` - Hash of a block.
+0. `Boolean` - If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.
 
 ```js
 params: [
@@ -503,8 +495,8 @@ Returns information about a block by block number.
 
 #### Parameters
 
-- `BlockNumber` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
-- `Boolean` - If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.
+0. `Quantity|Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Boolean` - If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.
 
 ```js
 params: [
@@ -515,7 +507,7 @@ params: [
 
 #### Returns
 
-See [eth_getBlockByHash](#eth_getblockbyhash)
+- See [eth_getBlockByHash](#eth_getblockbyhash)
 
 #### Example
 
@@ -532,12 +524,10 @@ Returns the number of transactions in a block from a block matching the given bl
 
 #### Parameters
 
-- `Hash` - 32 Bytes - hash of a block.
+0. `Hash` - 32 Bytes - hash of a block.
 
 ```js
-params: [
-  "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
-]
+params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
 ```
 
 #### Returns
@@ -568,7 +558,7 @@ Returns the number of transactions in a block from a block matching the given bl
 
 #### Parameters
 
-- `BlockNumber` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Quantity|Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -604,8 +594,8 @@ Returns code at a given address.
 
 #### Parameters
 
-- `Address` - 20 Bytes - address.
-- `BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Address` - 20 Bytes - address.
+0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -676,7 +666,7 @@ Polling method for a filter, which returns an array of logs which occurred since
 
 #### Parameters
 
-- `Quantity` - The filter id.
+0. `Quantity` - The filter id.
 
 ```js
 params: [
@@ -709,9 +699,7 @@ Response
       "transactionIndex": "0x0", // 0
       "address": "0x16c5785ac562ff41e2dcfdf829c5a142f1fccd7d",
       "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
-      "topics": [
-        "0x59ebeb90bc63057b6515673c3ecf9438e5058bca0f92585014eced636878c9a5"
-      ]
+      "topics": ["0x59ebeb90bc63057b6515673c3ecf9438e5058bca0f92585014eced636878c9a5"]
     },
     { ... }
   ]
@@ -726,7 +714,7 @@ Returns an array of all logs matching filter with given id.
 
 #### Parameters
 
-- `Quantity` - The filter id.
+0. `Quantity` - The filter id.
 
 ```js
 params: [
@@ -736,7 +724,7 @@ params: [
 
 #### Returns
 
-See [eth_getFilterChanges](#eth_getfilterchanges)
+- See [eth_getFilterChanges](#eth_getfilterchanges)
 
 #### Example
 
@@ -753,19 +741,17 @@ Returns an array of all logs matching a given filter object.
 
 #### Parameters
 
-- `Object` - The filter object, see [eth_newFilter parameters](#eth_newfilter).
+0. `Object` - The filter object, see [eth_newFilter parameters](#eth_newfilter).
 
 ```js
 params: [{
-  "topics": [
-    "0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"
-  ]
+  "topics": ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b"]
 }]
 ```
 
 #### Returns
 
-See [eth_getFilterChanges](#eth_getfilterchanges)
+- See [eth_getFilterChanges](#eth_getfilterchanges)
 
 #### Example
 
@@ -782,9 +768,9 @@ Returns the value from a storage position at a given address.
 
 #### Parameters
 
-- `Address` - 20 Bytes - address of the storage.
-- `Quantity` - integer of the position in the storage.
-- `BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Address` - 20 Bytes - address of the storage.
+0. `Quantity` - integer of the position in the storage.
+0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -822,8 +808,8 @@ Returns information about a transaction by block hash and transaction index posi
 
 #### Parameters
 
-- `Hash` - hash of a block.
-- `Quantity` - integer of the transaction index position.
+0. `Hash` - hash of a block.
+0. `Quantity` - integer of the transaction index position.
 
 ```js
 params: [
@@ -834,7 +820,7 @@ params: [
 
 #### Returns
 
-See [eth_getBlockByHash](#eth_gettransactionbyhash)
+- See [eth_getBlockByHash](#eth_gettransactionbyhash)
 
 #### Example
 
@@ -851,8 +837,8 @@ Returns information about a transaction by block number and transaction index po
 
 #### Parameters
 
-- `BlockNumber` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
-- `Quantity` - The transaction index position.
+0. `Quantity|Tag` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Quantity` - The transaction index position.
 
 ```js
 params: [
@@ -863,7 +849,7 @@ params: [
 
 #### Returns
 
-See [eth_getBlockByHash](#eth_gettransactionbyhash)
+- See [eth_getBlockByHash](#eth_gettransactionbyhash)
 
 #### Example
 
@@ -880,12 +866,10 @@ Returns the information about a transaction requested by transaction hash.
 
 #### Parameters
 
-- `Hash` - 32 Bytes - hash of a transaction.
+0. `Hash` - 32 Bytes - hash of a transaction.
 
 ```js
-params: [
-  "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
-]
+params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
 ```
 
 #### Returns
@@ -894,7 +878,7 @@ params: [
     - `hash`: `Hash` - 32 Bytes - hash of the transaction.
     - `nonce`: `Quantity` - the number of transactions made by the sender prior to this one.
     - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
-    - `blockNumber`: `BlockNumber` - block number where this transaction was in. `null` when its pending.
+    - `blockNumber`: `Quantity|Tag` - block number where this transaction was in. `null` when its pending.
     - `transactionIndex`: `Quantity` - integer of the transactions index position in the block. `null` when its pending.
     - `from`: `Address` - 20 Bytes - address of the sender.
     - `to`: `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
@@ -939,8 +923,8 @@ Returns the number of transactions *sent* from an address.
 
 #### Parameters
 
-- `Address` - 20 Bytes - address.
-- `BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Address` - 20 Bytes - address.
+0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -979,12 +963,10 @@ Returns the receipt of a transaction by transaction hash.
 
 #### Parameters
 
-- `Hash` - hash of a transaction.
+0. `Hash` - hash of a transaction.
 
 ```js
-params: [
-  "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
-]
+params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
 ```
 
 #### Returns
@@ -993,7 +975,7 @@ params: [
     - `transactionHash`: `Hash` - 32 Bytes - hash of the transaction.
     - `transactionIndex`: `Quantity` - integer of the transactions index position in the block.
     - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in.
-    - `blockNumber`: `BlockNumber` - block number where this transaction was in.
+    - `blockNumber`: `Quantity|Tag` - block number where this transaction was in.
     - `cumulativeGasUsed`: `Quantity` - The total amount of gas used when this transaction was executed in the block.
     - `gasUsed`: `Quantity` - The amount of gas used by this specific transaction alone.
     - `contractAddress`: `Address` - 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise `null`.
@@ -1034,8 +1016,8 @@ Returns information about a uncle of a block by hash and uncle index position.
 
 #### Parameters
 
-- `Hash` - Hash of a block.
-- `Quantity` - The uncle's index position.
+0. `Hash` - Hash of a block.
+0. `Quantity` - The uncle's index position.
 
 ```js
 params: [
@@ -1046,7 +1028,7 @@ params: [
 
 #### Returns
 
-See [eth_getBlockByHash](#eth_getblockbyhash)
+- See [eth_getBlockByHash](#eth_getblockbyhash)
 
 #### Example
 
@@ -1065,8 +1047,8 @@ Returns information about a uncle of a block by number and uncle index position.
 
 #### Parameters
 
-- `BlockNumber` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
-- `Quantity` - The uncle's index position.
+0. `Quantity|Tag` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Quantity` - The uncle's index position.
 
 ```js
 params: [
@@ -1077,7 +1059,7 @@ params: [
 
 #### Returns
 
-See [eth_getBlockByHash](#eth_getblockbyhash)
+- See [eth_getBlockByHash](#eth_getblockbyhash)
 
 #### Example
 
@@ -1094,12 +1076,10 @@ Returns the number of uncles in a block from a block matching the given block ha
 
 #### Parameters
 
-- `Hash` - 32 Bytes - hash of a block.
+0. `Hash` - 32 Bytes - hash of a block.
 
 ```js
-params: [
-  "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
-]
+params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
 ```
 
 #### Returns
@@ -1130,7 +1110,7 @@ Returns the number of uncles in a block from a block matching the given block nu
 
 #### Parameters
 
-- `BlockNumber` - integer of a block number, or the string 'latest', 'earliest' or 'pending', see the [default block parameter](#the-default-block-parameter).
+0. `Quantity|Tag` - integer of a block number, or the string 'latest', 'earliest' or 'pending', see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -1305,12 +1285,12 @@ Topics are order-dependent. A transaction with a log with topics [A, B] will be 
 
 #### Parameters
 
-- `Object` - The filter options:
-    - `fromBlock`: `BlockNumber` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
-    - `toBlock`: `BlockNumber` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
+0. `Object` - The filter options:
+    - `fromBlock`: `Quantity|Tag` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
+    - `toBlock`: `Quantity|Tag` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
     - `address`: `Address` - (optional) 20 Bytes - Contract address or a list of addresses from which logs should originate.
     - `topics`: `Array` - (optional) Array of 32 Bytes `Data` topics. Topics are order-dependent. It's possible to pass in `null` to match any topic, or a subarray of multiple topics of which one should be matching.
-    - `limit`: `Number` - (optional) The maximum number of entries to retrieve (latest first).
+    - `limit`: `Quantity` - (optional) The maximum number of entries to retrieve (latest first).
 
 ```js
 params: [{
@@ -1420,12 +1400,10 @@ Creates new message call transaction or a contract creation for signed transacti
 
 #### Parameters
 
-- `Data` - The signed transaction data.
+0. `Data` - The signed transaction data.
 
 ```js
-params: [
-  "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
-]
+params: ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"]
 ```
 
 #### Returns
@@ -1458,7 +1436,7 @@ Creates new message call transaction or a contract creation, if the data field c
 
 #### Parameters
 
-- `Object` - The transaction object.
+0. `Object` - The transaction object.
     - `from`: `Address` - 20 Bytes - The address the transaction is send from.
     - `to`: `Address` - 20 Bytes - (optional when creating new contract) The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) (default: `90000`) Integer of the gas provided for the transaction execution. It will return unused gas.
@@ -1508,8 +1486,8 @@ Signs transaction hash with a given address.
 
 #### Parameters
 
-- `Address` - 20 Bytes - address.
-- `Data` - Transaction hash to sign.
+0. `Address` - 20 Bytes - address.
+0. `Data` - Transaction hash to sign.
 
 ```js
 params: [
@@ -1546,7 +1524,7 @@ Signs transactions without dispatching it to the network. It can be later submit
 
 #### Parameters
 
-- `Object` - see [eth_sendTransaction](#eth_sendTransaction).
+0. `Object` - see [eth_sendTransaction](#eth_sendTransaction).
 
 #### Returns
 
@@ -1593,8 +1571,8 @@ Used for submitting mining hashrate.
 
 #### Parameters
 
-- `Data` - a hexadecimal string representation (32 bytes) of the hash rate.
-- `Data` - A random hexadecimal(32 bytes) ID identifying the client.
+0. `Data` - a hexadecimal string representation (32 bytes) of the hash rate.
+0. `Data` - A random hexadecimal(32 bytes) ID identifying the client.
 
 ```js
 params: [
@@ -1631,9 +1609,9 @@ Used for submitting a proof-of-work solution.
 
 #### Parameters
 
-- `Data` - 8 Bytes - The nonce found (64 bits).
-- `Data` - 32 Bytes - The header's pow-hash (256 bits)
-- `Data` - 32 Bytes - The mix digest (256 bits).
+0. `Data` - 8 Bytes - The nonce found (64 bits).
+0. `Data` - 32 Bytes - The header's pow-hash (256 bits)
+0. `Data` - 32 Bytes - The mix digest (256 bits).
 
 ```js
 params: [
@@ -1712,7 +1690,7 @@ Additonally Filters timeout when they aren't requested with [eth_getFilterChange
 
 #### Parameters
 
-- `Quantity` - The filter id.
+0. `Quantity` - The filter id.
 
 ```js
 params: [
@@ -1739,3 +1717,4 @@ Response
   "result": true
 }
 ```
+
