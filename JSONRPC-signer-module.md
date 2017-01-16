@@ -1,6 +1,6 @@
 # The `signer` Module
 
-## JSON RPC methods
+## JSON-RPC methods
 
 - [signer_confirmRequest](#signer_confirmrequest)
 - [signer_confirmRequestRaw](#signer_confirmrequestraw)
@@ -16,24 +16,32 @@
 
 Confirm a request in the signer queue
 
-#### parameters
+#### Parameters
 
 - `Quantity` - The request id.
 - `Object` - Modify the transaction before confirmation.
-    - `gas`/`Quantity` - (optional) Gas provided by the sender in Wei.
-    - `gasPrice`/`Quantity` - (optional) Modify the gas price provided by the sender in Wei.
-    - `minBlock`/`BlockNumber` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`. Request will not be propagated till the given block is reached.
+    - `gasPrice`: `Quantity` - (optional) Modify the gas price provided by the sender in Wei.
+    - `gas`: `Quantity` - (optional) Gas provided by the sender in Wei.
+    - `minBlock`: `BlockNumber` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`. Request will not be propagated till the given block is reached.
 - `String` - The account password
 
-#### returns
+```js
+params: [
+  "0x1", // 1
+  {},
+  "hunter2"
+]
+```
+
+#### Returns
 
 - `Boolean` - The status of the confirmation
 
-#### example
+#### Example
 
 ```bash
 # Request
-curl --data '{"jsonrpc":"2.0","method":"signer_confirmRequest","params":["0x1",{},"hunter2"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_confirmRequest","params":["0x1",{},"hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -49,20 +57,27 @@ curl --data '{"jsonrpc":"2.0","method":"signer_confirmRequest","params":["0x1",{
 
 Confirm a request in the signer queue providing signed request.
 
-#### parameters
+#### Parameters
 
 - `Quantity` - Integer - The request id
 - `Data` - Signed request (RLP encoded transaction)
 
-#### returns
+```js
+params: [
+  "0x1", // 1
+  "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+]
+```
+
+#### Returns
 
 - `Boolean` - The status of the confirmation
 
-#### example
+#### Example
 
 ```bash
 # Request
-curl --data '{"jsonrpc":"2.0","method":"signer_confirmRequestRaw","params":["0x1","0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_confirmRequestRaw","params":["0x1","0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -78,19 +93,19 @@ curl --data '{"jsonrpc":"2.0","method":"signer_confirmRequestRaw","params":["0x1
 
 Generates a new authorization token.
 
-#### parameters
+#### Parameters
 
-none
+None
 
-#### returns
+#### Returns
 
 - `String` - The new authorization token.
 
-#### example
+#### Example
 
 ```bash
 # Request
-curl --data '{"jsonrpc":"2.0","method":"signer_generateAuthorizationToken","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_generateAuthorizationToken","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -106,19 +121,19 @@ curl --data '{"jsonrpc":"2.0","method":"signer_generateAuthorizationToken","para
 
 Generates a new web proxy access token.
 
-#### parameters
+#### Parameters
 
-none
+None
 
-#### returns
+#### Returns
 
 - `String` - The new web proxy access token.
 
-#### example
+#### Example
 
 ```bash
 # Request
-curl --data '{"jsonrpc":"2.0","method":"signer_generateWebProxyAccessToken","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_generateWebProxyAccessToken","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -134,19 +149,25 @@ curl --data '{"jsonrpc":"2.0","method":"signer_generateWebProxyAccessToken","par
 
 Rejects a request in the signer queue
 
-#### parameters
+#### Parameters
 
 - `Quantity` - Integer - The request id
 
-#### returns
+```js
+params: [
+  "0x1" // 1
+]
+```
+
+#### Returns
 
 - `Boolean` - The status of the rejection
 
-#### example
+#### Example
 
 ```bash
 # Request
-curl --data '{"jsonrpc":"2.0","method":"signer_rejectRequest","params":["0x1"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_rejectRequest","params":["0x1"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -162,19 +183,19 @@ curl --data '{"jsonrpc":"2.0","method":"signer_rejectRequest","params":["0x1"],"
 
 Returns a list of the transactions awaiting authorization.
 
-#### parameters
+#### Parameters
 
-none
+None
 
-#### returns
+#### Returns
 
 - `Array` - A list of the outstanding transactions.
 
-#### example
+#### Example
 
 ```bash
 # Request
-curl --data '{"jsonrpc":"2.0","method":"signer_requestsToConfirm","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_requestsToConfirm","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
@@ -190,19 +211,19 @@ curl --data '{"jsonrpc":"2.0","method":"signer_requestsToConfirm","params":[],"i
 
 Returns whether signer is enabled/disabled.
 
-#### parameters
+#### Parameters
 
-none
+None
 
-#### returns
+#### Returns
 
 - `Boolean` - `true` when enabled, `false` when disabled.
 
-#### example
+#### Example
 
 ```bash
 # Request
-curl --data '{"jsonrpc":"2.0","method":"signer_signerEnabled","params":[],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_signerEnabled","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 
 # Response
 {
