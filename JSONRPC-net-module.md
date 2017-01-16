@@ -1,83 +1,97 @@
 # The `net` Module
 
-* [net_version](#net_version)
-* [net_peerCount](#net_peercount)
-* [net_listening](#net_listening)
+## JSON-RPC methods
 
-#### net_version
+- [net_listening](#net_listening)
+- [net_peerCount](#net_peercount)
+- [net_version](#net_version)
 
-Returns the current network protocol version.
+## JSON-RPC API Reference
 
-##### Parameters
-none
-
-##### Returns
-
-`String` - The current network protocol version
-
-##### Example
-```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":1}' localhost:8545
-
-// Result
-{
-  "id":67,
-  "jsonrpc": "2.0",
-  "result": "59"
-}
-```
-
-***
-
-#### net_listening
+### net_listening
 
 Returns `true` if client is actively listening for network connections.
 
-##### Parameters
-none
+#### Parameters
 
-##### Returns
+None
 
-`Boolean` - `true` when listening, otherwise `false`.
+#### Returns
 
-##### Example
+- `Boolean` - `true` when listening, otherwise `false`.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"net_listening","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
 ```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":67} localhost:8545
-
-// Result
 {
-  "id":67,
-  "jsonrpc":"2.0",
-  "result":true
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
 }
 ```
 
 ***
 
-#### net_peerCount
+### net_peerCount
 
 Returns number of peers currenly connected to the client.
 
-##### Parameters
-none
+#### Parameters
 
-##### Returns
+None
 
-`QUANTITY` - integer of the number of connected peers.
+#### Returns
 
-##### Example
+- `Quantity` - Integer of the number of connected peers
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"net_peerCount","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
 ```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":74}' localhost:8545
-
-// Result
 {
-  "id":74,
+  "id": 1,
   "jsonrpc": "2.0",
   "result": "0x2" // 2
 }
 ```
 
 ***
+
+### net_version
+
+Returns the current network protocol version.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - The current network protocol version
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"net_version","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "8995"
+}
+```
