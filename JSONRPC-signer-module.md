@@ -18,12 +18,12 @@ Confirm a request in the signer queue
 
 #### Parameters
 
-- `Quantity` - The request id.
-- `Object` - Modify the transaction before confirmation.
+0. `Quantity` - The request id.
+0. `Object` - Modify the transaction before confirmation.
     - `gasPrice`: `Quantity` - (optional) Modify the gas price provided by the sender in Wei.
     - `gas`: `Quantity` - (optional) Gas provided by the sender in Wei.
-    - `minBlock`: `BlockNumber` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`. Request will not be propagated till the given block is reached.
-- `String` - The account password
+    - `minBlock`: `Quantity|Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`. Request will not be propagated till the given block is reached.
+0. `String` - The account password
 
 ```js
 params: [
@@ -61,8 +61,8 @@ Confirm a request in the signer queue providing signed request.
 
 #### Parameters
 
-- `Quantity` - Integer - The request id
-- `Data` - Signed request (RLP encoded transaction)
+0. `Quantity` - Integer - The request id
+0. `Data` - Signed request (RLP encoded transaction)
 
 ```js
 params: [
@@ -159,7 +159,7 @@ Rejects a request in the signer queue
 
 #### Parameters
 
-- `Quantity` - Integer - The request id
+0. `Quantity` - Integer - The request id
 
 ```js
 params: [
