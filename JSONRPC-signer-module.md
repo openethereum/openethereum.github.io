@@ -10,7 +10,7 @@
 - [signer_requestsToConfirm](#signer_requeststoconfirm)
 - [signer_signerEnabled](#signer_signerenabled)
 
-## JSON RPC API Reference
+## JSON-RPC API Reference
 
 ### signer_confirmRequest
 
@@ -39,11 +39,13 @@ params: [
 
 #### Example
 
+Request
 ```bash
-# Request
 curl --data '{"method":"signer_confirmRequest","params":["0x1",{},"hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
 
-# Response
+Response
+```js
 {
   "id": 1,
   "jsonrpc": "2.0",
@@ -75,11 +77,13 @@ params: [
 
 #### Example
 
+Request
 ```bash
-# Request
 curl --data '{"method":"signer_confirmRequestRaw","params":["0x1","0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
 
-# Response
+Response
+```js
 {
   "id": 1,
   "jsonrpc": "2.0",
@@ -103,11 +107,13 @@ None
 
 #### Example
 
+Request
 ```bash
-# Request
 curl --data '{"method":"signer_generateAuthorizationToken","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
 
-# Response
+Response
+```js
 {
   "id": 1,
   "jsonrpc": "2.0",
@@ -131,11 +137,13 @@ None
 
 #### Example
 
+Request
 ```bash
-# Request
 curl --data '{"method":"signer_generateWebProxyAccessToken","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
 
-# Response
+Response
+```js
 {
   "id": 1,
   "jsonrpc": "2.0",
@@ -165,11 +173,13 @@ params: [
 
 #### Example
 
+Request
 ```bash
-# Request
 curl --data '{"method":"signer_rejectRequest","params":["0x1"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
 
-# Response
+Response
+```js
 {
   "id": 1,
   "jsonrpc": "2.0",
@@ -193,11 +203,13 @@ None
 
 #### Example
 
+Request
 ```bash
-# Request
 curl --data '{"method":"signer_requestsToConfirm","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
 
-# Response
+Response
+```js
 {
   "id": 1,
   "jsonrpc": "2.0",
@@ -221,14 +233,17 @@ None
 
 #### Example
 
+Request
 ```bash
-# Request
 curl --data '{"method":"signer_signerEnabled","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
 
-# Response
+Response
+```js
 {
   "id": 1,
   "jsonrpc": "2.0",
   "result": true
 }
 ```
+
