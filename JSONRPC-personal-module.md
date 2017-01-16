@@ -2,103 +2,170 @@
 
 ## JSON-RPC methods
 
-* [personal_listAccounts](#personal_listaccounts)
-* [personal_newAccount](#personal_newaccount)
-* [personal_unlockAccount](#personal_unlockaccount)
-* [personal_signAndSendTransaction](#personal_signandsendtransaction)
+- [personal_listAccounts](#personal_listaccounts)
+- [personal_newAccount](#personal_newaccount)
+- [personal_signAndSendTransaction](#personal_signandsendtransaction)
+- [personal_unlockAccount](#personal_unlockaccount)
 
-## JSON RPC API Reference
+## JSON-RPC API Reference
 
-#### personal_listAccounts
-Lists all stored accounts
+### personal_listAccounts
 
-##### Returns
-`Array` of `DATA`, 20 bytes - A list of account identifiers.
+Lists all stored accounts.
 
-##### Example
+#### Parameters
+
+None
+
+#### Returns
+
+- `Array` - A list of 20 byte account identifiers.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"personal_listAccounts","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
 ```js
-//Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_listAccounts","params":[],"id":83}'
-
-// Result
 {
-    "jsonrpc": "2.0",
-    "id": 83,
-    "result": [
-        "0x7bf87721a96849d168de02fd6ea5986a3a147383",
-        "0xca807a90fd64deed760fb98bf0869b475c469348"
-    ],
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    "0x7bf87721a96849d168de02fd6ea5986a3a147383",
+    "0xca807a90fd64deed760fb98bf0869b475c469348"
+  ]
 }
 ```
 
+***
 
-#### personal_newAccount
-Creates new account (it becomes the new current unlocked account)
+### personal_newAccount
 
-##### Parameters
-1. `STR` - Password for the new account
+Creates new account.
 
-##### Returns
+**Note:** it becomes the new current unlocked account. There can only be one unlocked account at a time.
 
-`DATA`, 20 bytes - The identifier of the new account
+#### Parameters
 
-##### Example
+0. `String` - Password for the new account.
+
 ```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_newAccount","params":["hunter2"],"id":22}' localhost:8545
+params: ["hunter2"]
+```
 
-// Result
+#### Returns
+
+- `Address` - 20 Bytes - The identifier of the new account.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"personal_newAccount","params":["hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
 {
-    "jsonrpc": "2.0",
-    "id": 22,
-    "result": "0x8f0227d45853a50eefd48dd4fec25d5b3fd2295e"
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x8f0227d45853a50eefd48dd4fec25d5b3fd2295e"
 }
 ```
 
+***
 
-#### personal_unlockAccount
-Unlocks specified account for use (there can only be one unlocked account at any one time)
+### personal_signAndSendTransaction
 
-If permanent unlocking is disabled (the default) then the duration argument will be ignored, and the account will be unlocked for a single signing.
-With permanent locking enabled, the duration sets the number of seconds to hold the account open for.  It will default to 300 seconds.  Passing 0 unlocks the account indefinitely.
+Sends transaction and signs it in a single call. The account does not need to be unlocked to make this call, and will not be left unlocked after.
 
-##### Parameters
-1. `DATA`, 20 bytes - Account identifier
-2. `STR` - Password to use to unlock the account
-3. `QUANTITY`- (can be null)
+#### Parameters
 
-##### Returns
-True if the account exists and could be unlocked using the password, false otherwise.
+0. `Object` - The transaction object
+    - `from`: `Address` - 20 Bytes - The address of the account to unlock and send the transaction from.
+    - `to`: `Address` - 20 Bytes - (optional when creating new contract) The address the transaction is directed to.
+    - `gas`: `Quantity` - (optional) (default: `90000`) Integer of the gas provided for the transaction execution. It will return unused gas.
+    - `gasPrice`: `Quantity` - (optional) (default: `To-Be-Determined`) Integer of the gasPrice used for each paid gas.
+    - `value`: `Quantity` - (optional) Integer of the value send with this transaction.
+    - `data`: `Data` - The compiled code of a contract OR the hash of the invoked method signature and encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+    - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+0. `String` - Passphrase to unlock the `from` account.
 
-##### Example
 ```js
-// Request
-curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"personal_unlockAccount","params":["0xfc390d8a8ddb591b010fda52f4db4945742c3809","hunter2",null],"id": 22}' localhost:8545
+params: [
+  {
+    "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+    "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+    "data": "0x41cd5add4fd13aedd64521e363ea279923575ff39718065d38bd46f0e6632e8e",
+    "value": "0x186a0"
+  },
+  "hunter2"
+]
+```
 
-// Result
+#### Returns
+
+- `Data` - 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"personal_signAndSendTransaction","params":[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","data":"0x41cd5add4fd13aedd64521e363ea279923575ff39718065d38bd46f0e6632e8e","value":"0x186a0"},"hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
 {
-    "jsonrpc":"2.0",
-    "id":22,
-    "result":true
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x62e05075829655752e146a129a044ad72e95ce33e48ff48118b697e15e7b41e4"
 }
 ```
 
+***
 
-#### personal_signAndSendTransaction
-Sends transaction and signs it in a single call.  The account does not need to be unlocked to make this call, and will not be left unlocked after.
+### personal_unlockAccount
 
-##### Parameters
+Unlocks specified account for use.
 
-1. `Object` - The transaction object
-  - `from`: `DATA`, 20 Bytes - The address of the account to unlock and send the transaction from.
-  - `to`: `DATA`, 20 Bytes - (optional when creating new contract) The address the transaction is directed to.
-  - `gas`: `QUANTITY`  - (optional, default: 90000) Integer of the gas provided for the transaction execution. It will return unused gas.
-  - `gasPrice`: `QUANTITY`  - (optional, default: To-Be-Determined) Integer of the gasPrice used for each paid gas
-  - `value`: `QUANTITY`  - (optional) Integer of the value send with this transaction
-  - `data`: `DATA`  - The compiled code of a contract OR the hash of the invoked method signature and encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI)
-  - `nonce`: `QUANTITY`  - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+If permanent unlocking is disabled (the default) then the duration argument will be ignored, and the account will be unlocked for a single signing. With permanent locking enabled, the duration sets the number of seconds to hold the account open for. It will default to 300 seconds. Passing 0 unlocks the account indefinitely.
 
-2. `STR` - Password to use to temporarily unlock the account
+There can only be one unlocked account at a time.
 
-##### Returns
-`DATA`, 32 Bytes - The hash of the new transaction.
+#### Parameters
+
+0. `Address` - 20 Bytes - The address of the account to unlock.
+0. `String` - Passphrase to unlock the account.
+0. `Quantity` - (default: `300`) Integer or `null` - Duration in seconds how long the account should remain unlocked for.
+
+```js
+params: [
+  "0x8f0227d45853a50eefd48dd4fec25d5b3fd2295e",
+  "hunter2",
+  null
+]
+```
+
+#### Returns
+
+- `Boolean` - whether the call was successful
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"personal_unlockAccount","params":["0x8f0227d45853a50eefd48dd4fec25d5b3fd2295e","hunter2",null],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
