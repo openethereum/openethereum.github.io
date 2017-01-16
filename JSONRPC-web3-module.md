@@ -43,7 +43,7 @@ Returns Keccak-256 (**not** the standardized SHA3-256) of the given data.
 
 #### Parameters
 
-- `String` - The data to convert into a SHA3 hash.
+0. `String` - The data to convert into a SHA3 hash.
 
 ```js
 params: [
