@@ -9,7 +9,7 @@ The address created with an empty phrase contains a lot of tokens that can be us
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["","password"],"id": 1}' localhost:8545
 ```
 
-When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors '*'` option has to be added as well.
+When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors "https://ethereum.github.io/browser-solidity"` option has to be provided and RPC endpoint set to `http://localhost:8545`.
 
 ## Customizing the development chain
 
