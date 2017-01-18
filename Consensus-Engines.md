@@ -54,7 +54,7 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 
 This `Engine` does not have any parameters to be adjusted.
 
-# Validator consensus
+# Validator engines
 
 The following `Engine`s achieve consensus by referring to a list of "validators" (referred to as authorities, when they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them.
 
