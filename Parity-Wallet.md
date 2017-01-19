@@ -1,6 +1,6 @@
 # Parity Wallet
 
-Recent versions of Parity (>= 1.4.0) include a bundled wallet application.
+Parity includes a bundled wallet application.
 This is designed to integrate seamlessly with all standard tokens as well as Ether itself.
 
 To access the UI, simply start your Parity node and navigate to http://127.0.0.1:8180. There, you will see
