@@ -4,6 +4,7 @@
 
 The following methods have an optional extra `defaultBlock` parameter:
 
+- [eth_estimateGas](#eth_estimategas)
 - [eth_getBalance](#eth_getbalance)
 - [eth_getCode](#eth_getcode)
 - [eth_getTransactionCount](#eth_gettransactioncount)
@@ -15,7 +16,7 @@ When requests are made that act on the state of Ethereum, the last parameter det
 The following options are possible for the `defaultBlock` parameter:
 
 - `Quantity`/`Integer` - an integer block number;
-- `String "earliest"` for the earliest/genesis block;
+- `String "earliest"` - for the earliest/genesis block;
 - `String "latest"` - for the latest mined block;
 - `String "pending"` - for the pending state/transactions.
 
@@ -141,17 +142,14 @@ Executes a new message call immediately without creating a transaction on the bl
     - `gasPrice`: `Quantity` - (optional) Integer of the gasPrice used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
     - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-0. `Quantity|Tag` - Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity|Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
-params: [
-  {
-    "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
-    "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
-    "value": "0x186a0" // 100000
-  },
-  "latest"
-]
+params: [{
+  "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+  "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+  "value": "0x186a0" // 100000
+}]
 ```
 
 #### Returns
@@ -162,7 +160,7 @@ params: [
 
 Request
 ```bash
-curl --data '{"method":"eth_call","params":[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","value":"0x186a0"},"latest"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"eth_call","params":[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","value":"0x186a0"}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -315,6 +313,7 @@ Makes a call or transaction, which won't be added to the blockchain and returns 
 #### Parameters
 
 0. `Object` - See [eth_call](#eth_call) parameters, expect that all properties are optional.
+0. `Quantity|Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 #### Returns
 
@@ -375,13 +374,10 @@ Returns the balance of the account of given address.
 #### Parameters
 
 0. `Address` - 20 Bytes - address to check for balance.
-0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
-params: [
-  "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
-  "latest"
-]
+params: ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
 ```
 
 #### Returns
@@ -392,7 +388,7 @@ params: [
 
 Request
 ```bash
-curl --data '{"method":"eth_getBalance","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","latest"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"eth_getBalance","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -770,7 +766,7 @@ Returns the value from a storage position at a given address.
 
 0. `Address` - 20 Bytes - address of the storage.
 0. `Quantity` - integer of the position in the storage.
-0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -924,13 +920,10 @@ Returns the number of transactions *sent* from an address.
 #### Parameters
 
 0. `Address` - 20 Bytes - address.
-0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
-params: [
-  "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
-  "latest"
-]
+params: ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
 ```
 
 #### Returns
@@ -941,7 +934,7 @@ params: [
 
 Request
 ```bash
-curl --data '{"method":"eth_getTransactionCount","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","latest"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"eth_getTransactionCount","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
