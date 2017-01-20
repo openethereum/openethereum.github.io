@@ -41,6 +41,7 @@ docker run -it ubuntu bash
 
 This will give you a temporary docker environment.
 
+
 ### Grab Rust
 
 NOTE: If you already have Rust in your environment, you don't need to bother with this. 
@@ -118,6 +119,15 @@ To get help on the command line options for the `parity` client, use `--help`:
 ```
 cargo run --release --help
 ```
+
+#### A note on backing up your datadir with Docker
+
+In case you need to persist the blockchain files, keys etc., you should run the image with the -d option and then mount it, e.g.:
+
+```
+docker run --name parity -v /srv/parity:/mnt ethcore/parity:beta-release -d /mnt
+```
+
 
 # Ubuntu Snappy on Raspberry Pi
 
