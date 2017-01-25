@@ -55,3 +55,5 @@ This method is the least secure, but doesn't require SSH tunnels. It exposes you
    ```
    $ parity signer new-token
    ```
+
+NOTE: Parity will accept only connections coming to correct interface (IP), if you want to listen on multiple interfaces (IP=`0.0.0.0`; again - not recommended) you need to run with additional flags like: `--dapps-hosts` and `--ui-no-validation`
