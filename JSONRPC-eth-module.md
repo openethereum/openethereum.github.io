@@ -139,10 +139,10 @@ Executes a new message call immediately without creating a transaction on the bl
     - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
     - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`: `Quantity` - (optional) Integer of the gasPrice used for each paid gas.
+    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
     - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-0. `Quantity|Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [{
@@ -312,8 +312,14 @@ Makes a call or transaction, which won't be added to the blockchain and returns 
 
 #### Parameters
 
-0. `Object` - See [eth_call](#eth_call) parameters, expect that all properties are optional.
-0. `Quantity|Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Object` - Same as [eth_call](#eth_call) parameters, except that all properties are optional.
+    - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
+    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
+    - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
+    - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+0. `Quantity` | `Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 #### Returns
 
@@ -374,7 +380,7 @@ Returns the balance of the account of given address.
 #### Parameters
 
 0. `Address` - 20 Bytes - address to check for balance.
-0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
@@ -474,7 +480,7 @@ Response
     "minGasPrice": "0x9f759", // 653145
     "gasUsed": "0x9f759", // 653145
     "timestamp": "0x54e34e8e", // 1424182926
-    "transactions": [{ ... }, { ... }],
+    "transactions": [{ ... }, { ... }, ...],
     "uncles": [
       "0x1606e5...",
       "0xd5145a9..."
@@ -491,7 +497,7 @@ Returns information about a block by block number.
 
 #### Parameters
 
-0. `Quantity|Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
 0. `Boolean` - If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.
 
 ```js
@@ -554,7 +560,7 @@ Returns the number of transactions in a block from a block matching the given bl
 
 #### Parameters
 
-0. `Quantity|Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -591,7 +597,7 @@ Returns code at a given address.
 #### Parameters
 
 0. `Address` - 20 Bytes - address.
-0. `Quantity|Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -697,7 +703,7 @@ Response
       "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
       "topics": ["0x59ebeb90bc63057b6515673c3ecf9438e5058bca0f92585014eced636878c9a5"]
     },
-    { ... }
+    ...
   ]
 }
 ```
@@ -766,7 +772,7 @@ Returns the value from a storage position at a given address.
 
 0. `Address` - 20 Bytes - address of the storage.
 0. `Quantity` - integer of the position in the storage.
-0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -833,7 +839,7 @@ Returns information about a transaction by block number and transaction index po
 
 #### Parameters
 
-0. `Quantity|Tag` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
 0. `Quantity` - The transaction index position.
 
 ```js
@@ -874,7 +880,7 @@ params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
     - `hash`: `Hash` - 32 Bytes - hash of the transaction.
     - `nonce`: `Quantity` - the number of transactions made by the sender prior to this one.
     - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
-    - `blockNumber`: `Quantity|Tag` - block number where this transaction was in. `null` when its pending.
+    - `blockNumber`: `Quantity` | `Tag` - block number where this transaction was in. `null` when its pending.
     - `transactionIndex`: `Quantity` - integer of the transactions index position in the block. `null` when its pending.
     - `from`: `Address` - 20 Bytes - address of the sender.
     - `to`: `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
@@ -920,7 +926,7 @@ Returns the number of transactions *sent* from an address.
 #### Parameters
 
 0. `Address` - 20 Bytes - address.
-0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
@@ -968,7 +974,7 @@ params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
     - `transactionHash`: `Hash` - 32 Bytes - hash of the transaction.
     - `transactionIndex`: `Quantity` - integer of the transactions index position in the block.
     - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in.
-    - `blockNumber`: `Quantity|Tag` - block number where this transaction was in.
+    - `blockNumber`: `Quantity` | `Tag` - block number where this transaction was in.
     - `cumulativeGasUsed`: `Quantity` - The total amount of gas used when this transaction was executed in the block.
     - `gasUsed`: `Quantity` - The amount of gas used by this specific transaction alone.
     - `contractAddress`: `Address` - 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise `null`.
@@ -994,7 +1000,7 @@ Response
     "cumulativeGasUsed": "0x33bc", // 13244
     "gasUsed": "0x4dc", // 1244
     "contractAddress": "0xb60e8dd61c5d32be8058bb8eb970870f07233155", // or null, if none was created
-    "logs": [{ ... }, { ... }] // logs as returned by eth_getFilterLogs, etc.
+    "logs": [{ ... }, { ... }, ...]] // logs as returned by eth_getFilterLogs, etc.
   }
 }
 ```
@@ -1040,7 +1046,7 @@ Returns information about a uncle of a block by number and uncle index position.
 
 #### Parameters
 
-0. `Quantity|Tag` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
 0. `Quantity` - The uncle's index position.
 
 ```js
@@ -1103,7 +1109,7 @@ Returns the number of uncles in a block from a block matching the given block nu
 
 #### Parameters
 
-0. `Quantity|Tag` - integer of a block number, or the string 'latest', 'earliest' or 'pending', see the [default block parameter](#the-default-block-parameter).
+0. `Quantity` | `Tag` - integer of a block number, or the string 'latest', 'earliest' or 'pending', see the [default block parameter](#the-default-block-parameter).
 
 ```js
 params: [
@@ -1279,8 +1285,8 @@ Topics are order-dependent. A transaction with a log with topics [A, B] will be 
 #### Parameters
 
 0. `Object` - The filter options:
-    - `fromBlock`: `Quantity|Tag` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
-    - `toBlock`: `Quantity|Tag` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
+    - `fromBlock`: `Quantity` | `Tag` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
+    - `toBlock`: `Quantity` | `Tag` - (optional) (default: `latest`) Integer block number, or `'latest'` for the last mined block or `'pending'`, `'earliest'` for not yet mined transactions.
     - `address`: `Address` - (optional) 20 Bytes - Contract address or a list of addresses from which logs should originate.
     - `topics`: `Array` - (optional) Array of 32 Bytes `Data` topics. Topics are order-dependent. It's possible to pass in `null` to match any topic, or a subarray of multiple topics of which one should be matching.
     - `limit`: `Quantity` - (optional) The maximum number of entries to retrieve (latest first).
@@ -1430,13 +1436,14 @@ Creates new message call transaction or a contract creation, if the data field c
 #### Parameters
 
 0. `Object` - The transaction object.
-    - `from`: `Address` - 20 Bytes - The address the transaction is send from.
-    - `to`: `Address` - 20 Bytes - (optional when creating new contract) The address the transaction is directed to.
-    - `gas`: `Quantity` - (optional) (default: `90000`) Integer of the gas provided for the transaction execution. It will return unused gas.
-    - `gasPrice`: `Quantity` - (optional) (default: `To-Be-Determined`) Integer of the gasPrice used for each paid gas.
+    - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
+    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`: `Data` - The compiled code of a contract OR the hash of the invoked method signature and encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI)
+    - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
     - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+    - `minBlock`: `Quantity` | `Tag` - (optional) Delay until this block if specified.
 
 ```js
 params: [{
@@ -1517,7 +1524,15 @@ Signs transactions without dispatching it to the network. It can be later submit
 
 #### Parameters
 
-0. `Object` - see [eth_sendTransaction](#eth_sendTransaction).
+0. `Object` - Transaction object, see [eth_sendTransaction](#eth_sendTransaction).
+    - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
+    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
+    - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
+    - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+    - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+    - `minBlock`: `Quantity` | `Tag` - (optional) Delay until this block if specified.
 
 #### Returns
 
@@ -1710,3 +1725,4 @@ Response
   "result": true
 }
 ```
+
