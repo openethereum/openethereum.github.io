@@ -137,7 +137,7 @@ Executes a new message call immediately without creating a transaction on the bl
 
 0. `Object` - The transaction call object.
     - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `to`: `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
     - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
@@ -314,7 +314,7 @@ Makes a call or transaction, which won't be added to the blockchain and returns 
 
 0. `Object` - Same as [eth_call](#eth_call) parameters, except that all properties are optional.
     - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `to`: `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
     - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
@@ -1437,7 +1437,7 @@ Creates new message call transaction or a contract creation, if the data field c
 
 0. `Object` - The transaction object.
     - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `to`: `Address` - 20 Bytes - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
     - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
@@ -1526,7 +1526,7 @@ Signs transactions without dispatching it to the network. It can be later submit
 
 0. `Object` - Transaction object, see [eth_sendTransaction](#eth_sendTransaction).
     - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `to`: `Address` - 20 Bytes - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
     - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
