@@ -679,8 +679,8 @@ Posts a transaction to the signer without waiting for the signer response.
 #### Parameters
 
 0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
-    - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `from`: `Address` - 20 Bytes - The address the transaction is send from.
+    - `to`: `Address` - (optional) 20 Bytes - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
     - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
