@@ -9,8 +9,6 @@ Documentation on the snapshot and manifest format can be found here: https://git
 # How do I use it?
 Easy! Just update to Parity `1.4.0` or later, and run `parity --warp`. Your client will search for peers with a warp sync snapshot and use it if one is found.
 
-*Note* that if you want to use warp in combination with other arguments, `--warp` must be the first argument or it might be ignored.
-
 # Wire messages
 The warp protocol inherits all packets from version 63 of the `eth` wire protocol, as well as amending the status packet (`0x01`) and adding a few new ones:
 
