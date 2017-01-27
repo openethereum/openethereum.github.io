@@ -4,11 +4,11 @@
 
 - [signer_confirmRequest](#signer_confirmrequest)
 - [signer_confirmRequestRaw](#signer_confirmrequestraw)
+- [signer_confirmRequestWithToken](#signer_confirmrequestwithtoken)
 - [signer_generateAuthorizationToken](#signer_generateauthorizationtoken)
 - [signer_generateWebProxyAccessToken](#signer_generatewebproxyaccesstoken)
 - [signer_rejectRequest](#signer_rejectrequest)
 - [signer_requestsToConfirm](#signer_requeststoconfirm)
-- [signer_signerEnabled](#signer_signerenabled)
 
 ## JSON-RPC API Reference
 
@@ -22,7 +22,7 @@ Confirm a request in the signer queue
 0. `Object` - Modify the transaction before confirmation.
     - `gasPrice`: `Quantity` - (optional) Modify the gas price provided by the sender in Wei.
     - `gas`: `Quantity` - (optional) Gas provided by the sender in Wei.
-    - `minBlock`: `Quantity|Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`. Request will not be propagated till the given block is reached.
+    - `minBlock`: `Quantity` | `Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`. Request will not be propagated till the given block is reached.
 0. `String` - The account password
 
 ```js
@@ -35,7 +35,7 @@ params: [
 
 #### Returns
 
-- `Boolean` - The status of the confirmation
+- `Object` - The status of the confirmation, depending on the request type.
 
 #### Example
 
@@ -49,7 +49,7 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": true
+  "result": {}
 }
 ```
 
@@ -73,7 +73,7 @@ params: [
 
 #### Returns
 
-- `Boolean` - The status of the confirmation
+- `Object` - The status of the confirmation, depending on the request type.
 
 #### Example
 
@@ -87,7 +87,55 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": true
+  "result": {}
+}
+```
+
+***
+
+### signer_confirmRequestWithToken
+
+Confirm specific request with token.
+
+#### Parameters
+
+0. `Quantity` - The request id.
+0. `Object` - Modify the transaction before confirmation.
+    - `gasPrice`: `Quantity` - (optional) Modify the gas price provided by the sender in Wei.
+    - `gas`: `Quantity` - (optional) Gas provided by the sender in Wei.
+    - `minBlock`: `Quantity` | `Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`. Request will not be propagated till the given block is reached.
+0. `String` - Password.
+
+```js
+params: [
+  "0x1", // 1
+  {},
+  "hunter2"
+]
+```
+
+#### Returns
+
+- `Object` - Status.
+    - `result`: `Object` - The status of the confirmation, depending on the request type.
+    - `token`: `String` - Token used to authenticate the request.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"signer_confirmRequestWithToken","params":["0x1",{},"hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "result": { ... },
+    "token": "cAF2w5LE7XUZ3v3N"
+  }
 }
 ```
 
@@ -213,37 +261,7 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": []
-}
-```
-
-***
-
-### signer_signerEnabled
-
-Returns whether signer is enabled/disabled.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Boolean` - `true` when enabled, `false` when disabled.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"signer_signerEnabled","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": true
+  "result": [ ... ]
 }
 ```
 
