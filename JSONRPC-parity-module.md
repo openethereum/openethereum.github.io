@@ -3,6 +3,7 @@
 ## JSON-RPC methods
 
 - [parity_consensusCapability](#parity_consensuscapability)
+- [parity_decryptMessage](#parity_decryptmessage)
 - [parity_encryptMessage](#parity_encryptmessage)
 - [parity_futureTransactions](#parity_futuretransactions)
 - [parity_listStorageKeys](#parity_liststoragekeys)
@@ -13,9 +14,12 @@
 
 #### Accounts (read-only) and Signatures
 - [parity_accountsInfo](#parity_accountsinfo)
+- [parity_checkRequest](#parity_checkrequest)
 - [parity_generateSecretPhrase](#parity_generatesecretphrase)
 - [parity_listAccounts](#parity_listaccounts)
 - [parity_phraseToAddress](#parity_phrasetoaddress)
+- [parity_postSign](#parity_postsign)
+- [parity_postTransaction](#parity_posttransaction)
 
 #### Block Authoring (aka "mining")
 - [parity_defaultExtraData](#parity_defaultextradata)
@@ -51,80 +55,6 @@
 
 ## JSON-RPC API Reference
 
-### parity_accountsInfo
-
-Provides metadata for accounts.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Object` - Maps account address to metadata.
-    - `name`: `String` - Account name
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_accountsInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "0x0024d0c7ab4c52f723f3aaf0872b9ea4406846a4": {
-      "name": "Foo"
-    },
-    "0x004385d8be6140e6f889833f68b51e17b6eacb29": {
-      "name": "Bar"
-    },
-    "0x009047ed78fa2be48b62aaf095b64094c934dab0": {
-      "name": "Baz"
-    }
-  }
-}
-```
-
-***
-
-### parity_chainStatus
-
-Returns the information on warp sync blocks
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Object` - The status object
-    - `blockGap`: `Array` - (optional) Describes the gap in the blockchain, if there is one: (first, last)
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_chainStatus","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "blockGap": undefined
-  }
-}
-```
-
-***
-
 ### parity_consensusCapability
 
 Returns information on current consensus capability.
@@ -155,23 +85,31 @@ Response
 
 ***
 
-### parity_dappsInterface
+### parity_decryptMessage
 
-Returns the interface the dapps are running on, error if not enabled.
+Decrypt a message encrypted with a ECIES public key.
 
 #### Parameters
 
-None
+0. `Address` - Account which can decrypt the message.
+0. `Data` - Encrypted message.
+
+```js
+params: [
+  "0x00a329c0648769a73afac7f9381e08fb43dbea72",
+  "0x0405afee7fa2ab3e48c27b00d543389270cb7267fc191ca1311f297255a83cbe8d77a4ba135b51560700a582924fa86d2b19029fcb50d2b68d60a7df1ba81df317a19c8def117f2b9cf8c2618be0e3f146a5272fb9e5528719d2d7a1bd91fa620901cffa756305c79c093e7af30fa3c1587029421351c34a7c1e5a2b"
+]
+```
 
 #### Returns
 
-- `String` - The interface
+- `Data` - Decrypted message.
 
 #### Example
 
 Request
 ```bash
-curl --data '{"method":"parity_dappsInterface","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_decryptMessage","params":["0x00a329c0648769a73afac7f9381e08fb43dbea72","0x0405afee7fa2ab3e48c27b00d543389270cb7267fc191ca1311f297255a83cbe8d77a4ba135b51560700a582924fa86d2b19029fcb50d2b68d60a7df1ba81df317a19c8def117f2b9cf8c2618be0e3f146a5272fb9e5528719d2d7a1bd91fa620901cffa756305c79c093e7af30fa3c1587029421351c34a7c1e5a2b"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -179,133 +117,7 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": "127.0.0.1"
-}
-```
-
-***
-
-### parity_dappsPort
-
-Returns the port the dapps are running on, error if not enabled.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Quantity` - The port number
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_dappsPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": 8080
-}
-```
-
-***
-
-### parity_defaultExtraData
-
-Returns the default extra data
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Data` - Extra data
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_defaultExtraData","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0xd5830106008650617269747986312e31342e30826c69"
-}
-```
-
-***
-
-### parity_devLogs
-
-Returns latest stdout logs of your node.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Array` - Development logs
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_devLogs","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [
-    "2017-01-20 18:14:19  Updated conversion rate to Ξ1 = US$10.63 (11199212000 wei/gas)",
-    "2017-01-20 18:14:19  Configured for DevelopmentChain using InstantSeal engine",
-    "2017-01-20 18:14:19  Operating mode: active",
-    "2017-01-20 18:14:19  State DB configuration: fast",
-    "2017-01-20 18:14:19  Starting Parity/v1.6.0-unstable-2ae8b4c-20170120/x86_64-linux-gnu/rustc1.14.0"
-  ]
-}
-```
-
-***
-
-### parity_devLogsLevels
-
-Returns current logging level settings. Logging level can be set with `--logging` and be one of: `""` (default), `"info"`, `"debug"`, `"warn"`, `"error"`, `"trace"`.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `String` - undefined
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_devLogsLevels","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "debug"
+  "result": "0x68656c6c6f20776f726c64" // hello world
 }
 ```
 
@@ -349,66 +161,6 @@ Response
 
 ***
 
-### parity_enode
-
-Returns the node enode URI.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `String` - Enode URI
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "enode://050929adcfe47dbe0b002cb7ef2bf91ca74f77c4e0f68730e39e717f1ce38908542369ae017148bee4e0d968340885e2ad5adea4acd19c95055080a4b625df6a@172.17.0.1:30303"
-}
-```
-
-***
-
-### parity_extraData
-
-Returns currently set extra data.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Data` - Extra data.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_extraData","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0xd5830106008650617269747986312e31342e30826c69"
-}
-```
-
-***
-
 ### parity_futureTransactions
 
 Returns all future transactions from transaction queue.
@@ -420,6 +172,25 @@ None
 #### Returns
 
 - `Array` - Transaction list.
+    - `hash`: `Hash` - 32 Bytes - hash of the transaction.
+    - `nonce`: `Quantity` - The number of transactions made by the sender prior to this one.
+    - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
+    - `blockNumber`: `Quantity` | `Tag` - Block number where this transaction was in. `null` when its pending.
+    - `transactionIndex`: `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
+    - `from`: `Address` - 20 Bytes - address of the sender.
+    - `to`: `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
+    - `value`: `Quantity` - Value transferred in Wei.
+    - `gasPrice`: `Quantity` - Gas price provided by the sender in Wei.
+    - `gas`: `Quantity` - Gas provided by the sender.
+    - `input`: `Data` - The data send along with the transaction.
+    - `raw`: `Data` - Raw transaction data.
+    - `publicKey`: `Data` - Public key of the signer.
+    - `networkId`: `Quantity` - The network id of the transaction, if any.
+    - `standardV`: `Quantity` - The standardized V field of the signature (0 or 1).
+    - `v`: `Quantity` - The V field of the signature.
+    - `r`: `Quantity` - The R field of the signature.
+    - `s`: `Quantity` - The S field of the signature.
+    - `minBlock`: `Quantity` | `Tag` - (optional) Block number, tag or `null`.
 
 #### Example
 
@@ -456,201 +227,7 @@ Response
       "s": "0x6bf770ab08119e67dc29817e1412a0e3086f43da308c314db1b3bca9fb6d32bd",
       "minBlock": null
     },
-    { ... },
-    { ... }
-  ]
-}
-```
-
-***
-
-### parity_gasCeilTarget
-
-Returns current target for gas ceiling.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Quantity` - Gas ceiling target.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_gasCeilTarget","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x5fdfb0" // 6283184
-}
-```
-
-***
-
-### parity_gasFloorTarget
-
-Returns current target for gas floor.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Quantity` - Gas floor target.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_gasFloorTarget","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x47b760" // 4700000
-}
-```
-
-***
-
-### parity_gasPriceHistogram
-
-Returns a snapshot of the historic gas prices.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Object` - Historic values
-    - `bucketBounds`: `Array` - Array of bound values.
-    - `count`: `Array` - Array of counts.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_gasPriceHistogram","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "bucketBounds": [
-      "0x4a817c800",
-      "0x525433d01",
-      "0x5a26eb202",
-      "0x61f9a2703",
-      "0x69cc59c04",
-      "0x719f11105",
-      "0x7971c8606",
-      "0x81447fb07",
-      "0x891737008",
-      "0x90e9ee509",
-      "0x98bca5a0a"
-    ],
-    "counts": [
-      487,
-      9,
-      7,
-      1,
-      8,
-      0,
-      0,
-      0,
-      0,
-      14
-    ]
-  }
-}
-```
-
-***
-
-### parity_generateSecretPhrase
-
-Creates a secret phrase that can be associated with an account.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `String` - The secret phrase.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_generateSecretPhrase","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "boasting breeches reshape reputably exit handrail stony jargon moneywise unhinge handed ruby"
-}
-```
-
-***
-
-### parity_listAccounts
-
-Returns all addresses if Fat DB is enabled (`--fat-db`), `null` otherwise.
-
-#### Parameters
-
-0. `Quantity` - Integer number of addresses to display in a batch.
-0. `Address` - 20 Bytes - Offset address from which the batch should start in order, or `null`.
-0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`.
-
-```js
-params: [
-  5,
-  null
-]
-```
-
-#### Returns
-
-- `Array` - Requested number of `Address`es or `null` if Fat DB is not enabled.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_listAccounts","params":[5,null],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [
-    "0x7205b1bb42edce6e0ced37d1fd0a9d684f5a860f",
-    "0x98a2559a814c300b274325c92df1682ae0d344e3",
-    "0x2d7a7d0adf9c5f9073fefbdc18188bd23c68b633",
-    "0xd4bb3284201db8b03c06d8a3057dd32538e3dfda",
-    "0xa6396904b08aa31300ca54278b8e066ecc38e4a0"
+    { ... }, { ... }, ...
   ]
 }
 ```
@@ -666,7 +243,7 @@ Returns all storage keys of the given address (first parameter) if Fat DB is ena
 0. `Address` - 20 Bytes - Account for which to retrieve the storage keys.
 0. `Quantity` - Integer number of addresses to display in a batch.
 0. `Hash` - 32 Bytes - Offset storage key from which the batch should start in order, or `null`.
-0. `Quantity|Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`.
+0. `Quantity` | `Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`.
 
 ```js
 params: [
@@ -761,6 +338,506 @@ Response
 
 ***
 
+### parity_pendingTransactionsStats
+
+Returns propagation stats for transactions in the queue.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - mapping of transaction hashes to stats.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_pendingTransactionsStats","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "0xdff37270050bcfba242116c745885ce2656094b2d3a0f855649b4a0ee9b5d15a": {
+      "firstSeen": 3032066,
+      "propagatedTo": {
+        "0x605e04a43b1156966b3a3b66b980c87b7f18522f7f712035f84576016be909a2798a438b2b17b1a8c58db314d88539a77419ca4be36148c086900fba487c9d39": 1,
+        "0xbab827781c852ecf52e7c8bf89b806756329f8cbf8d3d011e744a0bc5e3a0b0e1095257af854f3a8415ebe71af11b0c537f8ba797b25972f519e75339d6d1864": 1
+      }
+    }
+  }
+}
+```
+
+***
+
+### parity_releasesInfo
+
+returns a ReleasesInfo object describing the current status of releases
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - Information on current releases, `null` if not available.
+    - `fork`: `Quantity` - Block number representing the last known fork for this chain, which may be in the future.
+    - `minor`: `Object` - Information about latest minor update to current version, `null` if this is the latest minor version.
+    - `track`: `Object` - Information about the latest release in this track.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_releasesInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": null
+}
+```
+
+***
+
+### parity_versionInfo
+
+Provides information about running version of Parity.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - Information on current version.
+    - `hash`: `Hash` - 20 Byte hash of the current build.
+    - `track`: `String` - Track on which it was released, one of: `"stable"`, `"beta"`, `"nightly"`, `"testing"`, `"null"` (unknown or self-built).
+    - `version`: `Object` - Version number composed of `major`, `minor` and `patch` integers.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_versionInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "hash": "0x2ae8b4ca278dd7b896090366615fef81cbbbc0e0",
+    "track": "null",
+    "version": {
+      "major": 1,
+      "minor": 6,
+      "patch": 0
+    }
+  }
+}
+```
+
+***
+
+### parity_accountsInfo
+
+Provides metadata for accounts.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - Maps account address to metadata.
+    - `name`: `String` - Account name
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_accountsInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "0x0024d0c7ab4c52f723f3aaf0872b9ea4406846a4": {
+      "name": "Foo"
+    },
+    "0x004385d8be6140e6f889833f68b51e17b6eacb29": {
+      "name": "Bar"
+    },
+    "0x009047ed78fa2be48b62aaf095b64094c934dab0": {
+      "name": "Baz"
+    }
+  }
+}
+```
+
+***
+
+### parity_checkRequest
+
+Get the the transaction hash of the request previously posted to [`parity_postTransaction`](#parity_posttransaction) or [`parity_postSign`](#parity_postsign). Will return a JSON-RPC error if the request was rejected.
+
+#### Parameters
+
+0. `Quantity` - The id of the request sent to the signer.
+
+```js
+params: ["0x1"]
+```
+
+#### Returns
+
+- `Hash` - 32 Bytes - the transaction hash or `null` if the request hasn't been signed yet.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_checkRequest","params":["0x1"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0xde8dfd9642f7eeef12402f2a560dbf40921b4f0bda01fb84709b9d71f6c181be"
+}
+```
+
+***
+
+### parity_generateSecretPhrase
+
+Creates a secret phrase that can be associated with an account.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - The secret phrase.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_generateSecretPhrase","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "boasting breeches reshape reputably exit handrail stony jargon moneywise unhinge handed ruby"
+}
+```
+
+***
+
+### parity_listAccounts
+
+Returns all addresses if Fat DB is enabled (`--fat-db`), `null` otherwise.
+
+#### Parameters
+
+0. `Quantity` - Integer number of addresses to display in a batch.
+0. `Address` - 20 Bytes - Offset address from which the batch should start in order, or `null`.
+0. `Quantity` | `Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`.
+
+```js
+params: [
+  5,
+  null
+]
+```
+
+#### Returns
+
+- `Array` - Requested number of `Address`es or `null` if Fat DB is not enabled.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_listAccounts","params":[5,null],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    "0x7205b1bb42edce6e0ced37d1fd0a9d684f5a860f",
+    "0x98a2559a814c300b274325c92df1682ae0d344e3",
+    "0x2d7a7d0adf9c5f9073fefbdc18188bd23c68b633",
+    "0xd4bb3284201db8b03c06d8a3057dd32538e3dfda",
+    "0xa6396904b08aa31300ca54278b8e066ecc38e4a0"
+  ]
+}
+```
+
+***
+
+### parity_phraseToAddress
+
+Converts a secret phrase into the corresponding address.
+
+#### Parameters
+
+0. `String` - The phrase
+
+```js
+params: ["stylus outing overhand dime radial seducing harmless uselessly evasive tastiness eradicate imperfect"]
+```
+
+#### Returns
+
+- `Address` - Corresponding address
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_phraseToAddress","params":["stylus outing overhand dime radial seducing harmless uselessly evasive tastiness eradicate imperfect"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x004385d8be6140e6f889833f68b51e17b6eacb29"
+}
+```
+
+***
+
+### parity_postSign
+
+Request an arbitrary transaction to be signed by an account.
+
+#### Parameters
+
+0. `Address` - Account address.
+0. `Hash` - Transaction hash.
+
+```js
+params: [
+  "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+  "0x8cda01991ae267a539135736132f1f987e76868ce0269b7537d3aab37b7b185e"
+]
+```
+
+#### Returns
+
+- `Quantity` - The id of the request to the signer. If the account was already unlocked, returns `Hash` of the transaction instead.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_postSign","params":["0xb60e8dd61c5d32be8058bb8eb970870f07233155","0x8cda01991ae267a539135736132f1f987e76868ce0269b7537d3aab37b7b185e"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x1"
+}
+```
+
+***
+
+### parity_postTransaction
+
+Posts a transaction to the signer without waiting for the signer response.
+
+#### Parameters
+
+0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
+    - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
+    - `to`: `Address` - 20 Bytes  - The address the transaction is directed to.
+    - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
+    - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
+    - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+    - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+    - `minBlock`: `Quantity` | `Tag` - (optional) Delay until this block if specified.
+
+```js
+params: [{
+  "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+  "to": "0xd46e8dd67c5d32be8058bb8eb970870f072445675",
+  "value": "0x9184e72a" // 2441406250
+}]
+```
+
+#### Returns
+
+- `Quantity` - The id of the request to the signer. If the account was already unlocked, returns `Hash` of the transaction instead.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f072445675","value":"0x9184e72a"}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x1"
+}
+```
+
+***
+
+### parity_defaultExtraData
+
+Returns the default extra data
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Data` - Extra data
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_defaultExtraData","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0xd5830106008650617269747986312e31342e30826c69"
+}
+```
+
+***
+
+### parity_extraData
+
+Returns currently set extra data.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Data` - Extra data.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_extraData","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0xd5830106008650617269747986312e31342e30826c69"
+}
+```
+
+***
+
+### parity_gasCeilTarget
+
+Returns current target for gas ceiling.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Quantity` - Gas ceiling target.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_gasCeilTarget","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x5fdfb0" // 6283184
+}
+```
+
+***
+
+### parity_gasFloorTarget
+
+Returns current target for gas floor.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Quantity` - Gas floor target.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_gasFloorTarget","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x47b760" // 4700000
+}
+```
+
+***
+
 ### parity_minGasPrice
 
 Returns currently set minimal gas price
@@ -791,9 +868,9 @@ Response
 
 ***
 
-### parity_mode
+### parity_transactionsLimit
 
-Get the mode. Results one of: `"active"`, `"passive"`, `"dark"`, `"offline"`.
+Changes limit for transactions in queue.
 
 #### Parameters
 
@@ -801,13 +878,13 @@ None
 
 #### Returns
 
-- `String` - The mode.
+- `Quantity` - Current max number of transactions in queue.
 
 #### Example
 
 Request
 ```bash
-curl --data '{"method":"parity_mode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_transactionsLimit","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -815,7 +892,164 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": "active"
+  "result": 1024
+}
+```
+
+***
+
+### parity_devLogs
+
+Returns latest stdout logs of your node.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Array` - Development logs
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_devLogs","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    "2017-01-20 18:14:19  Updated conversion rate to Ξ1 = US$10.63 (11199212000 wei/gas)",
+    "2017-01-20 18:14:19  Configured for DevelopmentChain using InstantSeal engine",
+    "2017-01-20 18:14:19  Operating mode: active",
+    "2017-01-20 18:14:19  State DB configuration: fast",
+    "2017-01-20 18:14:19  Starting Parity/v1.6.0-unstable-2ae8b4c-20170120/x86_64-linux-gnu/rustc1.14.0"
+  ]
+}
+```
+
+***
+
+### parity_devLogsLevels
+
+Returns current logging level settings. Logging level can be set with `--logging` and be one of: `""` (default), `"info"`, `"debug"`, `"warn"`, `"error"`, `"trace"`.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - undefined
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_devLogsLevels","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "debug"
+}
+```
+
+***
+
+### parity_chainStatus
+
+Returns the information on warp sync blocks
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - The status object
+    - `blockGap`: `Array` - (optional) Describes the gap in the blockchain, if there is one: (first, last)
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_chainStatus","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "blockGap": undefined
+  }
+}
+```
+
+***
+
+### parity_gasPriceHistogram
+
+Returns a snapshot of the historic gas prices.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - Historic values
+    - `bucketBounds`: `Array` - Array of bound values.
+    - `count`: `Array` - Array of counts.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_gasPriceHistogram","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "bucketBounds": [
+      "0x4a817c800",
+      "0x525433d01",
+      "0x5a26eb202",
+      "0x61f9a2703",
+      "0x69cc59c04",
+      "0x719f11105",
+      "0x7971c8606",
+      "0x81447fb07",
+      "0x891737008",
+      "0x90e9ee509",
+      "0x98bca5a0a"
+    ],
+    "counts": [
+      487,
+      9,
+      7,
+      1,
+      8,
+      0,
+      0,
+      0,
+      0,
+      14
+    ]
+  }
 }
 ```
 
@@ -883,7 +1117,7 @@ Response
     "active": 0,
     "connected": 25,
     "max": 25,
-    "peers": [{ ... }, { ... }, { ... }, { ... }]
+    "peers": [{ ... }, { ... }, { ... }, ...]
   }
 }
 ```
@@ -954,36 +1188,6 @@ Response
 
 ***
 
-### parity_nodeName
-
-Returns node name, set when starting parity with `--identity NAME`.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `String` - Node name.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_nodeName","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "Doge"
-}
-```
-
-***
-
 ### parity_pendingTransactions
 
 Returns a list of transactions currently in the queue.
@@ -995,6 +1199,25 @@ None
 #### Returns
 
 - `Array` - Transactions ordered by priority
+    - `hash`: `Hash` - 32 Bytes - hash of the transaction.
+    - `nonce`: `Quantity` - The number of transactions made by the sender prior to this one.
+    - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
+    - `blockNumber`: `Quantity` | `Tag` - Block number where this transaction was in. `null` when its pending.
+    - `transactionIndex`: `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
+    - `from`: `Address` - 20 Bytes - address of the sender.
+    - `to`: `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
+    - `value`: `Quantity` - Value transferred in Wei.
+    - `gasPrice`: `Quantity` - Gas price provided by the sender in Wei.
+    - `gas`: `Quantity` - Gas provided by the sender.
+    - `input`: `Data` - The data send along with the transaction.
+    - `raw`: `Data` - Raw transaction data.
+    - `publicKey`: `Data` - Public key of the signer.
+    - `networkId`: `Quantity` - The network id of the transaction, if any.
+    - `standardV`: `Quantity` - The standardized V field of the signature (0 or 1).
+    - `v`: `Quantity` - The V field of the signature.
+    - `r`: `Quantity` - The R field of the signature.
+    - `s`: `Quantity` - The S field of the signature.
+    - `minBlock`: `Quantity` | `Tag` - (optional) Block number, tag or `null`.
 
 #### Example
 
@@ -1039,78 +1262,6 @@ Response
 
 ***
 
-### parity_pendingTransactionsStats
-
-Returns propagation stats for transactions in the queue.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Object` - mapping of transaction hashes to stats.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_pendingTransactionsStats","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "0xdff37270050bcfba242116c745885ce2656094b2d3a0f855649b4a0ee9b5d15a": {
-      "firstSeen": 3032066,
-      "propagatedTo": {
-        "0x605e04a43b1156966b3a3b66b980c87b7f18522f7f712035f84576016be909a2798a438b2b17b1a8c58db314d88539a77419ca4be36148c086900fba487c9d39": 1,
-        "0xbab827781c852ecf52e7c8bf89b806756329f8cbf8d3d011e744a0bc5e3a0b0e1095257af854f3a8415ebe71af11b0c537f8ba797b25972f519e75339d6d1864": 1
-      }
-    }
-  }
-}
-```
-
-***
-
-### parity_phraseToAddress
-
-Converts a secret phrase into the corresponding address.
-
-#### Parameters
-
-0. `String` - The phrase
-
-```js
-params: ["stylus outing overhand dime radial seducing harmless uselessly evasive tastiness eradicate imperfect"]
-```
-
-#### Returns
-
-- `Address` - Corresponding address
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_phraseToAddress","params":["stylus outing overhand dime radial seducing harmless uselessly evasive tastiness eradicate imperfect"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x004385d8be6140e6f889833f68b51e17b6eacb29"
-}
-```
-
-***
-
 ### parity_registryAddress
 
 The address for the global registry.
@@ -1136,39 +1287,6 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "0x3bb2bb5c6c9c9b7f4ef430b47dc7e026310042ea"
-}
-```
-
-***
-
-### parity_releasesInfo
-
-returns a ReleasesInfo object describing the current status of releases
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Object` - Information on current releases, `null` if not available.
-    - `fork`: `Quantity` - Block number representing the last known fork for this chain, which may be in the future.
-    - `minor`: `Object` - Information about latest minor update to current version, `null` if this is the latest minor version.
-    - `track`: `Object` - Information about the latest release in this track.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_releasesInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": null
 }
 ```
 
@@ -1211,66 +1329,6 @@ Response
 
 ***
 
-### parity_signerPort
-
-Returns the port the signer is running on, error if not enabled
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Quantity` - The port number
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_signerPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": 8180
-}
-```
-
-***
-
-### parity_transactionsLimit
-
-Changes limit for transactions in queue.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Quantity` - Current max number of transactions in queue.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_transactionsLimit","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": 1024
-}
-```
-
-***
-
 ### parity_unsignedTransactionsCount
 
 Returns number of unsigned transactions when running with Trusted Signer. Error otherwise
@@ -1301,9 +1359,9 @@ Response
 
 ***
 
-### parity_versionInfo
+### parity_dappsInterface
 
-Provides information about running version of Parity.
+Returns the interface the dapps are running on, error if not enabled.
 
 #### Parameters
 
@@ -1311,16 +1369,13 @@ None
 
 #### Returns
 
-- `Object` - Information on current version.
-    - `hash`: `Hash` - 20 Byte hash of the current build.
-    - `track`: `String` - Track on which it was released, one of: `"stable"`, `"beta"`, `"nightly"`, `"testing"`, `"null"` (unknown or self-built).
-    - `version`: `Object` - Version number composed of `major`, `minor` and `patch` integers.
+- `String` - The interface
 
 #### Example
 
 Request
 ```bash
-curl --data '{"method":"parity_versionInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_dappsInterface","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -1328,14 +1383,157 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": {
-    "hash": "0x2ae8b4ca278dd7b896090366615fef81cbbbc0e0",
-    "track": "null",
-    "version": {
-      "major": 1,
-      "minor": 6,
-      "patch": 0
-    }
-  }
+  "result": "127.0.0.1"
 }
 ```
+
+***
+
+### parity_dappsPort
+
+Returns the port the dapps are running on, error if not enabled.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Quantity` - The port number
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_dappsPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": 8080
+}
+```
+
+***
+
+### parity_enode
+
+Returns the node enode URI.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - Enode URI
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_enode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "enode://050929adcfe47dbe0b002cb7ef2bf91ca74f77c4e0f68730e39e717f1ce38908542369ae017148bee4e0d968340885e2ad5adea4acd19c95055080a4b625df6a@172.17.0.1:30303"
+}
+```
+
+***
+
+### parity_mode
+
+Get the mode. Results one of: `"active"`, `"passive"`, `"dark"`, `"offline"`.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - The mode.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_mode","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "active"
+}
+```
+
+***
+
+### parity_nodeName
+
+Returns node name, set when starting parity with `--identity NAME`.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - Node name.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_nodeName","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "Doge"
+}
+```
+
+***
+
+### parity_signerPort
+
+Returns the port the signer is running on, error if not enabled
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Quantity` - The port number
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_signerPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": 8180
+}
+```
+
