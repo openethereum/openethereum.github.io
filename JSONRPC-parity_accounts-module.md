@@ -33,6 +33,9 @@ None
 #### Returns
 
 - `Array` - Account metadata.
+    - `name`: `String` - Account name.
+    - `meta`: `String` - Encoded JSON string the defines additional account metadata.
+    - `uuid`: `String` - The account Uuid, or `null` if not available/unknown/not applicable.
 
 #### Example
 
@@ -575,3 +578,4 @@ Response
   "result": true
 }
 ```
+
