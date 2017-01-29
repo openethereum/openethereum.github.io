@@ -13,6 +13,7 @@
 - [For Mining](Mining)
 - [Coming from Geth](Importing a chain from Geth)
 - [[Backing-up & Restoring]]
+- [[UI Remote Access]
 - [[Community Guides]]
 
 ## Developing Dapps
