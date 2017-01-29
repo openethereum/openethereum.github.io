@@ -4,6 +4,11 @@
 
 [JSON-RPC](http://www.jsonrpc.org/specification) is a stateless, light-weight remote procedure call (RPC) protocol. Primarily this specification defines several data structures and the rules around their processing. It is transport agnostic in that the concepts can be used within the same process, over sockets, over HTTP, or in many various message passing environments. It uses JSON ([RFC 4627](http://www.ietf.org/rfc/rfc4627.txt)) as data format.
 
+## Transport
+* HTTP: Listens on port `8545`
+* IPC Socket: Listens on `$BASE/jsonrpc.ipc` (defaults to `~/.local/share/io.parity.ethereum/jsonrpc.ipc` on Linux)
+* Websocket: Listens on port `8180`
+
 ## Types in the JSONRPC
 
 There are several datatypes that are passed over JSON. Of these two are "special" types used particularly for the Ethereum API since Javascript/JSON has no native means of encoding unformatted byte arrays nor large quantities. Both are passed with a hex encoding, however with different requirements to formatting:
