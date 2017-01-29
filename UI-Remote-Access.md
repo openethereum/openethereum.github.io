@@ -32,6 +32,60 @@ All described methods will require to manually type UI Authorization Token and r
    $ parity signer new-token
    ```
 
+## Exposing using Nginx
+
+NOTE: It's recommended to setup authentication and SSL on your nginx server.
+
+1. Make sure the time is exact on the Host (Node) and the Client (Browser).
+1. Setup Nginx server on the Host.
+1. Create nginx configuration at `/etc/nginx/sites-enabled/parity.ui` (substitute `<external-ip>` with correct values):
+   ```
+   server {
+     listen <external-ip>:8080;
+   
+     # Uncomment for SSL Server
+     #listen <external-ip>:8080 ssl;
+     #ssl on;
+     #ssl_certificate /etc/nginx/parity.ui.crt;
+     #ssl_certificate_key /etc/nginx/parity.ui.key;
+  
+     location / {
+       proxy_pass http://127.0.0.1:8080;
+     }
+   }
+
+   server {
+     listen <external-ip>:8180;
+   
+     # Uncomment for SSL Server
+     #listen <external-ip>:8180 ssl;
+     #ssl on;
+     #ssl_certificate /etc/nginx/parity.ui.crt;
+     #ssl_certificate_key /etc/nginx/parity.ui.key;
+   
+     location / {
+       proxy_pass http://127.0.0.1:8180;
+   
+       proxy_http_version 1.1;
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection "upgrade";
+       proxy_read_timeout 86400;
+     }
+   } 
+  ```
+1. Restart nginx and run Parity without any flags (default `interface`/`port`/`cors`/`hosts` settings are sufficient)
+1. On the Client, open your browser and go to:
+   
+   ```
+   $ open http://<external-ip>:8180/#/auth/<token>
+   ```
+
+1. To generate a new token on the Host:
+
+   ```
+   $ parity signer new-token
+   ```
+
 ## Directly exposing to external connections
 
 This method is the least secure, but doesn't require SSH tunnels. It exposes your node RPC to external connections and if you really need to use it we highly advise you to configure very strict firewall rules and use it read-only, otherwise your password are being sent unencrypted over the network. This method is not recommended in general anyway, be warned.
