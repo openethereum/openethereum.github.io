@@ -23,7 +23,7 @@ Each node on the network should run its node with chain spec JSON file provided 
 
 If you're expecting to issue blocks, make sure you have `--engine-signer` set to an account address (`0xADDRESS`) listed in the engine configuration under `authorities` and password file for that account is provided to `--password`. Parity has a separate directory for each chain, so make sure that the account is visible on the specified chain (create an account with `--chain`, import the keys or use `--keys-path`). You should ensure anyone else you want issuing on the network is similarly configured. Each authority can only run a **single node** and to utilize the full network capacity each authority should run a node.  
 To make the transactions free, authority nodes can run with `--usd-per-tx 0`.  
-The configuration can also be done via the [config file](https://ethcore.github.io/parity-config-generator/) with the following fields:
+The configuration can also be done via the [config file](Configuring-Parity#config-file) with the following fields:
 
 ```
 [parity]
