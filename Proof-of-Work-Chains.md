@@ -1,10 +1,16 @@
-Here is an example file for private network. This a basic Morden config with a few parameters changed:
+Here is an example file for private network. To start Parity with a JSON file specifying the chain, run `$ parity --chain path/to/chain/spec.json`, or create a [config file](Configuring-Parity#config-file):
 
-`homesteadTransition` is set to 0 to enable Homestead mode from the start.
-`durationLimit` is set to 10 seconds.
-`networkID` is changed to avoid clashing with the main network.
-`nodes` contains a custom bootstrap node.
-`accounts` contains a custom account with lots of Ether.
+```toml
+[parity]
+chain = "path/to/chain/spec.json"
+```
+
+This a basic Morden config with a few parameters changed:
+- `homesteadTransition` is set to 0 to enable Homestead mode from the start.
+- `durationLimit` is set to 10 seconds.
+- `networkID` is changed to avoid clashing with the main network.
+- `nodes` contains a custom bootstrap node.
+- `accounts` contains a custom account with lots of Ether.
 
 ```json
 {
