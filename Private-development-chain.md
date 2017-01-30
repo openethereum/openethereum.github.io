@@ -4,6 +4,11 @@ Parity provides an `dev` engine, which can be used for dapp development and demo
 ```
 parity --chain dev
 ```
+Or by using a custom [config file](Configuring-Parity#config-file):
+```toml
+[parity]
+chain = "dev"
+```
 The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call:
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["","password"],"id": 1}' localhost:8545
