@@ -76,7 +76,7 @@ Putting it all together gives us the following command to start Parity:
 parity  --chain demo-spec.json -d /tmp/parity0 --port 30300 --jsonrpc-port 8540 --ui-port 8180 --dapps-port 8080 --jsonrpc-apis web3,eth,net,personal,parity,parity_set,traces,rpc,parity_accounts
 ```
 
-Since the command is becoming rather clunky we can use a config files instead, which are passed using `--config` option. Node 0 will have this config file saved under `node0.toml`:
+Since the command is becoming rather clunky we can use a [config files](Configuring-Parity#config-file) instead, which are passed using `--config` option. Node 0 will have this config file saved under `node0.toml`:
 ```
 [parity]
 chain = "demo-spec.json"
