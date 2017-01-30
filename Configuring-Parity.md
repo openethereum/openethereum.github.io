@@ -17,7 +17,7 @@ Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file.
 * Linux: `~/.local/share/io.parity.ethereum/config.toml`
 * macOS: `$HOME/Library/Application Support/io.parity.ethereum/config.toml`
 
-To use a custom path start run `$ parity --config path/to/config.toml`.
+To use a custom path run `$ parity --config path/to/config.toml`.
 
 ## Default config.toml
 
