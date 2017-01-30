@@ -9,6 +9,7 @@
   - [[Writing Dapps for Parity]]
   - [[Parity name registry]]
   - [[Parity github hint]]
+- [[Configuring Parity]]
 - [With Mist](Using parity with mist)
 - [For Mining](Mining)
 - [Coming from Geth](Importing a chain from Geth)
