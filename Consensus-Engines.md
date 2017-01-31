@@ -27,6 +27,15 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 }
 ```
 
+The `"params"` object for `"Ethash"` may contain the following keys (YP refers to the Yellow Paper equation numbers):
+- `"gasLimitBoundDivisor"` influences how rapidly is the gas limit allowed to evolve, redefines the value in (YP:45–46), originally 1024 = `0x400`
+- `"minimumDifficulty"` is self-explanatory, redefines the value of `D_0` in the latter two lines of (YP:39)
+- `"difficultyBoundDivisor"` influences how rapidly is the difficulty evolving, redefines the value in (YP:41), originally 2048 = `0x800`
+- `"durationLimit"` is the equilibrium block interval for the pre-Homestead era difficulty evolution, irrelevant for block numbers above `homesteadTransition`, redefines the value in (YP:42), originally 13 = `0xd`
+- `"difficultyIncrementDivisor"` is related to the equilibrium block intervals for the Homestead era difficulty evolution, redefines the value in (YP:43), originally 10 = `0xa`
+- `"homesteadTransition"` is `N_H` of (YP:13, 39) etc., or the block number after which the second line of (YP:39) is superseded by the third line, changing the difficulty evolution function
+- `"blockReward"` specifies the reward in wei given for authoring a block
+
 ```json
 "seal": {
 	"ethereum": {
