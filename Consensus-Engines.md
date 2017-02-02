@@ -154,10 +154,10 @@ This consensus is still experimental, please use Authority Round for more stable
 `"validators"` is the list of addresses of the entities which will be allowed to issue blocks  
 Optional:  
 `"blockReward"` determines the reward given to issuing authority  
-`"proposeTimeout"`
-`"prevoteTimeout"`
-`"precommitTimeout"`
-`"commitTimeout"`
+`"timeoutPropose"`  
+`"timeoutPrevote"`  
+`"timeoutPrecommit"`  
+`"timeoutCommit"`  
 
 ```json
 "seal": {
