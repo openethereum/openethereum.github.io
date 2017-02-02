@@ -9,7 +9,7 @@ Some help:
 - If you're interested in mining with Parity, see the [[Mining]] guide.
 - If you'd like to use the JSONRPC interface with Parity, see the [[JSONRPC]] guide.
 - If you're interested in hacking on the Parity code base see the [[Coding guide]].
-- For [[Private chains]] and [[Proof of Authority Chains]], you might find the [Ethereum Chain Spec Format](https://github.com/ethereum/wiki/wiki/Ethereum-Chain-Spec-Format) useful.
+- For [[Private chains]] and [[Proof of Authority Chains]], you might find the [[Chain specification]] useful.
 
 # Our Tenets
 
