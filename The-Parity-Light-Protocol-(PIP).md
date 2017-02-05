@@ -48,7 +48,6 @@ Type definitions:
 
 **Request Definitions:**
 ```
-
 // Request for block headers.
 Request::Headers {
     ID: 0
