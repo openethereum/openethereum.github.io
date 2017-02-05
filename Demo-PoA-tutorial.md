@@ -4,7 +4,7 @@ Each node will act as an authority on the network issuing blocks when necessary,
 
 ## 1. Get Parity
 
-Currently available only in the master branch, please compile or use a recent [nightly build](https://vanity-service.ethcore.io/parity-binaries?version=master&format=markdown).
+Available in all releases from 1.5.0.
 
 ## 2. Choose your chain
 
