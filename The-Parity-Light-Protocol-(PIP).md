@@ -48,6 +48,8 @@ Type definitions:
 
 **Request Definitions:**
 ```
+
+// Request for block headers.
 Request::Headers {
     ID: 0
     Inputs:
@@ -59,17 +61,18 @@ Request::Headers {
         0: [Header] // provided headers
 }
 
+// Request for a header proof.
 Request::HeaderProof {
     ID: 1
     Inputs:
         0: U // block number
     Outputs:
-        0: [[U8]] // merkle inclusion proof from CHT
-        1: Header // proved header 
-        2: H256 // hash
-        3: U // td
+        0: [[U8]] // merkle inclusion proof from CHT 
+        1: H256 // hash
+        2: U // td
 }
 
+// Request for transaction index based on hash.
 Request::TransactionIndex {
     ID: 2
     Inputs:
@@ -80,6 +83,7 @@ Request::TransactionIndex {
         2: U // index
 }
 
+// Request for a block's receipts.
 Request::BlockReceipts {
     ID: 3
     Inputs:
@@ -88,6 +92,7 @@ Request::BlockReceipts {
         0: [Receipt]
 }
 
+// Request for a block's transactions
 Request::BlockBody {
     ID: 4
     Inputs:
@@ -97,6 +102,7 @@ Request::BlockBody {
         1: [Transaction] // txs
 }
 
+// Request for proof of specific account in the state.
 Request::Account {
     ID: 5
     Inputs:
@@ -111,6 +117,7 @@ Request::Account {
         4: H256 // code hash
 }
 
+// Request for a proof of contract storage.
 Request::Storage {
     ID: 6
     Inputs:
@@ -123,12 +130,22 @@ Request::Storage {
         1: H256 // storage value
 }
 
+// Request for contract code.
 Request::Code {
     ID: 7
     Inputs:
         0: H256 // code hash
     Outputs:
         0: [U8] // bytecode
+}
+
+// Request for a specific trie node.
+Request::Node {
+    ID: 8
+    Inputs:
+        0: H256 // trie node hash
+    Outputs:
+        0: [U8]
 }
 ```
 
