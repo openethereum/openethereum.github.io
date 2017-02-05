@@ -4,7 +4,7 @@
 
 - [personal_listAccounts](#personal_listaccounts)
 - [personal_newAccount](#personal_newaccount)
-- [personal_signAndSendTransaction](#personal_signandsendtransaction)
+- [personal_sendTransaction](#personal_sendtransaction)
 - [personal_unlockAccount](#personal_unlockaccount)
 
 ## JSON-RPC API Reference
@@ -78,7 +78,7 @@ Response
 
 ***
 
-### personal_signAndSendTransaction
+### personal_sendTransaction
 
 Sends transaction and signs it in a single call. The account does not need to be unlocked to make this call, and will not be left unlocked after.
 
@@ -114,7 +114,7 @@ params: [
 
 Request
 ```bash
-curl --data '{"method":"personal_signAndSendTransaction","params":[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","data":"0x41cd5add4fd13aedd64521e363ea279923575ff39718065d38bd46f0e6632e8e","value":"0x186a0"},"hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"personal_sendTransaction","params":[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","data":"0x41cd5add4fd13aedd64521e363ea279923575ff39718065d38bd46f0e6632e8e","value":"0x186a0"},"hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
