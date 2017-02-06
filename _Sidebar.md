@@ -28,6 +28,8 @@
   - [parity_set](JSONRPC-parity_set-module)
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
+- Dapp Tutorial
+  - [I: Quick start](Tutorial-Part-I)
 
 ## Parity Chains
 - [[Chain specification]]
