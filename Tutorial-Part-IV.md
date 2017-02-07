@@ -160,6 +160,6 @@ The only interesting thing here is the fact we're looking up the `IMG` entry of 
 
 Fire it up and type the name of an entry which has an `IMG` field (e.g. `gavofyork`):
 
-![image](https://cloud.githubusercontent.com/assets/138296/22715524/3f1545cc-ed5f-11e6-9536-f7fd9fed423d.png)
+![image](https://cloud.githubusercontent.com/assets/138296/22715677/1e3e2be2-ed60-11e6-9609-16475996e7f3.png)
 
 And after enough time to download, you should see your image!
