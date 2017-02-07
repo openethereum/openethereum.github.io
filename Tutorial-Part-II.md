@@ -17,9 +17,9 @@ This is a JSX file. Basically, that means it can handle embedded HTML (well, a d
 
 ### Your first Bond
 
-The first thing we'll do is introduce the oo7 library. This introduces into Javascript the notion of reactive values known as "bonds". Reactive values are like normal variables, except that changes in them may be subscribed to with arbitrary code. They can be `map`ped and composed into arbitrarily complex expressions.
+The first thing we'll do is introduce the oo7 library. This introduces into Javascript the notion of reactive values known as "bonds". Reactive values are similar to normal "variables", except that you can get notification of when they change. They can be `map`ped and composed into arbitrarily complex expressions which are evaluated only on update.
 
-Our first example will just demonstrate how Bonds can introduce effortless reactivity by dynamically replicating the contents of an editable text field into a `span`.
+Our first example will just demonstrate how `Bond`s can introduce effortless reactivity by dynamically replicating the contents of an editable text field into a `span`.
 
 First, ensure the appropriate libraries are introduced, by placing two lines at the top of the file:
 
@@ -104,7 +104,7 @@ this.bond.map(t => t.match(/^[0-9]+$/) ? {color: 'red'} : {color: 'black'})
 
 The two are rather different, of course. Whereas the former is undeniably a `Bond`, the latter is a simple Object which happens to have a `Bond` as one of its values. In fact, the latter does work. For convenience, reactive values are able to be recognised not just directly, but also when they are within Arrays or the values of Object fields. For efficiency, this only work up to one level deep. Any which are further into the object structure will be completely ignored.
 
-### Multiple Bonds
+### Combining Bonds
 
 So far we have only used a single `Bond` for marking up our `span`. What if we want to use several? That works, too.
 
