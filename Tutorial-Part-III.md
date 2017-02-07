@@ -206,3 +206,5 @@ and should give something like:
 ![image](https://cloud.githubusercontent.com/assets/138296/22709662/8e12672a-ed48-11e6-96a3-be0065ff8cbe.png)
 
 If you go ahead and either change the default account or even just edit its name else where in Parity Wallet, you'll see the page automatically track the changes, as you'd expect.
+
+You should now be familiar with the core bonds in Parity and be happy to combine them into more complex expressions. Next up, we'll take a look at how we can use `Bond`s to interact with contracts that sit n the blockchain.
