@@ -30,7 +30,7 @@ parity.bonds.registry.getAddress(parity.api.util.sha3('gavofyork'))
 Typing `parity.api.util.sha3(...)` every time you want to look up a name in the registry gets tedious fast. Happily, Parity provides a number of derivative helper functions as part of the `parity.bonds.registry` object: `lookup`, `lookupAddress`, `lookupUint` and `lookupOwner`; they're all just like the `get`-prefixed brethren, but do the hashing for you. Our expression therefore can become:
 
 ```js
-parity.bonds.registry.lookupAddress('gavofyork')
+parity.bonds.registry.lookupAddress('gavofyork', 'A')
 ```
 
 Let's get this in to our dapp. Change the `render()`ed HTML to:
