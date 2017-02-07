@@ -92,3 +92,64 @@ Our bond is now being used twice in two different mappings, but all works as you
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22694918/fa77761c-ed16-11e6-9d18-7431c79eceb3.png)
 
+While the above might have been clear _enough_, the astute reader might have wondered if perhaps there was a way of DRYing the `{color: ...}` changing this:
+
+```
+this.bond.map(t => t.match(/^[0-9]+$/) ? {color: 'red'} : {color: 'black'})
+```
+
+...into this:
+
+```
+{color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black')}
+```
+
+The two are rather different, of course. Whereas the former is undeniably a `Bond`, the latter is a simple Object which happens to have a `Bond` as one of its values. In fact, the latter does work. For convenience, reactive values are able to be recognised not just directly, but also when they are within Arrays or the values of Object fields. For efficiency, this only work up to one level deep. Any which are further into the object structure will be completely ignored.
+
+### Multiple Bonds
+
+So far we have only used a single `Bond` for marking up our `span`. What if we want to use several? That works, too.
+
+We could initialise another `Bond` in the constructor, make another `TextBond` input field and use them both in the `span` contents, but that would be a bit samey. Instead, we'll use one of the built-in `Bond`s: the `TimeBond`.
+
+To begin, import the `TimeBond` and `TransformBond` objects alongside `Bond`:
+
+```jsx
+import {Bond, TimeBond} from 'oo7';
+```
+
+Then introduce it in the constructor:
+
+```jsx
+constructor() {
+	super();
+	this.bond = new Bond;
+	this.time = new TimeBond;
+}
+```
+
+Finally, let's use it in our span. There are several ways of combining the values of multiple `Bond`s into a single expression. For now we'll use the simplest: `Bond.all`. This function allows you to provide a number of expressions and will evaluate to an array of all such expressions. This means that `Bond.all(this.bond, this.time)` will be a _composite_ `Bond`, whose value is a JS array, the first item being the contents of our text field and the second being the time (as a number). Try it. Replace the `<Rspan>` with this new one:
+
+```jsx
+<Rspan style={{ color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black') }}>
+	{Bond.all([this.bond, this.time])}
+</Rspan>
+```
+
+Type an appropriate message and you'll end up with:
+
+![image](https://cloud.githubusercontent.com/assets/138296/22697591/e779b292-ed1f-11e6-8beb-2ff654e6ac02.png)
+
+It will automatically update as the time changes (since time changes infinitely fast, a speed which would be expensive to try to match, we take a pragmatic solution and only update the `TimeBond` once per second).
+
+We can make it slightly nicer by first formatting the time:
+
+```jsx
+<Rspan style={{ color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black') }}>
+	{Bond.all([this.bond, this.time]).map(([msg, t]) => `${new Date(t)}: ${msg}`)}
+</Rspan>
+```
+
+![image](https://cloud.githubusercontent.com/assets/138296/22697729/62243e2c-ed20-11e6-931a-1693dd865837.png)
+
+That should have given you a good introduction to the concept of the `Bond` and how it can be used within simple React objects. Next up we'll look at the Parity Universal Bond API.
