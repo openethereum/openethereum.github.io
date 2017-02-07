@@ -113,7 +113,7 @@ They get imported automatically.
 ##### How do I import a key made outside of Geth? (e.g. myetherwallet.com)
 
 *Parity 1.5 and above:*
-Simple use Parity Wallet's "Import" function on the "Accounts" page.
+Simply use Parity Wallet's "New Account" function on the "Accounts" page.
 
 *Parity 1.4 and below:*
 Simply copy it into your `$HOME/.parity/keys` directory. Parity will import all keys found there.
