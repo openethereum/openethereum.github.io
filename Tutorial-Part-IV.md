@@ -70,13 +70,13 @@ export class App extends React.Component {
 }
 ```
 
-Here we have rewritten the component to include a new `Bond` which, via the `TextBond` we are using to represent the current text in the text input field. We are passing this include the `lookupAddress` function to turn it into a `Bond` equivalent to the address for that name in the registry, and using this as the `value` of a reactive `Hash` display component. We are also using it in conjunction with `parity.bonds.getBalance` to display a formatted balance of the account.
+Here we have rewritten the component to include a new `Bond` which, via the `TextBond`, we are using to represent the current text in the text input field. We are passing this into the `lookupAddress` function to turn it into a `Bond` equivalent to the address for that name in the registry, and using this as the `value` of a reactive `Hash` display component. We are also using it in conjunction with `parity.bonds.getBalance` to display a formatted balance of the account.
 
 Here's what it looks like:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22713122/2c8146e0-ed55-11e6-8809-c5329cf89bae.png)
 
-If the name you are currently looking up happens to have its address changed meanwhile, you will of course see that change in real-time.
+If the name you are currently looking up happens to have its address changed meanwhile, or their balance changes, you will of course see these details reflected in real-time.
 
 ### Derivative contracts
 
@@ -84,14 +84,16 @@ So far so good, but while the registry contract is interesting, it's not usually
 
 Let's suppose that second contract is the GithubHint contract; if you're not already familiar, the GithubHint contract allows you to suggest which URLs might serve content for a particular hash. It's a semi-centralised, hacky alternative to content-addressable-delivery systems like BitTorrent/Kademlia, Swarm and IPFS. We use it widely in Parity as a means of content dissemination.
 
-Since it's a "standard" contract in Parity, the ABI for it is available as `parity.api.abi.githubhint`. The address is changes per chain, but can be discovered via the registry under the name `'githubhint'`; the expression would therefore be `parity.bonds.registry.lookupAddress('githubhint', 'A')`.
+Since it's a "standard" contract in Parity, the ABI for it is available as `parity.api.abi.githubhint`. The address changes per chain, but can be discovered via the registry under the name `'githubhint'`; the expression would therefore be `parity.bonds.registry.lookupAddress('githubhint', 'A')`.
 
 An important thing to realise about the `makeContract` function is that it does not require a "plain" address for the contract, but can actually work with a `Bond` for the address; everything will magically react if the address to which the `Bond` evaluates changes.
 
 Therefore our GithubHint contract object can be created with the expression:
 
 ```js
-makeContract(parity.bonds.registry.lookupAddress('githubhint', 'A'), parity.api.abi.githubhint);
+parity.bonds.makeContract(
+	parity.bonds.registry.lookupAddress('githubhint', 'A'),
+	parity.api.abi.githubhint);
 ```
 
 The GithubHint contract has only a single inspection method: `entries`. This takes a `bytes32` (the hash of the content to be found) and returns three items (via an array). There are three kinds of entry; Github repository entries, whereby the first and second items form the address of a particular commit of a particular repository; general URLs, where the first item is a URL and the second is the null hash; and empty entries where both items are null. The third item is always the owner (if any) of the entry and the only account capable of changing the hint information.
@@ -141,7 +143,7 @@ Then watch the URL come up!
 
 ### Further refinements
 
-Let's display the image associated with a registered name - we want to type `gavofyork` and have my mug come up. First we'll need to import the `Rimg` component from the `oo7-react` package.
+Let's display the image associated with a registered name - we want to type `gavofyork` and have my mug come up. First we'll need to import the reactive version of the `img` element (the `Rimg` component) from the `oo7-react` package, so that import line changes to:
 
 ```
 import {TextBond, Rimg} from 'oo7-react';
@@ -162,4 +164,6 @@ Fire it up and type the name of an entry which has an `IMG` field (e.g. `gavofyo
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22715677/1e3e2be2-ed60-11e6-9609-16475996e7f3.png)
 
-And after enough time to download, you should see your image!
+And after enough time to download, you should see the avatar!
+
+Now that you're familiar with how to inspect the state of contracts, in the next tutorial, we'll look into state-changing APIs, starting with making simple transactions.
