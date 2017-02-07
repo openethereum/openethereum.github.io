@@ -36,7 +36,14 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 
 #### Basic Operation
 
-#### How to delete blockchain (to initiate full re-sync) without deleting wallet info?
+##### How to delete blockchain (to initiate full re-sync) without deleting wallet info?
+
+*For Parity 1.5 and above:*
+
+Execute `parity db kill`.
+
+*For Parity 1.4 and below:*
+
 Execute `rm -rf ~/.parity/906a34e69aec8c0d`
 This will remove the local chain database.
 Always back up your keys (~/.parity/keys) before doing anything like that though.
