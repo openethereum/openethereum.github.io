@@ -33,9 +33,30 @@ webpack
 
 You now have a basic dapp built. Well done!
 
-### 2. Getting it visible in Parity
+### 2. Configuring its look
 
-While your dapp may well be built, it is not yet easily discoverable. You would have to host it somewhere. This can be done traditionally with a web server but for development, we will use Parity's in-built hosting. To make this work, we will make a symbolic link between our dapp's `dist` directory to Parity's "local" dapp directory.
+While your dapp may well be built, it is not yet easily discoverable. You would have to host it somewhere. This can be done traditionally with a web server but for development, we will use Parity's in-built hosting.
+
+Parity uses a special "manifest" file called to figure out how to display the entry for your dapp in Parity Wallet. This file is called `manifest.json` and must be placed in the root of your dapp's directory, in our case, this is our "build" directory, `dist`.
+
+Open an editor to edit `dist/manifest.json`; you'll see something like:
+
+```
+{
+	"id": "skeleton",
+	"name": "Skeleton",
+	"description": "A skeleton dapp",
+	"version": "0.1",
+	"author": "Parity Technologies Ltd",
+	"iconUrl": "title.png"
+}
+```
+
+The `id` is the dapp's unique identity; change that from `skeleton` to `mydapp` (or whatever). `name` is the dapp's user-visible name: change that to `My Dapp` (or whatever). The `description` is a user-visible by-line describing what the dapp is good for. Change that to `My demonstration dapp`. `version` is the dapp's version - you can leave this at `0.1` for now. You can change the `author` to your name. The `iconUrl` is the path (within `dist`) to a square (best to make it 128x128) icon for your dapp. Feel free to move an alternative `title.png` into the `dist` directory.
+
+### 3. Getting it visible in Parity
+
+To get Parity to discover your dapp, it needs to be placed into a place that Parity will see it - its local "dapps" directory. We will make a symbolic link for our dapp's `dist` directory (containing all of the ready-built dapp) in Parity's dapp directory.
 
 Parity's directory structure is different depending on your system. For Mac, Parity's local dapp directory sits at `$HOME/Library/Application Support/io.parity.ethereum/dapps`, so you'll need to enter:
 
@@ -52,3 +73,11 @@ ln -s $PWD/dist $HOME/.local/share/parity/dapps/mydapp
 ```
 
 Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
+
+![image](https://cloud.githubusercontent.com/assets/138296/22691049/93a60bde-ed06-11e6-97ab-54eb276b2fb5.png)
+
+If all is well, your dapp will be visible just like this. Click it!
+
+![image](https://cloud.githubusercontent.com/assets/138296/22691075/b3425650-ed06-11e6-99a6-046fb3ff2d59.png)
+
+And there it is - your dapp. For now it's rather underwhelming with it just displaying a simple message, but in the next part of this series, we will be changing that :-)
