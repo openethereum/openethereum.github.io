@@ -1,5 +1,3 @@
-# Tutorial Part II
-
 Now we have our basic dapp harness, we can start introducing useful functionality. Without too much ado, let's get started. Head in to `src/client/scripts/app.jsx`. You'll see our basic file:
 
 ```jsx
