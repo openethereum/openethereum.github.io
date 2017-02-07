@@ -29,7 +29,8 @@
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
 - Dapp Tutorial
-  - [I: Quick start](Tutorial-Part-I)
+  - [I: Getting started](Tutorial-Part-I)
+  - [II: oo7 Bonds](Tutorial-Part-II)
 
 ## Parity Chains
 - [[Chain specification]]
