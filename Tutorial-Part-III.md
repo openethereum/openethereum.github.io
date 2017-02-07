@@ -151,31 +151,29 @@ To see the list of accounts available, we can just grab the list of accounts and
 </div>
 ```
 
-Determining the address of the preferred account is just as easy:
+Determining the address of the preferred account is just as easy. Rather than using the reactive `span` element, let's use an alternative reactive element, `Hash`. This is very similar to the `Rspan` element, except we give it a `value` prop rather than children and it renders our value nicely as an abridged hash:
 
 ```jsx
 <div>
 	Default account:&nbsp;
-	<Rspan>
-		{parity.bonds.defaultAccount}
-	</Rspan>
+	<Hash value={parity.bonds.defaultAccount} />
 </div>
 ```
 
 Try this and use the Parity Signer's account selector to change accounts: you see the address change!
 
-![image](https://cloud.githubusercontent.com/assets/138296/22707674/8ca663f2-ed41-11e6-935b-1916fe9b30b6.png)
+![image](https://cloud.githubusercontent.com/assets/138296/22710016/cad4cda0-ed49-11e6-9257-4dbd1885dc13.png)
 
 ...then selecting a different account gives...
 
-![image](https://cloud.githubusercontent.com/assets/138296/22707693/9726af26-ed41-11e6-99ae-ec706630ca32.png)
+![image](https://cloud.githubusercontent.com/assets/138296/22710003/c4168634-ed49-11e6-94af-177683da719d.png)
 
 Maybe we'd like to know how much we have in our selected account, too. This can be done easily enough:
 
 ```jsx
 <div>
 	Default account:&nbsp;
-	<Rspan>{parity.bonds.defaultAccount}</Rspan>
+	<Hash value={parity.bonds.defaultAccount} />
 	<br />With a balance of&nbsp;
 	<Rspan>
 		{parity.bonds.balance(parity.bonds.defaultAccount).map(formatBalance)}
@@ -183,7 +181,7 @@ Maybe we'd like to know how much we have in our selected account, too. This can 
 </div>
 ```
 
-![image](https://cloud.githubusercontent.com/assets/138296/22708739/69cfdf9e-ed45-11e6-91aa-d01d440a25c7.png)
+![image](https://cloud.githubusercontent.com/assets/138296/22710059/f1572b8a-ed49-11e6-874a-7de1ff2ca519.png)
 
 Maybe we would even like to understand what name we have given to the account (if any). We can ascertain this through the `parity.bonds.accountsInfo` bond, which gives us a mapping between accounts and metadata. The expression which evaluates to the current account's name is therefore as simple as  `parity.bonds.accountsInfo[parity.bonds.defaultAccount].name`.
 
