@@ -74,10 +74,10 @@ ln -s $PWD/dist $HOME/.local/share/parity/dapps/mydapp
 
 Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
 
-![image](https://cloud.githubusercontent.com/assets/138296/22691448/8420b90a-ed08-11e6-98a5-2e8ff39812e3.png)
+![image](https://cloud.githubusercontent.com/assets/138296/22697933/f9d6449a-ed20-11e6-92d2-1afafaba86ea.png)
 
 If all is well, your dapp will be visible just like this. Click it!
 
-![image](https://cloud.githubusercontent.com/assets/138296/22691408/5c39c5a8-ed08-11e6-99cb-4390480a501f.png)
+![image](https://cloud.githubusercontent.com/assets/138296/22697890/e1677726-ed20-11e6-9a64-c1832d2c36bf.png)
 
 And there it is - your dapp. For now it's rather underwhelming with it just displaying a simple message, but in the next part of this series, we will be changing that :-)
