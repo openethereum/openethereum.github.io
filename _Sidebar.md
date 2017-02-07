@@ -29,10 +29,15 @@
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
 - Dapp Tutorial
-  - [I: Getting started](Tutorial-Part-I)
+  - [I: Getting Started](Tutorial-Part-I)
   - [II: oo7 Bonds](Tutorial-Part-II)
   - [III: Parity Bonds](Tutorial-Part-III)
-  - [IV: New React Components](Tutorial-Part-IV)
+  - [IV: Calling Contracts](Tutorial-Part-IV)
+  - [V: Posting Transactions](Tutorial-Part-V)
+  - [VI: A New Contract](Tutorial-Part-VI)
+  - [VII: Interacting](Tutorial-Part-VII)
+  - TODO: VIII: Events
+  - [IX: Signing Data](Tutorial-Part-IX)
 
 ## Parity Chains
 - [[Chain specification]]
