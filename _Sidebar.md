@@ -31,6 +31,8 @@
 - Dapp Tutorial
   - [I: Getting started](Tutorial-Part-I)
   - [II: oo7 Bonds](Tutorial-Part-II)
+  - [III: Parity Bonds](Tutorial-Part-III)
+  - [IV: New React Components](Tutorial-Part-IV)
 
 ## Parity Chains
 - [[Chain specification]]
