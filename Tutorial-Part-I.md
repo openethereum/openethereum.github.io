@@ -78,6 +78,6 @@ Once you have it linked, you should start (or restart, if already running) Parit
 
 If all is well, your dapp will be visible just like this. Click it!
 
-![image](https://cloud.githubusercontent.com/assets/138296/22691075/b3425650-ed06-11e6-99a6-046fb3ff2d59.png)
+![image](https://cloud.githubusercontent.com/assets/138296/22691408/5c39c5a8-ed08-11e6-99cb-4390480a501f.png)
 
 And there it is - your dapp. For now it's rather underwhelming with it just displaying a simple message, but in the next part of this series, we will be changing that :-)
