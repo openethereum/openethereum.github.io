@@ -8,7 +8,7 @@ First get a Parity node up and running (either build yourself or install one of 
 There are packages built for various platforms, though if all else fails, you can just build it straight from the main repository:
 
 ```
-git clone https://github.com/ethereum/cpp-ethereum
+git clone --recursive https://github.com/ethereum/cpp-ethereum
 cd cpp-ethereum
 mkdir build
 cd build
