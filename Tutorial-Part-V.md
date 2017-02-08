@@ -24,17 +24,17 @@ Creating a new transaction is a simple affair. The constructor of `Transaction` 
 - `to` The recipient of the transaction; undefined or `null` indicates this is a contract-creation transaction.
 - `from` The sender of the transaction; must be an account which the user controls. Will default to `parity.bonds.defaultAccount`.
 - `value` The amount of ether to send to the recipient or endow any created contract.
-- `condition` A condition on which to predicate the distribution, but not the approval/signing, of the transaction. This is an object which contains one of two keys: `block` (which dictates the minimum block number before distribution) and `time` (the same but for block timestamp). 
+- `condition` A condition on which to predicate the distribution, but not the approval/signing, of the transaction. This is an object which contains one of two keys: `block` (which dictates the minimum block number before distribution) and `time` (the same but for block timestamp).
 - `gas` The amount of gas to supply with the transaction. By default, it will attempt to estimate the amount of gas to supply. Such that the transaction succeeds without exception/error.
-- `gasPrice` The price (in Wei) per unit of gas. Will default to something sensible (in Parity's case, this is the median of the distribution formed from the last several hundred transactions). 
+- `gasPrice` The price (in Wei) per unit of gas. Will default to something sensible (in Parity's case, this is the median of the distribution formed from the last several hundred transactions).
 - `nonce` The sender nonce of the transaction. Will default to the latest known value.
 
-### Giveth to gavofyork 
+### Giveth to gavofyork
 
-Let's start simple. A button to give 100 Finney (around $1 at current prices) to me. Since we want to include a button, we'll need the appropriate Material UI import for that:
+Let's start simple. A button to give 100 Finney (around $1 at current prices) to me. Since we want to include a button, we'll need the appropriate import for that:
 
 ```jsx
-import RaisedButton from 'material-ui/RaisedButton';
+import {RRaisedButton, Rspan, TextBond} from 'oo7-react';
 ```
 
 Next, in our class, we'll maintain the address of 'gavofyork' for efficiency and brevity:
@@ -56,7 +56,7 @@ Next for the HTML, we'll have two elements: the balance of our default account (
 		{parity.bonds.balance(parity.bonds.defaultAccount).map(formatBalance)}
 	</Rspan>
 	<br />
-	<RaisedButton
+	<RRaisedButton
 		label='Give gavofyork 100 Finney'
 		onClick={() => new Transaction({to: this.gavofyork, value: 100 * 1e15})}
 	/>
@@ -73,4 +73,40 @@ Once done give it 15-30 seconds and you should see you balance reduce by around 
 
 ### Giveth to anyone
 
-TODO
+Let's quickly alter the dapp so we can accept any name when we give our 100 Finney. Ensure you have the utility function `isNullData`:
+
+```jsx
+import {Transaction, formatBalance, isNullData} from 'oo7-parity';
+```
+
+Change the constructor so we have a bond for the recipient's name:
+
+```jsx
+this.name = new Bond;
+this.recipient = parity.bonds.registry.lookupAddress(this.name), 'A');
+```
+
+And the part of your `render()` HTML that follows the `br` element to:
+
+```jsx
+<TextBond bond={this.name} floatingLabelText='Name of recipient' />
+<RRaisedButton
+	label={this.name.map(n => `Give ${n} 100 Finney`)}
+	disabled={this.recipient.map(isNullData)}
+	onClick={() => new Transaction({to: this.recipient, value: 100 * 1e15})}
+/>
+```
+
+This should be fairly clear from the previous tutorial; note that because we're using the Bond-enabled "reactive" variant of `RaisedButton`, our `disabled` and `label` props can be `Bonds`. The end result is to get a button which is only enabled when the name of the recipient is valid:
+
+![image](https://cloud.githubusercontent.com/assets/138296/22752491/b99eb7e0-ee06-11e6-85c7-c11c8a2b99c1.png)
+
+Jutta didn't yet register...
+
+![image](https://cloud.githubusercontent.com/assets/138296/22752481/acdecc3e-ee06-11e6-8e74-600cfe813521.png)
+
+...however Nicholas did.
+
+### Track the transaction
+
+Seeing nothing for those 15-30 seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `new Transaction`.
