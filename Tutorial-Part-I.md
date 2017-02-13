@@ -2,12 +2,12 @@ Here we will go through the steps to making a simple Dapp. By the end of this, y
 
 ### 1. Spawning a new Dapp
 
-Our dapp will use modern JS technologies; NPM, WebPack, React, Material UI, Babel, ES6, JSX and OO7 Bonds. Getting a working set up in Javascript with all of this takes time and patience. We'll cheat and just clone a repo with it all ready. First, if you don't have Git, node.js, NPM or Webpack already installed on your system, get them (`sudo apt-get install git npm && npm i -g webpack` might work on Ubuntu).
+Our dapp will use modern JS technologies; [NPM](https://www.npmjs.com), [WebPack](https://webpack.js.org), [React](https://facebook.github.io/react/), Material UI, [Babel](http://babeljs.io), ES6, JSX and [OO7 Bonds](https://github.com/ethcore/oo7-parity). Getting a working set up in Javascript with all of this takes time and patience. We'll cheat and just clone a repo with it all ready. First, if you don't have Git, node.js, NPM or Webpack already installed on your system, get them (`sudo apt-get install git npm` might work on Ubuntu).
 
 Next, clone our conveniently prepared `skeleton` repository:
 
 ```
-git clone http://github.com/ethcore/skeleton mydapp
+git clone https://github.com/ethcore/skeleton mydapp
 ```
 
 This will make your a new repo `mydapp` with everything set up and ready to go. We will `cd` in to it and remove the origin repository lest it confuse Git:
@@ -25,7 +25,7 @@ The next stage is to get all the dependencies sorted. NPM is rather handy at loo
 npm i
 ```
 
-This should grab and install all that is required. The next thing to do is to build the final web-ready version of the fledgling dapp. We use webpack for this; it'll smash everything together and provide you with a single `index.js` for you in the `dist` path.
+This should grab and install all that is required. The next thing to do is to build the final web-ready version of the fledgling dapp. We use [webpack](https://webpack.js.org) for this; it'll smash everything together and provide you with a single `index.js` for you in the `dist` path.
 
 ```
 webpack
@@ -52,7 +52,12 @@ Open an editor to edit `dist/manifest.json`; you'll see something like:
 }
 ```
 
-The `id` is the dapp's unique identity; change that from `skeleton` to `mydapp` (or whatever). `name` is the dapp's user-visible name: change that to `My Dapp` (or whatever). The `description` is a user-visible by-line describing what the dapp is good for. Change that to `My demonstration dapp`. `version` is the dapp's version - you can leave this at `0.1` for now. You can change the `author` to your name. The `iconUrl` is the path (within `dist`) to a square (best to make it 128x128) icon for your dapp. Feel free to move an alternative `title.png` into the `dist` directory.
+- The `id` is the dapp's unique identity; change that from `skeleton` to `mydapp` (or whatever).
+- `name` is the dapp's user-visible name: change that to `My Dapp` (or whatever).
+- The `description` is a user-visible by-line describing what the dapp is good for. Change that to `My demonstration dapp`.
+- `version` is the dapp's version - you can leave this at `0.1` for now.
+- You can change the `author` to your name.
+- The `iconUrl` is the path (within `dist`) to a square (best to make it 128x128) icon for your dapp. Feel free to move an alternative `title.png` into the `dist` directory.
 
 ### 3. Getting it visible in Parity
 
