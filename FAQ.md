@@ -19,6 +19,9 @@ Make sure you are using the latest stable rust compiler. Update with `rustup upd
 ##### How to perform a cross-build on ARM/Raspberry Pi?
 See the documentation for [docker build for ARM](https://github.com/ethcore/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
 
+##### Trying to build on Linux, I get libudev or libssl related errors?
+Install required packages `libudev-dev` and `libssl-dev`.
+
 ##### Trying to build on Windows, I get `link failed` mentioning `kernel32.lib`?
 Make sure you have set up your 64-bit variables in the build shell before issuing `cargo build`:
 
@@ -82,7 +85,14 @@ Transaction tracing, available in Parity 1.1 and above, enables all `CALL`/`CREA
 #### Backup, Restore and Files
 
 ##### Where can I find Parity's local files?
-In Windows, the `$HOME` parameter is equivalent to `C:\Users\{CurrentUser}`. Parity's local files live in `$HOME/.parity` making it `C:\Users\{CurrentUser}\.parity`.
+
+On Windows blockchain data is located in `/Users/You/AppData/Local/Parity/Ethereum`
+while keys and configuration are kept in `/Users/You/AppData/Roaming/Parity/Ethereum`
+
+On MacOS: `/Users/you/Library/Application Support/io.parity.ethereum`
+
+On Linux: `/home/you/.local/share/io.parity.ethereum`
+
 
 ##### How do I backup my blockchain?
 You can just export it to a file:
