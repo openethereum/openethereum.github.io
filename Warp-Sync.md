@@ -13,7 +13,7 @@ Easy! Just update to Parity `1.4.0` or later, and run `parity --warp`. Your clie
 The warp protocol inherits all packets from version 63 of the `eth` wire protocol, as well as amending the status packet (`0x01`) and adding a few new ones:
 
 **Status**
-[`0x00`, `...`, `snapshot_hash`: B_32, `snapshot_number`: P] In addition to all the fields in `eth` protocol version 63's status (denoted by `...`), include `snapshot_hash` and `snapshot_number` which signify the block hash and number respectively of the peer's local snapshot.
+[`0x00`, `...`, `snapshot_hash`: B_32, `snapshot_number`: P] In addition to all the fields in `eth` protocol version 63's status (denoted by `...`), include `snapshot_hash` and `snapshot_number` which signify the snapshot manifest RLP hash and block number respectively of the peer's local snapshot.
 
 **GetSnapshotManifest** 
 [`0x11`] Request a snapshot manifest in RLP form from a peer.
