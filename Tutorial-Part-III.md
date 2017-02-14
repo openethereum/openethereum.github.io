@@ -1,10 +1,10 @@
-So now we're fairly happy with the idea of `Bond`s in our reactive user interface, it's time to get down and dirty with the blockchain. This particular dapp asks our hosting environment (in this case Parity but potentially others in the future) to populate the Javascript global environment with the `parity.js` API. If you're interested, this happens in `dist/index.html` at the line:
+So now we're fairly happy with the idea of `Bond`s in our reactive user interface, it's time to get down and dirty with the blockchain. This particular dapp asks our hosting environment (in this case Parity but potentially others in the future) to populate the Javascript global environment with the [parity.js API](https://www.npmjs.com/package/@parity/parity.js). If you're interested, this happens in `dist/index.html` at the line:
 
 ```js
 <script src="/parity-utils/parity.js"></script>
 ```
 
-This gives us a global `parity` object which we can use to get information concerning the blockchain. In addition to the basic parity.js API, we also introduce the `oo7-parity` package, which provides a higher level reactive `Bond` API on top.
+This gives us a global `parity` object which we can use to get information concerning the blockchain. In addition to the basic *parity.js* API, we also introduce the `oo7-parity` package, which provides a higher level reactive `Bond` API on top of *parity.js*.
 
 This is already set up for us, but if you're interested, it happens in `src/client/scripts/entry.jsx`, specifically the lines:
 
@@ -24,9 +24,9 @@ The `abiPolyfill` call just provides various standard contract ABIs for us in `p
 
 ### Watch the block
 
-For our first trick, we will introduce the simplest of all bonds: `parity.bonds.blockNumber`. This evaluates to the current block, expressed as a simple `Number`.
+For our first trick, we will introduce the simplest of all bonds: `parity.bonds.blockNumber`. This evaluates to [the current block](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
 
-In `app.jsx`, remove the entire `App` object and replace it with:
+In `app.jsx`, remove the entire `App` class and replace it with:
 
 ```jsx
 export class App extends React.Component {
@@ -56,9 +56,7 @@ It's not especially pretty, but you get the idea. We can bling it up easily enou
 We'll also need to provide the `formatBlockNumber` function:
 
 ```js
-export function formatBlockNumber(n) {
-    return '#' + ('' + n).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
-}
+const formatBlockNumber = (n) => '#' + ('' + n).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 ```
 
 Happily this is provided by the `oo7-parity` package, so you can alternatively just import it:
