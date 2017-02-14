@@ -1,6 +1,6 @@
-**This is the second part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
+**This is the second part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapter.
 
-[⟵ 1. Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-I) | [3. Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-III)
+[⟵ 1st Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-I) | [3rd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-III)
 
 ----
 
