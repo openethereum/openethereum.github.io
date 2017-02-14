@@ -118,3 +118,7 @@ Jutta didn't yet register...
 ### Track the transaction
 
 Seeing nothing for those 15-30 seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `new Transaction`.
+
+----
+
+[6th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-VI)
