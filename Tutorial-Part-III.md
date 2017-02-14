@@ -8,10 +8,10 @@ This gives us a global `parity` object which we can use to get information conce
 
 This is already set up for us, but if you're interested, it happens in `src/client/scripts/entry.jsx`, specifically the lines:
 
-```
+```js
 import {setupBonds, abiPolyfill} from 'oo7-parity';
 
-//...
+// …
 
 // Polyfills for parity.js
 parity.api.abi = abiPolyfill();
@@ -46,7 +46,8 @@ It's not especially pretty, but you get the idea. We can bling it up easily enou
 
 ```jsx
 <div>
-	Current block is:&nbsp;
+	Current block is:
+	&nbsp;
 	<Rspan style={{fontWeight: 'bold'}}>
 		{parity.bonds.blockNumber.map(formatBlockNumber)}
 	</Rspan>
@@ -59,7 +60,7 @@ We'll also need to provide the `formatBlockNumber` function:
 const formatBlockNumber = (n) => '#' + ('' + n).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 ```
 
-Happily this is provided by the `oo7-parity` package, so you can alternatively just import it:
+Happily this is provided by the [`oo7-parity`](https://github.com/ethcore/oo7-parity) package, so you can alternatively just import it:
 
 ```js
 import {formatBlockNumber} from 'oo7-parity';
