@@ -36,6 +36,13 @@ import {TextBond, Rspan} from 'oo7-react';
 
 Next, we need to introduce a new Bond. It will represent the current contents of a text field. We will initialise it in our class's constructor. Insert these lines directly into the `App` class declaration.
 
+```jsx
+constructor() {
+	super();
+	this.bond = new Bond();
+}
+```
+
 You code should now look like this:
 
 ```jsx
@@ -47,7 +54,7 @@ import styles from "../style.css";
 export class App extends React.Component {
 	constructor() {
 		super();
-		this.bond = new Bond;
+		this.bond = new Bond();
 	}
 
 	render() {
@@ -85,7 +92,7 @@ Reloading our dapp page in the Parity Wallet will give a simple form; select the
 
 ### Transforming `Bond`s
 
-`Bond`s don't just have to pass on data; they can also represent transformations on the data. One example of a transform on text would be simple upper-casing. A function to upper-case text would be `text => text.toUpperCase()`. We can `map` our Bond with this function, making the `<Rspan>` display the upper case of whatever we type into the field:
+**`Bond`s don't just have to pass on data; they can also represent transformations on the data.** One example of a transform on text would be simple upper-casing. A function to upper-case text would be `text => text.toUpperCase()`. We can `map` our Bond with this function, making the `<Rspan>` display the upper case of whatever we type into the field:
 
 ```jsx
 <Rspan>{this.bond.map(t => t.toUpperCase())}</Rspan>
@@ -127,13 +134,13 @@ this.bond.map(t => t.match(/^[0-9]+$/) ? {color: 'red'} : {color: 'black'})
 
 The two are rather different, of course. Whereas the former is undeniably a `Bond`, the latter is a simple object which happens to have a `Bond` as one of its values. In fact, the latter does work. **For convenience, reactive values are able to be recognised not just directly, but also when they are within Arrays or the values of Object fields.** For efficiency, this only work up to one level deep. Any which are further into the object structure will be completely ignored.
 
-### Combining Bonds
+### Combining `Bond`s
 
-So far we have only used a single `Bond` for marking up our `span`. What if we want to use several? That works, too.
+So far we have only used a single `Bond` for marking up our `<Rspan>`. What if we want to use several? That works, too.
 
 We could initialise another `Bond` in the constructor, make another `TextBond` input field and use them both in the `span` contents, but that would be a bit samey. Instead, we'll use one of the built-in `Bond`s: the `TimeBond`.
 
-To begin, import the `TimeBond` and `TransformBond` objects alongside `Bond`:
+To begin, import `TimeBond` from `oo7`, alongside `Bond`:
 
 ```jsx
 import {Bond, TimeBond} from 'oo7';
@@ -144,12 +151,14 @@ Then introduce it in the constructor:
 ```jsx
 constructor() {
 	super();
-	this.bond = new Bond;
-	this.time = new TimeBond;
+	this.bond = new Bond();
+	this.time = new TimeBond();
 }
 ```
 
-Finally, let's use it in our span. There are several ways of combining the values of multiple `Bond`s into a single expression. For now we'll use the simplest: `Bond.all`. This function allows you to provide a number of expressions and will evaluate to an array of all such expressions. This means that `Bond.all(this.bond, this.time)` will be a _composite_ `Bond`, whose value is a JS array, the first item being the contents of our text field and the second being the time (as a number). Try it. Replace the `<Rspan>` with this new one:
+Finally, let's use it in our `<Rspan>`. There are several ways of combining the values of multiple `Bond`s into a single expression. For now we'll use the simplest: `Bond.all`. This function allows you to provide a number of expressions and will evaluate to an array of all such expressions. This means that `Bond.all(this.bond, this.time)` will be a _composite_ `Bond`, whose value is a [JS array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/array), the first item being the contents of our text field and the second being the time (as a number).
+
+Try it. Replace the `<Rspan>` with this new one:
 
 ```jsx
 <Rspan style={{ color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black') }}>
@@ -161,7 +170,7 @@ Type an appropriate message and you'll end up with:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22697591/e779b292-ed1f-11e6-8beb-2ff654e6ac02.png)
 
-It will automatically update as the time changes (since time changes infinitely fast, a speed which would be expensive to try to match, we take a pragmatic solution and only update the `TimeBond` once per second).
+It will automatically update as the time changes. Since time changes infinitely fast, a speed which would be expensive to try to process, we take a pragmatic solution and only update the `TimeBond` once per second.
 
 We can make it slightly nicer by first formatting the time:
 
