@@ -1,3 +1,9 @@
+**This is the fifth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
+
+[⟵ 4th Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-IV) | [6th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-VI)
+
+----
+
 So far we've learned how to inspect much of the information associated with the blockchain either through calling into contracts or through Parity's own APIs. We have seen how the Bond framework have made those tasks very easy. However, we have not yet had any impact on the blockchain's state---we have not yet sent a transaction.
 
 Sending a transaction in Ethereum is a multi-stage process. The transaction is initially submitted to Parity for signing. During this stage, Parity it free to consult the user to ensure that they authorise this transaction to happen. While in some instances this may be instantaneous, this can also be a long process taking upwards of 60 seconds: depending on the type of account, password or passwords may need to be entered, a 2-factor authentication process may need to occur or the secret key required for signing may be on a different device.
