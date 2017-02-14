@@ -1,6 +1,8 @@
-**This is the Dapp Tutorial**, walking you through making a simple Ethereum-powered, distributed app. By the end of this, you'll be able to head in to Parity, select your Dapp and see it in action.
+**This is the first part of the Dapp Tutorial**.
 
-[2. Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-II)
+[2nd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-II)
+
+This tutorial walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
 
 ----
 
