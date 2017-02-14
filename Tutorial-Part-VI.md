@@ -3,3 +3,5 @@
 [⟵ 5th Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-V) | [7th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-VII)
 
 ----
+
+## A New Contract
