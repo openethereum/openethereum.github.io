@@ -1,3 +1,9 @@
+**This is the second part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
+
+[⟵ 1. Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-I) | [3. Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-III)
+
+----
+
 Now we have our basic dapp harness, we can start introducing more interesting functionality. Without too much ado, let's get started. Head in to `src/client/scripts/app.jsx`. You'll see our basic file:
 
 ```jsx
