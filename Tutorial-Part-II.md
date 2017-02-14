@@ -2,7 +2,7 @@ Now we have our basic dapp harness, we can start introducing more interesting fu
 
 ```jsx
 import React from 'react';
-import styles from "../style.css";
+import styles from '../style.css';
 
 export class App extends React.Component {
 	render() {
@@ -49,7 +49,7 @@ You code should now look like this:
 import {Bond} from 'oo7';
 import {TextBond, Rspan} from 'oo7-react';
 import React from 'react';
-import styles from "../style.css";
+import styles from '../style.css';
 
 export class App extends React.Component {
 	constructor() {
@@ -65,7 +65,7 @@ export class App extends React.Component {
 }
 ```
 
-----
+### Interactivity
 
 Next we need to create the text entry field and the  `<span>` element (in which the text field's contents will be reflected). We will use a version of [Material UI's `TextField` element](http://www.material-ui.com/#/components/text-field) which has been specially modified to propagate the value into a named `Bond`. This is called `TextBond`. Similarly, for the `<span>`, we'll use a special "reactive" version of the `<span>` element which is able to accept `Bond`s as children and values of certain properties; this is known as `<Rspan>`. We imported both from the `oo7-react` library before.
 
