@@ -1,3 +1,9 @@
+**This is the third part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
+
+[⟵ 2. Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-II) | [4. Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-IV)
+
+----
+
 So now we're fairly happy with the idea of `Bond`s in our reactive user interface, it's time to get down and dirty with the blockchain. This particular dapp asks our hosting environment (in this case Parity but potentially others in the future) to populate the Javascript global environment with the [parity.js API](https://www.npmjs.com/package/@parity/parity.js). If you're interested, this happens in `dist/index.html` at the line:
 
 ```js
