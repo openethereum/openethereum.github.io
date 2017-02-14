@@ -130,13 +130,13 @@ Our bond is now being used twice in two different mappings, but all works as you
 
 While the above might have been clear _enough_, the astute reader might have wondered if perhaps there was a way of [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)ing the `{color: ...}`, changing this:
 
-```
+```js
 this.bond.map(t => t.match(/^[0-9]+$/) ? {color: 'red'} : {color: 'black'})
 ```
 
 ...into this:
 
-```
+```js
 {color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black')}
 ```
 
@@ -189,6 +189,41 @@ We can make it slightly nicer by first formatting the time:
 ```
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22697729/62243e2c-ed20-11e6-931a-1693dd865837.png)
+
+In order to make the code more readable, we're going to pull out the color processing and the time formatting into separate functions. Our code looks like this now:
+
+```js
+import React from 'react';
+import {Bond, TimeBond} from 'oo7';
+import {TextBond, Rspan} from 'oo7-react';
+import styles from '../style.css';
+
+const computeColor = t => t.match(/^[0-9]+$/) ? {color: 'red'} : {color: 'black'}
+const format = ([msg, t]) => `${new Date(t)}: ${msg}`
+
+export class App extends React.Component {
+	constructor() {
+		super();
+		this.bond = new Bond();
+		this.time = new TimeBond();
+	}
+	render() {
+		return (
+			<div>
+				<TextBond
+					bond={this.bond}
+					floatingLabelText="Go ahead and type some text"
+				/>
+				<Rspan
+					style={this.bond.map(computeColor)}
+				>
+					{Bond.all([this.bond, this.time]).map(format)}
+				</Rspan>
+			</div>
+		);
+	}
+}
+```
 
 That should have given you a good introduction to the concept of the `Bond` and how it can be used within simple React objects. Next up we'll look at the Parity Universal Bond API.
 
