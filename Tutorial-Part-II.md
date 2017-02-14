@@ -191,3 +191,7 @@ We can make it slightly nicer by first formatting the time:
 ![image](https://cloud.githubusercontent.com/assets/138296/22697729/62243e2c-ed20-11e6-931a-1693dd865837.png)
 
 That should have given you a good introduction to the concept of the `Bond` and how it can be used within simple React objects. Next up we'll look at the Parity Universal Bond API.
+
+----
+
+[3rd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-III)
