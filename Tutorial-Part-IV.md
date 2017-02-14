@@ -175,3 +175,7 @@ Fire it up and type the name of an entry which has an `IMG` field (e.g. `gavofyo
 And after enough time to download, you should see the avatar!
 
 Now that you're familiar with how to inspect the state of contracts, in the next tutorial, we'll look into state-changing APIs, starting with making simple transactions.
+
+----
+
+[5th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-V)
