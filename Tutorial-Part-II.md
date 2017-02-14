@@ -13,31 +13,54 @@ export class App extends React.Component {
 }
 ```
 
-This is a JSX file. Basically, that means it can handle embedded HTML (well, a dialect of XHTML, to be more exact) when describing how React components should be rendered. If this is all new to you, you might want to [familiarise yourself with the technology](http://www.hackingwithreact.com/read/1/3/introduction-to-jsx). For now, I'll assume you either know or don't care.
+This is a [JSX](https://facebook.github.io/jsx/) file. Basically, that means it can handle embedded HTML (well, a dialect of XHTML, to be more exact) when describing how React components should be rendered. If this is all new to you, you might want to [familiarise yourself with the technology](http://www.hackingwithreact.com/read/1/3/introduction-to-jsx). For now, I'll assume you either know or don't care.
 
 ### Your first Bond
 
-The first thing we'll do is introduce the oo7 library. This introduces into Javascript the notion of reactive values known as "bonds". Reactive values are similar to normal "variables", except that you can get notification of when they change. They can be `map`ped and composed into arbitrarily complex expressions which are evaluated only on update.
+The first thing we'll do is introduce the [oo7 library](https://github.com/ethcore/oo7). This introduces into Javascript the notion of reactive values known as "bonds". [Reactive values](https://en.wikipedia.org/wiki/Reactive_programming) are similar to normal "variables", except that you can get notification of when they change. They can be `map`ped and composed into arbitrarily complex expressions which are evaluated only on update.
 
-Our first example will just demonstrate how `Bond`s can introduce effortless reactivity by dynamically replicating the contents of an editable text field into a `span`.
+**Our first example will just demonstrate how `Bond`s can introduce effortless reactivity by dynamically replicating the contents of an editable text field into a [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span).**
 
-First, ensure the appropriate libraries are introduced, by placing two lines at the top of the file:
+Ensure the appropriate libraries are introduced. Install the `oo7` and `oo7-react` libraries by running the following command. It will download them and put two entries into the list of libraries your app needs to run.
+
+```sh
+npm install --save oo7 oo7-react
+```
+
+Import the library by placing two lines at the top of `app.jsx`:
 
 ```jsx
 import {Bond} from 'oo7';
 import {TextBond, Rspan} from 'oo7-react';
 ```
 
-Next, we need to introduce a new Bond. This will represent the current contents of a text field. We will initialise it in our class's constructor. Insert these lines directly below the first line of the class declaration:
+Next, we need to introduce a new Bond. It will represent the current contents of a text field. We will initialise it in our class's constructor. Insert these lines directly into the `App` class declaration.
+
+You code should now look like this:
 
 ```jsx
-constructor() {
-	super();
-	this.bond = new Bond;
+import {Bond} from 'oo7';
+import {TextBond, Rspan} from 'oo7-react';
+import React from 'react';
+import styles from "../style.css";
+
+export class App extends React.Component {
+	constructor() {
+		super();
+		this.bond = new Bond;
+	}
+
+	render() {
+		return (
+			<div>Hello world!</div>
+		);
+	}
 }
 ```
 
-Next we need to create the text entry field and the span element (in which the text field's contents will be reflected). We will use a version of Material UI's `TextField` element which has been specially modified to write propagate the value into a named `Bond`. This is called `TextBond`. Similarly, for the `span`, we'll use a special "reactive" version of the `span` element which is able to accept `Bond`s as children and values of certain properties; this is known as `Rspan`. Both are already imported from the oo7-react library.
+----
+
+Next we need to create the text entry field and the  `<span>` element (in which the text field's contents will be reflected). We will use a version of Material UI's `TextField` element which has been specially modified to write propagate the value into a named `Bond`. This is called `TextBond`. Similarly, for the `span`, we'll use a special "reactive" version of the `span` element which is able to accept `Bond`s as children and values of certain properties; this is known as `Rspan`. Both are already imported from the oo7-react library.
 
 Change the `<div>Hello world</div>` line to:
 
