@@ -161,6 +161,51 @@ This is encoded as an RLP-list containing two items: `[P_IDX, O_IDX]`
 
 Allowing only back-references allows us to never process requests in worse than `O(N)` time, and purely "disjoint" requests (that is, those which don't have dependencies on prior requests) can be processed in parallel.
 
+**Inclusion Proofs**:
+For state and CHT requests which require merkle inclusion proofs, they can oftentimes not be served when the requested key does not existed in the relevant trie. In these cases, a proof of `non-existence` must be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. In these cases, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which rely upon them must be responded to with an empty list.
+
+## Buffer Flow
+
+For each connection to a remote peer, we maintain a "buffer" signifying the amount of requests we may make to them, a rate of recharge for that buffer over time, and a cost table which describes the cost, in units of buffer, of each request. When making a request, it is a violation of the protocol to request more than the current amount of "buffer" allows. Empty responses may lead to a refund the cost of their corresponding request, but are not required to. On response, the server replies with the new buffer value, which must be at least the previous buffer value minus the cost of the made requests and at most the `MaxBuffer`.
+
+Maintain the following values (given in the handshake, updated via other messages):
+
+**Max Buffer**: `U`
+
+The cap on buffer for this peer.
+
+**Rate of Recharge**: `U`
+
+The rate at which the buffer value recharges per second. May be `0`.
+
+**Base Cost**: `U`
+
+The base cost to be charged for each request packet sent.
+
+**Cost Table**: `P`
+
+A table mapping request IDs to costs. An exception is made for the `Headers` request, which may request multiple headers, in which case the cost for the whole request is computed by multiplying `Cost(Headers)` by the maximum number of headers requested.
+
+The cost table is encoded as an RLP list containing lists of length 2:
+
+`[ [id_a; cost_a], [id_b; cost_b], [id_c; cost_c] ]`
+
+Each sub-list contains a request ID and a buffer cost, which may not exceed the maximum buffer. Sub-lists may be in arbitrary order, but there must be one for every specified request type, with no duplicates.
+
+Define `ID(T)` to be the ID of a request type T.
+Define `Cost(ID)` to be the cost for each request type of ID.
+The cost calculation function `buffer_cost(P)` of a request packet P can be defined as follows (in pseudocode):
+
+```
+let mut cost = base_cost;
+for request in P {
+    match request {
+        Request::Headers(inner) => cost += COST(ID(Headers)) * headers_request[2],
+        other => cost += COST(ID(request)),
+    }
+}
+```
+
 # PIPv1 Messages:
 (Tentative: still need to work in things like flow control, transaction execution, capabilities, metadata, NodeID, pruning responsibilities)
 
