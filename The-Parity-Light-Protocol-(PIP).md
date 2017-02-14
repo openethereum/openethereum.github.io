@@ -161,8 +161,13 @@ This is encoded as an RLP-list containing two items: `[P_IDX, O_IDX]`
 
 Allowing only back-references allows us to never process requests in worse than `O(N)` time, and purely "disjoint" requests (that is, those which don't have dependencies on prior requests) can be processed in parallel.
 
+**Failed Requests**:
+
+Requests which cannot be served (due to pruning or other restrictions) may _fail_. The response for a failed request is simply the empty list. Further requests which reference on the results of a failed request must also fail.
+
 **Inclusion Proofs**:
-For state and CHT requests which require merkle inclusion proofs, they can oftentimes not be served when the requested key does not existed in the relevant trie. In these cases, a proof of `non-existence` must be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. In these cases, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which rely upon them must be responded to with an empty list.
+
+For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. Furthermore, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which (directly or transitively) rely upon them will fail.
 
 ## Buffer Flow
 
