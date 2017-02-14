@@ -215,3 +215,7 @@ and should give something like:
 If you go ahead and either change the default account or even just edit its name else where in Parity Wallet, you'll see the page automatically track the changes, as you'd expect.
 
 You should now be familiar with the core bonds in Parity and be happy to combine them into more complex expressions. Next up, we'll take a look at how we can use `Bond`s to interact with contracts that sit n the blockchain.
+
+----
+
+[4th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-IV)
