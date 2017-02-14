@@ -94,3 +94,7 @@ If all is well, your dapp will be visible just like this. Click it!
 ![image](https://cloud.githubusercontent.com/assets/138296/22697890/e1677726-ed20-11e6-9a64-c1832d2c36bf.png)
 
 And there it is - your dapp. For now it's rather underwhelming with it just displaying a simple message, but in the next part of this series, we will be changing that :-)
+
+----
+
+[2nd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-II)
