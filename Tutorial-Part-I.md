@@ -6,6 +6,8 @@ This tutorial walks you through making a simple Ethereum-powered, distributed ap
 
 ----
 
+## Getting Started
+
 ### 1. Spawning a new Dapp
 
 Our dapp will use modern JS technologies; [NPM](https://www.npmjs.com), [WebPack](https://webpack.js.org), [React](https://facebook.github.io/react/), Material UI, [Babel](http://babeljs.io), ES6, JSX and [OO7 Bonds](https://github.com/ethcore/oo7-parity). Getting a working set up in Javascript with all of this takes time and patience. We'll cheat and just clone a repo with it all ready. First, if you don't have Git, node.js, NPM or Webpack already installed on your system, get them (`sudo apt-get install git npm` might work on Ubuntu).
