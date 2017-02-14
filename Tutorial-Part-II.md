@@ -80,10 +80,10 @@ Change the `<div>Hello world</div>` line to:
 
 As you see there's not all that much here. We just tell the text field input `TextBond` to place its value into `this.bond` and conversely tell `Rspan` to display that value from `this.bond`.
 
-Run Webpack and let it watch your files to ensure your dapp is continuously rebuilt. 
+Run Webpack and let it watch your files to ensure your dapp is continuously rebuilt. We have defined an alias for you to do this:
 
 ```sh
-webpack --watch
+npm start
 ```
 
 Reloading our dapp page in the Parity Wallet will give a simple form; select the text field and type something. Whatever you type, you will see it reflected in the `<Rspan>` element next door:
