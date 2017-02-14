@@ -1,3 +1,9 @@
+**This is the fourth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
+
+[⟵ 3rd Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-III) | [5th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-V)
+
+----
+
 You should now be familiar with `Bond`s and some of the core Parity bond API. Next we'll put this knowledge to use with more complex expressions that will feature contracts.
 
 Contract API basically comes in three pieces. Firstly, there's state-changing transactions like transferring tokens to a counter-party. Secondly, there's event reception and reporting that (usually) happen when such a state change occurs. Finally, there is inspection of the contract state through calling `constant` functions. For now we will restrict ourselves to the latter.
