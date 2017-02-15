@@ -301,7 +301,7 @@ Two main ways of sending transactions are the RPC and the UI.
 ### RPC
 Send some tokens from the user account to authority node0:
 ```
-curl --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e","value":"0xde0b6b3a7640000"}, "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"personal_sendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e","value":"0xde0b6b3a7640000"}, "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 Once the request is submitted a block should be issued a few seconds later. You can check that the other account received the funds:
 ```
@@ -309,7 +309,7 @@ curl --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Bd138aBD7
 ```
 We can also send some to the account that is on the other node:
 ```
-curl --data '{"jsonrpc":"2.0","method":"personal_signAndSendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2","value":"0xde0b6b3a7640000"}, "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
+curl --data '{"jsonrpc":"2.0","method":"personal_sendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2","value":"0xde0b6b3a7640000"}, "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 and check if it was received asking the other node:
 ```
