@@ -1,5 +1,6 @@
 This is a collection of articles written by community members about using Parity in various scenarios:
 
+- [Ethereum Parity fast sync for Ropsten testnet](https://medium.com/ziggify/ethereum-parity-fast-sync-for-ropsten-testnet-3487a2a38e38#.x0j63rhiz) A short, to-the-point guide on how to get started with the Ropsten testnet _*fast*_.
 - [Running a Parity Ethereum node in Docker and connect safely](https://medium.com/@preitsma/setting-up-a-parity-ethereum-node-in-docker-and-connect-safely-f881faa17686#.jhfm66g6i) A brief introduction to using getting set up with Parity in a docker environment.
 - [Starting a Miner with Parity](https://www.atraura.com/en/how-to-set-up-an-ethereum-parity-node-in-digitalocean-ubuntu-14-04-4/) A brief tutorial on getting a Parity miner up and running.
 - [How to quickly upgrade an Ethereum Parity node using Docker](https://medium.com/decentralized-capital/how-to-quickly-upgrade-an-ethereum-parity-node-using-docker-e170fa2a2045#.ph7lxt2g7) Article on how to setup Parity in a Docker container and be able to upgrade quickly.
