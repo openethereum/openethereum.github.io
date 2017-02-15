@@ -161,17 +161,13 @@ This is encoded as an RLP-list containing two items: `[P_IDX, O_IDX]`
 
 Allowing only back-references allows us to never process requests in worse than `O(N)` time, and purely "disjoint" requests (that is, those which don't have dependencies on prior requests) can be processed in parallel.
 
-**Failed Requests**:
-
-Requests which cannot be served (due to pruning or other restrictions) may _fail_. The response for a failed request is simply the empty list. Further requests which reference on the results of a failed request must also fail.
-
 **Inclusion Proofs**:
 
-For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. Furthermore, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which (directly or transitively) rely upon them will fail.
+For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. This is because an empty response may lead to ambiguity over whether the request simply cannot be served or the peer just refuses to serve it. An "exclusion" proof leaves no doubt in the matter. Furthermore, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which (directly or transitively) rely upon should not be responded to.
 
 ## Buffer Flow
 
-For each connection to a remote peer, we maintain a "buffer" signifying the amount of requests we may make to them, a rate of recharge for that buffer over time, and a cost table which describes the cost, in units of buffer, of each request. When making a request, it is a violation of the protocol to request more than the current amount of "buffer" allows. Empty responses may lead to a refund the cost of their corresponding request, but are not required to. On response, the server replies with the new buffer value, which must be at least the previous buffer value minus the cost of the made requests and at most the `MaxBuffer`.
+For each connection to a remote peer, we maintain a "buffer" signifying the amount of requests we may make to them, a rate of recharge for that buffer over time, and a cost table which describes the cost, in units of buffer, of each request. When making a request, it is a violation of the protocol to request more than the current amount of "buffer" allows. Missing responses may lead to a refund the cost of their corresponding request, but are not required to. On response, the server replies with the new buffer value, which must be at least the previous buffer value minus the cost of the made requests and at most the `MaxBuffer`.
 
 Maintain the following values (given in the handshake, updated via other messages):
 
@@ -225,6 +221,6 @@ for request in P {
 A unique request identifier followed by a list of requests, in the format described in the requests section.
 
 **Response**:
-[`+0x02`, `req_id`: `U`, [`res_1`, `res_2`, ...]]
+[`+0x02`, `req_id`: `U`, `BV`: `U`, [`res_1`, `res_2`, ...]]
 
-A response to a set of requests. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_.
+A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `BV` field contains the current buffer flow value. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_ (all outputs filled, with the exception of "exclusion proofs" as mentioned above).
