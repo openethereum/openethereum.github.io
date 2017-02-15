@@ -6,7 +6,9 @@
 
 ## Parity Bonds
 
-So now we're fairly happy with the idea of `Bond`s in our reactive user interface, it's time to get down and dirty with the blockchain. This particular dapp asks our hosting environment (in this case Parity but potentially others in the future) to populate the Javascript global environment with the [parity.js API](https://www.npmjs.com/package/@parity/parity.js). If you're interested, this happens in `dist/index.html` at the line:
+So now we're fairly happy with the idea of `Bond`s in our reactive user interface, it's time to get down and dirty with the blockchain. This particular dapp asks our hosting environment (in this case Parity but potentially others in the future) to populate the Javascript global environment with the [parity.js API](https://www.npmjs.com/package/@parity/parity.js).
+
+If you're interested, this happens in `dist/index.html` at the line:
 
 ```js
 <script src="/parity-utils/parity.js"></script>
@@ -80,7 +82,7 @@ And hey presto:
 
 ### Blocks
 
-The block number is great and all, but perhaps we're more interested in the latest block itself. Happily, Parity can help us there with the `parity.bonds.blocks` object. This is a lazy-evaluated "array" of bonds which may be subscripted. To give yourself an idea of its capabilities, let's quickly open the Chrome JS console alter the environment to 127.0.0.1 and evaluate the block at number 69:
+The block number is great and all, but perhaps we're more interested in the latest block itself. Happily, Parity can help us there with the `parity.bonds.blocks` object. This is a lazy-evaluated "array" of bonds which can subscribe to. To give yourself an idea of its capabilities, let's quickly open the Chrome JS console alter the environment to 127.0.0.1 and evaluate the block at number 69:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22701287/41c6e4f8-ed2b-11e6-94d9-d6b5e58cb911.png)
 
@@ -105,7 +107,7 @@ That `.map` is a bit cumbersome. Conveniently, the `Bond` API knows about subscr
 {parity.bonds.blocks[parity.bonds.blockNumber].timestamp}
 ```
 
-Indeed, `parity.bonds.blocks[parity.bonds.blockNumber]` is a fairly common expression. So much so that it has a shorter alias: `parity.bonds.block`, so in fact the simplest means of expressing our `Rspan` expression is:
+Indeed, `parity.bonds.blocks[parity.bonds.blockNumber]` is a fairly common expression. So much so that it has a shorter alias: `parity.bonds.block`, so in fact the simplest means of expressing our `<Rspan>` expression is:
 
 ```js
 {parity.bonds.block.timestamp}
