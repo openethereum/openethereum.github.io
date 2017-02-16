@@ -84,11 +84,10 @@ The list can be also part of the blockchain state by being stored in an Ethereum
 The function `getValidators` will be called on every block to determine the current list. The switching rules are then determined by the contract implementing that method. The spec should contain the contract address:
 ```json
 "validators": {
-	"contract": "0x0000000000000000000000000000000000000005"
+	"safeContract": "0x0000000000000000000000000000000000000005"
 }
 ```
 Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). It is best to include the contract in the genesis (placing it in the `"accounts"` field).
-
 
 ## Authority Round
 
