@@ -165,23 +165,23 @@ Allowing only back-references allows us to never process requests in worse than 
 
 For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. This is because an empty response may lead to ambiguity over whether the request simply cannot be served or the peer just refuses to serve it. An "exclusion" proof leaves no doubt in the matter. Furthermore, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which (directly or transitively) rely upon should not be responded to.
 
-## Buffer Flow
+## Request Credits
 
-For each connection to a remote peer, we maintain a "buffer" signifying the amount of requests we may make to them, a rate of recharge for that buffer over time, and a cost table which describes the cost, in units of buffer, of each request. When making a request, it is a violation of the protocol to request more than the current amount of "buffer" allows. Missing responses may lead to a refund the cost of their corresponding request, but are not required to. On response, the server replies with the new buffer value, which must be at least the previous buffer value minus the cost of the made requests and at most the `MaxBuffer`.
+For each connection to a remote peer, we maintain an amount of "request credits" which are spent upon each request, a rate of recharge for those credits over time, and a cost table which describes the cost, in credits, of each request. When making a request, it is a violation of the protocol to request more than the current amount of credits allows. Missing responses may lead to a refund the cost of their corresponding request, but are not required to. On response, the server replies with the new amount of credits.
 
 Maintain the following values (given in the handshake, updated via other messages):
 
-**Max Buffer**: `U`
+**Max Credits**: `U`
 
-The cap on buffer for this peer.
+The maximum amount of request credits we're allowed to have for this peer.
 
 **Rate of Recharge**: `U`
 
-The rate at which the buffer value recharges per second. May be `0`.
+The rate at which the credits recharge per second. May be `0`.
 
 **Base Cost**: `U`
 
-The base cost to be charged for each request packet sent.
+The base cost (in credits) to be charged for each request packet sent.
 
 **Cost Table**: `P`
 
@@ -191,11 +191,11 @@ The cost table is encoded as an RLP list containing lists of length 2:
 
 `[ [id_a; cost_a], [id_b; cost_b], [id_c; cost_c] ]`
 
-Each sub-list contains a request ID and a buffer cost, which may not exceed the maximum buffer. Sub-lists may be in arbitrary order, but there must be one for every specified request type, with no duplicates.
+Each sub-list contains a request ID and cost in credits, which may not exceed the maximum amount of credits. Sub-lists may be in arbitrary order, but there must be one for every specified request type, with no duplicates.
 
 Define `ID(T)` to be the ID of a request type T.
 Define `Cost(ID)` to be the cost for each request type of ID.
-The cost calculation function `buffer_cost(P)` of a request packet P can be defined as follows (in pseudocode):
+The cost calculation function `credit_cost(P)` of a request packet P can be defined as follows (in pseudocode):
 
 ```
 let mut cost = base_cost;
@@ -221,6 +221,11 @@ for request in P {
 A unique request identifier followed by a list of requests, in the format described in the requests section.
 
 **Response**:
-[`+0x02`, `req_id`: `U`, `BV`: `U`, [`res_1`, `res_2`, ...]]
+[`+0x02`, `req_id`: `U`, `CR`: `U`, [`res_1`, `res_2`, ...]]
 
-A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `BV` field contains the current buffer flow value. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_ (all outputs filled, with the exception of "exclusion proofs" as mentioned above).
+A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_ (all outputs filled, with the exception of "exclusion proofs" as mentioned above).
+
+**UpdateCredits**:
+[`+0x03`, `CR`: `U`]
+
+An update to the amount of request credits held by a peer.
