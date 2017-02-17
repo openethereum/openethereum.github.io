@@ -175,10 +175,6 @@ Maintain the following values (given in the handshake, updated via other message
 
 The maximum amount of request credits we're allowed to have for this peer.
 
-**Rate of Recharge**: `U`
-
-The rate at which the credits recharge per second. May be `0`.
-
 **Base Cost**: `U`
 
 The base cost (in credits) to be charged for each request packet sent.
