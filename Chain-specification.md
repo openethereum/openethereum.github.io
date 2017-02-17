@@ -35,9 +35,9 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
 		"gasLimit": "0x2fefd8"
 	},
 	"params": {
-			"networkID" : "0x2"
+			"networkID" : "0x2",
 			"maximumExtraDataSize": "0x20",
-			"minGasLimit": "0x1388",
+			"minGasLimit": "0x1388"
 	},
 	"accounts": {
 		GENESIS_ACCOUNTS
