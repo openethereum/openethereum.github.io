@@ -179,6 +179,10 @@ The maximum amount of request credits we're allowed to have for this peer.
 
 The base cost (in credits) to be charged for each request packet sent.
 
+**Gas Cost**: `U`
+
+The cost (in credits) for every 1000 gas of proved execution.
+
 **Cost Table**: `P`
 
 A table mapping request IDs to costs. An exception is made for the `Headers` request, which may request multiple headers, in which case the cost for the whole request is computed by multiplying `Cost(Headers)` by the maximum number of headers requested.
@@ -215,13 +219,26 @@ for request in P {
 [`+0x01`, `req_id`: `U`, [`req_1`, `req_2`, ...]]
 
 A unique request identifier followed by a list of requests, in the format described in the requests section.
+The base cost of a request packet plus the cumulative cost of all the requests contained therein may not exceed the current number of request credits held by the peer.
 
 **Response**:
 [`+0x02`, `req_id`: `U`, `CR`: `U`, [`res_1`, `res_2`, ...]]
 
 A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_ (all outputs filled, with the exception of "exclusion proofs" as mentioned above).
 
+**RequestExecutionProof**
+[`+0x03`, `req_id`: `U`, `at`: `H256`, `from`: `B_20`, `to`: `B_20`, `gas`: `U`, `data`: `P`]
+
+Request proof of execution of a transaction from address `from` to address `to` with the supplied call data and gas amount. `BASE_COST + ceil(gas / 1000) * GAS_COST` may not exceed the amount of request credits held.
+
+`at` is the hash of the block on top of which to execute this transaction.
+
+**ExecutionProof**
+[`+0x04`, `req_id`: `U`, `CR`: `U`, [`item_1`: P, `item_2`: P, ...]]
+
+Returns a fraud proof of execution for the transaction in the corresponding request. `CR` is the amount of request credits remaining. The following item is a list containing, in arbitrary order, all loaded trie nodes and contract code such that the transaction may be re-executed without failure, up to the requested amount of gas.
+
 **UpdateCredits**:
-[`+0x03`, `CR`: `U`]
+[`+0x05`, `CR`: `U`]
 
 An update to the amount of request credits held by a peer.
