@@ -13,6 +13,16 @@ The address created with an empty phrase contains a lot of tokens that can be us
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["","password"],"id": 1}' localhost:8545
 ```
+or using the UI:  
+1. Go to `localhost:8080` in your browser and go through the initial setup.
+2. Click on "NEW ACCOUNT".
+3. Pick "Recover account from recovery phrase".
+4. Leave the phrase empty and fill the other fields.
+5. Go to the newly created account and click "TRANSFER" to conduct your first transaction.
+6. Confirm with a password picked earlier.
+7. A block should get sealed (see in the log) straight away.
+
+Transactions will get sealed at most every 2 seconds, to change that run with `--reseal-min-period 0`.
 
 When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors "https://ethereum.github.io/browser-solidity"` option has to be provided and RPC endpoint set to `http://localhost:8545`.
 
