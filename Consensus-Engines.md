@@ -127,7 +127,7 @@ Optional:
 
 The genesis seal should not be changed unless a hard fork is conducted.
 
-If malicious authorities are possible then --force-sealing is advised, this will ensure that the correct chain is the longest (making it BFT with finality of authorities_count * step_duration given no network partitions).
+If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of authorities_count * step_duration given no network partitions).
 
 ## Tendermint
 
