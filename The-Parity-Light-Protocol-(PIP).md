@@ -181,7 +181,7 @@ The base cost (in credits) to be charged for each request packet sent.
 
 **Gas Cost**: `U`
 
-The cost (in credits) for every 1000 gas of proved execution.
+The cost (in credits) for every gas of proved execution.
 
 **Cost Table**: `P`
 
@@ -227,9 +227,9 @@ The base cost of a request packet plus the cumulative cost of all the requests c
 A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_ (all outputs filled, with the exception of "exclusion proofs" as mentioned above).
 
 **RequestExecutionProof**
-[`+0x03`, `req_id`: `U`, `at`: `H256`, `from`: `B_20`, `to`: `B_20`, `gas`: `U`, `data`: `P`]
+[`+0x03`, `req_id`: `U`, `at`: `H256`, `from`: `B_20`, `to`: `B_20`, `gas`: `U`, `value`: `U`, `data`: `P`]
 
-Request proof of execution of a transaction from address `from` to address `to` with the supplied call data and gas amount. `BASE_COST + ceil(gas / 1000) * GAS_COST` may not exceed the amount of request credits held.
+Request proof of execution of a transaction from address `from` to address `to` with the supplied call data and gas amount. `BASE_COST + gas * GAS_COST` may not exceed the amount of request credits held.
 
 `at` is the hash of the block on top of which to execute this transaction.
 
