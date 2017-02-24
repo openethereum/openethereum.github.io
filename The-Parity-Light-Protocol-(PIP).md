@@ -227,11 +227,12 @@ The base cost of a request packet plus the cumulative cost of all the requests c
 A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_ (all outputs filled, with the exception of "exclusion proofs" as mentioned above).
 
 **RequestExecutionProof**
-[`+0x03`, `req_id`: `U`, `at`: `H256`, `from`: `B_20`, `to`: `B_20`, `gas`: `U`, `value`: `U`, `data`: `P`]
+[`+0x03`, `req_id`: `U`, `at`: `H256`, `from`: `B_20`, `action`: [`B_20` or []], `gas`: `U`, `gas_price`: `U`, `value`: `U`, `data`: `P`]
 
-Request proof of execution of a transaction from address `from` to address `to` with the supplied call data and gas amount. `BASE_COST + gas * GAS_COST` may not exceed the amount of request credits held.
+Request proof of execution of a transaction from address `from` with action `action`: (encode an address for a call, and an empty RLP list for a create) with the supplied call data and gas amount. `BASE_COST + gas * GAS_COST` may not exceed the amount of request credits held.
 
 `at` is the hash of the block on top of which to execute this transaction.
+The correct nonce for `from` within the state of `at` must be used.
 
 **ExecutionProof**
 [`+0x04`, `req_id`: `U`, `CR`: `U`, [`item_1`: P, `item_2`: P, ...]]
