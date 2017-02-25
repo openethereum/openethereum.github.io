@@ -237,7 +237,7 @@ The correct nonce for `from` within the state of `at` must be used.
 **ExecutionProof**
 [`+0x04`, `req_id`: `U`, `CR`: `U`, [`item_1`: P, `item_2`: P, ...]]
 
-Returns a fraud proof of execution for the transaction in the corresponding request. `CR` is the amount of request credits remaining. The following item is a list containing, in arbitrary order, all loaded trie nodes and contract code such that the transaction may be re-executed without failure, up to the requested amount of gas.
+Returns a fraud proof of execution for the transaction in the corresponding request. `CR` is the amount of request credits remaining. The following item is a list containing, in arbitrary order, all loaded trie nodes and contract code such that the transaction may be re-executed without failure, up to the requested amount of gas. All state items are simply lists of bytes, whether or not the bytes themselves are valid RLP (that is: trie nodes will not be included "inline")
 
 **UpdateCredits**:
 [`+0x05`, `CR`: `U`]
