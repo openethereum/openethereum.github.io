@@ -94,6 +94,12 @@ Run Webpack and let it watch your files to ensure your dapp is continuously rebu
 npm start
 ```
 
+If that doesn't work due to port conflicts try:
+
+```sh
+webpack --watch
+```
+
 Reloading our dapp page in the Parity Wallet will give a simple form; select the text field and type something. Whatever you type, you will see it reflected in the `<Rspan>` element next door:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22694357/e9eae790-ed14-11e6-898b-932b56847a18.png)
