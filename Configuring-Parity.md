@@ -42,7 +42,7 @@ light = false
 
 [account]
 unlock = ["0xdeadbeefcafe0000000000000000000000000000"]
-password = ["~/.safe/password.file"]
+password = "~/.safe/password.file"
 keys_iterations = 10240
 
 [ui]
@@ -91,9 +91,11 @@ hosts = ["none"]
 path = "$HOME/.parity/dapps"
 # authorization:
 user = "test_user"
-pass = "test_pass"
+password = "test_pass"
 
-fengine_signer = "0xdeadbeefcafe0000000000000000000000000001"
+[mining]
+author = "0xdeadbeefcafe0000000000000000000000000002"
+engine_signer = "0xdeadbeefcafe0000000000000000000000000001"
 force_sealing = true
 reseal_on_txs = "all"
 reseal_min_period = 4000
