@@ -157,6 +157,8 @@ Where each input is either a single RLP item, or an *output back-reference*, whi
   - the index of a prior request in a packet (the first having index 0)
   - the index of an output of the prior request
 
+A single exception to this is the `max` input on a headers request: this must be specified as a scalar and not as a back-reference.
+
 This is encoded as an RLP-list containing two items: `[P_IDX, O_IDX]`
 
 Allowing only back-references allows us to never process requests in worse than `O(N)` time, and purely "disjoint" requests (that is, those which don't have dependencies on prior requests) can be processed in parallel.
