@@ -52,99 +52,88 @@ Type definitions:
 Request::Headers {
     ID: 0
     Inputs:
-        0: H256 | U // start
-        1: U // skip
-        2: U // max
-        3: bool // reverse
+        Loose(H256 | U) // start 
+        U // skip
+        U // max
+        bool // reverse
     Outputs:
-        0: [Header] // provided headers
+        [Header] // provided headers
 }
 
 // Request for a header proof.
 Request::HeaderProof {
     ID: 1
     Inputs:
-        0: U // block number
+        Loose(U) // block number
     Outputs:
-        0: [[U8]] // merkle inclusion proof from CHT 
-        1: H256 // hash
-        2: U // td
+        [[U8]] // merkle inclusion proof from CHT 
+        H256 reusable_as(0) // hash 
+        U // td
 }
 
 // Request for transaction index based on hash.
 Request::TransactionIndex {
     ID: 2
     Inputs:
-        0: H256 // transaction hash
+        Loose(H256) // transaction hash
     Outputs:
-        0: U // block number
-        1: H256 // block hash
-        2: U // index
+        U reusable_as(0) // block number
+        H256 reusable_as(1) // block hash
+        U // index in the block.
 }
 
 // Request for a block's receipts.
 Request::BlockReceipts {
     ID: 3
     Inputs:
-        0: H256 // block hash
+        Loose(H256) // block hash
     Outputs:
-        0: [Receipt]
+        [Receipt] // block receipts
 }
 
 // Request for a block's transactions
 Request::BlockBody {
     ID: 4
     Inputs:
-        0: H256 // block hash
+        Loose(H256) // block hash
     Outputs:
-        0: [Header] // uncles
-        1: [Transaction] // txs
+        [Header] // uncles
+        [Transaction] // txs
 }
 
 // Request for proof of specific account in the state.
 Request::Account {
     ID: 5
     Inputs:
-        0: H256 // block hash
-        1: H256 // address hash
-        2: U // trie levels to omit
+        Loose(H256) // block hash
+        Loose(H256) // address hash
     Outputs:
-        0: [[U8]] // merkle inclusion proof from state trie
-        1: U // nonce
-        2: U // balance
-        3: H256 // storage root
-        4: H256 // code hash
+        [[U8]] // merkle inclusion proof from state trie
+        U // nonce
+        U // balance
+        H256 reusable_as(0) // storage root
+        H256 reusable_as(1) // code hash
 }
 
 // Request for a proof of contract storage.
 Request::Storage {
     ID: 6
     Inputs:
-        0: H256 // block hash
-        1: H256 // address hash
-        2: H256 // storage key hash
-        3: U // trie levels to omit
+        Loose(H256) // block hash
+        Loose(H256) // address hash
+        Loose(H256) // storage key hash
     Outputs:
-        0: [[U8]] // merkle inclusion proof from storage trie
-        1: H256 // storage value
+        [[U8]] // merkle inclusion proof from storage trie
+        H256 // storage value
 }
 
 // Request for contract code.
 Request::Code {
     ID: 7
     Inputs:
-        0: H256 // code hash
+        Loose(H256) // code hash
     Outputs:
-        0: [U8] // bytecode
-}
-
-// Request for a specific trie node.
-Request::Node {
-    ID: 8
-    Inputs:
-        0: H256 // trie node hash
-    Outputs:
-        0: [U8]
+        [U8] // bytecode
 }
 ```
 
@@ -153,17 +142,24 @@ A single request is encoded as an RLP list:
 
 The ID is purely for the purposes of discerning each request type.
 
-Where each input is either a single RLP item, or an *output back-reference*, which is a tuple containing two items:
+Inputs are either "fixed" or "loose". Loose inputs may be an *output back-reference*, which is a tuple containing
+two items:
   - the index of a prior request in a packet (the first having index 0)
-  - the index of an output of the prior request
+  - n, where some output of that request type is marked as `reusable_as(n)`.
 
-A single exception to this is the `max` input on a headers request: this must be specified as a scalar and not as a back-reference.
-
-This is encoded as an RLP-list containing two items: `[P_IDX, O_IDX]`
+Back-references are encoded as an RLP-list containing two items: `[P_IDX, O_IDX]`.
 
 Allowing only back-references allows us to never process requests in worse than `O(N)` time, and purely "disjoint" requests (that is, those which don't have dependencies on prior requests) can be processed in parallel.
 
-**Inclusion Proofs**:
+All loose inputs are marked as `Loose(T)` in the request definition. Any other input is fixed.
+Fixed inputs are just the RLP-encoded value. Loose inputs are a RLP-encoded list of two elements:
+[`discriminant`: `U8`, `data`].
+
+If the `discriminant` is 0, `data` is an RLP-encoded value of the expected type.
+If the `discriminant` is 1, `data` is an output back-reference, as described above.
+All other discriminant values are undefined and are not valid under PIP.
+
+**Inclusion and Exclusion Proofs**:
 
 For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. This is because an empty response may lead to ambiguity over whether the request simply cannot be served or the peer just refuses to serve it. An "exclusion" proof leaves no doubt in the matter. Furthermore, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which (directly or transitively) rely upon should not be responded to.
 
