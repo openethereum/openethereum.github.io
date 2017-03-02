@@ -124,7 +124,7 @@ Request::Storage {
         Loose(H256) // storage key hash
     Outputs:
         [[U8]] // merkle inclusion proof from storage trie
-        H256 // storage value
+        H256 reusable_as(0) // storage value
 }
 
 // Request for contract code.
