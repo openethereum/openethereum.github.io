@@ -21,6 +21,10 @@ Assuming you start with JSONRPC API enabled (default), then [Ethereum's JSON-RPC
 
 Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/JavaScript-API) for interacting with an Ethereum client.
 
+## Browser developer console
+
+The easiest way to interact with parity over the console is to use your browser and Parity's API console. Simply Head to the applications page and hit the Console application.
+
 ## Node.js CLI Console
 
 Parity doesn't include a Javascript interpreter but if you want to use an interactive Javascript console, you can install [node/NPM](http://nodejs.org) and use its console. Once you have node/NPM installed, you'll just need to install the latest web3 module:
