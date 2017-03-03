@@ -6,16 +6,29 @@
 - [parity_decryptMessage](#parity_decryptmessage)
 - [parity_encryptMessage](#parity_encryptmessage)
 - [parity_futureTransactions](#parity_futuretransactions)
+- [parity_listOpenedVaults](#parity_listopenedvaults)
 - [parity_listStorageKeys](#parity_liststoragekeys)
+- [parity_listVaults](#parity_listvaults)
 - [parity_localTransactions](#parity_localtransactions)
 - [parity_pendingTransactionsStats](#parity_pendingtransactionsstats)
 - [parity_releasesInfo](#parity_releasesinfo)
 - [parity_versionInfo](#parity_versioninfo)
 
+#### Account Vaults
+- [parity_changeVault](#parity_changevault)
+- [parity_changeVaultPassword](#parity_changevaultpassword)
+- [parity_closeVault](#parity_closevault)
+- [parity_getVaultMeta](#parity_getvaultmeta)
+- [parity_newVault](#parity_newvault)
+- [parity_openVault](#parity_openvault)
+- [parity_setVaultMeta](#parity_setvaultmeta)
+
 #### Accounts (read-only) and Signatures
 - [parity_accountsInfo](#parity_accountsinfo)
 - [parity_checkRequest](#parity_checkrequest)
+- [parity_defaultAccount](#parity_defaultaccount)
 - [parity_generateSecretPhrase](#parity_generatesecretphrase)
+- [parity_hardwareAccountsInfo](#parity_hardwareaccountsinfo)
 - [parity_listAccounts](#parity_listaccounts)
 - [parity_phraseToAddress](#parity_phrasetoaddress)
 - [parity_postSign](#parity_postsign)
@@ -183,6 +196,7 @@ None
     - `gasPrice`: `Quantity` - Gas price provided by the sender in Wei.
     - `gas`: `Quantity` - Gas provided by the sender.
     - `input`: `Data` - The data send along with the transaction.
+    - `creates`: `Address` - (optional) Address of a created contract or `null`.
     - `raw`: `Data` - Raw transaction data.
     - `publicKey`: `Data` - Public key of the signer.
     - `networkId`: `Quantity` - The network id of the transaction, if any.
@@ -190,7 +204,7 @@ None
     - `v`: `Quantity` - The V field of the signature.
     - `r`: `Quantity` - The R field of the signature.
     - `s`: `Quantity` - The S field of the signature.
-    - `minBlock`: `Quantity` | `Tag` - (optional) Block number, tag or `null`.
+    - `condition`: `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.
 
 #### Example
 
@@ -229,6 +243,36 @@ Response
     },
     { ... }, { ... }, ...
   ]
+}
+```
+
+***
+
+### parity_listOpenedVaults
+
+Returns a list of all opened vaults
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Array` - Names of all opened vaults
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_listOpenedVaults","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "['Personal']"
 }
 ```
 
@@ -276,6 +320,36 @@ Response
     "0x0289865bcaa58f7f5bf875495ac7af81e3630eb88a3a0358407c7051a850624a",
     "0x32e0536502b9163b0a1ce6e3aabd95fa4a2bf602bbde1b9118015648a7a51178"
   ]
+}
+```
+
+***
+
+### parity_listVaults
+
+Returns a list of all available vaults
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Array` - Names of all available vaults
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_listVaults","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "['Personal','Work']"
 }
 ```
 
@@ -450,6 +524,264 @@ Response
 
 ***
 
+### parity_changeVault
+
+Changes the current valut for the account
+
+#### Parameters
+
+0. `Address` - Account address
+0. `String` - Vault name
+
+```js
+params: [
+  "0x63Cf90D3f0410092FC0fca41846f596223979195",
+  "StrongVault"
+]
+```
+
+#### Returns
+
+- `Boolean` - True on success
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_changeVault","params":["0x63Cf90D3f0410092FC0fca41846f596223979195","StrongVault"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
+### parity_changeVaultPassword
+
+Changes the password for any given vault
+
+#### Parameters
+
+0. `String` - Vault name
+0. `String` - New Password
+
+```js
+params: [
+  "StrongVault",
+  "p@55w0rd"
+]
+```
+
+#### Returns
+
+- `Boolean` - True on success
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_changeVaultPassword","params":["StrongVault","p@55w0rd"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
+### parity_closeVault
+
+Closes a vault with the given name
+
+#### Parameters
+
+0. `String` - Vault name
+
+```js
+params: ["StrongVault"]
+```
+
+#### Returns
+
+- `Boolean` - True on success
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_closeVault","params":["StrongVault"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
+### parity_getVaultMeta
+
+Returns the metadata for a specific vault
+
+#### Parameters
+
+0. `String` - Vault name
+
+```js
+params: ["StrongVault"]
+```
+
+#### Returns
+
+- `String` - The associated JSON metadata for this vault
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_getVaultMeta","params":["StrongVault"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "{\"passwordHint\":\"something\"}"
+}
+```
+
+***
+
+### parity_newVault
+
+Creates a new vault with the given name & password
+
+#### Parameters
+
+0. `String` - Vault name
+0. `String` - Password
+
+```js
+params: [
+  "StrongVault",
+  "p@55w0rd"
+]
+```
+
+#### Returns
+
+- `Boolean` - True on success
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_newVault","params":["StrongVault","p@55w0rd"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
+### parity_openVault
+
+Opens a vault with the given name & password
+
+#### Parameters
+
+0. `String` - Vault name
+0. `String` - Password
+
+```js
+params: [
+  "StrongVault",
+  "p@55w0rd"
+]
+```
+
+#### Returns
+
+- `Boolean` - True on success
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_openVault","params":["StrongVault","p@55w0rd"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
+### parity_setVaultMeta
+
+Sets the metadata for a specific vault
+
+#### Parameters
+
+0. `String` - Vault name
+0. `String` - The metadata as a JSON string
+
+```js
+params: [
+  "StrongVault",
+  "{\"passwordHint\":\"something\"}"
+]
+```
+
+#### Returns
+
+- `Boolean` - The boolean call result, true on success
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_setVaultMeta","params":["StrongVault","{\"passwordHint\":\"something\"}"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
 ### parity_accountsInfo
 
 Provides metadata for accounts.
@@ -525,6 +857,36 @@ Response
 
 ***
 
+### parity_defaultAccount
+
+Returns the defaultAccount that is to be used with transactions
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Address` - The account address
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_defaultAccount","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x63Cf90D3f0410092FC0fca41846f596223979195"
+}
+```
+
+***
+
 ### parity_generateSecretPhrase
 
 Creates a secret phrase that can be associated with an account.
@@ -550,6 +912,43 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "boasting breeches reshape reputably exit handrail stony jargon moneywise unhinge handed ruby"
+}
+```
+
+***
+
+### parity_hardwareAccountsInfo
+
+Provides metadata for attached hardware wallets
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - Maps account address to metadata.
+    - `manufacturer`: `String` - Manufacturer
+    - `name`: `String` - Account name
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_hardwareAccountsInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "0x0024d0c7ab4c52f723f3aaf0872b9ea4406846a4": {
+      "manufacturer": "Ledger",
+      "name": "Nano S"
+    }
+  }
 }
 ```
 
@@ -691,7 +1090,7 @@ Posts a transaction to the signer without waiting for the signer response.
 ```js
 params: [{
   "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
-  "to": "0xd46e8dd67c5d32be8058bb8eb970870f072445675",
+  "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
   "value": "0x9184e72a" // 2441406250
 }]
 ```
@@ -704,7 +1103,7 @@ params: [{
 
 Request
 ```bash
-curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f072445675","value":"0x9184e72a"}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","value":"0x9184e72a"}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -1210,6 +1609,7 @@ None
     - `gasPrice`: `Quantity` - Gas price provided by the sender in Wei.
     - `gas`: `Quantity` - Gas provided by the sender.
     - `input`: `Data` - The data send along with the transaction.
+    - `creates`: `Address` - (optional) Address of a created contract or `null`.
     - `raw`: `Data` - Raw transaction data.
     - `publicKey`: `Data` - Public key of the signer.
     - `networkId`: `Quantity` - The network id of the transaction, if any.
@@ -1217,7 +1617,7 @@ None
     - `v`: `Quantity` - The V field of the signature.
     - `r`: `Quantity` - The R field of the signature.
     - `s`: `Quantity` - The S field of the signature.
-    - `minBlock`: `Quantity` | `Tag` - (optional) Block number, tag or `null`.
+    - `condition`: `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.
 
 #### Example
 
@@ -1536,4 +1936,3 @@ Response
   "result": 8180
 }
 ```
-
