@@ -26,9 +26,6 @@ The following options are possible for the `defaultBlock` parameter:
 - [eth_blockNumber](#eth_blocknumber)
 - [eth_call](#eth_call)
 - [eth_coinbase](#eth_coinbase)
-- [eth_compileLLL](#eth_compilelll)
-- [eth_compileSerpent](#eth_compileserpent)
-- [eth_compileSolidity](#eth_compilesolidity)
 - [eth_estimateGas](#eth_estimategas)
 - [eth_gasPrice](#eth_gasprice)
 - [eth_getBalance](#eth_getbalance)
@@ -37,7 +34,6 @@ The following options are possible for the `defaultBlock` parameter:
 - [eth_getBlockTransactionCountByHash](#eth_getblocktransactioncountbyhash)
 - [eth_getBlockTransactionCountByNumber](#eth_getblocktransactioncountbynumber)
 - [eth_getCode](#eth_getcode)
-- [eth_getCompilers](#eth_getcompilers)
 - [eth_getFilterChanges](#eth_getfilterchanges)
 - [eth_getFilterLogs](#eth_getfilterlogs)
 - [eth_getLogs](#eth_getlogs)
@@ -199,108 +195,6 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
-}
-```
-
-***
-
-### eth_compileLLL
-
-Returns compiled LLL code.
-
-#### Parameters
-
-0. `String` - The source code.
-
-```js
-params: ["(returnlll (suicide (caller)))"]
-```
-
-#### Returns
-
-- `Data` - The compiled source code.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"eth_compileLLL","params":["(returnlll (suicide (caller)))"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x603880600c6000396000f3006001600060e060020a600035048063c6888fa114601857005b6021600435602b565b8060005260206000f35b600081600702905091905056"
-}
-```
-
-***
-
-### eth_compileSerpent
-
-Returns compiled serpent code.
-
-#### Parameters
-
-0. `String` - The source code.
-
-```js
-params: ["/* some serpent */"]
-```
-
-#### Returns
-
-- `Data` - The compiled source code.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"eth_compileSerpent","params":["/* some serpent */"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x603880600c6000396000f3006001600060e060020a600035048063c6888fa114601857005b6021600435602b565b8060005260206000f35b600081600702905091905056"
-}
-```
-
-***
-
-### eth_compileSolidity
-
-Returns compiled solidity code.
-
-#### Parameters
-
-0. `String` - The source code.
-
-```js
-params: ["contract test { function multiply(uint a) returns(uint d) {   return a * 7;   } }"]
-```
-
-#### Returns
-
-- `Data` - The compiled source code.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"eth_compileSolidity","params":["contract test { function multiply(uint a) returns(uint d) {   return a * 7;   } }"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x605880600c6000396000f3006000357c010000000000000000000000000000000000000000000000000000000090048063c6888fa114602e57005b603d6004803590602001506047565b8060005260206000f35b60006007820290506053565b91905056"
 }
 ```
 
@@ -623,40 +517,6 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056"
-}
-```
-
-***
-
-### eth_getCompilers
-
-Returns a list of available compilers in the client.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Array` - Array of available compilers.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"eth_getCompilers","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [
-    "solidity",
-    "lll",
-    "serpent"
-  ]
 }
 ```
 
@@ -1561,7 +1421,7 @@ Response
       "blockNumber": "0x15df", // 5599
       "transactionIndex": "0x1", // 1
       "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
-      "to": "0x853f43d8a49eeb85d32cf465507dd71d507100c1",
+      "to": "0x85h43d8a49eeb85d32cf465507dd71d507100c1",
       "value": "0x7f110", // 520464
       "gas": "0x7f110", // 520464
       "gasPrice": "0x09184e72a000",
