@@ -61,7 +61,8 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 }
 ```
 
-This `Engine` does not have any parameters to be adjusted.
+Optional:  
+`"registrar"` address of a contract containing [registry](https://github.com/ethcore/contracts/blob/master/Registry.sol), used for UI  
 
 # Validator engines
 
@@ -115,6 +116,7 @@ Simple and fast consensus algorithm, each validator gets an assigned time slot i
 `"validators"` is the list of addresses of the entities which will be allowed to issue blocks  
 Optional:  
 `"blockReward"` determines the reward given to issuing authority  
+`"registrar"` address of a contract containing [registry](https://github.com/ethcore/contracts/blob/master/Registry.sol), used for UI  
 
 ```json
 "seal": {
@@ -157,6 +159,7 @@ Optional:
 `"timeoutPrevote"`  
 `"timeoutPrecommit"`  
 `"timeoutCommit"`  
+`"registrar"` address of a contract containing [registry](https://github.com/ethcore/contracts/blob/master/Registry.sol), used for UI  
 
 ```json
 "seal": {
