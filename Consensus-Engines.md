@@ -91,7 +91,7 @@ Example contracts can be found [here](https://github.com/ethcore/contracts/tree/
 
 ## Authority Round
 
-A PoW inspired consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator.
+Simple and fast consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator. [More details](https://github.com/ethcore/parity/wiki/Auro).
 
 ```json
 "engine": {
