@@ -17,7 +17,7 @@ Each node in Aura keeps track of a step `s` which is based on the UNIX time `t`.
 The chain score is calculated using the height and step of the highest block: `U128_max * h - s`. Block with the highest chain score is the canonical one.
 
 ## Header
-Header includes the step and the primary signature of the block hash (not including the step).
+Header includes the step and the primary signature of the block hash (not including the step) in the header seal field. For light client support an additional field with validator list hash may be added.
 
 ## Verification
 Verification checks if the signature belongs to the correct primary for the given step. Blocks from more than 1 step into the future are rejected.
