@@ -90,9 +90,9 @@ The function `getValidators` will be called on every block to determine the curr
 ```
 Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). It is best to include the contract in the genesis (placing it in the `"accounts"` field).
 
-## Authority Round
+## Aura
 
-Simple and fast consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator. [More details](https://github.com/ethcore/parity/wiki/Auro).
+Simple and fast consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator. [More details](https://github.com/ethcore/parity/wiki/Aura).
 
 ```json
 "engine": {
