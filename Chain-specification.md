@@ -4,7 +4,7 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 
 ## Chain presets available
 - [`mainnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/frontier.json) (default) main Ethereum network
-- [`kovan`|`testnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/kovan.json) the fast Ethereum test network
+- [`kovan`|`testnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config)
 - [`ropsten`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
 - [`classic`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
 - [`classic-testnet`](https://github.com/ethcore/parity/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
