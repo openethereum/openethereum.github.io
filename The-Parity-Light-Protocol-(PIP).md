@@ -161,7 +161,7 @@ All other discriminant values are undefined and are not valid under PIP.
 
 **Inclusion and Exclusion Proofs**:
 
-For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. This is because an empty response may lead to ambiguity over whether the request simply cannot be served or the peer just refuses to serve it. An "exclusion" proof leaves no doubt in the matter. Furthermore, the other outputs of the request are undefined (that is, they may take any or potentially no values), and requests which (directly or transitively) rely upon should not be responded to.
+For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. This is because an empty response may lead to ambiguity over whether the request simply cannot be served or the peer just refuses to serve it. An "exclusion" proof leaves no doubt in the matter. Furthermore, the other outputs of the request should take the default values under the chain's consensus rules at that block: for an account, this might be an empty balance, storage trie root, and nonce. For storage, this might be the default zeroed value.
 
 ## Request Credits
 
