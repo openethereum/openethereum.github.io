@@ -78,6 +78,7 @@ They can be either specified at genesis using a simple `"list"` (as shown in the
 }
 ```
 
+**Available since 1.6.**  
 The list can be also part of the blockchain state by being stored in an Ethereum contract. The contract has to have the following interface:
 ```json
 {"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"}
@@ -88,7 +89,7 @@ The function `getValidators` will be called on every block to determine the curr
 	"safeContract": "0x0000000000000000000000000000000000000005"
 }
 ```
-Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). It is best to include the contract in the genesis (placing it in the `"accounts"` field).
+Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). It is best to include the contract in the genesis (placing the bytecode as a `"constructor"` in the `"accounts"` field).
 
 ## Aura
 
