@@ -241,3 +241,9 @@ Returns a fraud proof of execution for the transaction in the corresponding requ
 [`+0x05`, `CR`: `U`]
 
 An update to the amount of request credits held by a peer.
+
+## Transaction relay
+**RelayTransactions**
+[`+0x06`, [`tx_1`: P, `tx_2: P, ...]]
+
+Send transactions to a peer to relay to the ethereum network.
