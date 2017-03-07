@@ -131,9 +131,25 @@ Request::Storage {
 Request::Code {
     ID: 7
     Inputs:
+        Loose(H256) // block hash
         Loose(H256) // code hash
     Outputs:
         [U8] // bytecode
+}
+
+// Request for proof of execution
+Request::Execution {
+    ID: 8
+    Inputs:
+        Loose(H256) // block hash
+        Address // address from
+        Address | () // action: call if address, create if empty.
+        U256 // gas to prove
+        U256 // gas price
+        U256 // value to transfer
+        [U8] // call data
+    Outputs:
+        [[U8]] // state items necessary to prove execution
 }
 ```
 
@@ -183,7 +199,7 @@ The cost (in credits) for every gas of proved execution.
 
 **Cost Table**: `P`
 
-A table mapping request IDs to costs. An exception is made for the `Headers` request, which may request multiple headers, in which case the cost for the whole request is computed by multiplying `Cost(Headers)` by the maximum number of headers requested.
+A table mapping request IDs to costs. Exceptions are made for the `Headers` and `Execution` requests, which may request multiple headers or a certain amount of gas to prove, respectively. In these cases the cost for the whole request is computed by multiplying `Cost(ID)` by the maximum number of headers or gas requested.
 
 The cost table is encoded as an RLP list containing lists of length 2:
 
@@ -199,7 +215,8 @@ The cost calculation function `credit_cost(P)` of a request packet P can be defi
 let mut cost = base_cost;
 for request in P {
     match request {
-        Request::Headers(inner) => cost += COST(ID(Headers)) * headers_request[2],
+        Request::Headers(inner) => cost += COST(ID(Headers)) * inner.max,
+        Request::Execution(inner) => cost += COST(ID(Execution)) * inner.gas,
         other => cost += COST(ID(request)),
     }
 }
