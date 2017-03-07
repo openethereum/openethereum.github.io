@@ -66,9 +66,9 @@ Optional:
 
 # Validator engines
 
-The following `Engine`s achieve consensus by referring to a list of "validators" (referred to as authorities, when they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them.
+The following `Engine`s achieve consensus by referring to a list of "validators" (referred to as authorities, when they are linked to physical entities). Validator set is a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them.
 
-They can be either specified at genesis using a simple `"list"` (as shown in the Authority Round and Tendermint sections):
+In the simplest case they can be specified at genesis using a simple `"list"` (as shown in the Authority Round and Tendermint sections):
 ```json
 "validators": {
 	"list": [
@@ -78,18 +78,7 @@ They can be either specified at genesis using a simple `"list"` (as shown in the
 }
 ```
 
-**Available since 1.6.**  
-The list can be also part of the blockchain state by being stored in an Ethereum contract. The contract has to have the following interface:
-```json
-{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"}
-```
-The function `getValidators` will be called on every block to determine the current list. The switching rules are then determined by the contract implementing that method. The spec should contain the contract address:
-```json
-"validators": {
-	"safeContract": "0x0000000000000000000000000000000000000005"
-}
-```
-Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). It is best to include the contract in the genesis (placing the bytecode as a `"constructor"` in the `"accounts"` field).
+More information can be found on the [[Validator Set]] page.
 
 ## Aura
 
