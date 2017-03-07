@@ -156,7 +156,10 @@ Request::Execution {
 A single request is encoded as an RLP list:
 `[ID, [input_0, input_1, ...]]`
 
-The ID is purely for the purposes of discerning each request type.
+A response is encoded similarly:
+`[ID, [output_0, output_1, ...]]`
+
+The ID is purely for the purposes of discerning each request and response type.
 
 Inputs are either "fixed" or "loose". Loose inputs may be an *output back-reference*, which is a tuple containing
 two items:
