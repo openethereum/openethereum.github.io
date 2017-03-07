@@ -1,6 +1,6 @@
 A number of Engines available in Parity achieve consensus by referring to a list of "validators" (referred to as authorities if they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them. The validator set can be specified in a number of different ways.
 
-## Immutable list
+# Immutable list
 
 A simple list of addresses specified at genesis.
 
@@ -13,9 +13,21 @@ A simple list of addresses specified at genesis.
 }
 ```
 
-**Available since 1.6.**
+# Contracts
+**Available since 1.6.**  
+
+The list can be also a part of the blockchain state by being stored in an Ethereum contract. 
+
+Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). 
+
+It is best to include the contract in the genesis placing the bytecode as a "constructor" in the "accounts" field like so:
+
+```json
+"0x0000000000000000000000000000000000000005": { "balance": "1", "constructor" : "0x..." }
+``` 
+
 ## Non-reporting contract
-The list can be also a part of the blockchain state by being stored in an Ethereum contract. The contract has to have the following interface:
+A simple validator contract has to have the following interface:
 ```json
 {"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"}
 ```
@@ -25,12 +37,6 @@ The function `getValidators` will be called on every block to determine the curr
 "validators": {
     "safeContract": "0x0000000000000000000000000000000000000005"
 }
-```
-
-Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). It is best to include the contract in the genesis placing the bytecode as a "constructor" in the "accounts" field like so:
-
-```json
-"0x0000000000000000000000000000000000000005": { "balance": "1", "constructor" : "0x..." }
 ```
 
 ## Reporting contract
