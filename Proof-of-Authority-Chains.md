@@ -89,4 +89,4 @@ An example template that can be used for the consensus algorithms:
 }
 ```
 
-The two available algorithms are the [Aura](https://github.com/ethcore/parity/wiki/Consensus-Engines#authority-round) and [Tendermint](https://github.com/ethcore/parity/wiki/Consensus-Engines#tendermint). More details on other chain parameters are available on the [[Chain specification]] page.
+The two available algorithms are the [Aura](https://github.com/ethcore/parity/wiki/Consensus-Engines#aura) and [Tendermint](https://github.com/ethcore/parity/wiki/Consensus-Engines#tendermint). More details on other chain parameters are available on the [[Chain specification]] page.
