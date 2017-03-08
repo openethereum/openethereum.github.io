@@ -204,9 +204,9 @@ The cost (in credits) for every gas of proved execution.
 
 A table mapping request IDs to costs. Exceptions are made for the `Headers` and `Execution` requests, which may request multiple headers or a certain amount of gas to prove, respectively. In these cases the cost for the whole request is computed by multiplying `Cost(ID)` by the maximum number of headers or gas requested.
 
-The cost table is encoded as an RLP list containing lists of length 2:
+The cost table is encoded as an RLP list containing the base cost followed by lists of length 2:
 
-`[ [id_a; cost_a], [id_b; cost_b], [id_c; cost_c] ]`
+`[ base_cost, [id_a; cost_a], [id_b; cost_b], [id_c; cost_c] ]`
 
 Each sub-list contains a request ID and cost in credits, which may not exceed the maximum amount of credits. Sub-lists may be in arbitrary order, but there must be one for every specified request type, with no duplicates.
 
