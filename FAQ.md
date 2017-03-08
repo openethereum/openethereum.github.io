@@ -44,8 +44,8 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 *For Parity 1.5 and above:*
 
 Execute `parity db kill`.
-Relevant options are `--chain=*` `--pruning=*` and `--db-path/--base-path`.
-I.e. to delete `morden` run:
+Relevant options are `--chain=*` `--pruning=*` and `--db-path/--base-path`,
+i.e. to delete `morden` run:
 ```bash
 parity db kill --chain=morden
 ```
