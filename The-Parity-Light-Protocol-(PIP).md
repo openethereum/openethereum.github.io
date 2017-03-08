@@ -226,7 +226,7 @@ for request in P {
 ```
 
 # PIPv1 Messages:
-(Tentative: still need to work in things like flow control, transaction execution, capabilities, metadata, NodeID, pruning responsibilities)
+(Tentative: still need to work in things like flow control, capabilities, metadata, NodeID, pruning responsibilities)
 
 ## Handshake
 **Status**: 
