@@ -182,6 +182,9 @@ All other discriminant values are undefined and are not valid under PIP.
 
 For state and CHT requests which require merkle inclusion proofs, consider the case where the requested key does not exist in the relevant trie. In these cases, a proof of _non-existence_ may be supplied: the branch of the trie necessary to attempt the lookup for a specific key and prove that the value is not present. This is because an empty response may lead to ambiguity over whether the request simply cannot be served or the peer just refuses to serve it. An "exclusion" proof leaves no doubt in the matter. Furthermore, the other outputs of the request should take the default values under the chain's consensus rules at that block: for an account, this might be an empty balance, storage trie root, and nonce. For storage, this might be the default zeroed value.
 
+**Response Completeness**:
+A response is considered _complete_ if all outputs are filled. A headers request has the additional constraint of being complete if and only if the list of returned headers is non-empty.
+
 ## Request Credits
 
 For each connection to a remote peer, we maintain an amount of "request credits" which are spent upon each request, a rate of recharge for those credits over time, and a cost table which describes the cost, in credits, of each request. When making a request, it is a violation of the protocol to request more than the current amount of credits allows. Missing responses may lead to a refund the cost of their corresponding request, but are not required to. On response, the server replies with the new amount of credits.
@@ -242,7 +245,7 @@ The base cost of a request packet plus the cumulative cost of all the requests c
 **Response**:
 [`+0x02`, `req_id`: `U`, `CR`: `U`, [`res_1`, `res_2`, ...]]
 
-A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_ (all outputs filled, with the exception of "exclusion proofs" as mentioned above).
+A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_.
 
 **UpdateCredits**:
 [`+0x05`, `CR`: `U`]
