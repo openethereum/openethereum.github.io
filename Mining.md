@@ -13,7 +13,7 @@ Follow instructions on the sgminer github repository page: https://github.com/sg
 
 ## Starting it
 
-Once you have a synced Parity node running the JSONRPC interface, you'll be able to mine with your miner of choice. You'll probably want to set the destination address (where the rewards go). If you have an address already, great. If you don't, then you can make one in Parity with:
+You'll probably want to set the destination address (where the rewards go). If you have an address already, great. If you don't, then you can make one in Parity with:
 
 ```
 parity account new
@@ -25,7 +25,7 @@ You'll be asked for a password and be given an address. Once done, you should ru
 parity --author 0037a6b811ffeb6e072da21179d11b1406371c63
 ```
 
-Once Parity is running and synced with the network, your preferred miner can be started. For genoil, command would be:
+Once Parity is running and synced with the network, you can start your miner of choice. For genoil, command would be:
 ```
 genoil -G
 ```
