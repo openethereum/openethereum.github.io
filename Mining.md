@@ -13,7 +13,7 @@ Follow instructions on the sgminer github repository page: https://github.com/sg
 
 ## Starting it
 
-Once you have a synced Parity node running the JSONRPC interface, you'll be able to mine with `ethminer`. You'll probably want to set the destination address (where the rewards go). If you have an address already, great. If you don't, then you can make one in Parity with:
+Once you have a synced Parity node running the JSONRPC interface, you'll be able to mine with your miner of choice. You'll probably want to set the destination address (where the rewards go). If you have an address already, great. If you don't, then you can make one in Parity with:
 
 ```
 parity account new
