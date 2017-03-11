@@ -58,4 +58,4 @@ Parity can push work package notifications to a set of URLs by using the option 
 parity --author 0037a6b811ffeb6e072da21179d11b1406371c63 --notify-work https://myhttpserver.local/workpackage
 ```
 
-Once new work package becomes available, Parity will make a HTTP POST request on the this url. Body will contain JSON-serialized array of work package data.
+Once new work package becomes available, Parity will make a HTTP POST request on the provided url. Body will contain JSON-serialized array of work package data.
