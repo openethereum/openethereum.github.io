@@ -1,38 +1,15 @@
-Parity is designed to be fully compatible with `ethminer`. If you're already using a combination of `geth` and `ethminer` then you'll find mining with Parity very familiar.
+Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_getwork), [eth_submitWork](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
 
-First get a Parity node up and running (either build yourself or install one of the packages; the [[Quick-start]] guide can help you). Next, you'll need to install `ethminer`.
+First get a Parity node up and running (either build yourself or install one of the packages; the [[Quick-start]] guide can help you). Next, you'll need to install your preferred miner.
 
 ## Getting the miner
-### Rolling your own
+### Genoil
 
-There are packages built for various platforms, though if all else fails, you can just build it straight from the main repository:
+Just follow the instruction on the Genoil github repository page: https://github.com/Genoil/cpp-ethereum.
 
-```
-git clone --recursive https://github.com/ethereum/cpp-ethereum
-cd cpp-ethereum
-mkdir build
-cd build
-cmake -DBUNDLE=miner ..
-```
+### sgminer
 
-`ethminer` can be found in the `libethereum/ethminer` directory; you'll probably want to copy it to somewhere in your `$PATH`.
-
-### Ubuntu
-
-To install `ethminer` on Ubuntu, you can use the package manager:
-
-```
-sudo add-apt-repository ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get install ethminer
-```
-
-### Mac OS X Homebrew
-
-```
-brew tap ethcore/ethcore
-brew install parity
-```
+Follow instructions on the sgminer github repository page: https://github.com/sgminer-dev/sgminer
 
 ## Starting it
 
@@ -48,6 +25,37 @@ You'll be asked for a password and be given an address. Once done, you should ru
 parity --author 0037a6b811ffeb6e072da21179d11b1406371c63
 ```
 
-Once Parity is running and synced, running `ethminer` will work without any further configuration. e.g. run `ethminer -G --opencl-device 0` to GPU mine on the first OpenCL device found.
+Once Parity is running and synced with the network, your preferred miner can be started. For genoil, command would be:
+```
+genoil -G
+```
+Where `-G` for GPU mining.
 
-Parity can push work package notifications to a set of URLs by using the option `--notify-work URLS`, where URLS should be a comma-delimited list of HTTP URLs.
+## Stratum
+
+Since 1.6, Parity offers Stratum protocol support (beta). This protocol has number of advantages compared to the JSON-RPC polling, which results in better hashrate and less node strain. To run parity with Stratum on, use
+
+```
+parity --author 0037a6b811ffeb6e072da21179d11b1406371c63 --stratum
+```
+
+By default Stratum listens on local network interface (`127.0.0.1`) and port `8008`. You can change it by providing `--stratum-interface` and `--stratum-port` arguments, respectively. For example, to use all network interfaces on the local machine and listen on port 9009:
+
+```
+parity --author 0037a6b811ffeb6e072da21179d11b1406371c63 --stratum --stratum-interface=0.0.0.0 --stratum-port=9009
+```
+
+To utilize Stratum, miner also needs to be started in Stratum mode. For genoil, it will be
+```
+genoil -G -S 127.0.0.1:8008
+```
+
+## HTTP Notification
+
+Parity can push work package notifications to a set of URLs by using the option `--notify-work URLS`, where URLS should be a comma-delimited list of HTTP URLs. For example,
+
+```
+parity --author 0037a6b811ffeb6e072da21179d11b1406371c63 --notify-work https://myhttpserver.local/workpackage
+```
+
+Once new work package becomes available, Parity will make a HTTP POST request on the this url. Body will contain JSON-serialized array of work package data.
