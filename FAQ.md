@@ -2,6 +2,78 @@
 
 Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularization, low-footprint and high-performance. To this end it utilizes the Rust language, a hybrid imperative/object-orientated/functional language with an emphasis on efficiency. It is professionally developed by _Parity Technologies_ (formerly _Ethcore_); we aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers, and follow a pipelined #6-ish-week release cycle similar to the Rust compiler. [Read more on our tenets](https://github.com/ethcore/parity/wiki#our-tenets).
 
+Table of Contents:
+
+ * [Building, Installation, and Testing](#building-installation-and-testing)
+    * [How do I install Parity?](#how-do-i-install-parity)
+    * [Are there any installers available?](#are-there-any-installers-available)
+    * [Where can I find official releases?](#where-can-i-find-official-releases)
+    * [Isn't there any browser plug-in available?](#isnt-there-any-browser-plug-in-available)
+    * [Are builds for ARM devices available (i.e., Raspberry Pi)?](#are-builds-for-arm-devices-available-ie-raspberry-pi)
+    * [What are the system requirements for running Parity?](#what-are-the-system-requirements-for-running-parity)
+    * [What is the difference between stable and beta releases?](#what-is-the-difference-between-stable-and-beta-releases)
+    * [How do I build the cutting-edge version of Parity?](#how-do-i-build-the-cutting-edge-version-of-parity)
+    * [How do I install Parity after building?](#how-do-i-install-parity-after-building)
+    * [How do I update Parity?](#how-do-i-update-parity)
+    * [I'm getting build errors, what can I do?](#im-getting-build-errors-what-can-i-do)
+    * [I'm trying to build but get 'libudev' or 'libssl' errors!?!](#im-trying-to-build-but-get-libudev-or-libssl-errors)
+    * [I'm trying to build on Windows but I get 'link failed' errors mentioning 'kernel32.lib'!?!](#im-trying-to-build-on-windows-but-i-get-link-failed-errors-mentioning-kernel32lib)
+    * [How can I cross-build Parity for other platforms (e.g., ARM)?](#how-can-i-cross-build-parity-for-other-platforms-eg-arm)
+    * [How can I build and run tests?](#how-can-i-build-and-run-tests)
+ * [Basic Operations, Configuration, and Synchronization](#basic-operations-configuration-and-synchronization)
+    * [How do I run Parity?](#how-do-i-run-parity)
+    * [How do I configure Parity?](#how-do-i-configure-parity)
+    * [Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!](#parity-doesnt-start-on-windows-and-fails-with-api-ms-win-crt-math-l1-1-0dll-missing)
+    * [What are the different Parity synchronization and pruning modes?](#what-are-the-different-parity-synchronization-and-pruning-modes)
+    * [Why is warp synchronization so fast?](#why-is-warp-synchronization-so-fast)
+    * [How can I tell if Parity is fully synchronized?](#how-can-i-tell-if-parity-is-fully-synchronized)
+    * [What can I do when Parity has trouble getting in sync?](#what-can-i-do-when-parity-has-trouble-getting-in-sync)
+    * [Sync is stuck around block 2,421,000 or 2,675,000!?!](#sync-is-stuck-around-block-2421000-or-2675000)
+    * [Is there any Parity light client available?](#is-there-any-parity-light-client-available)
+    * [How do I enable transaction tracing (indexing)?](#how-do-i-enable-transaction-tracing-indexing)
+    * [How do I create a new account?](#how-do-i-create-a-new-account)
+    * [What is the trusted signer?](#what-is-the-trusted-signer)
+    * [How can I run Parity in Docker?](#how-can-i-run-parity-in-docker)
+    * [Can I run Parity as a daemon or system service?](#can-i-run-parity-as-a-daemon-or-system-service)
+    * [How can I stop a Parity node cleanly?](#how-can-i-stop-a-parity-node-cleanly)
+ * [Backup, Restore, and Files](#backup-restore-and-files)
+    * [Where can I find Parity's local files?](#where-can-i-find-paritys-local-files)
+    * [How can I backup my accounts and keys? How can I restore my keys?](#how-can-i-backup-my-accounts-and-keys-how-can-i-restore-my-keys)
+    * [Can I import my keys from Geth?](#can-i-import-my-keys-from-geth)
+    * [Can I import accounts not created with Parity or Geth (e.g., MyEtherWallet)?](#can-i-import-accounts-not-created-with-parity-or-geth-eg-myetherwallet)
+    * [What are the Parity disk space needs?](#what-are-the-parity-disk-space-needs)
+    * [How do I backup my blockchain?](#how-do-i-backup-my-blockchain)
+    * [How do I restore my blockchain from a previous backup?](#how-do-i-restore-my-blockchain-from-a-previous-backup)
+    * [Can I import the chain from Geth?](#can-i-import-the-chain-from-geth)
+    * [How to delete the blockchain to initiate full re-sync without deleting wallet info?](#how-to-delete-the-blockchain-to-initiate-full-re-sync-without-deleting-wallet-info)
+ * [CLI, Mining, and Networks](#cli-mining-and-networks)
+    * [How do I mine with Parity?](#how-do-i-mine-with-parity)
+    * [Which chains are supported by Parity?](#which-chains-are-supported-by-parity)
+    * [What are the different consensus engines available for Parity?](#what-are-the-different-consensus-engines-available-for-parity)
+    * [How do I get Ether for the Morden, Ropsten, or Kovan testnets?](#how-do-i-get-ether-for-the-morden-ropsten-or-kovan-testnets)
+    * [Does Parity provide a JavaScript console?](#does-parity-provide-a-javascript-console)
+    * [None of my JSONRPC requests work, they all fail with no output!?!](#none-of-my-jsonrpc-requests-work-they-all-fail-with-no-output)
+    * [When I start Parity with the 'homestead_test.json' I get a 0 blocks chain, and mining never seals a block!?!](#when-i-start-parity-with-the-homestead_testjson-i-get-a-0-blocks-chain-and-mining-never-seals-a-block)
+    * [Why do my transactions not get mined?](#why-do-my-transactions-not-get-mined)
+    * [All my 'eth_sendTransaction' calls only return '0x00000000...00000000' as return value!?!](#all-my-eth_sendtransaction-calls-only-return-0x0000000000000000-as-return-value)
+ * [User Interface, Wallet and DApps](#user-interface-wallet-and-dapps)
+    * [How can I access the Parity Wallet?](#how-can-i-access-the-parity-wallet)
+    * [Can I use Mist with Parity?](#can-i-use-mist-with-parity)
+    * [Can I send Bitcoin to my Parity wallet?](#can-i-send-bitcoin-to-my-parity-wallet)
+    * [Can I create multi-signature wallets with Parity?](#can-i-create-multi-signature-wallets-with-parity)
+    * [How can I compile and deploy contracts with Parity?](#how-can-i-compile-and-deploy-contracts-with-parity)
+    * [How can I interact with existing contracts?](#how-can-i-interact-with-existing-contracts)
+    * [What DApps are available for Parity?](#what-dapps-are-available-for-parity)
+    * [How can I write a DApp for Parity?](#how-can-i-write-a-dapp-for-parity)
+    * [Does Parity support the Swarm and Whisper sub-protocols?](#does-parity-support-the-swarm-and-whisper-sub-protocols)
+ * [Troubleshooting (Yelp!!!!11)](#troubleshooting-yelp11)
+    * [Double-clicking the Parity icon doesn't do anything!?!](#double-clicking-the-parity-icon-doesnt-do-anything)
+    * [How can I make Parity to write logs?](#how-can-i-make-parity-to-write-logs)
+    * [Where are the logs when Parity runs in daemon mode?](#where-are-the-logs-when-parity-runs-in-daemon-mode)
+    * [How can I report an issue with Parity?](#how-can-i-report-an-issue-with-parity)
+    * [I just scrolled all the way down here and didn't find what I'm looking for!?!](#i-just-scrolled-all-the-way-down-here-and-didnt-find-what-im-looking-for)
+
+
 ---
 
 ### Building, Installation, and Testing
@@ -233,6 +305,8 @@ in the Web3 console, or by using the Parity Wallet UI to create or import accoun
 
 #### What is the trusted signer?
 
+`@TODO @5chdn`
+
 #### How can I run Parity in Docker?
 
 Docker images for Parity [are available via](https://hub.docker.com/r/ethcore/parity/):
@@ -353,13 +427,49 @@ Always back up your keys (~/.parity/keys) before doing anything like that though
 
 #### How do I mine with Parity?
 
+Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_getwork), [eth_submitWork](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
+
+First get a Parity node up and running (either build yourself or install one of the packages; the [[Setup]] guide can help you). Next, you'll need to install your preferred miner. Read more on [[Mining]].
+
 #### Which chains are supported by Parity?
+
+Parity supports multiple public chain configurations:
+
+    --chain CHAIN                  Specify the blockchain type. CHAIN may be either a
+                                   JSON chain specification file or olympic, frontier,
+                                   homestead, mainnet, morden, ropsten, classic, expanse,
+                                   testnet, kovan or dev (default: homestead).
+
+- `--chain olympic` Runs the pre-release Ethereum Olympic testnet with network ID `0`.
+- `--chain frontier` Runs the first released Ethereum public network with ID `1`. It does not include the Homestead and DAO hardforks.
+- `--chain homestead` Runs the latest version of the Ethereum public network with ID `1`.
+- `--chain mainnet` Same as `homestead`.
+- `--chain foundation` Same as `homestead`.
+- `--chain morden` Runs the first Ethereum public testnet with ID `2`, still used as Ethereum Classic public testnet.
+- `--chain ropsten` Runs the second Ethereum public testnet with ID `3`.
+- `--chain classic` Runs the Ethereum Classic public network which opposed the DAO hardfork.
+- `--chain expanse` Runs the Expanse public network with ID `1`.
+- `--chain kovan` Runs the Proof-of-Authority public testnet with ID `42`.
+- `--chain testnet` Same as `kovan`.
+- `--chain dev` Runs a private testnet configuration, see [[Private development chain]].
+
+See also [[Chain specification]].
 
 #### What are the different consensus engines available for Parity?
 
+- Ethash (Ethereum Proof-of-Work Engine), see [Ethash](https://github.com/ethereum/wiki/wiki/Ethash).
+- Instant Seal (Development Engine), see [[Private development chain]].
+- Aura (Proof-of-Authority Validator Engine), see [[Aura]].
+- Tendermint (Experimental Validator Engine), see [Validator Engines](https://github.com/ethcore/parity/wiki/Consensus-Engines#validator-engines)
+
 #### How do I get Ether for the Morden, Ropsten, or Kovan testnets?
 
+- See [Morden and Ropsten Faucets](http://ethereum.stackexchange.com/q/84).
+- See [Kovan Faucets](https://github.com/kovan-testnet/faucet).
+
 #### Does Parity provide a JavaScript console?
+
+Yes, the Parity Wallet contains a Web3 console application. Navigate to the _'Applications'_ tab and open the _'Parity/Web3 Console'_.
 
 #### None of my JSONRPC requests work, they all fail with no output!?!
 
@@ -383,21 +493,55 @@ You're probably trying to send from a locked account. Ensure you use the `--unlo
 
 #### How can I access the Parity Wallet?
 
+Open your favorite browser and navigate to `localhost` on port `:8180`: http://127.0.0.1:8180/
+
+You can change the port with the `--ui-port` flag. To disable the UI, use `--no-ui`.
+
 #### Can I use Mist with Parity?
+
+Yes, run `parity --geth` in Geth-compatibility mode. This sets the IPC path to be the same as Geth's and allows Mist to connect to Parity. See also [[Using Parity with Mist]].
 
 #### Can I send Bitcoin to my Parity wallet?
 
-#### Can I create multisignature wallets with Parity?
+No, sending Bitcoin directly to an Ethereum address does not work. However, you can use the Shapeshift integration. Open an account on your wallet and click the blue fox icon.
+
+![Parity Shapeshift Integration](https://i.imgur.com/C7cAYeb.png)
+
+#### Can I create multi-signature wallets with Parity?
+
+Yes, open your wallet on the _A'ccounts'_ view and click _'New Wallet'_. This will deploy a multi-signature contract on the selected chain.
 
 #### How can I compile and deploy contracts with Parity?
 
+Open your Parity UI and navigate to the _'Contracts'_ tab, it allows you to write, compile and directly deploy contracts on the selected chain.
+
+![Parity Solidity Contracts](https://i.imgur.com/2xjUkiI.png)
+
 #### How can I interact with existing contracts?
+
+`@TODO @5chdn`
 
 #### What DApps are available for Parity?
 
+Parity comes with a couple of builtin DApps:
+
+- **Web 2.0 browser**: A Web 2.0 hosted pseudo-dapps browser.
+- **Method registry**: A registry of method signatures for lookups on transactions.
+- **Parity/Web3 console**: A Javascript development console complete with web3 and parity objects.
+- **Registry**: A global registry of addresses on the network.
+- **Token Deployment**: Deploy new basic tokens that you are able to send around.
+- **Token Registry**: A registry of transactable tokens on the network.
+- **TX-Queue Viewer**: Have a peak on internals of transaction queue of your node.
+
+Additional DApps can be added, see [[Writing Dapps for Parity]].
+
 #### How can I write a DApp for Parity?
 
+Head over to the excellent [DApp Tutorial](https://github.com/ethcore/parity/wiki/Tutorial-Part-I) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
+
 #### Does Parity support the Swarm and Whisper sub-protocols?
+
+Currently, Parity does neither support Swarm nor Whisper sub-protocols. However, [Whisper Support](https://github.com/ethcore/parity/issues/4685) is on the road-map.
 
 ---
 
