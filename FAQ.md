@@ -303,10 +303,6 @@ in the Web3 console, or by using the Parity Wallet UI to create or import accoun
 
 ![Parity Wallet Create New Account](https://i.imgur.com/Lnpczaa.png)
 
-#### What is the trusted signer?
-
-`@TODO @5chdn`
-
 #### How can I run Parity in Docker?
 
 Docker images for Parity [are available via](https://hub.docker.com/r/ethcore/parity/):
@@ -516,10 +512,6 @@ Yes, open your wallet on the _A'ccounts'_ view and click _'New Wallet'_. This wi
 Open your Parity UI and navigate to the _'Contracts'_ tab, it allows you to write, compile and directly deploy contracts on the selected chain.
 
 ![Parity Solidity Contracts](https://i.imgur.com/2xjUkiI.png)
-
-#### How can I interact with existing contracts?
-
-`@TODO @5chdn`
 
 #### What DApps are available for Parity?
 
