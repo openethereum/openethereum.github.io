@@ -12,7 +12,7 @@ chain = "dev"
 
 Transactions will get sealed at most every 2 seconds, to change that run with `--reseal-min-period 0`.
 
-The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call:
+The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call (make sure to enable the `parity_accounts` API):
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["","password"],"id": 1}' localhost:8545
 ```
