@@ -27,9 +27,9 @@ parity --author 0037a6b811ffeb6e072da21179d11b1406371c63
 
 Once Parity is running and synced with the network, you can start your miner of choice. For genoil, command would be:
 ```
-genoil -G
+ethminer -G
 ```
-Where `-G` for GPU mining.
+Where `-G` for GPU mining (opencl)
 
 ## Stratum
 
@@ -47,7 +47,7 @@ parity --author 0037a6b811ffeb6e072da21179d11b1406371c63 --stratum --stratum-int
 
 To utilize Stratum, miner also needs to be started in Stratum mode. For genoil, it will be
 ```
-genoil -G -S 127.0.0.1:8008
+ethminer -G -S 127.0.0.1:8008
 ```
 
 ## HTTP Notification
