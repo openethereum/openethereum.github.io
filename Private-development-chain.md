@@ -26,7 +26,7 @@ or using the UI:
 6. Confirm with a password picked earlier.
 7. A block should get sealed (see in the log) straight away.
 
-When using with [browser-solidity](https://ethereum.github.io/browser-solidity) `--jsonrpc-cors "https://ethereum.github.io/browser-solidity"` option has to be provided and RPC endpoint set to `http://localhost:8545`.
+When using with [browser-solidity](https://ethereum.github.io/browser-solidity) Chrome extension needs to be installed.
 
 ## Customizing the development chain
 
