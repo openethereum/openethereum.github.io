@@ -107,7 +107,7 @@ port = 8181
 [dapps]
 port = 8081
 ```
-Alternative config files can be generated [here](https://ethcore.github.io/parity-config-generator/).
+Alternative config files can be generated [here](https://paritytech.github.io/parity-config-generator/).
 
 We will create three accounts: two authorities and one user account. There are three main ways to create accounts, pick one that suits you best:
 ### RPC
