@@ -11,7 +11,7 @@ mode_timeout = 500
 
 ## Config File
 
-Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Config Generator](https://ethcore.github.io/parity-config-generator/). To start parity with a config file, the file needs to be located in:
+Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Config Generator](https://paritytech.github.io/parity-config-generator/). To start parity with a config file, the file needs to be located in:
 
 * Windows: `%UserProfile%\AppData\Roaming\Parity\Ethereum\config.toml`
 * Linux: `~/.local/share/io.parity.ethereum/config.toml`
