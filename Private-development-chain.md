@@ -1,5 +1,3 @@
-**Available only in 1.5 and above.**
-
 Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Secure Transaction Signer](Secure Transaction Signer)) and all blocks will be accepted. It can be simply activated by running:
 ```
 parity --chain dev
