@@ -1,6 +1,6 @@
 **This is the fifth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 4th Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-IV) | [6th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-VI)
+[⟵ 4th Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-IV) | [6th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-VI)
 
 ----
 
@@ -121,4 +121,4 @@ Seeing nothing for those 15-30 seconds is a little disconcerting. It would be ni
 
 ----
 
-[6th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-VI)
+[6th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-VI)

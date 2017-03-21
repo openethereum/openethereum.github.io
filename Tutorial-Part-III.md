@@ -1,6 +1,6 @@
 **This is the third part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 2nd Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-II) | [4th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-IV)
+[⟵ 2nd Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-II) | [4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-IV)
 
 ----
 
@@ -34,7 +34,7 @@ The `abiPolyfill` call just provides various standard contract ABIs for us in `p
 
 ### Watch the block
 
-For our first trick, we will introduce the simplest of all bonds: `parity.bonds.blockNumber`. This evaluates to [the current block](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
+For our first trick, we will introduce the simplest of all bonds: `parity.bonds.blockNumber`. This evaluates to [the current block](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
 
 In `app.jsx`, remove the entire `App` class and replace it with:
 
@@ -70,7 +70,7 @@ We'll also need to provide the `formatBlockNumber` function:
 const formatBlockNumber = (n) => '#' + ('' + n).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 ```
 
-Happily this is provided by the [`oo7-parity`](https://github.com/ethcore/oo7-parity) package, so you can alternatively just import it:
+Happily this is provided by the [`oo7-parity`](https://github.com/paritytech/oo7-parity) package, so you can alternatively just import it:
 
 ```js
 import {formatBlockNumber} from 'oo7-parity';
@@ -220,4 +220,4 @@ You should now be familiar with the core bonds in Parity and be happy to combine
 
 ----
 
-[4th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-IV)
+[4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-IV)

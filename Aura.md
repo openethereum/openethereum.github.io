@@ -2,7 +2,7 @@ Aura is one of the Blockchain consensus algorithms available in Parity. It is ca
 
 The consensus can be ran with `--force-sealing` which ensures that blocks are produced even if there are no transactions. This is necessary for fault tolerance described.
 
-This consensus requires a [`validators`](https://github.com/ethcore/parity/wiki/Consensus-Engines#validator-engines) to be specified, which determines the list of `n_v` blockchain addresses at each height `h` which participate in the consensus.
+This consensus requires a [`validators`](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines) to be specified, which determines the list of `n_v` blockchain addresses at each height `h` which participate in the consensus.
 
 A node can represent a validator when it is ran with `--engine-signer VALIDATOR-ADDRESS`.
 

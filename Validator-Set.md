@@ -14,17 +14,17 @@ A simple list of addresses specified at genesis.
 ```
 
 # Contracts
-**Available since 1.6.**  
+**Available since 1.6.**
 
-The list can be also a part of the blockchain state by being stored in an Ethereum contract. 
+The list can be also a part of the blockchain state by being stored in an Ethereum contract.
 
-Example contracts can be found [here](https://github.com/ethcore/contracts/tree/master/validator_contracts). 
+Example contracts can be found [here](https://github.com/paritytech/contracts/tree/master/validator_contracts).
 
 It is best to include the contract in the genesis placing the bytecode as a "constructor" in the "accounts" field like so:
 
 ```json
 "0x0000000000000000000000000000000000000005": { "balance": "1", "constructor" : "0x..." }
-``` 
+```
 
 ## Non-reporting contract
 A simple validator contract has to have the following interface:

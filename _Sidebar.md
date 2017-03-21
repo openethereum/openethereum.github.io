@@ -52,7 +52,7 @@
 - [[Coding Guide]]
 - [[Labelling]]
 - [Gitter](https://gitter.im/ethcore/parity)
-- [GitHub](https://github.com/ethcore/parity)
+- [GitHub](https://github.com/paritytech/parity)
 - [Website](https://parity.io)
 
 ## Technologies

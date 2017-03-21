@@ -2,7 +2,7 @@
 
 Dapps are an exciting way to showcase a contract or a series of contracts with a simple interface that allows users to interact with it in a secure way. This guide will provide a step-by-step guide for developers to develop dapps for their contracts and integrate these into Parity.
 
-Parity supports 2 types of dapps - one locally hosted (ideal for dapps still in development, or those dapps that are private) and network dapps (ideal for dapps applicable to a global community.) 
+Parity supports 2 types of dapps - one locally hosted (ideal for dapps still in development, or those dapps that are private) and network dapps (ideal for dapps applicable to a global community.)
 
 
 ## Local Dapps
@@ -87,4 +87,4 @@ Once the developer is satisfied that the local dapp operates as intended and wan
 
 ## Additional functions
 
-It is highly recommended that dapp developers use the Parity registry for ease of name lookups, especially when having multiple contracts on multiple chains. [The name registry](https://github.com/ethcore/parity/wiki/Parity-name-registry) makes the association of names to addresses straight forward and transparent, regardless of the chain.
+It is highly recommended that dapp developers use the Parity registry for ease of name lookups, especially when having multiple contracts on multiple chains. [The name registry](https://github.com/paritytech/parity/wiki/Parity-name-registry) makes the association of names to addresses straight forward and transparent, regardless of the chain.

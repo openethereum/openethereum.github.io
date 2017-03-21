@@ -6,7 +6,7 @@ You can override the normal boot nodes and connect to your own nodes by using `p
 
 Use `parity --help` to find out about other available options.
 
-To avoid adding options on every run of Parity a [config file](https://github.com/ethcore/parity/wiki/Configuring-Parity#config-file). The file can be easily generated using [this tool](https://ethcore.github.io/parity-config-generator/).
+To avoid adding options on every run of Parity a [config file](https://github.com/paritytech/parity/wiki/Configuring-Parity#config-file). The file can be easily generated using [this tool](https://ethcore.github.io/parity-config-generator/).
 
 # JSON-RPC API
 

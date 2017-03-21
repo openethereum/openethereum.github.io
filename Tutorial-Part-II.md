@@ -1,6 +1,6 @@
 **This is the second part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapter.
 
-[⟵ 1st Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-I) | [3rd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-III)
+[⟵ 1st Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-I) | [3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-III)
 
 ----
 
@@ -25,7 +25,7 @@ This is a [JSX](https://facebook.github.io/jsx/) file. Basically, that means it 
 
 ### Your first `Bond`
 
-The first thing we'll do is introduce the [oo7 library](https://github.com/ethcore/oo7). This introduces into Javascript the notion of reactive values known as "bonds". [Reactive values](https://en.wikipedia.org/wiki/Reactive_programming) are similar to normal "variables", except that you can get notification of when they change. They can be `map`ped and composed into arbitrarily complex expressions which are evaluated only on update.
+The first thing we'll do is introduce the [oo7 library](https://github.com/paritytech/oo7). This introduces into Javascript the notion of reactive values known as "bonds". [Reactive values](https://en.wikipedia.org/wiki/Reactive_programming) are similar to normal "variables", except that you can get notification of when they change. They can be `map`ped and composed into arbitrarily complex expressions which are evaluated only on update.
 
 **Our first example will just demonstrate how `Bond`s can introduce effortless reactivity by dynamically replicating the contents of an editable text field into a [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span).**
 
@@ -235,4 +235,4 @@ That should have given you a good introduction to the concept of the `Bond` and 
 
 ----
 
-[3rd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-III)
+[3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-III)

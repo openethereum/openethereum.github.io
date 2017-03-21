@@ -11,7 +11,7 @@ CentOS
 
 # Binaries
 
-There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/ethcore/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
+There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/paritytech/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
 # One-line Binary Installer
 
@@ -23,18 +23,18 @@ To use the script just run:
 bash <(curl https://raw.githubusercontent.com/ethcore/scripts/master/install-deps.sh -L)
 ```
 
-This will install and configure the Parity client for you. 
+This will install and configure the Parity client for you.
 
 On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [stats.ethdev.com](https://stats.ethdev.com). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
 # Experimental Installers
-There are also experimental installers for OS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/ethcore/parity/releases).
+There are also experimental installers for OS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity/releases).
 
 # Building from source
 
-To simply build Parity from source follow the instructions in the [README](https://github.com/ethcore/parity/blob/master/README.md).
+To simply build Parity from source follow the instructions in the [README](https://github.com/paritytech/parity/blob/master/README.md).
 
-For Ethereum key management [Ethstore](https://github.com/ethcore/ethstore) can be used. To compile it use
+For Ethereum key management [Ethstore](https://github.com/paritytech/ethstore) can be used. To compile it use
 ```
 cargo build --release -p ethstore --features=ethstore-cli
 ```
@@ -55,7 +55,7 @@ This will give you a temporary docker environment.
 
 ### Grab Rust
 
-NOTE: If you already have Rust in your environment, you don't need to bother with this. 
+NOTE: If you already have Rust in your environment, you don't need to bother with this.
 
 This will download and install Rust on Linux and OS X:
 
@@ -78,7 +78,7 @@ rustup default stable-x86_64-pc-windows-msvc
 Next, grab the Parity repository:
 
 ```
-git clone https://github.com/ethcore/parity
+git clone https://github.com/paritytech/parity
 cd parity
 ```
 
@@ -142,4 +142,4 @@ docker run --name parity -v /srv/parity:/mnt ethcore/parity:beta-release -d /mnt
 
 # Ubuntu Snappy on Raspberry Pi
 
-There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](https://github.com/ethcore/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?
+There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](https://github.com/paritytech/parity-snappy). TODO: installation instructions, @NikVolf / @GeneralBeck?

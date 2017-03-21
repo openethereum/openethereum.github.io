@@ -1,6 +1,6 @@
 **This is the first part of the Dapp Tutorial**.
 
-[2nd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-II)
+[2nd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-II)
 
 This tutorial walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
 
@@ -10,12 +10,12 @@ This tutorial walks you through making a simple Ethereum-powered, distributed ap
 
 ### 1. Spawning a new Dapp
 
-Our dapp will use modern JS technologies; [NPM](https://www.npmjs.com), [WebPack](https://webpack.js.org), [React](https://facebook.github.io/react/), Material UI, [Babel](http://babeljs.io), ES6, JSX and [OO7 Bonds](https://github.com/ethcore/oo7-parity). Getting a working set up in Javascript with all of this takes time and patience. We'll cheat and just clone a repo with it all ready. First, if you don't have Git, node.js, NPM or Webpack already installed on your system, get them (`sudo apt-get install git npm` might work on Ubuntu).
+Our dapp will use modern JS technologies; [NPM](https://www.npmjs.com), [WebPack](https://webpack.js.org), [React](https://facebook.github.io/react/), Material UI, [Babel](http://babeljs.io), ES6, JSX and [OO7 Bonds](https://github.com/paritytech/oo7-parity). Getting a working set up in Javascript with all of this takes time and patience. We'll cheat and just clone a repo with it all ready. First, if you don't have Git, node.js, NPM or Webpack already installed on your system, get them (`sudo apt-get install git npm` might work on Ubuntu).
 
 Next, clone our conveniently prepared `skeleton` repository:
 
 ```
-git clone https://github.com/ethcore/skeleton mydapp
+git clone https://github.com/paritytech/skeleton mydapp
 ```
 
 This will make your a new repo `mydapp` with everything set up and ready to go. We will `cd` in to it and remove the origin repository lest it confuse Git:
@@ -97,4 +97,4 @@ And there it is - your dapp. For now it's rather underwhelming with it just disp
 
 ----
 
-[2nd Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-II)
+[2nd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-II)

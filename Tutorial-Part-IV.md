@@ -1,6 +1,6 @@
 **This is the fourth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 3rd Part](https://github.com/ethcore/parity/wiki/Tutorial-Part-III) | [5th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-V)
+[⟵ 3rd Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-III) | [5th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-V)
 
 ----
 
@@ -178,4 +178,4 @@ Now that you're familiar with how to inspect the state of contracts, in the next
 
 ----
 
-[5th Part ⟶](https://github.com/ethcore/parity/wiki/Tutorial-Part-V)
+[5th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-V)

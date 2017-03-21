@@ -10,7 +10,7 @@ Labels are split into several groups.
 - 'Q' group is to denote difficulty.
 - 'Z' group are reasons for why something is a non-issue. They are applicable only within the Issue Tracker.
 
-As such, a pull request must have a single label from the 'A' group and may additionally have a single label from the 'P' group (though typically will not). 
+As such, a pull request must have a single label from the 'A' group and may additionally have a single label from the 'P' group (though typically will not).
 
 An valid issue must have a single label from the 'F' group and may additionally have a single label from the 'P' group. An invalid issue should be closed with a single label from the 'Z' group.
 
@@ -56,7 +56,7 @@ Issues should have only one of these. Do not combine; if multiple labels are equ
 - ![F7-footprint](http://i.imgur.com/lE1ESzo.png) An enhancement to provide a smaller (system load, memory, network or disk) footprint.
 - ![F7-optimisation](http://i.imgur.com/DNym8en.png) An enhancement to provide better overall performance in terms of time-to-completion for a task.
 - ![F8-enhancement](http://i.imgur.com/ziRfEiW.png) An additional feature.
-- ![F9-release](http://i.imgur.com/zl4BiqW.png) A specific release. All such issues should be templated on [1387](https://github.com/ethcore/parity/issues/1387).
+- ![F9-release](http://i.imgur.com/zl4BiqW.png) A specific release. All such issues should be templated on [1387](https://github.com/paritytech/parity/issues/1387).
 
 ### 'M' group
 
@@ -101,6 +101,6 @@ Used only on issues which will (or _may_, in the case of Z5) be closed immediate
 - ![Z0-intended](http://i.imgur.com/qbfIlvR.png) Issue describes a behavior which turns out to work as intended. Closer should explain why.
 - ![Z0-invalid](http://i.imgur.com/dOX7QyV.png) Issue is invalid. Closer should comment why.
 - ![Z0-question](http://i.imgur.com/EN3xLJn.png) Issue is a question. Closer should answer.
-- ![Z0-stale](http://i.imgur.com/Ds2ZUIl.png) Issue is in principle valid, but it is not relevant anymore or can not reproduced. 
+- ![Z0-stale](http://i.imgur.com/Ds2ZUIl.png) Issue is in principle valid, but it is not relevant anymore or can not reproduced.
 - ![Z0-wontfix](http://i.imgur.com/pPJTV2h.png) Issue is in principle valid, but this project will not address it. Closer should explain why.
 - ![Z5-unconfirmed](http://i.imgur.com/X747d5L.png) Issue might be valid, but it's not yet known.

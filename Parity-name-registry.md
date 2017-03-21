@@ -6,7 +6,7 @@ The Parity name registry is an easy way to lookup and address with a human-reada
 
 ## Background
 
-Internally to the [Registry contract](https://github.com/ethcore/contracts/blob/master/Registry.sol) names are stored as sha3 hashes of the name registered, this name mapping directly to an address. Initially this approach is very beneficial to dapp and contract developers, i.e. by doing a name lookup on the Registry, any address for the network can be returned without having to hard-code it per network.
+Internally to the [Registry contract](https://github.com/paritytech/contracts/blob/master/Registry.sol) names are stored as sha3 hashes of the name registered, this name mapping directly to an address. Initially this approach is very beneficial to dapp and contract developers, i.e. by doing a name lookup on the Registry, any address for the network can be returned without having to hard-code it per network.
 
 An example of this would be a dapp **bob's amazin stuff** that has contracts on both Homestead and Morden. Normally a dapp developer would need to hardcode the contract addresses per network and each time a new version is deployed, have to update the contract and the address in the dapp for each network. By using the Registry, a name can be reserved `bobsamazinstuff` that will resolve to the correct addresses irrespective of network.
 

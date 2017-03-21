@@ -61,8 +61,8 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 }
 ```
 
-Optional:  
-`"registrar"` address of a contract containing [registry](https://github.com/ethcore/contracts/blob/master/Registry.sol), used for UI  
+Optional:
+`"registrar"` address of a contract containing [registry](https://github.com/paritytech/contracts/blob/master/Registry.sol), used for UI
 
 # Validator engines
 
@@ -82,7 +82,7 @@ More information can be found on the [[Validator Set]] page.
 
 ## Aura
 
-Simple and fast consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator. [More details](https://github.com/ethcore/parity/wiki/Aura).
+Simple and fast consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator. [More details](https://github.com/paritytech/parity/wiki/Aura).
 
 ```json
 "engine": {
@@ -101,12 +101,12 @@ Simple and fast consensus algorithm, each validator gets an assigned time slot i
 }
 ```
 
-`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine  
-`"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, too high leads to slow block issuance  
-`"validators"` is the list of addresses of the entities which will be allowed to issue blocks  
-Optional:  
-`"blockReward"` determines the reward given to issuing authority  
-`"registrar"` address of a contract containing [registry](https://github.com/ethcore/contracts/blob/master/Registry.sol), used for UI  
+`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine
+`"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, too high leads to slow block issuance
+`"validators"` is the list of addresses of the entities which will be allowed to issue blocks
+Optional:
+`"blockReward"` determines the reward given to issuing authority
+`"registrar"` address of a contract containing [registry](https://github.com/paritytech/contracts/blob/master/Registry.sol), used for UI
 
 ```json
 "seal": {
@@ -141,15 +141,15 @@ This consensus is still experimental, please use Authority Round for more stable
 }
 ```
 
-`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine  
-`"validators"` is the list of addresses of the entities which will be allowed to issue blocks  
-Optional:  
-`"blockReward"` determines the reward given to issuing authority  
-`"timeoutPropose"`  
-`"timeoutPrevote"`  
-`"timeoutPrecommit"`  
-`"timeoutCommit"`  
-`"registrar"` address of a contract containing [registry](https://github.com/ethcore/contracts/blob/master/Registry.sol), used for UI  
+`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine
+`"validators"` is the list of addresses of the entities which will be allowed to issue blocks
+Optional:
+`"blockReward"` determines the reward given to issuing authority
+`"timeoutPropose"`
+`"timeoutPrevote"`
+`"timeoutPrecommit"`
+`"timeoutCommit"`
+`"registrar"` address of a contract containing [registry](https://github.com/paritytech/contracts/blob/master/Registry.sol), used for UI
 
 ```json
 "seal": {

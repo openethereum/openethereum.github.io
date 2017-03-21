@@ -1,6 +1,6 @@
 ### What is Parity?
 
-Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularization, low-footprint and high-performance. To this end it utilizes the Rust language, a hybrid imperative/object-orientated/functional language with an emphasis on efficiency. It is professionally developed by _Parity Technologies_ (formerly _Ethcore_); we aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers, and follow a pipelined #6-ish-week release cycle similar to the Rust compiler. [Read more on our tenets](https://github.com/ethcore/parity/wiki#our-tenets).
+Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularization, low-footprint and high-performance. To this end it utilizes the Rust language, a hybrid imperative/object-orientated/functional language with an emphasis on efficiency. It is professionally developed by _Parity Technologies_ (formerly _Ethcore_); we aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers, and follow a pipelined #6-ish-week release cycle similar to the Rust compiler. [Read more on our tenets](https://github.com/paritytech/parity/wiki#our-tenets).
 
 Table of Contents:
 
@@ -80,7 +80,7 @@ Table of Contents:
 
 #### How do I install Parity?
 
-There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/ethcore/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
+There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/paritytech/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
 On MacOS and Ubuntu you can use the _One-Line Binary Installer_, to use the script just run:
 
@@ -95,11 +95,11 @@ This method is way faster than building, though you won't get the cutting edge f
 
 Yes, there are also experimental installers for MacOS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet.
 
-You can download the latest versions from the [releases page on GitHub](https://github.com/ethcore/parity/releases).
+You can download the latest versions from the [releases page on GitHub](https://github.com/paritytech/parity/releases).
 
 #### Where can I find official releases?
 
-You can download the latest versions from the [releases page on GitHub](https://github.com/ethcore/parity/releases). :)
+You can download the latest versions from the [releases page on GitHub](https://github.com/paritytech/parity/releases). :)
 
 Make sure you check the `md5sum`, on your command-line, type
 
@@ -107,7 +107,7 @@ Make sure you check the `md5sum`, on your command-line, type
 md5sum parity_1.5.7_amd64.deb
 ```
 
-and compare the output with the provided checksum at the [releases page on GitHub](https://github.com/ethcore/parity/releases).
+and compare the output with the provided checksum at the [releases page on GitHub](https://github.com/paritytech/parity/releases).
 
 ```bash
 d8fbd5f71b5b436e1a45d7359e26bc0c  parity_1.5.7_amd64.deb
@@ -115,7 +115,7 @@ d8fbd5f71b5b436e1a45d7359e26bc0c  parity_1.5.7_amd64.deb
 
 #### Isn't there any browser plug-in available?
 
-Yes, there is the [Parity Chrome Extension](https://github.com/ethcore/parity-extension) available.
+Yes, there is the [Parity Chrome Extension](https://github.com/paritytech/parity-extension) available.
 
 #### Are builds for ARM devices available (i.e., Raspberry Pi)?
 
@@ -131,17 +131,17 @@ Parity is targeted to run on any device. However, it depends entirely on which c
 
 Stable releases are the most tested and will not get any new features. It is the version that we recommend to most users in a production environment.
 
-Beta releases will be augmented with new features between the different releases which often require more dedicated long-term testing and could have a couple of issues. If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/ethcore/Parity/issues/new).
+Beta releases will be augmented with new features between the different releases which often require more dedicated long-term testing and could have a couple of issues. If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
 
 #### How do I build the cutting-edge version of Parity?
 
-To build Parity from source simply follow the instructions in the [README](https://github.com/ethcore/parity/blob/master/README.md#build-dependencies). Once you have cloned the source directory and installed Rust, just use cargo and copy the resulting binary:
+To build Parity from source simply follow the instructions in the [README](https://github.com/paritytech/parity/blob/master/README.md#build-dependencies). Once you have cloned the source directory and installed Rust, just use cargo and copy the resulting binary:
 
 ```bash
 cargo build --release
 ```
 
-For Ethereum key management [Ethstore](https://github.com/ethcore/ethstore) can be used. To compile it use:
+For Ethereum key management [Ethstore](https://github.com/paritytech/ethstore) can be used. To compile it use:
 
 ```bash
 cargo build --release -p ethstore --features=ethstore-cli
@@ -178,7 +178,7 @@ Make sure you have set up your 64-bit variables in the build shell before issuin
 
 #### How can I cross-build Parity for other platforms (e.g., ARM)?
 
-See the documentation for [docker build for ARM](https://github.com/ethcore/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
+See the documentation for [docker build for ARM](https://github.com/paritytech/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
 
 #### How can I build and run tests?
 
@@ -202,11 +202,11 @@ After building Parity from source:
 - On Windows run: `target/release/parity.exe`
 - On MacOS and Linux run: `target/release/parity`
 
-After installing Parity, just run `parity` from command line. See also [how do I configure Parity](https://github.com/ethcore/parity/wiki/FAQ#how-do-i-configure-parity) below.
+After installing Parity, just run `parity` from command line. See also [how do I configure Parity](https://github.com/paritytech/parity/wiki/FAQ#how-do-i-configure-parity) below.
 
 #### How do I configure Parity?
 
-You can configure your Parity client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://github.com/ethcore/parity/wiki/Configuring-Parity#cli-options).
+You can configure your Parity client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://github.com/paritytech/parity/wiki/Configuring-Parity#cli-options).
 
 In additoin, Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Config Generator](https://ethcore.github.io/parity-config-generator/). To start parity with a config file, the file needs to be located in:
 
@@ -214,7 +214,7 @@ In additoin, Parity can be configured using a [TOML](https://github.com/toml-lan
 * Linux: `~/.local/share/io.parity.ethereum/config.toml`
 * macOS: `$HOME/Library/Application Support/io.parity.ethereum/config.toml`
 
-To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity config file here](https://github.com/ethcore/parity/wiki/Configuring-Parity#config-file).
+To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity config file here](https://github.com/paritytech/parity/wiki/Configuring-Parity#config-file).
 
 #### Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!
 
@@ -244,7 +244,7 @@ By default, 1200 states are kept.
 
 Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
 
-See also [what is Parity's “warp” sync](http://ethereum.stackexchange.com/q/9991) at Ethereum Stack Exchange and read [the full specification at the Wiki here](https://github.com/ethcore/parity/wiki/Warp-Sync-Snapshot-Format#manifest).
+See also [what is Parity's “warp” sync](http://ethereum.stackexchange.com/q/9991) at Ethereum Stack Exchange and read [the full specification at the Wiki here](https://github.com/paritytech/parity/wiki/Warp-Sync-Snapshot-Format#manifest).
 
 #### How can I tell if Parity is fully synchronized?
 
@@ -277,7 +277,7 @@ Parity is running but seems to remain at the same block for a long time.
 4. Remove your nodes file (`$HOME/.parity/network/nodes.json`) while Parity is not running.
 5. Wait a bit longer.
 
-If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/ethcore/parity/issues/2447).
+If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/paritytech/parity/issues/2447).
 
 #### Sync is stuck around block 2,421,000 or 2,675,000!?!
 
@@ -285,7 +285,7 @@ These blocks are quite heavy on the IO and take a long time to import, especiall
 
 #### Is there any Parity light client available?
 
-The light client is not finished yet, but on the [road map for upcoming releases](https://github.com/ethcore/parity/projects/2).
+The light client is not finished yet, but on the [road map for upcoming releases](https://github.com/paritytech/parity/projects/2).
 
 #### How do I enable transaction tracing (indexing)?
 
@@ -311,7 +311,7 @@ Docker images for Parity [are available via](https://hub.docker.com/r/ethcore/pa
 docker pull ethcore/parity:beta-release
 ```
 
-You can view the [Dockerfile here](https://github.com/ethcore/parity/blob/master/docker/ubuntu/Dockerfile).
+You can view the [Dockerfile here](https://github.com/paritytech/parity/blob/master/docker/ubuntu/Dockerfile).
 
 #### Can I run Parity as a daemon or system service?
 
@@ -423,7 +423,7 @@ Always back up your keys (~/.parity/keys) before doing anything like that though
 
 #### How do I mine with Parity?
 
-Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_getwork), [eth_submitWork](https://github.com/ethcore/parity/wiki/JSONRPC-eth-module#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
+Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getwork), [eth_submitWork](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
 
 First get a Parity node up and running (either build yourself or install one of the packages; the [[Setup]] guide can help you). Next, you'll need to install your preferred miner. Read more on [[Mining]].
 
@@ -456,7 +456,7 @@ See also [[Chain specification]].
 - Ethash (Ethereum Proof-of-Work Engine), see [Ethash](https://github.com/ethereum/wiki/wiki/Ethash).
 - Instant Seal (Development Engine), see [[Private development chain]].
 - Aura (Proof-of-Authority Validator Engine), see [[Aura]].
-- Tendermint (Experimental Validator Engine), see [Validator Engines](https://github.com/ethcore/parity/wiki/Consensus-Engines#validator-engines)
+- Tendermint (Experimental Validator Engine), see [Validator Engines](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines)
 
 #### How do I get Ether for the Morden, Ropsten, or Kovan testnets?
 
@@ -473,7 +473,7 @@ As a safeguard against a certain type of attack, Parity requires you to use a sp
 
 #### When I start Parity with the 'homestead_test.json' I get a 0 blocks chain, and mining never seals a block!?!
 
-`homestead_test.json` is a file meant for testing on a chain very similar to the Homestead chain. As such it is of equivalent (substantial) difficulty to mine on it. Rather what you need is something of minimal mining difficulty, like Morden. See more instructions [here](https://github.com/ethcore/parity/wiki/Private-chains).
+`homestead_test.json` is a file meant for testing on a chain very similar to the Homestead chain. As such it is of equivalent (substantial) difficulty to mine on it. Rather what you need is something of minimal mining difficulty, like Morden. See more instructions [here](https://github.com/paritytech/parity/wiki/Private-chains).
 
 #### Why do my transactions not get mined?
 
@@ -529,11 +529,11 @@ Additional DApps can be added, see [[Writing Dapps for Parity]].
 
 #### How can I write a DApp for Parity?
 
-Head over to the excellent [DApp Tutorial](https://github.com/ethcore/parity/wiki/Tutorial-Part-I) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
+Head over to the excellent [DApp Tutorial](https://github.com/paritytech/parity/wiki/Tutorial-Part-I) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
 
 #### Does Parity support the Swarm and Whisper sub-protocols?
 
-Currently, Parity does neither support Swarm nor Whisper sub-protocols. However, [Whisper Support](https://github.com/ethcore/parity/issues/4685) is on the road-map.
+Currently, Parity does neither support Swarm nor Whisper sub-protocols. However, [Whisper Support](https://github.com/paritytech/parity/issues/4685) is on the road-map.
 
 ---
 
@@ -568,10 +568,10 @@ See also: [Where are the parity log files in daemon mode](http://ethereum.stacke
 
 #### How can I report an issue with Parity?
 
-If you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/ethcore/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/ethcore/Parity/issues/new).
+If you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/ethcore/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
 
 #### I just scrolled all the way down here and didn't find what I'm looking for!?!
 
 Find more questions [tagged with `[Parity]` on Ethereum Stack Exchange]() or [ask a new question](https://ethereum.stackexchange.com/questions/ask).
 
-However, if you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/ethcore/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/ethcore/Parity/issues/new).
+However, if you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/ethcore/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
