@@ -1,4 +1,4 @@
-#[Parity](Home)
+# [Parity](Home)
 - [[Setup]]
 - [[Getting Synced]]
 - [[Basic Usage]]
@@ -10,9 +10,9 @@
   - [[Parity name registry]]
   - [[Parity github hint]]
 - [[Configuring Parity]]
-- [With Mist](Using parity with mist)
+- [With Mist](Using-parity-with-mist)
 - [For Mining](Mining)
-- [Coming from Geth](Importing a chain from Geth)
+- [Coming from Geth](Importing-a-Chain-from-Geth)
 - [[Backing-up & Restoring]]
 - [[UI Remote Access]]
 - [[Community Guides]]
@@ -36,7 +36,7 @@
   - [V: Posting Transactions](Tutorial-Part-V)
   - [VI: A New Contract](Tutorial-Part-VI)
   - [VII: Interacting](Tutorial-Part-VII)
-  - TODO: VIII: Events
+  - [VIII: Events](Tutorial-Part-VII)
   - [IX: Signing Data](Tutorial-Part-IX)
 
 ## Parity Chains
