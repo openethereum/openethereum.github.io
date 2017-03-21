@@ -38,7 +38,7 @@
   - [5: Posting Transactions](Tutorial-Part-V)
   - [6: A New Contract](Tutorial-Part-VI)
   - [7: Interacting](Tutorial-Part-VII)
-  - [8: Events](Tutorial-Part-VII)
+  - [8: Events](Tutorial-Part-VIII)
   - [9: Signing Data](Tutorial-Part-IX)
 
 ## Parity Chains
@@ -50,17 +50,18 @@
 - [[Proof of Authority Chains]]
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
 - [Private Chains](Private-chains)
-  - [Private Development Chain](Private-development-chain)
+  - [Private Dev Chain](Private-development-chain)
 
 ## Hacking on Parity
 - [[Coding Guide]]
 - [Labeling](Labelling)
-- [Gitter](https://gitter.im/ethcore/parity)
-- [GitHub](https://github.com/paritytech/parity)
-- [Website](https://parity.io)
+- [Gitter](https://gitter.im/ethcore/parity) <sup>[+]</sup>
+- [GitHub](https://github.com/paritytech/parity) <sup>[+]</sup>
+- [Website](https://parity.io) <sup>[+]</sup>
 
 ## Technologies
 - [[Warp Sync]]
-  - [[Warp Sync Snapshot Format]]
-- [[The Parity Light Protocol (PIP)]]
-- [[Light Ethereum Subprotocol (LES)]]
+  - [[Snapshot Format](Warp-Sync-Snapshot-Format)
+- [[Light Client]]
+  - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
+  - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
