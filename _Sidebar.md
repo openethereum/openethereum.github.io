@@ -6,11 +6,11 @@
 
 ## Using Parity
 - [[Parity Wallet]]
-  - [[Writing Dapps for Parity]]
-  - [[Parity dapp registry]]
-    - [[Register-your-DAPP-for-discovery]]
-  - [[Parity name registry]]
-  - [[Parity github hint]]
+  - [Writing DApps](Writing-Dapps-for-Parity)
+  - [Parity DApp Registry](Parity-dapp-registry)
+  - [DApp Discovery](Register-your-DAPP-for-discovery)
+  - [Parity Name Registry](Parity-name-registry)
+  - [Parity GitHub Hint](Parity-github-hint)
 - [[Configuring Parity]]
   - [With Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
@@ -19,7 +19,7 @@
 - [[UI Remote Access]]
 - [[Community Guides]]
 
-## Developing Dapps
+## Developing DApps
 - [JSONRPC Guide](JSONRPC)
   - [web3](JSONRPC-web3-module)
   - [net](JSONRPC-net-module)
@@ -30,7 +30,7 @@
   - [parity_set](JSONRPC-parity_set-module)
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
-- Dapp Tutorial
+- DApp Tutorial
   - [1: Getting Started](Tutorial-Part-I)
   - [2: oo7 Bonds](Tutorial-Part-II)
   - [3: Parity Bonds](Tutorial-Part-III)
@@ -42,19 +42,19 @@
   - [9: Signing Data](Tutorial-Part-IX)
 
 ## Parity Chains
-- [[Chain specification]]
+- [Chain Specification](Chain-specification)
   - [[Consensus Engines]]
   - [[Validator Set]]
     - [[Aura]]
 - [[Proof of Work Chains]]
 - [[Proof of Authority Chains]]
-  - [[Demo PoA tutorial]]
-- [[Private-chains]]
-- [[Private development chain]]
+  - [Demo PoA Tutorial](Demo-PoA-tutorial)
+- [Private Chains](Private-chains)
+  - [Private Development Chain](Private-development-chain)
 
 ## Hacking on Parity
 - [[Coding Guide]]
-- [[Labelling]]
+- [Labeling](Labelling)
 - [Gitter](https://gitter.im/ethcore/parity)
 - [GitHub](https://github.com/paritytech/parity)
 - [Website](https://parity.io)
