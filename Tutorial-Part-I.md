@@ -78,11 +78,11 @@ Parity's directory structure is different depending on your system. For Mac, Par
 ln -s $PWD/dist $HOME/Library/Application\ Support/io.parity.ethereum/dapps/mydapp
 ```
 
-For Linux it's `$HOME/.local/share/parity/dapps` - in this case you'd want to enter:
+For Linux it's `$HOME/.local/share/io.parity.ethereum/dapps` - in this case you'd want to enter:
 
 ```
 # For Linux systems
-ln -s $PWD/dist $HOME/.local/share/parity/dapps/mydapp
+ln -s $PWD/dist $HOME/.local/share/io.parity.ethereum/dapps/mydapp
 ```
 
 Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
