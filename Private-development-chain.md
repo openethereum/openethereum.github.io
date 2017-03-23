@@ -8,7 +8,7 @@ Or by using a custom [config file](Configuring-Parity#config-file):
 chain = "dev"
 ```
 
-The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call (make sure to enable the `parity_accounts` API):
+The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call (make sure to enable the `--jsonrpc-apis parity_accounts` API):
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["","password"],"id": 1}' localhost:8545
 ```
