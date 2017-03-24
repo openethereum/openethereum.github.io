@@ -1,4 +1,4 @@
-Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Secure Transaction Signer](Secure Transaction Signer)) and all blocks will be accepted. It can be simply activated by running:
+Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [[Parity Wallet]] or signed) and all blocks will be accepted. It can be simply activated by running:
 ```
 parity --chain dev
 ```
@@ -8,7 +8,7 @@ Or by using a custom [config file](Configuring-Parity#config-file):
 chain = "dev"
 ```
 
-The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call (make sure to enable the `parity_accounts` API):
+The address created with an empty phrase contains a lot of tokens that can be used to send transactions, it can be created with UI or a RPC call (make sure to enable the `--jsonrpc-apis parity_accounts` API):
 ```
 curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["","password"],"id": 1}' localhost:8545
 ```
@@ -27,6 +27,8 @@ When using with [browser-solidity](https://ethereum.github.io/browser-solidity) 
 ## Customizing the development chain
 
 The default configuration should work fine in most cases, however it can be customized. The following example spec can be passed to `--chain` option where `accounts` contains a custom account with lots of Ether.
+
+To make multiple transactions confirm at the same time use `--reseal-min-period 0` and to make transactions free use `--gasprice 0`.
 
 In Parity 1.5:
 ```

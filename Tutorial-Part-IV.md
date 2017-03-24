@@ -50,7 +50,7 @@ Let's get this in to our dapp. Change the `render()`ed HTML to:
 </div>
 ```
 
-Refresh your dapp page and, assuming you're running on Ropsten, you'll see something like:
+Refresh your dapp page and, assuming you're running on Kovan, you'll see something like:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22712813/2e36a65c-ed54-11e6-896d-c123bd95d3d5.png)
 
