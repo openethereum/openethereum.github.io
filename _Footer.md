@@ -1,0 +1,1 @@
+[[FAQ]] | [Wiki Index](Home) | [Github Repository](https://github.com/paritytech/parity) <sup>[+]</sup> | [Gitter Chat](https://gitter.im/ethcore/parity) <sup>[+]</sup> | [Parity Website](https://parity.io) <sup>[+]</sup>
