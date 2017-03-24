@@ -34,9 +34,9 @@ no_download = false
 no_consensus = false
 
 chain = "homestead"
-base_path = "$HOME/.parity"
-db_path = "$HOME/.parity/chains"
-keys_path = "$HOME/.parity/keys"
+base_path = "$HOME/.local/share/io.ethereum.parity"
+db_path = "$HOME/.local/share/io.ethereum.parity/chains"
+keys_path = "$HOME/.local/share/io.ethereum.parity/keys"
 identity = ""
 light = false
 
@@ -50,7 +50,7 @@ force = false
 disable = false
 port = 8180
 interface = "127.0.0.1"
-path = "$HOME/.parity/signer"
+path = "$HOME/.local/share/io.ethereum.parity/signer"
 
 [network]
 disable = false
@@ -80,7 +80,7 @@ hosts = ["none"]
 
 [ipc]
 disable = false
-path = "$HOME/.parity/jsonrpc.ipc"
+path = "$HOME/.local/share/io.ethereum.parity/jsonrpc.ipc"
 apis = ["web3", "eth", "net", "parity", "parity_accounts", "personal", "traces", "rpc"]
 
 [dapps]
@@ -88,7 +88,7 @@ disable = false
 port = 8080
 interface = "local"
 hosts = ["none"]
-path = "$HOME/.parity/dapps"
+path = "$HOME/.local/share/io.ethereum.parity/dapps"
 # authorization:
 user = "test_user"
 password = "test_pass"

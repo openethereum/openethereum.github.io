@@ -11,7 +11,7 @@ Local dapps allows the developer to get comfortable with the required interfaces
 
 ### Creating the dapp structure
 
-The first step is to generate your dapp & dapp structure inside the `~/.parity/dapps/` folder. Any folders inside `dapps` will get recognised and loaded as a dapp provided that the basic structure is in place. The structure can either be created manually or via [chevdor's dapp generator](https://github.com/chevdor/generator-ethdapp), the latter supporting both web3 and parity.js apps.
+The first step is to generate your dapp & dapp structure inside the `~/.local/share/io.ethereum.parity/dapps/` folder. Any folders inside `dapps` will get recognised and loaded as a dapp provided that the basic structure is in place. The structure can either be created manually or via [chevdor's dapp generator](https://github.com/chevdor/generator-ethdapp), the latter supporting both web3 and parity.js apps.
 
 The rest of the section will walk through the required files, as if assuming that no generator was used - in the case of a generator, it still would be useful to understand the various components.
 

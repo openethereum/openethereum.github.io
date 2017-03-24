@@ -61,7 +61,7 @@
 
 ## Technologies
 - [[Warp Sync]]
-  - [[Snapshot Format](Warp-Sync-Snapshot-Format)
+  - [Snapshot Format](Warp-Sync-Snapshot-Format)
 - [[Light Client]]
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
