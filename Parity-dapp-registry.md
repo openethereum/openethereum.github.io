@@ -1,11 +1,11 @@
 # Overview
 
-The Parity UI uses an [underlying `DappReg` contract](https://github.com/paritytech/contracts/blob/master/DappReg.sol) to lookup and display dapps that have been registered on the network. Currently the contract does not have a DApp/UI yet, however it is available for both Homestead (mainnet) and Morden (testnet):
+The Parity UI uses an [underlying `DappReg` contract](https://github.com/paritytech/contracts/blob/master/DappReg.sol) to lookup and display dapps that have been registered on the network. Currently the contract does not have a DApp/UI yet, however it is available for both Homestead (mainnet), Ropsten, Kovan, and Morden (testnets):
 
 * Homestead: [`0xD70994d7020DF8052A1124561ff548f3b88744d8`](https://etherscan.io/address/0xD70994d7020DF8052A1124561ff548f3b88744d8#code)
-* Ropsten: [`0x724A8602fc0C2b346f8eC56Df2913710742d3fD0`](https://ropsten.etherscan.io/address/0x724A8602fc0C2b346f8eC56Df2913710742d3fD0)
+* Ropsten: [`0x724A8602fc0C2b346f8eC56Df2913710742d3fD0`](https://testnet.etherscan.io/address/0x724A8602fc0C2b346f8eC56Df2913710742d3fD0)
 * Kovan: [`0xD36d48C274af1a169857C9721e122aa023A0eE01`](https://kovan.etherscan.io/address/0xD36d48C274af1a169857C9721e122aa023A0eE01)
-* Morden: [`0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB`](https://morden.etherscan.io/address/0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB)
+* Morden: `0x11e869F9094a1101B4C60201d6Cf894AfC7EadBB`
 
 You can find the ABI for this contract if you follow the link for the [Homestead contract](https://etherscan.io/address/0xD70994d7020DF8052A1124561ff548f3b88744d8#code).
 
