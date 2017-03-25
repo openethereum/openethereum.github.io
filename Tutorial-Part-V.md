@@ -154,13 +154,15 @@ And that's it. Once you click the "send" button, you'll see the "current" transa
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24324260/8d166a56-1183-11e7-8c5f-98db20bfe232.png)
 
-Approving the transaction will lead to it being `{"signed":...}`:
+The value of this `request` key is simply the internal identifier given to this particular request. Approving the transaction will lead to it being `{"signed":...}`:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24324265/a612047a-1183-11e7-9536-83324ad97465.png)
 
-And after it has been finalised by the network, it will eventually become `{"confirmed":...}`:
+The value of the `signed` key here is the hash of the transaction, its unique identifier which stays with it throughout. Under normal circumstances, it will be published to the network and eventually finalised into a block. And after it has been finalised by the network, `this.state.current` will mutate to `{"confirmed":...}`:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24324263/9f3918fa-1183-11e7-8cbd-d04527addcd1.png)
+
+The value of the `confirmed` key 
 
 If you reject the transaction rather than approving it, you'll see that reflected in the value of `this.state.current`, too:
 
