@@ -162,12 +162,13 @@ The value of the `signed` key here is the hash of the transaction, its unique id
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24324263/9f3918fa-1183-11e7-8cbd-d04527addcd1.png)
 
-The value of the `confirmed` key 
+The value of the `confirmed` key is the receipt of the transaction which gives you a lot of information on its specific execution, including what gas it used and logs/events left by it.
 
 If you reject the transaction rather than approving it, you'll see that reflected in the value of `this.state.current`, too:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24324268/b1a21bcc-1183-11e7-9154-5d2a90c69334.png)
 
+While working with the JSON is fairly easy, there are existing Bond-oriented reactive components that can do this for you, such as `TransactionProgressBadge` found in `parity-reactive-ui` module.
 
 ----
 
