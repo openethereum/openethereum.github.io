@@ -8,7 +8,7 @@ Every chunk is run through snappy compression, and then hashed. Before compressi
 `CHUNK_SIZE` = `4MiB`, but this may be subject to change.
 All data structures should be assumed to be RLP-encoded unless specified otherwise.
 
-Additionally we define `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` = `90000`.
+Additionally we define `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` = `80000`.
 
 ## Manifest
 This contains metadata about the snapshot itself, and is used to coordinate snapshots between nodes.
