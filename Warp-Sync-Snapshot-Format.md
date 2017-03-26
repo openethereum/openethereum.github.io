@@ -138,7 +138,9 @@ More formally, it is an RLP list in the following format:
 `code_flag` is a single byte which will determine what the `code` data will be:
   - if `0x00`, the account has no code and `code` is the single byte `0x80`, signifying RLP empty data.
   - if `0x01`, the account has code, and `code` stores an arbitrary-length list of bytes containing the code.
-  - if `0x02`, the account has code, and `code` stores a 32-byte big-endian integer which is the hash of the code. The code's hash must be substituted if and only if another account which has a lower or equal address hash (when comparing as big-endian 32-byte unsigned integers) has the exact same code.
+  - if `0x02`, the account has code, and `code` stores a 32-byte big-endian integer which is the hash of the code. The code's hash must be substituted if and only if 
+      * another account which has a lower address hash (when comparing as big-endian 32-byte unsigned integers) has the exact same code.
+      * OR another account record which has same hash exists in the chunk with lower index.
 
 `storage` is a list of the entire account's storage, where the items are RLP lists of length two -- the first item being `sha3(key)`, and the second item being the storage value. This storage list must be sorted in ascending order by key-hash.
 
