@@ -144,7 +144,7 @@ More formally, it is an RLP list in the following format:
 
 `storage` is a list of the entire account's storage, where the items are RLP lists of length two -- the first item being `sha3(key)`, and the second item being the storage value. This storage list must be sorted in ascending order by key-hash.
 
-A single account must be split between two or more consecutive chunks if it has more than `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage entries. When account is split between chunks N and M there is one account entry with the same key, nonce, balance and code reference in each chunk. Each such record contains a subset of account storage items in `storage`. Concatenating `storage` lists from all chunks results in a complete sorted storage list for an account. Split account records are only allowed to be the first or the last record of the chunk record list.
+A single account must be split between two or more consecutive chunks if it has more than `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage entries. When account is split between chunks N and M there is one account entry with the same key, nonce, balance and code reference in each chunk. Each such record contains a subset of account storage items in `storage`. Each split record except the one containing the highest storage address hash contains exactly `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage entries. Concatenating `storage` lists from all chunks results in a complete sorted storage list for an account. Split account records are only allowed to be the first or the last record of the chunk record list.
 
 ## Validity
 
