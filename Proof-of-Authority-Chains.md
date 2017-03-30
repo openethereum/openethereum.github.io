@@ -41,6 +41,10 @@ usd_per_tx = "0" // Allows for free transactions.
 ## Private centralized network setup
 When deploying PoC it is useful to get a centrally managed network going first. With Parity the nodes can be identical and simply expose the RPC interface to a central managing node, all further setup can be done via those interfaces.
 
+### Community built setups
+- [Docker compose network with 3 authorities and netstats dashboard](https://github.com/dstarcev/parity-poa-playground)
+- [Docker compose for running integration tests](https://github.com/illya13/parity-poa)
+
 ### Useful RPCs
 Connect the deployed nodes:
 - `parity_enode()` returns enode of the particular instance
