@@ -1,11 +1,21 @@
 # Parity
 
-Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularisation, low-footprint and high-performance. To this end it utilises the Rust language, a hybrid imperative/OO/functional language with an emphasis on efficiency. It is professionally developed by Ethcore; we aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers and follow a pipelined 6-ish-week release cycle similar to the Rust compiler.
+Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularisation, low-footprint and high-performance. To this end it utilises the Rust language, a hybrid imperative/OO/functional language with an emphasis on efficiency. It is professionally developed by Parity Technologies, a VC-funded UK-based company. We aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers and follow a pipelined 7-ish-week release cycle similar to the Rust compiler.
+
+Parity comes with an extensive, in-built Ethereum Wallet and Dapp environment. It includes:
+
+- Account, address-book and multi-sig management.
+- Key creation, importing and exporting.
+- Web3 Ðapp browser.
+- Hardware and electronic cold-wallet support.
+- Name registry support. 
+- Contract development, deployment and interaction environment.
+
+To use it, simply browse `http://web3.site/` once Parity is running on your computer.
 
 Some help:
 - If you want to get a node up and running with Parity, see the [[Setup]] guide, or browse the [Articles Index](Community-Guides).
 - Frequently asked questions are answered on the [[FAQ]].
-- If you want to use the Ethereum Foundation Wallet with your Parity installation, see the guide to [[Using Parity with Mist]].
 - If you're interested in mining with Parity, see the [[Mining]] guide.
 - If you'd like to use the JSONRPC interface with Parity, see the [[JSONRPC]] guide.
 - If you're interested in hacking on the Parity code base see the [[Coding guide]].
