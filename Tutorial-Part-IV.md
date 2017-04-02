@@ -35,7 +35,7 @@ To figure out the primary associated address of the `gavofyork` name, we can use
 parity.bonds.registry.getAddress(parity.api.util.sha3('gavofyork'))
 ```
 
-Typing `parity.api.util.sha3(...)` every time you want to look up a name in the registry gets tedious fast. Happily, Parity provides a number of derivative helper functions as part of the `parity.bonds.registry` object: `lookup`, `lookupAddress`, `lookupUint` and `lookupOwner`; they're all just like the `get`-prefixed brethren, but do the hashing for you. Our expression therefore can become:
+Typing `parity.api.util.sha3(...)` every time you want to look up a name in the registry gets tedious fast. Happily, Parity provides a number of derivative helper functions as part of the `parity.bonds.registry` object: `lookupData`, `lookupAddress`, `lookupUint` and `lookupOwner`; they're all just like the `get`-prefixed brethren, but do the hashing for you. Our expression therefore can become:
 
 ```js
 parity.bonds.registry.lookupAddress('gavofyork', 'A')
@@ -162,7 +162,7 @@ Next, let's alter the dapp's render `div`:
 ```
 <div>
 	<TextBond bond={this.bond} floatingLabelText='Name' />
-	<Rimg src={this.GithubHint.entries(parity.bonds.registry.lookup(this.bond, 'IMG'))[0]} />
+	<Rimg src={this.GithubHint.entries(parity.bonds.registry.lookupData(this.bond, 'IMG'))[0]} />
 </div>
 ```
 
