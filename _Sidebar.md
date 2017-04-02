@@ -40,6 +40,7 @@
   - [7: Interacting](Tutorial-Part-VII)
   - [8: Events](Tutorial-Part-VIII)
   - [9: Signing Data](Tutorial-Part-IX)
+  - [10: Deploying Contracts](Tutorial-Part-X)
 
 ## Parity Chains
 - [Chain Specification](Chain-specification)
