@@ -146,7 +146,7 @@ Parity can help us get information about our own accounts in a reactive manner. 
 
 - `parity.bonds.coinbase` evaluates to the node's current block authoring address.
 - `parity.bonds.accounts` evaluates to the list of accounts available for the dapp to use.
-- `parity.bonds.defaultAccount` evaluates to the preferred account for this dapp to use. In Parity, this is the account visible in the Parity Signer at the bottom right of the page.
+- `parity.bonds.me` evaluates to the preferred account for this dapp to use. In Parity, this is the account visible in the Parity Signer at the bottom right of the page.
 - `parity.bonds.accountsInfo` evaluates to the mapping between dapp-visible addresses and account metadata.
 
 To see the list of accounts available, we can just grab the list of accounts and join them with `', '`use:
@@ -165,7 +165,7 @@ Determining the address of the preferred account is just as easy. Rather than us
 ```jsx
 <div>
 	Default account:&nbsp;
-	<Hash value={parity.bonds.defaultAccount} />
+	<Hash value={parity.bonds.me} />
 </div>
 ```
 
@@ -182,17 +182,17 @@ Maybe we'd like to know how much we have in our selected account, too. This can 
 ```jsx
 <div>
 	Default account:&nbsp;
-	<Hash value={parity.bonds.defaultAccount} />
+	<Hash value={parity.bonds.me} />
 	<br />With a balance of&nbsp;
 	<Rspan>
-		{parity.bonds.balance(parity.bonds.defaultAccount).map(formatBalance)}
+		{parity.bonds.balance(parity.bonds.me).map(formatBalance)}
 	</Rspan>
 </div>
 ```
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22710059/f1572b8a-ed49-11e6-874a-7de1ff2ca519.png)
 
-Maybe we would even like to understand what name we have given to the account (if any). We can ascertain this through the `parity.bonds.accountsInfo` bond, which gives us a mapping between accounts and metadata. The expression which evaluates to the current account's name is therefore as simple as  `parity.bonds.accountsInfo[parity.bonds.defaultAccount].name`.
+Maybe we would even like to understand what name we have given to the account (if any). We can ascertain this through the `parity.bonds.accountsInfo` bond, which gives us a mapping between accounts and metadata. The expression which evaluates to the current account's name is therefore as simple as  `parity.bonds.accountsInfo[parity.bonds.me].name`.
 
 Our rendering function would now be:
 
@@ -200,12 +200,12 @@ Our rendering function would now be:
 <div>
 	Default account:&nbsp;
 	<Rspan>
-		{parity.bonds.accountsInfo[parity.bonds.defaultAccount].name}
+		{parity.bonds.accountsInfo[parity.bonds.me].name}
 	</Rspan>
-	&nbsp;<Hash value={parity.bonds.defaultAccount} />
+	&nbsp;<Hash value={parity.bonds.me} />
 	<br/>With a balance of&nbsp;
 	<Rspan>
-		{parity.bonds.balance(parity.bonds.defaultAccount).map(formatBalance)}
+		{parity.bonds.balance(parity.bonds.me).map(formatBalance)}
 	</Rspan>
 </div>
 ```
