@@ -24,7 +24,7 @@ import {setupBonds, abiPolyfill} from 'oo7-parity';
 // …
 
 // Polyfills for parity.js
-parity.api.abi = abiPolyfill();
+parity.api.abi = abiPolyfill(parity.api);
 
 // We use and dirty up the global namespace here.
 parity.bonds = setupBonds(parity.api);
