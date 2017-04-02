@@ -17,7 +17,7 @@ The first contract we will deal with is the global (name) registry. If you are n
 The registry contract has a fairly simple API for inspecting. We only need to worry about two functions:
 
 - `getOwner(bytes32) -> address` Given the Keccak hash of a name, this returns the address of its owner, if it has been reserved.
-- `get(bytes32, bytes32) -> bytes32` Given the Keccak hash of a name and a second field key, this returns the associated data.
+- `getData(bytes32, bytes32) -> bytes32` Given the Keccak hash of a name and a second field key, this returns the associated data.
 
 There are subordinate functions to the latter such as `getAddress` and `getUint` which coerce the data into some other type. It is important to note that amongst the standardised field keys are:
 
