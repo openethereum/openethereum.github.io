@@ -65,3 +65,23 @@ It is specified as:
     "contract": "0x0000000000000000000000000000000000000005"
 }
 ```
+
+# Multi set
+**Available only in 1.6 and above.**  
+This validator set can specify any combination of other validator sets. Switching is done based on the number of the current block. It can be useful for conducting chain forks. First set has to start at block 0.
+
+```json
+"validators": {
+    "multi": {
+        "0": {
+            "list": [
+                "0x82a978b3f5962a5b0957d9ee9eef472ee55b42f1",
+                "0x7d577a597b2742b498cb5cf0c26cdcd726d39e6e"
+            ]
+        },
+        "100": {
+            "contract": "0x0000000000000000000000000000000000000005"
+        }
+    }
+}
+```
