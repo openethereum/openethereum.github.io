@@ -1,5 +1,3 @@
-**Available only in 1.5 and above.**
-
 Parity supports a Proof-of-Authority consensus engine to be used with EVM based chains. Proof-of-Authority is a replacement for Proof-of-Work, which can be used for private chain setups.
 
 It does not depend on nodes solving arbitrarily difficult mathematical problems, but instead uses
