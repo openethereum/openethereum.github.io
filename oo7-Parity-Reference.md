@@ -1,34 +1,33 @@
 ## oo7-parity.js Reference
 
 ### Chain Inspection
-- `findBlock(label: String | number: Number | hash: String) => Header`
-- `blocks[label: String | number: Number | hash: String] => Header`
+- `findBlock(Label | Number | Hash) => Header`
+- `blocks[Label | Number | Hash] => Header`
 - `current => Header`
-- `blockTransactionCount(hash | number) => Number`
-- `uncleCount(hash | number) => Number`
-- `uncle(hash: String | number: Number, index: Number) => Header`
-- `transaction(blockHash: String | number: Number, index: Number) => Transaction`
-- `transaction(txHash: String) => Transaction`
-- `receipt(txHash: String) => Receipt`
+- `blockTransactionCount(Hash | Number) => Number`
+- `uncleCount(Hash | Number) => Number`
+- `uncle(blockHash: Hash | blockNumber: Number, uncleIndex: Number) => Header`
+- `transaction(blockHash: Hash | blockNumber: Number, txIndex: Number) => Transaction`
+- `transaction(txHash: Hash) => Transaction`
+- `receipt(txHash: Hash) => Receipt`
 
 ### Accounts Inspection
-- `coinbase => `
-- `accounts => `
-- `me => `
-- `accountsInfo() => ` [parity]
-- `hardwareAccountsInfo() => ` [parity]
+- `me => Account`
+- `accounts => [Account]`
+- `accountsInfo => { Account -> AccountInfo }` [parity]
+- `hardwareAccountsInfo => { Account -> AccountInfo }` [parity]
 
 ### Signer
-- `post() => ` [parity]
-- `sign() => ` [parity]
-- `deployContract() => ` [parity]
-- `makeContract() => ` [parity]
+- `post(Transaction) => TransactionStatus` [parity]
+- `sign(Account, Bytes) => SignatureStatus` [parity]
+- `deployContract(initCode: Bytes, ABISpec, Transaction = null) => DeploymentStatus` [parity]
+- `makeContract(Address, ABISpec) => Contract` [parity]
 
 ### State Inspection
-- `balance() => `
-- `code() => `
-- `nonce() => `
-- `storageAt() => `
+- `balance(Account) => BigNumber`
+- `code(Account) => Bytes`
+- `nonce(Account) => BigNumber`
+- `storageAt(Account, Location: BigNumber) => BigNumber`
 
 ### Node Status
 - `syncing() => `
@@ -47,46 +46,47 @@
 - `chainStatus() => ` [parity]
 
 ### P2P Network
-- `peerCount() => `
-- `listening() => `
+- `peers => { enode: String -> Peer }` [parity]
+- `peerCount => Number`
+- `listening => bool`
+- `enode => String` [parity]
+- `nodePort => Number` [parity]
+- `nodeName => String` [parity]
 
-### parity_
-- `hashContent() => ` [parity]
-- `gasPriceHistogram() => ` [parity]
-- `mode() => ` [parity]
+### Miscellaneous
+- `hashContent(url: String) => Bytes` [parity]
+- `gasPriceHistogram => [BigNumber]` [parity]
+- `mode => Label` [parity]
 
-### ...authoring
-- `defaultExtraData() => ` [parity]
-- `extraData() => ` [parity]
-- `gasCeilTarget() => ` [parity]
-- `gasFloorTarget() => ` [parity]
-- `minGasPrice() => ` [parity]
-- `transactionsLimit() => ` [parity]
+### Block Authoring (aka "mining")
+- `author => Account`
+- `defaultExtraData => Bytes` [parity]
+- `extraData => Bytes` [parity]
+- `gasCeilTarget => BigNumber` [parity]
+- `gasFloorTarget => BigNumber` [parity]
+- `minGasPrice => BigNumber` [parity]
+- `transactionsLimit => BigNumber` [parity]
 
-### ...networking
-- `peers() => ` [parity]
-- `enode() => ` [parity]
-- `nodePort() => ` [parity]
-- `nodeName() => ` [parity]
-- `signerPort() => ` [parity]
-- `dappsPort() => ` [parity]
-- `dappsInterface() => ` [parity]
+### Other Services
+- `signerPort => Number` [parity]
+- `dappsPort => Number` [parity]
+- `dappsInterface => String` [parity]
 
-### ...transaction queue
-- `nextNonce() => ` [parity]
-- `pending() => ` [parity]
-- `local() => ` [parity]
-- `future() => ` [parity]
-- `pendingStats() => ` [parity]
-- `unsignedCount() => ` [parity]
+### Transaction Queue
+- `nextNonce(a: Account) => Number` [parity]
+- `pending => [Transaction]` [parity]
+- `local => { Hash -> LocalTransaction }` [parity]
+- `future => [Transaction]` [parity]
+- `pendingStats => { Hash -> PendingTransaction }` [parity]
+- `unsignedCount => Number` [parity]
 
-### ...auto-update
-- `releasesInfo() => ` [parity]
-- `versionInfo() => ` [parity]
-- `consensusCapability() => ` [parity]
-- `upgradeReady() => ` [parity]
+### Consensus & Updates
+- `releasesInfo => ` [parity]
+- `versionInfo => ` [parity]
+- `consensusCapability => ` [parity]
+- `upgradeReady => ` [parity]
 
-### built-in contracts
-- `registry() => ` [parity]
-- `githubhint() => ` [parity]
-- `operations() => ` [parity]
+### Basic Contracts
+- `registry => Contract` [parity]
+- `githubhint => Contract` [parity]
+- `operations => Contract` [parity]
