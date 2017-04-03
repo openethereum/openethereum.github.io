@@ -17,7 +17,7 @@ The first contract we will deal with is the global (name) registry. If you are n
 The registry contract has a fairly simple API for inspecting. We only need to worry about two functions:
 
 - `getOwner(bytes32) -> address` Given the Keccak hash of a name, this returns the address of its owner, if it has been reserved.
-- `get(bytes32, bytes32) -> bytes32` Given the Keccak hash of a name and a second field key, this returns the associated data.
+- `getData(bytes32, bytes32) -> bytes32` Given the Keccak hash of a name and a second field key, this returns the associated data.
 
 There are subordinate functions to the latter such as `getAddress` and `getUint` which coerce the data into some other type. It is important to note that amongst the standardised field keys are:
 
@@ -35,7 +35,7 @@ To figure out the primary associated address of the `gavofyork` name, we can use
 parity.bonds.registry.getAddress(parity.api.util.sha3('gavofyork'))
 ```
 
-Typing `parity.api.util.sha3(...)` every time you want to look up a name in the registry gets tedious fast. Happily, Parity provides a number of derivative helper functions as part of the `parity.bonds.registry` object: `lookup`, `lookupAddress`, `lookupUint` and `lookupOwner`; they're all just like the `get`-prefixed brethren, but do the hashing for you. Our expression therefore can become:
+Typing `parity.api.util.sha3(...)` every time you want to look up a name in the registry gets tedious fast. Happily, Parity provides a number of derivative helper functions as part of the `parity.bonds.registry` object: `lookupData`, `lookupAddress`, `lookupUint` and `lookupOwner`; they're all just like the `get`-prefixed brethren, but do the hashing for you. Our expression therefore can become:
 
 ```js
 parity.bonds.registry.lookupAddress('gavofyork', 'A')
@@ -162,7 +162,7 @@ Next, let's alter the dapp's render `div`:
 ```
 <div>
 	<TextBond bond={this.bond} floatingLabelText='Name' />
-	<Rimg src={this.GithubHint.entries(parity.bonds.registry.lookup(this.bond, 'IMG'))[0]} />
+	<Rimg src={this.GithubHint.entries(parity.bonds.registry.lookupData(this.bond, 'IMG'))[0]} />
 </div>
 ```
 

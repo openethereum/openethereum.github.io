@@ -117,7 +117,58 @@ Jutta didn't yet register...
 
 ### Track the transaction
 
-Seeing nothing for those 15-30 seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `new Transaction`.
+Seeing nothing for those 15-30 seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `new Transaction`. The problem is that we're discarding it; in fact we need to keep it around and use it as a reactive display element.
+
+First, we'll introduce some state to our React class. Place this at the bottom of the `constructor`:
+
+```
+this.state = { current: null };
+```
+
+Next, we'll introduce a function which looks after the creation of the new transaction and its assignment into the state. Enter this new function in the class:
+
+```
+give () {
+	this.setState({
+		current: new Transaction({
+			to: this.recipient,
+			value: 100 * 1e15
+		})
+	})
+}
+```
+
+Next we'll use that function rather than creating the `new Transaction` directly. the `onClick` line becomes:
+
+```
+onClick={this.give.bind(this)}
+```
+
+Finally, we'll actually display the transaction status in an `Rspan` element. Add this extra line to the end of the element's HTML, right before the final `</div>`: 
+
+```
+<Rspan>{this.state.current && this.state.current.map(JSON.stringify)}</Rspan>
+```
+
+And that's it. Once you click the "send" button, you'll see the "current" transaction changes to `{"request":...}`:
+
+![image](https://cloud.githubusercontent.com/assets/138296/24324260/8d166a56-1183-11e7-8c5f-98db20bfe232.png)
+
+The value of this `request` key is simply the internal identifier given to this particular request. Approving the transaction will lead to it being `{"signed":...}`:
+
+![image](https://cloud.githubusercontent.com/assets/138296/24324265/a612047a-1183-11e7-9536-83324ad97465.png)
+
+The value of the `signed` key here is the hash of the transaction, its unique identifier which stays with it throughout. Under normal circumstances, it will be published to the network and eventually finalised into a block. And after it has been finalised by the network, `this.state.current` will mutate to `{"confirmed":...}`:
+
+![image](https://cloud.githubusercontent.com/assets/138296/24324263/9f3918fa-1183-11e7-8cbd-d04527addcd1.png)
+
+The value of the `confirmed` key is the receipt of the transaction which gives you a lot of information on its specific execution, including what gas it used and logs/events left by it.
+
+If you reject the transaction rather than approving it, you'll see that reflected in the value of `this.state.current`, too:
+
+![image](https://cloud.githubusercontent.com/assets/138296/24324268/b1a21bcc-1183-11e7-9154-5d2a90c69334.png)
+
+While working with the JSON is fairly easy, there are existing Bond-oriented reactive components that can do this for you, such as `TransactionProgressBadge` found in `parity-reactive-ui` module.
 
 ----
 

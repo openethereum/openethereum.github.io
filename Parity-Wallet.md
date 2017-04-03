@@ -3,7 +3,7 @@
 Parity includes a bundled wallet application.
 This is designed to integrate seamlessly with all standard tokens as well as Ether itself.
 
-To access the UI, simply start your Parity node and navigate to http://127.0.0.1:8180. There, you will see
+To access the UI, simply start your Parity node and navigate to http://web3.site/ (you can also go to http://127.0.0.1:8180 if you are offline). There, you will see
 a page where you can manage accounts, create transactions, watch contracts, and interact with DApps.
 
 ## Secure Transaction Signer

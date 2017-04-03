@@ -170,7 +170,7 @@ constructor() {
 }
 ```
 
-Finally, let's use it in our `<Rspan>`. There are several ways of combining the values of multiple `Bond`s into a single expression. For now we'll use the simplest: `Bond.all`. This function allows you to provide a number of expressions and will evaluate to an array of all such expressions. This means that `Bond.all(this.bond, this.time)` will be a _composite_ `Bond`, whose value is a [JS array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/array), the first item being the contents of our text field and the second being the time (as a number).
+Finally, let's use it in our `<Rspan>`. There are several ways of combining the values of multiple `Bond`s into a single expression. For now we'll use the simplest: `Bond.all`. This function allows you to provide a number of expressions and will evaluate to an array of all such expressions. This means that `Bond.all([this.bond, this.time])` will be a _composite_ `Bond`, whose value is a [JS array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/array), the first item being the contents of our text field and the second being the time (as a number).
 
 Try it. Replace the `<Rspan>` with this new one:
 

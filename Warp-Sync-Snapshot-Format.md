@@ -8,6 +8,8 @@ Every chunk is run through snappy compression, and then hashed. Before compressi
 `CHUNK_SIZE` = `4MiB`, but this may be subject to change.
 All data structures should be assumed to be RLP-encoded unless specified otherwise.
 
+Additionally we define `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` = `80000`.
+
 ## Manifest
 This contains metadata about the snapshot itself, and is used to coordinate snapshots between nodes.
 Every snapshot will have a unique manifest, so two identical manifests will refer to the same snapshot.
@@ -15,6 +17,7 @@ Every snapshot will have a unique manifest, so two identical manifests will refe
 The manifest is an rlp-encoded list of the following format:
 ```
 [
+    version: P, // snapshot format version. Must be set to 2.
     state_hashes: [hash_1: B_32, hash_2: B_32, ...], // a list of all the state chunks in this snapshot
     block_hashes: [hash_1: B_32, hash_2: B_32, ...], // a list of all the block chunks in this snapshot
     state_root: B_32, // the root which the rebuilt state trie should have. used to ensure validity
@@ -135,9 +138,13 @@ More formally, it is an RLP list in the following format:
 `code_flag` is a single byte which will determine what the `code` data will be:
   - if `0x00`, the account has no code and `code` is the single byte `0x80`, signifying RLP empty data.
   - if `0x01`, the account has code, and `code` stores an arbitrary-length list of bytes containing the code.
-  - if `0x02`, the account has code, and `code` stores a 32-byte big-endian integer which is the hash of the code. The code's hash must be substituted if and only if another account which has a lower address hash (when comparing as big-endian 32-byte unsigned integers) has the exact same code.
+  - if `0x02`, the account has code, and `code` stores a 32-byte big-endian integer which is the hash of the code. The code's hash must be substituted if and only if 
+      * another account which has a lower address hash (when comparing as big-endian 32-byte unsigned integers) has the exact same code.
+      * OR another account record which has same hash exists in the chunk with lower index.
 
 `storage` is a list of the entire account's storage, where the items are RLP lists of length two -- the first item being `sha3(key)`, and the second item being the storage value. This storage list must be sorted in ascending order by key-hash.
+
+A single account must be split between two or more consecutive chunks if it has more than `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage entries. When account is split between chunks N and M there is one account entry with the same key, nonce, balance and code reference in each chunk. Each such record contains a subset of account storage items in `storage`. Each split record except the one containing the highest storage address hash contains exactly `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage entries. Concatenating `storage` lists from all chunks results in a complete sorted storage list for an account. Split account records are only allowed to be the first or the last record of the chunk record list.
 
 ## Validity
 
@@ -148,7 +155,14 @@ We define the internal size S<sub>C</sub> of a chunk C to be the sum of the size
 Any given chunk C has a valid internal size S<sub>C</sub> if and only if S<sub>C</sub> <= `CHUNK_SIZE` or it contains only one inner list.
 
 A set of state chunks S is valid if and only if:
-  0. for any two arbitrary selected account hashes A<sub>1</sub> and A<sub>2</sub> from any given state chunk S<sub>i</sub> , where A<sub>1</sub> < A<sub>2</sub> when comparing as an unsigned 32-byte big-endian integer, there exists no A<sub>3</sub> from another state chunk S<sub>j</sub> such that A<sub>1</sub> < A<sub>3</sub> < A<sub>2</sub> .
-  0. there is no other valid configuration of chunks containing the same data such that for each chunk C<sub>i</sub> , except the one containing the highest address hash (when treating each as an unsigned 32-byte big-endian integer), S<sub>C<sub>i</sub></sub> is a valid internal size. In plainer terms, every chunk except the last must be "maximally packed".
+
+-  0. for any two arbitrary selected account hashes A<sub>1</sub> and A<sub>2</sub> from any given state chunk S<sub>i</sub> , where A<sub>1</sub> < A<sub>2</sub> when comparing as an unsigned 32-byte big-endian integer, there exists no A<sub>3</sub> from another state chunk S<sub>j</sub> such that A<sub>1</sub> < A<sub>3</sub> < A<sub>2</sub> .
+-  0. there is no other valid configuration of chunks containing the same data such that for each chunk C<sub>i</sub> , except the one containing the highest address hash (when treating each as an unsigned 32-byte big-endian integer), S<sub>C<sub>i</sub></sub> is a valid internal size. In plainer terms, every chunk except the last must be "maximally packed".
+- 0. there are no account records with more than `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage items.
 
 The `state_chunks` list in the snapshot manifest must be sorted by the first address contained within.
+
+# Version history
+
+## Snapshot version 2.
+This version introduces the `version` field in the manifest and adds maximum account record size constraint.
