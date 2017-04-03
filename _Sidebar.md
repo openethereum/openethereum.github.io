@@ -22,16 +22,7 @@
 - [[Community Guides]]
 
 ## Developing DApps
-- [JSONRPC Guide](JSONRPC)
-  - [web3](JSONRPC-web3-module)
-  - [net](JSONRPC-net-module)
-  - [eth](JSONRPC-eth-module)
-  - [personal](JSONRPC-personal-module)
-  - [parity](JSONRPC-parity-module)
-  - [parity_accounts](JSONRPC-parity_accounts-module)
-  - [parity_set](JSONRPC-parity_set-module)
-  - [signer](JSONRPC-signer-module)
-  - [trace](JSONRPC-trace-module)
+- [oo7-parity.js Reference](oo7-Parity-Reference)
 - DApp Tutorial
   - [1: Get Started](Tutorial-Part-I)
   - [2: oo7 Bonds](Tutorial-Part-II)
@@ -43,7 +34,16 @@
   - [8: Events](Tutorial-Part-VIII)
   - [9: Sign Data](Tutorial-Part-IX)
   - [10: Deploy Contracts](Tutorial-Part-X)
-- [oo7-parity.js Reference](oo7-Parity-Reference)
+- [JSONRPC Guide](JSONRPC)
+  - [web3](JSONRPC-web3-module)
+  - [net](JSONRPC-net-module)
+  - [eth](JSONRPC-eth-module)
+  - [personal](JSONRPC-personal-module)
+  - [parity](JSONRPC-parity-module)
+  - [parity_accounts](JSONRPC-parity_accounts-module)
+  - [parity_set](JSONRPC-parity_set-module)
+  - [signer](JSONRPC-signer-module)
+  - [trace](JSONRPC-trace-module)
 
 ## Parity Chains
 - [Chain Specification](Chain-specification)
