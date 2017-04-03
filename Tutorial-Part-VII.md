@@ -88,8 +88,7 @@ class VoteOption extends ReactiveComponent {
 The task of the parent context is to provide those three props: `label`, `vote` and `votes` (with the last able to be a `Bond` value). All three are trivially copied from the existing code, so our `Options.map` structure now becomes:
 
 ```js
-{Options.map((n, i) => (<div><VoteOption
-	key={i}
+{Options.map((n, i) => (<div key={i}><VoteOption
 	label={n}
 	votes={this.counter.votes(i)}
 	vote={() => this.setState({tx: this.counter.vote(i)})}
