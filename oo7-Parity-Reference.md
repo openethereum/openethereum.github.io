@@ -19,6 +19,8 @@ If a function's parameter is optional, then a `?` immediately follows it.
 
 If an item only works when the node is Parity, then the item's prototype is followed with "[parity]".
 
+If the parameter of a function's usage is non-obvious, then a `:` is appended, followed by an informative name.
+
 ### Chain Inspection
 - `height => Number`
 - `findBlock(Label | Number | Hash) => Header`
