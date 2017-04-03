@@ -34,22 +34,22 @@ If the parameter of a function's usage is non-obvious, then a `:` is appended, f
 - `receipt(txHash: Hash) => Receipt`
 
 ### Accounts Inspection
-- `me => Account`
-- `accounts => [Account]`
-- `accountsInfo => { Account -> AccountInfo }` [parity]
-- `hardwareAccountsInfo => { Account -> AccountInfo }` [parity]
+- `me => Address`
+- `accounts => [Address]`
+- `accountsInfo => { Address -> AccountInfo }` [parity]
+- `hardwareAccountsInfo => { Address -> AccountInfo }` [parity]
 
 ### Signer
 - `post(Transaction) => TransactionStatus` [parity]
-- `sign(Account, Bytes) => SignatureStatus` [parity]
+- `sign(Address, Bytes) => SignatureStatus` [parity]
 - `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]
 - `makeContract(Address, ABISpec) => Contract` [parity]
 
 ### State Inspection
-- `balance(Account) => BigNumber`
-- `code(Account) => Bytes`
-- `nonce(Account) => BigNumber`
-- `storageAt(Account, Location: BigNumber) => BigNumber`
+- `balance(Address) => BigNumber`
+- `code(Address) => Bytes`
+- `nonce(Address) => BigNumber`
+- `storageAt(Address, Location: BigNumber) => BigNumber`
 - `call(Transaction) => Bytes`
 - `estimateGas(Transaction) => BigNumber`
 
@@ -81,7 +81,7 @@ If the parameter of a function's usage is non-obvious, then a `:` is appended, f
 - `nodeName => String` [parity]
 
 ### Block Authoring (aka "mining")
-- `author => Account`
+- `author => Address`
 - `defaultExtraData => Bytes` [parity]
 - `extraData => Bytes` [parity]
 - `gasCeilTarget => BigNumber` [parity]
@@ -95,7 +95,7 @@ If the parameter of a function's usage is non-obvious, then a `:` is appended, f
 - `dappsInterface => String` [parity]
 
 ### Transaction Queue
-- `nextNonce(a: Account) => Number` [parity]
+- `nextNonce(Address) => Number` [parity]
 - `pending => [Transaction]` [parity]
 - `local => { Hash -> LocalTransaction }` [parity]
 - `future => [Transaction]` [parity]
