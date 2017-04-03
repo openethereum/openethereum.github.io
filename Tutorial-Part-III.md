@@ -34,7 +34,7 @@ The `abiPolyfill` call just provides various standard contract ABIs for us in `p
 
 ### Watch the block
 
-For our first trick, we will introduce the simplest of all bonds: `parity.bonds.blockNumber`. This evaluates to [the current block](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
+For our first trick, we will introduce the simplest of all bonds: `parity.bonds.height`. This evaluates to [the number of the latest block](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
 
 In `app.jsx`, remove the entire `App` class and replace it with:
 
@@ -42,7 +42,7 @@ In `app.jsx`, remove the entire `App` class and replace it with:
 export class App extends React.Component {
 	render() {
 		return (
-			<Rspan>{parity.bonds.blockNumber}</Rspan>
+			<Rspan>{parity.bonds.height}</Rspan>
 		);
 	}
 }
@@ -59,7 +59,7 @@ It's not especially pretty, but you get the idea. We can bling it up easily enou
 	Current block is:
 	&nbsp;
 	<Rspan style={{fontWeight: 'bold'}}>
-		{parity.bonds.blockNumber.map(formatBlockNumber)}
+		{parity.bonds.height.map(formatBlockNumber)}
 	</Rspan>
 </div>
 ```
@@ -94,7 +94,7 @@ Naturally, `parity.bonds.blocks` is able to accept any number, even a bond, as i
 <div>
 	Latest block's timestamp is:&nbsp;
 	<Rspan style={{fontWeight: 'bold'}}>
-		{parity.bonds.blocks[parity.bonds.blockNumber].map(b => b.timestamp)}
+		{parity.bonds.blocks[parity.bonds.height].map(b => b.timestamp)}
 	</Rspan>
 </div>
 ```
@@ -104,13 +104,13 @@ Naturally, `parity.bonds.blocks` is able to accept any number, even a bond, as i
 That `.map` is a bit cumbersome. Conveniently, the `Bond` API knows about subscripting, and that expression is reducible to:
 
 ```js
-{parity.bonds.blocks[parity.bonds.blockNumber].timestamp}
+{parity.bonds.blocks[parity.bonds.height].timestamp}
 ```
 
-Indeed, `parity.bonds.blocks[parity.bonds.blockNumber]` is a fairly common expression. So much so that it has a shorter alias: `parity.bonds.block`, so in fact the simplest means of expressing our `<Rspan>` expression is:
+Indeed, `parity.bonds.blocks[parity.bonds.height]` is a fairly common expression. So much so that it has a shorter alias: `parity.bonds.head`, so in fact the simplest means of expressing our `<Rspan>` expression is:
 
 ```js
-{parity.bonds.block.timestamp}
+{parity.bonds.head.timestamp}
 ```
 
 ### Composing expressions
@@ -124,13 +124,13 @@ Parity puts various means at your disposal to help you here:
 - `parity.bonds.code(address)` evaluates to the current "contract" code of account at `address`.
 - `parity.bonds.storageAt(address, location)` evaluates to the value in storage `location` of account at `address`.
 
-We'll use the first in our dapp to display the account balance of the most recent block author ("miner") - the expression we'll need is `parity.bonds.balance(parity.bonds.block.author)`. Left alone it's a bit ugly, so we'll prettify it a bit with the function `formatBalance` which is exposed by `007-parity`:
+We'll use the first in our dapp to display the account balance of the most recent block author ("miner") - the expression we'll need is `parity.bonds.balance(parity.bonds.head.author)`. Left alone it's a bit ugly, so we'll prettify it a bit with the function `formatBalance` which is exposed by `007-parity`:
 
 ```jsx
 <div>
 	Current block author's balance is:&nbsp;
 	<Rspan style={{fontWeight: 'bold'}}>
-		{parity.bonds.balance(parity.bonds.block.author).map(formatBalance)}
+		{parity.bonds.balance(parity.bonds.head.author).map(formatBalance)}
 	</Rspan>
 	&nbsp;wei
 </div>
