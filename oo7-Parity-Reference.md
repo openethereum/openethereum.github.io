@@ -2,23 +2,37 @@
 
 `oo7.js` is a `Bond` library: a `Bond` is like a `Promise` in that it's an asynchronously provided value. However, unlike a `Promise` it autonomously stays up to date. `Bond`s may be dereferenced, `.map(...)`ed and composed. `oo7-react.js` exists for tying `Bond`s into the React library, trivially allowing the UI to display up-to-date information from the block chain.
 
-### Installation
+### Installation and Setup
+
+#### Server-side
 
 `oo7-parity.js` is available on NPM. Components of the underlying library, `oo7.js` are generally helpful to have around:
 
    `npm install --save oo7 oo7-parity`
 
+#### UI-side
+
 If you are working on the UI with React, you'll probably want to install `oo7-react.js` and `parity-reactive-ui.js`, too:
 
    `npm install --save oo7 oo7-parity oo7-react parity-reactive-ui`
 
-Once installed, you'll want to import some items, e.g.:
+In the server-side case, you'll want to include the `parity.js` object and then polyfill and import the `oo7-parity.js` API, e.g.:
 
 ```js
-import {Bond} from 'oo7';
-import {ReactiveComponent, Rspan, TextBond} from 'oo7-react';
-import {formatBalance, isNullData} from 'oo7-parity';
-import {TransactionProgressBadge} from 'parity-reactive-ui';
+const Parity = require('@parity/parity.js');
+const oo7_parity = require('oo7-parity');
+const transport = new Parity.Api.Transport.Http('http://localhost:8545');
+let parity = {api: new Parity.Api(transport)};
+```
+
+For the UI-case, the `parity` object will automatically be injected into the `window` object when viewing with Parity extension installed.
+
+In both cases, a polyfill and installation is needed afterwards, which will define the `parity.bonds` object:
+
+```js
+import {setupBonds, abiPolyfill} from 'oo7-parity';
+parity.api.abi = abiPolyfill(parity.api);
+parity.bonds = setupBonds(parity.api);
 ```
 
 ### Notes on Usage
