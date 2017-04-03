@@ -1,13 +1,13 @@
 ## oo7-parity.js Reference
 
 ### Chain Inspection
-- `findBlock(label: String || number: Number || hash: String) => Header`
-- `blocks[label: String || number: Number || hash: String] => Header`
+- `findBlock(label: String | number: Number | hash: String) => Header`
+- `blocks[label: String | number: Number | hash: String] => Header`
 - `current => Header`
-- `blockTransactionCount(hash || number) => Number`
-- `uncleCount(hash || number) => Number`
-- `uncle(hash: String || number: Number, index: Number) => Header`
-- `transaction(blockHash: String || number: Number, index: Number) => Transaction`
+- `blockTransactionCount(hash | number) => Number`
+- `uncleCount(hash | number) => Number`
+- `uncle(hash: String | number: Number, index: Number) => Header`
+- `transaction(blockHash: String | number: Number, index: Number) => Transaction`
 - `transaction(txHash: String) => Transaction`
 - `receipt(txHash: String) => Receipt`
 
