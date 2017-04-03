@@ -28,22 +28,27 @@
 - `code(Account) => Bytes`
 - `nonce(Account) => BigNumber`
 - `storageAt(Account, Location: BigNumber) => BigNumber`
+- `call(Transaction) => Bytes`
+- `estimateGas(Transaction) => BigNumber`
 
 ### Node Status
-- `syncing() => `
-- `hashrate() => `
-- `mining() => `
-- `gasPrice() => `
-- `estimateGas() => `
+- `syncing => bool`
+- `hashrate => Number`
+- `mining => bool`
+- `gasPrice => BigNumber`
+- `gasPriceHistogram => [BigNumber]` [parity]
+- `hashContent(url: String) => Bytes` [parity]
+- `mode => Label` [parity]
 
 ### Version Inspection
-- `clientVersion() => `
-- `protocolVersion() => `
+- `clientVersion => String`
+- `protocolVersion => Number`
+- `versionInfo => VersionInfo` [parity]
 
 ### Chain Metadata
-- `chainId() => ` [parity]
-- `chainName() => ` [parity]
-- `chainStatus() => ` [parity]
+- `chainId => Number` [parity] The identity of the chain e.g. `42`.
+- `chainName => ` [parity] The name of the chain e.g. `kovan`.
+- `chainStatus => ChainStatus` [parity]
 
 ### P2P Network
 - `peers => { enode: String -> Peer }` [parity]
@@ -52,11 +57,6 @@
 - `enode => String` [parity]
 - `nodePort => Number` [parity]
 - `nodeName => String` [parity]
-
-### Miscellaneous
-- `hashContent(url: String) => Bytes` [parity]
-- `gasPriceHistogram => [BigNumber]` [parity]
-- `mode => Label` [parity]
 
 ### Block Authoring (aka "mining")
 - `author => Account`
@@ -82,9 +82,8 @@
 
 ### Consensus & Updates
 - `releasesInfo => ` [parity]
-- `versionInfo => ` [parity]
-- `consensusCapability => ` [parity]
-- `upgradeReady => ` [parity]
+- `consensusCapability => Label` [parity]
+- `upgradeReady => bool` [parity_set]
 
 ### Basic Contracts
 - `registry => Contract` [parity]
