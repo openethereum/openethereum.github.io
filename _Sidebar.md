@@ -43,6 +43,7 @@
   - [8: Events](Tutorial-Part-VIII)
   - [9: Sign Data](Tutorial-Part-IX)
   - [10: Deploy Contracts](Tutorial-Part-X)
+- [oo7-parity.js Reference](oo7-Parity-Reference)
 
 ## Parity Chains
 - [Chain Specification](Chain-specification)
