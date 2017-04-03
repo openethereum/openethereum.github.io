@@ -1,5 +1,26 @@
 ## oo7-parity.js Reference
 
+`oo7.js` is a `Bond` library: a `Bond` is like a `Promise` in that it's an asynchronously provided value. However, unlike a `Promise` it autonomously stays up to date. `Bond`s may be dereferenced, `.map(...)`ed and composed. `oo7-react.js` exists for tying `Bond`s into the React library, trivially allowing the UI to display up-to-date information from the block chain.
+
+### Installation
+
+`oo7-parity.js` is available on NPM. Components of the underlying library, `oo7.js` are generally helpful to have around:
+
+   `npm install --save oo7 oo7-parity`
+
+If you are working on the UI with React, you'll probably want to install `oo7-react.js` and `parity-reactive-ui.js`, too:
+
+   `npm install --save oo7 oo7-parity oo7-react parity-reactive-ui`
+
+Once installed, you'll want to import some items, e.g.:
+
+```js
+import {Bond} from 'oo7';
+import {ReactiveComponent, Rspan, TextBond} from 'oo7-react';
+import {formatBalance, isNullData} from 'oo7-parity';
+import {TransactionProgressBadge} from 'parity-reactive-ui';
+```
+
 ### Notes on Usage
 
 For brevity we have dropped the prefix of `parity.bonds.`.
@@ -21,11 +42,15 @@ If an item only works when the node is Parity, then the item's prototype is foll
 
 If the parameter of a function's usage is non-obvious, then a `:` is appended, followed by an informative name.
 
+One item (`blocks`) is denoted an array: it may be dereferenced as an array e.g. `parity.bonds.blocks[parity.bonds.current]`.
+
+Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `parity.bonds.head.author` would be the `Bond` that evaluates to the author of the block currently at the head of the chain.
+
 ### Chain Inspection
 - `height => Number`
 - `findBlock(Label | Number | Hash) => Header`
 - `blocks[Label | Number | Hash] => Header`
-- `current => Header`
+- `head => Header`
 - `blockTransactionCount(Hash | Number) => Number`
 - `uncleCount(Hash | Number) => Number`
 - `uncle(blockHash: Hash | blockNumber: Number, uncleIndex: Number) => Header`
