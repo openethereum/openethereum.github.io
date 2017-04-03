@@ -16,7 +16,7 @@
   - [For Mining](Mining)
   - [Coming from Geth](Importing-a-Chain-from-Geth)
 - [[Accounts, Wallets, Vaults]]
-  - [[Backing-up & Restoring]]
+  - [Back-up & Restore](Backing-up-&-Restoring)
   - [[Ledger Nano S]]
 - [[UI Remote Access]]
 - [[Community Guides]]
@@ -33,22 +33,22 @@
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
 - DApp Tutorial
-  - [1: Getting Started](Tutorial-Part-I)
+  - [1: Get Started](Tutorial-Part-I)
   - [2: oo7 Bonds](Tutorial-Part-II)
   - [3: Parity Bonds](Tutorial-Part-III)
-  - [4: Calling Contracts](Tutorial-Part-IV)
-  - [5: Posting Transactions](Tutorial-Part-V)
+  - [4: Call Contracts](Tutorial-Part-IV)
+  - [5: Post Transactions](Tutorial-Part-V)
   - [6: A New Contract](Tutorial-Part-VI)
-  - [7: Interacting](Tutorial-Part-VII)
+  - [7: Interaction](Tutorial-Part-VII)
   - [8: Events](Tutorial-Part-VIII)
-  - [9: Signing Data](Tutorial-Part-IX)
-  - [10: Deploying Contracts](Tutorial-Part-X)
+  - [9: Sign Data](Tutorial-Part-IX)
+  - [10: Deploy Contracts](Tutorial-Part-X)
 
 ## Parity Chains
 - [Chain Specification](Chain-specification)
   - [[Consensus Engines]]
-    - [[Aura]]
   - [[Validator Set]]
+    - [[Aura]]
 - [[Proof of Work Chains]]
 - [[Proof of Authority Chains]]
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
