@@ -1,6 +1,26 @@
 ## oo7-parity.js Reference
 
+### Notes on Usage
+
+For brevity we have dropped the prefix of `parity.bonds.`.
+
+All arguments may be given as one of:
+- a plain value, e.g. `parity.bonds.findBlock(69)`;
+- a `Bond` object, e.g. `parity.bonds.findBlock(parity.bonds.blockNumber)`;
+- an `Object` or `Array` containing a mixture of `Bond`s and plain values e.g. `parity.bonds.send({to: parity.bonds.author, value: '1000000000000000000'})`.
+
+Note that items with no trailing parens should not be used as functions - they are `Bond`s in their own right e.g. this is right: `parity.bonds.current.then(console.log)`; `...current().then...` is **wrong**.
+
+The type after `=>` denotes the value type of `Bond` returned.
+
+If a function may take multiple types of parameters, then each type is separated with a pipe `|`.
+
+If a function's parameter is optional, then a `?` immediately follows it.
+
+If an item only works when the node is Parity, then the item's prototype is followed with "[parity]".
+
 ### Chain Inspection
+- `height => Number`
 - `findBlock(Label | Number | Hash) => Header`
 - `blocks[Label | Number | Hash] => Header`
 - `current => Header`
@@ -20,7 +40,7 @@
 ### Signer
 - `post(Transaction) => TransactionStatus` [parity]
 - `sign(Account, Bytes) => SignatureStatus` [parity]
-- `deployContract(initCode: Bytes, ABISpec, Transaction = null) => DeploymentStatus` [parity]
+- `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]
 - `makeContract(Address, ABISpec) => Contract` [parity]
 
 ### State Inspection
@@ -89,3 +109,9 @@
 - `registry => Contract` [parity]
 - `githubhint => Contract` [parity]
 - `operations => Contract` [parity]
+
+## Types
+
+Objects going from one type to another are denoted `{ KeyType = ValueType }`.
+
+TODO
