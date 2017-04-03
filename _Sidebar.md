@@ -15,7 +15,9 @@
   - [With Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
   - [Coming from Geth](Importing-a-Chain-from-Geth)
-- [[Backing-up & Restoring]]
+- [[Accounts, Wallets, Vaults]]
+  - [[Backing-up & Restoring]]
+  - [[Ledger Nano S]]
 - [[UI Remote Access]]
 - [[Community Guides]]
 
