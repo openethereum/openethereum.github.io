@@ -6,3 +6,7 @@
 
 ## Signing Data
 
+----
+
+[10th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-X)
+
