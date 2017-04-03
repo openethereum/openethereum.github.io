@@ -48,8 +48,8 @@
 ## Parity Chains
 - [Chain Specification](Chain-specification)
   - [[Consensus Engines]]
-  - [[Validator Set]]
     - [[Aura]]
+  - [[Validator Set]]
 - [[Proof of Work Chains]]
 - [[Proof of Authority Chains]]
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
