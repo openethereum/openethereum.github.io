@@ -77,10 +77,10 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `hardwareAccountsInfo => { Address -> AccountInfo }` [parity]: Information on all hardware (e.g. Ledger) accounts which the user would like the Dapp to know about.
 
 ### Signer
-- `post(Transaction) => TransactionStatus` [parity]
-- `sign(Address, Bytes) => SignatureStatus` [parity]
-- `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]
-- `makeContract(Address, ABISpec) => Contract` [parity]
+- `post(Transaction) => TransactionStatus` [parity]: Posts the described transaction to the node for signing and publication. Evaluates to the status of the transaction as it becomes finalised (or not). Note: it is not supported to post a transaction which fails with an exception.
+- `sign(Address, Bytes) => SignatureStatus` [parity]: Issues a request to the user to sign a message, prepended with a known string for security. Evaluates to the status of the request.
+- `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]: Attempts to deploy a contract of the given initialisation code. Evaluates to the status of the request, including a contract object on finalisation. 
+- `makeContract(Address, ABISpec) => Contract` [parity]: Creates a new contract object with the given `Address` and ABI specification.
 
 ### State Inspection
 - `balance(Address) => BigNumber`
