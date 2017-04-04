@@ -23,9 +23,9 @@ const transport = new Parity.Api.Transport.Http('http://localhost:8545');
 let parity = {api: new Parity.Api(transport)};
 ```
 
-For the UI-case, the `parity` object will automatically be injected into the `window` object when viewing with Parity extension installed.
+When browsing under a Dapp display environment such as Parity Chrome Extension, the `parity` object will automatically be injected into the `window` object, and the above is not necessary. Under other environments, such as Mist and Metamask, you may need to use the above code.
 
-In both cases, a polyfill and installation is needed afterwards, which will define the `parity.bonds` object:
+In both the UI and server-side cases, a polyfill and installation is needed afterward to deposit the `oo7-parity` APIs into the basic `parity` object:
 
 ```js
 import {setupBonds, abiPolyfill} from 'oo7-parity';
@@ -42,7 +42,7 @@ All arguments may be given as one of:
 - a `Bond` object, e.g. `parity.bonds.findBlock(parity.bonds.blockNumber)`;
 - an `Object` or `Array` containing a mixture of `Bond`s and plain values e.g. `parity.bonds.send({to: parity.bonds.author, value: '1000000000000000000'})`.
 
-Note that items with no trailing parens should not be used as functions - they are `Bond`s in their own right e.g. this is right: `parity.bonds.current.then(console.log)`; `...current().then...` is **wrong**.
+Note that items with no trailing parens should not be used as functions - they are `Bond`s in their own right e.g. this is right: `parity.bonds.head.then(console.log)`; `...head().then...` is **wrong**.
 
 The type after `=>` denotes the value type of `Bond` returned.
 
@@ -50,7 +50,7 @@ If a function may take multiple types of parameters, then each type is separated
 
 If a function's parameter is optional, then a `?` immediately follows it.
 
-If an item only works when the node is Parity, then the item's prototype is followed with "[parity]".
+If an item only works when the Ethereum client is Parity, then the item's prototype is followed with "[parity]".
 
 If the parameter of a function's usage is non-obvious, then a `:` is appended, followed by an informative name.
 
@@ -59,16 +59,16 @@ One item (`blocks`) is denoted an array: it may be dereferenced as an array e.g.
 Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `parity.bonds.head.author` would be the `Bond` that evaluates to the author of the block currently at the head of the chain.
 
 ### Chain Inspection
-- `height => Number`
-- `findBlock(Label | Number | Hash) => Header`
-- `blocks[Label | Number | Hash] => Header`
-- `head => Header`
-- `blockTransactionCount(Hash | Number) => Number`
-- `uncleCount(Hash | Number) => Number`
-- `uncle(blockHash: Hash | blockNumber: Number, uncleIndex: Number) => Header`
-- `transaction(blockHash: Hash | blockNumber: Number, txIndex: Number) => Transaction`
-- `transaction(txHash: Hash) => Transaction`
-- `receipt(txHash: Hash) => Receipt`
+- `height => Number`: The height of the chain.
+- `findBlock(Number | Hash) => Header`: The block identified by the `Number` or `Hash`.
+- `blocks[Number | Hash] => Header`: The block identified by the `Number` or `Hash`.
+- `head => Header`: The most recently authored block on the chain.
+- `blockTransactionCount(Hash | Number) => Number`: The number of transactions in the block identified.
+- `uncleCount(Hash | Number) => Number`: The number of uncle headers in the block identified.
+- `uncle(blockHash: Hash | blockNumber: Number, uncleIndex: Number) => Header`: The uncle of index `uncleIndex` in the block identified by `blockHash` or `blockNumber`.
+- `transaction(blockHash: Hash | blockNumber: Number, txIndex: Number) => Transaction`: The transaction of index `txIndex` in the block identified by `blockHash` or `blockNumber`.
+- `transaction(txHash: Hash) => Transaction`: The transaction (which must appear in a block) whose hash is `txHash`.
+- `receipt(txHash: Hash) => Receipt`: The receipt of the transaction (which must appear in a block) whose hash is `txHash`.
 
 ### Accounts Inspection
 - `me => Address`
