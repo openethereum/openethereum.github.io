@@ -24,7 +24,7 @@ To create a new transaction in Parity, we require only a single new API: the `pa
 Creating a new transaction is a simple affair. The function of `parity.bonds.send` takes a single argument: an object describing the transaction. There are several keys it may contain:
 
 - `to` The recipient of the transaction; undefined or `null` indicates this is a contract-creation transaction.
-- `from` The sender of the transaction; must be an account which the user controls. Will default to `parity.bonds.defaultAccount`.
+- `from` The sender of the transaction; must be an account which the user controls. Will default to `parity.bonds.me`.
 - `value` The amount of ether to send to the recipient or endow any created contract.
 - `condition` A condition on which to predicate the distribution, but not the approval/signing, of the transaction. This is an object which contains one of two keys: `block` (which dictates the minimum block number before distribution) and `time` (the same but for block timestamp).
 - `gas` The amount of gas to supply with the transaction. By default, it will attempt to estimate the amount of gas to supply. Such that the transaction succeeds without exception/error.
@@ -55,7 +55,7 @@ Next for the HTML, we'll have two elements: the balance of our default account (
 ```jsx
 <div>
 	My balance: <Rspan>
-		{parity.bonds.balance(parity.bonds.defaultAccount).map(formatBalance)}
+		{parity.bonds.balance(parity.bonds.me).map(formatBalance)}
 	</Rspan>
 	<br />
 	<RRaisedButton
