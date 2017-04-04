@@ -71,10 +71,10 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `receipt(txHash: Hash) => Receipt`: The receipt of the transaction (which must appear in a block) whose hash is `txHash`.
 
 ### Accounts Inspection
-- `me => Address`
-- `accounts => [Address]`
-- `accountsInfo => { Address -> AccountInfo }` [parity]
-- `hardwareAccountsInfo => { Address -> AccountInfo }` [parity]
+- `me => Address`: The address of the account which the user would like the Dapp to act under.
+- `accounts => [Address]`: All addresses of accounts which the user would like the Dapp to know about.
+- `accountsInfo => { Address -> AccountInfo }` [parity]: Information on all accounts which the user would like the Dapp to know about.
+- `hardwareAccountsInfo => { Address -> AccountInfo }` [parity]: Information on all hardware (e.g. Ledger) accounts which the user would like the Dapp to know about.
 
 ### Signer
 - `post(Transaction) => TransactionStatus` [parity]
