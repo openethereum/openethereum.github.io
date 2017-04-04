@@ -77,18 +77,18 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `hardwareAccountsInfo => { Address -> AccountInfo }` [parity]: Information on all hardware (e.g. Ledger) accounts which the user would like the Dapp to know about.
 
 ### Signer
-- `post(Transaction) => TransactionStatus` [parity]: Posts the described transaction to the node for signing and publication. Evaluates to the status of the transaction as it becomes finalised (or not). Note: it is not supported to post a transaction which fails with an exception.
+- `post(Transaction) => TransactionStatus` [parity]: Posts the described transaction to the node for signing and publication. Evaluates to the status of the transaction as it becomes finalised (or not). Note: it is not supported to post a transaction which fails with an exception and unless `gas` is supplied then the lowest amount of gas will be used.
 - `sign(Address, Bytes) => SignatureStatus` [parity]: Issues a request to the user to sign a message, prepended with a known string for security. Evaluates to the status of the request.
 - `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]: Attempts to deploy a contract of the given initialisation code. Evaluates to the status of the request, including a contract object on finalisation. 
 - `makeContract(Address, ABISpec) => Contract` [parity]: Creates a new contract object with the given `Address` and ABI specification.
 
 ### State Inspection
-- `balance(Address) => BigNumber`
-- `code(Address) => Bytes`
-- `nonce(Address) => BigNumber`
-- `storageAt(Address, Location: BigNumber) => BigNumber`
-- `call(Transaction) => Bytes`
-- `estimateGas(Transaction) => BigNumber`
+- `balance(Address) => BigNumber`: The balance of the account with `Address`.
+- `code(Address) => Bytes`: The code of the account with `Address`, if any.
+- `nonce(Address) => BigNumber`: The nonce of the account with `Address`.
+- `storageAt(Address, Location: BigNumber) => BigNumber`: The contents of the storage `Location` of the account with `Address`.
+- `call(Transaction) => Bytes`: The output of the `Transaction` when executed.
+- `estimateGas(Transaction) => BigNumber`: The lowest amount of gas that the `Transaction` will execute with before it becomes invalid or doesn't execute.
 
 ### Node Status
 - `syncing => bool`
