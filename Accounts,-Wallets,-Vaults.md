@@ -34,7 +34,7 @@ The wallet contract used for Parity is available for review here: [`enhanced-wal
 
 ### Vaults
 
-Vaults are an additional security feature to lock away your accounts behind a second layer of encryption. While your normal accounts are encrypted with your pass-phrase, their meta-data is accessible for all applications interacting with your wallet. Creating **a vault encrypts the meta-data** (e.g., the public address) and therefore hides the accounts until you unlock the vault.
+Vaults are an additional privacy feature to lock away your accounts behind a second layer of encryption. While your normal accounts are encrypted with your pass-phrase, their meta-data is accessible for all applications interacting with your wallet. Creating **a vault encrypts the meta-data** (e.g., the public address) and therefore hides the accounts until you unlock the vault.
 
 ![accounts-vault-0](images/accounts-vault-0.png)
 
