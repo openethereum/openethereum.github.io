@@ -88,26 +88,24 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `nonce(Address) => BigNumber`: The nonce of the account with `Address`.
 - `storageAt(Address, Location: BigNumber) => BigNumber`: The contents of the storage `Location` of the account with `Address`.
 - `call(Transaction) => Bytes`: The output of the `Transaction` when executed.
-- `estimateGas(Transaction) => BigNumber`: The lowest amount of gas that the `Transaction` will execute with before it becomes invalid or doesn't execute.
+- `estimateGas(Transaction) => BigNumber`: The lowest amount of gas that the `Transaction` will execute with before it becomes invalid or fails with an exception.
 
 ### Node Status
-- `syncing => bool`
-- `hashrate => Number`
-- `mining => bool`
-- `gasPrice => BigNumber`
-- `gasPriceHistogram => [BigNumber]` [parity]
-- `hashContent(url: String) => Bytes` [parity]
-- `mode => Label` [parity]
+- `syncing => bool`: True when the node's state is currently out of date. False when it might be.
+- `authoring => bool`: Is the node currently authoring blocks?
+- `gasPrice => BigNumber`: The default gas price used by the node when posting transactions.
+- `gasPriceHistogram => [BigNumber]` [parity]: The histogram of gas prices of recent finalised transactions.
+- `mode => Label` [parity]: The current networking mode of Parity.
 
 ### Version Inspection
-- `clientVersion => String`
-- `protocolVersion => Number`
-- `versionInfo => VersionInfo` [parity]
+- `clientVersion => String`: The string describing the version of the client.
+- `ethProtocolVersion => Number`: The `eth` protocol version number.
+- `versionInfo => VersionInfo` [parity]: Extended information on the version of the client.
 
 ### Chain Metadata
 - `chainId => Number` [parity] The identity of the chain e.g. `42`.
 - `chainName => ` [parity] The name of the chain e.g. `kovan`.
-- `chainStatus => ChainStatus` [parity]
+- `chainStatus => ChainStatus` [parity]: Information concerning the status of the local replication of the blockchain.
 
 ### P2P Network
 - `peers => { enode: String -> Peer }` [parity]
@@ -130,6 +128,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `signerPort => Number` [parity]
 - `dappsPort => Number` [parity]
 - `dappsInterface => String` [parity]
+- `hashContent(url: String) => Bytes` [parity]: The 
 
 ### Transaction Queue
 - `nextNonce(Address) => Number` [parity]
