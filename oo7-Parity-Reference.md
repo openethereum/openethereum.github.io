@@ -108,21 +108,21 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `chainStatus => ChainStatus` [parity]: Information concerning the status of the local replication of the blockchain.
 
 ### P2P Network
-- `peers => { enode: String -> Peer }` [parity]
-- `peerCount => Number`
-- `listening => bool`
-- `enode => String` [parity]
-- `nodePort => Number` [parity]
-- `nodeName => String` [parity]
+- `peerCount => Number`: How many other nodes on the p2p network we are connected to.
+- `listening => bool`: Are we allowing inbound connections from other nodes?
+- `peers => { enode: String -> Peer }` [parity]: Information on each node to which we are connected.
+- `enode => String` [parity]: The node's "enode" (network ID). 
+- `nodePort => Number` [parity]: The port on which the node listens for incoming p2p connections.
+- `nodeName => String` [parity]: The name give to peers to identify this node in peer lists.
 
 ### Block Authoring (aka "mining")
-- `author => Address`
-- `defaultExtraData => Bytes` [parity]
-- `extraData => Bytes` [parity]
-- `gasCeilTarget => BigNumber` [parity]
-- `gasFloorTarget => BigNumber` [parity]
-- `minGasPrice => BigNumber` [parity]
-- `transactionsLimit => BigNumber` [parity]
+- `author => Address`: The address of the author of blocks.
+- `defaultExtraData => Bytes` [parity]: The default for authored blocks' "extra data" value (a client ID).
+- `extraData => Bytes` [parity]: The value used for authored blocks' "extra data".
+- `gasCeilTarget => BigNumber` [parity]: The maximum gas limit to be targeted - it will be reduced in blocks we author as much as possible if it is above this value.
+- `gasFloorTarget => BigNumber` [parity]: The minimum gas limit to be targeted - it will be increase in blocks we author as much as possible if it is below this value.
+- `minGasPrice => BigNumber` [parity]: The minimum gas price for which we will accept transactions.
+- `transactionsLimit => Number` [parity]: The maximum amount of transactions we will place in a block.
 
 ### Other Services
 - `signerPort => Number` [parity]
