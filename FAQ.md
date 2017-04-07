@@ -483,6 +483,10 @@ Your gas price is probably too low. Try increasing the gas price to 20Gwei by ap
 
 You're probably trying to send from a locked account. Ensure you use the `--unlock` (to specify which account(s) to unlock) and `--password` (to pass in the file contain any passwords needed to unlock those acocunts) so that the account(s) from which you're sending the transaction are unlocked.
 
+#### I've received an abuse message from my ISP/hosting provider. Something about malicious activity triggered by Parity.
+
+See [Network Configuration](https://github.com/paritytech/parity/wiki/Network-Configuration) for some tips on how to configure Parity to behave.
+
 ---
 
 ### User Interface, Wallet and DApps
