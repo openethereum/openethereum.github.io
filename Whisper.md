@@ -8,7 +8,7 @@ In a nutshell whisper is a communication protocol for DApps to communicate with 
 
 * DApps that need to provide non-real-time hinting or general communications between each other. E.g. a small chat-room app.
 
-* DApps that need to provide dark (plausible denial over perfect network traffic analysis) comms to two correspondents that know nothing of each other but a hash. This could be a DApp for a whistleblower to communicate to a known journalist exchange some small amount of verifiable material and arrange between themselves for some other protocol (Swarm, perhaps) to handle the bulk transfer.
+* DApps that need to provide dark (plausible denial over perfect network traffic analysis) comms to two correspondents that know nothing of each other but a hash. This could be a DApp for a whistleblower to communicate to a known journalist exchange some small amount of verifiable material and arrange between themselves for some other protocol to handle the bulk transfer.
 
 In general, think transactions, but without the eventual archival, any necessity of being bound to what is said or automated execution & state change.
 
