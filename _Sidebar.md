@@ -14,6 +14,7 @@
 - [[Configuring Parity]]
   - [With Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
+  - [Bandwidth usage](Bandwidth)
   - [Coming from Geth](Importing-a-Chain-from-Geth)
 - [[Accounts, Wallets, Vaults]]
   - [Back-up & Restore](Backing-up-&-Restoring)
