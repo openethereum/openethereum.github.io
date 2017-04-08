@@ -125,10 +125,10 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `transactionsLimit => Number` [parity]: The maximum amount of transactions we will place in a block.
 
 ### Other Services
-- `signerPort => Number` [parity]
-- `dappsPort => Number` [parity]
-- `dappsInterface => String` [parity]
-- `hashContent(url: String) => Bytes` [parity]: The 
+- `signerPort => Number` [parity] The port on which the (trusted) signer RPC server is currently listening.
+- `dappsPort => Number` [parity] The port on which the (untrusted) dapps RPC server is currently listening.
+- `dappsInterface => String` [parity] The interface on which the dapps RPC server is currently listening.
+- `hashContent(url: String) => Hash` [parity_set]: Deliver the Keccak hash of the content at the given URL.
 
 ### Transaction Queue
 - `nextNonce(Address) => Number` [parity]
