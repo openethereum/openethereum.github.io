@@ -128,18 +128,18 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `signerPort => Number` [parity] The port on which the (trusted) signer RPC server is currently listening.
 - `dappsPort => Number` [parity] The port on which the (untrusted) dapps RPC server is currently listening.
 - `dappsInterface => String` [parity] The interface on which the dapps RPC server is currently listening.
-- `hashContent(url: String) => Hash` [parity_set]: Deliver the Keccak hash of the content at the given URL.
+- `hashContent(url: String) => Hash` [parity_set]: The Keccak hash of the content at the given URL, at the time of the call (this does not react to any changes in the content at `url` but will react should the address `url` itself change).
 
 ### Transaction Queue
-- `nextNonce(Address) => Number` [parity]
-- `pending => [Transaction]` [parity]
-- `local => { Hash -> LocalTransaction }` [parity]
-- `future => [Transaction]` [parity]
-- `pendingStats => { Hash -> PendingTransaction }` [parity]
-- `unsignedCount => Number` [parity]
+- `nextNonce(Address) => Number` [parity]: The next valid nonce of `Address`. Includes pending and future transactions as well as the state of the head of the chain.
+- `pending => [Transaction]` [parity]: The (signed) transactions currently pending finalisation in the queue.
+- `local => { Hash -> LocalTransaction }` [parity]: Locally-submitted transactions, including those both finalised and pending. 
+- `future => [Transaction]` [parity]: Queued transactions whose nonce is too high such that they're not yet valid candidates for finalisation.
+- `pendingStats => { Hash -> PendingTransaction }` [parity]: Extended information concerning a particular (identified) transaction pending finalisation.
+- `unsignedCount => Number` [parity]: The number of unsigned transactions pending signing.
 
 ### Consensus & Updates
-- `releasesInfo => ` [parity]
+- `releasesInfo => ReleaseInfo` [parity]: 
 - `consensusCapability => Label` [parity]
 - `upgradeReady => bool` [parity_set]
 
@@ -152,4 +152,59 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 
 Objects going from one type to another are denoted `{ KeyType = ValueType }`.
 
-TODO
+### `ReleaseInfo`
+
+Information concerning available updates.
+
+#### Keys
+
+- `fork`: The blockchain's most recent fork identifier (generally the transition block number of the last approved fork).
+- `minor`: Information on the latest release shared by the node's minor version. [experimental!]
+- `this_fork`: The highest fork identifier supported by the currently executing node.
+- `track`: Information on the latest release on the node's release track.
+
+#### Example
+
+```json
+{
+  "fork": 0,
+  "this_fork": null,
+  "track": ReleaseVersion
+}
+```
+
+### `ReleaseVersion`
+
+Description of a release of Parity.
+
+#### Keys
+
+- `binary`: The Keccak hash of the release's executable on the node's platform.
+- `fork`: The latest fork identifier supported by this version.
+- `is_critical`: Whether this release contains critical (e.g. security) fixes.
+- `version`: Information on the releases version identifier.
+  - `hash`: Git commit hash of the the release.
+  - `track`: Release track on which this version was made (one of `'stable'`, `'beta'`, `'nightly'` or `'testing'`).
+  - `version`: Semantic version of the release.
+    - `major`: Major component.
+    - `minor`: Minor component.
+    - `patch`: Patch component.
+
+#### Example
+
+```json
+{
+  "binary": "0xf4e506d60763739ff9d59dfac577c71a3791512d7c552f8aa209d4069c11a9db",
+  "fork": 0,
+  "is_critical": false,
+  "version": {
+    "hash": "0x987390fb7d9f42a97c34aba254a8b9d8efd461d7",
+    "track": "beta",
+    "version": {
+      "major": 1,
+      "minor": 6,
+      "patch": 5
+    }
+  }
+}
+```
