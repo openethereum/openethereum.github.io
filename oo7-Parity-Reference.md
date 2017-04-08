@@ -134,8 +134,8 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 
 #### Transaction Queue
 - `nextNonce(Address) => Number` [parity]: The next valid nonce of `Address`. Includes pending and future transactions as well as the state of the head of the chain.
-- `pending => [PendingTransaction]` [parity]: The (signed) transactions currently pending finalisation in the queue, ordered by priority.
-- `local => { Hash -> LocalTransaction }` [parity]: Locally-submitted transactions, including those both finalised and pending. 
+- `pending => [LocalTransaction]` [parity]: The (signed) transactions currently pending finalisation in the queue, ordered by priority.
+- `local => { Hash -> LocalTransactionInfo }` [parity]: The status of locally-submitted transactions, including those both finalised and pending. 
 - `future => [Transaction]` [parity]: Queued transactions whose nonce is too high such that they're not yet valid candidates for finalisation.
 - `pendingStats => { Hash -> PropagationInfo }` [parity]: Extended information concerning a particular (identified) transaction pending finalisation.
 - `unsignedCount => Number` [parity]: The number of unsigned transactions pending signing.
@@ -301,7 +301,7 @@ Example:
 }
 ```
 
-### `LocalTransaction`
+### `LocalTransactionInfo`
 
 Information concerning a locally-submitted transaction.
 
@@ -322,11 +322,11 @@ Example:
 ```json
 {
   "status": "mined",
-  "transaction": /* ellided */
+  "transaction": LocalTransaction
 }
 ```
 
-### `PendingTransaction`
+### `LocalTransaction`
 
 Information representing a local Transaction pending finalisation.
 
@@ -350,29 +350,28 @@ Example:
 
 ```json
 {
-  "status": "mined",
-  "transaction": {
-    "blockHash": null,
-    "blockNumber": "0",
-    "condition": null,
-    "creates": "",
-    "from": "0x4d6Bb4ed029B33cF25D0810b029bd8B1A6bcAb7B",
-    "gas": "940000",
-    "gasPrice": "100000000000",
-    "hash": "0x52dbc95bc1f0e189ba880f5222653e1784b233a78cd9b8e4cf779daa7157daed",
-    "input": "0x",
-    "networkId": 42,
-    "nonce": "886",
-    "publicKey": "0xfadff14bc1bbad6a568bccdef60ea84cccbdab63beb67bc50f87b22aed74edc22a831557f7a36cd77014d3d8bb76690099ab67e1a1df29cc2263ff87a8329583",
-    "r": "0x37179854b68dd132c711945161682b821599b94e0a181ec24c5c6d58ab8ce2de",
-    "raw": "0xf86f82037685174876e800830e57e094b5fcee831c3d24c31ea7d968338b212863e72a538806f05b59d3b200008077a037179854b68dd132c711945161682b821599b94e0a181ec24c5c6d58ab8ce2dea007450b54c425993b0718c184b245f244b943103b1795c0b8bc67eb72be66679b",
-    "s": "0x7450b54c425993b0718c184b245f244b943103b1795c0b8bc67eb72be66679b",
-    "standardV": "0x0",
-    "to": "0xB5fceE831C3d24c31EA7D968338B212863e72a53",
-    "transactionIndex": "0",
-    "v": "0x77",
-    "value": "500000000000000000"
-  }
+  "blockHash": null,
+  "blockNumber": "0",
+  "condition": {
+    "block": "747000"
+  },
+  "creates": "",
+  "from": "0x006E778F0fde07105C7adDc24b74b99bb4A89566",
+  "gas": "21000",
+  "gasPrice": "100000000000",
+  "hash": "0x780b0a0c19819bd84a11bc050cb7b230de0d68bd08ed8cfd2f4c4db7cb7e2b78",
+  "input": "0x",
+  "networkId": 42,
+  "nonce": "286",
+  "publicKey": "0x46dc2dfd10421a5cb2e8750c54b4a991478ce8d026df4c1b7101b053a5dc8af8756c862978945f78ae47e35f93898c6f9d42ec8622c65f61ccb91c622a8749d9",
+  "r": "0x87b4fbf8199018ee6501e8224b81b252a092ee1a961fa2e700f97e101e85e5b3",
+  "raw": "0xf86e82011e85174876e8008252089400bc2ebf1d5a3f2f6a0aeb017c47a3d4739cd3b4880de0b6b3a76400008077a087b4fbf8199018ee6501e8224b81b252a092ee1a961fa2e700f97e101e85e5b3a02622b0b498406d78b06aa8aa6581137fc25b29010008f9af3878b4c1698337e2",
+  "s": "0x2622b0b498406d78b06aa8aa6581137fc25b29010008f9af3878b4c1698337e2",
+  "standardV": "0x0",
+  "to": "0x00bc2EBf1d5a3F2F6a0aEb017C47a3D4739CD3B4",
+  "transactionIndex": "0",
+  "v": "0x77",
+  "value": "1000000000000000000"
 }
 ```
 
