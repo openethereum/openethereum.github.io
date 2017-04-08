@@ -303,7 +303,7 @@ Example:
 
 ### `LocalTransaction`
 
-Information concerning a locally-submitted transaction. An object which maps 
+Information concerning a locally-submitted transaction.
 
 #### Keys
 
