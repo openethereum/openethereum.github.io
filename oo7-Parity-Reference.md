@@ -302,6 +302,30 @@ Example:
 ```
 
 ### `LocalTransaction`
+
+Information concerning a locally-submitted transaction. An object which maps 
+
+#### Keys
+
+- `status`: Information regarding the status of this transaction. Must be one of:
+  - `"pending"`: Transaction is pending finalisation.
+  - `"future"`: Transaction's nonce is not yet valid.
+  - `"mined"`: Transaction has been mined.
+  - `"dropped"`: Transaction was dropped because of queue's limit.
+  - `"replaced"`: Transaction was replaced by another with higher gas price.
+  - `"rejected"`: Transaction was rejected prior to entry into the queue.
+  - `"invalid"`: Transaction is invalid.
+  - `"canceled"`: Transaction was canceled.
+
+Example:
+
+```json
+{
+  "status": "mined",
+  "transaction": /* ellided */
+}
+```
+
 ### `PendingTransaction`
 
 ### `ReleaseInfo`
