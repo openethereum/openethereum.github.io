@@ -238,6 +238,8 @@ parity.bonds.registry.getAddress(parity.util.sha3('gavofyork'), 'A')
 
 Each such item is represented as a function. This takes arguments exactly correlating to the function it maps from. When the function is invoked, a `TransactionStatus` bond is returned, tracking the state of the transaction required to execute and finalise that function.
 
+The parameters of these functions may be `Bond`s, but the resultant `Bond` is not reactive to changes in parameters since they are one-off commands only.
+
 Example:
 
 ```js
@@ -253,3 +255,27 @@ b.tie(s => {
 
 #### Events
 
+Events are represented as functions providing a `Bond` representing the state of a particular query. The query is described with two parameters passed to the function; both are given as objects. The value of the `Bond` is simply  an array of (matching) events emitted by the contract. The first describes a filter applied over any or all of the `indexed` event arguments, allowing the resultant `Bond` to contain only events   that match this filter. The second allows the provision of further options to govern which, and a limit on how many, events are contained in the `Bond`'s value.
+
+##### Result value
+
+This is an array of objects describing specific events emitted by the contract. Keys include:
+
+- `event`: The name of the `event` whose instance is described.
+- `log`: The underlying raw log item, as specified and returned by `eth_getFilterLogs`.
+
+In addition to these keys, further keys are provided for each event argument, named according to the corresponding argument in the original `event`.
+
+##### First parameter: `filter`
+
+This is the first of two parameters and helps filter events in the resultant array. `filter` is an object where each key must be the name of an event parameter marked `indexed`. The value may be either a required value for that parameter to be, or an array of alternative values.
+
+All keys stated must be fulfilled for an event to be returned.
+
+##### Second parameter: `options`
+
+This is the second of two parameters. `options` is an object with three keys:
+
+- `fromBlock`: The block number before which no events shall be returned. Defaults to `0` if `undefined` or `null`.
+- `toBlock`: The block number after which no events shall be returned. Defaults to `pending` if `undefined` or `null`.
+- `limit`: The maximum amount of events to return. Defaults to `10` if `undefined` or `null`.
