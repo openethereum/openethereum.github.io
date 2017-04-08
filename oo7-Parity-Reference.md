@@ -97,7 +97,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `authoring => bool`: Is the node currently authoring blocks?
 - `gasPrice => BigNumber`: The default gas price used by the node when posting transactions.
 - `gasPriceHistogram => [BigNumber]` [parity]: The histogram of gas prices of recent finalised transactions.
-- `mode => Label` [parity]: The current networking mode of Parity.
+- `mode => Label` [parity]: The current networking mode of Parity; one of `off`, `dark`, `passive`, `active`.
 
 #### Version Inspection
 - `clientVersion => String`: The string describing the version of the client.
@@ -106,7 +106,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 
 #### Chain Metadata
 - `chainId => Number` [parity] The identity of the chain e.g. `42`.
-- `chainName => ` [parity] The name of the chain e.g. `kovan`.
+- `chainName => String` [parity] The name of the chain e.g. `kovan`.
 - `chainStatus => ChainStatus` [parity]: Information concerning the status of the local replication of the blockchain.
 
 #### P2P Network
@@ -150,9 +150,42 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `githubhint => Contract` [parity]: The primary URL hinting contract.
 - `operations => Contract` [parity]: The primary operations contract.
 
-## Types
+## Basic Types
+
+- `bool`: A Javascript `bool`. May be `true` or `false`.
+- `Number`: A number. May be passed in one of two forms:
+   - Basic Javascript `Number` type, e.g. `69`. This is the default when being returned.
+   - A Javascript `String` containing a decimal number, e.g. `"42"`.
+- `BigNumber`: A large number, up to `2**256 - 1`. May be passed in one of three forms:
+   - A `BigNumber` object. This is the default when being returned.
+   - Basic Javascript `Number` type.
+   - A Javascript `String` containing a decimal number.
+- `String`: A freeform Javascript `String`.
+- `Hash`: A string beginning with `0x` and with 64 hex digits following. Represents a 32-byte piece of data.
+- `Address`: A string beginning with `0x` and with 40 hex digits following. Represents a 20-byte account address.
+- `Bytes`: A string beginning with `0x` and with an even number of hash digits following. Represents an arbitrary length series of bytes.
+- `Label`: A string containing one of a number of alternative words/phrases.
+- `[Type]`: An `Array` of `Type`. The responsible `Bond` can usually be sub-scripted by an index in order to provide a `Bond` evaluating to that item.
+
+## Object Types
 
 Objects going from one type to another are denoted `{ KeyType ->  ValueType }`. Others are listed here.
+
+### `Header`
+
+Equivalent to the description of block header at 
+
+### `Transaction`
+### `Receipt`
+### `AccountInfo`
+### `TransactionStatus`
+### `SignatureStatus`
+### `ABISpec`
+### `VersionInfo`
+### `ChainStatus`
+### `Peer`
+### `LocalTransaction`
+### `PendingTransaction`
 
 ### `ReleaseInfo`
 
