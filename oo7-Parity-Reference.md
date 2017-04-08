@@ -134,10 +134,10 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 
 #### Transaction Queue
 - `nextNonce(Address) => Number` [parity]: The next valid nonce of `Address`. Includes pending and future transactions as well as the state of the head of the chain.
-- `pending => [Transaction]` [parity]: The (signed) transactions currently pending finalisation in the queue.
+- `pending => [PendingTransaction]` [parity]: The (signed) transactions currently pending finalisation in the queue, ordered by priority.
 - `local => { Hash -> LocalTransaction }` [parity]: Locally-submitted transactions, including those both finalised and pending. 
 - `future => [Transaction]` [parity]: Queued transactions whose nonce is too high such that they're not yet valid candidates for finalisation.
-- `pendingStats => { Hash -> PendingTransaction }` [parity]: Extended information concerning a particular (identified) transaction pending finalisation.
+- `pendingStats => { Hash -> PropagationInfo }` [parity]: Extended information concerning a particular (identified) transaction pending finalisation.
 - `unsignedCount => Number` [parity]: The number of unsigned transactions pending signing.
 
 #### Consensus & Updates
@@ -327,6 +327,44 @@ Example:
 ```
 
 ### `PendingTransaction`
+
+Information representing a local Transaction pending finalisation.
+
+#### Keys
+
+Example as with `Transaction` object, but also:
+
+- `creates`: The optional `Address` of a created contract or null.
+- `raw`: The `Bytes` of the raw transaction data.
+- `publicKey`: The public key of the signer as 64 `Bytes`.
+- `networkId`: The network ID of the transaction as a `Number`. `null` is it is a pre-EIP155 transaction.
+- `standardV`: The standardised V field of the signature (either `0` or `1`).
+- `v`: The V field of the signature as a `Number`.
+- `r`: The R field of the signature as a `BigNumber`.
+- `s`: The S field of the signature as a `BigNumber`.
+- `condition`: A description of the criteria on which submission to the network was made conditional. May be `null` (submission should happen asap) or an `Object` with keys:
+  - `block`: The block `Number` only after which it may be submitted.
+  - `time`: The Unix timestamp after which it may be submitted.
+
+### `PropagationInfo`
+
+Information on the network propagation of a transaction.
+
+#### Keys
+
+- `firstSeen`: Block at which this transaction was first seen by the node.
+- `propagatedTo`: `Object` mapping node IDs to `Number` of times propagated to that peer.
+
+Example:
+
+```json
+{
+  "firstSeen": 745512,
+  "propagatedTo": {
+      "0x48caeceb2724f2f71406990aa81efe87f8c53f26441d891473da2ae50cc138f238addc0e46b5aee240db55de8c711daac53d7b32a3f13e30edb86a3ca7c2700b": 1
+  }
+}
+```
 
 ### `ReleaseInfo`
 
