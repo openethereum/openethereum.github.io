@@ -169,7 +169,7 @@ Information concerning available updates.
 {
   "fork": 0,
   "this_fork": null,
-  "track": releaseVersion
+  "track": new ReleaseVersion()
 }
 ```
 
