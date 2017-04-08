@@ -246,7 +246,6 @@ Example:
 
 An ABI specification, as described in the [Ethereum wiki article](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
 
-### `VersionInfo`
 ### `ChainStatus`
 ### `Peer`
 ### `LocalTransaction`
@@ -273,7 +272,7 @@ Information concerning available updates.
 }
 ```
 
-### `ReleaseVersion`
+### `VersionInfo`
 
 Description of a release of Parity.
 
