@@ -188,8 +188,58 @@ Equivalent to "a transaction object", described at [`eth_getTransactionByHash` R
 Equivalent to "a transaction receipt object", described at [`eth_getTransactionReceipt` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_gettransactionreceipt).
 
 ### `AccountInfo`
+
+Information describing a controlled account.
+
+#### Keys
+
+- `name`: The name given to the account by the user.
+
+Example:
+
+```json
+{
+  "name": "Main Account"
+}
+```
+
 ### `TransactionStatus`
+
+The current status of a transaction to be committed to the blockchain. Must contain exactly one of the following keys.
+
+#### Keys
+
+- `estimating`: Always `null`. Implies that the minimum required gas for the transaction is being estimated.
+- `estimated`: The computed gas required for the transaction to succeed. Implies the user is about to be requested to approve the transaction.
+- `requested`: An internal identifier. Implies the user has been requested to approve this transaction.
+- `signed`: A signed transaction given as `Bytes`. Implies the transaction is about to be published to the network for inclusion in a block.
+- `confirmed`: The transaction's receipt. Implies that the transaction has been finalised.
+- `failed`: An error. Implies that the operation met with a failure at some point. Usually due to either the user rejecting approval of the transaction or that no amount of gas could be found for successful transaction execution.
+
+Example:
+
+```json
+{
+   "estimating": null
+}
+
 ### `SignatureStatus`
+
+The current status of a message to be signed. Must contain exactly one of the following keys.
+
+#### Keys
+
+- `requested`: An internal identifier. Implies the user has been requested to approve this transaction.
+- `signed`: A signed transaction given as `Bytes`. Implies the transaction is about to be published to the network for inclusion in a block.
+- `failed`: An error. Implies that the operation met with a failure at some point. Usually due to either the user rejecting approval of the transaction or that no amount of gas could be found for successful transaction execution.
+
+Example:
+
+```json
+{
+   "signed": "0x1b0749bc94188f3d06b00217fe384a8aced3a9f6b4f21e22a4eed73e4e3f036a4913b439ed3fab0985353e9f0c9d748d42f6c1786726c6ab530c1f66772c6e5d63"
+}
+
 ### `ABISpec`
 
 An ABI specification, as described in the [Ethereum wiki article](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
