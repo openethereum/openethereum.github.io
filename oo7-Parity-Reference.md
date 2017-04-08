@@ -62,9 +62,9 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 
 #### Chain Inspection
 - `height => Number`: The height of the chain.
-- `findBlock(Number | Hash) => Header`: The block identified by the `Number` or `Hash`.
-- `blocks[Number | Hash] => Header`: The block identified by the `Number` or `Hash`.
-- `head => Header`: The most recently authored block on the chain.
+- `findBlock(Number | Hash) => Block`: The block identified by the `Number` or `Hash`.
+- `blocks[Number | Hash] => Block`: The block identified by the `Number` or `Hash`.
+- `head => Block`: The most recently authored block on the chain.
 - `blockTransactionCount(Hash | Number) => Number`: The number of transactions in the block identified.
 - `uncleCount(Hash | Number) => Number`: The number of uncle headers in the block identified.
 - `uncle(blockHash: Hash | blockNumber: Number, uncleIndex: Number) => Header`: The uncle of index `uncleIndex` in the block identified by `blockHash` or `blockNumber`.
@@ -171,9 +171,13 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 
 Objects going from one type to another are denoted `{ KeyType ->  ValueType }`. Others are listed here.
 
+### `Block`
+
+Equivalent to the description of "a block object" at [`eth_getBlockByHash` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getblockbyhash).
+
 ### `Header`
 
-Equivalent to the description of block header at 
+Equivalent to `Block`, except that individual transactions are not provided.
 
 ### `Transaction`
 ### `Receipt`
