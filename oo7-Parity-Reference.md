@@ -112,7 +112,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 #### P2P Network
 - `peerCount => Number`: How many other nodes on the p2p network we are connected to.
 - `listening => bool`: Are we allowing inbound connections from other nodes?
-- `peers => { enode: String -> Peer }` [parity]: Information on each node to which we are connected.
+- `peers => Peers` [parity]: Information on each node to which we are connected.
 - `enode => String` [parity]: The node's "enode" (network ID). 
 - `nodePort => Number` [parity]: The port on which the node listens for incoming p2p connections.
 - `nodeName => String` [parity]: The name give to peers to identify this node in peer lists.
@@ -247,7 +247,60 @@ Example:
 An ABI specification, as described in the [Ethereum wiki article](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
 
 ### `ChainStatus`
-### `Peer`
+
+Information on the status of the portion of the chain maintained locally. Equivalent to "the status object" described for the [`parity_chainStatus` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-parity-module#parity_chainstatus).
+
+### `Peers`
+
+Information on the peers known by the node.
+
+#### Keys
+
+- `active`: Number of peers in active communication with the node.
+- `connected`: Number of nodes connected as peers.
+- `max`: Maximum acceptable number of peers.
+- `peers`: Details of each peer expressed as an `Array`. Each item is an object with keys:
+  - `caps`: An `Array` of versioned capability identifiers given as `"<subprotocol-identifier>/<version>"`.
+  - `id`: The _enode_ identifier.
+  - `name`: The node's full identifier.
+  - `network`: An object with two keys:
+    - `localAddress`: Locally assigned IP address and port.
+    - `remoteAddress`: Remotely assigned IP address and port used for incoming connections.
+  - `protocols`: An `Object` describing the state of the node in terms of each sub-protocol it supports. Maps sub protocol identifier to an `Object` with subprotocol-specific keys.
+
+Example:
+
+```json
+{
+  "active": "0",
+  "connected": "1",
+  "max": "25",
+  "peers": [
+    {
+      "caps": [
+        "eth/62",
+        "eth/63",
+        "par/1",
+        "par/2"
+      ],
+      "id": "2aa81bd0a761cd4f02c934dcf3f81c5b65953e51ab5ba03ceb1f125eb06418a1cdffb1c9d01871aa7bd456f3fce35e745608189ad1164f72b2161634b0c3f6ea",
+      "name": "Parity/v1.6.5-beta-987390f-20170328/x86_64-linux-gnu/rustc1.16.0",
+      "network": {
+        "localAddress": "192.168.0.15:63340",
+        "remoteAddress": "188.166.240.190:30303"
+      },
+      "protocols": {
+        "eth": {
+          "difficulty": "2.03152996722570234887659664506662254654900182e+44",
+          "head": "daac19a336359bc4a46b06bfc47e9aa62f5cde2974c987a70213fa2431a8d9d5",
+          "version": 2
+        }
+      }
+    }
+  ]
+}
+```
+
 ### `LocalTransaction`
 ### `PendingTransaction`
 
