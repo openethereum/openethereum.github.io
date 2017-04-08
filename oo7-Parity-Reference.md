@@ -222,6 +222,7 @@ Example:
 {
    "estimating": null
 }
+```
 
 ### `SignatureStatus`
 
