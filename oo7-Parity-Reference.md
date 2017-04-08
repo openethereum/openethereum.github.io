@@ -33,7 +33,9 @@ parity.api.abi = abiPolyfill(parity.api);
 parity.bonds = setupBonds(parity.api);
 ```
 
-### Notes on Usage
+### `parity.bonds` API Collection
+
+#### Notes on Usage
 
 For brevity we have dropped the prefix of `parity.bonds.`.
 
@@ -58,7 +60,7 @@ One item (`blocks`) is denoted an array: it may be dereferenced as an array e.g.
 
 Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `parity.bonds.head.author` would be the `Bond` that evaluates to the author of the block currently at the head of the chain.
 
-### Chain Inspection
+#### Chain Inspection
 - `height => Number`: The height of the chain.
 - `findBlock(Number | Hash) => Header`: The block identified by the `Number` or `Hash`.
 - `blocks[Number | Hash] => Header`: The block identified by the `Number` or `Hash`.
@@ -70,19 +72,19 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `transaction(txHash: Hash) => Transaction`: The transaction (which must appear in a block) whose hash is `txHash`.
 - `receipt(txHash: Hash) => Receipt`: The receipt of the transaction (which must appear in a block) whose hash is `txHash`.
 
-### Accounts Inspection
+#### Accounts Inspection
 - `me => Address`: The address of the account which the user would like the Dapp to act under.
 - `accounts => [Address]`: All addresses of accounts which the user would like the Dapp to know about.
 - `accountsInfo => { Address -> AccountInfo }` [parity]: Information on all accounts which the user would like the Dapp to know about.
 - `hardwareAccountsInfo => { Address -> AccountInfo }` [parity]: Information on all hardware (e.g. Ledger) accounts which the user would like the Dapp to know about.
 
-### Signer
+#### Signer
 - `post(Transaction) => TransactionStatus` [parity]: Posts the described transaction to the node for signing and publication. Evaluates to the status of the transaction as it becomes finalised (or not). Note: it is not supported to post a transaction which fails with an exception and unless `gas` is supplied then the lowest amount of gas will be used.
 - `sign(Address, Bytes) => SignatureStatus` [parity]: Issues a request to the user to sign a message, prepended with a known string for security. Evaluates to the status of the request.
 - `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]: Attempts to deploy a contract of the given initialisation code. Evaluates to the status of the request, including a contract object on finalisation. 
 - `makeContract(Address, ABISpec) => Contract` [parity]: Creates a new contract object with the given `Address` and ABI specification.
 
-### State Inspection
+#### State Inspection
 - `balance(Address) => BigNumber`: The balance of the account with `Address`.
 - `code(Address) => Bytes`: The code of the account with `Address`, if any.
 - `nonce(Address) => BigNumber`: The nonce of the account with `Address`.
@@ -90,24 +92,24 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `call(Transaction) => Bytes`: The output of the `Transaction` when executed.
 - `estimateGas(Transaction) => BigNumber`: The lowest amount of gas that the `Transaction` will execute with before it becomes invalid or fails with an exception.
 
-### Node Status
+#### Node Status
 - `syncing => bool`: True when the node's state is currently out of date. False when it might be.
 - `authoring => bool`: Is the node currently authoring blocks?
 - `gasPrice => BigNumber`: The default gas price used by the node when posting transactions.
 - `gasPriceHistogram => [BigNumber]` [parity]: The histogram of gas prices of recent finalised transactions.
 - `mode => Label` [parity]: The current networking mode of Parity.
 
-### Version Inspection
+#### Version Inspection
 - `clientVersion => String`: The string describing the version of the client.
 - `ethProtocolVersion => Number`: The `eth` protocol version number.
 - `versionInfo => VersionInfo` [parity]: Extended information on the version of the client.
 
-### Chain Metadata
+#### Chain Metadata
 - `chainId => Number` [parity] The identity of the chain e.g. `42`.
 - `chainName => ` [parity] The name of the chain e.g. `kovan`.
 - `chainStatus => ChainStatus` [parity]: Information concerning the status of the local replication of the blockchain.
 
-### P2P Network
+#### P2P Network
 - `peerCount => Number`: How many other nodes on the p2p network we are connected to.
 - `listening => bool`: Are we allowing inbound connections from other nodes?
 - `peers => { enode: String -> Peer }` [parity]: Information on each node to which we are connected.
@@ -115,7 +117,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `nodePort => Number` [parity]: The port on which the node listens for incoming p2p connections.
 - `nodeName => String` [parity]: The name give to peers to identify this node in peer lists.
 
-### Block Authoring (aka "mining")
+#### Block Authoring (aka "mining")
 - `author => Address`: The address of the author of blocks.
 - `defaultExtraData => Bytes` [parity]: The default for authored blocks' "extra data" value (a client ID).
 - `extraData => Bytes` [parity]: The value used for authored blocks' "extra data".
@@ -124,13 +126,13 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `minGasPrice => BigNumber` [parity]: The minimum gas price for which we will accept transactions.
 - `transactionsLimit => Number` [parity]: The maximum amount of transactions we will place in a block.
 
-### Other Services
+#### Other Services
 - `signerPort => Number` [parity] The port on which the (trusted) signer RPC server is currently listening.
 - `dappsPort => Number` [parity] The port on which the (untrusted) dapps RPC server is currently listening.
 - `dappsInterface => String` [parity] The interface on which the dapps RPC server is currently listening.
 - `hashContent(url: String) => Hash` [parity_set]: The Keccak hash of the content at the given URL, at the time of the call (this does not react to any changes in the content at `url` but will react should the address `url` itself change).
 
-### Transaction Queue
+#### Transaction Queue
 - `nextNonce(Address) => Number` [parity]: The next valid nonce of `Address`. Includes pending and future transactions as well as the state of the head of the chain.
 - `pending => [Transaction]` [parity]: The (signed) transactions currently pending finalisation in the queue.
 - `local => { Hash -> LocalTransaction }` [parity]: Locally-submitted transactions, including those both finalised and pending. 
@@ -138,12 +140,12 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `pendingStats => { Hash -> PendingTransaction }` [parity]: Extended information concerning a particular (identified) transaction pending finalisation.
 - `unsignedCount => Number` [parity]: The number of unsigned transactions pending signing.
 
-### Consensus & Updates
+#### Consensus & Updates
 - `releasesInfo => ReleaseInfo` [parity]: Information on the latest releases of Parity.
 - `consensusCapability => Capability` [parity]: Information on the capability of taking part in the network's consensus of the current node. One of `'unknown'`, `'capable'`, `{"capableUntil": BlockNumber}`, `{"incapableSince": BlockNumber}`.
 - `upgradeReady => bool` [parity_set]: Whether there is currently an upgrade which is ready to install & execute.
 
-### Basic Contracts
+#### Basic Contracts
 - `registry => Contract` [parity]: The root Parity name registry contract.
 - `githubhint => Contract` [parity]: The primary URL hinting contract.
 - `operations => Contract` [parity]: The primary operations contract.
