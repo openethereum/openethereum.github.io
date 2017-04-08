@@ -150,7 +150,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 
 ## Types
 
-Objects going from one type to another are denoted `{ KeyType = ValueType }`.
+Objects going from one type to another are denoted `{ KeyType ->  ValueType }`. Others are listed here.
 
 ### `ReleaseInfo`
 
@@ -169,7 +169,7 @@ Information concerning available updates.
 {
   "fork": 0,
   "this_fork": null,
-  "track": ReleaseVersion
+  "track": releaseVersion
 }
 ```
 
