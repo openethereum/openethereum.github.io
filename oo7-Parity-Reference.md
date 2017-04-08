@@ -173,18 +173,27 @@ Objects going from one type to another are denoted `{ KeyType ->  ValueType }`. 
 
 ### `Block`
 
-Equivalent to the description of "a block object" at [`eth_getBlockByHash` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getblockbyhash).
+Equivalent to "a block object", described at [`eth_getBlockByHash` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getblockbyhash).
 
 ### `Header`
 
 Equivalent to `Block`, except that individual transactions are not provided.
 
 ### `Transaction`
+
+Equivalent to "a transaction object", described at [`eth_getTransactionByHash` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_gettransactionbyhash).
+
 ### `Receipt`
+
+Equivalent to "a transaction receipt object", described at [`eth_getTransactionReceipt` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_gettransactionreceipt).
+
 ### `AccountInfo`
 ### `TransactionStatus`
 ### `SignatureStatus`
 ### `ABISpec`
+
+An ABI specification, as described in the [Ethereum wiki article](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+
 ### `VersionInfo`
 ### `ChainStatus`
 ### `Peer`
