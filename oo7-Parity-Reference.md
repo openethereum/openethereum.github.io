@@ -239,6 +239,7 @@ Example:
 {
    "signed": "0x1b0749bc94188f3d06b00217fe384a8aced3a9f6b4f21e22a4eed73e4e3f036a4913b439ed3fab0985353e9f0c9d748d42f6c1786726c6ab530c1f66772c6e5d63"
 }
+```
 
 ### `ABISpec`
 
