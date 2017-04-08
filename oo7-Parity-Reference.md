@@ -210,3 +210,46 @@ Description of a release of Parity.
   }
 }
 ```
+
+### `Contract`
+
+An object representing a (deployed) instance of a contract. Contains one basic field and then additional functions for each of three types of items within the contract: `public` fields and `constant` functions; other (state-mutating) `public` functions and events.
+
+#### Basic Keys
+
+- `address`: The address of this contract; may be a `Bond`.
+
+#### Fields and `constant` functions
+
+These are the simplest to use. Each such item is represented as a function. This takes arguments in the case of a parameterised `constant` function or when the field represents an array, struct or mapping, correlated accordingly. Each parameter may itself be a `Bond`.
+
+
+When the function is invoked, a `Bond` is returned expressing the ongoing value that the contract gives when queried. This is reactive to all changes, including those in the contract's state, on its `address` (should that be a `Bond`) and on its parameters (where they are `Bond`s).
+
+Example:
+
+```js
+// Prints `gavofyork`'s address to the console.
+parity.bonds.registry.getAddress(parity.util.sha3('gavofyork'), 'A')
+   .then(console.log)
+```
+
+#### State-mutating functions
+
+Each such item is represented as a function. This takes arguments exactly correlating to the function it maps from. When the function is invoked, a `TransactionStatus` bond is returned, tracking the state of the transaction required to execute and finalise that function.
+
+Example:
+
+```js
+// Prints a message depending on whether we managed to change the address of `gavofyork`.
+let b = parity.bonds.registry.setAddress(parity.util.sha3('gavofyork'), 'A', parity.bonds.me);
+b.tie(s => {
+   if (s.failed) { console.log(`setAddress failed: ${s.failed}`); }
+   else if (s.confirmed) { console.log(`setAddress completed at #${s.confirmed.blockNumber}`); }
+   else { return; }
+   b.untie();
+})
+```
+
+#### Events
+
