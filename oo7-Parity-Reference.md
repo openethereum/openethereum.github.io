@@ -139,14 +139,14 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `pari
 - `unsignedCount => Number` [parity]: The number of unsigned transactions pending signing.
 
 ### Consensus & Updates
-- `releasesInfo => ReleaseInfo` [parity]: 
-- `consensusCapability => Label` [parity]
-- `upgradeReady => bool` [parity_set]
+- `releasesInfo => ReleaseInfo` [parity]: Information on the latest releases of Parity.
+- `consensusCapability => Capability` [parity]: Information on the capability of taking part in the network's consensus of the current node. One of `'unknown'`, `'capable'`, `{"capableUntil": BlockNumber}`, `{"incapableSince": BlockNumber}`.
+- `upgradeReady => bool` [parity_set]: Whether there is currently an upgrade which is ready to install & execute.
 
 ### Basic Contracts
-- `registry => Contract` [parity]
-- `githubhint => Contract` [parity]
-- `operations => Contract` [parity]
+- `registry => Contract` [parity]: The root Parity name registry contract.
+- `githubhint => Contract` [parity]: The primary URL hinting contract.
+- `operations => Contract` [parity]: The primary operations contract.
 
 ## Types
 
