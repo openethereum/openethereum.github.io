@@ -346,6 +346,36 @@ Example as with `Transaction` object, but also:
   - `block`: The block `Number` only after which it may be submitted.
   - `time`: The Unix timestamp after which it may be submitted.
 
+Example:
+
+```json
+{
+  "status": "mined",
+  "transaction": {
+    "blockHash": null,
+    "blockNumber": "0",
+    "condition": null,
+    "creates": "",
+    "from": "0x4d6Bb4ed029B33cF25D0810b029bd8B1A6bcAb7B",
+    "gas": "940000",
+    "gasPrice": "100000000000",
+    "hash": "0x52dbc95bc1f0e189ba880f5222653e1784b233a78cd9b8e4cf779daa7157daed",
+    "input": "0x",
+    "networkId": 42,
+    "nonce": "886",
+    "publicKey": "0xfadff14bc1bbad6a568bccdef60ea84cccbdab63beb67bc50f87b22aed74edc22a831557f7a36cd77014d3d8bb76690099ab67e1a1df29cc2263ff87a8329583",
+    "r": "0x37179854b68dd132c711945161682b821599b94e0a181ec24c5c6d58ab8ce2de",
+    "raw": "0xf86f82037685174876e800830e57e094b5fcee831c3d24c31ea7d968338b212863e72a538806f05b59d3b200008077a037179854b68dd132c711945161682b821599b94e0a181ec24c5c6d58ab8ce2dea007450b54c425993b0718c184b245f244b943103b1795c0b8bc67eb72be66679b",
+    "s": "0x7450b54c425993b0718c184b245f244b943103b1795c0b8bc67eb72be66679b",
+    "standardV": "0x0",
+    "to": "0xB5fceE831C3d24c31EA7D968338B212863e72a53",
+    "transactionIndex": "0",
+    "v": "0x77",
+    "value": "500000000000000000"
+  }
+}
+```
+
 ### `PropagationInfo`
 
 Information on the network propagation of a transaction.
