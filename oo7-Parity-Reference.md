@@ -18,7 +18,6 @@ In the server-side case, you'll want to include the `parity.js` object and then 
 
 ```js
 const Parity = require('@parity/parity.js');
-const oo7_parity = require('oo7-parity');
 const transport = new Parity.Api.Transport.Http('http://localhost:8545');
 let parity = {api: new Parity.Api(transport)};
 ```
