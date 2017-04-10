@@ -4,7 +4,7 @@
 
 ----
 
-## Signing Data
+## Deploying a Contract
 
 ----
 
