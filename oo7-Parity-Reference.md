@@ -8,6 +8,10 @@
 
    `npm install --save oo7 oo7-parity`
 
+If you are not counting on your users running Parity Wallet/Parity Chrome Extension you will want to ensure you have parity.js available, too:
+
+   `npm install --save @parity/parity.js`
+
 #### UI-side
 
 If you are working on the UI with React, you'll probably want to install `oo7-react.js` and `parity-reactive-ui.js`, too:
