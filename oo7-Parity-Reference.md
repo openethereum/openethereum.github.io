@@ -223,6 +223,15 @@ Example:
 }
 ```
 
+### `DeployStatus`
+
+The status of a contract-deployment transaction. Exactly equivalent to `TransactionStatus`, except that when there exists a `confirmed` key, there also exists a `deployed` key:
+
+#### Keys
+
+- `deployed`: The `Contract` object newly deployed due to this transaction.
+
+
 ### `SignatureStatus`
 
 The current status of a message to be signed. Must contain exactly one of the following keys.
