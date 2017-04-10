@@ -45,7 +45,7 @@ For brevity we have dropped the prefix of `parity.bonds.`.
 All arguments may be given as one of:
 - a plain value, e.g. `parity.bonds.findBlock(69)`;
 - a `Bond` object, e.g. `parity.bonds.findBlock(parity.bonds.blockNumber)`;
-- an `Object` or `Array` containing a mixture of `Bond`s and plain values e.g. `parity.bonds.send({to: parity.bonds.author, value: '1000000000000000000'})`.
+- an `Object` or `Array` containing a mixture of `Bond`s and plain values e.g. `parity.bonds.post({to: parity.bonds.author, value: '1000000000000000000'})`.
 
 Note that items with no trailing parens should not be used as functions - they are `Bond`s in their own right e.g. this is right: `parity.bonds.head.then(console.log)`; `...head().then...` is **wrong**.
 
