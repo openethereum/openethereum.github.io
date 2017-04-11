@@ -96,7 +96,7 @@ Notice we are aligning the icon at the bottom of the text field (rather than bas
 
 Since nobody but me has been voting here, it's perhaps no surprise that the number of account icons exactly matches the width of the graph!
 
-Next, we'll look into how to create and use signed data.
+Next, we'll look into managing the deployment of contracts.
 
 ----
 
