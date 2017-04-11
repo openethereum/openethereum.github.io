@@ -140,7 +140,7 @@ In the `deploy` function, change the `tx.done()` line to store the contract's ad
 
 ```js
 tx.done(s => {
-	this.setState({ counter: s.deployed });
+	this.setState({ tx: null, counter: s.deployed });
 	window.localStorage.counter = s.deployed.address;
 });
 ```
@@ -153,7 +153,70 @@ this.state = { tx: null, counter: window.localStorage.counter
 	: null };
 ```
 
-And that's it! The next time you deploy in that browser session, it will be last (at least until you reset it in the next tutorial!).
+The next time you deploy in that browser session, it will be last (at least until you reset it in the next tutorial!).
+
+### And What about Dave?
+
+So this is great for us, but as soon as we want to give it to someone else to vote, we run into an issue; they have no way of arriving at the vote we deployed. Let's also allow the user to enter the address of a vote instead of forcing them to deploy a new one.
+
+First we'll create a basic `Bond` in the constructor which will hold the address of the contract that the user entered. This goes right after `super()`:
+
+```js
+this.addr = new Bond;
+```
+
+Next we'll set things up so that the very first value that is placed in it is used (and saved) as our counter contract's address:
+
+```js
+this.addr.then(v => {
+	window.localStorage.counter = v;
+	let counter = parity.bonds.makeContract(v, CounterABI);
+	this.setState({ tx: null, counter });
+});
+```
+
+Now we just have to ensure that the `Bond` only gets set when the user has entered the full address of a valid instance of the `Counter` contract. Luckily the `TextBond` component as a `validator` function allowing us to exactly this.
+
+Before we can realistically be able to detect counter contract instances, we'll need to know what code the contract has on the chain. This is related to, but not the same as, the byte code with which it was initialised. The code hash for my contract (compiled with solidity 0.4.10 with optimisations) is:
+
+```js
+const CounterCodeHash = '0x10d2b44a953ecf30231a87c541df5d640b43a30d8ec9a6ed95e411675d8aff42';
+```
+
+Yours may be different. To figure it out, use the JS line in any bonds-enabled environment where ADDRESS is the address of a pre-deployed counter contract:
+
+```js
+parity.bonds.code(ADDRESS).map(parity.api.util.sha3).then(console.log)
+```
+
+Now to the code. After the button in the `render` function, we will add the following:
+
+```js
+<span style={{margin: '2em'}}>OR</span>
+<TextBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && parity.bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash)}/>
+```
+
+The first line just splits the button from the text input. The second is our input for counter contract addresses. The `TextBond` we have seen before in the very first tutorial about `Bond`s. We have introduced a custom `validator` prop here, which first makes sure the string form `TextBond` is well-formed and then checks to make sure that the hash of the code at that address is what we would expect from a `Counter` contract. Only then is it valid and does it get set to `this.addr`.
+
+The only thing that is left is to ensure the address of a deployed contract is visible so it can be communicated. Right at the end of the `Counter` render's outer `div`, you can insert this final element:
+
+```js
+<div style={{fontSize: 'small'}}>
+	Using contract at {this.props.contract.address}.
+</div>
+```
+
+You can now reload and set your current Counter contract's address like here:
+
+![image](https://cloud.githubusercontent.com/assets/138296/24923831/18de9f82-1ef3-11e7-84d2-a4ee1c5cbe78.png)
+
+To try it out, first clear your local storage (in Chrome open dev console and head to the '127.0.0.1' frame, then enter `delete localStorage.counter`). On reload, you should be presented with the option to deploy or to enter an address.
+
+![image](https://cloud.githubusercontent.com/assets/138296/24924187/369c9ca8-1ef4-11e7-871f-d9bca011377f.png)
+
+Once you complete the address, it will change into the voting window. Hurrah!
+
+Next, up we'll alter the contract a little to require a signed statement prior to voting.
 
 ----
 
