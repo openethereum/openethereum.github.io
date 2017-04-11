@@ -110,7 +110,8 @@ To decide whether we have yet deployed a contract, we look at the `counter` item
 One last thing, is to include the contract's byte code. You'll need to either get your own byte code from the compiler (as we did when we deployed the contract in the first place), or alternatively, just use this:
 
 ```js
-const CounterCode = '\ 0x6060604052341561000c57fe5b5b61017d8061001c6000396000f300606060405263fffff\
+const CounterCode = '\
+0x6060604052341561000c57fe5b5b61017d8061001c6000396000f300606060405263fffff\
 fff60e060020a6000350416630121b93f811461003757806309eef43e1461004c5780635df8\
 13301461007c575bfe5b341561003f57fe5b61004a6004356100a1565b005b341561005457f\
 e5b610068600160a060020a036004351661012a565b60408051911515825251908190036020\
