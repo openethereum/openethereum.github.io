@@ -16,6 +16,7 @@
   - [[UI Remote Access]]
   - [Network](Network-Configuration)
   - [[Docker]]
+  - [Chain Specification](#parity-chains)
 - [[Community Guides]]
 
 ## Developing DApps
