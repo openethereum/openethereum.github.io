@@ -1,4 +1,14 @@
-Build and run Parity anywhere with Docker.
+Build and run Parity anywhere with Docker:
+
+- [Pick a container](#pick-a-container)
+- [Run container](#run-container)
+- [Configure parity](#configure-parity)
+    - [Open ports](#open-ports)
+    - [Pass arguments](#pass-arguments)
+    - [Config file](#config-file)
+    - [Persistent data directory](#persistent-data-directory)
+    - [Run in background](#run-in-background)
+- [Further reading](#further-reading)
 
 ### Pick a container
 
