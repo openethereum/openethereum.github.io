@@ -6,16 +6,17 @@
 
 ## Using Parity
 - [[Parity Wallet]]
-  - [[Accounts, Wallets, Vaults]]
   - [Back-up & Restore](Backing-up-&-Restoring)
+  - [Wallets & Vaults](Accounts%2C-Wallets%2C-Vaults)
   - [[Ledger Nano S]]
 - [[Configuring Parity]]
+  - [Available Chains](Chain-specification)
   - [Coming from Geth](Importing-a-Chain-from-Geth)
-  - [With Mist](Using-Parity-with-Mist)
+  - [Using with Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
-  - [Network](Network-Configuration)
+  - [[Wallet Remote Access]]
+  - [Network Config](Network-Configuration)
   - [[Docker]]
-- [[UI Remote Access]]
 - [[Community Guides]]
 
 ## Developing DApps
@@ -24,6 +25,7 @@
   - [DApp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-github-hint)
+  - [IPFS-API](IPFS)
   - [oo7-parity.js Reference](oo7-Parity-Reference)
 - [DApp Tutorial](Tutorial-Part-I)
   - [1: Get Started](Tutorial-Part-I)
