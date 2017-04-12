@@ -12,10 +12,11 @@
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-github-hint)
 - [[Configuring Parity]]
+  - [Coming from Geth](Importing-a-Chain-from-Geth)
   - [With Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
   - [Network](Network-Configuration)
-  - [Coming from Geth](Importing-a-Chain-from-Geth)
+  - [[Docker]]
 - [[Accounts, Wallets, Vaults]]
   - [Back-up & Restore](Backing-up-&-Restoring)
   - [[Ledger Nano S]]
@@ -70,3 +71,7 @@
 - [[Light Client]]
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
+- [Whisper](Whisper)
+  - [Overview](Whisper-Overview)
+  - [Whisper PoC #2](Whisper-PoC-2)
+  - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
