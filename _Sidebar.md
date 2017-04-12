@@ -6,16 +6,16 @@
 
 ## Using Parity
 - [[Parity Wallet]]
-  - [[Accounts, Wallets, Vaults]]
   - [Back-up & Restore](Backing-up-&-Restoring)
+  - [Wallets & Vaults](Accounts%2C-Wallets%2C-Vaults)
   - [[Ledger Nano S]]
 - [[Configuring Parity]]
   - [Coming from Geth](Importing-a-Chain-from-Geth)
   - [With Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
+  - [[UI Remote Access]]
   - [Network](Network-Configuration)
   - [[Docker]]
-- [[UI Remote Access]]
 - [[Community Guides]]
 
 ## Developing DApps
