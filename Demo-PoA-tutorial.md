@@ -48,9 +48,9 @@ We will run a chain with Authority Round consensus engine. First we need to crea
 }
 ```
 
-`"gasLimitBoundDivisor"` which determines gas limit adjustment has the usual Ethereum value  
-`"stepDuration"` is set to at least 5 second block times  
-`"validators"` is empty right now since we are yet to create our authority accounts  
+`"gasLimitBoundDivisor"` which determines gas limit adjustment has the usual Ethereum value
+`"stepDuration"` is set to at least 5 second block times
+`"validators"` is empty right now since we are yet to create our authority accounts
 
 `"params"` standard for most chains
 
@@ -63,7 +63,7 @@ Save the above under `demo-spec.json`.
 ## 3. Setting up the two nodes
 
 Now that a bare bones chain specification is complete the two nodes can be set up. Parity stores accounts for each chain with a different genesis hash in a separate folder, so in order to create the accounts in the correct one we will need to run with the `--chain` option.
-Normally the two nodes would be started on separate machines, however since we are using the same one we will need to resolve some possible collisions:  
+Normally the two nodes would be started on separate machines, however since we are using the same one we will need to resolve some possible collisions:
 - `-d` determines the directory that a Parity instance uses for data and keys
 - `--port` determines the port via which Parity communicates with other nodes
 - `--jsonrpc-port` is the RPC port
@@ -277,7 +277,7 @@ parity --config node1.toml
 
 ## 6. Connecting the nodes
 
-In order to ensure the nodes are connected to each other we will need to know their [enode addresses](https://github.com/ethereum/wiki/wiki/enode-url-format) and inform the other node about it. There are three ways to obtain the enode:  
+In order to ensure the nodes are connected to each other we will need to know their [enode addresses](https://github.com/ethereum/wiki/wiki/enode-url-format) and inform the other node about it. There are three ways to obtain the enode:
 - RPC
 - UI (in the footer)
 - startup console output
@@ -324,7 +324,7 @@ You can also use the node UIs, node 0 at `localhost:8080` and node 1 at `localho
 
 You can now create more accounts, send value around, write contracts and deploy them. All the tools that are used to develop and use the Ethereum network can be also used in this network.
 
-To deploy Parity on multiple machines you may find the [docker builds](https://hub.docker.com/r/ethcore/parity/) useful.
+To deploy Parity on multiple machines you may find the [docker builds](Docker) useful.
 
 To add a non-authority node this simpler config can be used:
 ```

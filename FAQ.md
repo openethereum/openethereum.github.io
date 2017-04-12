@@ -305,10 +305,10 @@ in the Web3 console, or by using the Parity Wallet UI to create or import accoun
 
 #### How can I run Parity in Docker?
 
-Docker images for Parity [are available via](https://hub.docker.com/r/ethcore/parity/):
+Docker images for Parity are available via [Docker Hub](Docker), i.e.:
 
 ```bash
-docker pull ethcore/parity:beta-release
+docker pull ethcore/parity:beta
 ```
 
 You can view the [Dockerfile here](https://github.com/paritytech/parity/blob/master/docker/ubuntu/Dockerfile).
