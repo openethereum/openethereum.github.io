@@ -6,26 +6,26 @@
 
 ## Using Parity
 - [[Parity Wallet]]
-  - [Writing DApps](Writing-Dapps-for-Parity)
-  - [Parity DApp Registry](Parity-dapp-registry)
-  - [DApp Discovery](Register-your-DAPP-for-discovery)
-  - [Parity Name Registry](Parity-name-registry)
-  - [Parity GitHub Hint](Parity-github-hint)
+  - [[Accounts, Wallets, Vaults]]
+  - [Back-up & Restore](Backing-up-&-Restoring)
+  - [[Ledger Nano S]]
 - [[Configuring Parity]]
   - [Coming from Geth](Importing-a-Chain-from-Geth)
   - [With Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
   - [Network](Network-Configuration)
   - [[Docker]]
-- [[Accounts, Wallets, Vaults]]
-  - [Back-up & Restore](Backing-up-&-Restoring)
-  - [[Ledger Nano S]]
 - [[UI Remote Access]]
 - [[Community Guides]]
 
 ## Developing DApps
-- [oo7-parity.js Reference](oo7-Parity-Reference)
-- DApp Tutorial
+- [Writing DApps](Writing-Dapps-for-Parity)
+  - [Parity DApp Registry](Parity-dapp-registry)
+  - [DApp Discovery](Register-your-DAPP-for-discovery)
+  - [Parity Name Registry](Parity-name-registry)
+  - [Parity GitHub Hint](Parity-github-hint)
+  - [oo7-parity.js Reference](oo7-Parity-Reference)
+- [DApp Tutorial](Tutorial-Part-I)
   - [1: Get Started](Tutorial-Part-I)
   - [2: oo7 Bonds](Tutorial-Part-II)
   - [3: Parity Bonds](Tutorial-Part-III)
