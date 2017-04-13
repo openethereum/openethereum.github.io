@@ -71,7 +71,7 @@ To publish Parity's ports to the host machine, use the `-p` option:
 $ docker run -ti -p 8180:8180 -p 8545:8545 -p 30303:30303 ethcore/parity:beta
 ```
 
-For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host.
+For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can browse to http://localhost:8180 from the Docker host computer to access the Parity Wallet.
 
 ##### Pass arguments
 
@@ -81,7 +81,7 @@ To pass further operating options to Parity, simply append them to the `docker r
 $ docker run -ti ethcore/parity:beta --no-ui --no-dapps --no-discovery
 ```
 
-In this case, it disables the UI, the DApps Server, and discovery.
+In this case, it disables the Wallet, the DApps Server, and discovery.
 
 ##### Config file
 
@@ -115,7 +115,7 @@ This will expose the whole data dir to the host machine at `~/.local/share/io.pa
 To run a detached Parity instance, use `docker run -d`:
 
 ```bash
-$ docker run -dti ethcore/parity:beta
+$ docker run -d ethcore/parity:beta
 245f312f3f39ad0a518091b1ee4cdc0c1f6d74fb9609395ed3fdcf43acae4b62
 ```
 
