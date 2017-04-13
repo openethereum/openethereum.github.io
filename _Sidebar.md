@@ -31,7 +31,7 @@
   - [8: Events](Tutorial-Part-VIII)
   - [9: Deploy Contracts](Tutorial-Part-IX)
   - [10: Sign Data](Tutorial-Part-X)
-- [Writing DApps](Writing-Dapps-for-Parity)
+- [Deploying DApps to Parity Wallet](Deploying-DApps-to-Parity-Wallet)
   - [oo7-parity.js Reference](oo7-Parity-Reference)
   - [Parity DApp Registry](Parity-dapp-registry)
   - [DApp Discovery](Register-your-DAPP-for-discovery)
