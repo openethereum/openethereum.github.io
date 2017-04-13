@@ -20,13 +20,6 @@
 - [[Community Guides]]
 
 ## Developing DApps
-- [Writing DApps](Writing-Dapps-for-Parity)
-  - [Parity DApp Registry](Parity-dapp-registry)
-  - [DApp Discovery](Register-your-DAPP-for-discovery)
-  - [Parity Name Registry](Parity-name-registry)
-  - [Parity GitHub Hint](Parity-github-hint)
-  - [IPFS-API](IPFS)
-  - [oo7-parity.js Reference](oo7-Parity-Reference)
 - [DApp Tutorial](Tutorial-Part-I)
   - [1: Get Started](Tutorial-Part-I)
   - [2: oo7 Bonds](Tutorial-Part-II)
@@ -38,6 +31,13 @@
   - [8: Events](Tutorial-Part-VIII)
   - [9: Deploy Contracts](Tutorial-Part-IX)
   - [10: Sign Data](Tutorial-Part-X)
+- [Writing DApps](Writing-Dapps-for-Parity)
+  - [oo7-parity.js Reference](oo7-Parity-Reference)
+  - [Parity DApp Registry](Parity-dapp-registry)
+  - [DApp Discovery](Register-your-DAPP-for-discovery)
+  - [Parity Name Registry](Parity-name-registry)
+  - [Parity GitHub Hint](Parity-github-hint)
+  - [IPFS-API](IPFS)
 - [JSONRPC Guide](JSONRPC)
   - [web3](JSONRPC-web3-module)
   - [net](JSONRPC-net-module)
