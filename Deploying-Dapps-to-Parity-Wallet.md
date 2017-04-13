@@ -1,8 +1,8 @@
 # Overview
 
-DApps are an exciting way to showcase a contract or a series of contracts with a simple interface that allows users to interact with it in a secure way. This guide will provide a step-by-step guide for developers to develop dapps for their contracts and integrate these into Parity.
+DApps are an exciting way to showcase a contract or a series of contracts with a simple interface that allows users to interact with it in a secure way. This guide will provide a step-by-step guide for developers to develop dapps for their contracts and integrate these into Parity Wallet.
 
-Parity supports two types of dapps - one locally hosted (ideal for dapps still in development, or those dapps that are private) and network dapps (ideal for dapps applicable to a global community.)
+Parity Wallet supports two types of dapps - one locally hosted (ideal for dapps still in development, or those dapps that are private) and network dapps (ideal for dapps applicable to a global community.)
 
 
 ## Local DApps
@@ -79,7 +79,7 @@ A very simple application (displaying the blockNumber, parity.js APIs) would be 
 
 ## Network DApps
 
-Once the developer is satisfied that the local dapp operates as intended and wants to take the next step to deploy the dapp to the network. For this Parity includes a DApp Registry application to register the manifest, image and content.
+Once the developer is satisfied that the local dapp operates as intended and wants to take the next step to deploy the dapp to the network. For this Parity Wallet includes a DApp Registry application to register the manifest, image and content.
 
 - It is recommended to do the deployment on the test network first.
 - Register the dapp to receive a new unique network id.
@@ -87,8 +87,8 @@ Once the developer is satisfied that the local dapp operates as intended and wan
 - For manifests and files, the "File Link" is to be used for the content hash in the GHH dapp.
 - For the actual dapp content bundle the "Content Link" option should be used in the GHH dapp.
 - Edit the dapp [in the DApp Registry](Parity-dapp-registry) and supply the image, manifest and content hashes as generated in the previous steps.
-- The dapp should now be visible on the Parity Applications page.
+- The dapp should now be visible on the Parity Wallet Applications page.
 
 ## Additional functions
 
-It is highly recommended that dapp developers use the Parity registry for ease of name lookups, especially when having multiple contracts on multiple chains. [The name registry](https://github.com/paritytech/parity/wiki/Parity-name-registry) makes the association of names to addresses straight forward and transparent, regardless of the chain.
+It is highly recommended that dapp developers use the Parity Wallet registry for ease of name lookups, especially when having multiple contracts on multiple chains. [The name registry](https://github.com/paritytech/parity/wiki/Parity-name-registry) makes the association of names to addresses straight forward and transparent, regardless of the chain.
