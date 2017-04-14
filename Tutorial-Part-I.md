@@ -85,6 +85,13 @@ For Linux it's `$HOME/.local/share/io.parity.ethereum/dapps` - in this case you'
 ln -s $PWD/dist $HOME/.local/share/io.parity.ethereum/dapps/mydapp
 ```
 
+For Windows, it's in `%APPDATA%/Parity/Ethereum/dapps` - here you'd want to enter:
+
+```
+%=For Windows systems=%
+mklink /D "%cd%/dist" "%APPDATA%/Parity/Ethereum/dapps/mydapp"
+```
+
 Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22697933/f9d6449a-ed20-11e6-92d2-1afafaba86ea.png)
