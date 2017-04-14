@@ -89,7 +89,7 @@ For Windows, it's in `%APPDATA%/Parity/Ethereum/dapps` - here you'd want to ente
 
 ```
 %=For Windows systems=%
-mklink /D "%cd%/dist" "%APPDATA%/Parity/Ethereum/dapps/mydapp"
+mklink /D "%APPDATA%/Parity/Ethereum/dapps/mydapp" "%cd%/dist"
 ```
 
 Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
