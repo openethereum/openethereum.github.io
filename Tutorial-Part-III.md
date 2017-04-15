@@ -94,7 +94,7 @@ Naturally, `parity.bonds.blocks` is able to accept any number, even a bond, as i
 <div>
 	Latest block's timestamp is:&nbsp;
 	<Rspan style={{fontWeight: 'bold'}}>
-		{parity.bonds.blocks[parity.bonds.height].map(b => b.timestamp)}
+		{parity.bonds.blocks[parity.bonds.height].map(b => b.timestamp.toString())}
 	</Rspan>
 </div>
 ```
