@@ -14,7 +14,7 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 ## Private chains
 
 Parity can be used to set up a private chain. In addition to the usual [[Proof of Work Chains]], Parity also includes [[Proof of Authority Chains]] which do not require mining.
-More details on the available options can be found on the [[Consensus Engines]] page.
+More details on the available options can be found on the [[Pluggable Consensus]] page.
 
 ## JSON chain spec format
 A JSON file which specifies rules of a blockchain, some fields are optional which are described following the minimal example, these default to 0.
