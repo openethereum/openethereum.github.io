@@ -51,7 +51,7 @@
 
 ## Parity Chains
 - [Chain Specification](Chain-specification)
-  - [[Consensus Engines]]
+  - [[Pluggable Consensus]]
     - [[Aura]]
   - [[Validator Set]]
 - [[Proof of Work Chains]]
