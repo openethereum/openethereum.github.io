@@ -120,7 +120,7 @@ Parity puts various means at your disposal to help you here:
 - `parity.bonds.code(address)` evaluates to the current "contract" code of account at `address`.
 - `parity.bonds.storageAt(address, location)` evaluates to the value in storage `location` of account at `address`.
 
-We'll use the first in our dapp to display the account balance of the most recent block author ("miner") - the expression we'll need is `parity.bonds.balance(parity.bonds.head.author)`. Left alone it's a bit ugly, so we'll prettify it a bit with the function `formatBalance` which is exposed by `007-parity`:
+We'll use the first in our dapp to display the account balance of the most recent block author ("miner") - the expression we'll need is `parity.bonds.balance(parity.bonds.head.author)`. Left alone it's a bit ugly, so we'll prettify it a bit with the function `formatBalance` which is exposed by `oo7-parity`:
 
 ```jsx
 <div>
