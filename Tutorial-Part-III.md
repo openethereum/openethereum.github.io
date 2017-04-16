@@ -104,13 +104,13 @@ Naturally, `parity.bonds.blocks` is able to accept any number, even a bond, as i
 That `.map` is a bit cumbersome. Conveniently, the `Bond` API knows about subscripting, and that expression is reducible to:
 
 ```js
-{parity.bonds.blocks[parity.bonds.height].timestamp}
+{parity.bonds.blocks[parity.bonds.height].timestamp.toString()}
 ```
 
 Indeed, `parity.bonds.blocks[parity.bonds.height]` is a fairly common expression. So much so that it has a shorter alias: `parity.bonds.head`, so in fact the simplest means of expressing our `<Rspan>` expression is:
 
 ```js
-{parity.bonds.head.timestamp}
+{parity.bonds.head.timestamp.toString()}
 ```
 
 ### Composing expressions
