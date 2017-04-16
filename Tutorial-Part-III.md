@@ -111,7 +111,7 @@ Furthermore, `parity.bonds.blocks[parity.bonds.height]` is a fairly common expre
 
 ### Composing expressions
 
-These expressions are sometimes very useful, but often you want to do some block-chain based computation on this information. For example, getting the author ("miner") of the most recent block is easy (`parity.block.author`) but might be of limited use; in fact you might wish to know not just their identity but also their account balance.
+These expressions are sometimes very useful, but often you want to do some blockchain based computation on this information. For example, getting the author ("miner") of the most recent block is easy (`parity.block.author`) but might be of limited use; in fact you might wish to know not just their identity but also their account balance.
 
 Parity puts various means at your disposal to help you here:
 
@@ -131,6 +131,8 @@ We'll use the first in our dapp to display the account balance of the most recen
 	&nbsp;wei
 </div>
 ```
+
+(Ensure you place the line `import {formatBalance} from 'oo7-parity';` atop your `app.jsx`.)
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22704760/d7468bcc-ed36-11e6-8411-320791d107e8.png)
 
