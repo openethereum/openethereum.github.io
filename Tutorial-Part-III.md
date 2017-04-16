@@ -94,20 +94,16 @@ Naturally, `parity.bonds.blocks` is able to accept any number, even a bond, as i
 <div>
 	Latest block's timestamp is:&nbsp;
 	<Rspan style={{fontWeight: 'bold'}}>
-		{parity.bonds.blocks[parity.bonds.height].map(b => b.timestamp.toString())}
+		{parity.bonds.blocks[parity.bonds.height].map(b => b.timestamp).map(_ => _.toString())}
 	</Rspan>
 </div>
 ```
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22701622/26a80d68-ed2c-11e6-8720-946e311a9b34.png)
 
-That `.map` is a bit cumbersome. Conveniently, the `Bond` API knows about subscripting, and that expression is reducible to:
+That `.map` is a bit cumbersome. Conveniently, the `Bond` API knows about subscripting, which means the `.timestamp` can be moved out of the `map`. (`toString` is a reserved expression, so it must remain `map`ped, however in general you will find that you rarely want to use such a blunt transformation anyway.)
 
-```js
-{parity.bonds.blocks[parity.bonds.height].timestamp.map(_=>_.toString())}
-```
-
-Indeed, `parity.bonds.blocks[parity.bonds.height]` is a fairly common expression. So much so that it has a shorter alias: `parity.bonds.head`, so in fact the simplest means of expressing our `<Rspan>` expression is:
+Furthermore, `parity.bonds.blocks[parity.bonds.height]` is a fairly common expression. So much so that it has a shorter alias: `parity.bonds.head`, so in fact the simplest means of expressing this becomes:
 
 ```js
 {parity.bonds.head.timestamp.map(_=>_.toString())}
