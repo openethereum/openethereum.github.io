@@ -128,7 +128,6 @@ We'll use the first in our dapp to display the account balance of the most recen
 	<Rspan style={{fontWeight: 'bold'}}>
 		{parity.bonds.balance(parity.bonds.head.author).map(formatBalance)}
 	</Rspan>
-	&nbsp;wei
 </div>
 ```
 
@@ -158,7 +157,13 @@ To see the list of accounts available, we can just grab the list of accounts and
 </div>
 ```
 
-Determining the address of the preferred account is just as easy. Rather than using the reactive `span` element, let's use an alternative reactive element, `Hash`. This is very similar to the `Rspan` element, except we give it a `value` prop rather than children and it renders our value nicely as an abridged hash:
+Determining the address of the preferred account is just as easy. Rather than using the reactive `span` element, let's use an alternative reactive element, `Hash`. This is very similar to the `Rspan` element, except we give it a `value` prop rather than children and it renders our value nicely as an abridged hash. You'll first need to import it from the `oo7-react` module:
+
+```js
+import {TextBond, Rspan, Hash} from 'oo7-react';
+```
+
+Then switch the `render` function to use it:
 
 ```jsx
 <div>
