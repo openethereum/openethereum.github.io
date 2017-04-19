@@ -264,6 +264,7 @@ List of pull requests sorted by merge date (ascending):
 
 #### [![F3-annoyance](http://i.imgur.com/Zsd8zxB.png) `is:open is:issue label:F3-annoyance`](https://github.com/paritytech/parity/labels/F3-annoyance)
 
+- [#5472 Chrome background image doesn't fill without gaps](https://github.com/paritytech/parity/issues/5472)
 - [#5468 Accounts selector in the Dapp should display all accounts.](https://github.com/paritytech/parity/issues/5468)
 - [#5448 web3.site forwards to home.web3.site:8180](https://github.com/paritytech/parity/issues/5448)
 - [#5435 docker versions do not match tags](https://github.com/paritytech/parity/issues/5435)
