@@ -8,7 +8,7 @@ a hard-configured set of "authorities" - nodes that are explicitly allowed to cr
 # Setting up a Proof of Authority network
 1. Pick real world entities that should control the network, so called authorities.
 2. Each authority should run a Parity node and create an account.
-3. Authorities should exchange their account addresses and place them in the [spec or validator contract](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-consensus).
+3. Authorities should exchange their account addresses and place them in the [spec or validator contract](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#validator-consensus).
 4. All authority nodes should run an instance Parity with the agreed on specification.
 5. Additional user nodes can connect to the network as well.
 6. Use the network just as a public Ethereum network (transactions, contracts etc.).
