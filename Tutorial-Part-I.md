@@ -12,8 +12,6 @@ This tutorial walks you through making a simple Ethereum-powered, distributed ap
 
 Our dapp will use modern JS technologies; [NPM](https://www.npmjs.com), [WebPack](https://webpack.js.org), [React](https://facebook.github.io/react/), Material UI, [Babel](http://babeljs.io), ES6, JSX and [OO7 Bonds](https://github.com/paritytech/oo7-parity).
 
-The latter Bonds technology, provided by oo7 package, is still very much in development. As such there might be one or two rough edges in this tutorial. Mea cupla. Ensure you are running with the very latest `oo7`, `oo7-parity` and `oo7-react` packages. If you still have trouble, come find me [on gitter](https://gitter.im/paritytech/parity) :-)
-
 Getting a working set up in Javascript with all of this takes time and patience. We'll cheat and just clone a repo with it all ready. First, if you don't have Git, node.js, NPM or Webpack already installed on your system, get them (`sudo apt-get install git npm` might work on Ubuntu).
 
 Next, clone our conveniently prepared `skeleton` repository:
