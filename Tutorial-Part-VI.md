@@ -30,7 +30,7 @@ contract Counter {
 }
 ```
 
-You can compile it within the Parity Wallet by using the "Develop" page in the "Contracts" tab. After compiling it, you'll end up with two things: the EVM initialisation byte-code and the contract's ABI. For now we will assume the contract contract is already deployed: this can be done with Parity Wallet by using the "Deploy" function.
+You can compile it within the Parity Wallet by using the "Develop" page in the "Contracts" tab. After compiling it, you'll end up with two things: the EVM initialisation byte-code and the contract's ABI. For now we will assume the contract is already deployed: this can be done with Parity Wallet by using the "Deploy" function.
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24465379/1a275082-14ad-11e7-88f4-140eb2c3ab74.png)
 
