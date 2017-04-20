@@ -74,7 +74,7 @@ already={this.prevVotes.map(a => a.filter(x => x.option == i).map(x => x.who))}
 
 This should be added to the props of the `VoteOption` tag.
 
-To finsh up, we'll need to actually display them in the row by changing `VoteOption` component. The first thing to dohere is add the new prop to the `super` initialiser's `Bond` props list, since we expect it to be a `Bond`:
+To finsh up, we'll need to actually display them in the row by changing `VoteOption` component. The first thing to do here is add the new prop to the `super` initialiser's `Bond` props list, since we expect it to be a `Bond`:
 
 ```js
 super(['votes', 'enabled', 'already']);
@@ -90,7 +90,7 @@ So now we know that `this.state.already` will contain an array of addresses. The
 />))}
 ```
 
-Notice we are aligning the icon at the bottom of the text field (rather than baseline) in order to ensure it appears well centered. All in, we now see this:
+Notice we are aligning the icon at the bottom of the text field (rather than baseline) in order to ensure it appears well centred. All in, we now see this:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24864065/5e3644ae-1e03-11e7-9046-80d58a84bdb3.png)
 
