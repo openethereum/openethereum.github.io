@@ -10,7 +10,7 @@ So far we've learned how to inspect much of the information associated with the 
 
 Sending a transaction in Ethereum is a multi-stage process. The transaction is initially submitted to Parity for signing. During this stage, Parity it free to consult the user to ensure that they authorise this transaction to happen. While in some instances this may be instantaneous, this can also be a long process taking upwards of 60 seconds: depending on the type of account, password or passwords may need to be entered, a 2-factor authentication process may need to occur or the secret key required for signing may be on a different device.
 
-The authorisation stage ends when either the user has decided to approve the transaction (and done all necessary steps to physically create the signature) or when the user has refused the request. Assuming they approved the transaction, it must now be sent to the network for finalisation (also known as "mining" or "confirming"). This is the process of burying the transaction into the block chain such that it can be considered final. Different consensus mechanisms have different means of determining finality. E.g. proof-of-work chains can never achieve true finality and rather rely on the increasingly small chance than an attacker can secretly create a longer chain buoyed by greater proof of "work". Conversely, some consensus algorithms are able to provide "finality" after only a single block.
+The authorisation stage ends when either the user has decided to approve the transaction (and done all necessary steps to physically create the signature) or when the user has refused the request. Assuming they approved the transaction, it must now be sent to the network for finalisation (also known as "mining" or "confirming"). This is the process of burying the transaction into the blockchain such that it can be considered final. Different consensus mechanisms have different means of determining finality. E.g. proof-of-work chains can never achieve true finality and rather rely on the increasingly small chance than an attacker can secretly create a longer chain buoyed by greater proof of "work". Conversely, some consensus algorithms are able to provide "finality" after only a single block.
 
 Once the first block has been received in which the transaction appears, we consider the transaction to be "confirmed"; successive blocks may reveal further confirmations. For the present purposes, we consider only the first confirmation to be "important".
 
@@ -50,7 +50,7 @@ constructor() {
 
 There should be nothing surprising there.
 
-Next for the HTML, we'll have two elements: the balance of our default account (spo that we can watch it go down once the payment goes out) and the button to make a payment:
+Next for the HTML, we'll have two elements: the balance of our default account (so that we can watch it go down once the payment goes out) and the button to make a payment:
 
 ```jsx
 <div>
@@ -85,7 +85,7 @@ Change the constructor so we have a bond for the recipient's name:
 
 ```jsx
 this.name = new Bond;
-this.recipient = parity.bonds.registry.lookupAddress(this.name), 'A');
+this.recipient = parity.bonds.registry.lookupAddress(this.name, 'A');
 ```
 
 And the part of your `render()` HTML that follows the `br` element to:
