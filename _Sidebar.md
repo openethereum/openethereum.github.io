@@ -20,7 +20,7 @@
 - [[Community Guides]]
 
 ## Developing DApps
-- [DApp Tutorial](Tutorial-Part-I)
+- [Dapp Tutorial](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-I)
   - [2: oo7 Bonds](Tutorial-Part-II)
   - [3: Parity Bonds](Tutorial-Part-III)
