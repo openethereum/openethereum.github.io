@@ -16,7 +16,7 @@ Here is the contract code, written in Solidity:
 
 ```
 contract Counter {
-	event Voted(address indexed _who, uint indexed _option);
+	event Voted(address indexed who, uint indexed option);
 
 	function vote(uint _option) {
 		if (hasVoted[msg.sender]) throw;
@@ -45,7 +45,7 @@ In order to use the contract from our Javascript-based dapp, we'll need its inte
 	{"constant":false,"inputs":[{"name":"_option","type":"uint256"}],"name":"vote","outputs":[],"payable":false,"type":"function"},
 	{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"hasVoted","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},
 	{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"votes","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},
-	{"anonymous":false,"inputs":[{"indexed":true,"name":"_who","type":"address"},{"indexed":true,"name":"_option","type":"uint256"}],"name":"Voted","type":"event"}
+	{"anonymous":false,"inputs":[{"indexed":true,"name":"who","type":"address"},{"indexed":true,"name":"option","type":"uint256"}],"name":"Voted","type":"event"}
 ]
 ```
 
