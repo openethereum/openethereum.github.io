@@ -12,7 +12,7 @@ Previously, we created and deployed a contract for voting and made our Dapp use 
 <a
 	style={{float: 'left', minWidth: '3em'}}
 	href='#'
-	onClick={() => this.counter.vote(i)}>
+	onClick={() => this.counter.vote(i)}
 >
 	{n}
 </a>
@@ -62,7 +62,7 @@ Things can easily become a bit cramped when everything happens inside the same c
 
 `ReactiveComponent` is a class provided by `oo7-react` (you need to add it to the import line) in order to minimise the fuss when creating React components that need to handle props whose value may be `Bond`s. By providing the names of any props which may take a `Bond` when calling `super()` in the constructor, the underlying values of those bonds are provided to you under similarly named keys in `this.state`. Everything is fully integrated into the React object's system, so you'll find `render()` gets called whenever the underlying value of any of your prop `Bond`s change. In all, this means you no longer need to fall back on `Bond`-aware elements like `Rspan` and can instead create your own as you need them.
 
-Let's create our first `ReactiveComponent`, which will be a voting option, roughly everything in the `Rspan` currently. After the `class` declaration, we need to inform the `super` of which props we like to support `Bond` values on. At this point, the only bond we're interested in is the number of votes of this option, so we'll ust pass a single-item array of `'votes'`.
+Let's create our first `ReactiveComponent`, which will be a voting option, roughly everything in the `Rspan` currently. After the `class` declaration, we need to inform the `super` of which props we like to support `Bond` values on. At this point, the only bond we're interested in is the number of votes of this option, so we'll just pass a single-item array of `'votes'`.
 
 For the `render()` function, we'll return something similar to the original `Rspan`, however, since we now have the plain values we can instead use a basic `span` tag. The `borderRight` value is no longer the mapped expression, but rather the direct version of it, using our object's state which has been populated by `ReactiveComponent` for us. We pass in the `vote` and `label` props from the parent context. This leaves us with:
 
@@ -131,7 +131,7 @@ var votingEnabled = Bond.all([this.voted, this.state.tx])
 
 Notice the use of `Bond.all` in order to collect the two input bonds which we need to determine the final value. This line must appear in `render` (or some other function which gets called when the state changes), since `this.state.tx` will change its value outside the constructor.
 
-Finally, the can add the simple props line `enabled={votingEnabled}` to the `VoteOption` tag.
+Finally, we can add the simple props line `enabled={votingEnabled}` to the `VoteOption` tag.
 
 If you try it out, you'll find it does the right thing, with voting disabled when you've already voted or there's one in progress.
 
