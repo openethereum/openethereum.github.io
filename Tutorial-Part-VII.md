@@ -64,14 +64,14 @@ Things can easily become a bit cramped when everything happens inside the same c
 
 Let's create our first `ReactiveComponent`, which will be a voting option, roughly everything in the `Rspan` currently. After the `class` declaration, we need to inform the `super` of which props we like to support `Bond` values on. At this point, the only bond we're interested in is the number of votes of this option, so we'll just pass a single-item array of `'votes'`.
 
-For the `render()` function, we'll return something similar to the original `Rspan`, however, since we now have the plain values we can instead use a basic `span` tag. The `borderRight` value is no longer the mapped expression, but rather the direct version of it, using our object's state which has been populated by `ReactiveComponent` for us. We pass in the `vote` and `label` props from the parent context. This leaves us with:
+For rendering, rather than using the standard React `render`, we'll instead use the `ReactiveComponent`'s `readyRender`. This ensures that it will not be called until all `Bond` values are well-defined. Inside it, we'll return something similar to the original `Rspan`, however, since we now have the plain values we can instead use a basic `span` tag. The `borderRight` value is no longer the mapped expression, but rather the direct version of it, using our object's state which has been populated by `ReactiveComponent` for us. We pass in the `vote` and `label` props from the parent context. This leaves us with:
 
 ```js
 class VoteOption extends ReactiveComponent {
 	constructor () {
 		super(['votes']);
 	}
-	render () {
+	readyRender () {
 		return (<span style={{ borderRight:
 			`${1 + this.state.votes * 10}px black solid` }}>
 			<a
