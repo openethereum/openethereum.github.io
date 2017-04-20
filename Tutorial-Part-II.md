@@ -27,6 +27,8 @@ This is a [JSX](https://facebook.github.io/jsx/) file. Basically, that means it 
 
 The first thing we'll do is introduce the [oo7 library](https://github.com/paritytech/oo7). This introduces into Javascript the notion of reactive values known as "bonds". [Reactive values](https://en.wikipedia.org/wiki/Reactive_programming) are similar to normal "variables", except that you can get notification of when they change. They can be `map`ped and composed into arbitrarily complex expressions which are evaluated only on update.
 
+The oo7 package is still very much in development, as such there might be one or two rough edges in this tutorial. Mea cupla. Ensure you are running with the very latest packages. If you still have trouble, come find me [on gitter](https://gitter.im/paritytech/parity) :-)
+
 **Our first example will just demonstrate how `Bond`s can introduce effortless reactivity by dynamically replicating the contents of an editable text field into a [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span).**
 
 Ensure the appropriate libraries are introduced. Install the `oo7` and `oo7-react` libraries by running the following command. It will download them and put two entries into the list of libraries your app needs to run.
