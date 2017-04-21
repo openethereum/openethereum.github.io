@@ -59,7 +59,7 @@ If an item only works when the Ethereum client is Parity, then the item's protot
 
 If the parameter of a function's usage is non-obvious, then a `:` is appended, followed by an informative name.
 
-One item (`blocks`) is denoted an array: it may be dereferenced as an array e.g. `parity.bonds.blocks[parity.bonds.current]`.
+One item (`blocks`) is denoted an array: it may be dereferenced as an array e.g. `parity.bonds.blocks[parity.bonds.height]`.
 
 Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `parity.bonds.head.author` would be the `Bond` that evaluates to the author of the block currently at the head of the chain.
 
