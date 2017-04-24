@@ -39,7 +39,7 @@ NOTE: It's recommended to setup authentication and SSL on your nginx server.
 1. Make sure the time is exact on the Host (Node) and the Client (Browser).
 1. Setup Nginx server on the Host.
 1. Create nginx configuration at `/etc/nginx/sites-enabled/parity.ui` (substitute `<external-ip>` with correct values):
-   ```
+    ```
    server {
      listen <external-ip>:8080;
 
@@ -72,7 +72,7 @@ NOTE: It's recommended to setup authentication and SSL on your nginx server.
        proxy_read_timeout 86400;
      }
    }
-  ```
+    ```
 1. Restart nginx and run Parity without any flags (default `interface`/`port`/`cors`/`hosts` settings are sufficient)
 1. On the Client, open your browser and go to:
 
