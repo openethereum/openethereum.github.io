@@ -1,4 +1,4 @@
-Parity implements a distributed secret store. It enables one to generate secrets corresponding to hashes which are held across multiple Key Servers. Access to those secrets is given out only when permissions in a blockchain contract are set. The secret can be used to used to sign, encrypt or decrypt any data. The scheme is based on [this paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A0EF4DEE6638E535648F19C13A0251C2?doi=10.1.1.124.4128&rep=rep1&type=pdf).
+Parity implements a distributed secret store. It enables one to generate secrets corresponding to hashes which are held across multiple Key Servers. Access to those secrets is given out only when permissions in a blockchain contract are set. The secret can be used to sign, encrypt or decrypt any data. The scheme is based on [this paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A0EF4DEE6638E535648F19C13A0251C2?doi=10.1.1.124.4128&rep=rep1&type=pdf).
 
 ## Permissioning contract
 The permissioning contract has to implement a single method:
