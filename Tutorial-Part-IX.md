@@ -34,7 +34,15 @@ export class App extends React.Component {
 }
 ```
 
-While the `render` of the function of the new `Counter` class is equivalent to the same function in the original `App` class, the `constructor` portion of the new `Counter` class now reads:
+The `render` function of the new `Counter` class is mostly equivalent to the same function in the original `App` class. The only change is to replace the two lines that use `this.counter` to instead use `this.props.contract`, which is now being passed from `App`. The two props lines for the `VoteOption` element `votes` and `vote` now read:
+
+```js
+votes={this.props.contract.votes(i)}
+vote={() => this.setState({tx: votes={this.props.contract.vote(i)})}
+```
+
+
+The `constructor` portion of the new `Counter` class is a little different from the `App` class. It now reads:
 
 ```js
 constructor() {
