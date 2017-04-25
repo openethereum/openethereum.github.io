@@ -14,7 +14,7 @@ There is backwards compatibility, so we can use the same `TransactionProgressBad
 
 Before we can begin in earnest, we will need to refactor some of our existing code. Whereas at the moment, our dapp heads straight into the "voting" mode we actually want to create a new mode of operation where we are deploying the underlying contract. To do this, we will rename the class `App` to `Counter` (and remove the `export` functionality) and introduce a new exported class `App`.
 
-The new class `App` will, for now, just `render()` a `Counter` object. However, the one key change we'll make here is to pass in the `Counter` contract as a prop named `contract`. This has a two repercussions sicne we're working in React. Firstly, we should move the definitions of `this.voted`, `this.prevVote` and `this.prevVotes` from the constructor into `componentWillReceiveProps` and `componentWillMount`, so that they respond to changes in the prop value.
+The new class `App` will, for now, just `render()` a `Counter` object. However, the one key change we'll make here is to pass in the `Counter` contract as a prop named `contract`. This has a two repercussions since we're working in React. Firstly, we should move the definitions of `this.voted`, `this.prevVote` and `this.prevVotes` from the constructor into `componentWillReceiveProps` and `componentWillMount`, so that they respond to changes in the prop value.
 
 Secondly, rather than storing the `Counter` contract object in `App`'s '`this.counter` we'll place it in the more correct `this.state.counter`, so that should it change (which it will, but not quite yet), it is reflected in the browser through forcing a new `render()`.
 
@@ -72,7 +72,7 @@ this.deploy = this.deploy.bind(this);
 For the new `deploy()` function, we'll use the `deployContract` API to create a new transaction. It requires the contract's bytecode (which we'll place in a `const CounterCode` next) and the ABI (which we already have in `CounterABI`). The function begins thus:
 
 ```
-function deploy () {
+deploy () {
 	let tx = parity.bonds.deployContract(CounterCode, CounterABI);
 ```
 
@@ -107,7 +107,7 @@ return (<div>
 
 To decide whether we have yet deployed a contract, we look at the `counter` item in state. If it coerces to `true` then we know we can go ahead and display the `Counter` component as before. Otherwise, we'll need to deploy the contract and instead display the usual combination of button (with the `onClick` handler) and a progress badge (picking up on `this.state.tx`).
 
-One last thing, is to include the contract's byte code. You'll need to either get your own byte code from the compiler (as we did when we deployed the contract in the first place), or alternatively, just use this:
+One final thing is to include the contract's byte code. You'll need to either get your own byte code from the compiler (as we did when we deployed the contract in the first place), or alternatively, just use this:
 
 ```js
 const CounterCode = '\
@@ -145,7 +145,7 @@ tx.done(s => {
 });
 ```
 
-Secondly, in the constructor, chgange the `this.state =` line to ensure that we recreate the contract at preference from any address stored in local storage; for this we'll use our old friend `bonds.makeContract`:
+Secondly, in the constructor, change the `this.state =` line to ensure that we recreate the contract at preference from any address stored in local storage; for this we'll use our old friend `bonds.makeContract`:
 
 ```js
 this.state = { tx: null, counter: window.localStorage.counter
