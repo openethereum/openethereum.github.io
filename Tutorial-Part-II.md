@@ -53,7 +53,7 @@ constructor() {
 }
 ```
 
-You code should now look like this:
+Your code should now look like this:
 
 ```jsx
 import {Bond} from 'oo7';
