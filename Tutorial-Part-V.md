@@ -78,7 +78,7 @@ Once done give it 15-30 seconds and you should see you balance reduce by around 
 Let's quickly alter the dapp so we can accept any name when we give our 100 Finney. Ensure you have the utility function `isNullData`:
 
 ```jsx
-import {Transaction, formatBalance, isNullData} from 'oo7-parity';
+import {formatBalance, isNullData} from 'oo7-parity';
 ```
 
 Change the constructor so we have a bond for the recipient's name:
