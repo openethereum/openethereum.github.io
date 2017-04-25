@@ -30,6 +30,15 @@ In each configuration file change:
 - `self_secret` to hex-encoded private key of the Key Server node
 - `nodes` to enodes` of all other Key Servers
 
+Additional possible fields under `[secretstore]`:
+```
+interface = "local"
+port = 8083
+http_interface = "local"
+http_port = 8082
+path = "db.kovan_ss1/secretstore"
+```
+
 ### 3: Run the Key Servers
 target/release/parity` has been built on step 1. Copy this file to the folder with configuration file and run it:
 ```
