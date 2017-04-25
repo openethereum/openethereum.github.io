@@ -41,7 +41,7 @@ this.state = { tx: null };
 Next we'll assign it during the `onClick` action, so the line becomes:
 
 ```js
-onClick={() => this.setState({tx: this.counter.vote(i)})}>
+onClick={() => this.setState({tx: this.counter.vote(i)})}
 ```
 
 Finally, we'll display the state of the current transaction at the bottom of the page, so we'll need to add this directly before the final `</div>`:
