@@ -85,7 +85,7 @@ render () {
 		return (<div>
 			{Options.map((n, i) => (<div key={i}>
 				<Rspan style={{
-					borderRight: this.counter
+					borderLeft: this.counter
 						.votes(i)
 						.map(v => `${1 + v * 10}px black solid`)
 				}}>
