@@ -99,7 +99,7 @@ The task of the parent context is to provide those three props: `label`, `vote` 
 
 It's not always a valid action to vote. When we have already voted with the current account, or when we are in the middle of voting (perhaps while it is being signed) there is little point allowing the user to vote again. While our contract's logic defends against such mistaken actions having any effect in these situations, it would be nice if the UI were to reflect this by disabling the links.
 
-Happily, having split out our voting into a separate, reactive component, this task is fairly easy. We will introduce a new reactive `enabled` prop into `VoteOption` (so we get `super(['votes', 'enabled']);` in our constructor). When this is `false` it will prevent the link from calling `vote` and will display a `not-allowed` mouse cursor; the `render` function now becomes:
+Happily, having split out our voting into a separate, reactive component, this task is fairly easy. We will introduce a new reactive `enabled` prop into `VoteOption` (so we get `super(['votes', 'enabled']);` in our constructor). When this is `false` it will prevent the link from calling `vote` and will display a `not-allowed` mouse cursor; the `readyRender` function now becomes:
 
 ```js
 var s = {float: 'left', minWidth: '3em'};
