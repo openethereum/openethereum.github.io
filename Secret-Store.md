@@ -1,4 +1,6 @@
-Parity implements a distributed secret store. It enables one to generate secrets corresponding to hashes which are held across multiple Key Servers. Access to those secrets is given out only when permissions in a blockchain contract are set. The secret can be used to sign, encrypt or decrypt any data. The scheme is based on [this paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A0EF4DEE6638E535648F19C13A0251C2?doi=10.1.1.124.4128&rep=rep1&type=pdf).
+Secret store is a set of computers (aka key servers), which are running Parity in special mode. Secret store can be used to distributively generate a secret, without revealing this secret to any individual key server. Implementation is based on [this paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A0EF4DEE6638E535648F19C13A0251C2?doi=10.1.1.124.4128&rep=rep1&type=pdf).
+
+The same secret can be used later to encrypt some confidential data (document). When original content of the document is required, you can ask any key server to restore the secret and use it for decryption. This call will only succeed, if requester (the one who owns the key, used to generate “restore the secret” request) has an access to the document. List of users, able to access the secret is stored in the permissioning contract on the blockchain.
 
 ## Permissioning contract
 The permissioning contract has to implement a single method:
@@ -15,7 +17,26 @@ cd parity
 cargo build --features secretstore --release
 ```
 ### 2: Create config files
-For each Key Server, generate key pair (on secp256k1 curve) and then create configuration file like this:
+Before starting configuration files creation, you must choose the main parameters of the secret store. These are N – the number of nodes in the key server and T (less than N) – threshold. Threshold is the maximal number of nodes, which **can not** be used to restore collectively generated secret. If there are T malicious nodes in the secret store, they won’t be able to restore the secret, but T + 1 nodes they could.
+
+There are few configuration schemes, which must be avoided:
+- schemes with N = 1: there is only one key server in cluster, so secret can be restored by this key server at anytime, without any request;
+- schemes with T = 0: every node can recover the secret on its own.
+
+Every key server holds its own key pair, which is used to encrypt outgoing network messages. To generate these key pairs, you can use OpenSSL:
+```
+openssl ecparam -name secp256k1 -genkey -noout | openssl ec -text -noout > keyserver.key
+```
+Then, to read private key from generated file:
+```
+cat keyserver.key | grep priv -A 3 | tail -n +2 | tr -d '\n[:space:]:' | sed 's/^00//'
+```
+Then, to read public key from generated file:
+```
+cat keyserver.key | grep pub -A 5 | tail -n +2 | tr -d '\n[:space:]:' | sed 's/^04//'
+```
+
+After generating key pairs, for every key server, you should create configuration file like this:
 ```
 [parity]
 chain = "kovan"
@@ -27,8 +48,8 @@ nodes = ["cac6c205eb06c8308d65156ff6c862c62b000b8ead121a4455a8ddeff7248128d89569
 ```
 
 In each configuration file change:  
-- `self_secret` to hex-encoded private key of the Key Server node
-- `nodes` to enodes` of all other Key Servers
+- `self_secret` is the private key of this key server
+- `nodes` are identifiers of all other key servers of this secret store in the form KEY_SERVER_PUBLIC@IP_ADDR:PORT
 
 Additional possible fields under `[secretstore]`:
 ```
