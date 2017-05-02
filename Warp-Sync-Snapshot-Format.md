@@ -156,9 +156,9 @@ Any given chunk C has a valid internal size S<sub>C</sub> if and only if S<sub>C
 
 A set of state chunks S is valid if and only if:
 
--  0. for any two arbitrary selected account hashes A<sub>1</sub> and A<sub>2</sub> from any given state chunk S<sub>i</sub> , where A<sub>1</sub> < A<sub>2</sub> when comparing as an unsigned 32-byte big-endian integer, there exists no A<sub>3</sub> from another state chunk S<sub>j</sub> such that A<sub>1</sub> < A<sub>3</sub> < A<sub>2</sub> .
--  0. there is no other valid configuration of chunks containing the same data such that for each chunk C<sub>i</sub> , except the one containing the highest address hash (when treating each as an unsigned 32-byte big-endian integer), S<sub>C<sub>i</sub></sub> is a valid internal size. In plainer terms, every chunk except the last must be "maximally packed".
-- 0. there are no account records with more than `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage items.
+  1. for any two arbitrary selected account hashes A<sub>1</sub> and A<sub>2</sub> from any given state chunk S<sub>i</sub> , where A<sub>1</sub> < A<sub>2</sub> when comparing as an unsigned 32-byte big-endian integer, there exists no A<sub>3</sub> from another state chunk S<sub>j</sub> such that A<sub>1</sub> < A<sub>3</sub> < A<sub>2</sub> .
+  0. there is no other valid configuration of chunks containing the same data such that for each chunk C<sub>i</sub> , except the one containing the highest address hash (when treating each as an unsigned 32-byte big-endian integer), S<sub>C<sub>i</sub></sub> is a valid internal size. In plainer terms, every chunk except the last must be "maximally packed".
+  0. there are no account records with more than `MAX_STORAGE_ENTRIES_PER_ACCOUNT_RECORD` storage items.
 
 The `state_chunks` list in the snapshot manifest must be sorted by the first address contained within.
 
