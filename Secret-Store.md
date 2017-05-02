@@ -70,22 +70,28 @@ RUST_LOG=secretstore=trace,secretstore_net=trace ./parity --config config.toml
 curl -X POST http://localhost:8082/0000000000000000000000000000000000000000000000000000000000000001/a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01/0
 ```
 Where:  
-- `0000000000000000000000000000000000000000000000000000000000000001` are the document contents hash
+- `0000000000000000000000000000000000000000000000000000000000000001` is 32-bytes identifier of key generation session. The same identifier should be used later to recover the key. If you're going to encrypt document with generated key, it would be good to use document contents hash as this identifier.
 -
- `a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01` is the document hash, signed with requester private key
-- `0` is the ECDKG threshold. This value + 1 is minimal number of nodes, required to recover the secret
+ `a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01` is key generation session identifier, signed with requester private key
+- `0` is key generation threshold (configuration parameter T, described in configuration section above)
 
-Return value is a hex-encoded point on secp256k1 (key), encrypted with requester public key.
+Return value is a hex-encoded point on secp256k1 (key), encrypted with requester public key. You could manually generate key from this point (usually by taking X coordinate of the point) and encrypt data, or use one of RPCs described below.
 
 ### 5: Retrieve a secret
 ```
 curl http://localhost:8082/0000000000000000000000000000000000000000000000000000000000000001/a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01
 ```
-- `0000000000000000000000000000000000000000000000000000000000000001` is the document contents hash
+- `0000000000000000000000000000000000000000000000000000000000000001` is the identifier, used previously in key generation request
 -
- `a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01` is the document hash, signed with requester private key
+ `a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01` is the same identifier, signed with requester private key
 
-Return value is a hex-encoded point on secp256k1 (key), encrypted with requester public key.
+Return value is a hex-encoded point on secp256k1 (key), encrypted with requester public key. You could manually restore key from this point (usually by taking X coordinate of the point) and decrypt the data, or use one of RPCs below.
+
+Please notice, that the during this call, secret is revealed to the key server, you are requesting. To make sure that secret is not revealed to any key server, you could use method, described in section "Retrieve a secret shadow".
+
+### 6: Retrieve a secret shadow
+
+TODO
 
 ## RPCs for handling the secrets
 
