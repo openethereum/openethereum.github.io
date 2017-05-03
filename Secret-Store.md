@@ -91,19 +91,29 @@ Please notice, that the during this call, secret is revealed to the key server, 
 
 ### 6: Retrieve a secret shadow
 
-TODO
+```
+curl http://localhost:8082/shadow/0000000000000000000000000000000000000000000000000000000000000001/a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01
+```
+- `0000000000000000000000000000000000000000000000000000000000000001` is the identifier, used previously in key generation request
+-
+ `a199fb39e11eefb61c78a4074a53c0d4424600a3e74aad4fb9d93a26c30d067e1d4d29936de0c73f19827394a1dd049480a0d581aee7ae7546968da7d3d1c2fd01` is the same identifier, signed with requester private key
+
+This method is suitable for cases, when you do not trust the key server, you're asking for the key. Secret is not revealed to this key server. It only responds with the data, required to restore secret if you have private key of requester.
+
+Return value is a JSON object with `decrypted_secret`, `common_point` and `decrypt_shadows` fields. To decrypt this data and restore the secret, you must use `secretstore_shadowDecrypt` RPC, described below. Pass values of the fields, described above to this RPC and it will return the secret.
 
 ## RPCs for handling the secrets
 
 3 special RPC methods are present:
 ```
-secretstore_encrypt(account, encrypted_key, plain_data);
-secretstore_decrypt(account, encrypted_key, encrypted_data);
-secretstore_shadowDecrypt(account, decrypted_secret, common_point, decrypt_shadows, encrypted_data);
+secretstore_encrypt(account, password, encrypted_key, plain_data);
+secretstore_decrypt(account, password, encrypted_key, encrypted_data);
+secretstore_shadowDecrypt(account, password, decrypted_secret, common_point, decrypt_shadows, encrypted_data);
 ```
 Where:
 ```
-account - unlocked parity account of KeyServer requester
+account - parity account of KeyServer requester
+password - password for the account
 encrypted_key - document encryption key, encrypted with requester public key. It is response of KeyServer generate_document_key() && document_key() REST-methods
 plain_data - bytes to encrypt
 encrypted_data - bytes to decrypt. It is response of Parity secretstore_encrypt RPC-method
@@ -116,7 +126,7 @@ curl -X POST http://localhost:8082/000000000000000000000000000000000000000000000
 ```
 2) Call `Parity::secretstore_encrypt()` method:
 ```
-curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_encrypt", "params": ["0x00dfE63B22312ab4329aD0d28CaD8Af987A01932", "0x047155813de218725ceffb7e6c3dbdf5af4273b96de42552d4575f9de32001c4c2337b685288ee3411b54c5c0ace68d890227b6bc2fa80e52edbd2334bec0a45c9efe989eea16ad26ddf592dd5df55403d475a109350275021676624bb7ee06671f679c275ee26173d6f48030d77ae646b5c6a83ebe5e240b81e5286fa6960f5a998f54ee474f9146820a4ad3260d77bb04660dbbc3492deed8c7a92f138175851f1fb5e565d86464c5eacce7766dc2a7f", "0xdeadbeef"], "id":1 }' -H 'content-type: application/json;' http://127.0.0.1:8545/
+curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_encrypt", "params": ["0x00dfE63B22312ab4329aD0d28CaD8Af987A01932", "password", "0x047155813de218725ceffb7e6c3dbdf5af4273b96de42552d4575f9de32001c4c2337b685288ee3411b54c5c0ace68d890227b6bc2fa80e52edbd2334bec0a45c9efe989eea16ad26ddf592dd5df55403d475a109350275021676624bb7ee06671f679c275ee26173d6f48030d77ae646b5c6a83ebe5e240b81e5286fa6960f5a998f54ee474f9146820a4ad3260d77bb04660dbbc3492deed8c7a92f138175851f1fb5e565d86464c5eacce7766dc2a7f", "0xdeadbeef"], "id":1 }' -H 'content-type: application/json;' http://127.0.0.1:8545/
 ```
 
 To decrypt document (simple version, but document secret is revealed to one of KeyServers):
@@ -126,7 +136,7 @@ curl http://localhost:8082/00000000000000000000000000000000000000000000000000000
 ```
 2) Call `Parity::secretstore_decrypt()` method:
 ```
-curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_decrypt", "params": ["0x00dfE63B22312ab4329aD0d28CaD8Af987A01932", "0x047155813de218725ceffb7e6c3dbdf5af4273b96de42552d4575f9de32001c4c2337b685288ee3411b54c5c0ace68d890227b6bc2fa80e52edbd2334bec0a45c9efe989eea16ad26ddf592dd5df55403d475a109350275021676624bb7ee06671f679c275ee26173d6f48030d77ae646b5c6a83ebe5e240b81e5286fa6960f5a998f54ee474f9146820a4ad3260d77bb04660dbbc3492deed8c7a92f138175851f1fb5e565d86464c5eacce7766dc2a7f", "0x2ddec1f96229efa2916988d8b2a82a47ef36f71c"], "id":1 }' -H 'content-type: application/json;' http://127.0.0.1:8545/
+curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_decrypt", "params": ["0x00dfE63B22312ab4329aD0d28CaD8Af987A01932", "password", "0x047155813de218725ceffb7e6c3dbdf5af4273b96de42552d4575f9de32001c4c2337b685288ee3411b54c5c0ace68d890227b6bc2fa80e52edbd2334bec0a45c9efe989eea16ad26ddf592dd5df55403d475a109350275021676624bb7ee06671f679c275ee26173d6f48030d77ae646b5c6a83ebe5e240b81e5286fa6960f5a998f54ee474f9146820a4ad3260d77bb04660dbbc3492deed8c7a92f138175851f1fb5e565d86464c5eacce7766dc2a7f", "0x2ddec1f96229efa2916988d8b2a82a47ef36f71c"], "id":1 }' -H 'content-type: application/json;' http://127.0.0.1:8545/
 ```
 
 To decrypt document (extended version, document secret is not revealed to any of KeyServer, except for 1-of-1 case):
@@ -136,5 +146,5 @@ curl http://localhost:8082/shadow/0000000000000000000000000000000000000000000000
 ```
 2) Call `Parity::secretstore_shadowDecrypt()` method:
 ```
-curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_shadowDecrypt", "params":["0x00dfE63B22312ab4329aD0d28CaD8Af987A01932","0x843645726384530ffb0c52f175278143b5a93959af7864460f5a4fec9afd1450cfb8aef63dec90657f43f55b13e0a73c7524d4e9a13c051b4e5f1e53f39ecd91","0x07230e34ebfe41337d3ed53b186b3861751f2401ee74b988bba55694e2a6f60c757677e194be2e53c3523cc8548694e636e6acb35c4e8fdc5e29d28679b9b2f3",["0x049ce50bbadb6352574f2c59742f78df83333975cbd5cbb151c6e8628749a33dc1fa93bb6dffae5994e3eb98ae859ed55ee82937538e6adb054d780d1e89ff140f121529eeadb1161562af9d3342db0008919ca280a064305e5a4e518e93279de7a9396fe5136a9658e337e8e276221248c381c5384cd1ad28e5921f46ff058d5fbcf8a388fc881d0dd29421c218d51761"],"0x2ddec1f96229efa2916988d8b2a82a47ef36f71c"], "id": 1}' -H 'content-type: application/json;' http://127.0.0.1:8545/
+curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_shadowDecrypt", "params":["0x00dfE63B22312ab4329aD0d28CaD8Af987A01932", "password", "0x843645726384530ffb0c52f175278143b5a93959af7864460f5a4fec9afd1450cfb8aef63dec90657f43f55b13e0a73c7524d4e9a13c051b4e5f1e53f39ecd91","0x07230e34ebfe41337d3ed53b186b3861751f2401ee74b988bba55694e2a6f60c757677e194be2e53c3523cc8548694e636e6acb35c4e8fdc5e29d28679b9b2f3",["0x049ce50bbadb6352574f2c59742f78df83333975cbd5cbb151c6e8628749a33dc1fa93bb6dffae5994e3eb98ae859ed55ee82937538e6adb054d780d1e89ff140f121529eeadb1161562af9d3342db0008919ca280a064305e5a4e518e93279de7a9396fe5136a9658e337e8e276221248c381c5384cd1ad28e5921f46ff058d5fbcf8a388fc881d0dd29421c218d51761"],"0x2ddec1f96229efa2916988d8b2a82a47ef36f71c"], "id": 1}' -H 'content-type: application/json;' http://127.0.0.1:8545/
 ```
