@@ -17,7 +17,7 @@ cd parity
 cargo build --features secretstore --release
 ```
 ### 2: Create config files
-Before starting configuration files creation, you must choose the main parameters of the secret store. These are N – the number of nodes in the key server and T (less than N) – threshold. Threshold is the maximal number of nodes, which **can not** be used to restore collectively generated secret. If there are T malicious nodes in the secret store, they won’t be able to restore the secret, but T + 1 nodes they could.
+Before starting configuration files creation, you must choose the main parameters of the secret store. These are N – the number of nodes in the secret store and T (less than N) – threshold. Threshold is the maximal number of nodes, which **can not** be used to restore collectively generated secret. If there are T malicious nodes in the secret store, they won’t be able to restore the secret, but T + 1 nodes they could.
 
 There are few configuration schemes, which must be avoided:
 - schemes with N = 1: there is only one key server in cluster, so secret can be restored by this key server at anytime, without any request;
