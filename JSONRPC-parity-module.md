@@ -2,11 +2,13 @@
 
 ## JSON-RPC methods
 
+- [parity_cidV0](#parity_cidv0)
 - [parity_composeTransaction](#parity_composetransaction)
 - [parity_consensusCapability](#parity_consensuscapability)
 - [parity_decryptMessage](#parity_decryptmessage)
 - [parity_encryptMessage](#parity_encryptmessage)
 - [parity_futureTransactions](#parity_futuretransactions)
+- [parity_getBlockHeaderByNumber](#parity_getblockheaderbynumber)
 - [parity_listOpenedVaults](#parity_listopenedvaults)
 - [parity_listStorageKeys](#parity_liststoragekeys)
 - [parity_listVaults](#parity_listvaults)
@@ -73,6 +75,40 @@
 
 ## JSON-RPC API Reference
 
+### parity_cidV0
+
+Compute a v0 IPFS Content ID from protobuf encoded bytes.
+
+#### Parameters
+
+0. `Data` - to encode.
+
+```js
+params: ["0x666f6f626172"]
+```
+
+#### Returns
+
+- `String` - Base58 encoded CID
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_cidV0","params":["0x666f6f626172"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "QmSbFjqjd6nFwNHqsBCC7SK8GShGcayLUEtysJjNGhZAnC"
+}
+```
+
+***
+
 ### parity_composeTransaction
 
 Given partial transaction request produces transaction with all fields filled in. Such transaction can be then signed externally.
@@ -99,7 +135,7 @@ params: [{
 
 #### Returns
 
-- `Object` - Transaction object (same as the parameter) with missing fields filled in by defaults.
+- `Object` - Transaction object (same as the parameter) with missing optional fields filled in by defaults.
 
 #### Example
 
@@ -305,6 +341,65 @@ Response
     },
     { ... }, { ... }, ...
   ]
+}
+```
+
+***
+
+### parity_getBlockHeaderByNumber
+
+Get block header. Same as [`eth_getBlockByNumber`](JSONRPC-eth-module#eth_getblockbynumber) but without uncles and transactions.
+
+#### Parameters
+
+0. `Quantity` | `Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+
+```js
+params: [
+  "0x1b4" // 436
+]
+```
+
+#### Returns
+
+- `Object` - Block header
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_getBlockHeaderByNumber","params":["0x1b4"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "author": "0xbb7b8287f3f0a933474a79eae42cbca977791171",
+    "difficulty": "0x4ea3f27bc",
+    "extraData": "0x476574682f4c5649562f76312e302e302f6c696e75782f676f312e342e32",
+    "gasLimit": "0x1388",
+    "gasUsed": "0x0",
+    "hash": "0xdc0818cf78f21a8e70579cb46a43643f78291264dda342ae31049421c82d21ae",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0xbb7b8287f3f0a933474a79eae42cbca977791171",
+    "mixHash": "0x4fffe9ae21f1c9e15207b1f472d5bbdd68c9595d461666602f2be20daf5e7843",
+    "nonce": "0x689056015818adbe",
+    "number": "0x1b4",
+    "parentHash": "0xe99e022112df268087ea7eafaf4790497fd21dbeeb6bd7a1721df161a6657a54",
+    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "sealFields": [
+      "0xa04fffe9ae21f1c9e15207b1f472d5bbdd68c9595d461666602f2be20daf5e7843",
+      "0x88689056015818adbe"
+    ],
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x21b",
+    "stateRoot": "0xddc8b0234c2e0cad087c8b389aa7ef01f7d79b2570bccb77ce48648aa61c904d",
+    "timestamp": "0x55ba467c",
+    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  }
 }
 ```
 
@@ -1163,7 +1258,7 @@ params: [{
   "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
   "condition": {
     "block": 354221,
-    "time": "2017-05-02T15:25:26.839Z"
+    "time": "2017-05-03T09:48:53.250Z"
   }
 }]
 ```
@@ -1176,7 +1271,7 @@ params: [{
 
 Request
 ```bash
-curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2017-05-02T15:25:26.839Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2017-05-03T09:48:53.250Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
