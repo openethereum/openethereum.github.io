@@ -60,7 +60,7 @@ http_port = 8082
 path = "db.kovan_ss1/secretstore"
 ```
 
-Here, path is a path for the internal storage of this KeyServer data. KeyServer will use TCP `port` on `interface` for its internal communications with other key servers. TCP `http_port` on `http_interface` will be used for listening and answering to secret generation and retrieval requests, described above.
+Here, path is a path for the internal storage of this KeyServer data. KeyServer will use TCP `port` on `interface` for its internal communications with other key servers. TCP `http_port` on `http_interface` will be used for listening and answering to secret generation and retrieval requests, described below.
 
 ### 3: Run the Key Servers
 target/release/parity` has been built on step 1. Copy this file to the folder with configuration file and run it:
