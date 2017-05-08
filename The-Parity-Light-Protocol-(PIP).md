@@ -199,13 +199,9 @@ The maximum amount of request credits we're allowed to have for this peer.
 
 The base cost (in credits) to be charged for each request packet sent.
 
-**Gas Cost**: `U`
-
-The cost (in credits) for every gas of proved execution.
-
 **Cost Table**: `P`
 
-A table mapping request IDs to costs. Exceptions are made for the `Headers` and `Execution` requests, which may request multiple headers or a certain amount of gas to prove, respectively. In these cases the cost for the whole request is computed by multiplying `Cost(ID)` by the maximum number of headers or gas requested.
+A table mapping request IDs to costs. Exceptions are made for the `Headers` and `Execution` requests, which may request multiple headers or a certain amount of gas to prove, respectively. In these cases the cost for the whole request is computed by multiplying `Cost(ID)` by the maximum number of headers or gas requested, respectively.
 
 The cost table is encoded as an RLP list containing the base cost followed by lists of length 2:
 
@@ -247,13 +243,26 @@ The base cost of a request packet plus the cumulative cost of all the requests c
 
 A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_.
 
-**UpdateCredits**:
-[`+0x05`, `CR`: `U`]
+## Modifying request credits parameters mid-connection.
 
-An update to the amount of request credits held by a peer.
+**UpdateCreditParameters**:
+[`+0x03`, `max`: `U`, `recharge`: `U`, `cost_table`: `CT`]
+
+Send a remote peer new request credits parameters: a new maximum, rate of recharge per second, and cost table.
+
+A peer receiving this packet should respond with an `AcknowledgeUpdate` packet. Requests sent before the acknowledgement is received will be served under the old parameters. 
+
+When the acknowledgement is received, recharge will be applied to the old parameters and then a transition will be made to the new parameters, preserving ratio of held credits to maximum credits rounding down to the nearest whole number. If an acknowledgement is not received in a timely manner (implementation specific), the remote peer is likely to be disconnected.
+
+No updates can be made to a peer while another update remains unacknowledged.
+
+**AcknowledgeUpdate**
+[`+0x04`]
+
+Acknowledge an update in request credit parameters. It is considered misbehavior to acknowledge an update where none has been made, or to acknowledge an update more than once. Apply the transition to the new parameters upon sending this packet.
 
 ## Transaction relay
 **RelayTransactions**
-[`+0x06`, [`tx_1`: P, `tx_2: P, ...]]
+[`+0x05`, [`tx_1`: P, `tx_2: P, ...]]
 
-Send transactions to a peer to relay to the ethereum network.
+Send transactions to a peer to relay to the main network.
