@@ -263,6 +263,6 @@ Acknowledge an update in request credit parameters. It is considered misbehavior
 
 ## Transaction relay
 **RelayTransactions**
-[`+0x05`, [`tx_1`: P, `tx_2: P, ...]]
+[`+0x05`, [`tx_1`: `P`, `tx_2`: `P`, ...]]
 
 Send transactions to a peer to relay to the main network.
