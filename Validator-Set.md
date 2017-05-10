@@ -29,8 +29,19 @@ It is best to include the contract in the genesis placing the bytecode as a "con
 ## Non-reporting contract
 A simple validator contract has to have the following interface:
 ```json
-{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"}
+[{"constant":true,"inputs":[],"name":"transitionNonce","outputs":[{"name":"nonce","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"validators","type":"address[]"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":true,"name":"_nonce","type":"uint256"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
 ```
+
+which corresponds to this Solidity contract definition:
+```solidity
+contract ValidatorSet {
+    event ValidatorsChanged(bytes32 _parent_hash, uint256 _nonce, address[] _new_set);
+    
+    function getValidators() constant returns (address[] validators);
+    function transitionNonce() constant returns (uint256);
+}
+```
+
 The function `getValidators` will be called on every block to determine the current list. The switching rules are then determined by the contract implementing that method. The spec should contain the contract address:
 
 ```json
@@ -38,6 +49,20 @@ The function `getValidators` will be called on every block to determine the curr
     "safeContract": "0x0000000000000000000000000000000000000005"
 }
 ```
+
+### Warp and Light Sync
+
+The function `transitionNonce` and the `ValidatorsChanged` event are for the purposes of supporting warp sync and light clients and can be ignored if these cases are not important to you: just return 0 from `transitionNonce` and never issue a `ValidatorsChanged` event.
+
+To support warp and light sync, the contract should maintain a "transition nonce", which is defined to be the number of blocks in which a change of the validators set has occurred. This should start at 0. Every time the validator set changes, the contract should bump the transition nonce (unless another transition occurred already in the same block) and issue a `ValidatorsChanged(parent_hash, nonce, new_set)` event where:
+  - `parent_hash` is the hash of the parent block (`block.blockhash(block.number - 1)` in Solidity)
+  - `nonce` is the new transition nonce
+  - and `new_set` is the new validator set.
+
+For correct behavior, silent changes should never occur. More strictly, `getValidators()` and `transitionNonce()` calls should always return the `new_set` and `nonce` values of the most recently `ValidatorsChanged` event or their initial values if no change has ever been issued.
+
+`parent_hash` is included to limit the time window an attacker has to make a log which sets the same bits in the bloom filter, forcing the light client to download receipts for a false positive.
+The transition nonce may only be incremented once per block because only the result of `getValidators` at the final state of the block matters for consensus, and therefore any transitions don't persist to the end of the block may as well have not happened.
 
 ## Reporting contract
 
