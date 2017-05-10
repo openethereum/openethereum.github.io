@@ -54,6 +54,7 @@
   - [[Pluggable Consensus]]
     - [[Aura]]
   - [[Validator Set]]
+    - [[Validator contracts]]
 - [[Proof of Work Chains]]
 - [[Proof of Authority Chains]]
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
