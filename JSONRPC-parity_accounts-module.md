@@ -4,6 +4,9 @@
 
 - [parity_allAccountsInfo](#parity_allaccountsinfo)
 - [parity_changePassword](#parity_changepassword)
+- [parity_deriveAddressHash](#parity_deriveaddresshash)
+- [parity_deriveAddressIndex](#parity_deriveaddressindex)
+- [parity_exportAccount](#parity_exportaccount)
 - [parity_getDappAddresses](#parity_getdappaddresses)
 - [parity_getDappDefaultAddress](#parity_getdappdefaultaddress)
 - [parity_getNewDappsAddresses](#parity_getnewdappsaddresses)
@@ -100,6 +103,161 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": true
+}
+```
+
+***
+
+### parity_deriveAddressHash
+
+Derive new address from given account address using specific hash.
+
+#### Parameters
+
+0. `Address` - Account address to derive from.
+0. `String` - Password to the account.
+0. `Object` - Derivation hash and type (`soft` or `hard`). E.g. `{ hash: "0x123..123", type: "hard" }`.
+0. `Boolean` - Flag indicating if the account should be saved.
+
+```js
+params: [
+  "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+  "hunter2",
+  {
+    "hash": "0x2547ea3382099c7c76d33dd468063b32d41016aacb02cbd51ebc14ff5d2b6a43",
+    "type": "hard"
+  },
+  false
+]
+```
+
+#### Returns
+
+- `Address` - 20 Bytes new derived address.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_deriveAddressHash","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","hunter2",{"hash":"0x2547ea3382099c7c76d33dd468063b32d41016aacb02cbd51ebc14ff5d2b6a43","type":"hard"},false],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
+}
+```
+
+***
+
+### parity_deriveAddressIndex
+
+Derive new address from given account address using hierarchical derivation (sequence of 32-bit integer indices).
+
+#### Parameters
+
+0. `Address` - Account address to export.
+0. `String` - Password to the account.
+0. `Array` - Hierarchical derivation sequence of index and type (`soft` or `hard`). E.g. `[{index:1,type:"hard"},{index:2,type:"soft"}]`.
+0. `Boolean` - Flag indicating if the account should be saved.
+
+```js
+params: [
+  "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+  "hunter2",
+  [
+    {
+      "index": 1,
+      "type": "hard"
+    },
+    {
+      "index": 2,
+      "type": "soft"
+    }
+  ],
+  false
+]
+```
+
+#### Returns
+
+- `Address` - 20 Bytes new derived address.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_deriveAddressIndex","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","hunter2",[{"index":1,"type":"hard"},{"index":2,"type":"soft"}],false],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"
+}
+```
+
+***
+
+### parity_exportAccount
+
+Returns a standard wallet file for given account if password matches.
+
+#### Parameters
+
+0. `Address` - Account address to export.
+0. `String` - Password to the account.
+
+```js
+params: [
+  "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+  "hunter2"
+]
+```
+
+#### Returns
+
+- `Object` - Standard wallet JSON.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_exportAccount","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "address": "0042e5d2a662eeaca8a7e828c174f98f35d8925b",
+    "crypto": {
+      "cipher": "aes-128-ctr",
+      "cipherparams": {
+        "iv": "a1c6ff99070f8032ca1c4e8add006373"
+      },
+      "ciphertext": "df27e3db64aa18d984b6439443f73660643c2d119a6f0fa2fa9a6456fc802d75",
+      "kdf": "pbkdf2",
+      "kdfparams": {
+        "c": 10240,
+        "dklen": 32,
+        "prf": "hmac-sha256",
+        "salt": "ddc325335cda5567a1719313e73b4842511f3e4a837c9658eeb78e51ebe8c815"
+      },
+      "mac": "3dc888ae79cbb226ff9c455669f6cf2d79be72120f2298f6cb0d444fddc0aa3d"
+    },
+    "id": "6a186c80-7797-cff2-bc2e-7c1d6a6cc76e",
+    "meta": "{\"passwordHint\":\"parity-export-test\",\"timestamp\":1490017814987}",
+    "name": "parity-export-test",
+    "version": 3
+  }
 }
 ```
 
@@ -241,9 +399,31 @@ Imports a list of accounts from Geth.
 
 0. `Array` - List of the Geth addresses to import.
 
+```js
+params: [
+  ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
+]
+```
+
 #### Returns
 
 - `Array` - Array of the imported addresses.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_importGethAccounts","params":[["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
+}
+```
 
 ***
 
@@ -302,6 +482,15 @@ None
 Request
 ```bash
 curl --data '{"method":"parity_listGethAccounts","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
+}
 ```
 
 ***
@@ -741,4 +930,3 @@ Response
   "result": true
 }
 ```
-
