@@ -76,12 +76,24 @@ This type of contract can listen to misbehaviour reports from the consensus engi
 
 The correct interface is:
 ```json
-[
-    {"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},
-    {"constant":false,"inputs":[{"name":"validator","type":"address"}],"name":"reportMalicious","outputs":[],"payable":false,"type":"function"},
-    {"constant":false,"inputs":[{"name":"validator","type":"address"}],"name":"reportBenign","outputs":[],"payable":false,"type":"function"}
-]
+[{"constant":true,"inputs":[],"name":"transitionNonce","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"validators","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"},{"name":"proof","type":"bytes"}],"name":"reportMalicious","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"}],"name":"reportBenign","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_nonce","type":"uint256"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
 ```
+
+which corresponds to this Solidity contract definition:
+```solidity
+contract ReportingValidatorSet {
+    event ValidatorsChanged(bytes32 _parent_hash, uint256 _nonce, address[] _new_set);
+    
+    function getValidators() constant returns (address[] validators);
+    function transitionNonce() constant returns (uint256);
+    
+    function reportBenign(address validator, uint256 blockNumber);
+    function reportMalicious(address validator, uint256 blockNumber, bytes proof);
+}
+```
+
+`ValidatorsChanged`, `getValidators` and `transitionNonce` should function exactly as in a non-reporting contract.
+There are two new functions, `reportBenign` and `reportMalicious`. Each should come with the address of a validator being reported and the block number at which misbehavior occurred. `reportMalicious` also requires a proof of malice, which is an arbitrary byte-string which different engines will set to different values.
 
 It is specified as:
 
