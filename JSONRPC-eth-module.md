@@ -1303,7 +1303,7 @@ Creates new message call transaction or a contract creation, if the data field c
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
     - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
     - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    - `minBlock`: `Quantity` | `Tag` - (optional) Delay until this block if specified.
+    - `condition`: `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
 
 ```js
 params: [{
@@ -1392,7 +1392,7 @@ Signs transactions without dispatching it to the network. It can be later submit
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
     - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
     - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    - `minBlock`: `Quantity` | `Tag` - (optional) Delay until this block if specified.
+    - `condition`: `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
 
 #### Returns
 
@@ -1585,4 +1585,3 @@ Response
   "result": true
 }
 ```
-
