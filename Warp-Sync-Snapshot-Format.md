@@ -31,6 +31,8 @@ This is a canonical identifier for any given chunk.
 
 # Block chunks
 
+*NOTE*: This is the block chunk format for Ethash PoW-based engines. Other consensus engines may have their own block chunk format.
+
 Block chunks contain raw block data: blocks themselves, and their transaction receipts. The blocks are stored in the "abridged block" format (referred to by `AB`), and the the receipts are stored in a list: `[receipt_1: P, receipt_2: P, ...]` (referred to by `RC`).
 
 Each block chunk is an rlp-encoded list of the following format:
