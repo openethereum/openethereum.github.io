@@ -106,6 +106,8 @@ apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc
 port = 8181
 [dapps]
 port = 8081
+[ipc]
+disable = true
 ```
 Alternative config files can be generated [here](https://paritytech.github.io/parity-config-generator/).
 
