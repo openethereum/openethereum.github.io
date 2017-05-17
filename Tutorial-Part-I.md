@@ -106,4 +106,4 @@ And there it is - your dapp. For now it's rather underwhelming with it just disp
 
 ----
 
-[2nd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-2)
+[2nd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-II)
