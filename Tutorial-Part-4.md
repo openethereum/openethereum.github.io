@@ -67,7 +67,7 @@ export class App extends React.Component {
 	render() {
 		return (
 			<div>
-				Address of <InputBond bond={this.bond} floatingLabelText='Lookup a name' /> is:<br/>
+				Address of <InputBond bond={this.bond} placeholder='Lookup a name' /> is:<br/>
 				<Hash value={parity.bonds.registry.lookupAddress(this.bond, 'A')} />
 				, it's balance is <Rspan>
 					{parity.bonds.balance(parity.bonds.registry.lookupAddress(this.bond, 'A')).map(formatBalance)}
@@ -161,7 +161,7 @@ Next, let's alter the dapp's render `div`:
 
 ```
 <div>
-	<InputBond bond={this.bond} floatingLabelText='Name' />
+	<InputBond bond={this.bond} placeholder='Name' />
 	<Rimg src={this.GithubHint.entries(parity.bonds.registry.lookupData(this.bond, 'IMG'))[0]} />
 </div>
 ```
