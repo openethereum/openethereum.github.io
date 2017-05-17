@@ -261,6 +261,8 @@ apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc
 port = 8181
 [dapps]
 port = 8081
+[ipc]
+disable = true
 [account]
 password = ["node.pwds"]
 [mining]
@@ -342,6 +344,8 @@ apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc
 port = 8182
 [dapps]
 port = 8082
+[ipc]
+disable = true
 ```
 Then the accounts and connecting the nodes can be done the same as for the authority nodes. To make sure that transactions are accepted, authorities can also run with `usd_per_tx = "0"` field under `[mining]`. Any node submitting a transaction will be then able to do so for free.
 
