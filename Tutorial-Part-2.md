@@ -239,4 +239,4 @@ That should have given you a good introduction to the concept of the `Bond` and 
 
 ----
 
-[3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-III)
+[3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-3)
