@@ -1,6 +1,6 @@
 **This is the third part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 2nd Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-II) | [4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-IV)
+[⟵ 2nd Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-2) | [4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-4)
 
 ----
 
@@ -160,7 +160,7 @@ To see the list of accounts available, we can just grab the list of accounts and
 Determining the address of the preferred account is just as easy. Rather than using the reactive `span` element, let's use an alternative reactive element, `Hash`. This is very similar to the `Rspan` element, except we give it a `value` prop rather than children and it renders our value nicely as an abridged hash. You'll first need to import it from the `oo7-react` module:
 
 ```js
-import {TextBond, Rspan, Hash} from 'oo7-react';
+import {Rspan, Hash} from 'oo7-react';
 ```
 
 Then switch the `render` function to use it:
@@ -223,4 +223,4 @@ You should now be familiar with the core bonds in Parity and be happy to combine
 
 ----
 
-[4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-IV)
+[4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-4)
