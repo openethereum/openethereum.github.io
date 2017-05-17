@@ -1,6 +1,6 @@
 **This is the second part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapter.
 
-[⟵ 1st Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-I) | [3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-III)
+[⟵ 1st Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-1) | [3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-3)
 
 ----
 
