@@ -12,3 +12,5 @@ Many thanks to the guys in Parity Gitter and particularly @martinvalenta for his
 - [8: Events](Tutorial-Part-VIII)
 - [9: Deploy Contracts](Tutorial-Part-IX)
 - [10: Sign Data](Tutorial-Part-X)
+
+The various stages of the tutorial have been provided [here](https://github.com/paritytech/parity-dapp-tutorial) as reference (thanks to @martinvalenta again).
