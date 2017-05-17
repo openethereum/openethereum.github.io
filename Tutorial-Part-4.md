@@ -67,7 +67,7 @@ export class App extends React.Component {
 	render() {
 		return (
 			<div>
-				Address of <TextBond bond={this.bond} floatingLabelText='Lookup a name' /> is:<br/>
+				Address of <InputBond bond={this.bond} floatingLabelText='Lookup a name' /> is:<br/>
 				<Hash value={parity.bonds.registry.lookupAddress(this.bond, 'A')} />
 				, it's balance is <Rspan>
 					{parity.bonds.balance(parity.bonds.registry.lookupAddress(this.bond, 'A')).map(formatBalance)}
@@ -78,7 +78,7 @@ export class App extends React.Component {
 }
 ```
 
-Here we have rewritten the component to include a new `Bond` which, via the `TextBond`, we are using to represent the current text in the text input field. We are passing this into the `lookupAddress` function to turn it into a `Bond` equivalent to the address for that name in the registry, and using this as the `value` of a reactive `Hash` display component. We are also using it in conjunction with `parity.bonds.getBalance` to display a formatted balance of the account.
+Here we have rewritten the component to include a new `Bond` which, via the `InputBond`, we are using to represent the current text in the text input field. We are passing this into the `lookupAddress` function to turn it into a `Bond` equivalent to the address for that name in the registry, and using this as the `value` of a reactive `Hash` display component. We are also using it in conjunction with `parity.bonds.getBalance` to display a formatted balance of the account.
 
 Here's what it looks like:
 
@@ -134,7 +134,7 @@ export class App extends React.Component {
 }
 ```
 
-Note that we are using `HashBond` from `oo7-react` rather than `TextBond`. This just ensures that we enter only valid 32-byte hashes. Ensure that the import line is changed to:
+Note that we are using `HashBond` from `oo7-react` rather than `InputBond`. This just ensures that we enter only valid 32-byte hashes. Ensure that the import line is changed to:
 
 ```jsx
 import {HashBond, Rspan, Hash} from 'oo7-react';
@@ -151,17 +151,17 @@ Then watch the URL come up!
 
 ### Further refinements
 
-Let's display the image associated with a registered name - we want to type `gavofyork` and have my mug come up. First we'll need to import the reactive version of the `img` element (the `Rimg` component) from the `oo7-react` package, so that import line changes to:
+Let's display the image associated with a registered name - we want to type `gavofyork` and have my mug come up. First we'll need to import the reactive version of the `img` element (the `Rimg` component) from the `oo7-react` package, so we should add:
 
 ```
-import {TextBond, Rimg} from 'oo7-react';
+import {Rimg} from 'oo7-react';
 ```
 
 Next, let's alter the dapp's render `div`:
 
 ```
 <div>
-	<TextBond bond={this.bond} floatingLabelText='Name' />
+	<InputBond bond={this.bond} floatingLabelText='Name' />
 	<Rimg src={this.GithubHint.entries(parity.bonds.registry.lookupData(this.bond, 'IMG'))[0]} />
 </div>
 ```
