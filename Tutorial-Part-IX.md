@@ -38,7 +38,7 @@ The `render` function of the new `Counter` class is mostly equivalent to the sam
 
 ```js
 votes={this.props.contract.votes(i)}
-vote={() => this.setState({tx: votes={this.props.contract.vote(i)})}
+vote={() => this.setState({tx: this.props.contract.vote(i)})}
 ```
 
 
@@ -183,7 +183,7 @@ this.addr.then(v => {
 });
 ```
 
-Now we just have to ensure that the `Bond` only gets set when the user has entered the full address of a valid instance of the `Counter` contract. Luckily the `TextBond` component as a `validator` function allowing us to exactly this.
+Now we just have to ensure that the `Bond` only gets set when the user has entered the full address of a valid instance of the `Counter` contract. Luckily the `TextBond` component has a `validator` function allowing us to exactly this.
 
 Before we can realistically be able to detect counter contract instances, we'll need to know what code the contract has on the chain. This is related to, but not the same as, the byte code with which it was initialised. The code hash for my contract (compiled with solidity 0.4.10 with optimisations) is:
 
