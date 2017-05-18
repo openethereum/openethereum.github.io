@@ -10,7 +10,6 @@ Now we have our basic dapp harness, we can start introducing more interesting fu
 
 ```jsx
 import React from 'react';
-import styles from '../style.css';
 
 export class App extends React.Component {
 	render() {
