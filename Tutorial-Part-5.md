@@ -16,6 +16,8 @@ Once the first block has been received in which the transaction appears, we cons
 
 To create a new transaction in Parity, we require only a single new API: the `parity.bonds.post` function. The function returns a type of `Bond`. Constructing it creates a new transaction for the user to approve and which can be pushed out on to the network. The value to which the Bond evaluates reflects the ongoing status of the transaction as it moves through the process of getting finalised. It is always an object with a single key/value. It can be:
 
+- `{"estimating": null}` The amount of gas required for this transaction to execute is being determined.
+- `{"estimated": value}` The amount of gas required for this transaction to execute has been determined as `value`; the user is about to be asked.
 - `{"requested": id}` The user has been asked for approval of the transaction; `id` is the (numeric) identity of the request.
 - `{"signed": hash}` The user has approved the transaction and the transaction has been signed to form a final transaction hash of `hash`. It is now ready to be sent to the network for inclusion in a new block.
 - `{"confirmed": receipt}` The transaction has been confirmed into a block. The receipt of the transaction is provided as `receipt`, giving information concerning its operation, including any logs.
@@ -33,10 +35,11 @@ Creating a new transaction is a simple affair. The function of `parity.bonds.pos
 
 ### Giveth to gavofyork
 
-Let's start simple. A button to give 100 Finney (around $1 at current prices) to me. Since we want to include a button, we'll need the appropriate import for that:
+Let's start simple. A button to give 100 Finney (around $10 at current prices) to me. Since we want to include a button, we'll need the appropriate import for that:
 
 ```jsx
-import {RRaisedButton, Rspan, TextBond} from 'oo7-react';
+import {Rspan, TextBond} from 'oo7-react';
+import {BButton} from 'parity-reactive-ui';
 ```
 
 Next, in our class, we'll maintain the address of 'gavofyork' for efficiency and brevity:
@@ -58,8 +61,8 @@ Next for the HTML, we'll have two elements: the balance of our default account (
 		{parity.bonds.balance(parity.bonds.me).map(formatBalance)}
 	</Rspan>
 	<br />
-	<RRaisedButton
-		label='Give gavofyork 100 Finney'
+	<BButton
+		content='Give gavofyork 100 Finney'
 		onClick={() => parity.bonds.post({to: this.gavofyork, value: 100 * 1e15})}
 	/>
 </div>
@@ -71,7 +74,7 @@ Refresh your browser and click the button! You'll see the signer window pop up a
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22750413/badb3b72-edfe-11e6-810b-9bcdb47a20a8.png)
 
-Once done give it 15-30 seconds and you should see you balance reduce by around 0.1 Ether.
+Once done, give it a few seconds and you should see you balance reduce by around 0.1 Ether.
 
 ### Giveth to anyone
 
@@ -91,9 +94,9 @@ this.recipient = parity.bonds.registry.lookupAddress(this.name, 'A');
 And the part of your `render()` HTML that follows the `br` element to:
 
 ```jsx
-<TextBond bond={this.name} floatingLabelText='Name of recipient' />
-<RRaisedButton
-	label={this.name.map(n => `Give ${n} 100 Finney`)}
+<TextBond bond={this.name} placeholder='Name of recipient' />
+<BButton
+	content={this.name.map(n => `Give ${n} 100 Finney`)}
 	disabled={this.recipient.map(isNullData)}
 	onClick={() => parity.bonds.post({to: this.recipient, value: 100 * 1e15})}
 />
@@ -111,7 +114,7 @@ Jutta didn't yet register...
 
 ### Track the transaction
 
-Seeing nothing for those 15-30 seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `parity.bonds.post`. The problem is that we're discarding it; in fact we need to keep it around and use it as a reactive display element.
+Seeing nothing for those several seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `parity.bonds.post`. The problem is that we're discarding it; in fact we need to keep it around and use it as a reactive display element.
 
 First, we'll introduce some state to our React class. Place this at the bottom of the `constructor`:
 
