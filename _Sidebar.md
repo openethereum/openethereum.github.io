@@ -61,14 +61,6 @@
 - [Private Chains](Private-chains)
   - [Private Dev Chain](Private-development-chain)
 
-## Hacking on Parity
-- [[Coding Guide]]
-- [Labeling](Labelling)
-- [[Release Notes]]
-- [Gitter](https://gitter.im/ethcore/parity) <sup>[+]</sup>
-- [GitHub](https://github.com/paritytech/parity) <sup>[+]</sup>
-- [Website](https://parity.io) <sup>[+]</sup>
-
 ## Technologies
 - [[Warp Sync]]
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
@@ -80,3 +72,11 @@
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
 - [[Secret Store]]
+
+## Hacking on Parity
+- [[Coding Guide]]
+- [Labeling](Labelling)
+- [[Release Notes]]
+- [Gitter](https://gitter.im/ethcore/parity) <sup>[+]</sup>
+- [GitHub](https://github.com/paritytech/parity) <sup>[+]</sup>
+- [Website](https://parity.io) <sup>[+]</sup>
