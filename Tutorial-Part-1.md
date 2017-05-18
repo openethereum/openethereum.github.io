@@ -10,7 +10,7 @@ This tutorial walks you through making a simple Ethereum-powered, distributed ap
 
 ### 1. Spawning a new Dapp
 
-Our dapp will use modern JS technologies; [NPM](https://www.npmjs.com), [WebPack](https://webpack.js.org), [React](https://facebook.github.io/react/), Material UI, [Babel](http://babeljs.io), ES6, JSX and [oo7 Bonds](https://github.com/paritytech/oo7-parity).
+Our dapp will use modern JS technologies; [NPM](https://www.npmjs.com), [WebPack](https://webpack.js.org), [React](https://facebook.github.io/react/), Semantic UI, [Babel](http://babeljs.io), ES6, JSX and [oo7 Bonds](https://github.com/paritytech/oo7-parity).
 
 Getting a working set up in Javascript with all of this takes time and patience. We'll cheat and just clone a repo with it all ready. First, if you don't have Git, node.js, NPM or Webpack already installed on your system, get them (`sudo apt-get install git npm` might work on Ubuntu).
 
@@ -29,10 +29,10 @@ git remote rm origin
 
 It's liberally licensed (Apache 2.0) so you don't have to worry about open sourcing your own code (though obviously you'll be enlightened and want to do that anyway :-)). You're now free to push it out to your own Git repo, if you decide to create one on Github.
 
-The next stage is to get all the dependencies sorted. NPM is rather handy at looking after this:
+The next stage is to get all the dependencies installed. NPM makes this rather easy, but the bundled script makes it even easier! Just run:
 
 ```
-npm i
+./init.sh
 ```
 
 This should grab and install all that is required. The next thing to do is to build the final web-ready version of the fledgling dapp. We use [webpack](https://webpack.js.org) for this; it'll smash everything together and provide you with a single `index.js` for you in the `dist` path.
