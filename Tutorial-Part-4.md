@@ -46,7 +46,7 @@ Let's get this in to our dapp. Change the `render()`ed HTML to:
 ```
 <div>
 	gavofyork's address is&nbsp;
-	<Hash value={parity.bonds.registry.lookupAddress('gavofyork', 'A')} />
+	<Rspan>{parity.bonds.registry.lookupAddress('gavofyork', 'A')}</Rspan>
 </div>
 ```
 
@@ -68,7 +68,7 @@ export class App extends React.Component {
 		return (
 			<div>
 				Address of <InputBond bond={this.bond} placeholder='Lookup a name' /> is:<br/>
-				<Hash value={parity.bonds.registry.lookupAddress(this.bond, 'A')} />
+				<Rspan>{parity.bonds.registry.lookupAddress(this.bond, 'A')}</Rspan>
 				, it's balance is <Rspan>
 					{parity.bonds.balance(parity.bonds.registry.lookupAddress(this.bond, 'A')).map(formatBalance)}
 				</Rspan>
