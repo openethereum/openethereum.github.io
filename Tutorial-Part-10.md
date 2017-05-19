@@ -88,7 +88,7 @@ With those three lines in place, we're ready to introduce the signing logic.
 
 ### Putting Pen to Paper
 
-With Parity dapps, signing is very similar to creating a transaction or deploying a contract. We can use `parity.bonds.sign`; it takes two arguments: the message to be signed and, optionally, the identity (address) that should sign it. The latter defaults to the user's currently selected identity. The function returns a `Bond` which evaluates to the present status of the signing request, ending either in an object with a key called `failed` or (on success) an object with a key of `signed`, whose value is the three elements of the signature concatenated into 65 bytes of data. `done` works properly for this kind of `Bond`, which is convenient, as we'll be relying on it.
+With Parity dapps, signing is very similar to creating a transaction or deploying a contract. We can use `bonds.sign`; it takes two arguments: the message to be signed and, optionally, the identity (address) that should sign it. The latter defaults to the user's currently selected identity. The function returns a `Bond` which evaluates to the present status of the signing request, ending either in an object with a key called `failed` or (on success) an object with a key of `signed`, whose value is the three elements of the signature concatenated into 65 bytes of data. `done` works properly for this kind of `Bond`, which is convenient, as we'll be relying on it.
 
 Our changes will all take place in the `Counter` class. We'll refactor the voting mechanism so the logic is in a new function, `vote`. Since we'll be calling this from a handler, it makes sense to bind it to the object during the constructor, much as we did with `App`'s `deploy` function. So append this to the constructor function:
 
@@ -118,10 +118,10 @@ First off, the message:
 
 This retrieves the `STATEMENT` field from the contract (the message which must be signed) and shaves off the text which is prepended automatically (and mandatorily) by our client. `removeSigningPrefix` comes from `oo7-parity.js`, so ensure you import that extra symbol. `message` will now be the string "I am eligible to vote!".
 
-Next, we initiate the signing operation. We call `parity.bonds.sign` with our message. When `done`, we should check whether the user actually finished the operation (i.e. the final value is an object containing `signed`):
+Next, we initiate the signing operation. We call `bonds.sign` with our message. When `done`, we should check whether the user actually finished the operation (i.e. the final value is an object containing `signed`):
 
 ```
-	parity.bonds.sign(message).done(s => {
+	bonds.sign(message).done(s => {
 		if (s.signed) {
 ```
 
