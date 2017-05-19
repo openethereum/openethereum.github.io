@@ -14,10 +14,10 @@ Let's use this to display a message describing what (if anything) we already vot
 
 The way we set such a bond up is through calling into the function named after the `event` (i.e. `Voted`) with up to two arguments. The first argument allows us to filter the events we return by any of the `indexed` arguments to the event. The second argument controls which blocks whose transactions' logs are included in the list that we receive. It is extremely important to filter as much as possible as early as possible since it contributes to significant resource usage, particularly so on the light client.
 
-In our case, we won't bother filtering by which blocks we include, but we will filter by the `indexed` argument `who`, asking for it to be exactly equal to our current identity (`parity.bonds.me`). It is reactive, so if we switch to a different identity, everything will update automatically. The snippet we end up with is `this.counter.Voted({ who: parity.bonds.me })`. We will assign this into our object under the name `prevVote` at the end of the constructor:
+In our case, we won't bother filtering by which blocks we include, but we will filter by the `indexed` argument `who`, asking for it to be exactly equal to our current identity (`bonds.me`). It is reactive, so if we switch to a different identity, everything will update automatically. The snippet we end up with is `this.counter.Voted({ who: bonds.me })`. We will assign this into our object under the name `prevVote` at the end of the constructor:
 
 ```js
-this.prevVote = this.counter.Voted({ who: parity.bonds.me });
+this.prevVote = this.counter.Voted({ who: bonds.me });
 ```
 
 Next, we should render it to the display in a message. For this we could create a new React component as we did with `VoteOption`, but it's a bit overkill for the moment. Instead we'll just use our trustly old friend `Rspan`. Inside the `Rspan`, we'll simply `map` the value of `prevVote` into a message telling us of which option we voted, or the empty string if we didn't yet vote.
@@ -58,10 +58,10 @@ import {InputBond, HashBond, BButton, TransactionProgressLabel, AccountIcon} fro
 
 This gives us a react component `AccountIcon` that accepts props `address` (the address of the account to display), `style` and `className` which can be used to manage the appearance of the component; we'll use it to add a margin and change the size.
 
-In order to figure out which of our accounts voted for which option, we'll need to grab all events involving our accounts voting. Happily, we are able to provide the event filter an array of alternatives of which only one needs to match for any given log. Particularly conveniently, there is a bond containing the array of all of our accounts: `parity.bonds.accounts`. We'll place the new bond in `this.prevVotes`, so the following line is added to our constructor:
+In order to figure out which of our accounts voted for which option, we'll need to grab all events involving our accounts voting. Happily, we are able to provide the event filter an array of alternatives of which only one needs to match for any given log. Particularly conveniently, there is a bond containing the array of all of our accounts: `bonds.accounts`. We'll place the new bond in `this.prevVotes`, so the following line is added to our constructor:
 
 ```js
-this.prevVotes = this.counter.Voted({ who: parity.bonds.accounts });
+this.prevVotes = this.counter.Voted({ who: bonds.accounts });
 ```
 
 Next up, we will need to partition those events by the option on which they voted. Since we are already looping through the options during render, it makes sense to apply a filter there (`.filter(x => x.option == i)`). Once filtered, we can discard the extended event information and keep only the address: (`.map(x => x.who)`). We will pass this find bond, which represents the array of addresses voting for this option, through to the `VoteOption` component with a new prop called `already`.
