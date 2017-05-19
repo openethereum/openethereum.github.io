@@ -10,7 +10,7 @@ You should now be familiar with `Bond`s and some of the core Parity bond API. Ne
 
 Contract API basically comes in three pieces. Firstly, there's state-changing transactions like transferring tokens to a counter-party. Secondly, there's event reception and reporting that (usually) happen when such a state change occurs. Finally, there is inspection of the contract state through calling `constant` functions. For now we will restrict ourselves to the latter.
 
-### Our first contract
+### 1. Our first contract
 
 The first contract we will deal with is the global (name) registry. If you are not yet familiar, this is a registry that exists on all sensible blockchains which records fields of information for any desired name. The registry records ownership information so that names can be registered and their information changed at a later date.
 
@@ -54,7 +54,7 @@ Refresh your dapp page and, assuming you're running on Kovan, you'll see somethi
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22712813/2e36a65c-ed54-11e6-896d-c123bd95d3d5.png)
 
-### Dynamic lookups
+### 2. Dynamic lookups
 
 Now this is all very well, but perhaps you're not just interested in my account, but want to allow the user to enter whatever account they desire. Bonds make it easy:
 
@@ -86,7 +86,7 @@ Here's what it looks like:
 
 If the name you are currently looking up happens to have its address changed meanwhile, or their balance changes, you will of course see these details reflected in real-time.
 
-### Derivative contracts
+### 3. Derivative contracts
 
 So far so good, but while the registry contract is interesting, it's not usually the final destination. Typically the registry is used to lookup the address of a second contract that you would actually like to use.
 
@@ -137,7 +137,7 @@ export class App extends React.Component {
 Note that we are using `HashBond` from `oo7-react` rather than `InputBond`. This just ensures that we enter only valid 32-byte hashes. Ensure that the import line is changed to:
 
 ```jsx
-import {HashBond, Rspan, Hash} from 'oo7-react';
+import {InputBond, HashBond} from 'parity-reactive-ui';
 ```
 
 When you refresh the page enter the hash of a some content you know has a URL hint, for example:
@@ -151,10 +151,10 @@ Then watch the URL come up!
 
 ### Further refinements
 
-Let's display the image associated with a registered name - we want to type `gavofyork` and have my mug come up. First we'll need to import the reactive version of the `img` element (the `Rimg` component) from the `oo7-react` package, so we should add:
+Let's display the image associated with a registered name - we want to type `gavofyork` and have my mug come up. First we'll need to import the reactive version of the `img` element (the `Rimg` component) from the `oo7-react` package, so we should change the `oo7-react` import line:
 
 ```
-import {Rimg} from 'oo7-react';
+import {Rspan, Rimg} from 'oo7-react';
 ```
 
 Next, let's alter the dapp's render `div`:
