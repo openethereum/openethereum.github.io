@@ -2,15 +2,13 @@ This is a 10-part tutorial on how to write dapps. It makes significant use of Re
 
 Many thanks to the guys in Parity Gitter and particularly @martinvalenta for his proof-reading and corrections.
 
-- [1: Get Started](Tutorial-Part-I)
-- [2: oo7 Bonds](Tutorial-Part-II)
-- [3: Parity Bonds](Tutorial-Part-III)
-- [4: Call Contracts](Tutorial-Part-IV)
-- [5: Post Transactions](Tutorial-Part-V)
-- [6: A New Contract](Tutorial-Part-VI)
-- [7: Interaction](Tutorial-Part-VII)
-- [8: Events](Tutorial-Part-VIII)
-- [9: Deploy Contracts](Tutorial-Part-IX)
-- [10: Sign Data](Tutorial-Part-X)
-
-The various stages of the tutorial have been provided [here](https://github.com/paritytech/parity-dapp-tutorial) as reference (thanks to @martinvalenta again).
+- [1: Get Started](Tutorial-Part-1)
+- [2: oo7 Bonds](Tutorial-Part-2)
+- [3: Parity Bonds](Tutorial-Part-3)
+- [4: Call Contracts](Tutorial-Part-4)
+- [5: Post Transactions](Tutorial-Part-5)
+- [6: A New Contract](Tutorial-Part-6)
+- [7: Interaction](Tutorial-Part-7)
+- [8: Events](Tutorial-Part-8)
+- [9: Deploy Contracts](Tutorial-Part-9)
+- [10: Sign Data](Tutorial-Part-10)
