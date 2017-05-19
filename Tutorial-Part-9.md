@@ -10,7 +10,7 @@ For our penultimate trick, we will introduce the ability to not just use, but al
 
 There is backwards compatibility, so we can use the same `TransactionProgressBadge` in order to display the progress of the deployment transaction as it gets signed and confirmed.
 
-### Split and Prop
+### 1. Split and Prop
 
 Before we can begin in earnest, we will need to refactor some of our existing code. Whereas at the moment, our dapp heads straight into the "voting" mode we actually want to create a new mode of operation where we are deploying the underlying contract. To do this, we will rename the class `App` to `Counter` (and remove the `export` functionality) and introduce a new exported class `App`.
 
@@ -57,11 +57,11 @@ componentWillReceiveProps (props) {
 }
 ```
 
-See how the bonds' setup have been move out of the constructor (inert to prop changes) into the React APIs functions which execute along with prop changes.
+See how the bonds' setup have been moved out of the constructor (inert to prop changes) into the React APIs functions which execute along with prop changes.
 
 With these changes, the dapp will remain essentially the same, however the ground is now prepared for introducing the deployment mode.
 
-### The Real Deal
+### 2. The Real Deal
 
 `Counter` class is ready for our needs; our efforts can now be concentrated on the `App` class, into which we'll add an initial mode for deploying the contract.
 
@@ -106,8 +106,8 @@ return (<div>
 	{!!this.state.counter
 		? <Counter contract={this.state.counter} />
 		: <div>
-			<RRaisedButton label='Deploy' onClick={this.deploy}/>
-			<TransactionProgressBadge value={this.state.tx}/>
+			<BButton content='Deploy' onClick={this.deploy}/>
+			<TransactionProgressLabel value={this.state.tx}/>
 		</div>
 	}
 </div>);
@@ -140,7 +140,44 @@ After clicking, it'll prompt you with a transaction to deploy the contract and e
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24910910/8ba7f420-1ec9-11e7-95a1-2aa5596709a4.png)
 
-### What about Next Time?
+### 3. Consolidating
+
+Since we have the `TransactButton` component, we may as well use it.
+
+
+First, we won't need to maintain the status of the transaction which is deploying the contract. Remove the `tx: null` mapping in the constructor, so that line now reads:
+
+```js
+this.state = { counter: null };
+```
+
+Next, the `deploy` function no longer needs to `setState({tx})` since we're not tracking the transaction; remove that line, too. The deploy function *will* however need to return the transaction `Bond`, since `TransactButton` will need it to track; end the function with `return tx`, so it now reads:
+
+```js
+deploy () {
+	let tx = parity.bonds.deployContract(CounterCode, CounterABI);
+	tx.done(s => this.setState({ counter: s.deployed }));
+	return tx;
+}
+```
+
+You can remove the `BButton` and `TransactionProgressLabel` tags and replace them by the single tag:
+
+```jsx
+<TransactButton content='Deploy' tx={this.deploy} statusText/>
+```
+
+Notice we're passing `this.deploy` in the `tx` prop in lieu of a straight transaction; in case you wish to handle the submission of the transaction yourself, you can pass it a function which does that and will be called when the button is clicked. We're also passing the `statusText` prop which puts a text string in the progress label rather than just an icon.
+
+Finally, don't forget to import the component:
+
+```js
+import {InputBond, HashBond, BButton, TransactionProgressLabel, AccountIcon, TransactButton} from 'parity-reactive-ui';
+```
+
+And that's it!
+
+### 4. What about Next Time?
 
 This is great for now, but when we reload or return to this page, it will have forgotten the contract. We'll use the browser's local storage to ensure that it persists between sessions.
 
@@ -156,14 +193,14 @@ tx.done(s => {
 Secondly, in the constructor, change the `this.state =` line to ensure that we recreate the contract at preference from any address stored in local storage; for this we'll use our old friend `bonds.makeContract`:
 
 ```js
-this.state = { tx: null, counter: window.localStorage.counter
+this.state = { counter: window.localStorage.counter
 	? parity.bonds.makeContract(window.localStorage.counter, CounterABI)
 	: null };
 ```
 
 The next time you deploy in that browser session, it will be last (at least until you reset it in the next tutorial!).
 
-### And What about Dave?
+### 5. And What about Dave?
 
 So this is great for us, but as soon as we want to give it to someone else to vote, we run into an issue; they have no way of arriving at the vote we deployed. Let's also allow the user to enter the address of a vote instead of forcing them to deploy a new one.
 
@@ -201,7 +238,7 @@ Now to the code. After the button in the `render` function, we will add the foll
 
 ```js
 <span style={{margin: '2em'}}>OR</span>
-<TextBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && parity.bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash)}/>
+<InputBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && parity.bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash)}/>
 ```
 
 The first line just splits the button from the text input. The second is our input for counter contract addresses. The `TextBond` we have seen before in the very first tutorial about `Bond`s. We have introduced a custom `validator` prop here, which first makes sure the string form `TextBond` is well-formed and then checks to make sure that the hash of the code at that address is what we would expect from a `Counter` contract. Only then is it valid and does it get set to `this.addr`.
