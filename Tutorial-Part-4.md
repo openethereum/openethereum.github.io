@@ -92,7 +92,7 @@ So far so good, but while the registry contract is interesting, it's not usually
 
 Let's suppose that second contract is the GithubHint contract; if you're not already familiar, the GithubHint contract allows you to suggest which URLs might serve content for a particular hash. It's a semi-centralised, hacky alternative to content-addressable-delivery systems like BitTorrent/Kademlia, Swarm and IPFS. We use it widely in Parity as a means of content dissemination.
 
-Since it's a "standard" contract in Parity, the ABI for it is available as `parity.api.abi.githubhint`. The address changes per chain, but can be discovered via the registry under the name `'githubhint'`; the expression would therefore be `bonds.registry.lookupAddress('githubhint', 'A')`.
+Since it's a "standard" contract in Parity, the ABI for it is available in `oo7-parity` as `GitHubHintABI`. The address changes per chain, but can be discovered via the registry under the name `'githubhint'`; the expression would therefore be `bonds.registry.lookupAddress('githubhint', 'A')`.
 
 An important thing to realise about the `makeContract` function is that it does not require a "plain" address for the contract, but can actually work with a `Bond` for the address; everything will magically react if the address to which the `Bond` evaluates changes.
 
@@ -101,7 +101,13 @@ Therefore our GithubHint contract object can be created with the expression:
 ```js
 bonds.makeContract(
 	bonds.registry.lookupAddress('githubhint', 'A'),
-	parity.api.abi.githubhint);
+	GitHubHintABI);
+```
+
+Though we mustn't forget to import `GitHubHint`:
+
+```js
+import {GitHubHintABI} from 'oo7-parity';
 ```
 
 The GithubHint contract has only a single inspection method: `entries`. This takes a `bytes32` (the hash of the content to be found) and returns three items (via an array). There are three kinds of entry; Github repository entries, whereby the first and second items form the address of a particular commit of a particular repository; general URLs, where the first item is a URL and the second is the null hash; and empty entries where both items are null. The third item is always the owner (if any) of the entry and the only account capable of changing the hint information.
@@ -121,7 +127,7 @@ export class App extends React.Component {
 	constructor() {
 		super();
 		this.bond = new Bond;
-		this.GithubHint =bonds.makeContract(bonds.registry.lookupAddress('githubhint', 'A'), parity.api.abi.githubhint);
+		this.GithubHint = bonds.makeContract(bonds.registry.lookupAddress('githubhint', 'A'), GitHubHintABI);
 	}
 	render() {
 		return (
