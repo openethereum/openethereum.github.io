@@ -19,24 +19,21 @@ This gives us a global `parity` object which we can use to get information conce
 This is already set up for us, but if you're interested, it happens in `src/client/scripts/entry.jsx`, specifically the lines:
 
 ```js
-import {setupBonds, abiPolyfill} from 'oo7-parity';
+import {setupBonds} from 'oo7-parity';
 
-// …
-
-// Polyfills for parity.js
-parity.api.abi = abiPolyfill(parity.api);
+…
 
 // We use and dirty up the global namespace here.
 parity.bonds = setupBonds(parity.api);
 ```
 
-The `abiPolyfill` call just provides various standard contract ABIs for us in `parity.api.abi`; the bonds API is setup later with the `setupBonds` call.
+The bonds API is setup with the `setupBonds` call.
 
-### Watch the block
+### 1. Watch the block
 
 For our first trick, we will introduce the simplest of all bonds: `parity.bonds.height`. This evaluates to [the number of the latest block](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
 
-In `app.jsx`, remove the entire `App` class and replace it with:
+In `app.jsx`, remove the entire `App` class and the two `const`s and replace it with:
 
 ```jsx
 export class App extends React.Component {
@@ -80,7 +77,7 @@ And hey presto:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22700625/44b820f2-ed29-11e6-8fae-125303b677ce.png)
 
-### Blocks
+### 2. Blocks
 
 The block number is great and all, but perhaps we're more interested in the latest block itself. Happily, Parity can help us there with the `parity.bonds.blocks` object. This is a lazy-evaluated "array" of bonds which can subscribe to. To give yourself an idea of its capabilities, let's quickly open the Chrome JS console alter the environment to 127.0.0.1 and evaluate the block at number 69:
 
@@ -109,7 +106,7 @@ Furthermore, `parity.bonds.blocks[parity.bonds.height]` is a fairly common expre
 {parity.bonds.head.timestamp.map(_=>_.toString())}
 ```
 
-### Composing expressions
+### 3. Composing expressions
 
 These expressions are sometimes very useful, but often you want to do some blockchain based computation on this information. For example, getting the author ("miner") of the most recent block is easy (`parity.block.author`) but might be of limited use; in fact you might wish to know not just their identity but also their account balance.
 
@@ -131,13 +128,17 @@ We'll use the first in our dapp to display the account balance of the most recen
 </div>
 ```
 
-(Ensure you place the line `import {formatBalance} from 'oo7-parity';` atop your `app.jsx`.)
+Ensure you have `formatBalance` available by replacing the line `import {formatBlockNumber} from 'oo7-parity';` with:
+
+```js
+import {formatBlockNumber, formatBalance} from 'oo7-parity';
+```
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22704760/d7468bcc-ed36-11e6-8411-320791d107e8.png)
 
 You'll see it updating as the blocks go by.
 
-### Our balance
+### 4. Our balance
 
 Parity can help us get information about our own accounts in a reactive manner. Several APIs are provided:
 
@@ -157,18 +158,12 @@ To see the list of accounts available, we can just grab the list of accounts and
 </div>
 ```
 
-Determining the address of the preferred account is just as easy. Rather than using the reactive `span` element, let's use an alternative reactive element, `Hash`. This is very similar to the `Rspan` element, except we give it a `value` prop rather than children and it renders our value nicely as an abridged hash. You'll first need to import it from the `oo7-react` module:
-
-```js
-import {Rspan, Hash} from 'oo7-react';
-```
-
-Then switch the `render` function to use it:
+Determining the address of the preferred account is just as easy: it's just `parity.bonds.me`. Switch the `render` function to use it:
 
 ```jsx
 <div>
 	Default account:&nbsp;
-	<Hash value={parity.bonds.me} />
+	<Rspan>{parity.bonds.me}</Rspan>
 </div>
 ```
 
@@ -185,7 +180,7 @@ Maybe we'd like to know how much we have in our selected account, too. This can 
 ```jsx
 <div>
 	Default account:&nbsp;
-	<Hash value={parity.bonds.me} />
+	<Rspan>{parity.bonds.me}</Rspan>
 	<br />With a balance of&nbsp;
 	<Rspan>
 		{parity.bonds.balance(parity.bonds.me).map(formatBalance)}
@@ -202,10 +197,10 @@ Our rendering function would now be:
 ```jsx
 <div>
 	Default account:&nbsp;
-	<Rspan>
+	<Rspan>{parity.bonds.me}</Rspan>&nbsp;
+	<br/>Given the name of&nbsp;<Rspan>
 		{parity.bonds.accountsInfo[parity.bonds.me].name}
 	</Rspan>
-	&nbsp;<Hash value={parity.bonds.me} />
 	<br/>With a balance of&nbsp;
 	<Rspan>
 		{parity.bonds.balance(parity.bonds.me).map(formatBalance)}
