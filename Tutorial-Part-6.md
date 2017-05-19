@@ -53,7 +53,7 @@ Together with the address of where it is deployed, this will allow us to interac
 
 ### 1. Back to Dapp
 
-In order to interact with a deployed contract, we first need to create a local Javascript object which represents that contract. This will let us inspect it (much like we did the registry previously) and also interact in a way that actually changes its state. We have the `makeContract` function in `oo7-parity`, which takes the address and ABI definition and returns the corresponding `Bond`-based contract object.
+In order to interact with a deployed contract, we first need to create a local Javascript object which represents that contract. This will let us inspect it (much like we did the registry previously) and also interact in a way that actually changes its state. We have the `bonds.makeContract` function in `bonds`, which takes the address and ABI definition and returns the corresponding `Bond`-based contract object.
 
 First we will place our ABI definition in a constant:
 
@@ -72,7 +72,7 @@ const Options = ['Red', 'Green', 'Blue'];
 Next we'll create a `Counter` object from this ABI and the address where we can find it deployed. Clear out your constructor and ensure that (aside from `super();`) this is the only line there:
 
 ```js
-this.counter = parity.bonds.makeContract('0x7aC77Cb854E064f22E747F40b90FE6D6Bc1e3197', CounterABI);
+this.counter = bonds.makeContract('0x7aC77Cb854E064f22E747F40b90FE6D6Bc1e3197', CounterABI);
 ```
 
 `this.counter` is a Javascript object that includes four functions corresponding to the four linguistic items in our contract: the `vote` function, the `Voted` event and the two fields `votes` and `hasVoted`.
