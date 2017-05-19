@@ -13,4 +13,5 @@ Many thanks to the guys in Parity Gitter and particularly @martinvalenta for his
 - [9: Deploy Contracts](Tutorial-Part-9)
 - [10: Sign Data](Tutorial-Part-10)
 
-You can find all of the code from each successive tutorial on the [tutorial repo](https://github.com/paritytech/dapp-tutorial/branches/active).
+
+~~You can find all of the code from each successive tutorial on the [tutorial repo](https://github.com/paritytech/dapp-tutorial/branches/active).~~ (Out of date. Anyone want to volunteer a new version?)
