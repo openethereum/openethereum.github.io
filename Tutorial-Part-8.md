@@ -8,7 +8,7 @@
 
 Events are items emitted by a contract allowing it to communicate to the external world. Usually they notify us of some particular important transition such as the receipt of funds or the change of an owner. In the case of our `Counter` contract, we have a single kind of `event`, called `Voted`, which alerts us to the action of somebody voting.
 
-### What did I vote for?
+### 1. What did I vote for?
 
 Let's use this to display a message describing what (if anything) we already voted for. For this, we will need to filter all events to retrieve the event emitted when we voted. Happily, there is a way of doing exactly this and, even better, it returns a `Bond`, so is reactive in the case of new blocks (with new logs) or, worse, a chain reorganisation.
 
@@ -46,7 +46,7 @@ This account voted green...
 
 This one has not yet cast a vote.
 
-### Chalking 'em up
+### 2. Chalking 'em up
 
 This is great for figuring out which option we voted for if we only tend to use a single identity, but if we habitually use a few, then it's a bit of a pain to see that information. Nicer would be to display the icons of the our accounts that have voted right next to the row of the graph of the option that they voted. But how would we do this?
 
