@@ -14,7 +14,7 @@ The authorisation stage ends when either the user has decided to approve the tra
 
 Once the first block has been received in which the transaction appears, we consider the transaction to be "confirmed"; successive blocks may reveal further confirmations. For the present purposes, we consider only the first confirmation to be "important".
 
-To create a new transaction in Parity, we require only a single new API: the `parity.bonds.post` function. The function returns a type of `Bond`. Constructing it creates a new transaction for the user to approve and which can be pushed out on to the network. The value to which the Bond evaluates reflects the ongoing status of the transaction as it moves through the process of getting finalised. It is always an object with a single key/value. It can be:
+To create a new transaction in Parity, we require only a single new API: the `bonds.post` function. The function returns a type of `Bond`. Constructing it creates a new transaction for the user to approve and which can be pushed out on to the network. The value to which the Bond evaluates reflects the ongoing status of the transaction as it moves through the process of getting finalised. It is always an object with a single key/value. It can be:
 
 - `{"estimating": null}` The amount of gas required for this transaction to execute is being determined.
 - `{"estimated": value}` The amount of gas required for this transaction to execute has been determined as `value`; the user is about to be asked.
@@ -23,10 +23,10 @@ To create a new transaction in Parity, we require only a single new API: the `pa
 - `{"confirmed": receipt}` The transaction has been confirmed into a block. The receipt of the transaction is provided as `receipt`, giving information concerning its operation, including any logs.
 - `{"failed": error}` The transaction has failed. Generally this is because the user did not approve the transaction or otherwise signing could not take place. `error` is a string which contains any details regarding the situation.
 
-Creating a new transaction is a simple affair. The function of `parity.bonds.post` takes a single argument: an object describing the transaction. There are several keys it may contain:
+Creating a new transaction is a simple affair. The function of `bonds.post` takes a single argument: an object describing the transaction. There are several keys it may contain:
 
 - `to` The recipient of the transaction; undefined or `null` indicates this is a contract-creation transaction.
-- `from` The sender of the transaction; must be an account which the user controls. Will default to `parity.bonds.me`.
+- `from` The sender of the transaction; must be an account which the user controls. Will default to `bonds.me`.
 - `value` The amount of ether to send to the recipient or endow any created contract.
 - `condition` A condition on which to predicate the distribution, but not the approval/signing, of the transaction. This is an object which contains one of two keys: `block` (which dictates the minimum block number before distribution) and `time` (the same but for block timestamp).
 - `gas` The amount of gas to supply with the transaction. By default, it will attempt to estimate the amount of gas to supply. Such that the transaction succeeds without exception/error.
@@ -46,7 +46,7 @@ Next, in our class, we'll maintain the address of 'gavofyork' for efficiency and
 ```jsx
 constructor() {
 	super();
-	this.gavofyork = parity.bonds.registry.lookupAddress('gavofyork', 'A');
+	this.gavofyork = bonds.registry.lookupAddress('gavofyork', 'A');
 }
 ```
 
@@ -57,17 +57,17 @@ Next for the HTML, we'll have two elements: the balance of our default account (
 ```jsx
 <div>
 	My balance: <Rspan>
-		{parity.bonds.balance(parity.bonds.me).map(formatBalance)}
+		{bonds.balance(bonds.me).map(formatBalance)}
 	</Rspan>
 	<br />
 	<BButton
 		content='Give gavofyork 100 Finney'
-		onClick={() => parity.bonds.post({to: this.gavofyork, value: 100 * 1e15})}
+		onClick={() => bonds.post({to: this.gavofyork, value: 100 * 1e15})}
 	/>
 </div>
 ```
 
-The balance is nothing that we haven't seen before. The button's `onClick` prop creates our new transaction. We wish to have the user send `gavofyork` (whose "current" address is expressed by `this.gavofyork`) 100 Finney (one Finney being equivalent to 10**15 Wei). The `parity.bonds.post` creates our transaction; our given options of `to` and `value` reflect the attributes we wish our transaction to take.
+The balance is nothing that we haven't seen before. The button's `onClick` prop creates our new transaction. We wish to have the user send `gavofyork` (whose "current" address is expressed by `this.gavofyork`) 100 Finney (one Finney being equivalent to 10**15 Wei). The `bonds.post` creates our transaction; our given options of `to` and `value` reflect the attributes we wish our transaction to take.
 
 Refresh your browser and click the button! You'll see the signer window pop up asking you for approval (and maybe a password) to send the funds.
 
@@ -80,14 +80,14 @@ Once done, give it a few seconds and you should see you balance reduce by around
 Let's quickly alter the dapp so we can accept any name when we give our 100 Finney. Ensure you have the utility function `isNullData`:
 
 ```jsx
-import {formatBalance, isNullData} from 'oo7-parity';
+import {bonds, formatBalance, isNullData} from 'oo7-parity';
 ```
 
 Change the constructor so we have a bond for the recipient's name:
 
 ```jsx
 this.name = new Bond;
-this.recipient = parity.bonds.registry.lookupAddress(this.name, 'A');
+this.recipient = bonds.registry.lookupAddress(this.name, 'A');
 ```
 
 And the part of your `render()` HTML that follows the `br` element to:
@@ -97,7 +97,7 @@ And the part of your `render()` HTML that follows the `br` element to:
 <BButton
 	content={this.name.map(n => `Give ${n} 100 Finney`)}
 	disabled={this.recipient.map(isNullData)}
-	onClick={() => parity.bonds.post({to: this.recipient, value: 100 * 1e15})}
+	onClick={() => bonds.post({to: this.recipient, value: 100 * 1e15})}
 />
 ```
 
@@ -113,7 +113,7 @@ Jutta didn't yet register...
 
 ### 3. Track the transaction
 
-Seeing nothing for those several seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `parity.bonds.post`. The problem is that we're discarding it; in fact we need to keep it around and use it as a reactive display element.
+Seeing nothing for those several seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `bonds.post`. The problem is that we're discarding it; in fact we need to keep it around and use it as a reactive display element.
 
 First, we'll introduce some state to our React class. Place this at the bottom of the `constructor`:
 
@@ -126,7 +126,7 @@ Next, we'll introduce a function which looks after the creation of the new trans
 ```
 give () {
 	this.setState({
-		current: parity.bonds.post({
+		current: bonds.post({
 			to: this.recipient,
 			value: 100 * 1e15
 		})
@@ -134,7 +134,7 @@ give () {
 }
 ```
 
-Next we'll use that function rather than calling the `parity.bonds.post` directly. the `onClick` line becomes:
+Next we'll use that function rather than calling the `bonds.post` directly. the `onClick` line becomes:
 
 ```
 onClick={this.give.bind(this)}
