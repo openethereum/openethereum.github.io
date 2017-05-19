@@ -123,7 +123,7 @@ return (<span style={{ borderLeft:
 Now we have to craft a `Bond` which evaluates to whether a vote is allowed to be cast. To prepare for this, we'll create a new field in the object `voted`, which is just the bond expressing whether the current user has voted or not. The following line goes at the bottom of the constructor:
 
 ```js
-this.voted = this.counter.hasVoted(parity.bonds.me);
+this.voted = this.counter.hasVoted(bonds.me);
 ```
 
 Our `votingEnabled` bond can now easily be defined as, roughly, "user hasn't voted yet and the current voting transaction must either not exist or have failed". This translates to:
