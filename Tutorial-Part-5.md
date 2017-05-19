@@ -33,13 +33,12 @@ Creating a new transaction is a simple affair. The function of `parity.bonds.pos
 - `gasPrice` The price (in Wei) per unit of gas. Will default to something sensible (in Parity's case, this is the median of the distribution formed from the last several hundred transactions).
 - `nonce` The sender nonce of the transaction. Will default to the latest known value.
 
-### Giveth to gavofyork
+### 1. Giveth to gavofyork
 
 Let's start simple. A button to give 100 Finney (around $10 at current prices) to me. Since we want to include a button, we'll need the appropriate import for that:
 
 ```jsx
-import {Rspan, TextBond} from 'oo7-react';
-import {BButton} from 'parity-reactive-ui';
+import {InputBond, HashBond, BButton} from 'parity-reactive-ui';
 ```
 
 Next, in our class, we'll maintain the address of 'gavofyork' for efficiency and brevity:
@@ -76,7 +75,7 @@ Refresh your browser and click the button! You'll see the signer window pop up a
 
 Once done, give it a few seconds and you should see you balance reduce by around 0.1 Ether.
 
-### Giveth to anyone
+### 2. Giveth to anyone
 
 Let's quickly alter the dapp so we can accept any name when we give our 100 Finney. Ensure you have the utility function `isNullData`:
 
@@ -94,7 +93,7 @@ this.recipient = parity.bonds.registry.lookupAddress(this.name, 'A');
 And the part of your `render()` HTML that follows the `br` element to:
 
 ```jsx
-<TextBond bond={this.name} placeholder='Name of recipient' />
+<InputBond bond={this.name} placeholder='Name of recipient' />
 <BButton
 	content={this.name.map(n => `Give ${n} 100 Finney`)}
 	disabled={this.recipient.map(isNullData)}
@@ -112,7 +111,7 @@ Jutta didn't yet register...
 
 ...however Nicholas did.
 
-### Track the transaction
+### 3. Track the transaction
 
 Seeing nothing for those several seconds is a little disconcerting. It would be nicer to actually track the state of the transaction so that we know everything is in order. This is fairly simple since we already have the information we need in the `Bond` which is given by `parity.bonds.post`. The problem is that we're discarding it; in fact we need to keep it around and use it as a reactive display element.
 
@@ -165,7 +164,46 @@ If you reject the transaction rather than approving it, you'll see that reflecte
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24324268/b1a21bcc-1183-11e7-9154-5d2a90c69334.png)
 
-While working with the JSON is fairly easy, there are existing Bond-oriented reactive components that can do this for you, such as `TransactionProgressBadge` found in `parity-reactive-ui` module.
+### 4. Consolidate
+
+While working with the JSON is fairly easy, it's hardly pretty. There are existing Bond-oriented reactive components that can do this for you, such as `TransactionProgressLabel` found in `parity-reactive-ui` module. Let's use it.
+
+Start by importing the component:
+
+```js
+import {InputBond, HashBond, BButton, TransactionProgressLabel} from 'parity-reactive-ui';
+```
+
+And then just replace your bottom `Rspan` line with that component, feeding in the current transaction as its `value` prop:
+
+```jsx
+<TransactionProgressLabel value={this.state.current}/>
+```
+
+You'll see a pretty semantic-ui badge rather than ugly JSON.
+
+The same module also provides a button component which merges all of this together into one: `TransactButton`. If we use that we can remove much of our logic. First remove the `give` function and the `this.state =` line in the constructor.
+
+Next, remove everything below the `InputBond` until the final `</div>` and replace it with:
+
+```jsx
+<TransactButton
+	content={this.name.map(n => `Give ${n} 100 Finney`)}
+	disabled={this.recipient.map(isNullData)}
+	tx={{
+		to: this.recipient,
+		value: 100 * 1e15
+	}}
+/>
+```
+
+Finally, don't forget to import the component:
+
+```js
+import {InputBond, HashBond, BButton, TransactButton} from 'parity-reactive-ui';
+```
+
+You can configure the button to use whatever colour scheme you prefer, but that's out of scope for the present tutorial.
 
 ----
 
