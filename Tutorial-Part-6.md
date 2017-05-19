@@ -51,7 +51,7 @@ In order to use the contract from our Javascript-based dapp, we'll need its inte
 
 Together with the address of where it is deployed, this will allow us to interact with it.
 
-### Back to Dapp
+### 1. Back to Dapp
 
 In order to interact with a deployed contract, we first need to create a local Javascript object which represents that contract. This will let us inspect it (much like we did the registry previously) and also interact in a way that actually changes its state. We have the `makeContract` function in `oo7-parity`, which takes the address and ABI definition and returns the corresponding `Bond`-based contract object.
 
@@ -82,19 +82,20 @@ Our render function will just use three `<div>`s of different width to display t
 
 ```
 render () {
-		return (<div>
-			{Options.map((n, i) => (<div key={i}>
-				<Rspan style={{
-					borderLeft: this.counter
-						.votes(i)
-						.map(v => `${1 + v * 10}px black solid`)
-				}}>
-					<span style={{float: 'left', minWidth: '3em'}}>
-						{n}
-					</span>
-				</Rspan>
-			</div>))}
-		</div>);
+	return (<div>
+		{Options.map((n, i) => (<div key={i}>
+			<Rspan style={{
+				borderLeft: this.counter
+					.votes(i)
+					.map(v => `${1 + v * 10}px black solid`)
+			}}>
+				<span style={{float: 'left', minWidth: '3em'}}>
+					{n}
+				</span>
+			</Rspan>
+		</div>))}
+	</div>);
+}
 ```
 
 The only interesting code there is `this.counter.votes(i)`, which we map into a style string allowing us to generate a black bar of the according length.
