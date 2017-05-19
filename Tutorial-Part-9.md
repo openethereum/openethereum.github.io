@@ -6,7 +6,7 @@
 
 ## Deploying a Contract
 
-For our penultimate trick, we will introduce the ability to not just use, but also deploy the contract from our fledgling dapp. Deploying a contract is very similar to any other kind of transaction; we use a slightly different API (`parity.bonds.deployContract`) in order to conveniently return us with a `Contract` object rather than just a transaction receipt as with the standard `parity.bonds.post` API.
+For our penultimate trick, we will introduce the ability to not just use, but also deploy the contract from our fledgling dapp. Deploying a contract is very similar to any other kind of transaction; we use a slightly different API (`bonds.deployContract`) in order to conveniently return us with a `Contract` object rather than just a transaction receipt as with the standard `bonds.post` API.
 
 There is backwards compatibility, so we can use the same `TransactionProgressBadge` in order to display the progress of the deployment transaction as it gets signed and confirmed.
 
@@ -24,7 +24,7 @@ Here's the final code for class `App`:
 export class App extends React.Component {
 	constructor () {
 		super();
-		this.state = { counter: parity.bonds.makeContract('0x7aC77Cb854E064f22E747F40b90FE6D6Bc1e3197', CounterABI) };
+		this.state = { counter: bonds.makeContract('0x7aC77Cb854E064f22E747F40b90FE6D6Bc1e3197', CounterABI) };
 	}
 	render () {
 		return (<div>
@@ -51,9 +51,9 @@ constructor() {
 }
 componentWillMount () { this.componentWillReceiveProps(this.props); }
 componentWillReceiveProps (props) {
-	this.voted = this.props.contract.hasVoted(parity.bonds.me);
-	this.prevVote = this.props.contract.Voted({ who: parity.bonds.me });
-	this.prevVotes = this.props.contract.Voted({ who: parity.bonds.accounts });
+	this.voted = this.props.contract.hasVoted(bonds.me);
+	this.prevVote = this.props.contract.Voted({ who: bonds.me });
+	this.prevVotes = this.props.contract.Voted({ who: bonds.accounts });
 }
 ```
 
@@ -81,7 +81,7 @@ For the new `deploy()` function, we'll use the `deployContract` API to create a 
 
 ```
 deploy () {
-	let tx = parity.bonds.deployContract(CounterCode, CounterABI);
+	let tx = bonds.deployContract(CounterCode, CounterABI);
 ```
 
 We will record this transaction in our state so we can feed it into a progress badge later:
@@ -155,7 +155,7 @@ Next, the `deploy` function no longer needs to `setState({tx})` since we're not 
 
 ```js
 deploy () {
-	let tx = parity.bonds.deployContract(CounterCode, CounterABI);
+	let tx = bonds.deployContract(CounterCode, CounterABI);
 	tx.done(s => this.setState({ counter: s.deployed }));
 	return tx;
 }
@@ -194,7 +194,7 @@ Secondly, in the constructor, change the `this.state =` line to ensure that we r
 
 ```js
 this.state = { counter: window.localStorage.counter
-	? parity.bonds.makeContract(window.localStorage.counter, CounterABI)
+	? bonds.makeContract(window.localStorage.counter, CounterABI)
 	: null };
 ```
 
@@ -215,7 +215,7 @@ Next we'll set things up so that the very first value that is placed in it is us
 ```js
 this.addr.then(v => {
 	window.localStorage.counter = v;
-	let counter = parity.bonds.makeContract(v, CounterABI);
+	let counter = bonds.makeContract(v, CounterABI);
 	this.setState({ tx: null, counter });
 });
 ```
@@ -231,14 +231,20 @@ const CounterCodeHash = '0x10d2b44a953ecf30231a87c541df5d640b43a30d8ec9a6ed95e41
 Yours may be different. To figure it out, use the JS line in any bonds-enabled environment where ADDRESS is the address of a pre-deployed counter contract:
 
 ```js
-parity.bonds.code(ADDRESS).map(parity.api.util.sha3).then(console.log)
+bonds.code(ADDRESS).map(Api.util.sha3).then(console.log)
 ```
 
-Now to the code. After the button in the `render` function, we will add the following:
+Now to the code. First, we need to import the `Api` object from `@parity/parity.js`:
+
+```js
+import {Api} from '@parity/parity.js';
+```
+
+After the button in the `render` function, we will add the following:
 
 ```js
 <span style={{margin: '2em'}}>OR</span>
-<InputBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && parity.bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash)}/>
+<InputBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash)}/>
 ```
 
 The first line just splits the button from the text input. The second is our input for counter contract addresses. The `TextBond` we have seen before in the very first tutorial about `Bond`s. We have introduced a custom `validator` prop here, which first makes sure the string form `TextBond` is well-formed and then checks to make sure that the hash of the code at that address is what we would expect from a `Counter` contract. Only then is it valid and does it get set to `this.addr`.
