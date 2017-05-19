@@ -25,20 +25,20 @@ There are subordinate functions to the latter such as `getAddress` and `getUint`
 - `CONTENT` the `bytes32` which equals the Keccak hash of any content associated with this name. e.g. If the name represents a dapp, then this would be the hash of the dapp's content.
 - `IMG` the `bytes32` which equals the Keccak hash of an associated image; this might be a persons's avatar or the dapp icon, depending on what is being named.
 
-Let's begin by displaying the address associated with the name `'gavofyork'`. To do this we will need to create a special `Bond`-API contract object. The function to do this is `parity.bonds.makeContract`; it takes the address and the ABI of the contract and returns an object with `Bond`-returning functions for each of the contract's functions.
+Let's begin by displaying the address associated with the name `'gavofyork'`. To do this we will need to create a special `Bond`-API contract object. The function to do this is `bonds.makeContract`; it takes the address and the ABI of the contract and returns an object with `Bond`-returning functions for each of the contract's functions.
 
-The address is easy enough to find; this can be determined via the `parity.api.parity.registry` call. The ABI spec is rather long and can be derived from the contract code available at the ethcore/contracts repository. Since there is only a single canonical registry, Parity, conveniently constructs this for you and provides it at the `parity.bonds.registry` object.
+The address is easy enough to find; this can be determined via the `parity.api.parity.registry` call. The ABI spec is rather long and can be derived from the contract code available at the ethcore/contracts repository. Since there is only a single canonical registry, Parity, conveniently constructs this for you and provides it at the `bonds.registry` object.
 
 To figure out the primary associated address of the `gavofyork` name, we can use the `getAddress` call, together with the `parity.api.util.sha3` call to take the Keccak hash of our name. The full expression would be:
 
 ```js
-parity.bonds.registry.getAddress(parity.api.util.sha3('gavofyork'))
+bonds.registry.getAddress(parity.api.util.sha3('gavofyork'))
 ```
 
-Typing `parity.api.util.sha3(...)` every time you want to look up a name in the registry gets tedious fast. Happily, Parity provides a number of derivative helper functions as part of the `parity.bonds.registry` object: `lookupData`, `lookupAddress`, `lookupUint` and `lookupOwner`; they're all just like the `get`-prefixed brethren, but do the hashing for you. Our expression therefore can become:
+Typing `parity.api.util.sha3(...)` every time you want to look up a name in the registry gets tedious fast. Happily, Parity provides a number of derivative helper functions as part of the `bonds.registry` object: `lookupData`, `lookupAddress`, `lookupUint` and `lookupOwner`; they're all just like the `get`-prefixed brethren, but do the hashing for you. Our expression therefore can become:
 
 ```js
-parity.bonds.registry.lookupAddress('gavofyork', 'A')
+bonds.registry.lookupAddress('gavofyork', 'A')
 ```
 
 Let's get this in to our dapp. Change the `render()`ed HTML to:
@@ -46,7 +46,7 @@ Let's get this in to our dapp. Change the `render()`ed HTML to:
 ```
 <div>
 	gavofyork's address is&nbsp;
-	<Rspan>{parity.bonds.registry.lookupAddress('gavofyork', 'A')}</Rspan>
+	<Rspan>{bonds.registry.lookupAddress('gavofyork', 'A')}</Rspan>
 </div>
 ```
 
@@ -68,9 +68,9 @@ export class App extends React.Component {
 		return (
 			<div>
 				Address of <InputBond bond={this.bond} placeholder='Lookup a name' /> is:<br/>
-				<Rspan>{parity.bonds.registry.lookupAddress(this.bond, 'A')}</Rspan>
+				<Rspan>{bonds.registry.lookupAddress(this.bond, 'A')}</Rspan>
 				, it's balance is <Rspan>
-					{parity.bonds.balance(parity.bonds.registry.lookupAddress(this.bond, 'A')).map(formatBalance)}
+					{bonds.balance(bonds.registry.lookupAddress(this.bond, 'A')).map(formatBalance)}
 				</Rspan>
 			</div>
 		);
@@ -78,7 +78,7 @@ export class App extends React.Component {
 }
 ```
 
-Here we have rewritten the component to include a new `Bond` which, via the `InputBond`, we are using to represent the current text in the text input field. We are passing this into the `lookupAddress` function to turn it into a `Bond` equivalent to the address for that name in the registry, and using this as the `value` of a reactive `Hash` display component. We are also using it in conjunction with `parity.bonds.getBalance` to display a formatted balance of the account.
+Here we have rewritten the component to include a new `Bond` which, via the `InputBond`, we are using to represent the current text in the text input field. We are passing this into the `lookupAddress` function to turn it into a `Bond` equivalent to the address for that name in the registry, and using this as the `value` of a reactive `Hash` display component. We are also using it in conjunction with `bonds.getBalance` to display a formatted balance of the account.
 
 Here's what it looks like:
 
@@ -92,15 +92,15 @@ So far so good, but while the registry contract is interesting, it's not usually
 
 Let's suppose that second contract is the GithubHint contract; if you're not already familiar, the GithubHint contract allows you to suggest which URLs might serve content for a particular hash. It's a semi-centralised, hacky alternative to content-addressable-delivery systems like BitTorrent/Kademlia, Swarm and IPFS. We use it widely in Parity as a means of content dissemination.
 
-Since it's a "standard" contract in Parity, the ABI for it is available as `parity.api.abi.githubhint`. The address changes per chain, but can be discovered via the registry under the name `'githubhint'`; the expression would therefore be `parity.bonds.registry.lookupAddress('githubhint', 'A')`.
+Since it's a "standard" contract in Parity, the ABI for it is available as `parity.api.abi.githubhint`. The address changes per chain, but can be discovered via the registry under the name `'githubhint'`; the expression would therefore be `bonds.registry.lookupAddress('githubhint', 'A')`.
 
 An important thing to realise about the `makeContract` function is that it does not require a "plain" address for the contract, but can actually work with a `Bond` for the address; everything will magically react if the address to which the `Bond` evaluates changes.
 
 Therefore our GithubHint contract object can be created with the expression:
 
 ```js
-parity.bonds.makeContract(
-	parity.bonds.registry.lookupAddress('githubhint', 'A'),
+bonds.makeContract(
+	bonds.registry.lookupAddress('githubhint', 'A'),
 	parity.api.abi.githubhint);
 ```
 
@@ -121,7 +121,7 @@ export class App extends React.Component {
 	constructor() {
 		super();
 		this.bond = new Bond;
-		this.GithubHint = parity.bonds.makeContract(parity.bonds.registry.lookupAddress('githubhint', 'A'), parity.api.abi.githubhint);
+		this.GithubHint =bonds.makeContract(bonds.registry.lookupAddress('githubhint', 'A'), parity.api.abi.githubhint);
 	}
 	render() {
 		return (
@@ -162,7 +162,7 @@ Next, let's alter the dapp's render `div`:
 ```
 <div>
 	<InputBond bond={this.bond} placeholder='Name' />
-	<Rimg src={this.GithubHint.entries(parity.bonds.registry.lookupData(this.bond, 'IMG'))[0]} />
+	<Rimg src={this.GithubHint.entries(bonds.registry.lookupData(this.bond, 'IMG'))[0]} />
 </div>
 ```
 
