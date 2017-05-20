@@ -1,6 +1,8 @@
 **For `oo7-parity` version 0.6.0.**
 
-`oo7.js` is a `Bond` library: a `Bond` is like a `Promise` in that it's an asynchronously provided value. However, unlike a `Promise` it autonomously stays up to date. `Bond`s may be subscripted, transformed and composed. `oo7-react.js` exists for tying `Bond`s into the React library, trivially allowing the UI to display up-to-date information from the block chain.
+`oo7-parity` is a Parity-centric Ethereum middleware designed to sit between your front-end and a Parity Ethereum node. It is based on `oo7` and `parity.js` (our low-level JS API for the Parity/Ethereum RPC). It makes heavy use of `Bond`s to deliver an effortless UI development experience that results in a responsive, reactive UI. It works best with the Parity Ethereum node, but is partially compatible with other clients, too.
+
+A `Bond` is like a `Promise` in that it's an asynchronously provided value. However, unlike a `Promise` it autonomously stays up to date. `Bond`s may be subscripted, transformed and composed. `oo7-react.js` exists for tying `Bond`s into the React library, trivially allowing the UI to display up-to-date information from the block chain.
 
 ## Installation
 
