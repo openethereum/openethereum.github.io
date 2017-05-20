@@ -27,6 +27,14 @@ There are several utility functions in `oo7-parity`:
 - `sha3(String | Bytes) => Hash`: Compute the Keccak-256 cryptographic hash of `data`. `data` is interpreted as a hex string if it contains only hex characters except for an optional `0x` prefix. Otherwise it is interpreted as "raw" ASCII 7-bit bytes; if characters outside of the 7-bit range are used, then the result is undefined.
 - `isAddressValid(Address) => Address`: Given an address having a not-necessarily valid checksum, returns the same address with a valid checksum.
 
+- `denominations[]`: An array of names of each the standard Ethereum denominations, beginning at `wei` and increasing in factors of 1000.
+- `denominationMultiplier(String) => BigNumber`: Given the name of a denomination (from the array `denominations`), returns the multiplication factor that it represents. e.g. `+denominationMultiplier('wei') === 1`.
+- `interpretQuantity(String) => BigNumber`: Given a human-readable string of the form `<decimal> [<units>]?` returns the value. By default the units are `ether` (`10**18`).
+- `formatBalance(BigNumber) => String`: Given a balance/value, returns the human-readable string form, using appropriate units.
+- `formatBlockNumber(Number) => String`: Returns a string of the block number formatted nicely.
+- `isNullData(Bytes | Address | Hash) => Bool`: Returns `true` if the provided data is entire zero bytes.
+- `removeSigningPrefix(String) => String`: Given a message with a security prefix as per `eth_sign` standard, returns the original, unprefixed, message.
+
 ### ABIs
 
 A number of standard ABIs are provided as part of `oo7-parity`, useful for constructing contracts:
