@@ -8,7 +8,7 @@
 
 It brings in `oo7`, the underlying `Bond`s library items of which you will probably want to use and `@parity/parity.js`, the low-level Parity/Ethereum API library.
 
-If you are working on the UI with React, you'll probably want to install `parity-reactive-ui.js` too (which brings in `oo7-react`, the oo7 bindings for React and Semantic-UI, a nice JS toolkit):
+If you are working on the UI with React, you'll probably want to install `parity-reactive-ui.js` too (which brings in `oo7-react`, the oo7 bindings for React and `semantic-ui`, a nice front-end UI toolkit):
 
    `npm install --save parity-reactive-ui`
 
