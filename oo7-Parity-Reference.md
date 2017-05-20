@@ -20,14 +20,6 @@ Most of the API `oo7-parity` provides is contained within a single object: `bond
 
 There are several utility functions in `oo7-parity`:
 
-export const asciiToHex = Parity.Api.util.asciiToHex;
-export const bytesToHex = Parity.Api.util.bytesToHex;
-export const fromWei = Parity.Api.util.fromWei;
-export const hexToAscii = Parity.Api.util.hexToAscii;
-export const isAddressValid = Parity.Api.util.isAddressValid;
-export const toChecksumAddress = Parity.Api.util.toChecksumAddress;
-export const toWei = Parity.Api.util.toWei;
-
 - `asciiToHex(String) => Bytes`: Convert some 7-bit ASCII to its `0x`-prefixed hex representation.
 - `bytesToHex(Array) => String`: Convert an array of integers between 0 and 255 inclusive to its `0x`-prefixed hex representation.
 - `hexToAscii(Bytes) => String`: Convert a `0x`-prefixed hex representation of binary data to 7-bit ASCII.
