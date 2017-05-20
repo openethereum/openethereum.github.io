@@ -1,6 +1,6 @@
 `oo7.js` is a `Bond` library: a `Bond` is like a `Promise` in that it's an asynchronously provided value. However, unlike a `Promise` it autonomously stays up to date. `Bond`s may be subscripted, transformed and composed. `oo7-react.js` exists for tying `Bond`s into the React library, trivially allowing the UI to display up-to-date information from the block chain.
 
-### Installation and Setup
+## Installation
 
 `oo7-parity.js` is available on NPM:
 
@@ -12,7 +12,52 @@ If you are working on the UI with React, you'll probably want to install `parity
 
    `npm install --save parity-reactive-ui`
 
-### `bonds` API Collection
+## Usage
+
+Most of the API `oo7-parity` provides is contained within a single object: `bonds`. The majority of this document details each of the members of this object and how to use them. The rest of the API is compose of a number of utility functions to facilitate certain common actions required when working with `oo7-parity`.
+
+### Utilities
+
+There are several utility functions in `oo7-parity`:
+
+export const asciiToHex = Parity.Api.util.asciiToHex;
+export const bytesToHex = Parity.Api.util.bytesToHex;
+export const fromWei = Parity.Api.util.fromWei;
+export const hexToAscii = Parity.Api.util.hexToAscii;
+export const isAddressValid = Parity.Api.util.isAddressValid;
+export const toChecksumAddress = Parity.Api.util.toChecksumAddress;
+export const toWei = Parity.Api.util.toWei;
+
+- `asciiToHex(String) => Bytes`: Convert some 7-bit ASCII to its `0x`-prefixed hex representation.
+- `bytesToHex(Array) => String`: Convert an array of integers between 0 and 255 inclusive to its `0x`-prefixed hex representation.
+- `hexToAscii(Bytes) => String`: Convert a `0x`-prefixed hex representation of binary data to 7-bit ASCII.
+- `isAddressValid(Address) => Bool`: Determine whether the provided (`0x`-prefixed, 20 byte) address has either a valid checksum or no checksum at all.
+- `sha3(String | Bytes) => Hash`: Compute the Keccak-256 cryptographic hash of `data`. `data` is interpreted as a hex string if it contains only hex characters except for an optional `0x` prefix. Otherwise it is interpreted as "raw" ASCII 7-bit bytes; if characters outside of the 7-bit range are used, then the result is undefined.
+- `isAddressValid(Address) => Address`: Given an address having a not-necessarily valid checksum, returns the same address with a valid checksum.
+
+### ABIs
+
+A number of standard ABIs are provided as part of `oo7-parity`, useful for constructing contracts:
+
+- `RegistryABI`: The Parity general registry contract.
+- `GitHubHintABI`: The Parity GitHubHint contract.
+- `OperationsABI`: The Parity general operations contract.
+- `BadgeRegABI`: The Parity badge registry contract.
+- `TokenRegABI`: The Parity token registry contract. 
+- `BadgeABI`: The Parity standard badge contract.
+- `TokenABI`: The ERC-20 standard token contract.
+
+### `bonds`
+
+#### Setup & `options`
+
+The main API object contains the logic for succinctly interacting with a Parity (or Parity-compatible Ethereum) node. It requires the address of such a node for it to work. `oo7-parity` exports the `bonds` object which is instantiated with the default address of a node (it uses the endpoint address injected by the environment and falls back on http://127.0.0.1:8545). This should work as expected in most circumstances.
+
+If you need to alter this in some way, this is possible through changes to the exported `options` symbol. By changing its fields, you are able to configure how the exported `bonds` object works. The fields of `options` are:
+
+- `api`: An `Api` instance, as exported by `parity.js`, which provides node interaction. Can by constructed through `new Api(transport)`, where `transport` is a correctly initialised instance of `Api.Transport` (e.g. `new Api(new Parity.Api.Transport.Http('http://localhost:8545'))`).
+
+If multiple independent instances of `Bonds` are required (e.g. because you wish to communicate with multiple nodes sitting on multiple chains at simultaneously), then you can easily use the exported `Bonds` constructor which accepts a single parameter of type `Api.Transport`, detailing the transport mechanism to the node.
 
 #### Notes on Usage
 
