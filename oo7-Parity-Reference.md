@@ -2,52 +2,32 @@
 
 ### Installation and Setup
 
-#### Server-side
+`oo7-parity.js` is available on NPM:
 
-`oo7-parity.js` is available on NPM. Components of the underlying library, `oo7.js` are generally helpful to have around:
+   `npm install --save oo7-parity`
 
-   `npm install --save oo7 oo7-parity`
+It brings in `oo7`, the underlying `Bond`s library items of which you will probably want to use and `@parity/parity.js`, the low-level Parity/Ethereum API library.
 
-If you are not counting on your users running Parity Wallet/Parity Chrome Extension you will want to ensure you have parity.js available, too:
+If you are working on the UI with React, you'll probably want to install `parity-reactive-ui.js` too (which brings in `oo7-react`, the oo7 bindings for React and Semantic-UI, a nice JS toolkit):
 
-   `npm install --save @parity/parity.js`
+   `npm install --save parity-reactive-ui`
 
-#### UI-side
-
-If you are working on the UI with React, you'll probably want to install `oo7-react.js` and `parity-reactive-ui.js`, too:
-
-   `npm install --save oo7 oo7-parity oo7-react parity-reactive-ui`
-
-In the server-side case, you'll want to include the `parity.js` object and then polyfill and import the `oo7-parity.js` API, e.g.:
-
-```js
-const Parity = require('@parity/parity.js');
-const transport = new Parity.Api.Transport.Http('http://localhost:8545');
-let parity = {api: new Parity.Api(transport)};
-```
-
-When browsing under a Dapp display environment such as Parity Chrome Extension, the `parity` object will automatically be injected into the `window` object, and the above is not necessary. Under other environments, such as Mist and Metamask, you may need to use the above code.
-
-In both the UI and server-side cases, a polyfill and installation is needed afterward to deposit the `oo7-parity` APIs into the basic `parity` object:
-
-```js
-import {setupBonds, abiPolyfill} from 'oo7-parity';
-parity.api.abi = abiPolyfill(parity.api);
-parity.bonds = setupBonds(parity.api);
-```
-
-### `parity.bonds` API Collection
+### `bonds` API Collection
 
 #### Notes on Usage
 
-For brevity we have dropped the prefix of `parity.bonds.`.
+Ensure you import the `bonds` object:
+
+   `import {bonds} from 'oo7-parity';
+
+In this reference, for brevity we have dropped the prefix of `bonds.`.
 
 All arguments may be given as one of:
-- a plain value, e.g. `parity.bonds.findBlock(69)`;
-- a `Bond` object, e.g. `parity.bonds.findBlock(parity.bonds.blockNumber)`;
-- an `Object` or `Array` containing a mixture of `Bond`s and plain values e.g. `parity.bonds.post({to: parity.bonds.author, value: '1000000000000000000'})`.
+- a plain value, e.g. `bonds.findBlock(69)`;
+- a `Bond` object, e.g. `bonds.findBlock(bonds.blockNumber)`;
+- an `Object` or `Array` containing a mixture of `Bond`s and plain values e.g. `bonds.post({to: bonds.author, value: '1000000000000000000'})`.
 
-Note that items with no trailing parens should not be used as functions - they are `Bond`s in their own right e.g. this is right: `parity.bonds.head.then(console.log)`; `...head().then...` is **wrong**.
+Note that items with no trailing parens should not be used as functions - they are `Bond`s in their own right e.g. this is right: `bonds.head.then(console.log)`; `...head().then...` is **wrong**.
 
 The type after `=>` denotes the value type of `Bond` returned.
 
@@ -59,9 +39,9 @@ If an item only works when the Ethereum client is Parity, then the item's protot
 
 If the parameter of a function's usage is non-obvious, then a `:` is appended, followed by an informative name.
 
-One item (`blocks`) is denoted an array: it may be dereferenced as an array e.g. `parity.bonds.blocks[parity.bonds.height]`.
+One item (`blocks`) is denoted an array: it may be dereferenced as an array e.g. `bonds.blocks[bonds.height]`.
 
-Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `parity.bonds.head.author` would be the `Bond` that evaluates to the author of the block currently at the head of the chain.
+Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `bonds.head.author` would be the `Bond` that evaluates to the author of the block currently at the head of the chain.
 
 #### Chain Inspection
 - `height => Number`: The height of the chain.
@@ -476,15 +456,13 @@ An object representing a (deployed) instance of a contract. Contains one basic f
 
 These are the simplest to use. Each such item is represented as a function. This takes arguments in the case of a parameterised `constant` function or when the field represents an array, struct or mapping, correlated accordingly. Each parameter may itself be a `Bond`.
 
-
 When the function is invoked, a `Bond` is returned expressing the ongoing value that the contract gives when queried. This is reactive to all changes, including those in the contract's state, on its `address` (should that be a `Bond`) and on its parameters (where they are `Bond`s).
 
 Example:
 
 ```js
 // Prints `gavofyork`'s address to the console.
-parity.bonds.registry.getAddress(parity.util.sha3('gavofyork'), 'A')
-   .then(console.log)
+bonds.registry.lookupAddress('gavofyork', 'A').log()
 ```
 
 #### State-mutating functions
@@ -497,7 +475,8 @@ Example:
 
 ```js
 // Prints a message depending on whether we managed to change the address of `gavofyork`.
-let b = parity.bonds.registry.setAddress(parity.util.sha3('gavofyork'), 'A', parity.bonds.me);
+import {sha3} from 'oo7-parity';
+let b = bonds.registry.setAddress(sha3('gavofyork'), 'A', bonds.me);
 b.tie(s => {
    if (s.failed) { console.log(`setAddress failed: ${s.failed}`); }
    else if (s.confirmed) { console.log(`setAddress completed at #${s.confirmed.blockNumber}`); }
