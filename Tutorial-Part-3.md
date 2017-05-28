@@ -64,11 +64,17 @@ And hey presto:
 
 ### 2. Blocks
 
-The block number is great and all, but perhaps we're more interested in the latest block itself. Happily, Parity can help us there with the `bonds.blocks` object. This is a lazy-evaluated "array" of bonds which can subscribe to. To give yourself an idea of its capabilities, let's quickly open the Chrome JS console alter the environment to 127.0.0.1 and evaluate the block at number 69:
+The block number is great and all, but perhaps we're more interested in the latest block itself. Happily, Parity can help us there with the `bonds.blocks` object. This is a lazy-evaluated "array" of bonds which can subscribe to. To give yourself an idea of its capabilities, let's try it out in the console. First we'll expose the `bonds` object to the environment by adding this at the end of our object's constructor:
+
+```js
+window.bonds = bonds;
+```
+
+Having reloaded, quickly open the Chrome JS console, alter the environment to 127.0.0.1 and evaluate the block at number 69 with `bonds.blocks[69].log()`:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22701287/41c6e4f8-ed2b-11e6-94d9-d6b5e58cb911.png)
 
-Notice that since it's all asynchronous, we must use the `.then(console.log)` trick to feed the result into the console. The result is, of course, the block object representing the 69th mined block on this chain.
+Notice that since it's all asynchronous, we must use the `.log()` trick to feed the result into the console (it's exactly equivalent to `.map(console.log)`). The result is, of course, the block object representing the 69th mined block on this chain.
 
 Naturally, `bonds.blocks` is able to accept any number, even a bond, as its subscript. Let's make our dapp always give us the timestamp of the latest block.
 
