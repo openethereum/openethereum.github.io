@@ -244,7 +244,7 @@ After the button in the `render` function, we will add the following:
 
 ```js
 <span style={{margin: '2em'}}>OR</span>
-<InputBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash)}/>
+<InputBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash) ? v : null}/>
 ```
 
 The first line just splits the button from the text input. The second is our input for counter contract addresses. The `TextBond` we have seen before in the very first tutorial about `Bond`s. We have introduced a custom `validator` prop here, which first makes sure the string form `TextBond` is well-formed and then checks to make sure that the hash of the code at that address is what we would expect from a `Counter` contract. Only then is it valid and does it get set to `this.addr`.
