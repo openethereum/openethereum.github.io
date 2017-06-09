@@ -8,6 +8,7 @@ Build and run Parity anywhere with Docker:
     - [Config file](#config-file)
     - [Persistent data directory](#persistent-data-directory)
     - [Run in background](#run-in-background)
+- [Parity Deploy Scripts](#parity-deploy-scripts)
 - [Further reading](#further-reading)
 
 ### Pick a container
