@@ -180,9 +180,9 @@ Operating Options:
   --chain CHAIN                  Specify the blockchain type. CHAIN may be either a
                                  JSON chain specification file or olympic, frontier,
                                  homestead, mainnet, morden, ropsten, classic, expanse,
-                                 testnet or dev (default: homestead).
+                                 testnet, kovan or dev (default: homestead).
   -d --base-path PATH            Specify the base data storage path.
-                                 (default: /home/maciej/.local/share/io.parity.ethereum).
+                                 (default: /home/user/.local/share/io.parity.ethereum).
   --db-path PATH                 Specify the database directory path
                                  (default: $BASE/chains).
   --keys-path PATH               Specify the path for JSON key files to be found
@@ -199,6 +199,7 @@ Account Options:
   --keys-iterations NUM          Specify the number of iterations to use when
                                  deriving key from the password (bigger is more
                                  secure) (default: 10240).
+  --no-hardware-wallets          Disables hardware wallet support. (default: false)
 
 UI Options:
   --force-ui                     Enable Trusted UI WebSocket endpoint,
@@ -217,7 +218,7 @@ UI Options:
                                  development. (default: false)
 
 Networking Options:
-  --warp                         Enable syncing from the snapshot over the network. (default: false)
+  --no-warp                      Disable syncing from the snapshot over the network. (default: false)
   --port PORT                    Override the port on which the node should listen
                                  (default: 30303).
   --min-peers NUM                Try to maintain at least NUM peers (default: 25).
@@ -284,6 +285,8 @@ API and Console Options:
                                  is additional security against some attack
                                  vectors. Special options: "all", "none",
                                  (default: none).
+  --dapps-cors URL               Specify CORS headers for Dapps server APIs.
+                                 (default: None)
   --dapps-user USERNAME          Specify username for Dapps server. It will be
                                  used in HTTP Basic Authentication Scheme.
                                  If --dapps-pass is not specified you will be
@@ -295,6 +298,30 @@ API and Console Options:
   --dapps-apis-all               Expose all possible RPC APIs on Dapps port.
                                  WARNING: INSECURE. Used only for development.
                                  (default: false)
+  --ipfs-api                     Enable IPFS-compatible HTTP API. (default: false)
+  --ipfs-api-port PORT           Configure on which port the IPFS HTTP API should listen.
+                                 (default: 5001)
+  --ipfs-api-interface IP        Specify the hostname portion of the IPFS API server,
+                                 IP should be an interface's IP address or local.
+                                 (default: local)
+  --ipfs-api-cors URL            Specify CORS header for IPFS API responses.
+                                 (default: None)
+  --ipfs-api-hosts HOSTS         List of allowed Host header values. This option will
+                                 validate the Host header sent by the browser, it
+                                 is additional security against some attack
+                                 vectors. Special options: "all", "none"
+                                 (default: none).
+
+
+Secret Store Options:
+  --no-secretstore               Disable Secret Store functionality. (default: false)
+  --secretstore-port PORT        Specify the port portion for Secret Store Key Server
+                                 (default: 8082).
+  --secretstore-interface IP     Specify the hostname portion for Secret Store Key Server, IP
+                                 should be an interface's IP address, or local
+                                 (default: local).
+  --secretstore-path PATH        Specify directory where Secret Store should save its data.
+                                 (default: $BASE/secretstore)
 
 Sealing/Mining Options:
   --author ADDRESS               Specify the block author (aka "coinbase") address
@@ -374,6 +401,9 @@ Sealing/Mining Options:
                                  execution time limit. Also number of offending actions
                                  have to reach the threshold within that time.
                                  (default: 180 seconds)
+  --no-persistent-txqueue        Don't save pending local transactions to disk to be
+                                 restored whenever the node restarts.
+                                 (default: false).
   --remove-solved                Move solved blocks from the work package queue
                                  instead of cloning them. This gives a slightly
                                  faster import speed, but means that extra solutions
@@ -403,11 +433,11 @@ Footprint Options:
                                  auto - use the method most recently synced or
                                  default to fast if none synced (default: auto).
   --pruning-history NUM          Set a minimum number of recent states to keep when pruning
-                                 is active. (default: 1200).
+                                 is active. (default: 64).
   --pruning-memory MB            The ideal amount of memory in megabytes to use to store
                                  recent states. As many states as possible will be kept
                                  within this limit, and at least --pruning-history states
-                                 will always be kept. (default: 150)
+                                 will always be kept. (default: 75)
   --cache-size-db MB             Override database cache size (default: 64).
   --cache-size-blocks MB         Specify the prefered size of the blockchain cache in
                                  megabytes (default: 8).
@@ -468,8 +498,7 @@ Legacy Options:
                                  to be the same as Geth's. Overrides the --ipc-path
                                  and --ipcpath options. Alters RPCs to reflect Geth
                                  bugs. Includes the personal_ RPC by default.
-  --testnet                      Geth-compatible testnet mode. Equivalent to --chain
-                                 testnet --keys-path $HOME/parity/testnet-keys.
+  --testnet                      Testnet mode. Equivalent to --chain testnet.
                                  Overrides the --keys-path option.
   --import-geth-keys             Attempt to import keys from Geth client.
   --datadir PATH                 Equivalent to --base-path PATH.
@@ -482,6 +511,7 @@ Legacy Options:
   -w --webapp                    Does nothing; dapps server is on by default now.
   --dapps-off                    Equivalent to --no-dapps.
   --rpc                          Does nothing; JSON-RPC is on by default now.
+  --warp                         Does nothing; Warp sync is on by default. (default: true)
   --rpcaddr IP                   Equivalent to --jsonrpc-interface IP.
   --rpcport PORT                 Equivalent to --jsonrpc-port PORT.
   --rpcapi APIS                  Equivalent to --jsonrpc-apis APIS.
