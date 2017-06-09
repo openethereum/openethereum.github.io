@@ -1,2 +1,44 @@
-- https://github.com/paritytech/parity/issues/5438 @TODO
-- https://github.com/paritytech/parity/issues/4172
+Parity is listening for Ethereum-IPFS compatible calls. Currently supported thus far: `eth-block`, `eth-block-list`, `eth-tx`, and `eth-state-trie`. Any other IPFS API calls will not return anything.
+
+### Implementation Status
+
+| Available | Type                 |      Name                              |  Code |
+|-----------|----------------------|----------------------------------------|-------|
+| `[x]`     |`eth-block`           | Ethereum Block (block header)          | `0x90`|
+| `[x]`     |`eth-block-list`      | Ethereum Block List (block ommers)     | `0x91`|
+| `[ ]`     |`eth-tx-trie`         | Ethereum Transaction Trie Node         | `0x92`|
+| `[x]`     |`eth-tx`              | Ethereum Transaction                   | `0x93`|
+| `[ ]`     |`eth-tx-receipt-trie` | Ethereum Transaction Receipt Trie Node | `0x94`|
+| `[ ]`     |`eth-tx-receipt`      | Ethereum Transaction Receipt           | `0x95`|
+| `[x]`     |`eth-state-trie`      | Ethereum State Trie Node               | `0x96`|
+| `[ ]`     |`eth-storage-trie`    | Ethereum Contract Storage Trie Node    | `0x98`|
+
+Please subscribe to [#4172](https://github.com/paritytech/parity/issues/4172) for more details.
+
+### Example Requests
+
+@TODO _work in progress_
+
+```
+http://localhost:5001/api/v0/block/get?arg=z43AaGF5tmkT9SEX6urrhwpEW5ZSaACY73Vw357ZXTsur2fR8BM
+```
+
+### CLI reference:
+
+The IPFS HTTP API is disabled by default. Enable it with `--ipfs-api` to expose it to `localhost:5001`.
+
+```bash
+    --ipfs-api                     Enable IPFS-compatible HTTP API. (default: false)
+    --ipfs-api-port PORT           Configure on which port the IPFS HTTP API should listen.
+                                   (default: 5001)
+    --ipfs-api-interface IP        Specify the hostname portion of the IPFS API server,
+                                   IP should be an interface's IP address or local.
+                                   (default: local)
+    --ipfs-api-cors URL            Specify CORS header for IPFS API responses.
+                                   (default: None)
+    --ipfs-api-hosts HOSTS         List of allowed Host header values. This option will
+                                   validate the Host header sent by the browser, it
+                                   is additional security against some attack
+                                   vectors. Special options: "all", "none"
+                                   (default: none).
+```
