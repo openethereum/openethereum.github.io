@@ -38,7 +38,6 @@
   - [Dapp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-github-hint)
-  - [[IPFS]]
 - [JSONRPC Guide](JSONRPC)
   - [web3](JSONRPC-web3-module)
   - [net](JSONRPC-net-module)
@@ -72,7 +71,7 @@
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
-- [[Secret Store]]
+- [Ethereum-IPFS API](IPFS)
 
 ## Hacking on Parity
 - [[Coding Guide]]
