@@ -42,7 +42,7 @@ light = false
 
 [account]
 unlock = ["0xdeadbeefcafe0000000000000000000000000000"]
-password = "~/.safe/password.file"
+password = ["~/.safe/password.file"]
 keys_iterations = 10240
 
 [ui]
