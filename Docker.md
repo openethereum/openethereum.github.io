@@ -36,7 +36,7 @@ $ curl -sS 'https://registry.hub.docker.com/v2/repositories/ethcore/parity/tags/
 "nightly"
 "stable"
 "v1.5.12"
-"v1.6.6"
+"v1.6.8"
 ```
 
 In general, you want one of `stable`, `beta`, or `nightly`, which always pulls the latest version from the according release channel, e.g., for `beta` run:
@@ -134,6 +134,67 @@ $ docker attach --sig-proxy=false 245f312f3f39
 ```
 
 Disabling the signature proxy [allows to detach again](http://stackoverflow.com/a/22894096) with `CTRL`+`C`.
+
+### Parity Deploy Scripts
+
+A Parity deployment script generator is available at [paritytech/parity-deploy](https://github.com/paritytech/parity-deploy). It uses `docker` and `docker-compose`. On Ubuntu systems these will automatically be installed if not already present on the system.
+
+Currently these scripts supports two types of chains, either [instant sealing](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#instant-seal) for development and [authority round](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#aura) for proof of authority with multiple validators.
+
+##### Prepare the node
+
+Some examples of using the script are:
+
+- A single node instant seal node, accessible via `127.0.0.1:8180`:
+
+  ```bash
+  $ ./parity-deploy.sh --name testchain --engine instantseal
+  ```
+
+- A three node proof of authority chain with one client accessible via `127.0.0.1:8180`:
+
+  ```bash
+  $ ./parity-deploy.sh --name testchain --engine authorityround --nodes 3
+  ```
+
+##### Launching Parity
+
+Once the configuration is created you just need to run the docker-compose command to launch the machine or machines. This can be done via:
+
+```bash
+$ docker-compose up -d
+```
+
+You will then be able to see the logs by running:
+
+```bash
+$ docker-compose logs -f 
+```
+
+In these logs you should see a token being generated to login to parity. Alternatively you can run the command:
+
+```bash
+$ docker-compose logs | grep token
+```
+
+Once you are logged into the web interface if you go to _Add Accounts_, then select the option recovery phrase and enter the account recovery phrase as password. You now have an account with lots of ether to send around.
+
+##### More options
+
+You can also include extra nodes (e.g. [ethstats monitoring](https://github.com/cubedro/eth-net-intelligence-api)) by including the docker-compose configuration in `include/docker-compose.yml`. To add Ethstats monitoring you would need to include this in the file:
+
+```
+  monitor:
+    image: buythewhale/ethstats_monitor
+    volumes:
+      - ./monitor/app.json:/home/ethnetintel/eth-net-intelligence-api/app.json:ro
+  dashboard:
+    image: buythewhale/ethstats
+    volumes:
+      - ./dashboard/ws_secret.json:/eth-netstats/ws_secret.json:ro
+    ports:
+      - 3001:3000
+```
 
 ### Further reading
 
