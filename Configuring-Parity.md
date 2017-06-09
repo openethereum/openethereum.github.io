@@ -38,7 +38,6 @@ base_path = "$HOME/.local/share/io.ethereum.parity"
 db_path = "$HOME/.local/share/io.ethereum.parity/chains"
 keys_path = "$HOME/.local/share/io.ethereum.parity/keys"
 identity = ""
-light = false
 
 [account]
 unlock = ["0xdeadbeefcafe0000000000000000000000000000"]
@@ -53,7 +52,6 @@ interface = "127.0.0.1"
 path = "$HOME/.local/share/io.ethereum.parity/signer"
 
 [network]
-disable = false
 port = 30303
 min_peers = 25
 max_peers = 50
@@ -65,10 +63,7 @@ warp = true
 allow_ips = "all"
 snapshot_peers = 0
 max_pending_peers = 64
-serve_light = true
-
 reserved_only = false
-reserved_peers = "./path_to_file"
 
 [rpc]
 disable = false
@@ -89,9 +84,6 @@ port = 8080
 interface = "local"
 hosts = ["none"]
 path = "$HOME/.local/share/io.ethereum.parity/dapps"
-# authorization:
-user = "test_user"
-password = "test_pass"
 
 [mining]
 author = "0xdeadbeefcafe0000000000000000000000000002"
