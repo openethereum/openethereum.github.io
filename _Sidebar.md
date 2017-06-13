@@ -42,10 +42,12 @@
   - [web3](JSONRPC-web3-module)
   - [net](JSONRPC-net-module)
   - [eth](JSONRPC-eth-module)
+  - [eth_pubsub](JSONRPC-eth-pubsub-module)
   - [personal](JSONRPC-personal-module)
   - [parity](JSONRPC-parity-module)
   - [parity_accounts](JSONRPC-parity_accounts-module)
   - [parity_set](JSONRPC-parity_set-module)
+  - [pubsub](JSONRPC-parity_pubsub-module)
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
 
