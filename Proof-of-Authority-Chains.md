@@ -42,6 +42,7 @@ When deploying PoC it is useful to get a centrally managed network going first. 
 ### Community built setups
 - [Docker compose network with 3 authorities and netstats dashboard](https://github.com/dstarcev/parity-poa-playground)
 - [Docker compose for running integration tests](https://github.com/illya13/parity-poa)
+- [Docker compose with demo PoA setup](https://github.com/vincentserpoul/parityPoA)
 
 ### Useful RPCs
 Connect the deployed nodes:
