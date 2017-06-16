@@ -1,8 +1,8 @@
-To use Parity run `parity ui` command or head on to [http://127.0.0.1:8180/](http://127.0.0.1:8180/) or another port specified by `--ui-port PORT` option. This will bring up the UI that can be used to monitor Ethereum blockchain syncing progress and to use installed DApps.
+To use Parity run `parity ui` command or head on to [http://127.0.0.1:8180/](http://127.0.0.1:8180/) or another port specified by `--ui-port PORT` option. This will bring up the Parity wallet user interface that can be used to monitor Ethereum blockchain syncing progress and to use installed DApps.
 
 ![The Parity User Interface](images/home-0.png)
 
-Once the syncing is complete, new transactions can be sent. Before relaying a transaction [Secure Transaction Signer](Secure Transaction Signer) has to be used to sign it.
+Once the [syncing](Getting-Synced) is complete, new transactions can be sent. Before relaying a transaction Secure Transaction Signer has to be used to sign it.
 
 - [Configuration](#configuration)
 - [Networking](#networking)
@@ -21,13 +21,17 @@ Use `parity --help` to find out about available options. To avoid adding options
 
 You can connect to the Ropsten testnet with `parity --chain ropsten` or to the Kovan testnet with `parity --chain kovan`.
 
-You can override the normal boot nodes and connect to your own nodes by using `parity --bootnodes`, i.e., you might run a local `geth` node and sync from that by running:
+You can override the normal boot nodes with `--bootnodes`, i.e., you might run a local bootnode and sync from that by running:
 
 ```bash
-$ parity --bootnodes enode://YOU_GETH_NODE_ID_HERE@127.0.0.1:30303
+$ parity --bootnodes enode://YOU_BOOT_NODE_ID_HERE@127.0.0.1:30303
 ```
 
-You need to check geth's output to figure out what node ID is.
+To maintain permanent connection to your own set of nodes, you can wire them with the `--reserved-peers` feature. Simply place all node addresses you want to connect to (`enode://...`, one per line) into a text file, e.g., `reserved.txt`, and run Parity with:
+
+```bash
+$ parity --reserved-peers /path/to/reserved.txt
+```
 
 ### JSON-RPC API
 
@@ -71,14 +75,10 @@ After this point, you'll be able to use the Web3 API from with this environment,
 
 ##### Legacy Geth Console
 
-As of this writing, it is possible to configure parity to expose an IPC port which can be readily attached to by Geth. To do this, run parity with the `--geth` flag, like so:
+As of this writing, Parity's IPC socket can be readily attached to by Geth. To do this, run Parity with IPC enabled. You can then run Geth with the attach option, just like so:
 
 ```bash
-$ parity --geth
+$ geth attach ~/.local/share/io.parity.ethereum/jsonrpc.ipc
 ```
 
-In the home directory of the user who ran the parity command, parity will create an `.ethereum` subdirectory, and an IPC file within that. You can then run Geth with the attach option, just like so:
-
-```bash
-$ geth attach
-```
+It's no longer required to run Parity in `--geth` compatibility mode to use the Geth console.
