@@ -1,22 +1,59 @@
-As of Parity version 1.3.0 ("Acuity"), Parity supports state snapshotting. This allows for an extremely fast "synchronisation" that skips almost all of the block processing, simply injecting the appropriate data directly into the database.
+Parity supports state snapshotting that significantly reduces sync-times and database pruning which reduces disk requirements. Both features are enabled by default on most recent Parity releases. Simply get synced by running:
 
-**NOTE**: At present, snapshotting does not place all of the block or receipt data into the database. This means you will not get information relating to transactions more than a few days old. This is fine for some usages such as mining, but if you have or need access to historical transaction data (e.g. if you have an account that you've been using with Geth and wish to browse sent transactions) then you probably want to sync normally.
+```bash
+$ parity
+```
 
-To use a snapshot sync, you first need to download a snapshot. When using Parity 1.4.0 or higher, you can just run with `parity --warp` to automatically fetch a recent snapshot from the network, restore from it, and continue syncing. On an older version, you'll have to download one via Bittorrent or other means and restore it manually.
+### Warp Synchorization
 
-(NOTE: These snapshots are valid for Parity 1.3.0, but not 1.4.0. As the snapshot format may be subject to change, these are not guaranteed to work with every version of Parity)
+State snapshotting, or warp-sync, allows for an extremely fast "synchronization" that skips almost all of the block processing, simply injecting the appropriate data directly into the database. To use a snapshot sync, you first need to download a snapshot.
 
-- **Standard mainnet** 
-    `magnet:?xt=urn:btih:E9B318B15016AAD261E925FF19AE14B30D1BACA3&dn=mainnet-2021235.snapshot`
-- **Classic** 
-    `magnet:?xt=urn:btih:EAA20FC76D0C14B14FC43FC99EE3E0078B0B2161&dn=classic-2019364.snapshot`
+When using Parity **1.4** or **1.5**, you can just run with: 
 
-With your snapshot downloaded, simply run Parity telling it to restore from the snapshot in question. For example, to restore the mainnet use:
+```bash
+$ parity --warp
+```
 
-`parity restore mainnet-2021235.snapshot`
+... to automatically fetch a recent snapshot from the network, restore from it, and continue syncing. When using Parity **1.6** or **1.7**, `--warp` does nothing as it is enabled by default.
 
-To restore the Classic chain, *ensure that you use the `--chain` option* (you'll end up with a very confused database otherwise):
+Note, at present, snapshotting does not place all of the block or receipt data into the database. This means you will not get information relating to transactions more than a few days old. This is fine for some usages such as mining, but if you have or need access to historical transaction data (e.g. if you have an account that you've been using with Geth and wish to browse sent transactions) then you probably want to sync normally.
 
-`parity restore classic-2019364.snapshot --chain=classic`
+To disable snapshotting, run Parity with:
 
-It takes a minute or two to restore. After that, just run Parity normally and you'll be synced in no time.
+```bash
+$ parity --no-warp
+```
+
+CLI reference:
+
+```bash
+  --warp                         Does nothing; Warp sync is on by default. (default: true)
+  --no-warp                      Disable syncing from the snapshot over the network. (default: false)
+```
+
+### Database Pruning
+
+Parity's database pruning mode is enabled by default and only maintains a small journal overlay reducing the disk space required by your Parity node significantly.
+
+To disable storage pruning and to keep all state-trie data, run Parity with:
+
+```bash
+$ parity --pruning archive
+```
+
+Further fine-tuning of the pruning is enable via the `--pruning history` and `--pruning-memory` flags. Full CLI reference:
+
+```bash
+  --pruning METHOD               Configure pruning of the state/storage trie. METHOD
+                                 may be one of auto, archive, fast:
+                                 archive - keep all state trie data. No pruning.
+                                 fast - maintain journal overlay. Fast but 50MB used.
+                                 auto - use the method most recently synced or
+                                 default to fast if none synced (default: auto).
+  --pruning-history NUM          Set a minimum number of recent states to keep when pruning
+                                 is active. (default: 64).
+  --pruning-memory MB            The ideal amount of memory in megabytes to use to store
+                                 recent states. As many states as possible will be kept
+                                 within this limit, and at least --pruning-history states
+                                 will always be kept. (default: 75)
+```
