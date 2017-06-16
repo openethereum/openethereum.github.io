@@ -29,40 +29,47 @@ It is best to include the contract in the genesis placing the bytecode as a "con
 ## Non-reporting contract
 A simple validator contract has to have the following interface:
 ```json
-[{"constant":true,"inputs":[],"name":"transitionNonce","outputs":[{"name":"nonce","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"validators","type":"address[]"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":true,"name":"_nonce","type":"uint256"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
+[{"constant":false,"inputs":[],"name":"finalizeSignal","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"_validators","type":"address[]"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
 ```
 
 which corresponds to this Solidity contract definition:
 ```solidity
 contract ValidatorSet {
-    event ValidatorsChanged(bytes32 _parent_hash, uint256 _nonce, address[] _new_set);
+    /// Issue this log event to signal a desired change in validator set.
+    /// This will not lead to a change in active validator set until 
+    /// finalizeSignal is called.
+    ///
+    /// Only the last log event of any block can take effect.
+    /// If a signal is issued while another is being finalized it may never
+    /// take effect.
+    /// 
+    /// _parent_hash here should be the parent block hash, or the
+    /// signal will not be recognized.
+    event ValidatorsChanged(bytes32 indexed _parent_hash, address[] _new_set);
     
-    function getValidators() constant returns (address[] validators);
-    function transitionNonce() constant returns (uint256);
+    /// Get current validator set (last enacted or initial if no changes ever made)
+    function getValidators() constant returns (address[] _validators);
+    
+    /// Called when a signalled change reaches finality and is activated. 
+    /// Only valid when msg.sender == SUPER_USER (EIP96, 2**160 - 2)
+    ///
+    /// Ignore when no signal has been issued.
+    function finalizeSignal();
 }
 ```
 
-The function `getValidators` will be called on every block to determine the current list. The switching rules are then determined by the contract implementing that method. The spec should contain the contract address:
+There is a notion of an "active" validator set: this is the set of the most recently finalized signal (ValidatorsChanged event) or the initial set if no signals have been finalized.
+
+The function `getValidators` should always return the active set. 
+Switching the set should be done by issuing a `ValidatorsChanged` event with the parent block hash and new set, storing the pending set, and then waiting for call to `finalizeSignal` (by the `SYSTEM_ADDRESS`: `2^160 - 2`) before setting the active set to the pending set. This mechanism is used to ensure that the previous validator set "signs off" on the changes before activation, leading to full security in situations like warp and light sync, where state transitions aren't checked.
+
+Other than these restrictions, the switching rules are fully determined by the contract implementing that method. The spec should contain the contract address:
 
 ```json
 "validators": {
     "safeContract": "0x0000000000000000000000000000000000000005"
 }
 ```
-
-### Warp and Light Sync
-
-The function `transitionNonce` and the `ValidatorsChanged` event are for the purposes of supporting warp sync and light clients and can be ignored if these cases are not important to you: just return 0 from `transitionNonce` and never issue a `ValidatorsChanged` event.
-
-To support warp and light sync, the contract should maintain a "transition nonce", which is defined to be the number of blocks in which a change of the validators set has occurred. This should start at 0. Every time the validator set changes, the contract should bump the transition nonce (unless another transition occurred already in the same block) and issue a `ValidatorsChanged(parent_hash, nonce, new_set)` event where:
-  - `parent_hash` is the hash of the parent block (`block.blockhash(block.number - 1)` in Solidity)
-  - `nonce` is the new transition nonce
-  - and `new_set` is the new validator set.
-
-For correct behavior, silent changes should never occur. More strictly, `getValidators()` and `transitionNonce()` calls should always return the `new_set` and `nonce` values of the most recently `ValidatorsChanged` event or their initial values if no change has ever been issued.
-
-`parent_hash` is included to limit the time window an attacker has to make a log which sets the same bits in the bloom filter, forcing the light client to download receipts for a false positive.
-The transition nonce may only be incremented once per block because only the result of `getValidators` at the final state of the block matters for consensus, and therefore any transitions don't persist to the end of the block may as well have not happened.
 
 ## Reporting contract
 
@@ -76,24 +83,30 @@ This type of contract can listen to misbehaviour reports from the consensus engi
 
 The correct interface is:
 ```json
-[{"constant":true,"inputs":[],"name":"transitionNonce","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"validators","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"},{"name":"proof","type":"bytes"}],"name":"reportMalicious","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"}],"name":"reportBenign","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_nonce","type":"uint256"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
+[{"constant":false,"inputs":[],"name":"finalizeSignal","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"_validators","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"},{"name":"proof","type":"bytes"}],"name":"reportMalicious","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"}],"name":"reportBenign","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
 ```
 
 which corresponds to this Solidity contract definition:
 ```solidity
 contract ReportingValidatorSet {
-    event ValidatorsChanged(bytes32 _parent_hash, uint256 _nonce, address[] _new_set);
+    // all same as ValidatorSet
+    event ValidatorsChanged(bytes32 indexed _parent_hash, address[] _new_set);
+
+    function getValidators() constant returns (address[] _validators);
+    function finalizeSignal();
     
-    function getValidators() constant returns (address[] validators);
-    function transitionNonce() constant returns (uint256);
+    // Reporting functions: operate on current validator set.
+    // malicious behavior requires proof, which will vary by engine.
     
     function reportBenign(address validator, uint256 blockNumber);
     function reportMalicious(address validator, uint256 blockNumber, bytes proof);
 }
 ```
 
-`ValidatorsChanged`, `getValidators` and `transitionNonce` should function exactly as in a non-reporting contract.
+`ValidatorsChanged`, `getValidators` and `finalizeSignal` should function exactly as in a non-reporting contract.
 There are two new functions, `reportBenign` and `reportMalicious`. Each should come with the address of a validator being reported and the block number at which misbehavior occurred. `reportMalicious` also requires a proof of malice, which is an arbitrary byte-string which different engines will set to different values.
+
+These should function on only the current active validator set.
 
 It is specified as:
 
@@ -122,3 +135,7 @@ This validator set can specify any combination of other validator sets. Switchin
     }
 }
 ```
+
+Note that transitions to a contract will not take effect immediately. Rather, they will take effect when the transition block is finalized by the previous set of validators. Again, this is to provide full security for warp and light sync.
+
+Transitions to a fixed list will take effect immediately because regardless of whether an attacker gives a light client a transition block with an invalid state, the subsequent validator set will always be the same.
