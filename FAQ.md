@@ -274,7 +274,7 @@ Parity is running but seems to remain at the same block for a long time.
    If it isn't get it synced. Your machine will not automatically do this; my machine is routinely 1-2 seconds out of sync which is enough to disrupt peer discovery.
 
 3. Make sure your network does not block UDP traffic.
-4. Remove your nodes file (`$HOME/.local/share/io.ethereum.parity/network/nodes.json`) while Parity is not running.
+4. Remove your nodes file (`$HOME/.local/share/io.parity.ethereum/network/nodes.json`) while Parity is not running.
 5. Wait a bit longer.
 
 If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/paritytech/parity/issues/2447).
@@ -371,7 +371,7 @@ _Parity 1.5 and above:_
 
 _Parity 1.4 and below:_
 
-- Simply copy it into your `$HOME/.local/share/io.ethereum.parity/keys` directory. Parity will import all keys found there.
+- Simply copy it into your `$HOME/.local/share/io.parity.ethereum/keys` directory. Parity will import all keys found there.
 
 #### What are the Parity disk space needs?
 
@@ -411,10 +411,10 @@ parity db kill --chain=morden
 
 _For Parity 1.4 and below:_
 
-- Execute `rm -rf ~/.local/share/io.ethereum.parity/906a34e69aec8c0d`
+- Execute `rm -rf ~/.local/share/io.parity.ethereum/906a34e69aec8c0d`
 - This will remove the local chain database.
 
-Always back up your keys (~/.local/share/io.ethereum.parity/keys) before doing anything like that though.
+Always back up your keys (~/.local/share/io.parity.ethereum/keys) before doing anything like that though.
 
 
 ---
