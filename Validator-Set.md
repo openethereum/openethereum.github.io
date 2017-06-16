@@ -14,7 +14,7 @@ A simple list of addresses specified at genesis.
 ```
 
 # Contracts
-**Available since 1.6.**
+**Available since 1.7.**
 
 The list can be also a part of the blockchain state by being stored in an Ethereum contract.
 
