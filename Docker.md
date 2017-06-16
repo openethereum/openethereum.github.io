@@ -16,37 +16,32 @@ Build and run Parity anywhere with Docker:
 
 ### Pick a container
 
-Docker containers for Parity are available via [Docker Hub](https://hub.docker.com/r/ethcore/parity/):
+Docker containers for Parity are available via [Docker Hub](https://hub.docker.com/r/parity/parity/):
 
 ```bash
-$ docker search ethcore/parity
-NAME                     DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-ethcore/parity           Parity is Ethcore's initial fully-featured...   14                   [OK]
-ethcore/parity-poa                                                       2
-ethcore/parity-arm       Parity is Ethcore's initial fully-featured...   1                    [OK]
-ethcore/parity-centos    Parity is Ethcore's initial fully-featured...   1                    [OK]
-ethcore/parity-jit       Parity is Ethcore's initial fully-featured...   1                    [OK]
-ethcore/parity-aarch64   Parity is Ethcore's initial fully-featured...   1                    [OK]
-ethcore/parity-dev       Parity is Ethcore's initial fully-featured...   0
+$ docker search parity/parity
+NAME                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+parity/parity               Parity is Ethcore's initial fully-featured...   0                    
+parity/rust                 Rust stable, beta and nightly for GitLab C...   0                    [OK]
+parity/snapcraft            Docker image for build snap application (U...   0                    [OK]
+parity/rust-arm             RUST for GitLab CI runner (ARM architecture)    0                    [OK]
 ```
 
 To get a list of available versions, use `curl` and `jq`:
 
 ```bash
-$ curl -sS 'https://registry.hub.docker.com/v2/repositories/ethcore/parity/tags/'  | jq '."results"[]["name"]' | sort
-"beta"
-"latest"
-"master"
+$ curl -sS 'https://registry.hub.docker.com/v2/repositories/parity/parity/tags/'  | jq '."results"[]["name"]' | sort
 "nightly"
-"stable"
 "v1.5.12"
+"v1.5.13"
+"v1.6.7"
 "v1.6.8"
 ```
 
-In general, you want one of `stable`, `beta`, or `nightly`, which always pulls the latest version from the according release channel, e.g., for `beta` run:
+To get the latest beta release, run:
 
 ```bash
-$ docker pull ethcore/parity:beta
+$ docker pull parity/parity:v1.6.8
 ```
 
 ### Run container
@@ -54,7 +49,7 @@ $ docker pull ethcore/parity:beta
 To run Parity with an interactive pseudo-tty shell, run:
 
 ```bash
-$ docker run -ti ethcore/parity:beta
+$ docker run -ti parity/parity:v1.6.8
 ```
 
 ### Configure parity
@@ -62,7 +57,7 @@ $ docker run -ti ethcore/parity:beta
 Parity can be configured using either the [CLI options or a config file](Configuring-Parity). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence. You can list all CLI options by running:
 
 ```bash
-$ docker run ethcore/parity:beta --help
+$ docker run parity/parity:v1.6.8 --help
 ```
 
 For Docker specific options, please refer to the [Docker documentation](https://docs.docker.com/engine/), or run `docker --help` or `docker run --help`.
@@ -72,7 +67,7 @@ For Docker specific options, please refer to the [Docker documentation](https://
 To publish Parity's ports to the host machine, use the `-p` option:
 
 ```bash
-$ docker run -ti -p 8180:8180 -p 8545:8545 -p 30303:30303 ethcore/parity:beta
+$ docker run -ti -p 8180:8180 -p 8545:8545 -p 30303:30303 parity/parity:v1.6.8
 ```
 
 For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can browse to http://localhost:8180 from the Docker host computer to access the Parity Wallet.
@@ -82,7 +77,7 @@ For example, this will expose the User Interface, the JSONRPC-API, and the liste
 To pass further operating options to Parity, simply append them to the `docker run` command:
 
 ```bash
-$ docker run -ti ethcore/parity:beta --no-ui --no-dapps --no-discovery
+$ docker run -ti parity/parity:v1.6.8 --no-ui --no-dapps --no-discovery
 ```
 
 In this case, it disables the Wallet, the DApps Server, and discovery.
@@ -99,7 +94,7 @@ $ touch ~/.local/share/io.parity.ethereum/docker/config.toml
 You can use the [Config File Generator](https://paritytech.github.io/parity-config-generator/) to configure your Parity node and save it on your host's disk, i.e., at `~/.local/share/io.parity.ethereum/docker/config.toml`. To mount the configuration, use the `docker run -v` option:
 
 ```bash
-$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/mnt/ ethcore/parity:beta --config /mnt/config.toml
+$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/mnt/ parity/parity:v1.6.8 --config /mnt/config.toml
 ```
 
 This will mount `~/.local/share/io.parity.ethereum/docker/` of the host machine at `/mnt/` inside the docker container. Therefore, the config file will be available via `--config /mnt/config.toml`.
@@ -109,7 +104,7 @@ This will mount `~/.local/share/io.parity.ethereum/docker/` of the host machine 
 In case you need to persist the blockchain files, keys etc., you should run the image with the `--base-path` option and then mount it, e.g.:
 
 ```
-$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/mnt/ ethcore/parity:beta --base-path /mnt/
+$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/mnt/ parity/parity:v1.6.8 --base-path /mnt/
 ```
 
 This will expose the whole data dir to the host machine at `~/.local/share/io.parity.ethereum/docker/`.
@@ -119,7 +114,7 @@ This will expose the whole data dir to the host machine at `~/.local/share/io.pa
 To run a detached Parity instance, use `docker run -d`:
 
 ```bash
-$ docker run -d ethcore/parity:beta
+$ docker run -d parity/parity:v1.6.8
 245f312f3f39ad0a518091b1ee4cdc0c1f6d74fb9609395ed3fdcf43acae4b62
 ```
 
@@ -128,7 +123,7 @@ It will run Parity in background. `docker ps` shows the instance:
 ```bash
 $ docker ps
 CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                          NAMES
-245f312f3f39        ethcore/parity:beta   "/parity/parity"    7 seconds ago       Up 6 seconds        8080/tcp, 8180/tcp, 8545/tcp   epic_pike
+245f312f3f39        parity/parity:v1.6.8   "/parity/parity"    7 seconds ago       Up 6 seconds        8080/tcp, 8180/tcp, 8545/tcp   epic_pike
 ```
 
 To attach the container, use `docker attach`:
@@ -208,5 +203,5 @@ You can also include extra nodes (e.g. [ethstats monitoring](https://github.com/
 - [Docker compose for running integration tests](https://github.com/illya13/parity-poa).
 - [Building Parity using Docker](Setup#Building-using-Docker).
 - [Docker build for ARM64](https://github.com/paritytech/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
-- [Parity on Docker Hub](https://hub.docker.com/r/ethcore/parity/).
+- [Parity on Docker Hub](https://hub.docker.com/r/parity/parity/).
 - [View the Dockerfile here](https://github.com/paritytech/parity/blob/master/docker/ubuntu/Dockerfile).
