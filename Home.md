@@ -11,7 +11,7 @@ Parity comes with an extensive, in-built Ethereum Wallet and Dapp environment. I
 - Name registry support. 
 - Contract development, deployment and interaction environment.
 
-To use it, simply browse `http://web3.site/` once Parity is running on your computer.
+To use it, simply browse `http://127.0.0.1:8180/` once Parity is running on your computer.
 
 Some help:
 - If you want to get a node up and running with Parity, see the [[Setup]] guide, or browse the [Articles Index](Community-Guides).
