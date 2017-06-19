@@ -64,16 +64,17 @@
   - [Private Dev Chain](Private-development-chain)
 
 ## Technologies
-- [[Warp Sync]]
-  - [Snapshot Format](Warp-Sync-Snapshot-Format)
+- [Automatic Updating](Automatic-Updating)
+- [Ethereum-IPFS API](IPFS)
 - [[Light Client]]
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
+- [[Warp Sync]]
+  - [Snapshot Format](Warp-Sync-Snapshot-Format)
 - [[Whisper]]
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
-- [Ethereum-IPFS API](IPFS)
 
 ## Hacking on Parity
 - [[Coding Guide]]
