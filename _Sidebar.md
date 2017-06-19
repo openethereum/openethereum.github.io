@@ -78,7 +78,7 @@
 ## Hacking on Parity
 - [[Coding Guide]]
 - [Labeling](Labelling)
-- [[Release Notes]]
+- [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <sup>[+]</sup>
 - [Gitter](https://gitter.im/ethcore/parity) <sup>[+]</sup>
 - [GitHub](https://github.com/paritytech/parity) <sup>[+]</sup>
 - [Website](https://parity.io) <sup>[+]</sup>
