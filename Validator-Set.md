@@ -29,7 +29,7 @@ It is best to include the contract in the genesis placing the bytecode as a "con
 ## Non-reporting contract
 A simple validator contract has to have the following interface:
 ```json
-[{"constant":false,"inputs":[],"name":"finalizeSignal","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"_validators","type":"address[]"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
+[{"constant":false,"inputs":[],"name":"finalizeChange","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"_validators","type":"address[]"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"InitiateChange","type":"event"}]
 ```
 
 which corresponds to this Solidity contract definition:
@@ -37,7 +37,7 @@ which corresponds to this Solidity contract definition:
 contract ValidatorSet {
     /// Issue this log event to signal a desired change in validator set.
     /// This will not lead to a change in active validator set until 
-    /// finalizeSignal is called.
+    /// finalizeChange is called.
     ///
     /// Only the last log event of any block can take effect.
     /// If a signal is issued while another is being finalized it may never
@@ -45,23 +45,23 @@ contract ValidatorSet {
     /// 
     /// _parent_hash here should be the parent block hash, or the
     /// signal will not be recognized.
-    event ValidatorsChanged(bytes32 indexed _parent_hash, address[] _new_set);
+    event InitiateChange(bytes32 indexed _parent_hash, address[] _new_set);
     
     /// Get current validator set (last enacted or initial if no changes ever made)
     function getValidators() constant returns (address[] _validators);
     
-    /// Called when a signalled change reaches finality and is activated. 
+    /// Called when an initiated change reaches finality and is activated. 
     /// Only valid when msg.sender == SUPER_USER (EIP96, 2**160 - 2)
     ///
     /// Ignore when no signal has been issued.
-    function finalizeSignal();
+    function finalizeChange();
 }
 ```
 
-There is a notion of an "active" validator set: this is the set of the most recently finalized signal (ValidatorsChanged event) or the initial set if no signals have been finalized.
+There is a notion of an "active" validator set: this is the set of the most recently finalized signal (InitiateChange event) or the initial set if no changes have been finalized.
 
 The function `getValidators` should always return the active set. 
-Switching the set should be done by issuing a `ValidatorsChanged` event with the parent block hash and new set, storing the pending set, and then waiting for call to `finalizeSignal` (by the `SYSTEM_ADDRESS`: `2^160 - 2`) before setting the active set to the pending set. This mechanism is used to ensure that the previous validator set "signs off" on the changes before activation, leading to full security in situations like warp and light sync, where state transitions aren't checked.
+Switching the set should be done by issuing a `InitiateChange` event with the parent block hash and new set, storing the pending set, and then waiting for call to `finalizeChange` (by the `SYSTEM_ADDRESS`: `2^160 - 2`) before setting the active set to the pending set. This mechanism is used to ensure that the previous validator set "signs off" on the changes before activation, leading to full security in situations like warp and light sync, where state transitions aren't checked.
 
 Other than these restrictions, the switching rules are fully determined by the contract implementing that method. The spec should contain the contract address:
 
@@ -83,17 +83,17 @@ This type of contract can listen to misbehaviour reports from the consensus engi
 
 The correct interface is:
 ```json
-[{"constant":false,"inputs":[],"name":"finalizeSignal","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"_validators","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"},{"name":"proof","type":"bytes"}],"name":"reportMalicious","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"}],"name":"reportBenign","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"ValidatorsChanged","type":"event"}]
+[{"constant":false,"inputs":[],"name":"finalizeChange","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"_validators","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"},{"name":"proof","type":"bytes"}],"name":"reportMalicious","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"validator","type":"address"},{"name":"blockNumber","type":"uint256"}],"name":"reportBenign","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"InitiateChange","type":"event"}]
 ```
 
 which corresponds to this Solidity contract definition:
 ```solidity
 contract ReportingValidatorSet {
     // all same as ValidatorSet
-    event ValidatorsChanged(bytes32 indexed _parent_hash, address[] _new_set);
+    event InitiateChange(bytes32 indexed _parent_hash, address[] _new_set);
 
     function getValidators() constant returns (address[] _validators);
-    function finalizeSignal();
+    function finalizeChange();
     
     // Reporting functions: operate on current validator set.
     // malicious behavior requires proof, which will vary by engine.
@@ -103,8 +103,8 @@ contract ReportingValidatorSet {
 }
 ```
 
-`ValidatorsChanged`, `getValidators` and `finalizeSignal` should function exactly as in a non-reporting contract.
-There are two new functions, `reportBenign` and `reportMalicious`. Each should come with the address of a validator being reported and the block number at which misbehavior occurred. `reportMalicious` also requires a proof of malice, which is an arbitrary byte-string which different engines will set to different values.
+`InitiateChange`, `getValidators` and `finalizeChange` should function exactly as in a non-reporting contract.
+There are two new functions, `reportBenign` and `reportMalicious`. Each should come with the address of a validator being reported and the block number at which misbehavior occurred. `reportMalicious` also requires a proof of malice, which is an arbitrary byte-string which different engines will set to different values. Validators will call these when they detect misbehavior.
 
 These should function on only the current active validator set.
 
