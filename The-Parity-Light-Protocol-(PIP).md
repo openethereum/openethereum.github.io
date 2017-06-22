@@ -21,6 +21,8 @@ We imagine that, given the monotonically growing storage requirements for mainta
 
 Our proposal is to integrate this with the CHTs, such that full nodes may discard the majority of ranges of blocks, but perhaps maintain the CHT for the ranges which they discard. Full nodes will also be required to maintain specific ranges of blocks and receipts (every nth range of 2048, for example) based on something similar to a Kademlia Node Identifier -- a node's failure to provide blocks it is expected to hold will be considered misbehavior.
 
+An alternative is to delegate responsibilities of serving blocks based on a prefix of the block's hash as opposed to the block's number. While this will definitely lead to a well-partitioned mesh, it makes synchronization much less efficient as it becomes impossible to reliably request ranges of ancient blocks from any given peer due to the fact that the longer a list of hashes of sequential blocks gets, the more unlikely it is for all hashes to share a common prefix.
+
 Storing ancient block-states is an even larger burden, and it is expected that nodes will store only recent states and prune everything older. Reading ancient state values is a difficult problem, and not a concern of very many use-cases, so we've chosen to ignore it for now.
 
 ## Hashes vs. (Number, Index) Tuples
@@ -28,6 +30,8 @@ Storing ancient block-states is an even larger burden, and it is expected that n
 Given a transaction hash, users of the client often expect to be able to immediately access the referenced transaction or its receipt. However, without a storage-heavy mapping from (H256 -> (Block Number, Index)) we have to go to the network to a peer who does hold this mapping, fetch the location information, and then finally the block header and either the body or receipts.
 
 This mapping can impose a storage requirement of almost a gigabyte as of block 3,000,000, so maintaining it indefinitely for light clients is definitely not an option. Our recommendation is to use (Number, Index) tuples whenever possible to refer to transactions, receipts, and uncles. The choice of (Number, Index) over (Hash, Index) is deliberate: numbers yield information on which peers may hold a given block, while hashes leak no information by design. Furthermore, it's difficult to punish a peer for not providing an answer to a specific transaction or block hash -- you can't distinguish an invalid hash from a misbehaving peer, particularly if the hash refers to a transaction not yet mined or a block which may not have propagated just yet.
+
+In chains where [EIP86](https://github.com/ethereum/EIPs/pull/208) has been implemented, the same transaction can be included in the chain multiple times, making transaction hash an even less convenient identifier for a transaction.
 
 ## Requests, Batching, and Pipelining
 
