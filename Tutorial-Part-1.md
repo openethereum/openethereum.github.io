@@ -94,7 +94,9 @@ For Windows, it's in `%APPDATA%/Parity/Ethereum/dapps` - here you'd want to ente
 mklink /D "%APPDATA%/Parity/Ethereum/dapps/mydapp" "%cd%/dist"
 ```
 
-Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp (*Note: If you are not running `npm start` in parity/src/js to have a development instance your URL is likely **localhost:8180**.*):
+Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
+
+*Note: If you are not running `npm start` in parity/src/js to have a development instance your URL is likely **localhost:8180** instead of port 3000.*
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22697933/f9d6449a-ed20-11e6-92d2-1afafaba86ea.png)
 
