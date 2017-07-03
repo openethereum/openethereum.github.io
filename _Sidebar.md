@@ -17,7 +17,7 @@
   - [[Wallet Remote Access]]
   - [Network Config](Network-Configuration)
   - [[Docker]]
-- [[Community Guides]]
+- [[Community Guides(dApps & setup)]]
 
 ## Developing DApps
 - [Dapp Tutorial](Dapp-Tutorial)
