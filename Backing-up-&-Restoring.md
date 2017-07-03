@@ -2,7 +2,7 @@ It's generally sensible to back up your keys. For Parity, this is simply a case 
 
 on Mac:
 ```bash
-d $HOME/Library/Application\ Support/io.parity.ethereum/keys && tar czf $HOME/Desktop/parity-keys-backup.tgz * && cd - && cd -
+cd $HOME/Library/Application\ Support/io.parity.ethereum/keys && tar czf $HOME/Desktop/parity-keys-backup.tgz * && cd - && cd -
 ```
 
 on Linux:
