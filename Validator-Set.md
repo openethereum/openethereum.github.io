@@ -53,14 +53,15 @@ contract ValidatorSet {
     /// Called when an initiated change reaches finality and is activated. 
     /// Only valid when msg.sender == SUPER_USER (EIP96, 2**160 - 2)
     ///
-    /// Ignore when no signal has been issued.
+    /// Also called when the contract is first enabled for consensus. In this case,
+    /// the "change" finalized is the activation of the initial set.
     function finalizeChange();
 }
 ```
 
-There is a notion of an "active" validator set: this is the set of the most recently finalized signal (InitiateChange event) or the initial set if no changes have been finalized.
+There is a notion of an "active" validator set: this is the set of the most recently finalized signal (InitiateChange event). The initial set is 
 
-The function `getValidators` should always return the active set. 
+The function `getValidators` should always return the active set or the initial set if the contract hasn't been activated yet. 
 Switching the set should be done by issuing a `InitiateChange` event with the parent block hash and new set, storing the pending set, and then waiting for call to `finalizeChange` (by the `SYSTEM_ADDRESS`: `2^160 - 2`) before setting the active set to the pending set. This mechanism is used to ensure that the previous validator set "signs off" on the changes before activation, leading to full security in situations like warp and light sync, where state transitions aren't checked.
 
 Other than these restrictions, the switching rules are fully determined by the contract implementing that method. The spec should contain the contract address:
