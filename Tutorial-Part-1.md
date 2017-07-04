@@ -97,6 +97,7 @@ mklink /D "%APPDATA%/Parity/Ethereum/dapps/mydapp" "%cd%/dist"
 Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
 
 *Note: If you are not running `npm start` in parity/src/js to have a development instance your URL is likely **localhost:8180** instead of port 3000.*
+
 *Note: It can happen on older parity versions that firefox is blocking your dApp due to X-Frame-Options. You will see a warning in the development console. We recommend going on **127.0.0.1:8180** to fix the problem.*
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22697933/f9d6449a-ed20-11e6-92d2-1afafaba86ea.png)
