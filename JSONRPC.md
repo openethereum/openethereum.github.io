@@ -30,3 +30,12 @@ When encoding **UNFORMATTED DATA** (byte arrays, account addresses, hashes, byte
 
 Aside from `DATA` and `QUANTITIES`, there are also normative JSON types, which we describe as `STR` (strings) and `INT` (integer numbers).
 
+## Enabled APIs (default)
+As documented in the options, available under `parity --help` not all API's are exposed by default. However you can simply enable them by running parity with a flag.
+
+`--ws-apis APIS                   Specify the APIs available through the WebSockets`
+                                   `interface. APIS is a comma-delimited list of API`
+                                   `name. Possible name are web3, eth, pubsub, net, personal,`
+                                   `parity, parity_set, traces, rpc, parity_accounts.`
+                                   `(default: web3,eth,pubsub,net,parity,parity_pubsub,traces,rpc,secretstore).`
+
