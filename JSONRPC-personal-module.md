@@ -2,6 +2,8 @@
 
 ## JSON-RPC methods
 
+**Note**_This API is not exposed by default. Run parity with the flag `--jsonrpc-apis personal` to enable it._
+
 - [personal_listAccounts](#personal_listaccounts)
 - [personal_newAccount](#personal_newaccount)
 - [personal_sendTransaction](#personal_sendtransaction)
