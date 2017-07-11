@@ -33,7 +33,7 @@ Aside from `DATA` and `QUANTITIES`, there are also normative JSON types, which w
 ## Enabled APIs (default)
 As documented in the options, available under `parity --help` not all API's are exposed by default. However you can simply enable them by running parity with the flag: 
 `--jsonrpc-apis APIS `                  
-> _Specify the APIs available through the JSONRPC interface. APIS is a comma-delimited list of API name. Possible name are all, safe, web3, eth, net, personal, parity, parity_set, traces, rpc, parity_accounts. You can also disable a specific API by putting '-' in the front: all,-personal._
+> _Specify the APIs available through the JSONRPC interface. APIS is a comma-delimited list of API name. Possible name are all, safe, web3, eth, net, personal, parity, parity_set, traces, rpc, parity_accounts, signer. You can also disable a specific API by putting '-' in the front: all,-personal._
 
 **default**: web3,eth,pubsub,net,parity,parity_pubsub,traces,rpc,secretstore.
 
