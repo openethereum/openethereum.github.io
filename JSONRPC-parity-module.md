@@ -65,13 +65,12 @@
 - [parity_unsignedTransactionsCount](#parity_unsignedtransactionscount)
 
 #### Node Settings
-- [parity_dappsInterface](#parity_dappsinterface)
-- [parity_dappsPort](#parity_dappsport)
+- [parity_dappsUrl](#parity_dappsurl)
 - [parity_enode](#parity_enode)
 - [parity_mode](#parity_mode)
 - [parity_nodeKind](#parity_nodekind)
 - [parity_nodeName](#parity_nodename)
-- [parity_signerPort](#parity_signerport)
+- [parity_wsUrl](#parity_wsurl)
 
 ## JSON-RPC API Reference
 
@@ -1258,7 +1257,7 @@ params: [{
   "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
   "condition": {
     "block": 354221,
-    "time": "2017-05-11T09:46:41.590Z"
+    "time": "2017-07-13T10:05:18.275Z"
   }
 }]
 ```
@@ -1271,7 +1270,7 @@ params: [{
 
 Request
 ```bash
-curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2017-05-11T09:46:41.590Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2017-07-13T10:05:18.275Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -1533,7 +1532,7 @@ Response
 
 ### parity_chain
 
-Returns the name of the connected chain. 
+Returns the name of the connected chain.
 
 #### Parameters
 
@@ -2078,39 +2077,9 @@ Response
 
 ***
 
-### parity_dappsInterface
+### parity_dappsUrl
 
-Returns the interface the dapps are running on, error if not enabled.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `String` - The interface
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_dappsInterface","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "127.0.0.1"
-}
-```
-
-***
-
-### parity_dappsPort
-
-Returns the port the dapps are running on, error if not enabled.
+Returns the hostname and the port of dapps/rpc server, error if not enabled.
 
 #### Parameters
 
@@ -2118,13 +2087,13 @@ None
 
 #### Returns
 
-- `Quantity` - The port number
+- `String` - The hostname and port number
 
 #### Example
 
 Request
 ```bash
-curl --data '{"method":"parity_dappsPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_dappsUrl","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -2132,7 +2101,7 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": 8080
+  "result": "localhost:8545"
 }
 ```
 
@@ -2263,9 +2232,9 @@ Response
 
 ***
 
-### parity_signerPort
+### parity_wsUrl
 
-Returns the port the signer is running on, error if not enabled
+Returns the hostname and the port of WebSockets/Signer server, error if not enabled.
 
 #### Parameters
 
@@ -2273,13 +2242,13 @@ None
 
 #### Returns
 
-- `Quantity` - The port number
+- `String` - The hostname and port number
 
 #### Example
 
 Request
 ```bash
-curl --data '{"method":"parity_signerPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_wsUrl","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -2287,6 +2256,6 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": 8180
+  "result": "localhost:8546"
 }
 ```

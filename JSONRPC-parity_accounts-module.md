@@ -2,8 +2,6 @@
 
 ## JSON-RPC methods
 
-**Note:** _This API is not exposed by default. Run parity with the flag `--jsonrpc-apis parity_accounts` to enable it._
-
 - [parity_allAccountsInfo](#parity_allaccountsinfo)
 - [parity_changePassword](#parity_changepassword)
 - [parity_deriveAddressHash](#parity_deriveaddresshash)

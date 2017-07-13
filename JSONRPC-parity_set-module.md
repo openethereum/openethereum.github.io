@@ -4,11 +4,13 @@
 
 - [parity_acceptNonReservedPeers](#parity_acceptnonreservedpeers)
 - [parity_addReservedPeer](#parity_addreservedpeer)
+- [parity_dappsList](#parity_dappslist)
 - [parity_dropNonReservedPeers](#parity_dropnonreservedpeers)
 - [parity_executeUpgrade](#parity_executeupgrade)
 - [parity_hashContent](#parity_hashcontent)
 - [parity_removeReservedPeer](#parity_removereservedpeer)
 - [parity_setAuthor](#parity_setauthor)
+- [parity_setChain](#parity_setchain)
 - [parity_setEngineSigner](#parity_setenginesigner)
 - [parity_setExtraData](#parity_setextradata)
 - [parity_setGasCeilTarget](#parity_setgasceiltarget)
@@ -85,6 +87,43 @@ Response
 
 ***
 
+### parity_dappsList
+
+Returns a list of available local dapps.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Array` - The list of dapps
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_dappsList","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [{
+    "author": "Parity Technologies Ltd",
+    "description": "A skeleton dapp",
+    "iconUrl": "title.png",
+    "id": "skeleton",
+    "name": "Skeleton",
+    "version": "0.1"
+  }]
+}
+```
+
+***
+
 ### parity_dropNonReservedPeers
 
 Set Parity to drop all non-reserved peers. To restore default behavior call [parity_acceptNonReservedPeers](#parity_acceptnonreservedpeers).
@@ -154,7 +193,7 @@ Creates a hash of a file at a given URL.
 0. `String` - The url of the content.
 
 ```js
-params: ["https://raw.githubusercontent.com/ethcore/parity/master/README.md"]
+params: ["https://raw.githubusercontent.com/paritytech/parity/master/README.md"]
 ```
 
 #### Returns
@@ -165,7 +204,7 @@ params: ["https://raw.githubusercontent.com/ethcore/parity/master/README.md"]
 
 Request
 ```bash
-curl --data '{"method":"parity_hashContent","params":["https://raw.githubusercontent.com/ethcore/parity/master/README.md"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_hashContent","params":["https://raw.githubusercontent.com/paritytech/parity/master/README.md"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -234,6 +273,40 @@ params: ["0x407d73d8a49eeb85d32cf465507dd71d507100c1"]
 Request
 ```bash
 curl --data '{"method":"parity_setAuthor","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
+### parity_setChain
+
+Sets the network spec file Parity is using.
+
+#### Parameters
+
+0. `String` - Chain spec name, one of: "foundation", "ropsten", "morden", "kovan", "olympic", "classic", "dev", "expanse" or a filename.
+
+```js
+params: ["foundation"]
+```
+
+#### Returns
+
+- `Boolean` - `true` if the call succeeded.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_setChain","params":["foundation"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -569,4 +642,3 @@ Response
   "result": null
 }
 ```
-

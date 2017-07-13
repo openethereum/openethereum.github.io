@@ -179,7 +179,11 @@ Generates a new web proxy access token.
 
 #### Parameters
 
-None
+0. `String` - Domain for which the token is valid. Only requests to this domain will be allowed.
+
+```js
+params: ["https://parity.io"]
+```
 
 #### Returns
 
@@ -189,7 +193,7 @@ None
 
 Request
 ```bash
-curl --data '{"method":"signer_generateWebProxyAccessToken","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_generateWebProxyAccessToken","params":["https://parity.io"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -282,7 +286,7 @@ An example notification received by subscribing to this event:
 
 You can unsubscribe using `signer_unsubscribePending` RPC method. Subscriptions are also tied to a transport
 connection, disconnecting causes all subscriptions to be canceled.
-    
+
 
 #### Parameters
 
@@ -341,4 +345,3 @@ Response
   "result": true
 }
 ```
-
