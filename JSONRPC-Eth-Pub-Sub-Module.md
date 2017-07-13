@@ -21,15 +21,15 @@ An example notification received by subscribing to `newHeads` event:
 
 You can unsubscribe using `eth_unsubscribe` RPC method. Subscriptions are also tied to a transport
 connection, disconnecting causes all subscriptions to be canceled.
-    
+
 
 #### Parameters
 
 0. `String` - Subscription type: one of `newHeads`, `logs`
-0. `Object` - 
+0. `Object` -
 Subscription type-specific parameters. It must be left empty for
 `newHeads` and must contain filter object for `logs`.
-        
+
 
 ```js
 params: [
@@ -94,4 +94,3 @@ Response
   "result": true
 }
 ```
-
