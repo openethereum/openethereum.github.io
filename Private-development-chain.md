@@ -8,7 +8,7 @@ Or by using a custom [config file](Configuring-Parity#config-file):
 chain = "dev"
 ```
 
-A address containing a lot of tokens should be automatically added.
+A address containing a lot of tokens should be automatically added with a password being an empty string.
 
 When using with [browser-solidity](https://ethereum.github.io/browser-solidity) Chrome extension needs to be installed.
 
