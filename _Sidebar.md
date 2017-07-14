@@ -62,6 +62,7 @@
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
 - [Private Chains](Private-chains)
   - [Private Dev Chain](Private-development-chain)
+  - [Service transaction checker contract](Service transaction checker contract)
 
 ## Technologies
 - [Automatic Updating](Automatic-Updating)
