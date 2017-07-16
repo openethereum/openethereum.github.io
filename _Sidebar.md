@@ -50,6 +50,7 @@
   - [pubsub](JSONRPC-Parity-Pub-Sub-module)
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
+  - [shh](JSONRPC-shh-Module)
 
 ## Parity Chains
 - [Chain Specification](Chain-specification)
