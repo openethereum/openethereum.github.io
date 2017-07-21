@@ -77,7 +77,7 @@
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
-- [WebAssembly (WASM)](https://github.com/paritytech/parity/wiki/Web-Assembly-(WASM))
+- [WebAssembly (WASM)](WASM)
 
 ## Hacking on Parity
 - [[Coding Guide]]
