@@ -17,6 +17,9 @@
   - [[Wallet Remote Access]]
   - [Network Config](Network-Configuration)
   - [[Docker]]
+- [ERC20 Tokens](Tokens)
+  - [[Token Deployment]]
+  - [[Token Registry]]
 - [[Community Guides]]
 
 ## Developing DApps
