@@ -12,7 +12,7 @@ _Figure: Once deployed, the token is displayed in the registry among other regis
 Finally, we need an icon for our token to be displayed in the wallet. This can be done by adding meta data to the token registry contract.
 
 ![dapps-tokendeploy-9](./images/dapps-tokendeploy-9.png)
-_Figure: To add an icon we have to click **Add Metadata** and to provide the static URL to the image file._
+_Figure: To add an icon we have to click **Add Metadata** and provide the static URL to the image file._
 
 ![dapps-tokendeploy-a](./images/dapps-tokendeploy-a.png)
 _Figure: Adding an icon triggers two transactions: The first one is generating a hint for the [URL registry](Parity-github-hint) and the second one is setting the hint as token metadata._
@@ -22,3 +22,5 @@ _Figure: Once both transactions are mined, we can look-up the image on the token
 
 ![dapps-tokendeploy-c](./images/dapps-tokendeploy-c.png)
 _Figure: And our custom token will be displayed along with other tokens in our wallet, note the shiny icon._
+
+Any token registered with the Parity Token Registry will be automatically visibile to all Parity wallet users holding tokens or watching accounts with registered tokens.
