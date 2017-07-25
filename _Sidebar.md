@@ -19,7 +19,7 @@
   - [[Docker]]
 - [[Community Guides]]
 
-## Developing with Parity
+## Developing
 - [Dapp Tutorial](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-1)
   - [2: oo7 Bonds](Tutorial-Part-2)
