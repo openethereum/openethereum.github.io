@@ -222,6 +222,10 @@ To use a custom path run `$ parity --config path/to/config.toml`. Read more on [
 
 Install the following windows update: https://support.microsoft.com/en-us/kb/2999226
 
+#### Parity uses 100% of disk I/O during sync
+
+Parity needs high amount of disk usage, and by default your system will allow it to block other programs to access the disk while it's reading and writing. On Linux you can use [`ionice`](https://linux.die.net/man/1/ionice), and newer versions of Windows should allow you to navigate to the process in Task Manager, right click, open the "Process priority" sub-menu and select "Background". If this menu doesn't appear, you may need to select "More details" at the bottom of the window.
+
 #### What are the different Parity synchronization and pruning modes?
 
 Since Parity 1.2 state-trie pruning is enabled by default (`--pruning fast`). You can disable it by setting the pruning method to `archive` which keeps all state trie data:
