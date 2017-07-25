@@ -24,6 +24,7 @@ Table of Contents:
     * [How do I run Parity?](#how-do-i-run-parity)
     * [How do I configure Parity?](#how-do-i-configure-parity)
     * [Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!](#parity-doesnt-start-on-windows-and-fails-with-api-ms-win-crt-math-l1-1-0dll-missing)
+    * [Parity uses 100% of disk I/O during sync](#parity-uses-100-of-disk-i-o-during-sync)
     * [What are the different Parity synchronization and pruning modes?](#what-are-the-different-parity-synchronization-and-pruning-modes)
     * [Why is warp synchronization so fast?](#why-is-warp-synchronization-so-fast)
     * [How can I tell if Parity is fully synchronized?](#how-can-i-tell-if-parity-is-fully-synchronized)
