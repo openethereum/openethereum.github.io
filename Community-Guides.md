@@ -1,6 +1,7 @@
 This is a collection of articles written by community members about using Parity in various scenarios:
 
 ## Setup
+- [Setting up a Parity Ethereum wallet](http://xexr.com/setting-up-a-parity-ethereum-wallet/)
 - [How to use the Parity Ethereum Wallet](https://www.cryptocompare.com/wallets/guides/how-to-use-the-parity-ethereum-wallet/)
 - [Setting up Ethereum smart contract development using Parity on Ubuntu](https://medium.com/@joshua.knight/setting-up-ethereum-smart-contract-development-using-parity-on-ubuntu-abca4da3dce2)
 - [Ethereum Parity fast sync for Ropsten testnet](https://medium.com/ziggify/ethereum-parity-fast-sync-for-ropsten-testnet-3487a2a38e38#.x0j63rhiz) A short, to-the-point guide on how to get started with the Ropsten testnet _*fast*_.
