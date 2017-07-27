@@ -228,12 +228,30 @@ for request in P {
 }
 ```
 
+**Rate of Recharge**: `U`
+The rate of recharge (in credits) of our local credits per second.
+
 # PIPv1 Messages:
-(Tentative: still need to work in things like flow control, capabilities, metadata, NodeID, pruning responsibilities)
 
 ## Handshake
 **Status**: 
-[`+0x00`, `protocol_version`: `U`, `network_id`: `U`, `genesis_hash`: `H256`, `head_hash`: `H256`, `head_num`: `U`, `head_td`: `U`, `capabilities`: `TODO`]
+[`+0x00`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Inform a peer of the sender's current state. This message should be sent _after_ the initial handshake and _prior_ to any PIP related messages. The following keys should be present (except the optional ones) in order to be accepted by a PIP/1 node: (value types are noted after the key string)
+
+* "protocolVersion" `P`: is 1 for the PIPV1 protocol version.
+* "networkId" `P`: should be 0 for testnet, 1 for mainnet.
+* "headTd" `P`: Total Difficulty of the best chain. Integer, as found in block header.
+* "headHash" `B_32`: the hash of the best (i.e. highest TD) known block.
+* "headNum" `P`: the number of the best (i.e. highest TD) known block.
+* "genesisHash" `B_32`: the hash of the Genesis block.
+* "serveHeaders" (optional, no value): present if the peer can serve header chain downloads.
+* "serveChainSince" `P` (optional): present if the peer can serve Body/Receipts ODR requests starting from the given block number.
+* "serveStateSince" `P` (optional): present if the peer can serve Proof/Code ODR requests starting from the given block number.
+* "txRelay" (optional, no value): present if the peer can relay transactions to the network.
+* "flowControl/BL" `P` (optional): Max credits,
+* "flowControl/MRC" (optional): Cost table,
+* "flowControl/MRR" (optional): Rate of recharge,
+
+If any of the flow control keys are missing, this peer is not a server and cannot be requested from.
 
 ## Request-response
 **Request**:
