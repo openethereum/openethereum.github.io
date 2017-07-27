@@ -24,6 +24,7 @@ Table of Contents:
     * [How do I run Parity?](#how-do-i-run-parity)
     * [How do I configure Parity?](#how-do-i-configure-parity)
     * [Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!](#parity-doesnt-start-on-windows-and-fails-with-api-ms-win-crt-math-l1-1-0dll-missing)
+    * [Parity uses 100% of disk I/O during sync](#parity-uses-100-of-disk-io-during-sync)
     * [What are the different Parity synchronization and pruning modes?](#what-are-the-different-parity-synchronization-and-pruning-modes)
     * [Why is warp synchronization so fast?](#why-is-warp-synchronization-so-fast)
     * [How can I tell if Parity is fully synchronized?](#how-can-i-tell-if-parity-is-fully-synchronized)
@@ -221,6 +222,10 @@ To use a custom path run `$ parity --config path/to/config.toml`. Read more on [
 ![parity_error](https://cloud.githubusercontent.com/assets/2982011/18855854/1d3b2c22-8424-11e6-8329-1dbe5edf6a5a.png)
 
 Install the following windows update: https://support.microsoft.com/en-us/kb/2999226
+
+#### Parity uses 100% of disk I/O during sync
+
+Parity needs high amount of disk usage, and by default your system will allow it to block other programs to access the disk while it's reading and writing. On Linux you can use [`ionice`](https://linux.die.net/man/1/ionice), and newer versions of Windows should allow you to navigate to the process (named "parity.exe") in Task Manager, right click, open the "Process priority" sub-menu and select "Background". If this menu doesn't appear, you may need to select "More details" at the bottom of the window. A WikiHow article with a description of this process on Windows 7 can be found [here](http://www.wikihow.com/Change-Process-Priorities-in-Windows-Task-Manager), and the process is much the same for newer versions of Windows.
 
 #### What are the different Parity synchronization and pruning modes?
 

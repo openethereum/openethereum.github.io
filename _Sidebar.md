@@ -17,12 +17,9 @@
   - [[Wallet Remote Access]]
   - [Network Config](Network-Configuration)
   - [[Docker]]
-- [ERC20 Tokens](Tokens)
-  - [[Token Deployment]]
-  - [[Token Registry]]
 - [[Community Guides]]
 
-## Developing DApps
+## Developing
 - [Dapp Tutorial](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-1)
   - [2: oo7 Bonds](Tutorial-Part-2)
@@ -41,6 +38,10 @@
   - [Dapp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-github-hint)
+- [ERC20 Tokens](Tokens)
+  - [[Token Deployment]]
+  - [[Token Registry]]
+- [[Smart Contracts]]
 - [JSONRPC Guide](JSONRPC)
   - [web3](JSONRPC-web3-module)
   - [net](JSONRPC-net-module)
