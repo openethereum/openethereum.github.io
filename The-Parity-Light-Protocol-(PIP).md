@@ -253,22 +253,27 @@ The rate of recharge (in credits) of our local credits per second.
 
 If any of the flow control keys are missing, this peer is not a server and cannot be requested from.
 
+**Announcement**
+[`+0x01`, `headHash`: `B_32`, `headNum`: `U`, `headTd`: `U`, `reorgDepth`: `U`, [`key_1`: `val_1`], [`key_2: `val_2`], ...]
+
+Announce a new chain head, along with a reorganization depth to the common ancestor of the new head and the last announced head. Also update any of the key-value pairs given in the handshake. 
+
 ## Request-response
 **Request**:
-[`+0x01`, `req_id`: `U`, [`req_1`, `req_2`, ...]]
+[`+0x02`, `req_id`: `U`, [`req_1`, `req_2`, ...]]
 
 A unique request identifier followed by a list of requests, in the format described in the requests section.
 The base cost of a request packet plus the cumulative cost of all the requests contained therein may not exceed the current number of request credits held by the peer.
 
 **Response**:
-[`+0x02`, `req_id`: `U`, `CR`: `U`, [`res_1`, `res_2`, ...]]
+[`+0x03`, `req_id`: `U`, `CR`: `U`, [`res_1`, `res_2`, ...]]
 
 A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_.
 
 ## Modifying request credits parameters mid-connection.
 
 **UpdateCreditParameters**:
-[`+0x03`, `max`: `U`, `recharge`: `U`, `cost_table`: `CT`]
+[`+0x04`, `max`: `U`, `recharge`: `U`, `cost_table`: `CT`]
 
 Send a remote peer new request credits parameters: a new maximum, rate of recharge per second, and cost table.
 
@@ -279,12 +284,12 @@ When the acknowledgement is received, recharge will be applied to the old parame
 No updates can be made to a peer while another update remains unacknowledged.
 
 **AcknowledgeUpdate**
-[`+0x04`]
+[`+0x05`]
 
 Acknowledge an update in request credit parameters. It is considered misbehavior to acknowledge an update where none has been made, or to acknowledge an update more than once. Apply the transition to the new parameters upon sending this packet.
 
 ## Transaction relay
 **RelayTransactions**
-[`+0x05`, [`tx_1`: `P`, `tx_2`: `P`, ...]]
+[`+0x06`, [`tx_1`: `P`, `tx_2`: `P`, ...]]
 
 Send transactions to a peer to relay to the main network.
