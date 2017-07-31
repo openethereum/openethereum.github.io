@@ -9,6 +9,8 @@
 - [signer_generateWebProxyAccessToken](#signer_generatewebproxyaccesstoken)
 - [signer_rejectRequest](#signer_rejectrequest)
 - [signer_requestsToConfirm](#signer_requeststoconfirm)
+- [signer_subscribePending](#signer_subscribepending)
+- [signer_unsubscribePending](#signer_unsubscribepending)
 
 ## JSON-RPC API Reference
 
@@ -177,7 +179,11 @@ Generates a new web proxy access token.
 
 #### Parameters
 
-None
+0. `String` - Domain for which the token is valid. Only requests to this domain will be allowed.
+
+```js
+params: ["https://parity.io"]
+```
 
 #### Returns
 
@@ -187,7 +193,7 @@ None
 
 Request
 ```bash
-curl --data '{"method":"signer_generateWebProxyAccessToken","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"signer_generateWebProxyAccessToken","params":["https://parity.io"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -262,5 +268,80 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": [ ... ]
+}
+```
+
+***
+
+### signer_subscribePending
+
+
+Starts a subscription for transactions in the confirmation queue.
+Each event contains all transactions currently in the queue.
+
+An example notification received by subscribing to this event:
+```
+{"jsonrpc":"2.0","method":"signer_pending","params":{"subscription":"0x416d77337e24399d","result":[]}}
+```
+
+You can unsubscribe using `signer_unsubscribePending` RPC method. Subscriptions are also tied to a transport
+connection, disconnecting causes all subscriptions to be canceled.
+
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - Assigned subscription ID
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"signer_subscribePending","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x416d77337e24399d"
+}
+```
+
+***
+
+### signer_unsubscribePending
+
+Unsubscribes from pending transactions subscription.
+
+#### Parameters
+
+0. `String` - Subscription ID
+
+```js
+params: ["0x416d77337e24399d"]
+```
+
+#### Returns
+
+- `Boolean` - whether the call was successful
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"signer_unsubscribePending","params":["0x416d77337e24399d"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
 }
 ```

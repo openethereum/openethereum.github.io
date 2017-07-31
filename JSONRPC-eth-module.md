@@ -748,6 +748,14 @@ params: ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"]
     - `gasPrice`: `Quantity` - gas price provided by the sender in Wei.
     - `gas`: `Quantity` - gas provided by the sender.
     - `input`: `Data` - the data send along with the transaction.
+    - `v`: `Quantity` - the standardised V field of the signature.
+    - `standard_v`: `Quantity` - the standardised V field of the signature (0 or 1).
+    - `r`: `Quantity` - the R field of the signature.
+    - `raw`: `Data` - raw transaction data
+    - `publicKey`: `Hash` - public key of the signer.
+    - `networkId`: `Quantity` - the network id of the transaction, if any.
+    - `creates`: `Hash` - creates contract hash
+    - `condition`: `Object` - (optional) conditional submission, Block number in `block` or timestamp in `time` or `null`. (parity-feature)
 
 #### Example
 

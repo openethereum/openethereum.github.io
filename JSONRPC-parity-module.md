@@ -2,15 +2,19 @@
 
 ## JSON-RPC methods
 
+- [parity_cidV0](#parity_cidv0)
+- [parity_composeTransaction](#parity_composetransaction)
 - [parity_consensusCapability](#parity_consensuscapability)
 - [parity_decryptMessage](#parity_decryptmessage)
 - [parity_encryptMessage](#parity_encryptmessage)
 - [parity_futureTransactions](#parity_futuretransactions)
+- [parity_getBlockHeaderByNumber](#parity_getblockheaderbynumber)
 - [parity_listOpenedVaults](#parity_listopenedvaults)
 - [parity_listStorageKeys](#parity_liststoragekeys)
 - [parity_listVaults](#parity_listvaults)
 - [parity_localTransactions](#parity_localtransactions)
 - [parity_releasesInfo](#parity_releasesinfo)
+- [parity_signMessage](#parity_signmessage)
 - [parity_versionInfo](#parity_versioninfo)
 
 #### Account Vaults
@@ -46,6 +50,7 @@
 - [parity_devLogsLevels](#parity_devlogslevels)
 
 #### Network Information
+- [parity_chain](#parity_chain)
 - [parity_chainStatus](#parity_chainstatus)
 - [parity_gasPriceHistogram](#parity_gaspricehistogram)
 - [parity_netChain](#parity_netchain)
@@ -60,14 +65,103 @@
 - [parity_unsignedTransactionsCount](#parity_unsignedtransactionscount)
 
 #### Node Settings
-- [parity_dappsInterface](#parity_dappsinterface)
-- [parity_dappsPort](#parity_dappsport)
+- [parity_dappsUrl](#parity_dappsurl)
 - [parity_enode](#parity_enode)
 - [parity_mode](#parity_mode)
+- [parity_nodeKind](#parity_nodekind)
 - [parity_nodeName](#parity_nodename)
-- [parity_signerPort](#parity_signerport)
+- [parity_wsUrl](#parity_wsurl)
 
 ## JSON-RPC API Reference
+
+### parity_cidV0
+
+Compute a v0 IPFS Content ID from protobuf encoded bytes.
+
+#### Parameters
+
+0. `Data` - to encode.
+
+```js
+params: ["0x666f6f626172"]
+```
+
+#### Returns
+
+- `String` - Base58 encoded CID
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_cidV0","params":["0x666f6f626172"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "QmSbFjqjd6nFwNHqsBCC7SK8GShGcayLUEtysJjNGhZAnC"
+}
+```
+
+***
+
+### parity_composeTransaction
+
+Given partial transaction request produces transaction with all fields filled in. Such transaction can be then signed externally.
+
+#### Parameters
+
+0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
+    - `from`: `Address` - 20 Bytes - The address the transaction is send from.
+    - `to`: `Address` - (optional) 20 Bytes - The address the transaction is directed to.
+    - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
+    - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
+    - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+    - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+    - `condition`: `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+
+```js
+params: [{
+  "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+  "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+  "value": "0x9184e72a" // 2441406250
+}]
+```
+
+#### Returns
+
+- `Object` - Transaction object (same as the parameter) with missing optional fields filled in by defaults.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_composeTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","value":"0x9184e72a"}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "condition": null,
+    "data": "0x",
+    "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+    "gas": "0xe57e0",
+    "gasPrice": "0x4a817c800",
+    "nonce": "0x0",
+    "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+    "value": "0x9184e72a"
+  }
+}
+```
+
+***
 
 ### parity_consensusCapability
 
@@ -246,6 +340,65 @@ Response
     },
     { ... }, { ... }, ...
   ]
+}
+```
+
+***
+
+### parity_getBlockHeaderByNumber
+
+Get block header. Same as [`eth_getBlockByNumber`](JSONRPC-eth-module#eth_getblockbynumber) but without uncles and transactions.
+
+#### Parameters
+
+0. `Quantity` | `Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the [default block parameter](#the-default-block-parameter).
+
+```js
+params: [
+  "0x1b4" // 436
+]
+```
+
+#### Returns
+
+- `Object` - Block header
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_getBlockHeaderByNumber","params":["0x1b4"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "author": "0xbb7b8287f3f0a933474a79eae42cbca977791171",
+    "difficulty": "0x4ea3f27bc",
+    "extraData": "0x476574682f4c5649562f76312e302e302f6c696e75782f676f312e342e32",
+    "gasLimit": "0x1388",
+    "gasUsed": "0x0",
+    "hash": "0xdc0818cf78f21a8e70579cb46a43643f78291264dda342ae31049421c82d21ae",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0xbb7b8287f3f0a933474a79eae42cbca977791171",
+    "mixHash": "0x4fffe9ae21f1c9e15207b1f472d5bbdd68c9595d461666602f2be20daf5e7843",
+    "nonce": "0x689056015818adbe",
+    "number": "0x1b4",
+    "parentHash": "0xe99e022112df268087ea7eafaf4790497fd21dbeeb6bd7a1721df161a6657a54",
+    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "sealFields": [
+      "0xa04fffe9ae21f1c9e15207b1f472d5bbdd68c9595d461666602f2be20daf5e7843",
+      "0x88689056015818adbe"
+    ],
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x21b",
+    "stateRoot": "0xddc8b0234c2e0cad087c8b389aa7ef01f7d79b2570bccb77ce48648aa61c904d",
+    "timestamp": "0x55ba467c",
+    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  }
 }
 ```
 
@@ -445,6 +598,46 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": null
+}
+```
+
+***
+
+### parity_signMessage
+
+Sign the hashed message bytes with the given account.
+
+#### Parameters
+
+0. `Address` - Account which signs the message.
+0. `String` - Passphrase to unlock the account.
+0. `Data` - Hashed message.
+
+```js
+params: [
+  "0xc171033d5cbff7175f29dfd3a63dda3d6f8f385e",
+  "password1",
+  "0xbc36789e7a1e281436464229828f817d6612f7b477d66591ff96a9e064bcc98a"
+]
+```
+
+#### Returns
+
+- `Data` - Message signature.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_signMessage","params":["0xc171033d5cbff7175f29dfd3a63dda3d6f8f385e","password1","0xbc36789e7a1e281436464229828f817d6612f7b477d66591ff96a9e064bcc98a"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x1d9e33a8cf8bfc089a172bca01da462f9e359c6cb1b0f29398bc884e4d18df4f78588aee4fb5cc067ca62d2abab995e0bba29527be6ac98105b0320020a2efaf00"
 }
 ```
 
@@ -1064,7 +1257,7 @@ params: [{
   "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
   "condition": {
     "block": 354221,
-    "time": "2017-07-13T10:14:50.568Z"
+    "time": "2017-07-13T10:05:18.275Z"
   }
 }]
 ```
@@ -1077,7 +1270,7 @@ params: [{
 
 Request
 ```bash
-curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2017-07-13T10:14:50.568Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2017-07-13T10:05:18.275Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -1300,7 +1493,7 @@ Response
     "2017-01-20 18:14:19  Configured for DevelopmentChain using InstantSeal engine",
     "2017-01-20 18:14:19  Operating mode: active",
     "2017-01-20 18:14:19  State DB configuration: fast",
-    "2017-01-20 18:14:19  Starting Parity/v1.6.0-unstable-2ae8b4c-20170120/x86_64-linux-gnu/rustc1.14.0"
+    "2017-01-20 18:14:19  Starting Parity/v1.7.0-unstable-2ae8b4c-20170120/x86_64-linux-gnu/rustc1.14.0"
   ]
 }
 ```
@@ -1332,6 +1525,36 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "debug"
+}
+```
+
+***
+
+### parity_chain
+
+Returns the name of the connected chain.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `String` - chain name, one of: "foundation", "kovan", &c. of a filename.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_chain","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "homestead"
 }
 ```
 
@@ -1854,39 +2077,9 @@ Response
 
 ***
 
-### parity_dappsInterface
+### parity_dappsUrl
 
-Returns the interface the dapps are running on, error if not enabled.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `String` - The interface
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_dappsInterface","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "127.0.0.1"
-}
-```
-
-***
-
-### parity_dappsPort
-
-Returns the port the dapps are running on, error if not enabled.
+Returns the hostname and the port of dapps/rpc server, error if not enabled.
 
 #### Parameters
 
@@ -1894,13 +2087,13 @@ None
 
 #### Returns
 
-- `Quantity` - The port number
+- `String` - The hostname and port number
 
 #### Example
 
 Request
 ```bash
-curl --data '{"method":"parity_dappsPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_dappsUrl","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -1908,7 +2101,7 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": 8080
+  "result": "localhost:8545"
 }
 ```
 
@@ -1974,6 +2167,41 @@ Response
 
 ***
 
+### parity_nodeKind
+
+Returns the node type availability and capability
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - Availability and Capability.
+    - `availability`: `String` - Availability, either `personal` or `public`.
+    - `capability`: `String` - Capability, either `full` or `light`.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_nodeKind","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "availability": "personal",
+    "capability": "light"
+  }
+}
+```
+
+***
+
 ### parity_nodeName
 
 Returns node name, set when starting parity with `--identity NAME`.
@@ -2004,9 +2232,9 @@ Response
 
 ***
 
-### parity_signerPort
+### parity_wsUrl
 
-Returns the port the signer is running on, error if not enabled
+Returns the hostname and the port of WebSockets/Signer server, error if not enabled.
 
 #### Parameters
 
@@ -2014,13 +2242,13 @@ None
 
 #### Returns
 
-- `Quantity` - The port number
+- `String` - The hostname and port number
 
 #### Example
 
 Request
 ```bash
-curl --data '{"method":"parity_signerPort","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_wsUrl","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -2028,6 +2256,6 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": 8180
+  "result": "localhost:8546"
 }
 ```
