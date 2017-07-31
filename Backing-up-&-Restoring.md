@@ -1,3 +1,5 @@
+_Note, this is currently work in progress._
+
 ### Role of Parity recovery phrases
 
 ### Exporting accounts via the Wallet UI
