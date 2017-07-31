@@ -35,7 +35,7 @@ The projection function is defined as a mapping from a a 4-byte slice `S` to a 5
 LET D[*] = 0
 FOREACH i IN { 0, 1, 2 } DO
 LET n = S[i]
-IF S[3] & (2 ** i) THEN n += 512
+IF S[3] & (2 ** i) THEN n += 256
 D[n] = 1
 END FOR
 ```

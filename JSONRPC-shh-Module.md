@@ -1,5 +1,7 @@
 # The `shh` Module
 
+**Note:** _Run parity with the `--whisper` flag to enable this API._
+
 ## JSON-RPC methods
 
 - [shh_info](#shh_info)
@@ -346,7 +348,8 @@ Response
 
 ### shh_subscribe
 
-Open a subscription to a filter
+Open a subscription to a filter. Works in general the same as `eth_subscribe` and `parity_subscribe` in pubsub.
+Subscription calls are only supported on the websocket transport. ('ws://localhost:8545')
 
 #### Parameters
 
