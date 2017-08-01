@@ -18,7 +18,7 @@ All described methods will require to manually type Wallet Authorization Token a
 1. On the Client connect to your Host with port forwarding and keep the session running
 
    ```
-   $ ssh -L 8080:127.0.0.1:8080 -L 8180:127.0.0.1:8180 <user>@<host> -vv
+   $ ssh -L 8545:127.0.0.1:8545 8546:127.0.0.1:8546 -L 8180:127.0.0.1:8180 <user>@<host> -vv
    ```
 1. To access Parity Wallet on the Client open a browser and type in authorization token, or open
 
@@ -41,16 +41,35 @@ NOTE: It's recommended to setup authentication and SSL on your nginx server.
 1. Create nginx configuration at `/etc/nginx/sites-enabled/parity.ui` (substitute `<external-ip>` with correct values):
     ```
    server {
-     listen <external-ip>:8080;
+     listen <external-ip>:8545;
 
      # Uncomment for SSL Server
-     #listen <external-ip>:8080 ssl;
+     #listen <external-ip>:8545 ssl;
      #ssl on;
      #ssl_certificate /etc/nginx/parity.ui.crt;
      #ssl_certificate_key /etc/nginx/parity.ui.key;
 
      location / {
-       proxy_pass http://127.0.0.1:8080;
+       proxy_pass http://127.0.0.1:8545;
+     }
+   }
+
+  server {
+     listen <external-ip>:8546;
+
+     # Uncomment for SSL Server
+     #listen <external-ip>:8546 ssl;
+     #ssl on;
+     #ssl_certificate /etc/nginx/parity.ui.crt;
+     #ssl_certificate_key /etc/nginx/parity.ui.key;
+
+     location / {
+       proxy_pass http://127.0.0.1:8546;
+
+       proxy_http_version 1.1;
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection "upgrade";
+       proxy_read_timeout 86400;
      }
    }
 
@@ -65,11 +84,6 @@ NOTE: It's recommended to setup authentication and SSL on your nginx server.
 
      location / {
        proxy_pass http://127.0.0.1:8180;
-
-       proxy_http_version 1.1;
-       proxy_set_header Upgrade $http_upgrade;
-       proxy_set_header Connection "upgrade";
-       proxy_read_timeout 86400;
      }
    }
     ```
@@ -95,7 +109,7 @@ This method is the least secure, but doesn't require SSH tunnels. It exposes you
 1. Run Parity on the Host, with the following flags:
 
    ```
-   $ parity --dapps-interface <IP> --ui-interface <Wallet>
+   $ parity --dapps-interface <IP> --ws-interface <IP> --ui-interface <IP>
    ```
 
 1. On the Client, open your browser and go to:
@@ -110,4 +124,4 @@ This method is the least secure, but doesn't require SSH tunnels. It exposes you
    $ parity signer new-token
    ```
 
-NOTE: Parity will accept only connections coming to correct interface (IP), if you want to listen on multiple interfaces (IP=`0.0.0.0`; again - not recommended) you need to run with additional flags like: `--dapps-hosts` and `--ui-no-validation`
+NOTE: Parity will accept only connections coming to correct interface (IP), if you want to listen on multiple interfaces (IP=`0.0.0.0`; again - not recommended) you need to run with additional flags like: `--unsafe-expose`
