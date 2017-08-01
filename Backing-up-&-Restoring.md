@@ -1,6 +1,8 @@
-_Note, this is currently work in progress._
+It's generally sensible to back up your keys and recovery phrases.
 
 ### Role of Parity recovery phrases
+
+The Parity recovery phrase is a 12-word mnemonic phrase allowing you to have an additional backup. It's displayed once after account creation and should be written down or printed out and kept in a safe place. This phrase is not protected with any password or encryption and should always kept offline and _cold_. In the rare case that your encrypted backups (see below) are corrupted or lost, the phrase allows you to fully recover your private key.
 
 ### Exporting accounts via the Wallet UI
 
@@ -37,7 +39,7 @@ curl --data '{"method":"parity_exportAccount","params":["0x407d73d8a49eeb85d32cf
 
 
 
-It's generally sensible to back up your keys. For Parity, this is simply a case of copying a particular directory. Here's how you can do it...
+ For Parity, this is simply a case of copying a particular directory. Here's how you can do it...
 
 on Mac:
 ```bash
