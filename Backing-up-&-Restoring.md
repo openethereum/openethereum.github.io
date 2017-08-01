@@ -6,11 +6,17 @@ The Parity recovery phrase is a 12-word mnemonic phrase allowing you to have an 
 
 ### Exporting accounts via the Wallet UI
 
+The most convenient way to backup your accounts is via the wallet UI which offers direct export of the encrypted key files in JSON format.
+
 ##### A single account
 
+To backup a single account just, open your accounts view, click the account you wish to export, and find the **EXPORT** button.
+
 ![accounts-export-0](images/accounts-export-0.png)
+_Once you enter your passphrase and confirm, the key will be exported and downloaded to your disk._
 
 ![accounts-export-1](images/accounts-export-1.png)
+_The backup is a password-encrypted JSON-file._
 
 ##### All accounts at once
 
