@@ -65,6 +65,8 @@ You will get a file `parity-keys-backup.tgz` in your `Desktop` path (which shoul
 
 ### Backing up wallets and vaults
 
+To backup a simple contract wallet or multi-signature wallet, all you need to do is to remember the public address, and - of course - having backups of the associated owner accounts (see above for instructions).
+
 ### Restoring options
 
 
