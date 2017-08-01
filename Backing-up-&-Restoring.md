@@ -67,25 +67,37 @@ You will get a file `parity-keys-backup.tgz` in your `Desktop` path (which shoul
 
 To backup a simple contract wallet or multi-signature wallet, all you need to do is to remember the public address, and - of course - having backups of the associated owner accounts (see above for instructions).
 
+To backup a complete vault, just backup the full directory containing the `vault.json` and all encrypted key files to a secure location. This directory is a sub-directory of your keys path, usually named after your vault.
+
 ### Restoring options
 
+Restoring options work analogue to the backup options explained above.
 
+##### Wallet UI
 
+The user interface allows you to **import** keys from:
 
+- Geth Keystore: This allows importing keys created in with the go-ethereum client.
+- JSON Backup: This allows importing password-encrypted JSON key-files previously exported with Parity.
+- Private Keys: This allows importing plain, unencrypted private keys generated with any other application.
+- Presale Wallet: This allows importing a wallet from the initial Ether pre-sale maintained by the Ethereum Foundation. 
 
+In addition, it's possible to **restore** private keys from the 12-word mnemonic recovery phrase.
 
+##### Command line
 
+To restore from a previous CLI backup...
 
-To restore from a previous backup...
+- on Mac:
 
-on Mac:
 ```bash
-cd $HOME/Library/Application Support/io.parity.ethereum/keys && tar xzf $HOME/Desktop/parity-keys-backup.tgz * && cd -
+cd $HOME/Library/Application Support/io.parity.ethereum/keys && tar xzf $HOME/Desktop/parity-keys-backup.tgz *
 ```
 
-on Linux:
+- on Linux:
+
 ```bash
-cd $HOME/.local/share/io.parity.ethereum/keys && tar xzf $HOME/Desktop/parity-keys-backup.tgz * && cd -
+cd $HOME/.local/share/io.parity.ethereum/keys && tar xzf $HOME/Desktop/parity-keys-backup.tgz *
 ```
 
-Simple.
+This assumes our previously created backup is located on your Desktop.
