@@ -10,7 +10,7 @@ The most convenient way to backup your accounts is via the wallet UI which offer
 
 ##### A single account
 
-To backup a single account just, open your accounts view, click the account you wish to export, and find the **EXPORT** button.
+To backup a single account, just open your accounts view, click the account you wish to export, and find the **EXPORT** button.
 
 ![accounts-export-0](images/accounts-export-0.png)
 _Once you enter your passphrase and confirm, the key will be exported and downloaded to your disk._
@@ -20,11 +20,16 @@ _The backup is a password-encrypted JSON-file._
 
 ##### All accounts at once
 
+To backup multiple accounts, or all accounts at once, just open your accounts view and find the **EXPORT** button.
+
 ![accounts-export-2](images/accounts-export-2.png)
+_Toggle which accounts you wish to export by clicking them, and thus enabling or disabling the account export._
 
 ![accounts-export-3](images/accounts-export-3.png)
+_Enter the password for each account you wish to export and confirm._
 
 ![accounts-export-4](images/accounts-export-4.png)
+_The backup is a set of password-encrypted JSON-files stored to your disk._
 
 ### Exporting accounts via CLI
 
