@@ -33,13 +33,35 @@ _The backup is a set of password-encrypted JSON-files stored to your disk._
 
 ### Exporting accounts via CLI
 
+If the wallet UI is not available or not desired, keys can be backed up via JSON-RPC API or by manually copying and archiving the files.
+
 ##### Available RPC APIs
 
-parity_exportAccount
+The `parity_exportAccount` is exactly designed to retrieve the password-encrypted JSON backup via RPC.
 
-curl --data '{"method":"parity_exportAccount","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```bash
+curl --data '{"method":"parity_exportAccount","params":["0x007d73d8a49eeb85d32cf465507dd71d507100c1","hunter2"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+The required parameters are the account to export and the password used to protect it.
 
 ##### Manual archiving via CLI
+
+Via CLI, this is simply a case of copying a particular directory. Here's how you can do it...
+
+- on Mac:
+```bash
+cd $HOME/Library/Application\ Support/io.parity.ethereum/keys && tar czf $HOME/Desktop/parity-keys-backup.tgz *
+```
+
+- on Linux:
+```bash
+cd $HOME/.local/share/io.parity.ethereum/keys && tar czf $HOME/Desktop/parity-keys-backup.tgz *
+```
+
+- on Windows, the key folder can be found at `%HOMEPATH%/AppData/Roaming/Parity/Ethereum/keys`.
+
+You will get a file `parity-keys-backup.tgz` in your `Desktop` path (which should therefore show up on your desktop). You can move it wherever you want - a USB pen drive might be sensible.
 
 ### Backing up wallets and vaults
 
@@ -49,22 +71,6 @@ curl --data '{"method":"parity_exportAccount","params":["0x407d73d8a49eeb85d32cf
 
 
 
-
- For Parity, this is simply a case of copying a particular directory. Here's how you can do it...
-
-on Mac:
-```bash
-cd $HOME/Library/Application\ Support/io.parity.ethereum/keys && tar czf $HOME/Desktop/parity-keys-backup.tgz * && cd - && cd -
-```
-
-on Linux:
-```bash
-cd $HOME/.local/share/io.parity.ethereum/keys && tar czf $HOME/Desktop/parity-keys-backup.tgz * && cd -
-```
-
-On Windows, the key folder can be found at `%HOMEPATH%/AppData/Roaming/Parity/Ethereum/keys`.
-
-You will get a file `parity-keys-backup.tgz` in your `Desktop` path (which should therefore show up on your desktop). You can move it wherever you want - a USB pen drive might be sensible.
 
 
 
