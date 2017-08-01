@@ -320,16 +320,25 @@ You can view the [Dockerfile here](https://github.com/paritytech/parity/blob/mas
 
 #### Can I run Parity as a daemon or system service?
 
-The versions installed with the Windows and MacOS X installers automatically configure and enable a system service.
+The versions installed with the **Windows** and **MacOS X** installers automatically configure and enable a system service.
 
-To manually enable the system service for Parity installed with Homebrew, run:
+To manually enable the system service for Parity installed with **Homebrew**, run:
 
 ```bash
 sudo launchctl enable io.parity.ethereum
 sudo launchctl start io.parity.ethereum
 ```
 
-To manually run Parity in daemon mode in background, run `parity daemon`.
+To manually enable the system service for Parity installed on **Linux**, get the [`parity.service` file](https://github.com/paritytech/parity/blob/master/scripts/parity.service) from GitHub.
+
+```bash
+sudo wget https://raw.githubusercontent.com/paritytech/parity/master/scripts/parity.service -O /etc/systemd/system/parity.service
+sudo chmod +x /etc/systemd/system/parity.service
+sudo systemctl enable parity
+sudo systemctl start parity
+```
+
+To manually run Parity in **daemon mode** in background, run `parity daemon`.
 
 #### How can I stop a Parity node cleanly?
 
