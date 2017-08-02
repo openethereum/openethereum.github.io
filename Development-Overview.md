@@ -4,6 +4,12 @@ Contracts:
 
 - [[Smart Contracts]]
 
+Tokens:
+
+- [ERC20 Tokens](Tokens)
+  - [[Token Deployment]]
+  - [[Token Registry]]
+
 Dapps: 
 
 - [Dapp Tutorial](Dapp-Tutorial)
@@ -25,11 +31,19 @@ Dapps:
 - [Parity Name Registry](Parity-name-registry)
 - [Parity GitHub Hint](Parity-github-hint)
 
-Tokens:
+Chains:
 
-- [ERC20 Tokens](Tokens)
-  - [[Token Deployment]]
-  - [[Token Registry]]
+- [Chain Specification](Chain-specification)
+  - [[Pluggable Consensus]]
+    - [[Aura]]
+  - [[Validator Set]]
+    - [[Validator contracts]]
+- [[Proof of Work Chains]]
+- [[Proof of Authority Chains]]
+  - [Demo PoA Tutorial](Demo-PoA-tutorial)
+- [Private Chains](Private-chains)
+  - [Private Dev Chain](Private-development-chain)
+- [Service transactions](Service-transaction-checker-contract)
 
 Reference:
 
@@ -46,17 +60,3 @@ Reference:
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
   - [shh](JSONRPC-shh-Module)
-
-Chains:
-
-- [Chain Specification](Chain-specification)
-  - [[Pluggable Consensus]]
-    - [[Aura]]
-  - [[Validator Set]]
-    - [[Validator contracts]]
-- [[Proof of Work Chains]]
-- [[Proof of Authority Chains]]
-  - [Demo PoA Tutorial](Demo-PoA-tutorial)
-- [Private Chains](Private-chains)
-  - [Private Dev Chain](Private-development-chain)
-- [Service transactions](Service-transaction-checker-contract)
