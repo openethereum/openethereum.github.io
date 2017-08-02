@@ -20,6 +20,18 @@
 - [[Community Guides]]
 
 ## Developing
+- [Writing DApps](Development-Overview)
+  - [oo7 Examples](oo7-Parity-Examples)
+  - [oo7-parity.js Reference](oo7-Parity-Reference)
+  - [Deploying Dapps to Parity Wallet](Deploying-DApps-to-Parity-Wallet)
+  - [Parity Dapp Registry](Parity-dapp-registry)
+  - [Dapp Discovery](Register-your-DAPP-for-discovery)
+  - [Parity Name Registry](Parity-name-registry)
+  - [Parity GitHub Hint](Parity-github-hint)
+- [ERC20 Tokens](Tokens)
+  - [[Token Deployment]]
+  - [[Token Registry]]
+- [[Smart Contracts]]
 - [Dapp Tutorial](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-1)
   - [2: oo7 Bonds](Tutorial-Part-2)
@@ -31,17 +43,6 @@
   - [8: Events](Tutorial-Part-8)
   - [9: Deploy Contracts](Tutorial-Part-9)
   - [10: Sign Data](Tutorial-Part-10)
-- Writing Dapps
-  - [oo7-parity.js Reference](oo7-Parity-Reference)
-  - [Deploying Dapps to Parity Wallet](Deploying-DApps-to-Parity-Wallet)
-  - [Parity Dapp Registry](Parity-dapp-registry)
-  - [Dapp Discovery](Register-your-DAPP-for-discovery)
-  - [Parity Name Registry](Parity-name-registry)
-  - [Parity GitHub Hint](Parity-github-hint)
-- [ERC20 Tokens](Tokens)
-  - [[Token Deployment]]
-  - [[Token Registry]]
-- [[Smart Contracts]]
 - [JSONRPC Guide](JSONRPC)
   - [web3](JSONRPC-web3-module)
   - [net](JSONRPC-net-module)
