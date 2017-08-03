@@ -1,4 +1,4 @@
-Examples of common operations and useful functionality when building a dApp using using [oo7-Bonds](https://github.com/paritytech/parity/wiki/oo7-Parity-Reference). It does not aim to cover the complete functionality, for more features please look at the documentation.
+Examples of common operations and useful functionality when building a dApp using [oo7-Bonds](https://github.com/paritytech/parity/wiki/oo7-Parity-Reference). It does not aim to cover the complete functionality, for more features please look at the documentation.
 
 ## Bond functionality (oo7)
 We need to install and require the [oo7](https://www.npmjs.com/package/oo7) Bond package first. 
@@ -21,9 +21,9 @@ Transformbonds are dependent on their dependencies (here the initial bond). If t
 var id = transBond.tie(console.log); // Tie console to the TransformBond to watch when it triggers on value change.
 bond.changed(32);  // You change the value of the bond.
 window.setTimeout(bond.changed('new value'), 1000); // After one second change the value again
-transBond.untie(id); // You cna also untie a function again
+transBond.untie(id); // You can also untie a function again
 ```
-Now we can see the power of bonds. While the first change will still behave like a normal promise and triggers our various console outputs, the second change just a second later will again reactive the promise. So we can be sure to always operate on the most recent value.
+Now we can see the power of bonds. While the first change will still behave like a normal promise and triggers our various console outputs, the second change just a second later will again reactivate the promise. So we can be sure to always operate on the most recent value.
 
 For example we can easily create joint Bonds which trigger when all values are ready. Or TransformBonds with multiple dependencies.
 
