@@ -4,3 +4,5 @@ Along with EVM, Parity has an experimental support for Web Assembly as a bytecod
 - Much less 256-bit word size related overhead
 - Much more languages that target WASM (see https://github.com/mbasso/awesome-wasm)
 - Advanced optimisation tools for WASM->WASM
+
+[WebAssembly serialization/deserialization in Rust](https://github.com/nikvolf/parity-wasm)
