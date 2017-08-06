@@ -18,7 +18,7 @@ All described methods will require to manually type Wallet Authorization Token a
 1. On the Client connect to your Host with port forwarding and keep the session running
 
    ```
-   $ ssh -L 8545:127.0.0.1:8545 8546:127.0.0.1:8546 -L 8180:127.0.0.1:8180 <user>@<host> -vv
+   $ ssh -L 8545:127.0.0.1:8545 -L 8546:127.0.0.1:8546 -L 8180:127.0.0.1:8180 <user>@<host> -vv
    ```
 1. To access Parity Wallet on the Client open a browser and type in authorization token, or open
 
