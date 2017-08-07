@@ -11,5 +11,7 @@ Once you plugged-in your Ledger Nano S to your computer, it will usually auto-de
 1. Enter the Ethereum application on the Nano S.
 1. Make sure the _Browser Mode_ is deactivated in your Ethereum settings on the device.
 
+![accounts-overview-5](./images/accounts-overview-5.png)
+
 It should be auto-detected and show up in your accounts list within 5 seconds. It shows a colorful icon while connected or gray icon while disconnected. Now you should be able to transact with the account anywhere you can use an account. The signer will ask you to sign on the device itself.
 
