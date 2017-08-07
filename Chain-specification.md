@@ -101,5 +101,7 @@ Optional spec fields:
 + **`"nodes"`** a list of boot nodes in the [enode format](https://github.com/ethereum/wiki/wiki/enode-url-format)
 
 ## Coming from Geth
-To connect to a Geth node or just use the same network setup you can use [this tool](https://github.com/keorn/parity-spec) to generate a Parity compatible chain specification file. It can be then used by supplying it to the `--chain` Parity option.
+
+To connect to a Geth node or just use the same network setup you can use [the genesis converter](https://github.com/keorn/parity-spec) to generate a Parity compatible chain specification file or the preconfigured [cross-client chain specifications](https://github.com/5chdn/crossclient-chainspec) to get started quickly. The chain spec can be then used by supplying it to the `--chain` Parity option.
+
 To replicate some of the more obscure bugs from Geth's RPC, `--geth` option can be used; be warned, this disables some of the more advanced Parity features so only use it if you know you have to.
