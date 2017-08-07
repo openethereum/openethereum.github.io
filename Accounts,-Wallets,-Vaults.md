@@ -28,13 +28,11 @@ In order to create a wallet, the contract has to be deployed on the blockchain. 
 
 Once deployed, the wallet will be visible in your accounts list on top of your normal accounts.
 
-![accounts-wallet-3](images/accounts-wallet-3.png)
-
 ![accounts-wallet-4](images/accounts-wallet-4.png)
 
-![accounts-wallet-5](images/accounts-wallet-5.png)
-
 Opening the wallet reveals details about available balances and transactions, as well as pending confirmations for the multi-signature transactions.
+
+![accounts-wallet-5](images/accounts-wallet-5.png)
 
 The wallet contract used for Parity is available for review here: [`enhanced-wallet.sol`](https://github.com/paritytech/parity/blob/master/js/src/contracts/snippets/enhanced-wallet.sol)
 
