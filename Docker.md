@@ -72,7 +72,7 @@ $ docker run -ti -p 8180:8180 -p 8545:8545 -p 30303:30303 -p 30303:30303/udp par
 
 For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can browse to http://localhost:8180 from the Docker host computer to access the Parity Wallet.
 
-To enable external discovery where desired (for example for PoA sealing nodes), specify the external IP by appending the flag `--nat extip:133.3.3.37`.
+To enable external discovery where desired (for example for PoA sealing nodes), specify the external IP by appending the flag `--nat extip:133.3.3.37`, where `133.3.3.37` is to be replaced by your actual external IP of the host.
 
 ##### Pass arguments
 
