@@ -32,16 +32,16 @@ To get a list of available versions, use `curl` and `jq`:
 ```bash
 $ curl -sS 'https://registry.hub.docker.com/v2/repositories/parity/parity/tags/'  | jq '."results"[]["name"]' | sort
 "nightly"
-"v1.5.12"
-"v1.5.13"
-"v1.6.7"
 "v1.6.8"
+"v1.6.9"
+"v1.6.10"
+"v1.7.0"
 ```
 
 To get the latest beta release, run:
 
 ```bash
-$ docker pull parity/parity:v1.6.8
+$ docker pull parity/parity:v1.7.0
 ```
 
 ### Run container
@@ -49,7 +49,7 @@ $ docker pull parity/parity:v1.6.8
 To run Parity with an interactive pseudo-tty shell, run:
 
 ```bash
-$ docker run -ti parity/parity:v1.6.8
+$ docker run -ti parity/parity:v1.7.0
 ```
 
 ### Configure parity
@@ -57,7 +57,7 @@ $ docker run -ti parity/parity:v1.6.8
 Parity can be configured using either the [CLI options or a config file](Configuring-Parity). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence. You can list all CLI options by running:
 
 ```bash
-$ docker run parity/parity:v1.6.8 --help
+$ docker run parity/parity:v1.7.0 --help
 ```
 
 For Docker specific options, please refer to the [Docker documentation](https://docs.docker.com/engine/), or run `docker --help` or `docker run --help`.
@@ -67,7 +67,7 @@ For Docker specific options, please refer to the [Docker documentation](https://
 To publish Parity's ports to the host machine, use the `-p` option:
 
 ```bash
-$ docker run -ti -p 8180:8180 -p 8545:8545 -p 30303:30303 parity/parity:v1.6.8 --ui-interface all --jsonrpc-interface all
+$ docker run -ti -p 8180:8180 -p 8545:8545 -p 30303:30303 parity/parity:v1.7.0 --ui-interface all --jsonrpc-interface all
 ```
 
 For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can browse to http://localhost:8180 from the Docker host computer to access the Parity Wallet.
@@ -77,7 +77,7 @@ For example, this will expose the User Interface, the JSONRPC-API, and the liste
 To pass further operating options to Parity, simply append them to the `docker run` command:
 
 ```bash
-$ docker run -ti parity/parity:v1.6.8 --no-ui --no-dapps --no-discovery
+$ docker run -ti parity/parity:v1.7.0 --no-ui --no-dapps --no-discovery
 ```
 
 In this case, it disables the Wallet, the DApps Server, and discovery.
@@ -94,17 +94,17 @@ $ touch ~/.local/share/io.parity.ethereum/docker/config.toml
 You can use the [Config File Generator](https://paritytech.github.io/parity-config-generator/) to configure your Parity node and save it on your host's disk, i.e., at `~/.local/share/io.parity.ethereum/docker/config.toml`. To mount the configuration, use the `docker run -v` option:
 
 ```bash
-$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/mnt/ parity/parity:v1.6.8 --config /mnt/config.toml
+$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/root/.local/share/io.parity.ethereum/ parity/parity:v1.7.0 --config /root/.local/share/io.parity.ethereum/config.toml
 ```
 
-This will mount `~/.local/share/io.parity.ethereum/docker/` of the host machine at `/mnt/` inside the docker container. Therefore, the config file will be available via `--config /mnt/config.toml`.
+This will mount `~/.local/share/io.parity.ethereum/docker/` of the host machine at `/root/.local/share/io.parity.ethereum/` inside the docker container. Therefore, the config file will be available via `--config /root/.local/share/io.parity.ethereum/config.toml`.
 
 ##### Persistent data directory
 
 In case you need to persist the blockchain files, keys etc., you should run the image with the `--base-path` option and then mount it, e.g.:
 
 ```
-$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/mnt/ parity/parity:v1.6.8 --base-path /mnt/
+$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/root/.local/share/io.parity.ethereum/ parity/parity:v1.7.0 --base-path /root/.local/share/io.parity.ethereum/
 ```
 
 This will expose the whole data dir to the host machine at `~/.local/share/io.parity.ethereum/docker/`.
@@ -114,7 +114,7 @@ This will expose the whole data dir to the host machine at `~/.local/share/io.pa
 To run a detached Parity instance, use `docker run -d`:
 
 ```bash
-$ docker run -d parity/parity:v1.6.8
+$ docker run -d parity/parity:v1.7.0
 245f312f3f39ad0a518091b1ee4cdc0c1f6d74fb9609395ed3fdcf43acae4b62
 ```
 
@@ -123,7 +123,7 @@ It will run Parity in background. `docker ps` shows the instance:
 ```bash
 $ docker ps
 CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                          NAMES
-245f312f3f39        parity/parity:v1.6.8   "/parity/parity"    7 seconds ago       Up 6 seconds        8080/tcp, 8180/tcp, 8545/tcp   epic_pike
+245f312f3f39        parity/parity:v1.7.0   "/parity/parity"    7 seconds ago       Up 6 seconds        8080/tcp, 8180/tcp, 8545/tcp   epic_pike
 ```
 
 To attach the container, use `docker attach`:
