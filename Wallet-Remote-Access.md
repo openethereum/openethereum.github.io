@@ -40,53 +40,54 @@ NOTE: It's recommended to setup authentication and SSL on your nginx server.
 1. Setup Nginx server on the Host.
 1. Create nginx configuration at `/etc/nginx/sites-enabled/parity.ui` (substitute `<external-ip>` with correct values):
     ```
-   server {
-     listen <external-ip>:8545;
+    server {
+      listen <external-ip>:8545;
 
-     # Uncomment for SSL Server
-     #listen <external-ip>:8545 ssl;
-     #ssl on;
-     #ssl_certificate /etc/nginx/parity.ui.crt;
-     #ssl_certificate_key /etc/nginx/parity.ui.key;
+       # Uncomment for SSL Server
+       #listen <external-ip>:8545 ssl;
+       #ssl on;
+       #ssl_certificate /etc/nginx/parity.ui.crt;
+       #ssl_certificate_key /etc/nginx/parity.ui.key;
 
-     location / {
-       proxy_pass http://127.0.0.1:8545;
+       location / {
+         proxy_pass http://127.0.0.1:8545;
+       }
      }
-   }
 
-  server {
-     listen <external-ip>:8546;
+    server {
+      listen <external-ip>:8546;
 
-     # Uncomment for SSL Server
-     #listen <external-ip>:8546 ssl;
-     #ssl on;
-     #ssl_certificate /etc/nginx/parity.ui.crt;
-     #ssl_certificate_key /etc/nginx/parity.ui.key;
+      # Uncomment for SSL Server
+      #listen <external-ip>:8546 ssl;
+      #ssl on;
+      #ssl_certificate /etc/nginx/parity.ui.crt;
+      #ssl_certificate_key /etc/nginx/parity.ui.key;
 
-     location / {
-       proxy_pass http://127.0.0.1:8546;
+      location / {
+        proxy_pass http://127.0.0.1:8546;
 
-       proxy_http_version 1.1;
-       proxy_set_header Upgrade $http_upgrade;
-       proxy_set_header Connection "upgrade";
-       proxy_read_timeout 86400;
-     }
-   }
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 86400;
+      }
+    }
 
-   server {
-     listen <external-ip>:8180;
+    server {
+      listen <external-ip>:8180;
 
-     # Uncomment for SSL Server
-     #listen <external-ip>:8180 ssl;
-     #ssl on;
-     #ssl_certificate /etc/nginx/parity.ui.crt;
-     #ssl_certificate_key /etc/nginx/parity.ui.key;
+      # Uncomment for SSL Server
+      #listen <external-ip>:8180 ssl;
+      #ssl on;
+      #ssl_certificate /etc/nginx/parity.ui.crt;
+      #ssl_certificate_key /etc/nginx/parity.ui.key;
 
-     location / {
-       proxy_pass http://127.0.0.1:8180;
-     }
-   }
+      location / {
+        proxy_pass http://127.0.0.1:8180;
+      }
+    }
     ```
+
 1. Restart nginx and run Parity without any flags (default `interface`/`port`/`cors`/`hosts` settings are sufficient)
 1. On the Client, open your browser and go to:
 
