@@ -48,10 +48,10 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
 
 + **`"name"`** field contains any name used to identify the chain.
 
-+ **`"engine"`** field describes the consensus engine used for a particular chain, details are explained in the [[Consensus Engines]] section.
++ **`"engine"`** field describes the consensus engine used for a particular chain, details are explained in the [Consensus Engines](Pluggable-Consensus) section.
 
 + **`"genesis"`** contains the genesis block (first block in the chain) header information.
-  + `"seal"` is consensus engine specific and is further described in [[Consensus Engines]].
+  + `"seal"` is consensus engine specific and is further described in [Consensus Engines](Pluggable-Consensus).
   + `"difficulty"` difficulty of the genesis block, matters only for PoW chains.
   + `"gasLimit"` gas limit of the genesis, affects the initial gas limit adjustment.
 
