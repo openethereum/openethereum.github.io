@@ -2,11 +2,12 @@ When coming from Geth, be aware that the `--geth` option provides you with the h
 
 ### Parity version 1.3 and above (Snapshot sync)
 
-If you don't care about historical transaction information, just use our [state-snapshotting](Getting Synced) to get synced really fast.
+If you don't care about historical transaction information, just use our [state-snapshotting](Getting-Synced) to get synced really fast.
 
 ### Parity version 1.2 and above
 
 On 1.2 and above, use Geth's export feature along with Parity's import:
+
 ```bash
 mkfifo /tmp/chain.rlp && geth export /tmp/chain.rlp &
 
