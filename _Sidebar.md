@@ -11,8 +11,6 @@
   - [[Ledger Nano S]]
 - [[Configuring Parity]]
   - [Available Chains](Chain-specification)
-  - [Coming from Geth](Importing-a-Chain-from-Geth)
-  - [Using with Mist](Using-Parity-with-Mist)
   - [For Mining](Mining)
   - [[Wallet Remote Access]]
   - [Network Config](Network-Configuration)
