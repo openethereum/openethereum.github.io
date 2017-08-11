@@ -20,7 +20,7 @@ Transformbonds are dependent on their dependencies (here the initial bond). If t
 ```
 var id = transBond.tie(console.log); // Tie console to the TransformBond to watch when it triggers on value change.
 bond.changed(32);  // You change the value of the bond.
-window.setTimeout(bond.changed('new value'), 1000); // After one second change the value again
+window.setTimeout(() => {bond.changed('new value')}, 1000); // After one second change the value again
 transBond.untie(id); // You can also untie a function again
 ```
 Now we can see the power of bonds. While the first change will still behave like a normal promise and triggers our various console outputs, the second change just a second later will again reactivate the promise. So we can be sure to always operate on the most recent value.
@@ -36,7 +36,7 @@ transJointBond.log(); // print out result once when bond triggers
 
 Since our initial bond value already has a 'ready value' (not undefined), it will trigger the jointBond (which triggers its TransformBond) with the two most recent values if we run `bond2.changed(64);`.
 
-We can also create TransformBonds with multiple dependencies. Its constructor gets as arguments a function which is executed when triggered, the bonds which values are needed for the result(ready values will trigger) and dependency bonds which are needed for the computation indirectly but whose values we do not need (only knowledge that they are updated). 
+We can also create TransformBonds with multiple dependencies. Its constructor gets as arguments a function which is executed when triggered, the bonds whose values are needed for the result(ready values will trigger) and dependency bonds which are needed for the computation indirectly but whose values we do not need (only knowledge that they are updated). 
 ```
 const {TransformBond, TimeBond} = oo7;
 var timeBond = new TimeBond(); // inbuilt bond which is returning the UNIX timestamp
