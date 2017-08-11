@@ -16,7 +16,7 @@ bond.tie(console.log);  // ties the function to the bond => gets executed on eac
 bond.then(console.log); // executes once on the next value change => bond.log() is equivalent.
 var transBond = bond.map(v => `${new Date} ${v}` ); // creates a new TransformBond. 
 ```
-Transformbonds are dependent on their dependencies (here the initial bond). If the value changes it will trigger to execute the provided function and return the result as value.
+Transformbonds are dependent on their dependencies (here the initial bond). If the value changes it will trigger to execute the provided function and return the result as value. The difference between using `tie` and `then` is that latter will only trigger once and behaves as a Promise call would. While tying a function will execute it each time the value updates until you untie it.
 ```
 var id = transBond.tie(console.log); // Tie console to the TransformBond to watch when it triggers on value change.
 bond.changed(32);  // You change the value of the bond.
@@ -25,7 +25,7 @@ transBond.untie(id); // You can also untie a function again
 ```
 Now we can see the power of bonds. While the first change will still behave like a normal promise and triggers our various console outputs, the second change just a second later will again reactivate the promise. So we can be sure to always operate on the most recent value.
 
-For example we can easily create joint Bonds which trigger when all values are ready. Or TransformBonds with multiple dependencies.
+For example we can easily create joint Bonds which trigger when all values are ready. Or TransformBonds with multiple dependencies. They are in fact all extending the `Bond` class and this behaving the same but have additional features (e.g. transform-function, dependent on other bonds) on top.
 
 ```
 var bond2 = new Bond();
@@ -40,7 +40,7 @@ We can also create TransformBonds with multiple dependencies. Its constructor ge
 ```
 const {TransformBond, TimeBond} = oo7;
 var timeBond = new TimeBond(); // inbuilt bond which is returning the UNIX timestamp
-var tBond = new TransformBond(([v1,v2]) => `Transformed Bond Args ${v1} and ${v2}, Deps ${i}`, [bond, bond2], [timeBond]);
+var tBond = new TransformBond(([v1,v2]) => `Transformed Bond Args ${v1} and ${v2}`, [bond, bond2], [timeBond]);
 ```
 
 All this gets especially useful when we want to interact with the blockchain and easily use inbuilt functions to keep us always with the newest state of the chain. We explore some of them in the following.
