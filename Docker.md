@@ -67,7 +67,7 @@ For Docker specific options, please refer to the [Docker documentation](https://
 To publish Parity's ports to the host machine, use the `-p` option:
 
 ```bash
-$ docker run -ti -p 8180:8180 -p 8545:8545 -p 30303:30303 -p 30303:30303/udp parity/parity:v1.7.0 --ui-interface all --jsonrpc-interface all
+$ docker run -ti -p 8180:8180 -p 8545:8545 -p 8546:8546 -p 30303:30303 -p 30303:30303/udp parity/parity:v1.7.0 --ui-interface all --jsonrpc-interface all
 ```
 
 For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can browse to http://localhost:8180 from the Docker host computer to access the Parity Wallet.
