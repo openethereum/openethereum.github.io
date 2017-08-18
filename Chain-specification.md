@@ -3,7 +3,7 @@ By default, when simply running `parity`, Parity Ethereum will connect to the of
 In order to run a chain different to the official public Ethereum one, Parity has to be ran with the `--chain` option or with a [config file](Configuring-Parity#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
-- [`mainnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/frontier.json) (default) main Ethereum network
+- [`mainnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
 - [`kovan`|`testnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config)
 - [`ropsten`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
 - [`classic`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
