@@ -88,6 +88,29 @@ Make sure you are using the latest stable rust compiler. Update with `rustup upd
 
 Install required packages `libudev-dev` and `libssl-dev`.
 
+### The one-line installer fails with "SSL peer handshake failed" on macOS!?
+
+If you encounter error `curl: (35) SSL peer handshake failed, the server most likely requires a client certificate to connect` then run the following commands prior to the one-liner mentioned above. These commands will install and update your OpenSSL and Curl sym-links and reload your shell session for secure communication:
+
+```bash
+# update Homebrew
+$ brew update 
+
+# upgrade OpenSSL and update symlinks
+$ brew upgrade openssl
+$ brew link openssl --force
+
+# install cURL and update symlinks
+$ brew install --with-openssl curl
+$ brew link curl --force
+
+# reload shell session
+$ source ~/.bash_profile
+
+# show location of binaries and current version
+$ which curl && which openssl && curl --version
+```
+
 ### I'm trying to build on Windows but I get 'link failed' errors mentioning 'kernel32.lib'!?!
 
 Make sure you have set up your 64-bit variables in the build shell before issuing `cargo build`:
