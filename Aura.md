@@ -1,4 +1,4 @@
-Aura is one of the Blockchain consensus algorithms available in Parity. It is capable of tolerating up to 50% of malicious nodes with chain reorganizations possible up to a limited depth dependent on the number of validators.
+Aura is one of the Blockchain consensus algorithms available in Parity. It is capable of tolerating up to 50% of malicious nodes with chain reorganizations possible up to a limited depth dependent on the number of validators, after which finality is guaranteed.
 
 The consensus can be ran with `--force-sealing` which ensures that blocks are produced even if there are no transactions. This is necessary for fault tolerance described.
 
@@ -23,4 +23,4 @@ Header includes the step and the primary signature of the block hash (not includ
 Verification checks if the signature belongs to the correct primary for the given step. Blocks from more than 1 step into the future are rejected.
 
 ## Finality
-If more than 50% of the nodes signed on a chain and then they signed again on those signatures, the chain is final. This means finality can be achieved within `2 * step_duartion * n_v`. A lower bound might exist.
+If more than 50% of the nodes signed on a chain and then they signed again on those signatures, the chain is final. This means finality can be achieved within `2 * step_duration * n_v`. A lower bound might exist.
