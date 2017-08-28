@@ -74,6 +74,7 @@
 - [[Light Client]]
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
+- [[Secret Store]]
 - [[Warp Sync]]
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
 - [[Whisper]]
