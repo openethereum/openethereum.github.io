@@ -1,62 +1,11 @@
-@TODO
+Parity Ethereum supports state-orientated programming of [[Smart Contracts]] with the Solidity programming language for the Ethereum blockchain. The wallet contains an integrated Solidity development environment allowing you to write, compile, and deploy contracts. 
 
-Contracts:
+The native Ethereum token is called Ether (ETH). In addition to Ether, additional assets and [[Tokens]] can be handled by the Ethereum blockchain. The Parity Ethereum wallet supports any ERC20-compliant token by displaying balances and enabling transfers to be as simple as Ether transactions. Read more on [[Token Deployment]] and the Parity [[Token Registry]].
 
-- [[Smart Contracts]]
+There is a 10-part [Tutorial](Dapp-Tutorial) on how to write dapps. It makes significant use of React and Bond-based UI technologies together with the Parity counterparts. By the end of it, you'll have some familiarity with all aspects of dapp-authoring including contract deployment, transaction posting, state-inspection and event-tracking. Examples of common operations and useful functionality when building a dApp using [oo7-Bonds](oo7-Parity-Reference) can be [found here](oo7-Parity-Examples). See also [Deploying Dapps to Parity Wallet](Deploying-DApps-to-Parity-Wallet), [Dapp Discovery](Register-your-DAPP-for-discovery) and the [Parity Dapp Registry](Parity-dapp-registry).
 
-Tokens:
+By default, when simply running `parity`, Parity Ethereum will connect to the official public Ethereum network. In order to run a [chain different to the official public Ethereum one](Chain-specification), Parity has to be ran with the `--chain` option or with a [config file](Configuring-Parity#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
-- [ERC20 Tokens](Tokens)
-  - [[Token Deployment]]
-  - [[Token Registry]]
+Parity supports [private chain](Private-development-chain) and private network configuration via [[Chain specification]] files provided with `--chain`. In addition to the usual [[Proof of Work Chains]], Parity also includes [[Proof of Authority Chains]] which do not require mining. More details on the available options can be found on the [[Pluggable Consensus]] page. See also the [Demo PoA Tutorial](Demo-PoA-tutorial).
 
-Dapps: 
-
-- [Dapp Tutorial](Dapp-Tutorial)
-  - [1: Get Started](Tutorial-Part-1)
-  - [2: oo7 Bonds](Tutorial-Part-2)
-  - [3: Parity Bonds](Tutorial-Part-3)
-  - [4: Call Contracts](Tutorial-Part-4)
-  - [5: Post Transactions](Tutorial-Part-5)
-  - [6: A New Contract](Tutorial-Part-6)
-  - [7: Interaction](Tutorial-Part-7)
-  - [8: Events](Tutorial-Part-8)
-  - [9: Deploy Contracts](Tutorial-Part-9)
-  - [10: Sign Data](Tutorial-Part-10)
-- [oo7 Examples](oo7-Parity-Examples)
-- [oo7-parity.js Reference](oo7-Parity-Reference)
-- [Deploying Dapps to Parity Wallet](Deploying-DApps-to-Parity-Wallet)
-- [Parity Dapp Registry](Parity-dapp-registry)
-- [Dapp Discovery](Register-your-DAPP-for-discovery)
-- [Parity Name Registry](Parity-name-registry)
-- [Parity GitHub Hint](Parity-github-hint)
-
-Chains:
-
-- [Chain Specification](Chain-specification)
-  - [[Pluggable Consensus]]
-    - [[Aura]]
-  - [[Validator Set]]
-    - [[Validator contracts]]
-- [[Proof of Work Chains]]
-- [[Proof of Authority Chains]]
-  - [Demo PoA Tutorial](Demo-PoA-tutorial)
-- [Private Chains](Private-chains)
-  - [Private Dev Chain](Private-development-chain)
-- [Service transactions](Service-transaction-checker-contract)
-
-Reference:
-
-- [JSONRPC Guide](JSONRPC)
-  - [web3](JSONRPC-web3-module)
-  - [net](JSONRPC-net-module)
-  - [eth](JSONRPC-eth-module)
-  - [eth_pubsub](JSONRPC-Eth-Pub-Sub-Module)
-  - [personal](JSONRPC-personal-module)
-  - [parity](JSONRPC-parity-module)
-  - [parity_accounts](JSONRPC-parity_accounts-module)
-  - [parity_set](JSONRPC-parity_set-module)
-  - [pubsub](JSONRPC-Parity-Pub-Sub-module)
-  - [signer](JSONRPC-signer-module)
-  - [trace](JSONRPC-trace-module)
-  - [shh](JSONRPC-shh-Module)
+Last but not least, have a look at the [JSONRPC Guide](JSONRPC).
