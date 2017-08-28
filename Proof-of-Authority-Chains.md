@@ -1,7 +1,9 @@
 Parity supports a Proof-of-Authority consensus engine to be used with EVM based chains. Proof-of-Authority is a replacement for Proof-of-Work, which can be used for private chain setups.
 
 It does not depend on nodes solving arbitrarily difficult mathematical problems, but instead uses
-a hard-configured set of "authorities" - nodes that are explicitly allowed to create new blocks and secure the blockchain. This makes it easier to maintain a private chain and keep the block issuers accountable.
+a set of "authorities" - nodes that are explicitly allowed to create new blocks and secure the blockchain. The chain has to be signed off by the majority of authorities, in which case it becomes a part of the permanent record. This makes it easier to maintain a private chain and keep the block issuers accountable.
+
+For consortium setting there are no disadvantages of PoA network as compared to PoW. It is more secure (since an attacker with unwanted connection or hacked authority can not overwhelm a network potentially reverting all transactions), less computationally intensive (mining with difficulty which provides security requires lots of computation), more performant (Aura consensus provides lower transaction acceptance latency) and more predictable (blocks are issued at steady time intervals). PoA deployments are used by the enterprise and by the public (e.g. popular Kovan test network).
 
 [![Gitter](https://badges.gitter.im/ethcore/parity-poa.svg)](https://gitter.im/ethcore/parity-poa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
