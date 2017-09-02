@@ -4,7 +4,7 @@ Along with EVM, Parity has an experimental support for Web Assembly as a bytecod
 
 - Standard is maintained by huge number of interested parties
 - Much less 256-bit word size related overhead
-- Much more languages that target WASM (see https://github.com/mbasso/awesome-wasm)
+- Much more languages that target WASM (see [awesome-wasm](https://github.com/mbasso/awesome-wasm)!)
 - Advanced optimisation tools for WASM->WASM
 
 ## Getting started
