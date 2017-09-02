@@ -9,11 +9,16 @@ Along with EVM, Parity has an experimental support for Web Assembly as a bytecod
 
 # Getting started
 
-To allow your custom chain to take advantage of WASM contracts, just enable them in in your chain spec JSON file under `params` section.
+To allow your custom chain to take advantage of WASM contracts, just enable them in in your chain spec JSON file under `params` section by specifying `wasm: true`.
+
+For example, params section might look like this:
 
 ```json
 	"params": {
-		...
+		"accountStartNonce": "0x0",
+		"maximumExtraDataSize": "0x20",
+		"minGasLimit": "0x1388",
+		"networkID" : "0x11",
                 "wasm": true
 	},  
 ```
