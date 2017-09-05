@@ -6,9 +6,8 @@
 
 ## Transport
 * HTTP: Listens on port `8545`
+* WebSockets: Listens on port `8546`
 * IPC Socket: Listens on `$BASE/jsonrpc.ipc` (defaults to `~/.local/share/io.parity.ethereum/jsonrpc.ipc` on Linux)
-* Websocket: Listens on port `8180`
- * at the time of this writing, WebSockets requires a special authorization token and connection protocol
 
 ## Types in the JSONRPC
 
