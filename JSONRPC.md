@@ -36,3 +36,17 @@ As documented in the options, available under `parity --help` not all API's are 
 
 **default**: web3,eth,pubsub,net,parity,parity_pubsub,traces,rpc,secretstore.
 
+## Full API Documentation
+
+- [web3](JSONRPC-web3-module)
+- [net](JSONRPC-net-module)
+- [eth](JSONRPC-eth-module)
+- [eth_pubsub](JSONRPC-Eth-Pub-Sub-Module)
+- [personal](JSONRPC-personal-module)
+- [parity](JSONRPC-parity-module)
+- [parity_accounts](JSONRPC-parity_accounts-module)
+- [parity_set](JSONRPC-parity_set-module)
+- [pubsub](JSONRPC-Parity-Pub-Sub-module)
+- [signer](JSONRPC-signer-module)
+- [trace](JSONRPC-trace-module)
+- [shh](JSONRPC-shh-Module)
