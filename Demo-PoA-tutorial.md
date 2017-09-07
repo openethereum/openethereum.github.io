@@ -215,7 +215,8 @@ The complete `demo-spec.json` should look like this:
 
 Now that the spec is complete we can start the two nodes that will be running the chain. To run a node as an authority we will need to enable it to sign the consensus messages.
 
-First lets create a file with the node passwords `node.pwds`. Each line will contain a password that we used when creating the authority accounts:
+First lets create a file with the node passwords `node.pwds`. Each line will contain a password that we used when creating the authority accounts, contents to be stored in file named `node.pwds` are:
+
 ```
 node0
 node1
