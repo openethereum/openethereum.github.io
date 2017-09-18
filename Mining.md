@@ -3,9 +3,9 @@ Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork](h
 First get a Parity node up and running (either build yourself or install one of the packages; the [[Setup]] guide can help you). Next, you'll need to install your preferred miner.
 
 ## Getting the miner
-### Genoil
+### ethminer
 
-Just follow the instruction on the Genoil github repository page: https://github.com/Genoil/cpp-ethereum.
+Just follow the instruction on the Ethereum-Mining GitHub repository page: https://github.com/ethereum-mining/ethminer.
 
 ### sgminer
 
