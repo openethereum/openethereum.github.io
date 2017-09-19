@@ -43,9 +43,14 @@ Since Parity 1.2 state-trie pruning is enabled by default (`--pruning fast`). Yo
 To reduce the size of the kept pruning history, you can set the minimum number of recent states with the `--pruning-history` flag:
 
     --pruning-history NUM          Set a minimum number of recent states to keep when pruning
-                                   is active. (default: 1200).
+                                   is active. (default: 64).
+    --pruning-memory MB            The ideal amount of memory in megabytes to use to store
+                                   recent states. As many states as possible will be kept
+                                   within this limit, and at least --pruning-history states
+                                   will always be kept. (default: 32)
 
-By default, 1200 states are kept.
+
+By default, 64 states are kept.
 
 ### Why is warp synchronization so fast?
 
