@@ -36,7 +36,7 @@ For example `--pruning archive`, which disables state trie pruning, the chain da
 You can just export it to a file:
 
 ```bash
-parity export $HOME/ethereum-chain-backup.rlp
+parity export blocks $HOME/ethereum-chain-backup.rlp
 ```
 
 ### How do I restore my blockchain from a previous backup?
