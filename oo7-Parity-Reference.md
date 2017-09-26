@@ -67,7 +67,9 @@ If multiple independent instances of `Bonds` are required (e.g. because you wish
 
 Ensure you import the `bonds` object:
 
-   `import {bonds} from 'oo7-parity';
+```
+import {bonds} from 'oo7-parity';
+```
 
 In this reference, for brevity we have dropped the prefix of `bonds.`.
 
