@@ -77,11 +77,11 @@
 - [[Secret Store]]
 - [[Warp Sync]]
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
+- [WebAssembly (WASM)](WebAssembly-(WASM))
 - [[Whisper]]
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
-- [WebAssembly (WASM)](WebAssembly-(WASM))
 
 ## Hacking on Parity
 - [[Coding Guide]]
