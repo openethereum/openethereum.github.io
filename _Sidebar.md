@@ -81,7 +81,7 @@
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
-- [WebAssembly (WASM)](WASM)
+- [[WebAssembly (WASM)]](WebAssembly-(WASM))
 
 ## Hacking on Parity
 - [[Coding Guide]]
