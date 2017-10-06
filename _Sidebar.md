@@ -29,6 +29,7 @@
 - [ERC20 Tokens](Tokens)
   - [[Token Deployment]]
   - [[Token Registry]]
+- [[Badge Registry]]
 - [[Smart Contracts]]
 - [Dapp Tutorial](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-1)
