@@ -59,8 +59,8 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"author"` address of the genesis block author.
   + `"timestamp"` UNIX timestamp of the genesis block.
   + `"parentHash"` hash of the genesis "parent" block.
-  + `"transactionsRoot"` genesis transactions root.
-  + `"receiptsRoot"` genesis receipts root.
+  + `"transactionsRoot"` root of the genesis block's transactions trie
+  + `"receiptsRoot"` root of the genesis block's receipts trie.
   + `"stateRoot"` genesis state root, calculated automatically from the `"accounts"` field.
   + `"gasUsed"` gas used in the genesis block.
   + `"extraData"` extra data of the genesis block.
