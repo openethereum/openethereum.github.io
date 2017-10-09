@@ -4,14 +4,16 @@ If you want to serve a [[Parity Wallet]] to multiple private or public devices i
 parity --public-node
 ```
 
-This will publicly expose the Parity Wallet on port :8180 of your node and can be reached by anyone with access to the public IP or domain. An example public node is served on [wallet.parity.io](https://wallet.parity.io/), see also [[Wallet.Parity.Io]].
+This will publicly expose the Parity Wallet on port `:8180` of your node and can be reached by anyone with access to the public IP or domain. An example public node is served on [wallet.parity.io](https://wallet.parity.io/), see also [[Wallet.Parity.Io]].
 
 ![public-wallet-e](images/public-wallet-e.png)
 
-### Security
+The most important difference to a regular (local) Parity wallet is the way your keys are stored. Instead of creating a local profile on your disk, **your keys are entirely kept in your browser's local storage!** Always  [backup](Backing-up-&-Restoring) your recovery phrase and export the private keys (JSON) before using the public node on any of your devices.
 
-@TODO
+List of additional features of a public node:
 
-### Features
+- @TODO
 
-@TODO
+List of disabled features:
+
+- @TODO
