@@ -6,5 +6,10 @@ parity --public-node
 
 This will publicly expose the Parity Wallet on port :8180 of your node and can be reached by anyone with access to the public IP or domain. An example public node is served on [wallet.parity.io](https://wallet.parity.io/), see also [[Wallet.Parity.Io]].
 
+### Security
+
+@TODO
+
 ### Features
 
+@TODO
