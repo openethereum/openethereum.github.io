@@ -15,6 +15,9 @@
   - [[Wallet Remote Access]]
   - [Network Config](Network-Configuration)
   - [[Docker]]
+- [[Public Node]]
+  - [[Wallet.Parity.Io]]
+- [[PICOPS]]
 - [[Community Guides]]
 
 ## Developing
