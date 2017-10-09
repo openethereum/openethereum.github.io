@@ -22,9 +22,11 @@ All pull requests should start labeled with either 'A0-pleasereview', 'A3-inprog
 - ![A1-onice](http://i.imgur.com/xZ9YJvB.png) Pull request is reviewed well, but should not yet be merged.
 - ![A2-insubstantial](http://i.imgur.com/xPahkpz.png) Pull request requires no code review (e.g. a sub-repository hash update).
 - ![A3-inprogress](http://i.imgur.com/rQbszDc.png) Pull request is in progress. No review needed at this stage.
+- `A3-stale` Pull request did not receive any updates in a long time. No review needed at this stage and should be closed if author does not indicate any further work is done.
+- `A4-awaitingci` Pull request is waiting for changes on the CI to complete tests before review/merge can begin.
 - ![A4-clasignoffneeded](http://i.imgur.com/QSNNtk0.png) Pull request requires author to sign off on CLA before review/merge can begin.
-- ![A4-gotissues](http://i.imgur.com/fUyJ8PO.png) Pull request is reviewed and has significant issues which must be addressed. Once addressed, author should relabel as A0-pleasereview.
-- ![A5-grumble](http://i.imgur.com/fD1vO9N.png) Pull request has minor issues that must be addressed before merging. This may require only replying to comments. Pull request should be relabeled as A0-pleasereview to get a final sign-off from a reviewer.
+- ![A4-gotissues](http://i.imgur.com/fUyJ8PO.png) Pull request is reviewed and has significant issues which must be addressed. Once addressed, author should relabel as `A0-pleasereview`.
+- ![A5-grumble](http://i.imgur.com/fD1vO9N.png) Pull request has minor issues that must be addressed before merging. This may require only replying to comments. Pull request should be relabeled as `A0-pleasereview` to get a final sign-off from a reviewer.
 - ![A6-mustntgrumble](http://i.imgur.com/hGDrT93.png) Pull request has areas for improvement. The author need not address them before merging.
 - ![A6-revert](http://i.imgur.com/0EILx22.png) Pull request that reverts recent changes.
 - ![A7-looksgoodcantmerge](http://i.imgur.com/3yYImuZ.png) Pull request is reviewed well, but cannot be merged due to conflicts.
@@ -56,6 +58,7 @@ Issues should have only one of these. Do not combine; if multiple labels are equ
 - ![F7-footprint](http://i.imgur.com/lE1ESzo.png) An enhancement to provide a smaller (system load, memory, network or disk) footprint.
 - ![F7-optimisation](http://i.imgur.com/DNym8en.png) An enhancement to provide better overall performance in terms of time-to-completion for a task.
 - ![F8-enhancement](http://i.imgur.com/ziRfEiW.png) An additional feature.
+- `F9-meta` A specific issue for grouping tasks or bugs of a specific category.
 - ![F9-release](http://i.imgur.com/zl4BiqW.png) A specific release. All such issues should be templated on [1387](https://github.com/paritytech/parity/issues/1387).
 
 ### 'M' group
@@ -64,12 +67,14 @@ Used to denote the affected component or sub-project. Each issue and pull reques
 
 - ![M0-build](http://i.imgur.com/vGzi4al.png) Building and build system
 - ![M1-ci](http://i.imgur.com/KzZMc2p.png) Continuous integration
+- `M2-config` Chain specifications and node configurations
 - ![M2-installer](http://i.imgur.com/9nEQ4RW.png) Installers for MacOS and Windows
 - ![M4-core](http://i.imgur.com/Pf9himB.png) Core client
 - ![M5-binaries](http://i.imgur.com/W5ECLIM.png) External binaries (ethkey, ethstore, ethvm, etc.)
 - ![M6-rpcapi](http://i.imgur.com/kZGX67C.png) RPC API
 - ![M7-signer](http://i.imgur.com/FlogNRD.png) Trusted signer
 - ![M7-ui](http://i.imgur.com/bTvS99W.png) User Interface and wallet
+- `M8-contracts` Solidity smart contracts
 - ![M8-dapp](http://i.imgur.com/LgIN8xw.png) Decentralized applications
 - ![M9-deploy](http://i.imgur.com/C2GsjWb.png) Deployment and registration
 
@@ -88,6 +93,7 @@ Typically used only to annotate issues, however P0 and P2 may reasonably be used
 Is used to annotate difficulty of issues.
 
 - ![Q0-trivial](http://i.imgur.com/K8BWrSm.png) Can be fixed by anyone with access to a computer.
+- `Q1-mentor` An easy task were a mentor is available. Please indicate in the issue who the mentor could be.
 - ![Q2-easy](http://i.imgur.com/CTJ9eVc.png) Can be fixed by copy and pasting from StackOverflow.
 - ![Q5-substantial](http://i.imgur.com/HdotN9f.png) Can be fixed by a developer with decent experience.
 - ![Q7-involved](http://i.imgur.com/OSQ0tc6.png) Can be fixed by a team of developers and probably takes some time.
