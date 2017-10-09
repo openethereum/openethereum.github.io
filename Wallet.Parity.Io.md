@@ -1,0 +1,1 @@
+Wallet.Parity.Io
