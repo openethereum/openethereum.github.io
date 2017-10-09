@@ -104,3 +104,18 @@ Used only on issues which will (or _may_, in the case of Z5) be closed immediate
 - ![Z0-stale](http://i.imgur.com/Ds2ZUIl.png) Issue is in principle valid, but it is not relevant anymore or can not reproduced.
 - ![Z0-wontfix](http://i.imgur.com/pPJTV2h.png) Issue is in principle valid, but this project will not address it. Closer should explain why.
 - ![Z5-unconfirmed](http://i.imgur.com/X747d5L.png) Issue might be valid, but it's not yet known.
+
+### Issue-Checklist
+
+0. Have you tried turning it off and on again?
+1. Are you fully synchronized?
+2. Which version of Parity are you running? ("master" or "git" is not a version)
+3. Which operating system are you running?
+4. How did you install Parity? (binary, installer, from source, which branch?)
+5. What flags are you running Parity with?
+6. Do you use any config file?
+7. Please, share the exact error message!
+8. Is there anything in the logs?
+9. Are you connected to any peers?
+0. What's your time? Is it synchronized? [time.is](https://time.is)
+1. Did you answer all my questions yet?
