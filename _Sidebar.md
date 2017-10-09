@@ -17,7 +17,6 @@
   - [[Docker]]
 - [[Public Node]]
   - [[Wallet.Parity.Io]]
-- [[PICOPS]]
 - [[Community Guides]]
 
 ## Developing
