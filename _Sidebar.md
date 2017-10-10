@@ -85,6 +85,7 @@
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
+- Polkadot
 
 ## Hacking on Parity
 - [[Coding Guide]]
