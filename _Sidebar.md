@@ -77,6 +77,7 @@
 - [[Light Client]]
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
+- [Polkadot](Polkadot)
 - [[Secret Store]]
 - [[Warp Sync]]
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
@@ -85,7 +86,6 @@
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
-- Polkadot
 
 ## Hacking on Parity
 - [[Coding Guide]]
