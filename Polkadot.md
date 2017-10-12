@@ -1,5 +1,5 @@
-## Information
-Please find further information at https://polkadot.io/
+## What, Why & How?
+Please take a look at https://polkadot.io/
 
 
 ## You want to get involved?
