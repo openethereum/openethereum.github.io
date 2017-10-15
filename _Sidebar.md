@@ -70,6 +70,7 @@
 - [Private Chains](Private-chains)
   - [Private Dev Chain](Private-development-chain)
 - [Service transactions](Service-transaction-checker-contract)
+- [P2P permissions](P2P-Permissions)
 
 ## Technologies
 - [Automatic Updating](Automatic-Updating)
