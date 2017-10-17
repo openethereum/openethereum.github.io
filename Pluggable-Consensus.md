@@ -51,7 +51,7 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 
 ```json
 "engine": {
-	"instantSeal": { "params": {} }
+	"instantSeal": null
 }
 ```
 
