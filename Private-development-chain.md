@@ -1,11 +1,6 @@
 Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [[Parity Wallet]] or signed) and all blocks will be accepted. It can be simply activated by running:
 ```
-parity --chain dev
-```
-Or by using a custom [config file](Configuring-Parity#config-file):
-```toml
-[parity]
-chain = "dev"
+parity --config dev
 ```
 
 A address containing a lot of tokens (`0x00a329c0648769a73afac7f9381e08fb43dbea72`) should be automatically added with a password being an empty string.
