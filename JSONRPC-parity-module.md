@@ -1195,23 +1195,23 @@ Response
 
 ### parity_postSign
 
-Request an arbitrary transaction to be signed by an account.
+Request a standard Ethereum message to be signed by an account.
 
 #### Parameters
 
 0. `Address` - Account address.
-0. `Hash` - Transaction hash.
+0. `Data` - The message.
 
 ```js
 params: [
   "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
-  "0x8cda01991ae267a539135736132f1f987e76868ce0269b7537d3aab37b7b185e"
+  "0x414243"
 ]
 ```
 
 #### Returns
 
-- `Quantity` - The id of the request to the signer. If the account was already unlocked, returns `Hash` of the transaction instead.
+- `Quantity` - The id of the request to the signer.
 
 #### Example
 
