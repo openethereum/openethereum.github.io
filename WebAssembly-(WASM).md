@@ -28,7 +28,7 @@ Now the engine will be able to distinguish and run WASM byte code if it is used 
 
 ## Building a contract
 
-Any valid WASM module with the exported `_call` function can be used as a contract code. As our codebase is dominated by Rust language, we use experimental Rust tools to compile actual contracts. [wasm-tests](https://github.com/paritytech/wasm-tests) repository mighty be a good source of examples. We run actual verification tests against this examples, so you can be sure that those examples are valid piece of functionality.
+Any valid WASM module with the exported `_call` function can be used as a contract code. As our codebase is dominated by Rust language, we use experimental Rust tools to compile actual contracts. [wasm-tests](https://github.com/paritytech/wasm-tests) repository might be a good source of examples. We run actual verification tests against this examples, so you can be sure that those examples are valid piece of functionality.
 
 Simple contract in Rust language might be as short as this:
 
