@@ -1,12 +1,12 @@
 # Overview
-In a basic [Proof-of-Work blockchain](https://github.com/paritytech/parity/wiki/Proof-of-Work-Chains) all participants are able to perform all roles within the network: connect, mine (validate), send transactions, inspect the state and see all transactions.
+In a basic [Proof-of-Work chain](https://github.com/paritytech/parity/wiki/Proof-of-Work-Chains) all participants are able to perform all roles within the network: connect, mine (validate), send transactions, inspect the state and see all transactions.
 
 At Parity Technologies we are introducing a number of features which enable the network participants to permission different aspects of a blockchain. Often conflated as simply “permissioned blockchains” we introduce permissions on a number of different layers:
 
 * [Network](Permissioning#network)
 * [Transaction type](Permissioning#transaction-type)
 * [Validator set](Permissioning#validator-set)
-* Gas price (to-be-released)
+* [Gas price (to-be-released)](Permissioning#gas-price-to-be-released)
 * Secret transactions and contracts (to-be-released)
 
 Each user can have different permissions on each layer. All permissioning is based on blockchain accounts, which means that permissions always correspond to an address.
