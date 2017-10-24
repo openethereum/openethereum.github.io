@@ -3,9 +3,9 @@ In a basic [Proof-of-Work blockchain](https://github.com/paritytech/parity/wiki/
 
 At Parity Technologies we are introducing a number of features which enable the network participants to permission different aspects of a blockchain. Often conflated as simply “permissioned blockchains” we introduce permissions on a number of different layers:
 
-* [Network](Permissioning#Network)
-* [Transaction type](Permissioning#Transaction-type)
-* [Validator set](Permissioning#Validator-set)
+* [Network](Permissioning#network)
+* [Transaction type](Permissioning#transaction-type)
+* [Validator set](Permissioning#validator-set)
 * Gas price (to-be-released)
 * Secret transactions and contracts (to-be-released)
 
