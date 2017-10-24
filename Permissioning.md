@@ -6,7 +6,7 @@ At Parity Technologies we are introducing a number of features which enable the 
 * [Network](Permissioning#network)
 * [Transaction type](Permissioning#transaction-type)
 * [Validator set](Permissioning#validator-set)
-* [Gas price (to-be-released)](Permissioning#gas-price-to-be-released)
+* [Gas price](Permissioning#gas-price)
 * Secret transactions and contracts (to-be-released)
 
 Each user can have different permissions on each layer. All permissioning is based on blockchain accounts, which means that permissions always correspond to an address.
@@ -110,5 +110,31 @@ In Parity Ethereum a Validator Set can be specified using a contract implementin
 ## How it works
 Please see the [Validator Set wiki page](https://github.com/paritytech/parity/wiki/Validator-Set).
 
-# Gas price (to-be-released)
-In addition to completely disabling certain accounts from making transactions, a way to specify gas prices per account will be possible. This is achieved by managing gas prices in a smart contract and enables one to regulate how much each account has to spend on interactions with the blockchain. Of course, gas prices can also be set to zero.
+# Gas price
+Currently, Parity already allows whitelisting of accounts for zero gas price transactions. In addition to that, a way to specify gas prices per account will be possible soon. This is achieved by managing gas prices in a smart contract and enables one to regulate how much each account has to spend on interactions with the blockchain. Of course, gas prices can also be set to zero. 
+
+## How it works
+Service transaction checker contract is used by Parity to filter out transactions with zero gas price (aka service transactions).
+
+Default behaviour (to which you can always revert by using `--refuse-service-transactions` command line option) is to discard all service transactions, coming from network. If ['registrar'](https://github.com/paritytech/contracts/blob/master/Registry.sol) contract is deployed and registered for your chain, you can alter default behaviour by:
+1) deploying ['certifier'](https://github.com/paritytech/contracts/blob/master/SimpleCertifier.sol) contract
+2) registering address of this contract in registry with 'service_transaction_checker' name
+On startup, Parity will check if this contract is registered and will start checking author of each service transaction, coming from network. If author is **not** certified to create service transactions, transaction will be discarded. Otherwise, it will be accepted.
+
+To register address, which is able to create service transactions, you should use `certify` method. To reverse this action, use `revoke` method. You can use `certified` method to check if address is certified for making service transactions.
+
+Below is ABI of service transaction checker contract:
+```
+[
+	{"constant":false,"inputs":[{"name":"_new","type":"address"}],"name":"setOwner","outputs":[],"payable":false,"type":"function"},
+	{"constant":false,"inputs":[{"name":"_who","type":"address"}],"name":"certify","outputs":[],"payable":false,"type":"function"},
+	{"constant":true,"inputs":[{"name":"_who","type":"address"},{"name":"_field","type":"string"}],"name":"getAddress","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},
+	{"constant":false,"inputs":[{"name":"_who","type":"address"}],"name":"revoke","outputs":[],"payable":false,"type":"function"},
+	{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},
+	{"constant":true,"inputs":[],"name":"delegate","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},
+	{"constant":true,"inputs":[{"name":"_who","type":"address"},{"name":"_field","type":"string"}],"name":"getUint","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},
+	{"constant":false,"inputs":[{"name":"_new","type":"address"}],"name":"setDelegate","outputs":[],"payable":false,"type":"function"},
+	{"constant":true,"inputs":[{"name":"_who","type":"address"}],"name":"certified","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},
+	{"constant":true,"inputs":[{"name":"_who","type":"address"},{"name":"_field","type":"string"}],"name":"get","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"}
+]
+```
