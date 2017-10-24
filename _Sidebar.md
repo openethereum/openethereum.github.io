@@ -64,13 +64,11 @@
     - [[Aura]]
   - [[Validator Set]]
     - [[Validator contracts]]
+- [[Permissioning]]
 - [[Proof of Work Chains]]
 - [[Proof of Authority Chains]]
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
-- [Private Chains](Private-chains)
-  - [Private Dev Chain](Private-development-chain)
-- [Service transactions](Service-transaction-checker-contract)
-- [P2P permissions](P2P-Permissions)
+- [Private Dev Chain](Private-development-chain)
 
 ## Technologies
 - [Automatic Updating](Automatic-Updating)
