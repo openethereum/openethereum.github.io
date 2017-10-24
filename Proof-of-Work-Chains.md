@@ -1,4 +1,4 @@
-Here is an example file for private network. To start Parity with a JSON file specifying the chain, run `$ parity --chain path/to/chain/spec.json`, or create a [config file](Configuring-Parity#config-file):
+Here is an example chain specification file for a public/open Proof-of-Work (Ethash) chain. To start Parity with a JSON file specifying the chain, run `$ parity --chain path/to/chain/spec.json`, or create a [config file](Configuring-Parity#config-file):
 
 ```toml
 [parity]
