@@ -16,9 +16,93 @@ Permissions on this layer determine which nodes can connect to the network and i
 
 ## How it works
 A smart contract has to be deployed that regulates if two nodes can connect to each other given their enode IDs.
-The contract must be deployed on the corresponding chain and its address added to the chain spec file under `"params"/"transactionPermissionContract"`.
+The contract must be deployed on the corresponding chain and its address added to the chain spec file under `"params"/"nodePermissionContract"`.
 
 The contract must support the following ABI:
+```json
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "sl",
+        "type": "bytes32"
+      },
+      {
+        "name": "sh",
+        "type": "bytes32"
+      },
+      {
+        "name": "pl",
+        "type": "bytes32"
+      },
+      {
+        "name": "ph",
+        "type": "bytes32"
+      }
+    ],
+    "name": "connectionAllowed",
+    "outputs": [
+      {
+        "name": "res",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": false,
+    "type": "constructor"
+  }
+]
+```
+* `sl` is low 32 bytes of peer 1 enode Id
+* `sh` is hi 32 bytes of peer 1 enode Id
+* `pl` is low 32 bytes of peer 2 enode Id
+* `ph` is hi 32 bytes of peer 2 enode Id
+
+Here's a sample contract that implements that ABI:
+
+```
+pragma solidity ^0.4.11;
+
+contract PeerManager {
+    mapping(bytes32 => bytes32) peers;
+    
+    function PeerManager() {
+        peers[0x11] = 0x12;
+        peers[0x21] = 0x22;
+        peers[0x31] = 0x32;
+        peers[0x41] = 0x42;
+    }
+    
+    function connectionAllowed(bytes32 sl, bytes32 sh, bytes32 pl, bytes32 ph) constant returns (bool res) {
+        if (sl == 0x01 && sh == 0x02) {
+	    return true;
+	}
+	return pl != 0 && ph != 0 && peers[pl] == ph;
+    }
+}
+```
+
+# Transaction type
+Even though all network participants can submit transactions it is still up to the validators to include them. Besides that, it is possible to restrict certain addresses or transaction types on the state transition level. 
+
+By transaction types we mean:
+
+* Contract deployment
+* Contract interaction
+* Simple transfer
+
+The ability of each address to execute any combination of these transaction types can be determined by a contract implementing a special interface.
+
+## How it works
+A smart contract has to be deployed that regulates which participant (address) can perform certain types of transactions. The contract must be deployed on the corresponding chain and its address added to the chain spec file under `"params"/"transactionPermissionContract"`.
+
+The contract must support the following ABI:
+
 ```json
 [
   {
@@ -43,54 +127,38 @@ The contract must support the following ABI:
 ]
 ```
 
-Here's a sample contract that implements that ABI:
+* `sender` is the transaction sender address.
+* `type` is the transaction type bit mask: 
 
-TO-BE-ADDED
-
-# Transaction type
-Even though all network participants can submit transactions it is still up to the validators to include them. Besides that, it is possible to restrict certain addresses or transaction types on the state transition level. 
-
-By transaction types we mean:
-
-* Contract deployment
-* Contract interaction
-* Simple transfer
-
-The ability of each address to execute any combination of these transaction types can be determined by a contract implementing a special interface.
-
-## How it works
-A smart contract has to be deployed that regulates which participant (address) can perform certain types of transactions. The contract must be deployed on the corresponding chain and its address added to the chain spec file under `"TO-BE-ADDED"`.
-
-The contract must support the following ABI:
-
-TO-BE-ADDED
+| Type | Bit |
+|:---:|:---:|
+| Basic transaction | 0x01 |
+| Contract call | 0x02 |
+| Contract creation | 0x04 |
 
 Here's a sample contract that implements that ABI:
 ```solidity
 pragma solidity ^0.4.11;
 
-contract PeerManager {
-    mapping(bytes32 => bytes32) peers;
+contract TestOOG {
+    /// Allowed transaction types mask
+    uint32 constant None = 0;
+    uint32 constant All = 0xffffffff;
+    uint32 constant Basic = 0x01;
+    uint32 constant Call = 0x02;
+    uint32 constant Create = 0x04;
+    uint32 constant Private = 0x08;
     
-    function PeerManager() {
-        peers[0x11] = 0x12;
-        peers[0x21] = 0x22;
-        peers[0x31] = 0x32;
-        peers[0x41] = 0x42;
-    }
-    
-    function connectionAllowed(bytes32 sl, bytes32 sh, bytes32 pl, bytes32 ph) constant returns (bool res) {
-        if (sl == 0x01 && sh == 0x02) {
-	    return true;
-	}
-	return pl != 0 && ph != 0 && peers[pl] == ph;
+    function allowedTxTypes(address sender) public returns (uint32)
+    {
+        if (sender == 0x7e5f4552091a69125d5dfcb7b8c2659029395bdf) return All; // Secret: 0x00..01
+        if (sender == 0x2b5ad5c4795c026514f8317c7a215e218dccd6cf) return Basic | Call; // Secret: 0x00..02
+        if (sender == 0x6813eb9362372eef6200f3b1dbc3f819671cba69) return Basic; // Secret: 0x00..03
+        return None;
     }
 }
 ```
-* `sl` is low 32 bytes of peer 1 enode Id
-* `sh` is hi 32 bytes of peer 1 enode Id
-* `pl` is low 32 bytes of peer 2 enode Id
-* `ph` is hi 32 bytes of peer 2 enode Id
+
 
 # Validator set
 This level of permissions is a rather important one. It determines which parties (Validators) are entitled to create new blocks and thereby build the blockchain. Validators need to collect and validate transactions before sealing them into blocks. Rules according to which they interact can be referred to as a consensus engine. Parity currently supports three different consensus engines:
