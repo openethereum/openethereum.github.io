@@ -1,5 +1,5 @@
-Starting with 1.8.0 Parity supports on-chain transaction permissioning for private chains. A smart contract can be deployed that regulates if two nodes con connect to each other given their enode IDs.
-The contract must be deployed on the chain and it's address added to the chain spec file under `"params"/"transactionPermissionContract"`.
+Starting with 1.8.0 Parity supports on-chain network permissioning for private chains. A smart contract can be deployed that regulates if two nodes con connect to each other given their enode IDs.
+The contract must be deployed on the chain and it's address added to the chain spec file under `"params"/"networkPermissionContract"`.
 
 The contract must support the following ABI
 ```json
