@@ -9,15 +9,12 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 "engine": {
 	"Ethash": {
 		"params": {
-			"gasLimitBoundDivisor": "0x0400",
 			"minimumDifficulty": "0x020000",
 			"difficultyBoundDivisor": "0x0800",
 			"durationLimit": "0x0d",
 			"blockReward": "0x4563918244F40000",
-			"registrar": "0x81a4b044831c4f12ba601adb9274516939e9b8a2",
 			"homesteadTransition": 0,
 			"eip150Transition": 0,
-			"eip155Transition": 10,
 			"eip160Transition": 10,
 			"eip161abcTransition": 10,
 			"eip161dTransition": 10,
@@ -28,7 +25,6 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 ```
 
 The `"params"` object for `"Ethash"` may contain the following keys (YP refers to the Yellow Paper equation numbers):
-- `"gasLimitBoundDivisor"` influences how rapidly is the gas limit allowed to evolve, redefines the value in (YP:45–46), originally 1024 = `0x400`
 - `"minimumDifficulty"` is self-explanatory, redefines the value of `D_0` in the latter two lines of (YP:39)
 - `"difficultyBoundDivisor"` influences how rapidly is the difficulty evolving, redefines the value in (YP:41), originally 2048 = `0x800`
 - `"durationLimit"` is the equilibrium block interval for the pre-Homestead era difficulty evolution, irrelevant for block numbers above `homesteadTransition`, redefines the value in (YP:42), originally 13 = `0xd`
@@ -61,9 +57,6 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 }
 ```
 
-Optional:
-`"registrar"` address of a contract containing [registry](https://github.com/paritytech/contracts/blob/master/Registry.sol), used for UI
-
 # Validator engines
 
 The following `Engine`s achieve consensus by referring to a list of "validators" (referred to as authorities, when they are linked to physical entities). Validator set is a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them.
@@ -88,7 +81,6 @@ Simple and fast consensus algorithm, each validator gets an assigned time slot i
 "engine": {
     "authorityRound": {
         "params": {
-            "gasLimitBoundDivisor": "0x400",
             "stepDuration": "5",
             "validators" : {
                 "list": [
@@ -101,12 +93,10 @@ Simple and fast consensus algorithm, each validator gets an assigned time slot i
 }
 ```
 
-`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine
 `"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, too high leads to slow block issuance
 `"validators"` is the list of addresses of the entities which will be allowed to issue blocks
 Optional:
 `"blockReward"` determines the reward given to issuing authority
-`"registrar"` address of a contract containing [registry](https://github.com/paritytech/contracts/blob/master/Registry.sol), used for UI
 
 ```json
 "seal": {
@@ -129,7 +119,6 @@ This consensus is still experimental, please use Authority Round for more stable
 "engine": {
     "tendermint": {
         "params": {
-            "gasLimitBoundDivisor": "0x400",
             "validators" : {
                 "list": [
                     "0x37f93cfe411fa244b87ff257085ee360fca245e8",
@@ -141,7 +130,6 @@ This consensus is still experimental, please use Authority Round for more stable
 }
 ```
 
-`"gasLimitBoundDivisor"` determines how fast the gas limit should adjust, most of the time `0x400` is fine
 `"validators"` is the list of addresses of the entities which will be allowed to issue blocks
 Optional:
 `"blockReward"` determines the reward given to issuing authority
@@ -149,7 +137,6 @@ Optional:
 `"timeoutPrevote"`
 `"timeoutPrecommit"`
 `"timeoutCommit"`
-`"registrar"` address of a contract containing [registry](https://github.com/paritytech/contracts/blob/master/Registry.sol), used for UI
 
 ```json
 "seal": {
