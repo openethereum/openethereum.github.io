@@ -17,13 +17,9 @@ They get imported automatically. :)
 
 ### Can I import accounts not created with Parity or Geth (e.g., MyEtherWallet)?
 
-_Parity 1.5 and above:_
-
 - Simply use Parity Wallet's "New Account" function on the "Accounts" page.
 
-_Parity 1.4 and below:_
-
-- Simply copy it into your `$HOME/.local/share/io.parity.ethereum/keys` directory. Parity will import all keys found there.
+- Or complicated: copy it into your `$HOME/.local/share/io.parity.ethereum/keys` directory. Parity will import all keys found there.
 
 ### What are the Parity disk space needs?
 
@@ -52,18 +48,9 @@ Yes, see [[Importing a Chain from Geth]].
 
 ### How to delete the blockchain to initiate full re-sync without deleting wallet info?
 
-_For Parity 1.5 and above:_
-
-- Execute `parity db kill`.
+- Stop parity, then execute `parity db kill`.
 - Relevant options are `--chain=*` `--pruning=*` and `--db-path/--base-path`, i.e. to delete `morden` run:
 
 ```bash
 parity db kill --chain=morden
 ```
-
-_For Parity 1.4 and below:_
-
-- Execute `rm -rf ~/.local/share/io.parity.ethereum/906a34e69aec8c0d`
-- This will remove the local chain database.
-
-Always back up your keys (~/.local/share/io.parity.ethereum/keys) before doing anything like that though.
