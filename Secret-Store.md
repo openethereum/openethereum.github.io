@@ -196,3 +196,42 @@ curl http://localhost:8082/shadow/0000000000000000000000000000000000000000000000
 ```
 curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_shadowDecrypt", "params":["0x00dfE63B22312ab4329aD0d28CaD8Af987A01932", "password", "0x843645726384530ffb0c52f175278143b5a93959af7864460f5a4fec9afd1450cfb8aef63dec90657f43f55b13e0a73c7524d4e9a13c051b4e5f1e53f39ecd91","0x07230e34ebfe41337d3ed53b186b3861751f2401ee74b988bba55694e2a6f60c757677e194be2e53c3523cc8548694e636e6acb35c4e8fdc5e29d28679b9b2f3",["0x049ce50bbadb6352574f2c59742f78df83333975cbd5cbb151c6e8628749a33dc1fa93bb6dffae5994e3eb98ae859ed55ee82937538e6adb054d780d1e89ff140f121529eeadb1161562af9d3342db0008919ca280a064305e5a4e518e93279de7a9396fe5136a9658e337e8e276221248c381c5384cd1ad28e5921f46ff058d5fbcf8a388fc881d0dd29421c218d51761"],"0x2ddec1f96229efa2916988d8b2a82a47ef36f71c"], "id": 1}' -H 'content-type: application/json;' http://127.0.0.1:8545/
 ```
+
+
+## Configuration options
+### Configuring list of key servers using KeyServerSet contract
+In the example above we have configured set of key servers using configuration files. This method is simple && works fine until you decide to add/remove KeyServer from the Secret Store. To make this happen, you should first stop all key servers, edit configuration files (manually including/excluding key server(s) from the set) and restart key servers.
+There's another way, which makes this kind if changes easier. You could just deploy [KeyServerSet](https://github.com/paritytech/contracts/blob/master/KeyServerSet.sol) contract and register it under 'secretstore_server_set' name in the registry.
+Upon deployment, you should fill the contract with key servers set addresses using `addKeyServer` method, passing public key of key server and address of key server (in IP:port form).
+Once this is done, you could easily change Secret Store configuration, by calling `addKeyServer` && `removeKeyServer` methods of this contract.
+
+**IMPORTANT**: please notice that keys, generated using scheme t-of-N are only recoverrable when there are at lease t+1 share holders (i.e. key servers). So if you're going to remove key server from the Secret Store, ensure that there are no keys which will became irrrcoverable after this change. Alternatively, you could use 'key servers set change' session, decribed in the next section.
+
+### Key Servers Set change session
+You might (and should) want to ensure that all keys are remaining recoverrable **before** removing key server(s) from secret store. You also might want to add new shares for existing key when new key server(s) is/are getting added to the Secret Store (so instead of having t-of-oldN key sharing scheme, you'll get t-of-newN sharing scheme).
+That's why there's a special 'key servers set change' session, which main duty is to ensure that no secrets are lost when key server is removed from secret store and all new key servers are getting new shares.
+This session can only be started when **all** key servers (including both servers that are being **added** and **removed**) are configured to be the single Secret Store (either via config files, or the contract).
+So steps to run this session are:
+1) given current nodes set OLD_NODES, select NODES_TO_REMOVE (must be in OLD_NODES set) and NODES_TO_ADD (must not be in OLD_NODES)
+2) add NODES_TO_ADD to the Secret Store either by editing configuration files, or by calling `KeyServersSet` contract methods
+3) run `Key Servers Set change` session (see below)
+4) remove NODES_TO_REMOVE from the secret sytore either by editing configuration files, or by calling `KeyServersSet` contract methods
+
+You can start this session manually by issuing HTTP Post request to the {key_server_url}/admin/servers_set_change/{old_signature}/{new_signature} wth {BODY}, where:
+`key_server_url` - is the url of your key server (any)
+`old_signature` - is the signed hash of ordered publics of all key servers, which are currently making this Secret Store (after step 2 - i.e. OLD_NODES + NODES_TO_ADD)
+`new signature` - is the signed hash of ordered publics of all key servers, of 'new' version of Secret Store (after step 4 - i.e. OLD_NODES + NODES_TO_ADD - NODES_TO_REMOVE)
+`BODY` - is the json array of hex-encoded nodes publics of all key servers, of 'new' version of Secret Store (after step 4)
+
+`old_signature` and `new_signature` must be a signatures of Secret Store 'administrator'. It is an entitiy, which can start 'administrative' sessions (sessions which affect the whole Secret Store).
+Its public is provided via `--secretstore-admin-public` command line argument. All key servers must have the samed `admin_public`, or else session won't start.
+
+Example call:
+```
+curl --data-binary '["0xa7cc7a8ef336189c2bfabfeab8eed55598fa2b480adf98eeb66e006f2811319550222122bd37fb25dbc35709ccd5d9793dc829d208b73ffbce893d63a393101b", "0x54319671ca191b9e08e2064d8b9eaa43cb246e698dc7d995d557ebef3428dc69b93ca3caa20c43552414132448425c9333aa33b2231caa082ddcec7e12a56963"]' -v -X POST http://localhost:8084/admin/servers_set_change/17374292b9e1a026e1e87fe37ae4e987156d1979461b6daa8ec804ed667e8d100d8129295172a86db63c12b1aa6bb861e89b3ea4330e4b8ae27e0e1917485c1e01/ff5fbcfa6c05d6a1353023e5ade51c3ab53bead7466c1bacd510ee3ef93814ef2a3340cdd7991bea362aac9f111795a470b70d5f4e9ad9877338089c9aacbdb200
+```
+
+The code for calculating both `old_signature` and `new_signature` is here:
+https://github.com/paritytech/parity/blob/359b4de3ff5407fb0b0694ac810c9a30eedb2c46/secret_store/src/key_server_cluster/jobs/servers_set_change_access_job.rs#L139
+We're currently working on automated start of Key Servers Set change session, when set of key servers is configured using contract.
+If you want to run this session right now, or in case when servers set is configured using configuration files, please compile this code, or file an issue for adding an RPC to Parity.
