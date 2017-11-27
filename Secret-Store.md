@@ -201,30 +201,30 @@ curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_shadowDecrypt", "p
 ## Configuration options
 ### Configuring list of key servers using KeyServerSet contract
 In the example above we have configured set of key servers using configuration files. This method is simple && works fine until you decide to add/remove KeyServer from the Secret Store. To make this happen, you should first stop all key servers, edit configuration files (manually including/excluding key server(s) from the set) and restart key servers.
-There's another way, which makes this kind if changes easier. You could just deploy [KeyServerSet](https://github.com/paritytech/contracts/blob/master/KeyServerSet.sol) contract and register it under 'secretstore_server_set' name in the registry.
+There's another way, which makes this kind of changes easier. You could just deploy [KeyServerSet](https://github.com/paritytech/contracts/blob/master/KeyServerSet.sol) contract and register it under 'secretstore_server_set' name in the registry.
 Upon deployment, you should fill the contract with key servers set addresses using `addKeyServer` method, passing public key of key server and address of key server (in IP:port form).
 Once this is done, you could easily change Secret Store configuration, by calling `addKeyServer` && `removeKeyServer` methods of this contract.
 
-**IMPORTANT**: please notice that keys, generated using scheme t-of-N are only recoverrable when there are at lease t+1 share holders (i.e. key servers). So if you're going to remove key server from the Secret Store, ensure that there are no keys which will became irrrcoverable after this change. Alternatively, you could use 'key servers set change' session, decribed in the next section.
+**IMPORTANT**: please notice that keys, generated using scheme t-of-N are only recoverable when there are at lease t+1 share holders (i.e. key servers). So if you're going to remove key server from the Secret Store, ensure that there are no keys which will became irrecoverable after this change. Alternatively, you could use 'key servers set change' session, described in the next section.
 
 ### Key Servers Set change session
-You might (and should) want to ensure that all keys are remaining recoverrable **before** removing key server(s) from secret store. You also might want to add new shares for existing key when new key server(s) is/are getting added to the Secret Store (so instead of having t-of-oldN key sharing scheme, you'll get t-of-newN sharing scheme).
+You might (and should) want to ensure that all keys are remaining recoverable **before** removing key server(s) from secret store. You also might want to add new shares for existing key when new key server(s) is/are getting added to the Secret Store (so instead of having t-of-oldN key sharing scheme, you'll get t-of-newN sharing scheme).
 That's why there's a special 'key servers set change' session, which main duty is to ensure that no secrets are lost when key server is removed from secret store and all new key servers are getting new shares.
 This session can only be started when **all** key servers (including both servers that are being **added** and **removed**) are configured to be the single Secret Store (either via config files, or the contract).
 So steps to run this session are:
 1) given current nodes set OLD_NODES, select NODES_TO_REMOVE (must be in OLD_NODES set) and NODES_TO_ADD (must not be in OLD_NODES)
 2) add NODES_TO_ADD to the Secret Store either by editing configuration files, or by calling `KeyServersSet` contract methods
 3) run `Key Servers Set change` session (see below)
-4) remove NODES_TO_REMOVE from the secret sytore either by editing configuration files, or by calling `KeyServersSet` contract methods
+4) remove NODES_TO_REMOVE from the Secret Store either by editing configuration files, or by calling `KeyServersSet` contract methods
 
-You can start this session manually by issuing HTTP Post request to the {key_server_url}/admin/servers_set_change/{old_signature}/{new_signature} wth {BODY}, where:
+You can start this session manually by issuing HTTP Post request to the {key_server_url}/admin/servers_set_change/{old_signature}/{new_signature} with {BODY}, where:
 `key_server_url` - is the url of your key server (any)
 `old_signature` - is the signed hash of ordered publics of all key servers, which are currently making this Secret Store (after step 2 - i.e. OLD_NODES + NODES_TO_ADD)
 `new signature` - is the signed hash of ordered publics of all key servers, of 'new' version of Secret Store (after step 4 - i.e. OLD_NODES + NODES_TO_ADD - NODES_TO_REMOVE)
 `BODY` - is the json array of hex-encoded nodes publics of all key servers, of 'new' version of Secret Store (after step 4)
 
-`old_signature` and `new_signature` must be a signatures of Secret Store 'administrator'. It is an entitiy, which can start 'administrative' sessions (sessions which affect the whole Secret Store).
-Its public is provided via `--secretstore-admin-public` command line argument. All key servers must have the samed `admin_public`, or else session won't start.
+`old_signature` and `new_signature` must be a signatures of Secret Store 'administrator'. It is an entity, which can start 'administrative' sessions (sessions which affect the whole Secret Store).
+Its public is provided via `--secretstore-admin-public` command line argument. All key servers must have the same `admin_public`, or else session won't start.
 
 Example call:
 ```
