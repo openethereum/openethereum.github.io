@@ -149,13 +149,13 @@ Some examples of using the script are:
 - A single node instant seal node, accessible via `127.0.0.1:8180`:
 
   ```bash
-  $ ./parity-deploy.sh --name testchain --engine instantseal
+  $ ./parity-deploy.sh --name testchain --config instantseal
   ```
 
-- A three node proof of authority chain with one client accessible via `127.0.0.1:8180`:
+- A three node proof of authority chain (using the Aura consensus algorithm) with one client accessible via `127.0.0.1:8180`:
 
   ```bash
-  $ ./parity-deploy.sh --name testchain --engine authorityround --nodes 3
+  $ ./parity-deploy.sh --name testchain --config aura --nodes 3
   ```
 
 ##### Launching Parity
