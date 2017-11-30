@@ -33,7 +33,7 @@ Subscription type-specific parameters. It must be left empty for
 
 ```js
 params: [
-  "newHeads",
+  "logs",
   {
     "fromBlock": "latest",
     "toBlock": "latest"
