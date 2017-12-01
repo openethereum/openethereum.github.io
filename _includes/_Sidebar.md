@@ -1,25 +1,25 @@
-# [Parity](README)
-- [[Setup]]
-- [[Getting Synced]]
-- [[Basic Usage]]
-- [[FAQ]]
+## [Parity](README)
+- [Setup](Setup)
+- [Getting Synced](Getting-Synced)
+- [Basic Usage](Basic Usage)
+- [FAQ](FAQ)
 
-## Using Parity
-- [[Parity Wallet]]
+### Using Parity
+- [Parity Wallet](Parity-Wallet)
   - [Back-up & Restore](Backing-up-&-Restoring)
   - [Wallets & Vaults](Accounts%2C-Wallets%2C-Vaults)
-  - [[Ledger Nano S]]
-- [[Configuring Parity]]
+  - [Ledger Nano S](Ledger-Nano-S)
+- [Configuring Parity](Configuring-Parity)
   - [Available Chains](Chain-specification)
   - [For Mining](Mining)
-  - [[Wallet Remote Access]]
+  - [Wallet Remote Access](Wallet-Remote-Access)
   - [Network Config](Network-Configuration)
-  - [[Docker]]
-- [[Public Node]]
-  - [[Wallet.Parity.Io]]
-- [[Community Guides]]
+  - [Docker](Docker)
+- [Public Node](Public-Node)
+  - [Wallet.Parity.Io](Wallet.Parity.Io)
+- [Community Guides](Community-Guides)
 
-## Developing
+### Developing
 - [Writing DApps](Development-Overview)
   - [oo7 Examples](oo7-Parity-Examples)
   - [oo7-parity.js Reference](oo7-Parity-Reference)
@@ -29,10 +29,10 @@
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-github-hint)
 - [ERC20 Tokens](Tokens)
-  - [[Token Deployment]]
-  - [[Token Registry]]
-- [[Badge Registry]]
-- [[Smart Contracts]]
+  - [Token Deployment](Token-Deployment)
+  - [Token Registry](Token-Registry)
+- [Badge Registry](Badge-Registry)
+- [Smart Contracts](Smart-Contracts)
 - [Dapp Tutorial](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-1)
   - [2: oo7 Bonds](Tutorial-Part-2)
@@ -58,36 +58,36 @@
   - [trace](JSONRPC-trace-module)
   - [shh](JSONRPC-shh-Module)
 
-## Parity Chains
+### Parity Chains
 - [Chain Specification](Chain-specification)
-  - [[Pluggable Consensus]]
-    - [[Aura]]
-  - [[Validator Set]]
-    - [[Validator contracts]]
-- [[Permissioning]]
-- [[Proof of Work Chains]]
-- [[Proof of Authority Chains]]
+  - [Pluggable Consensus](Pluggable-Consensus)
+    - [Aura](Aura)
+  - [Validator Set](Validator-Set)
+    - [Validator contracts](Validator-ontracts)
+- [Permissioning](Permissioning)
+- [Proof of Work Chains](Proof-of-Work-Chains)
+- [Proof of Authority Chains](Proof-of-Authority-Chains)
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
 - [Private Dev Chain](Private-development-chain)
 
-## Technologies
+### Technologies
 - [Automatic Updating](Automatic-Updating)
 - [Ethereum-IPFS API](IPFS)
-- [[Light Client]]
+- [Light Client](Light Client)
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
 - [Polkadot](Polkadot)
-- [[Secret Store]]
-- [[Warp Sync]]
+- [Secret Store](Secret Store)
+- [Warp Sync](Warp Sync)
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
 - [WebAssembly (WASM)](WebAssembly-(WASM))
-- [[Whisper]]
+- [Whisper](Whisper)
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
 
-## Hacking on Parity
-- [[Coding Guide]]
+### Hacking on Parity
+- [Coding Guide](Coding-Guide)
 - [Labeling](Labelling)
 - [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <sup>[+]</sup>
 - [Gitter](https://gitter.im/ethcore/parity) <sup>[+]</sup>
