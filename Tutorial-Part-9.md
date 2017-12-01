@@ -242,20 +242,24 @@ import {Api} from '@parity/parity.js';
 
 After the button in the `render` function, we will add the following:
 
+{% raw %}
 ```js
 <span style={{margin: '2em'}}>OR</span>
 <InputBond bond={this.addr} validator={v => v.startsWith('0x') && v.length == 42 && bonds.code(v).map(_ => parity.api.util.sha3(_) == CounterCodeHash) ? v : null}/>
 ```
+{% endraw %}
 
 The first line just splits the button from the text input. The second is our input for counter contract addresses. The `TextBond` we have seen before in the very first tutorial about `Bond`s. We have introduced a custom `validator` prop here, which first makes sure the string form `TextBond` is well-formed and then checks to make sure that the hash of the code at that address is what we would expect from a `Counter` contract. Only then is it valid and does it get set to `this.addr`.
 
 The only thing that is left is to ensure the address of a deployed contract is visible so it can be communicated. Right at the end of the `Counter` render's outer `div`, you can insert this final element:
 
+{% raw %}
 ```js
 <div style={{fontSize: 'small'}}>
 	Using contract at {this.props.contract.address}.
 </div>
 ```
+{% endraw %}
 
 You can now reload and set your current Counter contract's address like here:
 

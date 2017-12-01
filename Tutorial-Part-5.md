@@ -186,6 +186,7 @@ The same module also provides a button component which merges all of this togeth
 
 Next, remove everything below the `InputBond` until the final `</div>` and replace it with:
 
+{% raw %}
 ```jsx
 <TransactButton
 	content={this.name.map(n => `Give ${n} 100 Finney`)}
@@ -196,6 +197,7 @@ Next, remove everything below the `InputBond` until the final `</div>` and repla
 	}}
 />
 ```
+{% endraw %}
 
 Finally, don't forget to import the component:
 

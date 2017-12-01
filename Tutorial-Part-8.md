@@ -82,6 +82,7 @@ super(['votes', 'enabled', 'already']);
 
 So now we know that `this.state.already` will contain an array of addresses. The final thing to do is to transform this into an array of properly styled `AccountIcon`s. To do this, we simply `.map` the value:
 
+{% raw %}
 ```js
 {this.state.already.map(a => (<AccountIcon
 	style={{width: '1.2em', verticalAlign: 'bottom', marginLeft: '1ex'}}
@@ -89,6 +90,7 @@ So now we know that `this.state.already` will contain an array of addresses. The
 	address={a}
 />))}
 ```
+{% endraw %}
 
 This goes before the final closing `span` tag.
 

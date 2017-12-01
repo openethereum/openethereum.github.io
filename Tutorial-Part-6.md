@@ -80,6 +80,7 @@ this.counter = bonds.makeContract('0x7aC77Cb854E064f22E747F40b90FE6D6Bc1e3197', 
 
 Our render function will just use three `<div>`s of different width to display the number of votes:
 
+{% raw %}
 ```
 render () {
 	return (<div>
@@ -97,6 +98,7 @@ render () {
 	</div>);
 }
 ```
+{% endraw %}
 
 The only interesting code there is `this.counter.votes(i)`, which we map into a style string allowing us to generate a black bar of the according length.
 

@@ -106,6 +106,7 @@ The 4th and last library is [parity-reactive-ui](https://github.com/paritytech/p
 It includes currently components to display `Account` , `Transaction` and `Block` details and components to manage `Input`.
 
 Displaying Account information.
+{% raw %}
 ```
 this.addressBond = new Bond();
 this.balance = new Bond();
@@ -122,6 +123,7 @@ render () {
   );
 }
 ```
+{% endraw %}
 
 And with some simple lines you got a transaction interace.
 

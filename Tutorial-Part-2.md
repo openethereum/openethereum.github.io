@@ -167,11 +167,12 @@ Finally, let's use it in our `<Rspan>`. There are several ways of combining the 
 
 Try it. Replace the `<Rspan>` with this new one:
 
-```jsx
+{% raw %}
 <Rspan style={{ color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black') }}>
 	{Bond.all([this.bond, this.time])}
 </Rspan>
 ```
+{% endraw %}
 
 Type an appropriate message and you'll end up with:
 
@@ -181,11 +182,13 @@ It will automatically update as the time changes. Since time changes infinitely 
 
 We can make it slightly nicer by first formatting the time:
 
+{% raw %}
 ```jsx
 <Rspan style={{ color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black') }}>
 	{Bond.all([this.bond, this.time]).map(([msg, t]) => `${new Date(t)}: ${msg}`)}
 </Rspan>
 ```
+{% endraw %}
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22697729/62243e2c-ed20-11e6-931a-1693dd865837.png)
 

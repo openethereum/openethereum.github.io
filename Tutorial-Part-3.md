@@ -36,6 +36,7 @@ You should already be familiar with the basic structure. If you try this, you'll
 
 It's not especially pretty, but you get the idea. We can bling it up easily enough by changing our rendering expression to:
 
+{% raw %}
 ```jsx
 <div>
 	Current block is:
@@ -45,6 +46,7 @@ It's not especially pretty, but you get the idea. We can bling it up easily enou
 	</Rspan>
 </div>
 ```
+{% endraw %}
 
 We'll also need to provide the `formatBlockNumber` function:
 
@@ -78,6 +80,7 @@ Notice that since it's all asynchronous, we must use the `.log()` trick to feed 
 
 Naturally, `bonds.blocks` is able to accept any number, even a bond, as its subscript. Let's make our dapp always give us the timestamp of the latest block.
 
+{% raw %}
 ```jsx
 <div>
 	Latest block's timestamp is:&nbsp;
@@ -86,6 +89,7 @@ Naturally, `bonds.blocks` is able to accept any number, even a bond, as its subs
 	</Rspan>
 </div>
 ```
+{% endraw %}
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22701622/26a80d68-ed2c-11e6-8720-946e311a9b34.png)
 
@@ -110,6 +114,7 @@ Parity puts various means at your disposal to help you here:
 
 We'll use the first in our dapp to display the account balance of the most recent block author ("miner") - the expression we'll need is `bonds.balance(bonds.head.author)`. Left alone it's a bit ugly, so we'll prettify it a bit with the function `formatBalance` which is exposed by `oo7-parity`:
 
+{% raw %}
 ```jsx
 <div>
 	Current block author's balance is:&nbsp;
@@ -118,6 +123,7 @@ We'll use the first in our dapp to display the account balance of the most recen
 	</Rspan>
 </div>
 ```
+{% endraw %}
 
 Ensure you have `formatBalance` available by replacing the line `import {formatBlockNumber} from 'oo7-parity';` with:
 

@@ -12,6 +12,7 @@ Previously, we created and deployed a contract for voting and made our Dapp use 
 
 To do this, we'll turn the colour labels into `<a>` tags which when clicked result in a voting transaction being sent.
 
+{% raw %}
 ```js
 <a
 	style={{float: 'left', minWidth: '3em'}}
@@ -21,6 +22,7 @@ To do this, we'll turn the colour labels into `<a>` tags which when clicked resu
 	{n}
 </a>
 ```
+{% endraw %}
 
 So, our `<span>` element changes to an `<a>` tag with the `onClick` property calling this object's function to cast a vote along with the index of the option to vote for. Click one of the three options link and you'll see the Parity Signer asking you whether you really want to sign the transaction.
 
@@ -44,11 +46,13 @@ onClick={() => this.setState({tx: this.counter.vote(i)})}
 
 Finally, we'll display the state of the current transaction at the bottom of the page, so we'll need to add this directly before the final `</div>`:
 
+{% raw %}
 ```js
 <div style={{marginTop: '1em'}}>
 	<TransactionProgressLabel value={this.state.tx}/>
 </div>
 ```
+{% endraw %}
 
 You can now try voting and you'll get a small badge explaining the progress of the action:
 
@@ -64,6 +68,7 @@ Let's create our first `ReactiveComponent`, which will be a voting option, rough
 
 For rendering, rather than using the standard React `render`, we'll instead use the `ReactiveComponent`'s `readyRender`. This ensures that it will not be called until all `Bond` values are well-defined. Inside it, we'll return something similar to the original `Rspan`, however, since we now have the plain values we can instead use a basic `span` tag. The `borderLeft` value is no longer the mapped expression, but rather the direct version of it, using our object's state which has been populated by `ReactiveComponent` for us. We pass in the `vote` and `label` props from the parent context. This leaves us with:
 
+{% raw %}
 ```js
 class VoteOption extends ReactiveComponent {
 	constructor () {
@@ -82,6 +87,7 @@ class VoteOption extends ReactiveComponent {
 	}
 }
 ```
+{% endraw %}
 
 The task of the parent context is to provide those three props: `label`, `vote` and `votes` (with the last able to be a `Bond` value). All three are trivially copied from the existing code, so our `Options.map` structure now becomes:
 
@@ -105,6 +111,7 @@ It's not always a valid action to vote. When we have already voted with the curr
 
 Happily, having split out our voting into a separate, reactive component, this task is fairly easy. We will introduce a new reactive `enabled` prop into `VoteOption` (so we get `super(['votes', 'enabled']);` in our constructor). When this is `false` it will prevent the link from calling `vote` and will display a `not-allowed` mouse cursor; the `readyRender` function now becomes:
 
+{% raw %}
 ```js
 var s = {float: 'left', minWidth: '3em'};
 if (!this.state.enabled)
@@ -119,6 +126,7 @@ return (<span style={{ borderLeft:
 	</a>
 </span>);
 ```
+{% endraw %}
 
 Now we have to craft a `Bond` which evaluates to whether a vote is allowed to be cast. To prepare for this, we'll create a new field in the object `voted`, which is just the bond expressing whether the current user has voted or not. The following line goes at the bottom of the constructor:
 
