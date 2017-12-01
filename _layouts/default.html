@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% seo %}
+
+    <link href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}public/css/hyde.css">
+  </head>
+  <body>
+    <div class="sidebar" style="overflow-x: hidden">
+      <div class="container">
+        {% capture sidebar %}{% include _Sidebar.md %}{% endcapture %}
+        {{ sidebar | markdownify }}
+      </div>
+    </div>
+
+    <div class="content container">
+      {{ content }}
+
+        {% capture footer %}{% include _Footer.md %}{% endcapture %}
+        {{ footer | markdownify }}
+    </div>
+
+  </body>
+</html>
