@@ -44,7 +44,7 @@ parity import $HOME/ethereum-chain-backup.rlp
 
 ### Can I import the chain from Geth?
 
-Yes, see [[Importing a Chain from Geth]].
+Yes, see [Importing a Chain from Geth](Importing a Chain from Geth).
 
 ### How to delete the blockchain to initiate full re-sync without deleting wallet info?
 

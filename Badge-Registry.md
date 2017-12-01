@@ -1,10 +1,10 @@
-Similar to the [[Token Registry]], the Parity Ethereum wallet allows certifying badges to [Accounts and Wallets](Accounts%2C-Wallets%2C-Vaults). Prominent examples of badges used by Parity are the SMS- and Email-verification badges on Kovan testnet enabling users with certified accounts to use the built-in faucet.
+Similar to the [Token Registry](Token-Registry), the Parity Ethereum wallet allows certifying badges to [Accounts and Wallets](Accounts%2C-Wallets%2C-Vaults). Prominent examples of badges used by Parity are the SMS- and Email-verification badges on Kovan testnet enabling users with certified accounts to use the built-in faucet.
 
 This article covers creating a new certifier, registering a new badge with the badge registry and setting meta-data like title and icon.
 
 ### Certifier Contract
 
-The Certifier contract interface for badges is comparable to the ERC-20 interface for [[tokens]]. Basically any contract implementing or inheriting from [`Certifier.sol`](https://github.com/paritytech/contracts/blob/master/Certifier.sol) can be used to create new badges. 
+The Certifier contract interface for badges is comparable to the ERC-20 interface for [tokens](tokens). Basically any contract implementing or inheriting from [`Certifier.sol`](https://github.com/paritytech/contracts/blob/master/Certifier.sol) can be used to create new badges. 
 
 To get started quickly, it's worth to have a look at the OPRAH badge contract [`OprahBadge.sol`](https://github.com/paritytech/contracts/blob/master/OprahBadge.sol) which implements the Certifier. You can deploy your certifier to the network and start to `certify()` accounts.
 
@@ -26,6 +26,6 @@ To get the badge properly displayed in the Parity Wallet, it's handy to register
 
 To set a title, execute the Badge Registry Contract method `setMeta`, and put in the id of your badge entry in the registry, the TITLE key `0x5449544c45` and the actual title value.
 
-To set an icon, register the URL of the icon first with the [[Parity Github Hint]] DApp, and register the returning hash as value for the IMG key `0x494d47`.
+To set an icon, register the URL of the icon first with the [Parity Github Hint](Parity Github Hint) DApp, and register the returning hash as value for the IMG key `0x494d47`.
 
 Your Icon and Title should be visible on all certified accounts now.

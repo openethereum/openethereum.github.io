@@ -6,7 +6,7 @@ You can change the port with the `--ui-port` flag. To disable the UI, use `--no-
 
 ### Can I use Mist with Parity?
 
-Yes, run `parity --geth` in Geth-compatibility mode. This sets the IPC path to be the same as Geth's and allows Mist to connect to Parity. See also [[Using Parity with Mist]].
+Yes, run `parity --geth` in Geth-compatibility mode. This sets the IPC path to be the same as Geth's and allows Mist to connect to Parity. See also [Using Parity with Mist](Using Parity with Mist).
 
 ### Can I send Bitcoin to my Parity wallet?
 
@@ -36,7 +36,7 @@ Parity comes with a couple of builtin DApps:
 - **Token Registry**: A registry of transactable tokens on the network.
 - **TX-Queue Viewer**: Have a peak on internals of transaction queue of your node.
 
-Additional DApps can be added, see [[Writing Dapps for Parity]].
+Additional DApps can be added, see [Writing Dapps for Parity](Writing Dapps for Parity).
 
 ### How can I write a DApp for Parity?
 

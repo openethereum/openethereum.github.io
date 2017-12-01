@@ -12,6 +12,6 @@ The Secure Transaction Signer is a core piece of technology which ensures that n
 When a transaction request is made, you'll have to use the Signer UI to authenticate the request before the transaction can be signed relayed to the network. This is made to be as seamless as possible, and you can rest easy knowing your Ether is protected.
 
 Here's a picture of it in action:
-[[images/sending_signing.png]]
+![Parity Wallet](images/sending_signing.png)
 
 One more thing: see the purple-ish background? Every person's UI has its own unique, procedurally-generated background. This means that it's impossible for another site to pretend to be your signer. You get to choose your background from a selection of unique candidates whenever you'd like, so you can always find one you enjoy.

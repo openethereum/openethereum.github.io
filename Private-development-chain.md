@@ -1,4 +1,4 @@
-Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [[Parity Wallet]] or signed) and all blocks will be accepted. It can be simply activated by running:
+Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Parity Wallet](Parity-Wallet) or signed) and all blocks will be accepted. It can be simply activated by running:
 ```
 parity --config dev
 ```

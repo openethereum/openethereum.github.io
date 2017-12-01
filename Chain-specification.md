@@ -9,12 +9,12 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 - [`classic`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
 - [`classic-testnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
 - [`expanse`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/paritytech/parity/blob/master/ethcore/res/instant_seal.json) a [[Private development chain]] to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`dev`](https://github.com/paritytech/parity/blob/master/ethcore/res/instant_seal.json) a [Private development chain](Private development chain) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
 
 ## Private chains
 
-Parity supports private chain and private network configuration via [[Chain specification]] files provided with `--chain`. In addition to the usual [[Proof of Work Chains]], Parity also includes [[Proof of Authority Chains]] which do not require mining.
-More details on the available options can be found on the [[Pluggable Consensus]] page.
+Parity supports private chain and private network configuration via [Chain specification](Chain-specification) files provided with `--chain`. In addition to the usual [Proof of Work Chains](Proof of Work Chains), Parity also includes [Proof of Authority Chains](Proof of Authority Chains) which do not require mining.
+More details on the available options can be found on the [Pluggable Consensus](Pluggable-Consensus) page.
 
 ## JSON chain spec format
 A JSON file which specifies rules of a blockchain, some fields are optional which are described following the minimal example, these default to 0.

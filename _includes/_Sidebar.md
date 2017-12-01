@@ -1,7 +1,7 @@
 ## [Parity](README)
 - [Setup](Setup)
 - [Getting Synced](Getting-Synced)
-- [Basic Usage](Basic Usage)
+- [Basic Usage](Basic-Usage)
 - [FAQ](FAQ)
 
 ### Using Parity
@@ -73,12 +73,12 @@
 ### Technologies
 - [Automatic Updating](Automatic-Updating)
 - [Ethereum-IPFS API](IPFS)
-- [Light Client](Light Client)
+- [Light Client](Light-Client)
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
 - [Polkadot](Polkadot)
-- [Secret Store](Secret Store)
-- [Warp Sync](Warp Sync)
+- [Secret Store](Secret-Store)
+- [Warp Sync](Warp-Sync)
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
 - [WebAssembly (WASM)](WebAssembly-(WASM))
 - [Whisper](Whisper)

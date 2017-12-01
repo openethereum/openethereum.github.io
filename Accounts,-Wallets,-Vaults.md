@@ -6,7 +6,7 @@ Accounts are the most **basic way to store assets**. They consist of simple publ
 
 ![accounts-0](images/accounts-0.png)
 
-To create an account with the [[Parity Wallet]], open the _Accounts_ tab, click the `+ACCOUNT` button, and follow the instructions. Make sure to write down your recovery phrase in a secure location and to create [backups](Backing-up-&-Restoring) of your private key after account creation.
+To create an account with the [Parity Wallet](Parity-Wallet), open the _Accounts_ tab, click the `+ACCOUNT` button, and follow the instructions. Make sure to write down your recovery phrase in a secure location and to create [backups](Backing-up-&-Restoring) of your private key after account creation.
 
 ### Wallets
 
@@ -42,7 +42,7 @@ Vaults are an additional privacy feature to lock away your accounts behind a sec
 
 ![accounts-vault-0](images/accounts-vault-0.png)
 
-To create a new vault with the [[Parity Wallet]], open the _Accounts_ tab, click the `VAULT` button, click `+CREATE VAULT`, and follow the instructions.
+To create a new vault with the [Parity Wallet](Parity-Wallet), open the _Accounts_ tab, click the `VAULT` button, click `+CREATE VAULT`, and follow the instructions.
 
 ![accounts-vault-1](images/accounts-vault-1.png)
 

@@ -2,7 +2,7 @@
 
 Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getwork), [eth_submitWork](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
 
-First get a Parity node up and running (either build yourself or install one of the packages; the [[Setup]] guide can help you). Next, you'll need to install your preferred miner. Read more on [[Mining]].
+First get a Parity node up and running (either build yourself or install one of the packages; the [Setup](Setup) guide can help you). Next, you'll need to install your preferred miner. Read more on [Mining](Mining).
 
 ### Which chains are supported by Parity?
 
@@ -24,15 +24,15 @@ Parity supports multiple public chain configurations:
 - `--chain expanse` Runs the Expanse public network with ID `1`.
 - `--chain kovan` Runs the Proof-of-Authority public testnet with ID `42`.
 - `--chain testnet` Same as `kovan`.
-- `--chain dev` Runs a private testnet configuration, see [[Private development chain]].
+- `--chain dev` Runs a private testnet configuration, see [Private development chain](Private development chain).
 
-See also [[Chain specification]].
+See also [Chain specification](Chain-specification).
 
 ### What are the different consensus engines available for Parity?
 
 - Ethash (Ethereum Proof-of-Work Engine), see [Ethash](https://github.com/ethereum/wiki/wiki/Ethash).
-- Instant Seal (Development Engine), see [[Private development chain]].
-- Aura (Proof-of-Authority Validator Engine), see [[Aura]].
+- Instant Seal (Development Engine), see [Private development chain](Private development chain).
+- Aura (Proof-of-Authority Validator Engine), see [Aura](Aura).
 - Tendermint (Experimental Validator Engine), see [Validator Engines](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines)
 
 ### How do I get Ether for the Morden, Ropsten, or Kovan testnets?

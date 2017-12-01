@@ -70,7 +70,7 @@ Request::HeaderProof {
     Inputs:
         Loose(U) // block number
     Outputs:
-        [[U8]] // merkle inclusion proof from CHT 
+        [U8](U8) // merkle inclusion proof from CHT 
         H256 reusable_as(0) // hash 
         U // td
 }
@@ -112,7 +112,7 @@ Request::Account {
         Loose(H256) // block hash
         Loose(H256) // address hash
     Outputs:
-        [[U8]] // merkle inclusion proof from state trie
+        [U8](U8) // merkle inclusion proof from state trie
         U // nonce
         U // balance
         H256 reusable_as(0) // storage root
@@ -127,7 +127,7 @@ Request::Storage {
         Loose(H256) // address hash
         Loose(H256) // storage key hash
     Outputs:
-        [[U8]] // merkle inclusion proof from storage trie
+        [U8](U8) // merkle inclusion proof from storage trie
         H256 reusable_as(0) // storage value
 }
 
@@ -153,7 +153,7 @@ Request::Execution {
         U256 // value to transfer
         [U8] // call data
     Outputs:
-        [[U8]] // state items necessary to prove execution
+        [U8](U8) // state items necessary to prove execution
 }
 ```
 
