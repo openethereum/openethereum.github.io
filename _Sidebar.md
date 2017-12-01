@@ -1,4 +1,4 @@
-# [Parity](Home)
+# [Parity](README)
 - [[Setup]]
 - [[Getting Synced]]
 - [[Basic Usage]]
