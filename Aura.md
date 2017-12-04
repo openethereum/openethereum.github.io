@@ -23,4 +23,6 @@ Header includes the step and the primary signature of the block hash (not includ
 Verification checks if the signature belongs to the correct primary for the given step. Blocks from more than 1 step into the future are rejected.
 
 ## Finality
-If more than 50% of the nodes signed on a chain and then they signed again on those signatures, the chain is final. This means finality can be achieved within `2 * step_duration * n_v`. A lower bound might exist.
+
+(Under the assumption of a synchronous network which propagates messages within `step_duration`)
+If there is a chain C with length L ending with K blocks signed by N / 2 unique authorities, then the first L - K blocks of C are finalized.
