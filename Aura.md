@@ -1,28 +1,35 @@
-Aura is one of the Blockchain consensus algorithms available in Parity. It is capable of tolerating up to 50% of malicious nodes with chain reorganizations possible up to a limited depth dependent on the number of validators, after which finality is guaranteed.
+Aura is one of the Blockchain consensus algorithms available in Parity. 
 
-The consensus can be ran with `--force-sealing` which ensures that blocks are produced even if there are no transactions. This is necessary for fault tolerance described.
+Parameters:
+  - _n_, the number of nodes
+  - _f_, the number of faulty nodes
+  - _t_, the step duration in seconds
+
+**Description**:
+
+Time is divided into discrete steps of duration t, determined by on `UNIX time % t`. At each step s, a _primary_ will be assigned. Only the primary at a step may issue a block. It is misbehavior to produce more than one block per step or to produce a block out of turn.
+
+The primary for a step `s` is the node with index `n % s`.
+
+The protocol contains a chain scoring rule `SCORE(C)`
+
+On each step, each honest node will propagate the chain with the highest score it knows about to all other nodes. Honest primaries will only issue blocks on top of the best chain they are aware of during their turn.
+
+**Finality**
+
+Under the assumption of a synchronous network which propagates messages within the step duration `t`,
+
+`Let SIG_SET(Blocks) be the set of all authors of the blocks in Blocks`
+
+If there is a valid chain C with length L ending with K blocks, where `|SIG_SET(C[K..])| >= n/2`, 
+then the first L - K blocks of C are finalized.
+
+This definition of finality stems from a simple majority vote. In this setting, `2f + 1 <= n`, so the faulty nodes cannot finalize a block all on their own. 
+
+**Node Configuration:**
 
 This consensus requires a [`validators`](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines) to be specified, which determines the list of `n_v` blockchain addresses at each height `h` which participate in the consensus.
 
 A node can represent a validator when it is ran with `--engine-signer VALIDATOR-ADDRESS`.
 
-Sealing is the act of collecting transactions and attaching a header to produce a block.
-
-## Primary
-Primary is a node representing a validator which is entitled to seal and broadcast a block at a given time. Block should be always sealed on top of the latest known block in the canonical chain (based on chain scoring defined later).
-
-Each node in Aura keeps track of a step `s` which is based on the UNIX time `t`. The current step is equal to `t / step_duration`. At each step the primary is chosen to be the `s % n_v`th validator.
-
-## Chain scoring
-The chain score is calculated using the height and step of the highest block: `U128_max * h - s`. Block with the highest chain score is the canonical one.
-
-## Header
-Header includes the step and the primary signature of the block hash (not including the step) in the header seal field. For light client support an additional field with validator list hash may be added.
-
-## Verification
-Verification checks if the signature belongs to the correct primary for the given step. Blocks from more than 1 step into the future are rejected.
-
-## Finality
-
-(Under the assumption of a synchronous network which propagates messages within `step_duration`)
-If there is a chain C with length L ending with K blocks signed by N / 2 unique authorities, then the first L - K blocks of C are finalized.
+The consensus can be ran with `--force-sealing` which ensures that blocks are produced even if there are no transactions. This is necessary for blocks to reach finality in a timely fashion.
