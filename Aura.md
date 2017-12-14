@@ -21,15 +21,15 @@ Under the assumption of a synchronous network which propagates messages within t
 
 `Let SIG_SET(Blocks) be the set of all authors of the blocks in Blocks`
 
-If there is a valid chain C with length L ending with K blocks, where `|SIG_SET(C[K..])| >= n/2`, 
-then the first L - K blocks of C are finalized.
+If there is a valid chain C ending with `C[K..]`, where `|SIG_SET(C[K..])| > n/2`, 
+then `C[K]` and all of its ancestors are finalized.
 
 This definition of finality stems from a simple majority vote. In this setting, `2f + 1 <= n`, so the faulty nodes cannot finalize a block all on their own. 
 
 **Node Configuration:**
 
-This consensus requires a [`validators`](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines) to be specified, which determines the list of `n_v` blockchain addresses at each height `h` which participate in the consensus.
+This consensus requires a [`ValidatorSet`](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines) to be specified, which determines the list of `n_v` blockchain addresses at each height `h` which participate in the consensus.
 
 A node can represent a validator when it is ran with `--engine-signer VALIDATOR-ADDRESS`.
 
-The consensus can be ran with `--force-sealing` which ensures that blocks are produced even if there are no transactions. This is necessary for blocks to reach finality in a timely fashion.
+The consensus can be run with `--force-sealing` which ensures that blocks are produced even if there are no transactions. This is necessary for blocks to reach finality in a timely fashion.
