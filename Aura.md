@@ -1,4 +1,4 @@
-Aura (_Authority Round)_ is one of the Blockchain consensus algorithms available in Parity. 
+Aura _(Authority Round)_ is one of the Blockchain consensus algorithms available in Parity. 
 
 Parameters:
   - _n_, the number of nodes
