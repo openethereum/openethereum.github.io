@@ -94,4 +94,4 @@ An example template that can be used for the consensus algorithms:
 }
 ```
 
-The two available algorithms are the [Aura](https://github.com/paritytech/parity/wiki/Consensus-Engines#aura) and [Tendermint](https://github.com/paritytech/parity/wiki/Consensus-Engines#tendermint). More details on other chain parameters are available on the [[Chain specification]] page.
+The two available algorithms are the [Aura](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#aura) and [Tendermint](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#tendermint). More details on other chain parameters are available on the [[Chain specification]] page.
