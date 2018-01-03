@@ -115,8 +115,8 @@ Request::Account {
         [[U8]] // merkle inclusion proof from state trie
         U // nonce
         U // balance
-        H256 reusable_as(0) // storage root
-        H256 reusable_as(1) // code hash
+        H256 reusable_as(0) // code hash
+        H256 reusable_as(1) // storage root
 }
 
 // Request for a proof of contract storage.
