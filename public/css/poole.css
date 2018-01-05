@@ -119,6 +119,10 @@ ul, ol, dl {
   margin-bottom: 1rem;
 }
 
+ul ul, ol ul, ol ol, ul ol {
+  padding-left: 10px;
+}
+
 dt {
   font-weight: bold;
 }
