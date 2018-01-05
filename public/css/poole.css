@@ -119,6 +119,10 @@ ul, ol, dl {
   margin-bottom: 1rem;
 }
 
+ul, ol {
+  padding-left: 20px;
+}
+
 ul ul, ol ul, ol ol, ul ol {
   padding-left: 10px;
 }
