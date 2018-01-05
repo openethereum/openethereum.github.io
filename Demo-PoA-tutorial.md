@@ -12,7 +12,6 @@ We will run a chain with Authority Round consensus engine. First we need to crea
     "engine": {
         "authorityRound": {
             "params": {
-                "gasLimitBoundDivisor": "0x400",
                 "stepDuration": "5",
                 "validators" : {
                     "list": []
@@ -21,6 +20,7 @@ We will run a chain with Authority Round consensus engine. First we need to crea
         }
     },
     "params": {
+        "gasLimitBoundDivisor": "0x400",
         "maximumExtraDataSize": "0x20",
         "minGasLimit": "0x1388",
         "networkID" : "0x2323"

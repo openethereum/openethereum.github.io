@@ -88,6 +88,7 @@
 
 ### Hacking on Parity
 - [Coding Guide](Coding-Guide)
+- [Fuzz Testing](Fuzz-Testing)
 - [Labeling](Labelling)
 - [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <sup>[+]</sup>
 - [Gitter](https://gitter.im/ethcore/parity) <sup>[+]</sup>
