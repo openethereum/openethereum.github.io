@@ -9,6 +9,17 @@
     <link href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ site.baseurl }}/public/css/poole.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/public/css/hyde.css">
+
+
+    {% if page.tipue_search_active or layout.tipue_search_active %}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+      <link rel="stylesheet" href="{{ "/assets/tipuesearch/css/normalize.css" | relative_url }}">
+      <script async src="{{ "/assets/tipuesearch/tipuesearch_content.js" | relative_url }}"></script>
+      <link rel="stylesheet" href="{{ "/assets/tipuesearch/css/tipuesearch.css" | relative_url }}">
+      <script async src="{{ "/assets/tipuesearch/tipuesearch_set.js" | relative_url }}"></script>
+      <script async src="{{ "/assets/tipuesearch/tipuesearch.min.js" | relative_url }}"></script>
+    {% endif %}
   </head>
   <body>
     <div class="sidebar" style="overflow-x: hidden">
@@ -21,8 +32,11 @@
     <div class="content container">
       {{ content }}
 
+      {% if page.hide_footer %}
+      {% else %}
         {% capture footer %}{% include _Footer.md %}{% endcapture %}
         {{ footer | markdownify }}
+      {% endif %}
     </div>
 
   </body>

@@ -6,3 +6,8 @@ defaults:
     values:
       layout: "default"
 markdown: kramdown
+tipue_search:
+  include:
+    pages: true
+  exclude:
+    files: [search.html]
