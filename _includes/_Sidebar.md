@@ -1,4 +1,4 @@
-## [Parity](README)
+## [Parity](/)
 - [Setup](Setup)
 - [Getting Synced](Getting-Synced)
 - [Basic Usage](Basic-Usage)
