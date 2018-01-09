@@ -75,10 +75,16 @@ After this point, you'll be able to use the Web3 API from with this environment,
 
 ##### Legacy Geth Console
 
-As of this writing, Parity's IPC socket can be readily attached to by Geth. To do this, run Parity with IPC enabled. You can then run Geth with the attach option, just like so:
+As of this writing, Parity's IPC socket can be readily attached to by Geth. To do this, run Parity with IPC enabled (IPC is by default on, unless the `--no-ipc` option is passed). You can then run Geth with the attach command and pass the IPC file, which is specified by the `--ipc-path` flag to parity, just like so:
 
+Linux:
 ```bash
 $ geth attach ~/.local/share/io.parity.ethereum/jsonrpc.ipc
+```
+
+MacOS:
+```bash
+$ geth attach ~/Library/Application\ Support/io.parity.ethereum/jsonrpc.ipc
 ```
 
 It's no longer required to run Parity in `--geth` compatibility mode to use the Geth console.
