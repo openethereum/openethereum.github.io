@@ -63,7 +63,7 @@
   - [Pluggable Consensus](Pluggable-Consensus)
     - [Aura](Aura)
   - [Validator Set](Validator-Set)
-    - [Validator contracts](Validator-ontracts)
+    - [Validator contracts](Validator-contracts)
 - [Permissioning](Permissioning)
 - [Proof of Work Chains](Proof-of-Work-Chains)
 - [Proof of Authority Chains](Proof-of-Authority-Chains)
