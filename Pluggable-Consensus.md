@@ -1,5 +1,5 @@
 Parity comes bundled with a number of consensus engines. While the most widely used is the `Ethash` proof of work `Engine`, there are others which can be used for proof of authority or stake chains.
-The `Engine` is chosen by placing an appropriate entry in the `"engine"` field of the spec and providing the correct `"seal"` under `"genesis"` field, as described on the [Chain specification](Chain-specification) page.
+The `Engine` is chosen by placing an appropriate entry in the `"engine"` field of the spec and providing the correct `"seal"` under `"genesis"` field, as described on the [Chain specification](Chain-specification.md) page.
 
 ## Ethash
 
@@ -43,7 +43,7 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 
 ## Instant Seal
 
-`Engine` which can be used for development, as described in [Private development chain](Private development chain).
+`Engine` which can be used for development, as described in [Private development chain](Private-development-chain.md).
 
 ```json
 "engine": {
@@ -71,11 +71,11 @@ In the simplest case they can be specified at genesis using a simple `"list"` (a
 }
 ```
 
-More information can be found on the [Validator Set](Validator-Set) page.
+More information can be found on the [Validator Set](./Validator-Set.md) page.
 
 ## Aura
 
-Simple and fast consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator. [More details](https://github.com/paritytech/parity/wiki/Aura).
+Simple and fast consensus algorithm, each validator gets an assigned time slot in which they can release a block. The time slots are determined by the system clock of each validator. [More details](Aura.md).
 
 ```json
 "engine": {
