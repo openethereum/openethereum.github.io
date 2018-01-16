@@ -347,7 +347,7 @@ Response
 
 ### parity_getBlockHeaderByNumber
 
-Get block header. Same as [`eth_getBlockByNumber`](JSONRPC-eth-module#eth_getblockbynumber) but without uncles and transactions.
+Get block header. Same as [`eth_getBlockByNumber`](JSONRPC-eth-module.md#eth_getblockbynumber) but without uncles and transactions.
 
 #### Parameters
 
@@ -1237,7 +1237,7 @@ Posts a transaction to the signer without waiting for the signer response.
 
 #### Parameters
 
-0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
+0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module.md#eth_sendtransaction).
     - `from`: `Address` - 20 Bytes - The address the transaction is send from.
     - `to`: `Address` - (optional) 20 Bytes - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.

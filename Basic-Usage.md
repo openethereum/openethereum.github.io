@@ -2,7 +2,7 @@ To use Parity run `parity ui` command or head on to [http://127.0.0.1:8180/](htt
 
 ![The Parity User Interface](images/home-0.png)
 
-Once the [syncing](Getting-Synced) is complete, new transactions can be sent. Before relaying a transaction Secure Transaction Signer has to be used to sign it.
+Once the [syncing](Getting-Synced.md) is complete, new transactions can be sent. Before relaying a transaction Secure Transaction Signer has to be used to sign it.
 
 - [Configuration](#configuration)
 - [Networking](#networking)
@@ -15,7 +15,7 @@ Once the [syncing](Getting-Synced) is complete, new transactions can be sent. Be
 
 ### Configuration
 
-Use `parity --help` to find out about available options. To avoid adding options on every run of Parity a [config file](Configuring-Parity#config-file). The file can be easily generated using [this tool](https://paritytech.github.io/parity-config-generator/).
+Use `parity --help` to find out about available options. To avoid adding options on every run of Parity a [config file](Configuring-Parity.md#config-file). The file can be easily generated using [this tool](https://paritytech.github.io/parity-config-generator/).
 
 ### Networking
 
@@ -35,7 +35,7 @@ $ parity --reserved-peers /path/to/reserved.txt
 
 ### JSON-RPC API
 
-Assuming you start with JSONRPC API enabled (default), then [Ethereum's JSON-RPC](JSONRPC) can be used, e.g.:
+Assuming you start with JSONRPC API enabled (default), then [Ethereum's JSON-RPC](JSONRPC.md) can be used, e.g.:
 
 ```bash
 $ curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x0037a6b811ffeb6e072da21179d11b1406371c63", "latest"],"id":1}' http://127.0.0.1:8545

@@ -1,6 +1,6 @@
 **This is the third part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 2nd Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-2) | [4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-4)
+[⟵ 2nd Part](Tutorial-Part-2.md) | [4th Part ⟶](Tutorial-Part-4.md)
 
 ----
 
@@ -16,7 +16,7 @@ import {bonds} from 'oo7-parity';
 
 ### 1. Watch the block
 
-For our first trick, we will introduce the simplest of all bonds: `bonds.height`. This evaluates to [the number of the latest block](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
+For our first trick, we will introduce the simplest of all bonds: `bonds.height`. This evaluates to [the number of the latest block](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module.md#eth_blocknumber), expressed as a simple number.
 
 In `app.jsx`, remove the entire `App` class and the two `const`s and replace it with:
 
@@ -215,4 +215,4 @@ You should now be familiar with the core bonds in Parity and be happy to combine
 
 ----
 
-[4th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-4)
+[4th Part ⟶](Tutorial-Part-4.md)

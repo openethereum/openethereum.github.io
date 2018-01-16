@@ -1,12 +1,12 @@
 # Overview
-In a basic [Proof-of-Work chain](https://github.com/paritytech/parity/wiki/Proof-of-Work-Chains) all participants are able to perform all roles within the network: connect, mine (validate), send transactions, inspect the state and see all transactions.
+In a basic [Proof-of-Work chain](Proof-of-Work-Chains.md) all participants are able to perform all roles within the network: connect, mine (validate), send transactions, inspect the state and see all transactions.
 
 At Parity Technologies we are introducing a number of features which enable the network participants to permission different aspects of a blockchain. Often conflated as simply “permissioned blockchains” we introduce permissions on a number of different layers:
 
-* [Network](Permissioning#network)
-* [Transaction type](Permissioning#transaction-type)
-* [Validator set](Permissioning#validator-set)
-* [Gas price](Permissioning#gas-price)
+* [Network](Permissioning#network.md)
+* [Transaction type](Permissioning.md#transaction-type)
+* [Validator set](Permissioning.md#validator-set)
+* [Gas price](Permissioning.md#gas-price)
 * Secret transactions and contracts (to-be-released)
 
 Each user can have different permissions on each layer. All permissioning is based on blockchain accounts, which means that permissions always correspond to an address.
@@ -176,7 +176,7 @@ In both cases, Parity Ethereum is able to automatically detect faults in the con
 In Parity Ethereum a Validator Set can be specified using a contract implementing a special interface. Thanks to the smart contract definition authorities can be managed according to any rules suitable to the particular application.
 
 ## How it works
-Please see the [Validator Set wiki page](https://github.com/paritytech/parity/wiki/Validator-Set).
+Please see the [Validator Set wiki page](Validator-Set.md).
 
 # Gas price
 Currently, Parity already allows whitelisting of accounts for zero gas price transactions. In addition to that, a way to specify gas prices per account will be possible soon. This is achieved by managing gas prices in a smart contract and enables one to regulate how much each account has to spend on interactions with the blockchain. Of course, gas prices can also be set to zero. 

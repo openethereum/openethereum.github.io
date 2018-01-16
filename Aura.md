@@ -28,7 +28,7 @@ This definition of finality stems from a simple majority vote. In this setting, 
 
 **Node Configuration:**
 
-This consensus requires a [`ValidatorSet`](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines) to be specified, which determines the list of `n_v` blockchain addresses at each height `h` which participate in the consensus.
+This consensus requires a [`ValidatorSet`](Validator-Set.md) to be specified, which determines the list of `n_v` blockchain addresses at each height `h` which participate in the consensus.
 
 A node can represent a validator when it is ran with `--engine-signer VALIDATOR-ADDRESS`.
 

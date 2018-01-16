@@ -1,4 +1,4 @@
-Examples of common operations and useful functionality when building a dApp using [oo7-Bonds](https://github.com/paritytech/parity/wiki/oo7-Parity-Reference). It does not aim to cover the complete functionality, for more features please look at the documentation.
+Examples of common operations and useful functionality when building a dApp using [oo7-Bonds](oo7-Parity-Reference.md). It does not aim to cover the complete functionality, for more features please look at the documentation.
 
 ## Bond functionality (oo7)
 We need to install and require the [oo7](https://www.npmjs.com/package/oo7) Bond package first. 
@@ -45,8 +45,8 @@ var tBond = new TransformBond(([v1,v2]) => `Transformed Bond Args ${v1} and ${v2
 
 All this gets especially useful when we want to interact with the blockchain and easily use inbuilt functions to keep us always with the newest state of the chain. We explore some of them in the following.
 
-## Blockchain interaction ([oo7-parity](https://github.com/paritytech/parity/wiki/oo7-Parity-Reference))
-The setup is slightly more complicated now, but the simplest is to clone the parity-skeleton app and configure it as explained [here](https://github.com/paritytech/parity/wiki/Tutorial-Part-1).
+## Blockchain interaction ([oo7-parity](oo7-Parity-Reference.md))
+The setup is slightly more complicated now, but the simplest is to clone the parity-skeleton app and configure it as explained [here](Tutorial-Part-1.md).
 
 ### Some common functions
 ```
@@ -79,7 +79,7 @@ info(bonds.me).then(arr => arr.forEach(x => x.log())); // arrays or TransformBon
 info(bonds.me); // triggers the details to the address to be printed
 ```
 
-There is much more functionality and we will extend the list over time. However to see a more complete version take a look at the [oo7-parity reference](https://github.com/paritytech/parity/wiki/oo7-Parity-Reference). This library is also still very much in development and thus might change recently.
+There is much more functionality and we will extend the list over time. However to see a more complete version take a look at the [oo7-parity reference](oo7-Parity-Reference.md). This library is also still very much in development and thus might change recently.
 
 ## Bond & React (oo7-react)
 To really use the advantages the Bond-libraries give us we need to be able to have updating display components which support Bonds as input. Therefore we have [oo7-react](https://github.com/paritytech/oo7-react). It provides necessary standard components such as `div`, `span` or `a` and some more blockchain specific ones like `Hash`.

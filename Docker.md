@@ -54,7 +54,7 @@ $ docker run -ti parity/parity:v1.7.0
 
 ### Configure parity
 
-Parity can be configured using either the [CLI options or a config file](Configuring-Parity). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence. You can list all CLI options by running:
+Parity can be configured using either the [CLI options or a config file](Configuring-Parity.md). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence. You can list all CLI options by running:
 
 ```bash
 $ docker run parity/parity:v1.7.0 --help
@@ -203,7 +203,7 @@ You can also include extra nodes (e.g. [ethstats monitoring](https://github.com/
 - [How to quickly upgrade an Ethereum Parity node using Docker](https://medium.com/decentralized-capital/how-to-quickly-upgrade-an-ethereum-parity-node-using-docker-e170fa2a2045).
 - [Docker compose network with 3 authorities and netstats dashboard](https://github.com/dstarcev/parity-poa-playground).
 - [Docker compose for running integration tests](https://github.com/illya13/parity-poa).
-- [Building Parity using Docker](Setup#Building-using-Docker).
+- [Building Parity using Docker](Setup.md#Building-using-Docker).
 - [Docker build for ARM64](https://github.com/paritytech/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
 - [Parity on Docker Hub](https://hub.docker.com/r/parity/parity/).
 - [View the Dockerfile here](https://github.com/paritytech/parity/blob/master/docker/ubuntu/Dockerfile).

@@ -71,7 +71,8 @@ In the simplest case they can be specified at genesis using a simple `"list"` (a
 }
 ```
 
-More information can be found on the [Validator Set](./Validator-Set.md) page.
+More information can be found on the [Validator Set](Validator-Set.md) page.
+
 
 ## Aura
 

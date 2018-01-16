@@ -1,6 +1,6 @@
 **This is the ninth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 8th Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-8) | [10th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-10)
+[⟵ 8th Part](Tutorial-Part-8.md) | [10th Part ⟶](Tutorial-Part-10.md)
 
 ----
 
@@ -275,4 +275,4 @@ Next, up we'll alter the contract a little to require a signed statement prior t
 
 ----
 
-[10th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-10)
+[10th Part ⟶](Tutorial-Part-10.md)

@@ -1,10 +1,10 @@
-Similar to the [Token Registry](Token-Registry), the Parity Ethereum wallet allows certifying badges to [Accounts and Wallets](Accounts%2C-Wallets%2C-Vaults). Prominent examples of badges used by Parity are the SMS- and Email-verification badges on Kovan testnet enabling users with certified accounts to use the built-in faucet.
+Similar to the [Token Registry](Token-Registry.md), the Parity Ethereum wallet allows certifying badges to [Accounts and Wallets](Accounts%2C-Wallets%2C-Vaults.md). Prominent examples of badges used by Parity are the SMS- and Email-verification badges on Kovan testnet enabling users with certified accounts to use the built-in faucet.
 
 This article covers creating a new certifier, registering a new badge with the badge registry and setting meta-data like title and icon.
 
 ### Certifier Contract
 
-The Certifier contract interface for badges is comparable to the ERC-20 interface for [tokens](tokens). Basically any contract implementing or inheriting from [`Certifier.sol`](https://github.com/paritytech/contracts/blob/master/Certifier.sol) can be used to create new badges. 
+The Certifier contract interface for badges is comparable to the ERC-20 interface for [tokens](tokens.md). Basically any contract implementing or inheriting from [`Certifier.sol`](https://github.com/paritytech/contracts/blob/master/Certifier.sol) can be used to create new badges. 
 
 To get started quickly, it's worth to have a look at the OPRAH badge contract [`OprahBadge.sol`](https://github.com/paritytech/contracts/blob/master/OprahBadge.sol) which implements the Certifier. You can deploy your certifier to the network and start to `certify()` accounts.
 

@@ -322,7 +322,7 @@ Response
 
 ### parity_setEngineSigner
 
-Sets an authority account for signing consensus messages. For more information check the [Proof of Authority Chains](Proof of Authority Chains) page.
+Sets an authority account for signing consensus messages. For more information check the [Proof of Authority Chains](Proof-of-Authority-Chains.md) page.
 
 #### Parameters
 

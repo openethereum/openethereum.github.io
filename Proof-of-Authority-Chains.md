@@ -10,20 +10,20 @@ For consortium setting there are no disadvantages of PoA network as compared to 
 # Setting up a Proof of Authority network
 1. Pick real world entities that should control the network, so called authorities.
 2. Each authority should run a Parity node and create an account.
-3. Authorities should exchange their account addresses and place them in the [spec or validator contract](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#validator-consensus).
+3. Authorities should exchange their account addresses and place them in the [spec or validator contract](Pluggable-Consensus.md#validator-engines).
 4. All authority nodes should run an instance Parity with the agreed on specification.
 5. Additional user nodes can connect to the network as well.
 6. Use the network just as a public Ethereum network (transactions, contracts etc.).
 
-A [Demo PoA tutorial](Demo PoA tutorial) describes how to set up two nodes and connect them to each other.
+A [Demo PoA tutorial](Demo-PoA-tutorial.md) describes how to set up two nodes and connect them to each other.
 
 # Running the authority nodes
 
-Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described on the [Chain specification](Chain-specification) page.
+Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described on the [Chain specification](Chain-specification.md) page.
 
 If you're expecting to issue blocks, make sure you have `--engine-signer` set to an account address (`0xADDRESS`) listed in the engine configuration under `authorities` and password file for that account is provided to `--password`. Parity has a separate directory for each chain, so make sure that the account is visible on the specified chain (create an account with `--chain`, import the keys or use `--keys-path`). You should ensure anyone else you want issuing on the network is similarly configured. Each authority can only run a **single node** and to utilize the full network capacity each authority should run a node.
 To make the transactions free, authority nodes can run with `--usd-per-tx 0`.
-The configuration can also be done via the [config file](Configuring-Parity#config-file) with the following fields:
+The configuration can also be done via the [config file](Configuring-Parity.md#config-file) with the following fields:
 
 ```
 [parity]
@@ -58,7 +58,7 @@ Create accounts:
 Validate the blocks:
 - `parity_setEngineSigner(address, password)` set this to one of authority addresses in order to participate in the consensus
 
-Further methods for actually using the nodes can be found [here](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module).
+Further methods for actually using the nodes can be found [here](JSONRPC-eth-module.md).
 
 # Chain Engine specification
 
@@ -94,4 +94,4 @@ An example template that can be used for the consensus algorithms:
 }
 ```
 
-The two available algorithms are the [Aura](https://github.com/paritytech/parity/wiki/Consensus-Engines#aura) and [Tendermint](https://github.com/paritytech/parity/wiki/Consensus-Engines#tendermint). More details on other chain parameters are available on the [Chain specification](Chain-specification) page.
+The two available algorithms are the [Aura](Pluggable-Consensus.md#aura) and [Tendermint](Pluggable-Consensus.md#tendermint). More details on other chain parameters are available on the [Chain specification](Chain-specification.md) page.

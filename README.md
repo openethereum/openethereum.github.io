@@ -4,22 +4,22 @@ Parity is an Ethereum client, written from the ground-up for correctness-verifia
 
 Parity comes with an extensive, in-built Ethereum Wallet and Dapp environment. It includes:
 
-- Account, address-book and [multi-sig](Accounts%2C-Wallets%2C-Vaults) management.
+- Account, address-book and [multi-sig](Accounts%2C-Wallets%2C-Vaults.md) management.
 - Key creation, importing and exporting.
 - Web3 Ðapp browser.
-- [Hardware](Ledger-Nano-S) and electronic cold-wallet support.
-- [Name registry](Parity-name-registry) support. 
+- [Hardware](Ledger-Nano-S.md) and electronic cold-wallet support.
+- [Name registry](Parity-name-registry.md) support. 
 - Contract development, deployment and interaction environment.
 
 To use it, simply browse `http://127.0.0.1:8180/` once Parity is running on your computer.
 
 Some help:
-- If you want to get a node up and running with Parity, see the [Setup](Setup) guide, or browse the [Articles Index](Community-Guides).
-- Frequently asked questions are answered on the [FAQ](FAQ).
-- If you're interested in mining with Parity, see the [Mining](Mining) guide.
-- If you'd like to use the JSONRPC interface with Parity, see the [JSONRPC](JSONRPC) guide.
-- If you're interested in hacking on the Parity code base see the [Coding guide](Coding-guide).
-- For [Private chains](Private-chains) and [Proof of Authority Chains](Proof of Authority Chains), you might find the [Chain specification](Chain-specification) useful.
+- If you want to get a node up and running with Parity, see the [Setup](Setup.md) guide, or browse the [Articles Index](Community-Guides.md).
+- Frequently asked questions are answered on the [FAQ](FAQ.md).
+- If you're interested in mining with Parity, see the [Mining](Mining.md) guide.
+- If you'd like to use the JSONRPC interface with Parity, see the [JSONRPC](JSONRPC.md) guide.
+- If you're interested in hacking on the Parity code base see the [Coding guide](Coding-guide.md).
+- For [Private chains](Private-chains.md) and [Proof of Authority Chains](Proof-of-Authority-Chains.md), you might find the [Chain specification](Chain-specification.md) useful.
 
 # Our Tenets
 

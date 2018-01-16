@@ -10,4 +10,4 @@ By default, each Parity node serves state data for connected light peers. To dis
 
     --no-serve-light               Disable serving of light peers. (default: false)
  
-Read more on the [Parity Light Protocol](The-Parity-Light-Protocol-(PIP)) and check the [road map](https://github.com/paritytech/parity/projects/2) on GitHub.
+Read more on the [Parity Light Protocol](The-Parity-Light-Protocol-(PIP).md) and check the [road map](https://github.com/paritytech/parity/projects/2) on GitHub.

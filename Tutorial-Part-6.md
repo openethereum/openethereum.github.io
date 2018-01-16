@@ -1,6 +1,6 @@
 **This is the sixth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 5th Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-5) | [7th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-7)
+[⟵ 5th Part](Tutorial-Part-5.md) | [7th Part ⟶](Tutorial-Part-7.md)
 
 ----
 
@@ -110,4 +110,4 @@ Not exactly great, but it's a start. In the next part we'll implement the action
 
 ----
 
-[7th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-7)
+[7th Part ⟶](Tutorial-Part-7.md)

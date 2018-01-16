@@ -1,6 +1,6 @@
 **This is the fifth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 4th Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-4) | [6th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-6)
+[⟵ 4th Part](Tutorial-Part-4.md) | [6th Part ⟶](Tutorial-Part-6.md)
 
 ----
 
@@ -209,4 +209,4 @@ You can configure the button to use whatever colour scheme you prefer, but that'
 
 ----
 
-[6th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-6)
+[6th Part ⟶](Tutorial-Part-6.md)

@@ -40,7 +40,7 @@ Additional DApps can be added, see [Writing Dapps for Parity](Writing Dapps for 
 
 ### How can I write a DApp for Parity?
 
-Head over to the excellent [DApp Tutorial](https://github.com/paritytech/parity/wiki/Tutorial-Part-I) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
+Head over to the excellent [DApp Tutorial](Tutorial-Part-1.md) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
 
 ### Does Parity support the Swarm and Whisper sub-protocols?
 

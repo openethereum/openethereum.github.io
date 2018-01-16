@@ -1,6 +1,6 @@
 **This is the eighth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 7th Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-7) | [9th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-9)
+[⟵ 7th Part](Tutorial-Part-7.md) | [9th Part ⟶](Tutorial-Part-9.md)
 
 ----
 
@@ -104,4 +104,4 @@ Next, we'll look into managing the deployment of contracts.
 
 ----
 
-[9th Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-9)
+[9th Part ⟶](Tutorial-Part-9.md)

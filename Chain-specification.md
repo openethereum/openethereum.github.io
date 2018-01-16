@@ -1,6 +1,6 @@
 By default, when simply running `parity`, Parity Ethereum will connect to the official public Ethereum network.
 
-In order to run a chain different to the official public Ethereum one, Parity has to be ran with the `--chain` option or with a [config file](Configuring-Parity#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
+In order to run a chain different to the official public Ethereum one, Parity has to be ran with the `--chain` option or with a [config file](Configuring-Parity.md#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
 - [`mainnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
@@ -13,8 +13,8 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 
 ## Private chains
 
-Parity supports private chain and private network configuration via [Chain specification](Chain-specification) files provided with `--chain`. In addition to the usual [Proof of Work Chains](Proof of Work Chains), Parity also includes [Proof of Authority Chains](Proof of Authority Chains) which do not require mining.
-More details on the available options can be found on the [Pluggable Consensus](Pluggable-Consensus) page.
+Parity supports private chain and private network configuration via [Chain specification](Chain-specification.md) files provided with `--chain`. In addition to the usual [Proof of Work Chains](Proof-of-Work-Chains.md), Parity also includes [Proof of Authority Chains](Proof-of-Authority-Chains.md) which do not require mining.
+More details on the available options can be found on the [Pluggable Consensus](Pluggable-Consensus.md) page.
 
 ## JSON chain spec format
 A JSON file which specifies rules of a blockchain, some fields are optional which are described following the minimal example, these default to 0.
@@ -48,10 +48,10 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
 
 + **`"name"`** field contains any name used to identify the chain.
 
-+ **`"engine"`** field describes the consensus engine used for a particular chain, details are explained in the [Consensus Engines](Pluggable-Consensus) section.
++ **`"engine"`** field describes the consensus engine used for a particular chain, details are explained in the [Consensus Engines](Pluggable-Consensus.md) section.
 
 + **`"genesis"`** contains the genesis block (first block in the chain) header information.
-  + `"seal"` is consensus engine specific and is further described in [Consensus Engines](Pluggable-Consensus).
+  + `"seal"` is consensus engine specific and is further described in [Consensus Engines](Pluggable-Consensus.md).
   + `"difficulty"` difficulty of the genesis block, matters only for PoW chains.
   + `"gasLimit"` gas limit of the genesis, affects the initial gas limit adjustment.
 

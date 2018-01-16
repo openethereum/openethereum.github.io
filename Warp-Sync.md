@@ -4,7 +4,7 @@ Warp Sync is an extension to the Ethereum Wire protocol, which involves sending 
 
 Warp Sync is a subprotocol built on the DevP2p networking layer, with 3-byte identifier `par`.
 
-Documentation on the snapshot and manifest format [can be found here](https://github.com/paritytech/parity/wiki/Warp-Sync-Snapshot-Format).
+Documentation on the snapshot and manifest format [can be found here](Warp-Sync-Snapshot-Format.md).
 
 # How do I use it?
 Easy! Just update to Parity `1.4.0` or later, and run `parity --warp`. Your client will search for peers with a warp sync snapshot and use it if one is found.

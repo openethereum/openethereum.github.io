@@ -215,7 +215,7 @@ Objects going from one type to another are denoted `{ KeyType ->  ValueType }`. 
 
 ### `Block`
 
-Equivalent to "a block object", described at [`eth_getBlockByHash` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getblockbyhash).
+Equivalent to "a block object", described at [`eth_getBlockByHash` RPC](JSONRPC-eth-module.md#eth_getblockbyhash).
 
 ### `Header`
 
@@ -223,11 +223,11 @@ Equivalent to `Block`, except that individual transactions are not provided.
 
 ### `Transaction`
 
-Equivalent to "a transaction object", described at [`eth_getTransactionByHash` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_gettransactionbyhash).
+Equivalent to "a transaction object", described at [`eth_getTransactionByHash` RPC](JSONRPC-eth-module.md#eth_gettransactionbyhash).
 
 ### `Receipt`
 
-Equivalent to "a transaction receipt object", described at [`eth_getTransactionReceipt` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_gettransactionreceipt).
+Equivalent to "a transaction receipt object", described at [`eth_getTransactionReceipt` RPC](JSONRPC-eth-module.md#eth_gettransactionreceipt).
 
 ### `AccountInfo`
 
@@ -299,7 +299,7 @@ An ABI specification, as described in the [Ethereum wiki article](https://github
 
 ### `ChainStatus`
 
-Information on the status of the portion of the chain maintained locally. Equivalent to "the status object" described for the [`parity_chainStatus` RPC](https://github.com/paritytech/parity/wiki/JSONRPC-parity-module#parity_chainstatus).
+Information on the status of the portion of the chain maintained locally. Equivalent to "the status object" described for the [`parity_chainStatus` RPC](JSONRPC-parity-module.md#parity_chainstatus).
 
 ### `Peers`
 

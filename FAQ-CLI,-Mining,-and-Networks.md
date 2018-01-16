@@ -1,8 +1,8 @@
 ### How do I mine with Parity?
 
-Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getwork), [eth_submitWork](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
+Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (JSONRPC-eth-module.md#eth_getwork), [eth_submitWork](JSONRPC-eth-module.md#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
 
-First get a Parity node up and running (either build yourself or install one of the packages; the [Setup](Setup) guide can help you). Next, you'll need to install your preferred miner. Read more on [Mining](Mining).
+First get a Parity node up and running (either build yourself or install one of the packages; the [Setup](Setup.md) guide can help you). Next, you'll need to install your preferred miner. Read more on [Mining](Mining.md).
 
 ### Which chains are supported by Parity?
 
@@ -24,16 +24,16 @@ Parity supports multiple public chain configurations:
 - `--chain expanse` Runs the Expanse public network with ID `1`.
 - `--chain kovan` Runs the Proof-of-Authority public testnet with ID `42`.
 - `--chain testnet` Same as `kovan`.
-- `--chain dev` Runs a private testnet configuration, see [Private development chain](Private development chain).
+- `--chain dev` Runs a private testnet configuration, see [Private development chain](Private-development-chain.md).
 
-See also [Chain specification](Chain-specification).
+See also [Chain specification](Chain-specification.md).
 
 ### What are the different consensus engines available for Parity?
 
 - Ethash (Ethereum Proof-of-Work Engine), see [Ethash](https://github.com/ethereum/wiki/wiki/Ethash).
-- Instant Seal (Development Engine), see [Private development chain](Private development chain).
-- Aura (Proof-of-Authority Validator Engine), see [Aura](Aura).
-- Tendermint (Experimental Validator Engine), see [Validator Engines](https://github.com/paritytech/parity/wiki/Consensus-Engines#validator-engines)
+- Instant Seal (Development Engine), see [Private development chain](Private-development-chain.md).
+- Aura (Proof-of-Authority Validator Engine), see [Aura](Aura.md).
+- Tendermint (Experimental Validator Engine), see [Validator Engines](https://github.com/paritytech/parity/wiki/Consensus-Engines.md#validator-engines)
 
 ### How do I get Ether for the Morden, Ropsten, or Kovan testnets?
 
@@ -50,7 +50,7 @@ As a safeguard against a certain type of attack, Parity requires you to use a sp
 
 ### When I start Parity with the 'homestead_test.json' I get a 0 blocks chain, and mining never seals a block!?!
 
-`homestead_test.json` is a file meant for testing on a chain very similar to the Homestead chain. As such it is of equivalent (substantial) difficulty to mine on it. Rather what you need is something of minimal mining difficulty, like Morden. See more instructions [here](https://github.com/paritytech/parity/wiki/Private-chains).
+`homestead_test.json` is a file meant for testing on a chain very similar to the Homestead chain. As such it is of equivalent (substantial) difficulty to mine on it. Rather what you need is something of minimal mining difficulty, like Morden. See more instructions [here](Private-chains.md).
 
 ### Why do my transactions not get mined?
 
@@ -62,4 +62,4 @@ You're probably trying to send from a locked account. Ensure you use the `--unlo
 
 ### I've received an abuse message from my ISP/hosting provider. Something about malicious activity triggered by Parity.
 
-See [Network Configuration](https://github.com/paritytech/parity/wiki/Network-Configuration) for some tips on how to configure Parity to behave.
+See [Network Configuration](https://github.com/paritytech/parity/wiki/Network-Configuration.md) for some tips on how to configure Parity to behave.

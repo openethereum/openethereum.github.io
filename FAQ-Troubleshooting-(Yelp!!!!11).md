@@ -27,10 +27,10 @@ See also: [Where are the parity log files in daemon mode](http://ethereum.stacke
 
 ### How can I report an issue with Parity?
 
-If you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/ethcore/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
+If you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/paritytech/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
 
 ### I just scrolled all the way down here and didn't find what I'm looking for!?!
 
 Find more questions [tagged with `[Parity]` on Ethereum Stack Exchange]() or [ask a new question](https://ethereum.stackexchange.com/questions/ask).
 
-However, if you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/ethcore/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
+However, if you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/paritytech/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).

@@ -1,4 +1,4 @@
-This tutorial will walk through setting up two Parity nodes locally and sending transactions between them. If you want to learn more about different parameters specified in this tutorial please refer to the [Chain specification](Chain-specification) page.
+This tutorial will walk through setting up two Parity nodes locally and sending transactions between them. If you want to learn more about different parameters specified in this tutorial please refer to the [Chain specification](Chain-specification.md) page.
 
 Each node will act as an authority on the network issuing blocks when necessary, there will be also one additional user account with a high initial balance. All files produced in this tutorial can be found [here](https://github.com/keorn/parity-poa-tutorial).
 
@@ -72,7 +72,7 @@ Putting it all together gives us the following command to start Parity:
 parity  --chain demo-spec.json -d /tmp/parity0 --port 30300 --jsonrpc-port 8540 --ui-port 8180 --ws-port 8540 --jsonrpc-apis web3,eth,net,personal,parity,parity_set,traces,rpc,parity_accounts
 ```
 
-Since the command is becoming rather clunky we can use a [config files](Configuring-Parity#config-file) instead, which are passed using `--config` option. Node 0 will have this config file saved under `node0.toml`:
+Since the command is becoming rather clunky we can use a [config files](Configuring-Parity#config-file.md) instead, which are passed using `--config` option. Node 0 will have this config file saved under `node0.toml`:
 ```
 [parity]
 chain = "demo-spec.json"

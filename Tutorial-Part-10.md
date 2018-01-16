@@ -1,6 +1,6 @@
 **This is the tenth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
-[⟵ 9th Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-9)
+[⟵ 9th Part](Tutorial-Part-9.md)
 
 ----
 
@@ -142,6 +142,6 @@ And that's it. If you try now (don't forget to `delete window.localStorage.count
 
 And that concludes this initial series of Dapp tutorials. Over these ten lessons, you've learned how to get started in building a dapp, you've got the basics of `Bond`s, how they integrate with parity and React. You've learnt how to inspect aspects of the blockchain and display them. You've learnt how to send transactions and track their progress. You've learnt how to deploy a contract both manually and programatically. You've learnt how to interact with contracts by calling inspector functions, by tracking events and through transactions which mutate their state. And finally you're learnt how to sign messages.
 
-Now is the time to push forward. You'll find comprehensive documentation for the Parity `Bond` interface [on the wiki](https://github.com/paritytech/parity/wiki/oo7-Parity-Reference), as well as other resources that can help you improve and get productive.
+Now is the time to push forward. You'll find comprehensive documentation for the Parity `Bond` interface [on the wiki](oo7-Parity-Reference.md), as well as other resources that can help you improve and get productive.
 
 Good luck!

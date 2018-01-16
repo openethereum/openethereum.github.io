@@ -1,6 +1,6 @@
 **This is the second part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapter.
 
-[⟵ 1st Part](https://github.com/paritytech/parity/wiki/Tutorial-Part-1) | [3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-3)
+[⟵ 1st Part](Tutorial-Part-1.md) | [3rd Part ⟶](Tutorial-Part-3.md)
 
 ----
 
@@ -231,4 +231,4 @@ That should have given you a good introduction to the concept of the `Bond` and 
 
 ----
 
-[3rd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-3)
+[3rd Part ⟶](Tutorial-Part-3.md)

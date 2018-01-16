@@ -1,6 +1,6 @@
-Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_getwork), [eth_submitWork](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
+Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork](JSONRPC-eth-module.md#eth_getwork), [eth_submitWork](JSONRPC-eth-module.md#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
 
-First get a Parity node up and running (either build yourself or install one of the packages; the [Setup](Setup) guide can help you). Next, you'll need to install your preferred miner.
+First get a Parity node up and running (either build yourself or install one of the packages; the [Setup](Setup.md) guide can help you). Next, you'll need to install your preferred miner.
 
 ## Getting the miner
 ### ethminer
