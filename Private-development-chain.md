@@ -17,9 +17,10 @@ To make multiple transactions confirm at the same time use `--reseal-min-period 
 {
 	"name": "DevelopmentChain",
 	"engine": {
-		"instantSeal": { "params": {} }
+		"instantSeal": null
 	},
 	"params": {
+		"gasLimitBoundDivisor": "0x0400",
 		"accountStartNonce": "0x0",
 		"maximumExtraDataSize": "0x20",
 		"minGasLimit": "0x1388",
