@@ -7,7 +7,7 @@ At Parity Technologies we are introducing a number of features which enable the 
 * [Transaction type](Permissioning.md#transaction-type)
 * [Validator set](Permissioning.md#validator-set)
 * [Gas price](Permissioning.md#gas-price)
-* Secret transactions and contracts (to-be-released)
+* [Private transactions](Private-Transactions.md)
 
 Each user can have different permissions on each layer. All permissioning is based on blockchain accounts, which means that permissions always correspond to an address.
 
