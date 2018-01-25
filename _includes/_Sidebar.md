@@ -23,7 +23,7 @@
 - [Writing DApps](Development-Overview)
   - [oo7 Examples](oo7-Parity-Examples)
   - [oo7-parity.js Reference](oo7-Parity-Reference)
-  - [Deploying Dapps to Parity Wallet](Deploying-DApps-to-Parity-Wallet)
+  - [Deploying Dapps to Parity Wallet](Deploying-Dapps-to-Parity-Wallet)
   - [Parity Dapp Registry](Parity-dapp-registry)
   - [Dapp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
