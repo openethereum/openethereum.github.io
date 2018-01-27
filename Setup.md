@@ -34,7 +34,7 @@ For linux systems:
 - Ubuntu, Debian
 
     ```bash
-    $ apt-get install openssl libssl-dev libudev-dev
+    $ apt-get install build-essential openssl libssl-dev libudev-dev
     ```
 
 - CentOS
