@@ -39,8 +39,9 @@ For linux systems:
 
 - CentOS
 
+
     ```bash
-    $ yum install openssl libssl-devel libudev-devel
+    $ yum install openssl libssl-devel libudev-devel openssl-devel
     ```
 
 ### Building from source
