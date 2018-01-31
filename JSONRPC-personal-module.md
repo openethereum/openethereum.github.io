@@ -5,6 +5,7 @@
 - [personal_listAccounts](#personal_listaccounts)
 - [personal_newAccount](#personal_newaccount)
 - [personal_sendTransaction](#personal_sendtransaction)
+- [personal_signTransaction](#personal_signtransaction)
 - [personal_unlockAccount](#personal_unlockaccount)
 - [personal_sign](#personal_sign)
 - [personal_ecRecover](#personal_ecrecover)
@@ -126,6 +127,64 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "0x62e05075829655752e146a129a044ad72e95ce33e48ff48118b697e15e7b41e4"
+}
+```
+
+***
+
+### personal_signTransaction
+
+Signs a transaction without dispatching it to the network. It can later be submitted using
+`eth_sendRawTransaction`. The account does not need to be unlocked to make this call, and will not
+be left unlocked after.
+
+#### Parameters
+
+0. `Object` - The transaction object
+    - `from`: `Address` - 20 Bytes - The address the transaction is send from.
+    - `to`: `Address` - (optional) 20 Bytes - The address the transaction is directed to.
+    - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
+    - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
+    - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+    - `nonce`: `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+    - `condition`: `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+0. `String` - Passphrase to unlock the `from` account.
+
+#### Returns
+
+- `Object` - Signed transaction and it's details:
+    - `raw`: `Data` - The signed, RLP encoded transaction.
+    - `tx`: `Object` - Transaction object
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"personal_signTransaction","params":[{ ... }],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "raw": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+    "tx": {
+      "hash": "0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b",
+      "nonce": "0x0", // 0
+      "blockHash": "0xbeab0aa2411b7ab17f30a99d3cb9c6ef2fc5426d6ad6fd9e2a26a6aed1d1055b",
+      "blockNumber": "0x15df", // 5599
+      "transactionIndex": "0x1", // 1
+      "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+      "to": "0x853f43d8a49eeb85d32cf465507dd71d507100c1",
+      "value": "0x7f110", // 520464
+      "gas": "0x7f110", // 520464
+      "gasPrice": "0x09184e72a000",
+      "input": "0x603880600c6000396000f300603880600c6000396000f3603880600c6000396000f360"
+    }
+  }
 }
 ```
 
