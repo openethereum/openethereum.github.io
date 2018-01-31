@@ -75,7 +75,7 @@ reserved_peers = "./path_to_file"
 disable = false
 port = 8545
 interface = "local"
-cors = "null"
+cors = []
 apis = ["web3", "eth", "net", "parity", "traces", "rpc", "secretstore"]
 hosts = ["none"]
 
@@ -109,7 +109,7 @@ path = "$HOME/.local/share/io.parity.ethereum/secretstore"
 enable = false
 port = 5001
 interface = "local"
-cors = "null"
+cors = []
 hosts = ["none"]
 
 [mining]
