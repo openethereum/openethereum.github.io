@@ -6,6 +6,8 @@
 - [personal_newAccount](#personal_newaccount)
 - [personal_sendTransaction](#personal_sendtransaction)
 - [personal_unlockAccount](#personal_unlockaccount)
+- [personal_sign](#personal_sign)
+- [personal_ecRecover](#personal_ecrecover)
 
 ## JSON-RPC API Reference
 
@@ -168,5 +170,85 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": true
+}
+```
+
+***
+
+### personal_sign
+
+The sign method calculates an Ethereum specific signature with: `sign(keccak256("Ethereum Signed
+Message: " + len(message) + message)))`.
+
+#### Parameters
+
+0. `Data` - Data which hash to sign.
+0. `Address` - 20 Bytes - The address of the account to sign with.
+0. `String` - Passphrase to unlock the account.
+
+```js
+params: [
+  "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+  "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+  "himom"
+]
+```
+
+#### Returns
+
+- `Data` - Signed data.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"personal_sign","params":["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675", "0xb60e8dd61c5d32be8058bb8eb970870f07233155", "himom"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0xe7225f986f192f859a9bf84e34b2b7001dfa11aeb5c7164f81a2bee0d79943e2587be1faa11502eba0f803bb0ee071a082b6fe40fba025f3309263a1eef52c711c"
+}
+```
+
+***
+
+### personal_ecRecover
+
+Returns the address associated with the private key that was used to calculate the signature in
+`personal_sign`.
+
+#### Parameters
+
+0. `Data` - The data which hash was signed.
+0. `Data` - Signed data.
+
+```js
+params: [
+  "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+  "0xe7225f986f192f859a9bf84e34b2b7001dfa11aeb5c7164f81a2bee0d79943e2587be1faa11502eba0f803bb0ee071a082b6fe40fba025f3309263a1eef52c711c"
+]
+```
+
+#### Returns
+
+- `Address` - Address of the signer of the message.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"personal_ecRecover","params":["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","0xe7225f986f192f859a9bf84e34b2b7001dfa11aeb5c7164f81a2bee0d79943e2587be1faa11502eba0f803bb0ee071a082b6fe40fba025f3309263a1eef52c711c"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0xb60e8dd61c5d32be8058bb8eb970870f07233155"
 }
 ```
