@@ -57,6 +57,7 @@
   - [signer](JSONRPC-signer-module)
   - [trace](JSONRPC-trace-module)
   - [shh](JSONRPC-shh-Module)
+  - [secretstore](JSONRPC-secretstore-module)
 
 ### Parity Chains
 - [Chain Specification](Chain-specification)
@@ -78,6 +79,8 @@
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
 - [Polkadot](Polkadot)
 - [Secret Store](Secret-Store)
+  - [Secret Store Configuration](Secret-Store-Configuration)
+  - [Secret Store RPC](JSONRPC-secretstore-module)
 - [Warp Sync](Warp-Sync)
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
 - [WebAssembly (WASM)](WebAssembly-(WASM))

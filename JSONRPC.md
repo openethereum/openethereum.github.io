@@ -50,3 +50,4 @@ As documented in the options, available under `parity --help` not all API's are 
 - [signer](JSONRPC-signer-module.md)
 - [trace](JSONRPC-trace-module.md)
 - [shh](JSONRPC-shh-Module.md)
+- [secretstore](JSONRPC-secretstore-module.md)
