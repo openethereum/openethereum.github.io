@@ -1,3 +1,5 @@
+_The development of this feature was supported by the [Energy Web Foundation](http://energyweb.org/) in order to expedite the energy sector revolution towards decentralisation._
+
 # Overview
 In a basic [Proof-of-Work chain](Proof-of-Work-Chains.md) all participants are able to perform all roles within the network: connect, mine (validate), send transactions, inspect the state and see all transactions.
 
