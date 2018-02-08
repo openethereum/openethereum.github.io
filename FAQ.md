@@ -9,4 +9,4 @@ Parity is an Ethereum client, written from the ground-up for correctness-verifia
 - [FAQ: Backup, Restore, and Files](/FAQ-Backup,-Restore,-and-Files.md)
 - [FAQ: CLI, Mining, and Networks](/FAQ-CLI,-Mining,-and-Networks.md)
 - [FAQ: User Interface, Wallet and DApps](/FAQ-User-Interface,-Wallet-and-DApps.md)
-- [FAQ: Troubleshooting (Yelp!!!!11)](/FAQ-Troubleshooting-(Yelp!!!!11.md))
+- [FAQ: Troubleshooting (Yelp!!!!11)](/FAQ-Troubleshooting-(Yelp!!!!11).md)
