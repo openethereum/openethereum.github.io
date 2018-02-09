@@ -42,6 +42,7 @@ For linux systems:
 
     ```bash
     $ yum install openssl libssl-devel libudev-devel openssl-devel
+    $ yum group install "Development Tools"
     ```
 
 ### Building from source
