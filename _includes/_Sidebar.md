@@ -91,6 +91,7 @@
 
 ### Hacking on Parity
 - [Coding Guide](Coding-guide)
+- [Known Issues](Known-Issues-Priorities)
 - [Fuzz Testing](Fuzz-Testing)
 - [Labeling](Labelling)
 - [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <sup>[+]</sup>
