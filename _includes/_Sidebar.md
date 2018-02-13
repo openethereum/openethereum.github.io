@@ -90,7 +90,7 @@
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
 
 ### Hacking on Parity
-- [Coding Guide](Coding-Guide)
+- [Coding Guide](Coding-guide)
 - [Fuzz Testing](Fuzz-Testing)
 - [Labeling](Labelling)
 - [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <sup>[+]</sup>
