@@ -1,3 +1,5 @@
+# Getting Synced
+
 Parity supports state snapshotting that significantly reduces sync-times and database pruning which reduces disk requirements. Both features are enabled by default on most recent Parity releases. Simply get synced by running:
 
 ```bash
@@ -8,7 +10,7 @@ $ parity
 
 State snapshotting, or warp-sync, allows for an extremely fast "synchronization" that skips almost all of the block processing, simply injecting the appropriate data directly into the database. To use a snapshot sync, you first need to download a snapshot.
 
-When using Parity **1.4** or **1.5**, you can just run with: 
+When using Parity **1.4** or **1.5**, you can just run with:
 
 ```bash
 $ parity --warp

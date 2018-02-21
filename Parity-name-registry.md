@@ -1,4 +1,4 @@
-# Overview
+# Parity Name Registry
 
 The Parity name registry is an easy way to lookup and address with a human-readable key. Internally to Parity it is the only contract address that is hardcoded for a specific network, i.e. Parity is configured out of the box to provide the address for the Registry when configured to run on either the Ethereum Homestead or Morden networks.
 

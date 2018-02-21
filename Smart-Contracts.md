@@ -1,3 +1,5 @@
+# Smart Contracts
+
 Parity Ethereum supports state-orientated programming of smart contracts with the Solidity programming language for the Ethereum blockchain. The wallet contains an integrated Solidity development environment allowing you to write, compile, and deploy contracts.
 
 ![contracts-develop-0](./images/contracts-develop-0.png)

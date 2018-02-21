@@ -1,3 +1,5 @@
+# Whisper PoC 2
+
 This page, in addition to the Whisper Wire Specification, details the full Whisper protocol for the first proof-of-concept and sets the vision for the final design. It evolve alongside the Whisper protocol as the prototype is refined. From it you should be able to develop compliant Whisper implementations. This document is intended to give only the base specification. Many of the aspects leading to an implementation of Whisper are game theoretic and best not prescribed in the specification, but rather left to individual implementation teams to determine for themselves.
 
 ### What Whisper Is (and Is Not)
@@ -115,9 +117,9 @@ To insert a message, little more is needed than to place the envelope containing
 
 ### Topic Masking and Advertising
 
-Nodes can advertise their topics of interest to each other. For that purpose they use a special type of Whisper message (TopicFilterPacket). The size of Bloom Filter they send to each other must be 64 bytes. Subsequently the rating system will be introduced -- peers sending useful messages will be rated higher then those sending random messages. 
+Nodes can advertise their topics of interest to each other. For that purpose they use a special type of Whisper message (TopicFilterPacket). The size of Bloom Filter they send to each other must be 64 bytes. Subsequently the rating system will be introduced -- peers sending useful messages will be rated higher then those sending random messages.
 
-A message matches the bloom filter, if any one of the topics in this message, converted to the Whisper bloom hash, will match the bloom filter. 
+A message matches the bloom filter, if any one of the topics in this message, converted to the Whisper bloom hash, will match the bloom filter.
 
 Whisper bloom function accepts AbridgedTopic as a parameter (size: 4 bytes), and produces a 64-byte hash, where three bits (at the most) are set to one, and the rest are set to zeros, according to the following algorithm:
 

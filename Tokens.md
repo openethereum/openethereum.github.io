@@ -1,3 +1,5 @@
+# Tokens
+
 The native token of the Ethereum blockchain is called _Ether_ (ETH). In addition to Ether, additional assets and tokens can be handled by the Ethereum blockchain. The Parity Ethereum wallet supports any [ERC20](https://github.com/ethereum/EIPs/issues/20)-compliant token by displaying balances and enabling transfers to be as simple as Ether transactions.
 
 To get your first tokens, and learn how to use them, you can use the **GavCoin** DApp. Open the **Applications** tab, enable the network applications, and open GavCoin. If it's not displayed by default, make sure to confirm the usage warning for community DApps and use the _Edit_ button on top to toggle visibility of displayed DApps.

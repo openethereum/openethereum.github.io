@@ -1,3 +1,5 @@
+# Web Assembly (WASM)
+
 ## General overview
 
 Along with EVM, Parity has an experimental support for Web Assembly as a bytecode for contracts. Some advantages of Web Assembly (WASM for short) are:
@@ -20,10 +22,10 @@ For example, params section might look like this:
 		"minGasLimit": "0x1388",
 		"networkID" : "0x11",
                 "wasm": true
-	},  
+	},
 ```
 
-Now the engine will be able to distinguish and run WASM byte code if it is used as a contract code. Note that this is the addition to the EVM, so all your EVM contracts on chain are safe and will continue to function as before! 
+Now the engine will be able to distinguish and run WASM byte code if it is used as a contract code. Note that this is the addition to the EVM, so all your EVM contracts on chain are safe and will continue to function as before!
 
 
 ## Building a contract
@@ -46,8 +48,8 @@ pub fn call(_desc: *mut u8) {
 }
 ```
 
-Which, once executed, will leave a debugging message `"Empty contract"` in your node console. Please refer to  [wasm-tests README](https://github.com/paritytech/wasm-tests) for prerequisites to setup toolchain which will allow you to build those contracts. 
+Which, once executed, will leave a debugging message `"Empty contract"` in your node console. Please refer to  [wasm-tests README](https://github.com/paritytech/wasm-tests) for prerequisites to setup toolchain which will allow you to build those contracts.
 
 ## Integrating in the existing toolchain
 
-We believe WebAssembly is here to stay, therefore we contribute not only to the Parity to support WASM contract execution, but to WebAssembly ecosystem as a whole. For example, [parity-wasm](https://github.com/paritytech/wasm-tests) is a crate that allows to perform any manipulation with WASM byte code (read, generate, transform, interpret) to support your custom toolchain. We use it ourselves for running WASM bytecode and to inject gas counting in a deterministic, in-advance way. 
+We believe WebAssembly is here to stay, therefore we contribute not only to the Parity to support WASM contract execution, but to WebAssembly ecosystem as a whole. For example, [parity-wasm](https://github.com/paritytech/wasm-tests) is a crate that allows to perform any manipulation with WASM byte code (read, generate, transform, interpret) to support your custom toolchain. We use it ourselves for running WASM bytecode and to inject gas counting in a deterministic, in-advance way.

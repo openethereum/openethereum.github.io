@@ -1,3 +1,5 @@
+# Permissioning
+
 _The development of this feature was supported by the [Energy Web Foundation](http://energyweb.org/) in order to expedite the energy sector revolution towards decentralisation._
 
 # Overview
@@ -72,14 +74,14 @@ pragma solidity ^0.4.11;
 
 contract PeerManager {
     mapping(bytes32 => bytes32) peers;
-    
+
     function PeerManager() {
         peers[0x11] = 0x12;
         peers[0x21] = 0x22;
         peers[0x31] = 0x32;
         peers[0x41] = 0x42;
     }
-    
+
     function connectionAllowed(bytes32 sl, bytes32 sh, bytes32 pl, bytes32 ph) constant returns (bool res) {
         if (sl == 0x01 && sh == 0x02) {
 	    return true;
@@ -90,7 +92,7 @@ contract PeerManager {
 ```
 
 # Transaction type
-Even though all network participants can submit transactions it is still up to the validators to include them. Besides that, it is possible to restrict certain addresses or transaction types on the state transition level. 
+Even though all network participants can submit transactions it is still up to the validators to include them. Besides that, it is possible to restrict certain addresses or transaction types on the state transition level.
 
 By transaction types we mean:
 
@@ -130,7 +132,7 @@ The contract must support the following ABI:
 ```
 
 * `sender` is the transaction sender address.
-* `type` is the transaction type bit mask: 
+* `type` is the transaction type bit mask:
 
 | Type | Bit |
 |:---:|:---:|
@@ -150,7 +152,7 @@ contract TestOOG {
     uint32 constant Call = 0x02;
     uint32 constant Create = 0x04;
     uint32 constant Private = 0x08;
-    
+
     function allowedTxTypes(address sender) public returns (uint32)
     {
         if (sender == 0x7e5f4552091a69125d5dfcb7b8c2659029395bdf) return All; // Secret: 0x00..01
@@ -181,7 +183,7 @@ In Parity Ethereum a Validator Set can be specified using a contract implementin
 Please see the [Validator Set wiki page](Validator-Set.md).
 
 # Gas price
-Currently, Parity already allows whitelisting of accounts for zero gas price transactions. In addition to that, a way to specify gas prices per account will be possible soon. This is achieved by managing gas prices in a smart contract and enables one to regulate how much each account has to spend on interactions with the blockchain. Of course, gas prices can also be set to zero. 
+Currently, Parity already allows whitelisting of accounts for zero gas price transactions. In addition to that, a way to specify gas prices per account will be possible soon. This is achieved by managing gas prices in a smart contract and enables one to regulate how much each account has to spend on interactions with the blockchain. Of course, gas prices can also be set to zero.
 
 ## How it works
 Service transaction checker contract is used by Parity to filter out transactions with zero gas price (aka service transactions).

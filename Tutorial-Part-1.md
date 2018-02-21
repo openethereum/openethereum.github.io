@@ -1,3 +1,5 @@
+# DApp Tutorial
+
 **This is the first part of the Dapp Tutorial**.
 
 [2nd Part ⟶](https://github.com/paritytech/parity/wiki/Tutorial-Part-2)

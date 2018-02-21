@@ -1,3 +1,5 @@
+# Docker
+
 Build and run Parity anywhere with Docker:
 
 - [Pick a container](#pick-a-container)
@@ -21,7 +23,7 @@ Docker containers for Parity are available via [Docker Hub](https://hub.docker.c
 ```bash
 $ docker search parity/parity
 NAME                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-parity/parity               Parity is Ethcore's initial fully-featured...   0                    
+parity/parity               Parity is Ethcore's initial fully-featured...   0
 parity/rust                 Rust stable, beta and nightly for GitLab C...   0                    [OK]
 parity/snapcraft            Docker image for build snap application (U...   0                    [OK]
 parity/rust-arm             RUST for GitLab CI runner (ARM architecture)    0                    [OK]
@@ -169,7 +171,7 @@ $ docker-compose up -d
 You will then be able to see the logs by running:
 
 ```bash
-$ docker-compose logs -f 
+$ docker-compose logs -f
 ```
 
 In these logs you should see a token being generated to login to parity. Alternatively you can run the command:

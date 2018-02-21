@@ -1,4 +1,6 @@
-# Building Parity with Secret Store support
+# Secret Store Configuration
+
+## Building Parity with Secret Store support
 By default Parity is built without Secret Store support. To enable Secret Store, build it with `--features secretstore` argument:
 ```bash
 git clone https://github.com/paritytech/parity.git
@@ -6,10 +8,10 @@ cd parity
 cargo build --features secretstore --release
 ```
 
-# Configuring nodes
+## Configuring nodes
 Every Secret Store node must be properly configured. The best way is to create [configuration files](Configuring-Parity.md#config-file). All Secret Store specific configuration options must be placed in `[secretstore]` section of this file.
 
-## Configuring key pairs
+### Configuring key pairs
 Secret Store is a closed nodes group - i.e. nodes are connecting and accepting connections to/from known nodes only. This means that address of each node is known to the whole Secret Store. To prove that it is the correct node who is listening on this address, key pair must be assigned to every node.
 
 The best option to specify key pair is to use account, created in Parity. It can be created either manually, or by using `ethstore` utility. You'll also need file with this password' account. After creating an account, add following lines to your configuration file:
@@ -37,7 +39,7 @@ and specify private portion in the `self_secret` configuration option:
 self_secret = "30c11fa62e828a2f7d0e12ef0429dc2b5f79de4c89847d328c8418e618d8d5bb" # private key
 ```
 
-## Configuring connections
+### Configuring connections
 You should specify address to listen to for incoming connections:
 ```toml
 [secretstore]
@@ -54,7 +56,7 @@ Format of node connection is `public_key_of_the_node@node_address`.
 
 The main disadvantage of hardcoded list is that if you need to change nodes set, you have to stop all nodes, change their configuration files and finally restart. Another option is to use blockchain contract to configure nodes set (see [Nodes set contracts](#nodes-set-contracts)).
 
-## Configuring Secret Store API
+### Configuring Secret Store API
 Secret Store HTTP API is enabled by default on `local` interface and port `8082`. To change these settings, use following configuration options:
 ```toml
 [secretstore]
@@ -67,7 +69,7 @@ You can disable HTTP API by setting `disable_http` option to `true`.
 
 The same API can be provided using blockchain contract (see [Secret Store API contract](#secret-store-api-contract)).
 
-## Example configuration file
+### Example configuration file
 Examples of different configuration files and scripts for their generation can be found in [Secret Store tests](https://github.com/svyatonik/sstore_test) repository. Here's single configuration file example:
 ```toml
 [secretstore]
@@ -81,7 +83,7 @@ http_port = 8082
 path = "db.poa_ss1/secretstore" # path to Secret Store keys storage
 ```
 
-# Changing servers set configuration
+## Changing servers set configuration
 If you want to include or exclude node to/from Secret Store, you must take into account two factors:
 1) if you're excluding node, it can happen that after exclusion some secrets became irrecoverable (there will be less secret shares in Secret Store than it is required to recover the secret);
 2) if you're adding node, you might want to add additional shares to existing secrets to avoid situation from (1) in the future.
@@ -126,10 +128,10 @@ That said, here's the actions required to start nodes set change session:
 
 One last note about this session: it will fail if there is at least one server key, which is irrecoverable or which will became irrecoverable after nodes set change session. So avoid situations when there are a lot of isolated nodes or there's a lot of nodes being removed without replacement. *And choose key threshold wisely*.
 
-# Nodes set contracts
+## Nodes set contracts
 There's a way to read list of other nodes from the blockchain contract, instead of configuration file. There are two types of such contracts: with and without auto-migration support. Both types of contract must be registered in the Registry under `secretstore_server_set` name.
 
-## Nodes set contracts without auto-migration support
+### Nodes set contracts without auto-migration support
 This type of contract is suitable for cases, when you do not bother with running [nodes set change session](#changing-servers-set-configuration), or you're running it manually. The contract must implement the following interface:
 ```sol
 // Simple key server set.
@@ -145,7 +147,7 @@ interface KeyServerSet {
 
 The `disable_auto_migrate` must be set to `true` in configuration file, if you're using this type of the contract.
 
-## Nodes set contracts with auto-migration support
+### Nodes set contracts with auto-migration support
 This type of contract is used when you want to auto-start [nodes set change session](#changing-servers-set-configuration) (auto migration), when nodes set changes. The contract must implement the following interface:
 ```sol
 // Key server set with migration support.
@@ -195,7 +197,7 @@ interface KeyServerSetWithMigration {
 
 For example implementation, see [SetOwnedWithMigration.sol](https://github.com/svyatonik/contracts/blob/94891dbacf2be8edc497396e41add21117b63359/contracts/SetOwnedWithMigration.sol). The `disable_auto_migrate` must be set to `false` in configuration file, if you're using this type of the contract.
 
-# Secret Store API contract
+## Secret Store API contract
 In addition to Secret Store HTTP API (or as its replacement), there could be a blockchain contract, which is used to provide the same Secret Store functionality. The contract and related functionality is currently under development and only one API method is available - [Server key generation session](Secret-Store.md#server-key-generation-session).
 
 To try it, please deploy contract from [SecretStoreServiceFixed.sol](https://github.com/svyatonik/contracts/blob/94891dbacf2be8edc497396e41add21117b63359/SecretStoreServiceFixed.sol) and register it under `secretstore_service` name in the Registry. Add following configuration option to all nodes configuration files: `service_contract = "registry"`. Now you can try to call `generateServerKey` method on the contract and public portion of the server key will be published via `ServerKeyGenerated` event within few blocks.

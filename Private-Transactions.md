@@ -1,7 +1,9 @@
-# Solution's description
+# Private Transactions
 
-## Overall system architecture
-Private transactions system implements a solution allowing to store, modify and view encrypted data (state) using Ethereum blokchain. 
+## Solution's Description
+
+### Overall system architecture
+Private transactions system implements a solution allowing to store, modify and view encrypted data (state) using Ethereum blokchain.
 The system contains the following major components:
 - Parity nodes. Among them the special nodes Validators are specified, which are used for validating the private transactions. The system uses special messages with encrypted data in order to communicate between nodes.
 - Private contract. A special smart contract, that describes business logic of the system, stores encrypted data and specifies validators. Naturally it's a regular smart contract publicly available. The only difference is existence of encrypted state in it (initialized in contract's constructor). After the contract's deployment the only changes available for its state must be approved by validators. The example of such contract can be found: [here](https://gist.github.com/arkpar/5c8fda407c491163a38aeb90c7fac1d2)
@@ -12,7 +14,7 @@ Example system shown below. Nodes A and C have access to the contract's key. Nod
 
 ![private-transactions-solution](images/private-transactions-solution.png)
 
-## Flow description
+### Flow description
 In order to modify the encrypted state of the private contract the user needs to:
 
 1) Compose a regular transaction for calling corresponding methods of the contract:
@@ -36,17 +38,17 @@ The next steps of the flow are shown on the picture below:
 
 ![private-transactions-flow](images/private-transactions-flow.png)
 
-## Current limitations:
+### Current limitations:
 - Only one private transaction per block per contract allowed (since pending state is not implemented for private transactions yet)
 - Current implementation requires verification of the private transaction by all validators in the system
 
-# Setup of the private network
+## Setup of the private network
 The following steps need to be performed in order to setup a chain with private transactions using on Parity client:
 
 0) (Pre-requisite) Contracts registry must be deployed for the chain.
 1) Secret store permissioning contract should be deployed and its address added into contracts registry under **secretstore_acl_checker** name.
 Example of the trivial permissioning contract is placed [here](https://gist.github.com/grbIzl/14541e57f50b3ceae9831512c8234624)
-The only requirement for such a contract is existing of 
+The only requirement for such a contract is existing of
 
 `function checkPermissions(address user, bytes32 document) constant returns (bool) {} `
 
@@ -72,7 +74,7 @@ The result transaction should be signed.
 curl --data '{"method":"private_composeDeploymentTransaction","params":["pending", "0xf9014203...ba4a30127e29774d15b1e12be", ["0x7ffbe3512782069be388f41be4d8eb350672d3a5"], "0x0"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8549`
 ```
 
-Where "0xf9014203...ba4a30127e29774d15b1e12be" is signed transaction created on the previous step. 
+Where "0xf9014203...ba4a30127e29774d15b1e12be" is signed transaction created on the previous step.
 This method returns a deployment transaction, which should be signed as well.
 
 The detailed description of method's parameters see in API section.
@@ -93,7 +95,7 @@ Where 0x52f5f1b8c785ab1c0e892b4c46b080fde9ad992b is contract's address returned 
 After that, the permissions for this key id should be set inside permissioning contract of secret store.
 For [the sample contract](https://gist.github.com/grbIzl/14541e57f50b3ceae9831512c8234624) method `addKey(address[] users, bytes32 key)` should be called with key id and list of the adresses required the permission to use the key.
 
-# Parity arguments
+## Parity arguments
 All parameters required for usage of private transactions functionality provided via Parity launch arguments.
 
 - `--private-signer=[ACCOUNT]`.
@@ -120,52 +122,52 @@ Example of usage:
 ~/parity/parity --config "/chain/config.toml" --author "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --engine-signer "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-validators "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-account "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-sstore-url "http://secretstore:8082" --private-passwords "/parity/password.txt"
 ```
 
-# RPC API
+## RPC API
 Several RPC methods were added in order to access private transactions functionality. For usage, private api has to be included into apis block in configuration:
 
-`[rpc]`  
+`[rpc]`
 `apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts", "private"]`
 
 Methods:
 
 ### `private_composeDeploymentTransaction`
 
-Returns a transaction for deployment of the private contract. The transaction should be signed and sent for the deployment.  
-#### Parameters  
-`num: BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`   
-`request: Bytes` - signed transaction for contract's creation (in hex)  
-`validators: Vec<H160>` - list of validator accounts for this contract  
-`gas_price: U256` - gas price for the transaction   
+Returns a transaction for deployment of the private contract. The transaction should be signed and sent for the deployment.
+#### Parameters
+`num: BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`
+`request: Bytes` - signed transaction for contract's creation (in hex)
+`validators: Vec<H160>` - list of validator accounts for this contract
+`gas_price: U256` - gas price for the transaction
 
-#### Returning data:  
-`struct PrivateTransactionReceiptAndTransaction {`  
-`/// Receipt`  
-`receipt: PrivateTransactionReceipt,`  
-`/// Transaction`  
-`transaction: TransactionRequest,`  
-`}`  
+#### Returning data:
+`struct PrivateTransactionReceiptAndTransaction {`
+`/// Receipt`
+`receipt: PrivateTransactionReceipt,`
+`/// Transaction`
+`transaction: TransactionRequest,`
+`}`
 
-`struct PrivateTransactionReceipt {`  
-`/// Transaction Hash`  
-`transaction_hash: H256,`  
-`/// Private contract address`  
-`contract_address: Option<H160>,`  
-`/// Status code`  
-`status_code: u8,`  
-`}`  
+`struct PrivateTransactionReceipt {`
+`/// Transaction Hash`
+`transaction_hash: H256,`
+`/// Private contract address`
+`contract_address: Option<H160>,`
+`/// Status code`
+`status_code: u8,`
+`}`
 
-### `private_sendTransaction`  
-Sends a private transaction (see Private Transactions Flow for details of implementation).  
-#### Parameters  
-`request: Bytes` - signed regular transaction (in hex).  
+### `private_sendTransaction`
+Sends a private transaction (see Private Transactions Flow for details of implementation).
+#### Parameters
+`request: Bytes` - signed regular transaction (in hex).
 
-### `private_call`  
-View encrypted data of the private contract. The resulted call will be made internally.  
-#### Parameters  
-`num: BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`  
-`request: CallRequest` - signed regular transaction (in hex)  
+### `private_call`
+View encrypted data of the private contract. The resulted call will be made internally.
+#### Parameters
+`num: BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`
+`request: CallRequest` - signed regular transaction (in hex)
 
-### `private_contract_key`  
+### `private_contract_key`
 Returns key id associated with the deployed contract.
-#### Parameters  
-`contract_address: H160` - address of the private contract  
+#### Parameters
+`contract_address: H160` - address of the private contract

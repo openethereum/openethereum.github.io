@@ -1,3 +1,5 @@
+# DApp Tutorial
+
 **This is the fifth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
 [⟵ 4th Part](Tutorial-Part-4.md) | [6th Part ⟶](Tutorial-Part-6.md)
@@ -140,7 +142,7 @@ Next we'll use that function rather than calling the `bonds.post` directly. the 
 onClick={this.give.bind(this)}
 ```
 
-Finally, we'll actually display the transaction status in an `Rspan` element. Add this extra line to the end of the element's HTML, right before the final `</div>`: 
+Finally, we'll actually display the transaction status in an `Rspan` element. Add this extra line to the end of the element's HTML, right before the final `</div>`:
 
 ```
 <Rspan>{this.state.current && this.state.current.map(JSON.stringify)}</Rspan>

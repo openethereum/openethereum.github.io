@@ -1,3 +1,5 @@
+# Light Ethereum Subprotocol
+
 The Light Ethereum Subprotocol (LES) is the protocol used by "light" clients, which only download block headers as they appear and fetch other parts of the blockchain on-demand. They provide full functionality in terms of safely accessing the blockchain, but do not mine and therefore do not take part in the consensus process. Full and archive nodes can also support the LES protocol besides ETH in order to be able to serve light nodes.
 It has been decided to create a separate sub-protocol in order to avoid interference with the consensus-critical ETH network and make it easier to update during the development phase. Some of the LES protocol messages are similar to the "new sync model" (ETH62/63) of the [Ethereum Wire Protocol](https://github.com/ethereum/wiki/wiki/Ethereum-Wire-Protocol), with the addition of a few new fields (see below).
 
@@ -97,7 +99,7 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 **Capabilities**
 [`+0x0f`, `reqID`: `P`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Broadcast new capabilities to a peer.
 This can be done impromptu or as part of a request. Potential key, value pairs are:
-* "firstBlock" `B_32`. The first block (by hash) which queries may request state data for. 
+* "firstBlock" `B_32`. The first block (by hash) which queries may request state data for.
 * "lastBlock" `B_32`. The last block (by hash) which queries may request state data for.
 * "blockBodies" `bool`. Indicates whether this peer can serve block bodies.
 * "receipts" `bool`. Indicates whether this peer can serve receipts.

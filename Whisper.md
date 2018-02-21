@@ -1,4 +1,6 @@
-In a nutshell whisper is a communication protocol for DApps to communicate with each other. 
+# Whisper
+
+In a nutshell whisper is a communication protocol for DApps to communicate with each other.
 
 ### Use case
 
@@ -17,7 +19,7 @@ In general, think transactions, but without the eventual archival, any necessity
 * **Low-level** API only exposed to DApps, never to users.
 * **Low-bandwidth** Not designed for large data transfers.
 * **Uncertain-latency** Not designed for RTC.
-* **Dark** No reliable methods for tracing packets or 
+* **Dark** No reliable methods for tracing packets or
 * Typical usage:
   * Low-latency, 1-1 or 1-N signalling messages.
   * High latency, high TTL 1-* publication messages.

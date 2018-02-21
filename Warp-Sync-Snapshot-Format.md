@@ -1,9 +1,9 @@
-# Overview
+# Warp Sync Snapshot Format
 
 Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
 
 The snapshot format is three-part: block chunks, state chunks, and the manifest.
-Every chunk is run through snappy compression, and then hashed. Before compression, chunks are created to be approximately `CHUNK_SIZE` bytes. 
+Every chunk is run through snappy compression, and then hashed. Before compression, chunks are created to be approximately `CHUNK_SIZE` bytes.
 
 `CHUNK_SIZE` = `4MiB`, but this may be subject to change.
 All data structures should be assumed to be RLP-encoded unless specified otherwise.
@@ -89,17 +89,17 @@ Let TD(X) denote the total difficulty of block X.
 
 Let B be the most recent block.
 
-Let B<sub>target</sub> = B. 
+Let B<sub>target</sub> = B.
 
 Let B<sub>finish</sub> = `B - 30000 + 1`.
 
-Let S<sub>current</sub> = 0. 
+Let S<sub>current</sub> = 0.
 
-Walk backwards from block B until reaching B<sub>finish</sub> . 
+Walk backwards from block B until reaching B<sub>finish</sub> .
 
-For each block B<sub>x</sub>: 
+For each block B<sub>x</sub>:
   - generate the list `[abridged: AB, receipts: RC]` D<sub>x</sub>
-  - Note its size: S<sub>x</sub> = SIZE(D<sub>x</sub>). 
+  - Note its size: S<sub>x</sub> = SIZE(D<sub>x</sub>).
   - S<sub>current</sub> = S<sub>current</sub> + S<sub>x</sub>.
   - If S<sub>current</sub> > `CHUNK_SIZE`:
     - Let S<sub>current</sub> = S<sub>current</sub> - `CHUNK_SIZE`

@@ -1,3 +1,5 @@
+# Network Configuration
+
 Parity utilizes the network aggressively which allows finding and connecting to peers quickly. Default networking strategy designed for universal connectivity across LAN and WAN networks may trigger false positive alarms with the security software and service providers. This page contains a number of tips to optimize bandwidth usage and configure Parity to be more hosting provider friendly.
 
 ## Configure network IP range

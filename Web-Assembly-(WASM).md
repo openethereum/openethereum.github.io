@@ -1,3 +1,5 @@
+# Web Assembly (WASM)
+
 Along with EVM, Parity has an experimental support for Web Assembly as a bytecode for contracts. Some advantages of Web Assembly (WASM for short) are:
 
 - Standard is maintained by huge number of interested parties

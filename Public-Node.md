@@ -1,3 +1,5 @@
+# Public Node
+
 If you want to serve a [Parity Wallet](Parity-Wallet.md) to multiple private or public devices it's worth to consider running a **Public Node** rather then whitelisting hosts for user and websockets interfaces. To start a public node, simply run:
 
 ```bash

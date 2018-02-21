@@ -1,3 +1,5 @@
+# DApp Tutorial
+
 **This is the seventh part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
 [⟵ 6th Part](Tutorial-Part-6.md) | [8th Part ⟶](Tutorial-Part-8.md)

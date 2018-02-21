@@ -1,3 +1,5 @@
+# FAQ: Troubleshooting (Yelp!!!!11)
+
 ### Double-clicking the Parity icon doesn't do anything!?!
 
 Probably your node is already running (or another node is running, i.e., Geth) and another instance of Parity can not be launched with the same configuration (ports, dapps, web interface, etc.).

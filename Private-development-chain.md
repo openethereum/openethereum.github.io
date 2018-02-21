@@ -1,3 +1,5 @@
+# Private Development Chain
+
 Parity provides an `dev` engine, which can be used for dapp development and demos. When used the transactions will be instantly "mined" (after being confirmed by [Parity Wallet](Parity-Wallet) or signed) and all blocks will be accepted. It can be simply activated by running:
 ```
 parity --config dev
@@ -48,4 +50,4 @@ To make multiple transactions confirm at the same time use `--reseal-min-period 
 ```
 
 ## Vagrant
-There is a [Vagrant Box](https://github.com/jesuscript/vagrant-eth-env) that creates and starts a preconfigured Parity node running this chain, in case you are looking for a minimal configuration setup. 
+There is a [Vagrant Box](https://github.com/jesuscript/vagrant-eth-env) that creates and starts a preconfigured Parity node running this chain, in case you are looking for a minimal configuration setup.

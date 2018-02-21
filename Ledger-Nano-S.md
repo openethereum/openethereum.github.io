@@ -1,3 +1,5 @@
+# Ledger Nano S
+
 The **Ledger Nano S** by [Ledger](https://www.ledgerwallet.com/) is a hardware wallet supporting Ethereum, Ethereum Classic, as well as other assets and crypto-currencies. It's based on robust safety features for storing cryptographic assets and securing digital payments. It connects to any computer via USB running a Parity Wallet and enables using the account to sign transactions.
 
 ### Connecting the Nano S with Parity

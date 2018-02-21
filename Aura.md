@@ -1,4 +1,6 @@
-Aura _(Authority Round)_ is one of the Blockchain consensus algorithms available in Parity. 
+# Aura: Authority Round
+
+Aura _(Authority Round)_ is one of the Blockchain consensus algorithms available in Parity.
 
 Parameters:
   - _n_, the number of nodes
@@ -21,10 +23,10 @@ Under the assumption of a synchronous network which propagates messages within t
 
 `Let SIG_SET(Blocks) be the set of all authors of the blocks in Blocks`
 
-If there is a valid chain C ending with `C[K..]`, where `|SIG_SET(C[K..])| > n/2`, 
+If there is a valid chain C ending with `C[K..]`, where `|SIG_SET(C[K..])| > n/2`,
 then `C[K]` and all of its ancestors are finalized.
 
-This definition of finality stems from a simple majority vote. In this setting, `2f + 1 <= n`, so the faulty nodes cannot finalize a block all on their own. 
+This definition of finality stems from a simple majority vote. In this setting, `2f + 1 <= n`, so the faulty nodes cannot finalize a block all on their own.
 
 **Node Configuration:**
 

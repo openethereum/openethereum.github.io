@@ -1,3 +1,5 @@
+# Using Parity with Mist
+
 As of version 1.2, Parity works with the [Ethereum Foundation Wallet ("Mist")](https://github.com/ethereum/mist/releases).
 
 To use Parity with Mist, you need to make sure Parity is running in Geth-IPC-compatibility mode; to do this just run with the `--geth` option. For example:

@@ -1,3 +1,5 @@
+# Community Guides
+
 This is a collection of articles written by community members about using Parity in various scenarios:
 
 ## Setup

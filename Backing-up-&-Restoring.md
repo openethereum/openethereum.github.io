@@ -1,3 +1,5 @@
+# Backing up and Restoring
+
 It's generally sensible to back up your keys and recovery phrases.
 
 ### Role of Parity recovery phrases
@@ -80,7 +82,7 @@ The user interface allows you to **import** keys from:
 - Geth Keystore: This allows importing keys created in with the go-ethereum client.
 - JSON Backup: This allows importing password-encrypted JSON key-files previously exported with Parity.
 - Private Keys: This allows importing plain, unencrypted private keys generated with any other application.
-- Presale Wallet: This allows importing a wallet from the initial Ether pre-sale maintained by the Ethereum Foundation. 
+- Presale Wallet: This allows importing a wallet from the initial Ether pre-sale maintained by the Ethereum Foundation.
 
 In addition, it's possible to **restore** private keys from the 12-word mnemonic recovery phrase.
 

@@ -1,3 +1,5 @@
+# Whisper Overview
+
 ### Example ("Dream") API Usage
 
 ```js
@@ -49,7 +51,7 @@ broadcastWatch.arrived(function(m)
 
 ### Basic operation
 
-`post` takes a JSON object containing four key parameters: 
+`post` takes a JSON object containing four key parameters:
 
 ```js
 shh.post({ "topic": t, "payload": p, "ttl": ttl, "workToProve": work });

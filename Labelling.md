@@ -1,3 +1,5 @@
+# Labeling
+
 This page is to explain the conventions over Parity's labeling system.
 
 Labels are split into several groups.

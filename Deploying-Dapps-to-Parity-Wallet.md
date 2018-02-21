@@ -1,4 +1,4 @@
-# Overview
+# Deploying Dapps to the Parity Wallet
 
 DApps are an exciting way to showcase a contract or a series of contracts with a simple interface that allows users to interact with it in a secure way. This guide will provide a step-by-step guide for developers to develop dapps for their contracts and integrate these into Parity Wallet.
 

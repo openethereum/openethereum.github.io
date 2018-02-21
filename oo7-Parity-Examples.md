@@ -1,20 +1,22 @@
+# oo7 Examples
+
 Examples of common operations and useful functionality when building a dApp using [oo7-Bonds](oo7-Parity-Reference.md). It does not aim to cover the complete functionality, for more features please look at the documentation.
 
 ## Bond functionality (oo7)
-We need to install and require the [oo7](https://www.npmjs.com/package/oo7) Bond package first. 
+We need to install and require the [oo7](https://www.npmjs.com/package/oo7) Bond package first.
 `$ npm i oo7`
 ```
 const oo7 = require('oo7');
 const Bond = oo7.Bond;
 ```
 
-In simple a bond is just a reactive promise. This means it will always be up to date with the newest value change. 
+In simple a bond is just a reactive promise. This means it will always be up to date with the newest value change.
 You can tie a function to it, which executes each time a value change triggers the bond.
 ```
 var bond = new Bond();  // creates a Bond instance
 bond.tie(console.log);  // ties the function to the bond => gets executed on each value change
 bond.then(console.log); // executes once on the next value change => bond.log() is equivalent.
-var transBond = bond.map(v => `${new Date} ${v}` ); // creates a new TransformBond. 
+var transBond = bond.map(v => `${new Date} ${v}` ); // creates a new TransformBond.
 ```
 Transformbonds are dependent on their dependencies (here the initial bond). If the value changes it will trigger to execute the provided function and return the result as value. The difference between using `tie` and `then` is that latter will only trigger once and behaves as a Promise call would. While tying a function will execute it each time the value updates until you untie it.
 ```
@@ -36,7 +38,7 @@ transJointBond.log(); // print out result once when bond triggers
 
 Since our initial bond value already has a 'ready value' (not undefined), it will trigger the jointBond (which triggers its TransformBond) with the two most recent values if we run `bond2.changed(64);`.
 
-We can also create TransformBonds with multiple dependencies. Its constructor gets as arguments a function which is executed when triggered, the bonds whose values are needed for the result(ready values will trigger) and dependency bonds which are needed for the computation indirectly but whose values we do not need (only knowledge that they are updated). 
+We can also create TransformBonds with multiple dependencies. Its constructor gets as arguments a function which is executed when triggered, the bonds whose values are needed for the result(ready values will trigger) and dependency bonds which are needed for the computation indirectly but whose values we do not need (only knowledge that they are updated).
 ```
 const {TransformBond, TimeBond} = oo7;
 var timeBond = new TimeBond(); // inbuilt bond which is returning the UNIX timestamp
@@ -68,7 +70,7 @@ bonds.balance(bonds.me); // given an address (or Bond which returns) it gives th
 var txnsBond = bonds.head.map(b => b.transactions.map(txHash => bonds.transaction(txHash)), 1);
 txnsBond.then(txns => txns.forEach(console.log));
 ```
-* Post a transaction 
+* Post a transaction
 ```
 bonds.post({to:bonds.me, value:1 * 1e15}).tie(console.log(o));
 ```
@@ -118,7 +120,7 @@ render () {
       <AddressBond bond={this.addressBond} /> {/*Validates address input*/}
       <BalanceBond bond={this.balance} /> {/*Balance input*/}
       <AccountLabel address={this.addressBond} /> {/*Displays account of address*/}
-      <TransactButton content='Transact to the account' tx={{to: this.address, value: this.balance}} />  {/*Button shows Transaction state*/}    
+      <TransactButton content='Transact to the account' tx={{to: this.address, value: this.balance}} />  {/*Button shows Transaction state*/}
     </Rdiv>
   );
 }

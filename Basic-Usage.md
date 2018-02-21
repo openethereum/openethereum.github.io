@@ -1,3 +1,5 @@
+# Basic Usage
+
 To use Parity run `parity ui` command or head on to [http://127.0.0.1:8180/](http://127.0.0.1:8180/) or another port specified by `--ui-port PORT` option. This will bring up the Parity wallet user interface that can be used to monitor Ethereum blockchain syncing progress and to use installed DApps.
 
 ![The Parity User Interface](images/home-0.png)

@@ -1,3 +1,5 @@
+# Setup Parity
+
 - [Binaries](#binaries)
     - [One-line Binary Installer](#one-line-binary-installer)
     - [Experimental Installers](#experimental-installers)

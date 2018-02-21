@@ -1,3 +1,5 @@
+# Validator Sets
+
 A number of Engines available in Parity achieve consensus by referring to a list of "validators" (referred to as authorities if they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them. The validator set can be specified in a number of different ways.
 
 # Immutable list
@@ -36,21 +38,21 @@ which corresponds to this Solidity contract definition:
 ```solidity
 contract ValidatorSet {
     /// Issue this log event to signal a desired change in validator set.
-    /// This will not lead to a change in active validator set until 
+    /// This will not lead to a change in active validator set until
     /// finalizeChange is called.
     ///
     /// Only the last log event of any block can take effect.
     /// If a signal is issued while another is being finalized it may never
     /// take effect.
-    /// 
+    ///
     /// _parent_hash here should be the parent block hash, or the
     /// signal will not be recognized.
     event InitiateChange(bytes32 indexed _parent_hash, address[] _new_set);
-    
+
     /// Get current validator set (last enacted or initial if no changes ever made)
     function getValidators() constant returns (address[] _validators);
-    
-    /// Called when an initiated change reaches finality and is activated. 
+
+    /// Called when an initiated change reaches finality and is activated.
     /// Only valid when msg.sender == SUPER_USER (EIP96, 2**160 - 2)
     ///
     /// Also called when the contract is first enabled for consensus. In this case,
@@ -59,9 +61,9 @@ contract ValidatorSet {
 }
 ```
 
-There is a notion of an "active" validator set: this is the set of the most recently finalized signal (InitiateChange event). The initial set is 
+There is a notion of an "active" validator set: this is the set of the most recently finalized signal (InitiateChange event). The initial set is
 
-The function `getValidators` should always return the active set or the initial set if the contract hasn't been activated yet. 
+The function `getValidators` should always return the active set or the initial set if the contract hasn't been activated yet.
 Switching the set should be done by issuing a `InitiateChange` event with the parent block hash and new set, storing the pending set, and then waiting for call to `finalizeChange` (by the `SYSTEM_ADDRESS`: `2^160 - 2`) before setting the active set to the pending set. This mechanism is used to ensure that the previous validator set "signs off" on the changes before activation, leading to full security in situations like warp and light sync, where state transitions aren't checked.
 
 Other than these restrictions, the switching rules are fully determined by the contract implementing that method. The spec should contain the contract address:
@@ -95,10 +97,10 @@ contract ReportingValidatorSet {
 
     function getValidators() constant returns (address[] _validators);
     function finalizeChange();
-    
+
     // Reporting functions: operate on current validator set.
     // malicious behavior requires proof, which will vary by engine.
-    
+
     function reportBenign(address validator, uint256 blockNumber);
     function reportMalicious(address validator, uint256 blockNumber, bytes proof);
 }
@@ -118,7 +120,7 @@ It is specified as:
 ```
 
 # Multi set
-**Available only in 1.6 and above.**  
+**Available only in 1.6 and above.**
 This validator set can specify any combination of other validator sets. Switching is done based on the number of the current block. It can be useful for conducting chain forks. First set has to start at block 0.
 
 ```json

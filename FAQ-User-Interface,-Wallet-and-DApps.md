@@ -1,3 +1,5 @@
+# FAQ: User Interface, Wallet and DApps
+
 ### How can I access the Parity Wallet?
 
 Open your favorite browser and navigate to `localhost` on port `:8180`: http://127.0.0.1:8180/

@@ -1,3 +1,5 @@
+# FAQ: Building, Installation, and Testing
+
 ### How do I install Parity?
 
 There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/paritytech/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
@@ -94,7 +96,7 @@ If you encounter error `curl: (35) SSL peer handshake failed, the server most li
 
 ```bash
 # update Homebrew
-$ brew update 
+$ brew update
 
 # upgrade OpenSSL and update symlinks
 $ brew upgrade openssl

@@ -1,3 +1,5 @@
+# Wallet.Parity.IO
+
 The service [wallet.parity.io](https://wallet.parity.io/) is a [Public Node](Public-Node.md) serving a secured online version of the [Parity Wallet](Parity-Wallet.md). This walk-through will show you how to set up your first account, back-up your keys, and send a transaction using the online wallet.
 
 ### Your first account
@@ -6,7 +8,7 @@ To use the Parity online-wallet, please navigate to [wallet.parity.io](https://w
 
 ![public-wallet-0](images/public-wallet-0.png)
 
-For the first setup, it's required to read, understand, and accept the privacy policy as well as the terms of service. 
+For the first setup, it's required to read, understand, and accept the privacy policy as well as the terms of service.
 
 ![public-wallet-1](images/public-wallet-1.png)
 

@@ -1,3 +1,5 @@
+# DApp Tutorial
+
 **This is the third part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 
 [⟵ 2nd Part](Tutorial-Part-2.md) | [4th Part ⟶](Tutorial-Part-4.md)

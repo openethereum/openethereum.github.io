@@ -1,3 +1,5 @@
+# oo7 Parity Reference
+
 **For `oo7-parity` version 0.6.0.**
 
 `oo7-parity` is a Parity-centric Ethereum middleware designed to sit between your front-end and a Parity Ethereum node. It is based on `oo7` and `parity.js` (our low-level JS API for the Parity/Ethereum RPC). It makes heavy use of `Bond`s to deliver an effortless UI development experience that results in a responsive, reactive UI. It works best with the Parity Ethereum node, but is partially compatible with other clients, too.
@@ -47,7 +49,7 @@ A number of standard ABIs are provided as part of `oo7-parity`, useful for const
 - `GitHubHintABI`: The Parity GitHubHint contract.
 - `OperationsABI`: The Parity general operations contract.
 - `BadgeRegABI`: The Parity badge registry contract.
-- `TokenRegABI`: The Parity token registry contract. 
+- `TokenRegABI`: The Parity token registry contract.
 - `BadgeABI`: The Parity standard badge contract.
 - `TokenABI`: The ERC-20 standard token contract.
 
@@ -115,7 +117,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `bond
 #### Signer
 - `post(Transaction) => TransactionStatus` [parity]: Posts the described transaction to the node for signing and publication. Evaluates to the status of the transaction as it becomes finalised (or not). Note: it is not supported to post a transaction which fails with an exception and unless `gas` is supplied then the lowest amount of gas will be used.
 - `sign(Address, Bytes) => SignatureStatus` [parity]: Issues a request to the user to sign a message, prepended with a known string for security. Evaluates to the status of the request.
-- `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]: Attempts to deploy a contract of the given initialisation code. Evaluates to the status of the request, including a contract object on finalisation. 
+- `deployContract(initCode: Bytes, ABISpec, Transaction?) => DeploymentStatus` [parity]: Attempts to deploy a contract of the given initialisation code. Evaluates to the status of the request, including a contract object on finalisation.
 - `makeContract(Address, ABISpec) => Contract` [parity]: Creates a new contract object with the given `Address` and ABI specification.
 
 #### State Inspection
@@ -147,7 +149,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `bond
 - `peerCount => Number`: How many other nodes on the p2p network we are connected to.
 - `listening => bool`: Are we allowing inbound connections from other nodes?
 - `peers => Peers` [parity]: Information on each node to which we are connected.
-- `enode => String` [parity]: The node's "enode" (network ID). 
+- `enode => String` [parity]: The node's "enode" (network ID).
 - `nodePort => Number` [parity]: The port on which the node listens for incoming p2p connections.
 - `nodeName => String` [parity]: The name give to peers to identify this node in peer lists.
 
@@ -169,7 +171,7 @@ Items that return `Array`s or `Object`s may be dereferenced directly, e.g. `bond
 #### Transaction Queue
 - `nextNonce(Address) => Number` [parity]: The next valid nonce of `Address`. Includes pending and future transactions as well as the state of the head of the chain.
 - `pending => [LocalTransaction]` [parity]: The (signed) transactions currently pending finalisation in the queue, ordered by priority.
-- `local => { Hash -> LocalTransactionInfo }` [parity]: The status of locally-submitted transactions, including those both finalised and pending. 
+- `local => { Hash -> LocalTransactionInfo }` [parity]: The status of locally-submitted transactions, including those both finalised and pending.
 - `future => [Transaction]` [parity]: Queued transactions whose nonce is too high such that they're not yet valid candidates for finalisation.
 - `pendingStats => { Hash -> PropagationInfo }` [parity]: Extended information concerning a particular (identified) transaction pending finalisation.
 - `unsignedCount => Number` [parity]: The number of unsigned transactions pending signing.

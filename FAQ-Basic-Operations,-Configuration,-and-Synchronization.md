@@ -1,3 +1,5 @@
+# FAQ: Basic Operations, Configuration, and Synchronization
+
 ### How do I run Parity?
 
 After building Parity from source:

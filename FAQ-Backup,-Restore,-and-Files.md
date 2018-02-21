@@ -1,3 +1,5 @@
+# FAQ: Backup, Restore, and Files
+
 ### Where can I find Parity's local files?
 
 On Windows blockchain data is located in `C:\Users\You\AppData\Local\Parity\Ethereum`
