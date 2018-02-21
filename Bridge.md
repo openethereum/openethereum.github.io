@@ -1,5 +1,7 @@
 # Parity Bridge
 
+- [paritytech/parity-bridge](https://github.com/paritytech/parity-bridge/)
+
 ## deployment guide
 
 this guide assumes that you are one of the authorities of
