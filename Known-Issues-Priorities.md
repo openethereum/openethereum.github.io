@@ -22,6 +22,7 @@ Trying to prioritize stuff here. While bridging the gap to a stable light client
 
 ### 2. Full Sync / Full Node Performance
 
+- [ ] 0. [#7967](https://github.com/paritytech/parity/issues/7967) Significantly reduce Archive Node size.
 - [ ] 1. [#7272](https://github.com/paritytech/parity/issues/7272) Auto-update should be randomly delayed. This is a critical issue because this could cause the whole network (esp. Kovan) to go down once the update was triggered.
 - [ ] 2. [#7865](https://github.com/paritytech/parity/issues/7865) Let's get ParityDB integration done.
 - [ ] 3. [#6593](https://github.com/paritytech/parity/issues/6593) Synchronization should never get stuck.
