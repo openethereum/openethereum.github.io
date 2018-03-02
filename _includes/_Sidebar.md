@@ -27,7 +27,7 @@
   - [Parity Dapp Registry](Parity-dapp-registry)
   - [Dapp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
-  - [Parity GitHub Hint](Parity-github-hint)
+  - [Parity GitHub Hint](Parity-Github-Hint)
 - [ERC20 Tokens](Tokens)
   - [Token Deployment](Token-Deployment)
   - [Token Registry](Token-Registry)
