@@ -164,3 +164,11 @@ Another way, is to issue a _hang-up_ (HUP) call for the Parity client, i.e.:
 ```bash
 killall -HUP parity
 ```
+
+### How to launch Parity using the command line on Windows ?
+
+1. Make sure you close parity and that no parity process is running (using Ctrl + Alt + Esc)
+1. Navigate in Windows Explorer to the Parity folder where parity.exe is, it should be located in `C:\Program Files\Parity Technologies\Parity`
+1. Highlight the complete folder path in the top pane, type `cmd` and hit Enter
+![windows pane](/images/windows-explorer-cmd.jpeg)
+1. This opens a command line windows in the Parity folder, you can launch parity with [CLI flags](https://wiki.parity.io/Configuring-Parity.html#cli-options)
