@@ -11,7 +11,7 @@ Parameters:
 
 Time is divided into discrete steps of duration `t`, determined by `UNIX time / t`. At each step `s`, a _primary_ will be assigned. Only the primary at a step may issue a block. It is misbehavior to produce more than one block per step or to produce a block out of turn.
 
-The primary for a step `s` is the node with index `n % s`.
+The primary for a step `s` is the node with index `s % n`.
 
 The protocol contains a chain scoring rule `SCORE(C)`
 
