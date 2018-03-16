@@ -686,7 +686,7 @@ Response
 
 ### parity_changeVault
 
-Changes the current valut for the account
+Changes the current vault for the account
 
 #### Parameters
 
