@@ -513,8 +513,8 @@ Footprint Options:
                                    fast - maintain journal overlay. Fast but 50MB used.
                                    auto - use the method most recently synced or
                                    default to fast if none synced (default: auto).
-  --pruning-history NUM            Set a minimum number of recent states to keep when pruning
-                                   is active. (default: 64).
+  --pruning-history NUM            Set a minimum number of recent states to keep 
+                                   in memory when pruning is active. (default: 64).
   --pruning-memory MB              The ideal amount of memory in megabytes to use to store
                                    recent states. As many states as possible will be kept
                                    within this limit, and at least --pruning-history states
