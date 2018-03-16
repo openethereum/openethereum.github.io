@@ -79,6 +79,7 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"forkBlock"` block number of the latest fork that should be checked
   + `"forkCanonHash"` hash of the canonical block at `forkBlock`
   + `"bombDefuseTransition"` block number at which the difficulty bomb (epsilon in Yellow Paper Eqs. 39, 44) is removed from the difficulty evolution
+  + `"wasmActivationTransition"` block number at which bytecode (in storage or transactions) can be run as WASM bytecode and by WebAssembly VM.
 
 + **`"accounts"`** contains optional contents of the genesis block, such as simple accounts with balances or contracts. Parity does not include the standard Ethereum builtin contracts by default. These are necessary when writing new contracts in Solidity, since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below:
 
