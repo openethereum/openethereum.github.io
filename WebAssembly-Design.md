@@ -26,6 +26,6 @@ Otherwise, if all conditions are met, Parity instruments the contract code with 
 
 Each of the steps above can result in error described in the correspondng links, and Parity MUST stop execution and return error in this case.
 
-Then Parity instantiates the module according to the [WebAssembly specification] (https://webassembly.github.io/spec/core/exec/modules.html?highlight=instantiation#exec-instantiation). This instantiation code can also result in a trap, in this case Parity MUST finish execution of the bytecode with error.
+Then Parity instantiates the module according to the [WebAssembly specification](https://webassembly.github.io/spec/core/exec/modules.html?highlight=instantiation#exec-instantiation). This instantiation code can also result in a trap, in this case Parity MUST finish execution of the bytecode with error.
 
 If instantiation code produced no trap, Parity executes `call` method according to [WebAssembly Execution specification](https://webassembly.github.io/spec/core/exec/index.html).
