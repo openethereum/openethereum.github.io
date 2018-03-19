@@ -21,8 +21,8 @@ Contract byte code SHOULD:
 If any of those conditions are not met, Parity MUST finish execution of the code with error.
 
 Otherwise, if all conditions are met, Parity instruments the contract code with following modifications:
-- [Gas metering injection](WebAssembly-GasMeteringABI.md)
-- [Deterministic stack height validation](WebAssembly-StackHeightABI.md)
+- [Gas metering injection](WebAssembly-GasMetering.md)
+- [Deterministic stack height validation](WebAssembly-StackHeight.md)
 
 Each of the steps above can result in error described in the correspondng links, and Parity MUST stop execution and return error in this case.
 
