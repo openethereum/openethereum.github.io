@@ -10,7 +10,11 @@
     - [Install and Build Parity](#install-and-build-parity)
     - [A note on backing up your datadir with Docker](#a-note-on-backing-up-your-datadir-with-docker)
 - [Ubuntu Snappy on Raspberry Pi](#ubuntu-snappy-on-raspberry-pi)
-`
+- [Ethereum Mainnet Hardware Requirements](#ethereum-mainnet-hardware-requirements)
+    - [Full Node](#full-node)
+    - [Light Node](#light-node)
+    - [Storage Requirements Overview](#storage-requirements-overview)
+
 
 ### Binaries
 
@@ -167,3 +171,34 @@ $ docker run --name parity -v /srv/parity:/mnt ethcore/parity:beta --base-path /
 ### Ubuntu Snappy on Raspberry Pi
 
 There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](https://github.com/paritytech/parity-snappy).
+
+### Ethereum Mainnet Hardware Requirements
+
+##### Full Node
+
+Running a full node with the stadard configuration for the Ethereum Mainnet requires a lot of computer ressources. The blockchain download and validation process is particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and a SSD drive with at least 60GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
+
+Computer using HDD hard drive are advised to run a [Light Node](#light-node).
+
+##### Light Node
+
+Running a light node using the flag `--light` does not require to download and perform validation of the whole blockchain. A light node relies on full node peers to receive block headers and verify transactions. It is therefore far less ressource demanding than a full node.
+
+A computer or mobile phone with single core CPU, 512MB RAM and a HDD with 128MB free space is recommended to run a light node.
+
+#### Storage Requirements Overview
+
+Indicative data storage requirement from September 2017 syncing Ethereum Mainnet (ETH) and Classic (ETC) chains :
+```
+| ID | Pruning / DB Config | Verification    | Available History          | ETH        | ETC        | EXP        | MSC        | Parity CLI Options                         |
+|====|=====================|=================|============================|============|============|============|============|============================================|
+| 00 | archive +Fat +Trace | Full/No-Warp    | All Blocks + States        | 385     GB |  90.0   GB |   5.6   GB |  25.0   GB | --pruning archive --tracing on --fat-db on |
+| 01 | archive +Trace      | Full/No-Warp    | All Blocks + States        | 334     GB |  90.0   GB |   5.8   GB |  21.0   GB | --pruning archive --tracing on             |
+| 02 | archive             | Full/No-Warp    | All Blocks + States        | 326     GB |  91.0   GB |   5.5   GB |  30.0   GB | --pruning archive                          |
+| 03 | fast +Fat +Trace    | Full/No-Warp    | All Blocks + Recent States |  37.0   GB |  13.0   GB |   1.3   GB |   3.5   GB | --tracing on --fat-db on                   |
+| 04 | fast +Trace         | Full/No-Warp    | All Blocks + Recent States |  34.0   GB |  13.0   GB |   1.2   GB |   3.5   GB | --tracing on                               |
+| 05 | fast                | Full/No-Warp    | All Blocks + Recent States |  26.0   GB |   9.7   GB |   1.1   GB |   3.0   GB | --no-warp                                  |
+| 06 | fast +Warp          | PoW-Only/Warp   | All Blocks + Recent States |  25.0   GB |   9.6   GB |   0.96  GB |   2.6   GB |                                            |
+| 07 | fast +Warp -Ancient | No-Ancient/Warp | Recent Blocks + States     |   5.3   GB |   2.9   GB |   0.13  GB |   0.19  GB | --no-ancient-blocks                        |
+| 08 | light               | Headers/Light   | No Blocks + No State       |       5 MB |       3 MB |       5 MB |       4 MB | --light                                    |
+```

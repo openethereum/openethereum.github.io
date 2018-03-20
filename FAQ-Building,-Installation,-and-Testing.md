@@ -45,10 +45,6 @@ There are builds for ARMhf (ARMv7) and ARM64 on our releases page on GitHub.
 
 In addition, The [EthRaspbian](https://github.com/diglos/pi-gen) project provides Debian-flavored images for the Raspberry Pi which includes Parity as default client. In addition, the [EthArmbian](https://github.com/diglos/userpatches) project supports Odroid C2 devices.
 
-### What are the system requirements for running Parity?
-
-Parity is targeted to run on any device. However, it depends entirely on which chain you want to synchronize your device with. In principle, you can run Parity on a RaspberryPi Zero and still get acceptable performance.
-
 ### What is the difference between stable and beta releases?
 
 Stable releases are the most tested and will not get any new features. It is the version that we recommend to most users in a production environment.
