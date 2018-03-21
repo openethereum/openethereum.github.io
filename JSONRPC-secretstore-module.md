@@ -63,3 +63,14 @@ Here:
 - `0x0000000000000000000000000000000000000000000000000000000000000001`: is the 256-bit hash to be signed (server key id or nodes set hash).
 
 **WARNING**: this method can be used to generate Ethereum-compatible signature of arbitrary hash, and should be enabled with caution.
+
+## secretstore_generateDocumentKey
+This method is used to securely generate document key, so that it remains unknown to all key servers. After generating server key using [server key generation session](Secret-Store.md#server-key-generation-session), you should pass returned server key to this method and it will gave you all required data to encrypt your document by using [secretstore_encrypt](#secretstore_encrypt) (`encrypted_key`) and to safely store document key in the Secret Store by using [document key storing session](Secret-Store.md#document-key-storing-session) (`common_point` and `encrypted_point`). Usage:
+```bash
+curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_generateDocumentKey", "params": ["0x00a329c0648769A73afAc7F9381E08FB43dBEA72", "password","0x2eabc29df5b62c75011bf1016237212b6305f8bae0f979b7b92250cfea06c20fe1689fc6d98964be64532598e3db7fc5712ad24b95e161f95bcfe1c6f859da3a"], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
+```
+
+Here:
+- `0x00a329c0648769A73afAc7F9381E08FB43dBEA72`: is the address to be used for signature generation (requester);
+- `password`: is the password for the passed account;
+- `0x2eabc29df5b62c75011bf1016237212b6305f8bae0f979b7b92250cfea06c20fe1689fc6d98964be64532598e3db7fc5712ad24b95e161f95bcfe1c6f859da3a` is the server key.
