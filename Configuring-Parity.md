@@ -28,7 +28,7 @@ The following is a representation of a configuration file with all default value
 mode = "last"
 mode_timeout = 300
 mode_alarm = 3600
-auto_update = "none"
+auto_update = "critical"
 release_track = "current"
 public_node = false
 no_download = false
