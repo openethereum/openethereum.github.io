@@ -1,10 +1,18 @@
 # Parity Wallet
 
-Parity includes a bundled wallet application.
-This is designed to integrate seamlessly with all standard tokens as well as Ether itself.
+Parity Wallet is designed to integrate seamlessly with all standard Ethereum based tokens as well as Ether itself.
+It is accessible in the Parity User Interface - [Parity UI](https://github.com/Parity-JS/shell/releases).
+Starting from Parity v1.10, [Parity Ethereum client](https://github.com/paritytech/parity/releases) has been separated from the Parity User Interface (UI). The user interface previously accessible from the browser in versions <=1.9 is now released as a standalone app.
 
-To access the UI, simply start your Parity node and navigate to http://web3.site/ (you can also go to http://127.0.0.1:8180 if you are offline). There, you will see
-a page where you can manage accounts, create transactions, watch contracts, and interact with DApps.
+To access Parity Wallet, you need to :
+* download and install Parity Ethereum client from the [release page](https://github.com/paritytech/parity/releases) or [build it](https://wiki.parity.io/Setup)
+* download and install [Parity UI](https://github.com/Parity-JS/shell/releases)
+* launch Parity UI
+
+![Parity UI](images/parity-UI-0.jpg)
+
+From here, you can access Parity Wallet by clicking on `Parity Wallet`. You will then be able manage accounts, create transactions, watch contracts and interact with DApps from the `Account` section.
+
 
 ## Secure Transaction Signer
 The Secure Transaction Signer is a core piece of technology which ensures that no transaction can be sent from your accounts without your explicit approval. This means that you can interact with DApps without fear that they might attempt to drain your accounts. 
