@@ -1,56 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-us">
 
-    {% seo %}
+{% include head.html %}
 
-    <link href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ site.baseurl }}/public/css/poole.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/public/css/hyde.css">
+<body class="sidebar-overlay">
 
+  {% include sidebar.html %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="{{ "/assets/tipuesearch/css/normalize.css" | relative_url }}">
-    <script src="{{ "/assets/tipuesearch/tipuesearch_content.js" | relative_url }}"></script>
-    <link rel="stylesheet" href="{{ "/assets/tipuesearch/css/tipuesearch.css" | relative_url }}">
-    <script src="{{ "/assets/tipuesearch/tipuesearch_set.js" | relative_url }}"></script>
-    <script src="{{ "/assets/tipuesearch/tipuesearch.min.js" | relative_url }}"></script>
-  </head>
-  <body>
-    <div class="sidebar" style="overflow-x: hidden">
+  <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+  <div class="wrap">
+    <div class="masthead">
       <div class="container">
-
-        <form action="{{ page.url | relative_url }}">
-          <div class="tipue_search_left"><img src="{{ "/assets/tipuesearch/search.png" | relative_url }}" class="tipue_search_icon"></div>
-          <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters" required></div>
-          <div style="clear: both;"></div>
-        </form>
-
-        {% capture sidebar %}{% include _Sidebar.md %}{% endcapture %}
-        {{ sidebar | markdownify }}
+        <h3 class="masthead-title">
+          <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
+          <small>{{ site.description }}</small>
+        </h3>
       </div>
     </div>
 
-    <div class="content container">
+    <div class="container content">
       <div id="tipue_search_content"></div>
-      <hr/>
-      {{ content }}
-
-      {% if page.hide_footer %}
-      {% else %}
-        {% capture footer %}{% include _Footer.md %}{% endcapture %}
-        {{ footer | markdownify }}
-      {% endif %}
+      {{ content }} {% if page.hide_footer %} {% else %} {% include Footer.html %} {% endif %}
     </div>
+  </div>
 
-    <script>
-      $(document).ready(function() {
-        $('#tipue_search_input').tipuesearch({'show': 99});
-      });
-    </script>
+  <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-  </body>
+  <script>
+    $(document).ready(function () {
+      // Open the sidebar on load on bigger screens
+      if ($(window).width() > 1540) {
+        $('#sidebar-checkbox').prop('checked', true)
+      }
+      // Hook up search
+      $('#tipue_search_input').tipuesearch({ 'show': 99 });
+    });
+  </script>
+</body>
+
 </html>

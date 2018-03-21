@@ -1,0 +1,28 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <form action="{{ page.url | relative_url }}">
+      <div class="tipue_search_left">
+        <img src="{{ site.base_url }}/public/tipuesearch/search.png" class="tipue_search_icon">
+      </div>
+      <div class="tipue_search_right">
+        <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters" required>
+      </div>
+      <div style="clear: both;"></div>
+    </form>
+  </div>
+
+  <nav class="sidebar-nav">
+    {% capture sidebar %}{% include _Sidebar.md %}{% endcapture %} {{ sidebar | markdownify }}
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; {{ site.time | date: '%Y' }}. All rights reserved.
+    </p>
+  </div>
+</div>

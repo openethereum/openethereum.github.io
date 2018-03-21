@@ -84,6 +84,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
   font-weight: bold;
   line-height: 1.25;
+  color: #313131;
   text-rendering: optimizeLegibility;
 }
 h1 {
@@ -117,14 +118,6 @@ strong {
 ul, ol, dl {
   margin-top: 0;
   margin-bottom: 1rem;
-}
-
-ul, ol {
-  padding-left: 20px;
-}
-
-ul ul, ol ul, ol ol, ul ol {
-  padding-left: 10px;
 }
 
 dt {
