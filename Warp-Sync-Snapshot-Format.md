@@ -1,6 +1,6 @@
 # Warp Sync Snapshot Format
 
-Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
+Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 5,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
 
 The snapshot format is three-part: block chunks, state chunks, and the manifest.
 Every chunk is run through snappy compression, and then hashed. Before compression, chunks are created to be approximately `CHUNK_SIZE` bytes.

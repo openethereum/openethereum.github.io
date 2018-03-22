@@ -6,7 +6,7 @@ In a previous article on [Token Deployment](Token-Deployment.md), we created _Te
 _Figure: To register a new token with the **Token Registry**, we need the token address, decide on a 3-letter acronym (TLA), a token name, and specify the number of decimals (between `0` and `18`)._
 
 ![dapps-tokendeploy-6](./images/dapps-tokendeploy-6.png)
-_Figure: Once done, this will execute the `register` function of the Token Registry smart contract adding our token to Parity. Note, there is a fee of `0.05` ETH to register a token._
+_Figure: Once done, this will execute the `register` function of the Token Registry smart contract adding our token to Parity. Note, there is a fee of `0.01` ETH to register a token._
 
 ![dapps-tokendeploy-8](./images/dapps-tokendeploy-8.png)
 _Figure: Once deployed, the token is displayed in the registry among other registered tokens._

@@ -12,31 +12,29 @@ To create an account with the [Parity Wallet](Parity-Wallet), open the _Accounts
 
 ### Wallets
 
-Wallets are smart contracts which manage assets and can me owned by multiple accounts. Unlike accounts, contract wallets are controlled by code, which means that it is possible to customize their behavior. The most common use-case are **multi-signature wallets**, that allow for transaction logging, withdrawal limits, and rule-sets for signatures required.
+Wallets are smart contracts which manage assets and can be owned by multiple accounts. Unlike accounts, contract wallets are controlled by code, which means that it is possible to customize their behavior. The most common use-case are **multi-signature wallets**, that allow for transaction logging, withdrawal limits, and rule-sets for signatures required.
 
-To create a multi-sig wallet with UI, open the _Accounts_ tab, click on the `+WALLET` button and select _Multi-Sig Wallet_.
+Parity only allows to watch wallets and interract with them (view and sign transactions, send funds..). It does not allow to create multi-sig wallets.
+To watch a multi-sig wallet within Parity UI, open the _Accounts_ tab, click on the `+WALLET` button and select _Watch a Wallet_.
 
-![accounts-wallet-0](images/accounts-wallet-0.png)
+![accounts-watch-wallet-0](images/account-wallet-0.jpg)
 
-In a supplemental step, select at least two owners and specify the number of signatures required to withdraw funds. For example, to create a classic 2-of-3 multi-signature contract, add three wallet owners by selecting them from your account list or pasting the public key, and set the required number of owners to `2`.
+In a supplemental step, enter the wallet address provided upon deployement on the blockchain, you should chose a name and description.
 
-Optionally, the wallet contract allows to define a daily withdrawal limit. This allows each owner to withdraw up to the specified amount of Ether without requiring any other owner to sign.
+![accounts-watch-wallet-1](images/account-wallet-1.jpg)
 
-![accounts-wallet-1](images/accounts-wallet-1.png)
+The next step will show you an overview of the wallet parameters such as the owners, the numbre of needed signatures and the funds it contains. 
 
-In order to create a wallet, the contract has to be deployed on the blockchain. After setting up all parameters for the contact, click _Create_ and sign the transaction with one of the owner accounts.
+![accounts-watch-wallet-2](images/account-wallet-2.jpg)
 
-![accounts-wallet-2](images/accounts-wallet-2.png)
+Once done, the wallet will be visible in your accounts list on top of your normal accounts.
 
-Once deployed, the wallet will be visible in your accounts list on top of your normal accounts.
-
-![accounts-wallet-4](images/accounts-wallet-4.png)
+![accounts-watch-wallet-3](images/account-wallet-3.jpg)
 
 Opening the wallet reveals details about available balances and transactions, as well as pending confirmations for the multi-signature transactions.
 
-![accounts-wallet-5](images/accounts-wallet-5.png)
+![accounts-watch-wallet-4](images/account-wallet-4.jpg)
 
-The wallet contract used for Parity is available for review here: [`enhanced-wallet.sol`](https://github.com/paritytech/parity/blob/master/js/src/contracts/snippets/enhanced-wallet.sol)
 
 ### Vaults
 

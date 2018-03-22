@@ -274,7 +274,8 @@ UI Options:
                                    development. (default: false)
 
 Networking Options:
-  --no-warp                        Disable syncing from the snapshot over the network. (default: false)
+  --no-warp                        Disable syncing from the snapshot over the network.
+                                   (default: false)
   --port PORT                      Override the port on which the node should listen
                                    (default: 30303).
   --min-peers NUM                  Try to maintain at least NUM peers (default: 25).
@@ -316,17 +317,19 @@ API and Console Options:
                                    (default: None)
   --jsonrpc-apis APIS              Specify the APIs available through the JSONRPC
                                    interface. APIS is a comma-delimited list of API
-                                   name. Possible name are all, safe, web3, eth, net, personal,
-                                   parity, parity_set, traces, rpc, parity_accounts.
-                                   You can also disable a specific API by putting '-' in the front: all,-personal
-                                   (default: web3,eth,pubsub,net,parity,parity_pubsub,traces,rpc,secretstore).
+                                   name. Possible name are all, safe, web3, eth, net,
+                                   personal, parity, parity_set, traces, rpc, parity_accounts.
+                                   You can also disable a specific API by putting '-' 
+                                   in the front: all,-personal
+                                   (default: web3,eth,pubsub,net,parity,parity_pubsub,
+                                   traces,rpc,secretstore).
   --jsonrpc-hosts HOSTS            List of allowed Host header values. This option will
                                    validate the Host header sent by the browser, it
                                    is additional security against some attack
                                    vectors. Special options: "all", "none",
                                    (default: none).
-  --jsonrpc-server-threads NUM     Enables experimental faster implementation of JSON-RPC server.
-                                   Requires Dapps server to be disabled
+  --jsonrpc-server-threads NUM     Enables experimental faster implementation of
+                                   JSON-RPC server. Requires Dapps server to be disabled
                                    using --no-dapps. (default: None)
   --jsonrpc-threads THREADS        Turn on additional processing threads in all RPC servers.
                                    Setting this to non-zero value allows parallel cpu-heavy queries
@@ -342,7 +345,8 @@ API and Console Options:
                                    interface. APIS is a comma-delimited list of API
                                    name. Possible name are web3, eth, pubsub, net, personal,
                                    parity, parity_set, traces, rpc, parity_accounts.
-                                   (default: web3,eth,pubsub,net,parity,parity_pubsub,traces,rpc,secretstore).
+                                   (default: web3,eth,pubsub,net,parity,parity_pubsub
+                                   traces,rpc,secretstore).
   --ws-origins URL                 Specify Origin header values allowed to connect.
                                    Special options: "all", "none".
                                    (default: chrome-extension://*)
@@ -356,8 +360,8 @@ API and Console Options:
   --ipc-path PATH                  Specify custom path for JSON-RPC over IPC service
                                    (default: $BASE/jsonrpc.ipc).
   --ipc-apis APIS                  Specify custom API set available via JSON-RPC over
-                                   IPC (default: web3,eth,pubsub,net,parity,parity_pubsub,parity_accounts,traces,rpc,secretstore).
-
+                                   IPC (default: web3, eth, pubsub, net,parity,
+                                   parity_pubsub, parity_accounts, traces, rpc, secretstore).
   --no-dapps                       Disable the Dapps server (e.g. status page). (default: false)
   --dapps-path PATH                Specify directory where dapps should be installed.
                                    (default: $BASE/dapps)
@@ -379,19 +383,19 @@ Secret Store Options:
   --no-secretstore                 Disable Secret Store functionality. (default: false)
   --secretstore-secret SECRET      Hex-encoded secret key of this node.
                                    (required, default: None).
-  --secretstore-nodes NODES        Comma-separated list of other secret store cluster nodes in form
-                                   NODE_PUBLIC_KEY_IN_HEX@NODE_IP_ADDR:NODE_PORT.
+  --secretstore-nodes NODES        Comma-separated list of other secret store cluster nodes
+                                   in form NODE_PUBLIC_KEY_IN_HEX@NODE_IP_ADDR:NODE_PORT.
                                    (required, default: ).
-  --secretstore-interface IP       Specify the hostname portion for listening to Secret Store Key Server
-                                   internal requests, IP should be an interface's IP address, or local
-                                   (default: local).
-  --secretstore-port PORT          Specify the port portion for listening to Secret Store Key Server
-                                   internal requests (default: 8083).
-  --secretstore-http-interface IP  Specify the hostname portion for listening to Secret Store Key Server
-                                   HTTP requests, IP should be an interface's IP address, or local
-                                   (default: local).
-  --secretstore-http-port PORT     Specify the port portion for listening to Secret Store Key Server
-                                   HTTP requests (default: 8082).
+  --secretstore-interface IP       Specify the hostname portion for listening to Secret 
+                                   Store Key Server internal requests, IP should be an 
+                                   interface's IP address, or local (default: local).
+  --secretstore-port PORT          Specify the port portion for listening to Secret Store
+                                   Key Server internal requests (default: 8083).
+  --secretstore-http-interface IP  Specify the hostname portion for listening to Secret
+                                   Store Key Server HTTP requests, IP should be an
+                                   interface's IP address, or local (default: local).
+  --secretstore-http-port PORT     Specify the port portion for listening to Secret
+                                   Store Key Server HTTP requests (default: 8082).
   --secretstore-path PATH          Specify directory where Secret Store should save its data.
                                    (default: $BASE/secretstore).
 
@@ -569,7 +573,7 @@ Snapshot Options:
                                    non-recent blocks will only work with --pruning archive
                                    (default: latest)
   --no-periodic-snapshot           Disable automated snapshots which usually occur once
-                                   every 10000 blocks. (default: false)
+                                   every 5000 blocks. (default: false)
 
 Virtual Machine Options:
   --jitvm                          Enable the JIT VM. (default: false)
