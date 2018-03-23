@@ -105,7 +105,7 @@ Response
 
 ### shh_newSymKey
 
-Generate a key pair for symmetric encryption
+Generate a key for symmetric encryption
 
 #### Parameters
 
@@ -186,7 +186,7 @@ Get the key associated with a symmetric identity.
 
 #### Returns
 
-- `Data` - 64 bytes - The key of the symmetric identity.
+- `Data` - 32 bytes - The key of the symmetric identity.
 
 #### Example
 
