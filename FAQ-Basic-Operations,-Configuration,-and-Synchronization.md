@@ -16,8 +16,8 @@ Since Parity v1.10 the User Interface (UI) has been separated from the Parity Et
 
 ### The Parity UI application isn't working the way I want
 
-Please report any bug or unexpected behavior by [creating an issue in GitHub Parity UI rep](https://github.com/Parity-JS/shell/issues/new).
-If you still want to use the older UI (for Parity <=1.9) you can launch parity with the flag `--force-ui` and visit 127.0.0.1:8180 in your favorit browser.
+Please report any bug or unexpected behavior by [creating an issue in GitHub Parity UI repository](https://github.com/Parity-JS/shell/issues/new).
+If you still want to use the broswer UI (deprecated) you can launch Parity Ethereum Client with the flag `--force-ui` and visit 127.0.0.1:8180 in your favorit browser.
 
 ### How do I configure Parity?
 
