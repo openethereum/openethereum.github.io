@@ -9,6 +9,16 @@ After building Parity from source:
 
 After installing Parity, just run `parity` from command line. See also [how do I configure Parity](https://github.com/paritytech/parity/wiki/FAQ#how-do-i-configure-parity) below.
 
+
+### The UI isn't working when I visit 127.0.0.1:8180
+
+Since Parity v1.10 the User Interface (UI) has been separated from the Parity Ethereum client. You can now access the User Interface through a separated application calles Parity UI. The browser UI has therefore been disabled by default. Please follow [these instructions](https://wiki.parity.io/Parity-Wallet) to download and user Parity wallet using the Parity UI app.
+
+### The Parity UI application isn't working the way I want
+
+Please report any bug or unexpected behavior by [creating an issue in GitHub Parity UI rep](https://github.com/Parity-JS/shell/issues/new).
+If you still want to use the older UI (for Parity <=1.9) you can launch parity with the flag `--force-ui` and visit 127.0.0.1:8180 in your favorit browser.
+
 ### How do I configure Parity?
 
 You can configure your Parity client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://github.com/paritytech/parity/wiki/Configuring-Parity#cli-options).
