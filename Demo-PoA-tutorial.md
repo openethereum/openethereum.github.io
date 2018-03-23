@@ -133,7 +133,7 @@ Returned address should be `0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2`.
 
 ### UI
 1. Start the node 0 using `parity --config node0.toml`
-2. Go to `localhost:8180` in your browser and go through the initial setup
+2. Launch [Parity UI](https://wiki.parity.io/Parity-Wallet) and go through the initial setup
 3. Click on "RESTORE ACCOUNT"
 5. Use the phrase "node0" and password "node0"
 6. The new created account should have address `0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e`

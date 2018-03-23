@@ -72,7 +72,7 @@ To publish Parity's ports to the host machine, use the `-p` option:
 $ docker run -ti -p 8180:8180 -p 8545:8545 -p 8546:8546 -p 30303:30303 -p 30303:30303/udp parity/parity:v1.7.0 --ui-interface all --jsonrpc-interface all
 ```
 
-For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can browse to http://localhost:8180 from the Docker host computer to access the Parity Wallet.
+For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can open [Parity UI](https://wiki.parity.io/Parity-Wallet) from the Docker host computer to access the Parity Wallet.
 
 To enable external discovery where desired (for example for PoA sealing nodes), specify the external IP by appending the flag `--nat extip:133.3.3.37`, where `133.3.3.37` is to be replaced by your actual external IP of the host.
 
@@ -148,13 +148,13 @@ Currently these scripts supports two types of chains, either [instant sealing](h
 
 Some examples of using the script are:
 
-- A single node instant seal node, accessible via `127.0.0.1:8180`:
+- A single node instant seal node, accessible via [Parity UI](https://github.com/Parity-JS/shell/releases):
 
   ```bash
   $ ./parity-deploy.sh --name testchain --config instantseal
   ```
 
-- A three node proof of authority chain (using the Aura consensus algorithm) with one client accessible via `127.0.0.1:8180`:
+- A three node proof of authority chain (using the Aura consensus algorithm) with one client accessible via [Parity UI](https://github.com/Parity-JS/shell/releases):
 
   ```bash
   $ ./parity-deploy.sh --name testchain --config aura --nodes 3

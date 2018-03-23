@@ -2,9 +2,8 @@
 
 ### How can I access the Parity Wallet?
 
-Open your favorite browser and navigate to `localhost` on port `:8180`: http://127.0.0.1:8180/
-
-You can change the port with the `--ui-port` flag. To disable the UI, use `--no-ui`.
+Since Parity v1.10, the Parity Wallet is accessible within Parity UI app.
+Please follow [these instructions](https://wiki.parity.io/Parity-Wallet)
 
 ### Can I use Mist with Parity?
 
