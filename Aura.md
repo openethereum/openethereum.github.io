@@ -38,6 +38,5 @@ The consensus can be run with `--force-sealing` which ensures that blocks are pr
 
 **Wishlist:**
 
-- Instead of creating empty blocks, broadcast signed `EMPTY(Step)` message. Include in seal when creating a block with transactions or an empty block once there are more than some amount of new signed step messages.
 - Apply step backoff after skipping primaries, not before. Exponential backoff may allow for weakly synchronous network without failure.
 - Faster finality by broadcasting signed `GOOD(Hash)` messages where Hash is a block hash of a block with number multiple of some epoch length. `GOOD` messages can be included in the seal.

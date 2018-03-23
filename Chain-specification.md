@@ -11,7 +11,8 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 - [`classic`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
 - [`classic-testnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
 - [`expanse`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/paritytech/parity/blob/master/ethcore/res/instant_seal.json) a [Private development chain](Private development chain) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`dev`](https://github.com/paritytech/parity/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`Musicoin`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
 
 ## Private chains
 
@@ -71,7 +72,7 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"networkID"` DevP2P supports multiple networks, and ID is used to uniquely identify each one which is used to connect to correct peers and to prevent transaction replay across chains.
   + `"maximumExtraDataSize"` determines how much extra data the block issuer can place in the block header.
   + `"minGasLimit"` gas limit can adjust across blocks, this parameter determines the absolute minimum it can reach.
-
+    
   Optional:
   + `"accountStartNonce"` in the past this was used for transaction replay protection
   + `"chainID"` chain identifier, if not present then equal to `networkID`
@@ -80,6 +81,10 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"forkCanonHash"` hash of the canonical block at `forkBlock`
   + `"bombDefuseTransition"` block number at which the difficulty bomb (epsilon in Yellow Paper Eqs. 39, 44) is removed from the difficulty evolution
   + `"wasmActivationTransition"` block number at which bytecode (in storage or transactions) can be run as WASM bytecode and by WebAssembly VM.
+  + `"maximumUncleCountTransition"` Block at which maximum uncle count parameter should be considered. Default "0" for PoA chains, not set for Ethash chains.
+  + `"maximumUncleCount"` Maximum number of accepted uncles starting from the block specified at `maximumUncleCountTransition`. Default `0` for Ethash chains, `2` for PoA chains before `maximumUncleCountTransition`.
+  + `"emptyStepsTransition"` Block at which empty step messages should start.
+  + `"maximumEmptySteps"` Maximum number of accepted empty steps.
 
 + **`"accounts"`** contains optional contents of the genesis block, such as simple accounts with balances or contracts. Parity does not include the standard Ethereum builtin contracts by default. These are necessary when writing new contracts in Solidity, since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below:
 
