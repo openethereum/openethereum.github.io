@@ -2,7 +2,7 @@
 
 ## Tutorial
 
-- [Step-by-step tutorial](https:://github.com/paritytech/pwasm-tutorial) deploying complex contract with abi, using Web3, etc.
+- [Step-by-step tutorial](https://github.com/paritytech/pwasm-tutorial) deploying complex contract with abi, using Web3, etc.
 
 ## Contract examples
 
