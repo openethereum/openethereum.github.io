@@ -83,7 +83,7 @@ Once the developer is satisfied that the local dapp operates as intended and wan
 
 - It is recommended to do the deployment on the test network first.
 - Register the dapp to receive a new unique network id.
-- Generate the correct content hashes [via the GitHubHint dapp](Parity-github-hint) (GHH).
+- Generate the correct content hashes [via the GitHubHint dapp](Parity-Github-Hint) (GHH).
 - For manifests and files, the "File Link" is to be used for the content hash in the GHH dapp.
 - For the actual dapp content bundle the "Content Link" option should be used in the GHH dapp.
 - Edit the dapp [in the DApp Registry](Parity-dapp-registry) and supply the image, manifest and content hashes as generated in the previous steps.
@@ -91,4 +91,4 @@ Once the developer is satisfied that the local dapp operates as intended and wan
 
 ## Additional functions
 
-It is highly recommended that dapp developers use the Parity Wallet registry for ease of name lookups, especially when having multiple contracts on multiple chains. [The name registry](https://github.com/paritytech/parity/wiki/Parity-name-registry) makes the association of names to addresses straight forward and transparent, regardless of the chain.
+It is highly recommended that dapp developers use the Parity Wallet registry for ease of name lookups, especially when having multiple contracts on multiple chains. [The name registry](Parity-name-registry) makes the association of names to addresses straight forward and transparent, regardless of the chain.
