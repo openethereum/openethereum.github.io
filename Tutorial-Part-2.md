@@ -170,6 +170,7 @@ Finally, let's use it in our `<Rspan>`. There are several ways of combining the 
 Try it. Replace the `<Rspan>` with this new one:
 
 {% raw %}
+```jsx
 <Rspan style={{ color: this.bond.map(t => t.match(/^[0-9]+$/) ? 'red' : 'black') }}>
 	{Bond.all([this.bond, this.time])}
 </Rspan>
