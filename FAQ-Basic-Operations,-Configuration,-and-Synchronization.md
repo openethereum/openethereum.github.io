@@ -182,3 +182,13 @@ killall -HUP parity
 1. Highlight the complete folder path in the top pane, type `cmd` and hit Enter
 ![windows pane](/images/windows-explorer-cmd.jpeg)
 1. This opens a command line windows in the Parity folder, you can launch parity with [CLI flags](https://wiki.parity.io/Configuring-Parity.html#cli-options)
+
+### How to generate a new hardcoded sync block for Parity light client ?
+
+Parity light client allows you to set a hardcoded block from which the light client will sync to reach the top of the chain faster. Note that this hardcoded block will only be used if no prior light database is found. Here is how you can generate the needed info to create a chain specifications file:
+1. Run `parity --light` and make sure to reach the top of the chain.
+1. Stop parity with `ctrl-c`.
+1. Run `parity export-hardcoded-sync`.
+1. Copy the output of the previous command using the field : `"hardcodedSync": { COPY_OUTPUT_HERE }` into your new [chain specifications](https://wiki.parity.io/Chain-specification.html) file.
+1. Run the light client with your new specificatiions `parity --light --chain /path/to/your/new/specifications`
+
