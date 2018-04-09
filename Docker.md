@@ -136,7 +136,7 @@ To attach the container, use `docker attach`:
 $ docker attach --sig-proxy=false 245f312f3f39
 ```
 
-Disabling the signature proxy [allows to detach again](http://stackoverflow.com/a/22894096) with `CTRL`+`C`.
+Disabling the signal proxy [allows to detach again](http://stackoverflow.com/a/22894096) with `CTRL`+`C`.
 
 ### Parity Deploy Scripts
 
