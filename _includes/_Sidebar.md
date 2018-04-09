@@ -17,7 +17,7 @@
   - [Docker](Docker)
 - [Parity Signer Mobile App](Parity-Signer-Mobile-App)
   - [Tutorial w/ Parity](Parity-Signer-Mobile-App-Parity-Wallet-tutorial)
-  - [Tutorial w/ MyCypto](Parity-Signer-Mobile-App-MyCrypto-tutorial)
+  - [Tutorial w/ MyCrypto](Parity-Signer-Mobile-App-MyCrypto-tutorial)
 - [Public Node](Public-Node)
   - [Wallet.Parity.Io](Wallet.Parity.Io)
 - [Community Guides](Community-Guides)
