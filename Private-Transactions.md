@@ -130,6 +130,9 @@ For [the sample contract](https://gist.github.com/grbIzl/14541e57f50b3ceae983151
 ## Parity arguments
 All parameters required for usage of private transactions functionality provided via Parity launch arguments.
 
+- `--private-tx-enabled`.
+Flag for enabling private transactions processing for the node. By default it's set to false.
+
 - `--private-signer=[ACCOUNT]`.
 Account for signing public transaction, created in terms of verified private transaction. This account will be used on the last step of the flow (see above) in order to sign the result public transaction for changing state.
 
@@ -151,7 +154,7 @@ Path to the file containing passwords for unlocking accounts (signer, private ac
 Example of usage:
 
 ```bash
-~/parity/parity --config "/chain/config.toml" --author "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --engine-signer "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-validators "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-account "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-sstore-url "http://secretstore:8082" --private-passwords "/parity/password.txt"
+~/parity/parity --config "/chain/config.toml" --author "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --engine-signer "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-tx-enabled --private-validators "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-account "0x7ffbe3512782069be388f41be4d8eb350672d3a5" --private-sstore-url "http://secretstore:8082" --private-passwords "/parity/password.txt"
 ```
 
 ## RPC API
@@ -196,8 +199,13 @@ Sends a private transaction (see Private Transactions Flow for details of implem
 ### `private_call`
 View encrypted data of the private contract. The resulted call will be made internally.
 #### Parameters
-`num: BlockNumber` - integer block number, or the string `'latest'`, `'earliest'` or `'pending'`
-`request: CallRequest` - signed regular transaction (in hex)
+`num: BlockNumber` - integer block number, or the string `'latest'`, `'earliest'`.
+`request: CallRequest` - call parameters in the form of regular transaction. For example: 
+
+```bash
+curl --data '{"method":"private_call","params":["latest",{"from":"0xcf9e2287227c5cc5978e7bdbbdaf293fe4992a24","to":"0xcd96d189596c690ff983e4e14d1838d0305186dc","data":"0x0c55699c","nonce":"0x0"}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8549
+```
+data field corresponds to getX() call of the trivial private contract example 
 
 ### `private_contract_key`
 Returns key id associated with the deployed public contract.
