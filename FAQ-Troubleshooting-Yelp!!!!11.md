@@ -2,7 +2,7 @@
 
 ### Double-clicking the Parity icon doesn't do anything!?!
 
-Probably your node is already running (or another node is running, i.e., Geth) and another instance of Parity can not be launched with the same configuration (ports, dapps, web interface, etc.).
+Probably your node is already running (or another node is running, i.e., Geth) and another instance of Parity cannot be launched with the same configuration (ports, dapps, web interface, etc.).
 
 ### How can I make Parity to write logs?
 
@@ -14,6 +14,18 @@ You can control the logging level with `-l` and define a `--log_file` location:
   --log-file FILENAME            Specify a filename into which logging should be
                                  appended. (default: None)
 ```
+LOGGING accepts the following modules:
+`account_bloom`,`basicauthority`,`blockchain`,`chain`,`client`,`dapps`,`discovery`,`diskmap`,`enact`,`engine`,`estimate_gas`,`ethash`,`executive`,`ext`,`externalities`,`external_tx`,`fatdb`,`fetch`,`finality`,`hypervisor`,`jdb`,`jdb.fine`,`jdb.ops`,`journaldb`,`les`,`light_fetch`,`local_store`,`migration`,`miner`,`mode`,`network`,`on_demand`,`own_tx`,`perf`,`pip`,`pip_provider`,`poa`,`pubsub`,`rcdb`,`secretstore`,`secretstore_net`,`shutdown`,`signer`,`snapshot`,`snapshot_io`,`snapshot_watcher`,`spec`,`state`,`stats`,`stratum`,`sync`,`trie`,`txqueue`,`updater`,`wasm`,`whisper`
+
+Additionally, a logging level can  be set per module:
+`info`, `debug`, `trace` (default if no level is specified for a module)
+
+Examples:
+- `-l sync=debug` prints the debug level logs for the sync module only.
+- `-l sync,snapshot,txqueue` prints the logs for sync, snapshot, and txqueue with trace level.
+- `-l sync=info,snapshot=debug,txqueue=trace` prints the info level logs for the sync module, the debug level of logs for the snapshot module etc.
+
+Note that the info logging level of all modules will always be printed, equivalent to `-l info`.
 
 See also: [How to make Parity write logs](http://ethereum.stackexchange.com/questions/3331/how-to-make-parity-write-logs)?
 
