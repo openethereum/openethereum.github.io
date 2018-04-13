@@ -1,4 +1,6 @@
-# Private Transactions
+---
+title: Private Transactions
+---
 _The development of this feature was supported by the Energy Web Foundation in order to expedite the energy sector revolution towards decentralisation._
 
 ## Solution's Description

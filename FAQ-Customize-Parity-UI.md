@@ -1,4 +1,6 @@
-### How to customize Parity UI ?
+---
+title: FAQ - How to customize Parity UI?
+---
 
 In dev mode:
 - Fork `https://github.com/parity-js/shell` and make your modifications to the UI

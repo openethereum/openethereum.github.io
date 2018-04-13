@@ -1,4 +1,6 @@
-# Labeling
+---
+title: Labeling
+---
 
 This page is to explain the conventions over Parity's labeling system.
 

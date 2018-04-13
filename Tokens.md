@@ -1,4 +1,6 @@
-# Tokens
+---
+title: Tokens
+---
 
 The native token of the Ethereum blockchain is called _Ether_ (ETH). In addition to Ether, additional assets and tokens can be handled by the Ethereum blockchain. The Parity Ethereum wallet supports any [ERC20](https://github.com/ethereum/EIPs/issues/20)-compliant token by displaying balances and enabling transfers to be as simple as Ether transactions.
 

@@ -1,4 +1,6 @@
-# Whisper PoC 2 Wire Protocol
+---
+title: Whisper PoC 2 Wire Protocol
+---
 
 Peer-to-peer communications between nodes running Whisper clients run using the underlying [ÐΞVp2p Wire Protocol](https://github.com/ethereum/wiki/wiki/%C3%90%CE%9EVp2p-Wire-Protocol).
 

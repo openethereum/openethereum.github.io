@@ -1,4 +1,6 @@
-# Validator Sets
+---
+title: Validator Sets
+---
 
 A number of Engines available in Parity achieve consensus by referring to a list of "validators" (referred to as authorities if they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them. The validator set can be specified in a number of different ways.
 

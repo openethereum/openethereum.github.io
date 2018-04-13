@@ -1,4 +1,6 @@
-# The `shh` Module
+---
+title: The `shh` Module
+---
 
 **Note:** _Run parity with the `--whisper` flag to enable this API._
 

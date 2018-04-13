@@ -1,4 +1,6 @@
-# Parity Signer Mobile App tutorial with Parity Wallet
+---
+title: Parity Signer Mobile App tutorial with Parity Wallet
+---
 
 
 Parity Signer Mobile App can be used to securely create accounts using an offline mobile device. Being offline has the great advantage to keep the device (and your private keys) away from online related threats. The app also allows you to sign transaction offline using a QR code. [Parity Wallet](https://wiki.parity.io/Parity-Wallet) on the other side allows you to watch an account from your computer without having its private key. It means that it can show its balance but will require you to use the Parity Signer Mobile App to sign a transaction before being able to send funds from this account.

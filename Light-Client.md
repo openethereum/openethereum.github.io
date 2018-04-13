@@ -1,4 +1,6 @@
-# Light Client
+---
+title: Light Client
+---
 
 The first experimental light client was released with 1.7. To try out the light mode, simply run `parity --light`.
 

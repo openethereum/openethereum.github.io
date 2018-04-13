@@ -1,4 +1,6 @@
-# Importing a Chain from Geth
+---
+title: Importing a Chain from Geth
+---
 
 When coming from Geth, be aware that the `--geth` option provides you with the highest degree of compatibility to Geth's behaviour, even at the cost of speed, security, functionality and standardisation.
 

@@ -1,4 +1,6 @@
-# The `trace` Module
+---
+title: The `trace` Module
+---
 
 The trace module is for getting a deeper insight into transaction processing.
 It includes two sets of calls; the transaction trace filtering API and the ad-hoc tracing API.

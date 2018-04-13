@@ -1,4 +1,6 @@
-# Chain Specification
+---
+title: Chain Specification
+---
 
 By default, when simply running `parity`, Parity Ethereum will connect to the official public Ethereum network.
 

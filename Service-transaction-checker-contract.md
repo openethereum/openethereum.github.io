@@ -1,4 +1,6 @@
-# Service Transaction Checker Contract
+---
+title: Service Transaction Checker Contract
+---
 
 Service transaction checker contract is used by Parity to filter out transactions with zero gas price (aka service transactions).
 

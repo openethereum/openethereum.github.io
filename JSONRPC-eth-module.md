@@ -1,4 +1,6 @@
-# The `eth` Module
+---
+title: The `eth` Module
+---
 
 ## The default block parameter
 

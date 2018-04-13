@@ -1,4 +1,6 @@
-# Secret Store Configuration
+---
+title: Secret Store Configuration
+---
 
 ## Building Parity with Secret Store support
 By default Parity is built without Secret Store support. To enable Secret Store, build it with `--features secretstore` argument:

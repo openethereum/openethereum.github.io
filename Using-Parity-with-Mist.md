@@ -1,4 +1,6 @@
-# Using Parity with Mist
+---
+title: Using Parity with Mist
+---
 
 As of version 1.2, Parity works with the [Ethereum Foundation Wallet ("Mist")](https://github.com/ethereum/mist/releases).
 

@@ -1,4 +1,6 @@
-# Whisper
+---
+title: Whisper
+---
 
 In a nutshell whisper is a communication protocol for DApps to communicate with each other.
 

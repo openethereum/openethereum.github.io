@@ -1,4 +1,6 @@
-# Demo PoA-Tutorial
+---
+title: Demo PoA-Tutorial
+---
 
 This tutorial will walk through setting up two Parity nodes locally and sending transactions between them. If you want to learn more about different parameters specified in this tutorial please refer to the [Chain specification](Chain-specification.md) page.
 

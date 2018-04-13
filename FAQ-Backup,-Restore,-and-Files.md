@@ -1,4 +1,6 @@
-# FAQ: Backup, Restore, and Files
+---
+title: FAQ - Backup, Restore, and Files
+---
 
 ### Where can I find Parity's local files?
 

@@ -1,4 +1,6 @@
-# Token Registry
+---
+title: Token Registry
+---
 
 In a previous article on [Token Deployment](Token-Deployment.md), we created _Teh Coin_ [TEH]. Now, creating your own [token](Tokens.md) is a nice thing to do. However, it would be nice if _all_ Parity Ethereum users could see and use your token in the wallet by default. Therefore, we need to register our token with the **Token Registry** DApp. Navigate to Applications in your wallet and find the Token Registry. If it's not displayed by default, use the _Edit_ button on top to toggle visibility of displayed DApps.
 

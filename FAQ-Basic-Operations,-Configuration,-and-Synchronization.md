@@ -1,6 +1,8 @@
-# FAQ: Basic Operations, Configuration, and Synchronization
+---
+title: FAQ - Basic Operations, Configuration, and Synchronization
+---
 
-### How do I run Parity?
+## How do I run Parity?
 
 After building Parity from source:
 
@@ -10,16 +12,16 @@ After building Parity from source:
 After installing Parity, just run `parity` from command line. See also [how do I configure Parity](https://github.com/paritytech/parity/wiki/FAQ#how-do-i-configure-parity) below.
 
 
-### The UI isn't working when I visit 127.0.0.1:8180
+## The UI isn't working when I visit 127.0.0.1:8180
 
 Since Parity v1.10 the User Interface (UI) has been separated from the Parity Ethereum client. You can now access the User Interface through a separated application calles Parity UI. The browser UI has therefore been disabled by default. Please follow [these instructions](https://wiki.parity.io/Parity-Wallet) to download and user Parity wallet using the Parity UI app.
 
-### The Parity UI application isn't working the way I want
+## The Parity UI application isn't working the way I want
 
 Please report any bug or unexpected behavior by [creating an issue in GitHub Parity UI repository](https://github.com/Parity-JS/shell/issues/new).
 If you still want to use the broswer UI (deprecated) you can launch Parity Ethereum Client with the flag `--force-ui` and visit 127.0.0.1:8180 in your favorit browser.
 
-### How do I configure Parity?
+## How do I configure Parity?
 
 You can configure your Parity client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://github.com/paritytech/parity/wiki/Configuring-Parity#cli-options).
 
@@ -31,17 +33,17 @@ In additoin, Parity can be configured using a [TOML](https://github.com/toml-lan
 
 To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity config file here](https://github.com/paritytech/parity/wiki/Configuring-Parity#config-file).
 
-### Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!
+## Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!
 
 ![parity_error](https://cloud.githubusercontent.com/assets/2982011/18855854/1d3b2c22-8424-11e6-8329-1dbe5edf6a5a.png)
 
 Install the following windows update: https://support.microsoft.com/en-us/kb/2999226
 
-### Parity uses 100% of disk I/O during sync
+## Parity uses 100% of disk I/O during sync
 
 Parity needs high amount of disk usage, and by default your system will allow it to block other programs to access the disk while it's reading and writing. On Linux you can use [`ionice`](https://linux.die.net/man/1/ionice), and newer versions of Windows should allow you to navigate to the process (named "parity.exe") in Task Manager, right click, open the "Process priority" sub-menu and select "Background". If this menu doesn't appear, you may need to select "More details" at the bottom of the window. A WikiHow article with a description of this process on Windows 7 can be found [here](http://www.wikihow.com/Change-Process-Priorities-in-Windows-Task-Manager), and the process is much the same for newer versions of Windows.
 
-### What are the different Parity synchronization and pruning modes?
+## What are the different Parity synchronization and pruning modes?
 
 Since Parity 1.2 state-trie pruning is enabled by default (`--pruning fast`). You can disable it by setting the pruning method to `archive` which keeps all state trie data:
 
@@ -64,13 +66,13 @@ To reduce the size of the kept pruning history, you can set the minimum number o
 
 By default, 64 states are kept.
 
-### Why is warp synchronization so fast?
+## Why is warp synchronization so fast?
 
 Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
 
 See also [what is Parity's “warp” sync](http://ethereum.stackexchange.com/q/9991) at Ethereum Stack Exchange and read [the full specification at the Wiki here](https://github.com/paritytech/parity/wiki/Warp-Sync-Snapshot-Format#manifest).
 
-### How can I tell if Parity is fully synchronized?
+## How can I tell if Parity is fully synchronized?
 
 To check whether Parity is currently synchronizing the chain, you can open the Web3 console and type:
 
@@ -86,7 +88,7 @@ web3.eth.getBlock('latest').number
 
 The Parity/Web3 console can be accessed via the UI in the 'Applications' tab.
 
-### What can I do when Parity has trouble getting in sync?
+## What can I do when Parity has trouble getting in sync?
 
 Parity is running but seems to remain at the same block for a long time.
 
@@ -103,19 +105,19 @@ Parity is running but seems to remain at the same block for a long time.
 
 If the problem persists, please run Parity with `-l sync=trace` option for a while and post the output [here](https://github.com/paritytech/parity/issues/2447).
 
-### Sync is stuck around block 2,421,000 or 2,675,000!?!
+## Sync is stuck around block 2,421,000 or 2,675,000!?!
 
 These blocks are quite heavy on the IO and take a long time to import, especially on machines with HDD. Consider using `--warp` or switching to SSD drive.
 
-### Is there any Parity light client available?
+## Is there any Parity light client available?
 
 The light client is not finished yet, but on the [road map for upcoming releases](https://github.com/paritytech/parity/projects/2).
 
-### How do I enable transaction tracing (indexing)?
+## How do I enable transaction tracing (indexing)?
 
 Transaction tracing, available in Parity 1.1 and above, enables all `CALL`/`CREATE` information (i.e. "internal transactions") to be efficiently searched and filtered. More information can be found on the dedicated [Wiki page](JSONRPC-trace-module).
 
-### How do I create a new account?
+## How do I create a new account?
 
 Either by enabling the `personal` web3 API and typing
 
@@ -127,7 +129,7 @@ in the Web3 console, or by using the Parity Wallet UI to create or import accoun
 
 ![Parity Wallet Create New Account](https://i.imgur.com/Lnpczaa.png)
 
-### How can I run Parity in Docker?
+## How can I run Parity in Docker?
 
 Docker images for Parity are available via [Docker Hub](Docker), i.e.:
 
@@ -137,7 +139,7 @@ docker pull ethcore/parity:beta
 
 You can view the [Dockerfile here](https://github.com/paritytech/parity/blob/master/docker/ubuntu/Dockerfile).
 
-### Can I run Parity as a daemon or system service?
+## Can I run Parity as a daemon or system service?
 
 The versions installed with the **Windows** and **MacOS X** installers automatically configure and enable a system service.
 
@@ -159,7 +161,7 @@ sudo systemctl start parity
 
 To manually run Parity in **daemon mode** in background, run `parity daemon`.
 
-### How can I stop a Parity node cleanly?
+## How can I stop a Parity node cleanly?
 
 If you run Parity in a terminal, hitting `CTRL+C` will cleanly exit it. Make sure to wait a couple of seconds.
 
@@ -175,7 +177,7 @@ Another way, is to issue a _hang-up_ (HUP) call for the Parity client, i.e.:
 killall -HUP parity
 ```
 
-### How to launch Parity using the command line on Windows?
+## How to launch Parity using the command line on Windows?
 
 1. Make sure you close parity and that no parity process is running (using Ctrl + Alt + Esc)
 1. Navigate in Windows Explorer to the Parity folder where parity.exe is, it should be located in `C:\Program Files\Parity Technologies\Parity`
@@ -183,7 +185,7 @@ killall -HUP parity
 ![windows pane](/images/windows-explorer-cmd.jpeg)
 1. This opens a command line windows in the Parity folder, you can launch parity with [CLI flags](https://wiki.parity.io/Configuring-Parity.html#cli-options)
 
-### How to generate a new hardcoded sync block for Parity light client?
+## How to generate a new hardcoded sync block for Parity light client?
 
 Parity light client allows you to set a hardcoded block from which the light client will sync to reach the top of the chain faster. Note that this hardcoded block will only be used if no prior light database is found. Here is how you can generate the needed info to create a chain specifications file:
 1. Run `parity --light` and make sure to reach the top of the chain.

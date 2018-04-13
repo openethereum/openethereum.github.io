@@ -1,4 +1,6 @@
-# DApp Tutorial
+---
+title: DApp Tutorial
+---
 
 **This is the eighth part of the Dapp Tutorial.** We assume you're familiar with the content of the past chapters.
 

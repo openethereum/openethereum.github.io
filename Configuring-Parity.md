@@ -1,4 +1,6 @@
-# Configuring Parity
+---
+title: Configuring Parity
+---
 
 Parity can be configured using either the [CLI options](#cli-options) or a [config file](#config-file). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence.
 

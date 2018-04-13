@@ -1,4 +1,6 @@
-# The `web3` Module
+---
+title: The `web3` Module
+---
 
 ## JSON-RPC methods
 

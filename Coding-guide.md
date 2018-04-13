@@ -1,4 +1,6 @@
-# Coding Guide
+---
+title: Coding Guide
+---
 
 This is yet to be fleshed out.
 

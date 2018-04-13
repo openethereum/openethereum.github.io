@@ -1,4 +1,6 @@
-# Backing up and Restoring
+---
+title: Backing up and Restoring
+---
 
 It's generally sensible to back up your keys and recovery phrases.
 

@@ -1,4 +1,6 @@
-# Warp Sync (`par`)
+---
+title: Warp Sync (`par`)
+---
 
 Warp Sync is an extension to the Ethereum Wire protocol, which involves sending snapshots over the network to get the full state at a given block extremely quickly, and then filling in the blocks between the genesis and the snapshot in the background.
 

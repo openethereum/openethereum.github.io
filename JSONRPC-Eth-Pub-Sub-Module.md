@@ -1,4 +1,6 @@
-# The `eth_pubsub` Module
+---
+title: The `eth_pubsub` Module
+---
 
 ## JSON-RPC methods
 

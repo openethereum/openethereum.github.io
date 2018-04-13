@@ -1,4 +1,6 @@
-# Accounts, Wallets, and Vaults
+---
+title: Accounts, Wallets, and Vaults
+---
 
 The parity wallet offers multiple options to store tokens and Ether.
 

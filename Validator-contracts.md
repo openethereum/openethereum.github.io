@@ -1,4 +1,6 @@
-# Validator Contracts
+---
+title: Validator Contracts
+---
 
 ## Majority List
 

@@ -1,4 +1,6 @@
-# DApp Tutorial
+---
+title: DApp Tutorial
+---
 
 **This is the first part of the Dapp Tutorial**.
 

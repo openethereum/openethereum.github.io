@@ -1,4 +1,6 @@
-# Permissioning
+---
+title: Permissioning
+---
 
 _The development of this feature was supported by the [Energy Web Foundation](http://energyweb.org/) in order to expedite the energy sector revolution towards decentralisation._
 

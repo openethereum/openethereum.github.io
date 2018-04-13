@@ -1,4 +1,6 @@
-# The `parity` Module
+---
+title: The `parity` Module
+---
 
 ## JSON-RPC methods
 

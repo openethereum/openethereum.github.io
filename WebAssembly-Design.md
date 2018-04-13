@@ -1,4 +1,6 @@
-# WebAssembly Parity VM Design
+---
+title: WebAssembly Parity VM Design
+---
 
 ## Choosing which VM to run.
 

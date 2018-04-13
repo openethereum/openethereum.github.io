@@ -1,4 +1,6 @@
-# oo7 Examples
+---
+title: oo7 Examples
+---
 
 Examples of common operations and useful functionality when building a dApp using [oo7-Bonds](oo7-Parity-Reference.md). It does not aim to cover the complete functionality, for more features please look at the documentation.
 

@@ -1,4 +1,6 @@
-# The `personal` Module
+---
+title: The `personal` Module
+---
 
 ## JSON-RPC methods
 

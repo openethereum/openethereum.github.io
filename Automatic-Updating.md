@@ -1,4 +1,6 @@
-# Automatic Updating
+---
+title: Automatic Updating
+---
 
 Parity Ethereum features the first fully blockchain-based consensus-protocol updating system and quite possibly the most secure software auto-update system ever deployed.
 

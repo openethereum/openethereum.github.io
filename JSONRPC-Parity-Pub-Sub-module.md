@@ -1,4 +1,6 @@
-# The `parity_pubsub` Module
+---
+title: The `parity_pubsub` Module
+---
 
 ## JSON-RPC methods
 

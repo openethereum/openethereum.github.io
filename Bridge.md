@@ -1,4 +1,6 @@
-# Parity Bridge
+---
+title: Parity Bridge
+---
 
 - [paritytech/parity-bridge](https://github.com/paritytech/parity-bridge/)
 

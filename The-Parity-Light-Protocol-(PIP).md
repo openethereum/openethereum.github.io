@@ -1,4 +1,6 @@
-# The Parity Light Protocol
+---
+title: The Parity Light Protocol
+---
 
 This is a proposal/WIP for a robust, efficient, and future-proof light client protocol for ethereum-like chains.
 Although inspired by Zsolt Felfoldi's [LES](https://github.com/zsfelfoldi/go-ethereum/wiki/Light-Ethereum-Subprotocol-(LES)), it diverges in several significant ways which will be covered in further sections.

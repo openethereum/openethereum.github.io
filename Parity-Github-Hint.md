@@ -1,4 +1,6 @@
-# Parity Github Hint
+---
+title: Parity Github Hint
+---
 
 The Parity team has a simple content hash to github repo (and/or url) [mapping contract](https://github.com/paritytech/contracts/blob/master/GithubHint.sol) available. Parity has the ability to, given the content hash, do a reverse lookup against the contract and to retrieve the associated data.
 

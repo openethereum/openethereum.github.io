@@ -1,4 +1,6 @@
-# Parity Signer Mobile App tutorial with MyCrypto
+---
+title: Parity Signer Mobile App tutorial with MyCrypto
+---
 
 
 This tutorial will walk through setting up an account with Parity Signer Android or iOs App and sign a transaction on [MyCrypto](https://mycrypto.com/) to transfer Ether from one account to another.

@@ -1,4 +1,6 @@
-# Register your DApp for discovery
+---
+title: Register your DApp for discovery
+---
 
 The following page explains how to register your DAPP to allow Parity discovering it, loading it from the network and displaying it in the Applications tab of the Parity UI.
 

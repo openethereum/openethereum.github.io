@@ -1,4 +1,6 @@
-# IPFS
+---
+title: IPFS
+---
 
 Parity is listening for Ethereum-IPFS compatible calls. Currently supported thus far: `eth-block`, `eth-block-list`, `eth-tx`, and `eth-state-trie`. Any other IPFS API calls will not return anything.
 

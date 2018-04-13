@@ -1,4 +1,6 @@
-# Parity Wallet
+---
+title: Parity Wallet
+---
 
 Parity Wallet is designed to integrate seamlessly with all standard Ethereum based tokens as well as Ether itself.
 It is accessible in the Parity User Interface - [Parity UI](https://github.com/Parity-JS/shell/releases).

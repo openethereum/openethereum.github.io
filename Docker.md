@@ -1,4 +1,6 @@
-# Docker
+---
+title: Docker
+---
 
 Build and run Parity anywhere with Docker:
 

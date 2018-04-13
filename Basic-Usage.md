@@ -1,4 +1,6 @@
-# Basic Usage
+---
+title: Basic Usage
+---
 
 
 To use Parity make sure to follow [these steps](https://wiki.parity.io/Parity-Wallet).

@@ -1,4 +1,6 @@
-# Setup Parity
+---
+title: Setup Parity
+---
 
 - [Binaries](#binaries)
     - [One-line Binary Installer](#one-line-binary-installer)

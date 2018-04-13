@@ -1,4 +1,6 @@
-# oo7 Parity Reference
+---
+title: oo7 Parity Reference
+---
 
 **For `oo7-parity` version 0.6.0.**
 

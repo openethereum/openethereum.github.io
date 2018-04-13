@@ -1,4 +1,6 @@
-# Token Deployment
+---
+title: Token Deployment
+---
 
 The Parity Ethereum wallet supports any ERC20-compliant [token](Tokens.md) by displaying balances and enabling transfers to be as simple as Ether transactions. The [ERC20-token standard](https://github.com/ethereum/EIPs/issues/20) basically describes which standard functions each token contract should implement to be ERC20-compliant. Those will allow DApps and wallets to handle tokens across multiple interfaces. The most important here are `transfer`, `balanceOf` and the `Transfer` event.
 

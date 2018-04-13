@@ -1,3 +1,5 @@
-# Deterministic Stack Height
+---
+title: Deterministic Stack Height
+---
 
 under construction

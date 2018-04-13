@@ -1,4 +1,6 @@
-# Gas metering
+---
+title: Gas metering
+---
 
 ## Short
 

@@ -1,4 +1,6 @@
-# Remote Access to the Parity Wallet
+---
+title: Remote Access to the Parity Wallet
+---
 
 Although our main focus is for the Wallet to work locally, there are couple of ways to access your remote Parity node's Wallet.
 

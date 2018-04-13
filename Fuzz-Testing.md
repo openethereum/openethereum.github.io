@@ -1,4 +1,6 @@
-# Fuzzing Parity Code
+---
+title: Fuzzing Parity Code
+---
 
 Fuzzing is a great tool for coverage testing, and discovering bugs. Rust has a utility (`cargo-fuzz`) for tying into the powerful `libFuzzer` and sanitizer libraries packaged with LLVM.
 

@@ -20,6 +20,13 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/public/tipuesearch/css/normalize.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/public/tipuesearch/css/tipuesearch.css">
 
+  <!-- Social -->
+  <meta property="og:title" content="Parity Documentation - {{ page.title }}" />
+  <meta property="og:url" content="{{ site.baseurl }}{{ page.url }}" />
+  <meta property="og:description" content="{{ page.content | truncate: 150 }}" />
+  <meta property="og:image" content="{{ site.baseurl }}/public/Paritytech_logo_400x400.jpg" />
+  <meta property="og:type" content="article" /> 
+
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/public/apple-touch-icon.png">
   <link rel="shortcut icon" href="{{ site.baseurl }}/public/favicon-32x32.png">

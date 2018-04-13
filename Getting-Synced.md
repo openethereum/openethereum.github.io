@@ -1,4 +1,6 @@
-# Getting Synced
+---
+title: Getting Synced
+---
 
 Parity supports state snapshotting that significantly reduces sync-times and database pruning which reduces disk requirements. Both features are enabled by default on most recent Parity releases. Simply get synced by running:
 
@@ -6,7 +8,7 @@ Parity supports state snapshotting that significantly reduces sync-times and dat
 $ parity
 ```
 
-### Warp Synchronization
+## Warp Synchronization
 
 State snapshotting, or warp-sync, allows for an extremely fast "synchronization" that skips almost all of the block processing, simply injecting the appropriate data directly into the database. To use a snapshot sync, you first need to download a snapshot.
 

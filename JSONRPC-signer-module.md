@@ -1,4 +1,6 @@
-# The `signer` Module
+---
+title: The `signer` Module
+---
 
 ## JSON-RPC methods
 

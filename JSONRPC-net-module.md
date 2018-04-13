@@ -1,4 +1,6 @@
-# The `net` Module
+---
+title: The `net` Module
+---
 
 ## JSON-RPC methods
 

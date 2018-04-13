@@ -1,4 +1,6 @@
-# The `parity_set` Module
+---
+title: The `parity_set` Module
+---
 
 ## JSON-RPC methods
 

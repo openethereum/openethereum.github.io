@@ -1,4 +1,6 @@
-# Parity WebAssembly Runtime
+---
+title: Parity WebAssembly Runtime
+---
 
 ### Rust bindings
 

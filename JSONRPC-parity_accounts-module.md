@@ -1,4 +1,6 @@
-# The `parity_accounts` Module
+---
+title: The `parity_accounts` Module
+---
 
 ## JSON-RPC methods
 

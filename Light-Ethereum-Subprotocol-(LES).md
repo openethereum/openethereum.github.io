@@ -1,4 +1,6 @@
-# Light Ethereum Subprotocol
+---
+title: Light Ethereum Subprotocol
+---
 
 The Light Ethereum Subprotocol (LES) is the protocol used by "light" clients, which only download block headers as they appear and fetch other parts of the blockchain on-demand. They provide full functionality in terms of safely accessing the blockchain, but do not mine and therefore do not take part in the consensus process. Full and archive nodes can also support the LES protocol besides ETH in order to be able to serve light nodes.
 It has been decided to create a separate sub-protocol in order to avoid interference with the consensus-critical ETH network and make it easier to update during the development phase. Some of the LES protocol messages are similar to the "new sync model" (ETH62/63) of the [Ethereum Wire Protocol](https://github.com/ethereum/wiki/wiki/Ethereum-Wire-Protocol), with the addition of a few new fields (see below).

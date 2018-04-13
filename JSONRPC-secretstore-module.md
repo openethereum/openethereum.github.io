@@ -1,4 +1,6 @@
-# Secret Store RPC methods
+---
+title: Secret Store RPC methods
+---
 Parity has separate RPC API set - `secretstore`, which:
 - is available in default Parity client (i.e. does not requires Parity to be built with `--features secretstore`);
 - is considered unsafe and must be enabled separately (by passing `secretstore`, `all` or `safe` as an `--jsonrpc-apis` argument value);

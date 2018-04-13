@@ -1,4 +1,6 @@
-# Parity Known Issues and Priorities Overview
+---
+title: Parity Known Issues and Priorities Overview
+---
 
 This could become some kind of a rough roadmap document if well discussed and continuously maintained. If not stated otherwise, everything is sorted by priority in this document (descending). 
 

@@ -1,4 +1,6 @@
-# WebAssembly Links
+---
+title: WebAssembly Links
+---
 
 ## Tutorial
 

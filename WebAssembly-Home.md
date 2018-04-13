@@ -1,4 +1,6 @@
-# Web Assembly (WASM)
+---
+title: Web Assembly (WASM)
+---
 _The development of this feature was supported by the Energy Web Foundation in order to expedite the energy sector revolution towards decentralisation._
 
 ## General overview

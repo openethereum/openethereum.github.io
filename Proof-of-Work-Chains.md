@@ -1,4 +1,6 @@
-# Proof-of-Work Chains
+---
+title: Proof-of-Work Chains
+---
 
 Here is an example chain specification file for a public/open Proof-of-Work (Ethash) chain. To start Parity with a JSON file specifying the chain, run `$ parity --chain path/to/chain/spec.json`, or create a [config file](Configuring-Parity.md#config-file):
 
