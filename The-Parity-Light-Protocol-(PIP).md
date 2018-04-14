@@ -233,9 +233,9 @@ for request in P {
 **Rate of Recharge**: `U`
 The rate of recharge (in credits) of our local credits per second.
 
-# PIPv1 Messages:
+## PIPv1 Messages:
 
-## Handshake
+### Handshake
 **Status**: 
 [`+0x00`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Inform a peer of the sender's current state. This message should be sent _after_ the initial handshake and _prior_ to any PIP related messages. The following keys should be present (except the optional ones) in order to be accepted by a PIP/1 node: (value types are noted after the key string)
 
@@ -260,7 +260,7 @@ If any of the flow control keys are missing, this peer is not a server and canno
 
 Announce a new chain head, along with a reorganization depth to the common ancestor of the new head and the last announced head. Also update any of the key-value pairs given in the handshake. 
 
-## Request-response
+### Request-response
 **Request**:
 [`+0x02`, `req_id`: `U`, [`req_1`, `req_2`, ...]]
 
@@ -272,7 +272,7 @@ The base cost of a request packet plus the cumulative cost of all the requests c
 
 A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_.
 
-## Modifying request credits parameters mid-connection.
+### Modifying request credits parameters mid-connection.
 
 **UpdateCreditParameters**:
 [`+0x04`, `max`: `U`, `recharge`: `U`, `cost_table`: `CT`]
@@ -290,7 +290,7 @@ No updates can be made to a peer while another update remains unacknowledged.
 
 Acknowledge an update in request credit parameters. It is considered misbehavior to acknowledge an update where none has been made, or to acknowledge an update more than once. Apply the transition to the new parameters upon sending this packet.
 
-## Transaction relay
+### Transaction relay
 **RelayTransactions**
 [`+0x06`, [`tx_1`: `P`, `tx_2`: `P`, ...]]
 

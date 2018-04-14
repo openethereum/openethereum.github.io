@@ -29,7 +29,7 @@ The manifest is an rlp-encoded list of the following format:
 The chunk hashes here are not the hashes of the raw chunk data, but rather of their snappy-compressed data.
 This is a canonical identifier for any given chunk.
 
-# Block chunks
+## Block chunks
 
 *NOTE*: This is the block chunk format for Ethash PoW-based engines. Other consensus engines may have their own block chunk format.
 
@@ -50,7 +50,7 @@ Each block chunk is an rlp-encoded list of the following format:
 
 The blocks within must be sequential, so that their abridged RLP can be assembled into entire blocks simply using the metadata at the beginning.
 
-## Abridged block RLP
+### Abridged block RLP
 
 This differs from the standard block RLP format by omitting some fields which can be reproduced from the metadata at the beginning of the block chunk.
 
@@ -77,7 +77,7 @@ An abridged block takes the following form:
 ]
 ```
 
-## Block Chunk Generation
+### Block Chunk Generation
 
 *Definitions:*
 
@@ -113,7 +113,7 @@ At the end, if S<sub>current</sub> > 0, write out the remaining chunk from block
 
 The manifest's `block_chunks` list must contain the chunks' hashes in an ordering such that the hash of any given chunk precedes no hashes of any other chunk which contains blocks with a higher number.
 
-# State Chunks
+## State Chunks
 
 State chunks store the entire state of a given block. A "rich" account structure is used to save space.
 Each state chunk consists of a list of lists, each with two items: an address' `sha3` hash and a rich account structure correlating with it.
@@ -124,7 +124,7 @@ We call these lists "account entries".
 
 We define the ordering of account to be first lexicographic in the address hash, and if those are equal, then lexicographic in the storage lists of the rich account structure.
 
-## Rich Account
+### Rich Account
 
 The rich account structure encodes the usual account data such as the nonce, balance, and code, as well as the full storage.
 
@@ -148,7 +148,7 @@ More formally, it is an RLP list in the following format:
 
 If `storage` is large enough that the rich account structure would bring the internal size (see the Validity section) of the chunk to over `CHUNK_SIZE`, only the prefix of `storage` that would keep the internal size of the chunk within `CHUNK_SIZE` will be included. We will call the unincluded remainder `storage'`. A new state chunk will begin with an account entry of the same account, but with storage set to the prefix of `storage'` which will fit in the chunk, and so on.
 
-## Validity
+### Validity
 
 Aside from those given above, there are a couple more requirements for a set of valid state chunks.
 
@@ -165,7 +165,7 @@ A set of state chunks S is valid if and only if:
 
 The `state_chunks` list in the snapshot manifest must be sorted by the first account entry contained within each one.
 
-# Version history
+## Version history
 
-## Snapshot version 2.
+### Snapshot version 2.
 This version introduces the `version` field in the manifest and adds

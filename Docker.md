@@ -144,7 +144,7 @@ Disabling the signal proxy [allows to detach again](http://stackoverflow.com/a/2
 
 A Parity deployment script generator is available at [paritytech/parity-deploy](https://github.com/paritytech/parity-deploy). It uses `docker` and `docker-compose`. On Ubuntu systems these will automatically be installed if not already present on the system.
 
-Currently these scripts supports two types of chains, either [instant sealing](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#instant-seal) for development and [authority round](https://github.com/paritytech/parity/wiki/Pluggable-Consensus#aura) for proof of authority with multiple validators.
+Currently these scripts supports two types of chains, either [instant sealing](https://wiki.parity.io/Pluggable-Consensus#instant-seal) for development and [authority round](https://wiki.parity.io/Pluggable-Consensus#aura) for proof of authority with multiple validators.
 
 ##### Prepare the node
 

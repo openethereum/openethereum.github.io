@@ -20,7 +20,7 @@ import {bonds} from 'oo7-parity';
 
 ### 1. Watch the block
 
-For our first trick, we will introduce the simplest of all bonds: `bonds.height`. This evaluates to [the number of the latest block](https://github.com/paritytech/parity/wiki/JSONRPC-eth-module.md#eth_blocknumber), expressed as a simple number.
+For our first trick, we will introduce the simplest of all bonds: `bonds.height`. This evaluates to [the number of the latest block](JSONRPC-eth-module#eth_blocknumber), expressed as a simple number.
 
 In `app.jsx`, remove the entire `App` class and the two `const`s and replace it with:
 

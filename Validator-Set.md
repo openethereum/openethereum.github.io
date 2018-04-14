@@ -4,7 +4,7 @@ title: Validator Sets
 
 A number of Engines available in Parity achieve consensus by referring to a list of "validators" (referred to as authorities if they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them. The validator set can be specified in a number of different ways.
 
-# Immutable list
+## Immutable list
 
 A simple list of addresses specified at genesis.
 
@@ -17,7 +17,7 @@ A simple list of addresses specified at genesis.
 }
 ```
 
-# Contracts
+## Contracts
 **Available since 1.7.**
 
 The list can be also a part of the blockchain state by being stored in an Ethereum contract.
@@ -30,7 +30,7 @@ It is best to include the contract in the genesis placing the bytecode as a "con
 "0x0000000000000000000000000000000000000005": { "balance": "1", "constructor" : "0x..." }
 ```
 
-## Non-reporting contract
+### Non-reporting contract
 A simple validator contract has to have the following interface:
 ```json
 [{"constant":false,"inputs":[],"name":"finalizeChange","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getValidators","outputs":[{"name":"_validators","type":"address[]"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_parent_hash","type":"bytes32"},{"indexed":false,"name":"_new_set","type":"address[]"}],"name":"InitiateChange","type":"event"}]
@@ -76,7 +76,7 @@ Other than these restrictions, the switching rules are fully determined by the c
 }
 ```
 
-## Reporting contract
+### Reporting contract
 
 Sometimes one might want to automatically take action when one of the validators behaves badly. The definition of bad behaviour depends on a consensus engine and there are two types of bad behaviour:
 - benign misbehaviour
@@ -121,7 +121,7 @@ It is specified as:
 }
 ```
 
-# Multi set
+## Multi set
 **Available only in 1.6 and above.**
 This validator set can specify any combination of other validator sets. Switching is done based on the number of the current block. It can be useful for conducting chain forks. First set has to start at block 0.
 

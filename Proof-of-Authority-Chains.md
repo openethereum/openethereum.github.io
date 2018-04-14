@@ -11,7 +11,7 @@ For consortium setting there are no disadvantages of PoA network as compared to 
 
 [![Gitter](https://badges.gitter.im/ethcore/parity-poa.svg)](https://gitter.im/ethcore/parity-poa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# Setting up a Proof of Authority network
+## Setting up a Proof of Authority network
 1. Pick real world entities that should control the network, so called authorities.
 2. Each authority should run a Parity node and create an account.
 3. Authorities should exchange their account addresses and place them in the [spec or validator contract](Pluggable-Consensus.md#validator-engines).
@@ -21,7 +21,7 @@ For consortium setting there are no disadvantages of PoA network as compared to 
 
 A [Demo PoA tutorial](Demo-PoA-tutorial.md) describes how to set up two nodes and connect them to each other.
 
-# Running the authority nodes
+## Running the authority nodes
 
 Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described on the [Chain specification](Chain-specification.md) page.
 
@@ -42,15 +42,15 @@ reseal_on_txs = "none" // Authorities reseal automatically
 usd_per_tx = "0" // Allows for free transactions.
 ```
 
-## Private centralized network setup
+### Private centralized network setup
 When deploying PoC it is useful to get a centrally managed network going first. With Parity the nodes can be identical and simply expose the RPC interface to a central managing node, all further setup can be done via those interfaces.
 
-### Community built setups
+#### Community built setups
 - [Docker compose network with 3 authorities and netstats dashboard](https://github.com/dstarcev/parity-poa-playground)
 - [Docker compose for running integration tests](https://github.com/illya13/parity-poa)
 - [Docker compose with demo PoA setup](https://github.com/vincentserpoul/parityPoA)
 
-### Useful RPCs
+#### Useful RPCs
 Connect the deployed nodes:
 - `parity_enode()` returns enode of the particular instance
 - `parity_addReservedPeer(enode)` adds enode to the list of reserved peers (run with `--reserved-only` to avoid other connections)
@@ -64,7 +64,7 @@ Validate the blocks:
 
 Further methods for actually using the nodes can be found [here](JSONRPC-eth-module.md).
 
-# Chain Engine specification
+## Chain Engine specification
 
 To create a Proof of Authority chain a JSON spec file should be provided to `--chain` with authorities set to correct addresses.
 

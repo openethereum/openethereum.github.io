@@ -9,7 +9,7 @@ After building Parity from source:
 - On Windows run: `target/release/parity.exe`
 - On MacOS and Linux run: `target/release/parity`
 
-After installing Parity, just run `parity` from command line. See also [how do I configure Parity](https://github.com/paritytech/parity/wiki/FAQ#how-do-i-configure-parity) below.
+After installing Parity, just run `parity` from command line. See also [how do I configure Parity](https://wiki.parity.io/FAQ#how-do-i-configure-parity) below.
 
 
 ## The UI isn't working when I visit 127.0.0.1:8180
@@ -23,7 +23,7 @@ If you still want to use the broswer UI (deprecated) you can launch Parity Ether
 
 ## How do I configure Parity?
 
-You can configure your Parity client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://github.com/paritytech/parity/wiki/Configuring-Parity#cli-options).
+You can configure your Parity client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://wiki.parity.io/Configuring-Parity#cli-options).
 
 In additoin, Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Config Generator](https://ethcore.github.io/parity-config-generator/). To start parity with a config file, the file needs to be located in:
 
@@ -31,7 +31,7 @@ In additoin, Parity can be configured using a [TOML](https://github.com/toml-lan
 * Linux: `~/.local/share/io.parity.ethereum/config.toml`
 * macOS: `$HOME/Library/Application Support/io.parity.ethereum/config.toml`
 
-To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity config file here](https://github.com/paritytech/parity/wiki/Configuring-Parity#config-file).
+To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity config file here](https://wiki.parity.io/Configuring-Parity#config-file).
 
 ## Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!
 
@@ -70,7 +70,7 @@ By default, 64 states are kept.
 
 Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
 
-See also [what is Parity's “warp” sync](http://ethereum.stackexchange.com/q/9991) at Ethereum Stack Exchange and read [the full specification at the Wiki here](https://github.com/paritytech/parity/wiki/Warp-Sync-Snapshot-Format#manifest).
+See also [what is Parity's “warp” sync](http://ethereum.stackexchange.com/q/9991) at Ethereum Stack Exchange and read [the full specification at the Wiki here](https://wiki.parity.io/Warp-Sync-Snapshot-Format#manifest).
 
 ## How can I tell if Parity is fully synchronized?
 

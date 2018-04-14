@@ -37,7 +37,7 @@ See also [Chain specification](Chain-specification.md).
 - Ethash (Ethereum Proof-of-Work Engine), see [Ethash](https://github.com/ethereum/wiki/wiki/Ethash).
 - Instant Seal (Development Engine), see [Private development chain](Private-development-chain.md).
 - Aura (Proof-of-Authority Validator Engine), see [Aura](Aura.md).
-- Tendermint (Experimental Validator Engine), see [Validator Engines](https://github.com/paritytech/parity/wiki/Consensus-Engines.md#validator-engines)
+- Tendermint (Experimental Validator Engine), see [Validator Engines](https://wiki.parity.io/Consensus-Engines#validator-engines)
 
 ## How do I get Ether for the Morden, Ropsten, or Kovan testnets?
 
@@ -66,4 +66,4 @@ You're probably trying to send from a locked account. Ensure you use the `--unlo
 
 ## I've received an abuse message from my ISP/hosting provider. Something about malicious activity triggered by Parity.
 
-See [Network Configuration](https://github.com/paritytech/parity/wiki/Network-Configuration.md) for some tips on how to configure Parity to behave.
+See [Network Configuration](https://wiki.parity.io/Network-Configuration) for some tips on how to configure Parity to behave.
