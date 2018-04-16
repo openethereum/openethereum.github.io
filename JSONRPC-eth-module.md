@@ -332,7 +332,8 @@ params: [
     - `transactionsRoot`: `Data` - 32 Bytes - the root of the transaction trie of the block
     - `stateRoot`: `Data` - 32 Bytes - the root of the final state trie of the block
     - `receiptsRoot`: `Data` - 32 Bytes - the root of the receipts trie of the block
-    - `miner`: `Address` - 20 Bytes - the address of the beneficiary to whom the mining rewards were given
+    - `author`: `Address` - 20 Bytes - the address of the author of the block (the beneficiary to whom the mining rewards were given)
+    - `miner`: `Address` - 20 Bytes - alias of `author`
     - `difficulty`: `Quantity` - integer of the difficulty for this block
     - `totalDifficulty`: `Quantity` - integer of the total difficulty of the chain until this block
     - `extraData`: `Data` - the 'extra data' field of this block
