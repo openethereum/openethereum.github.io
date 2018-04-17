@@ -4,7 +4,7 @@ title: Chain Specification
 
 By default, when simply running `parity`, Parity Ethereum will connect to the official public Ethereum network.
 
-In order to run a chain different to the official public Ethereum one, Parity has to be ran with the `--chain` option or with a [config file](Configuring-Parity.md#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
+In order to run a chain different to the official public Ethereum one, Parity has to run with the `--chain` option or with a [config file](Configuring-Parity.md#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
 - [`mainnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
@@ -18,7 +18,7 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 
 ## Private chains
 
-Parity supports private chain and private network configuration via [Chain specification](Chain-specification.md) files provided with `--chain`. In addition to the usual [Proof of Work Chains](Proof-of-Work-Chains.md), Parity also includes [Proof of Authority Chains](Proof-of-Authority-Chains.md) which do not require mining.
+Parity supports private chain and private network configuration via [Chain specification](Chain-specification.md) file provided with `--chain`. In addition to the usual [Proof of Work Chains](Proof-of-Work-Chains.md), Parity also includes [Proof of Authority Chains](Proof-of-Authority-Chains.md) which do not require mining.
 More details on the available options can be found on the [Pluggable Consensus](Pluggable-Consensus.md) page.
 
 ## JSON chain spec format
@@ -51,14 +51,14 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
 }
 ```
 
-+ **`"name"`** field contains any name used to identify the chain.
++ **`"name"`** field contains any name used to identify the chain. It is used as a folder name for database files. If it contains spaces, the `"dataDir"` parameter without spaces is required (see "Optional spec fields" below).
 
 + **`"engine"`** field describes the consensus engine used for a particular chain, details are explained in the [Consensus Engines](Pluggable-Consensus.md) section.
 
 + **`"genesis"`** contains the genesis block (first block in the chain) header information.
   + `"seal"` is consensus engine specific and is further described in [Consensus Engines](Pluggable-Consensus.md).
-  + `"difficulty"` difficulty of the genesis block, matters only for PoW chains.
-  + `"gasLimit"` gas limit of the genesis, affects the initial gas limit adjustment.
+  + `"difficulty"` is the difficulty of the genesis block. This parameter is required for any type of chain but can be of arbitrary value if a PoA engine is used.
+  + `"gasLimit"` is the gas limit of the genesis block. It affects the initial gas limit adjustment.
 
   Optional:
   + `"author"` address of the genesis block author.
@@ -87,8 +87,10 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"maximumUncleCount"` Maximum number of accepted uncles starting from the block specified at `maximumUncleCountTransition`. Default `0` for Ethash chains, `2` for PoA chains before `maximumUncleCountTransition`.
   + `"emptyStepsTransition"` Block at which empty step messages should start.
   + `"maximumEmptySteps"` Maximum number of accepted empty steps.
+  + `"nodePermissionContract"` Address of the smart contract that sets nodes' interconnection permissions. Used for [advanced permssioning Networks](https://wiki.parity.io/Permissioning#how-it-works).
+  + `"transactionPermissionContract"` Address of the smart contract that sets the transaction type permissions for network participants. Used for [Advanced permissioning Networks](https://wiki.parity.io/Permissioning#transaction-type).
 
-+ **`"accounts"`** contains optional contents of the genesis block, such as simple accounts with balances or contracts. Parity does not include the standard Ethereum builtin contracts by default. These are necessary when writing new contracts in Solidity, since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below:
++ **`"accounts"`** contains optional contents of the genesis block, such as simple accounts with balances or contracts. Parity does not include the standard Ethereum builtin contracts by default. These are necessary when writing new contracts in Solidity since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below:
 
   ```
   "accounts": {
@@ -102,15 +104,15 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   Other types of accounts that can be specified:
   - simple accounts with some balance `"0x...": { "balance": "100000000000" }`
   - full account state `"0x...": { "balance": "100000000000", "nonce": "0", "code": "0x...", "storage": { "0": "0x...", ... } }`
-  - contract constructor, similar to sending a transaction with bytecode `"0x...": { "balance": "100000000000", "constructor": "0x..." }`
+  - contract constructor, similar to sending a transaction with bytecode `"0x...": { "balance": "100000000000", "constructor": "0x..." }`. The constructor bytecode is executed when the genesis is created and the code returned by the "constructor" is stored in the genesis state.
 
 Optional spec fields:
 
-+ **`"dataDir"`** sets a name of the chain to be used in the data directory instead of the chain name
++ **`"dataDir"`** sets a name of the chain to be used in the data directory instead of the chain name. This field is required if the chain name contains spaces.
 
 + **`"nodes"`** a list of boot nodes in the [enode format](https://github.com/ethereum/wiki/wiki/enode-url-format)
 
-+ **`"hardcodedSync"`**  Set of information required for light clients to start syncing from a hardcoded block. Can be generated unsing `parity export-hardcoded-sync` once the light client is synced.
++ **`"hardcodedSync"`**  Set of information required for light clients to start syncing from a hardcoded block. Can be generated using `parity export-hardcoded-sync` once the light client is synced.
   + `"header"` header of the block the light clients will start syncing from.
   + `"totalDifficulty"` total difficulty of this block.
   + `"CHTs"` Array of merkle tree root hashes of groups of 2048 blocks.
