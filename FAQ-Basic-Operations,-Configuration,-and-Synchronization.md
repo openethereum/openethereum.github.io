@@ -68,7 +68,10 @@ By default, 64 states are kept.
 
 ## Why is warp synchronization so fast?
 
-Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 30,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
+Warp sync extends previous versions of the protocol with full state snapshots. These snapshots can be used to quickly get a full copy of the state at a given block. Every 5,000 blocks, nodes will take a consensus-critical snapshot of that block's state. Any node can fetch these snapshots over the network, enabling a fast sync. These snapshots have been designed with out-of-order restoration in mind -- it isn't required to get any given chunk before another.
+
+To make sure you get the most recent snapshot available and warp sync very close to the top of the chain, Parity >=v1.10.1 supports the flag `--warp-barrier [NUM]`. Replace [NUM] with [the chain's latest block number](https://stats.parity.io/) **minus at least 10,000 blocks**. Example: if latest block number is 5,432,123 you should launch `parity --warp-barrier 5420000`.
+
 
 See also [what is Parity's “warp” sync](http://ethereum.stackexchange.com/q/9991) at Ethereum Stack Exchange and read [the full specification at the Wiki here](https://wiki.parity.io/Warp-Sync-Snapshot-Format#manifest).
 
@@ -92,7 +95,7 @@ The Parity/Web3 console can be accessed via the UI in the 'Applications' tab.
 
 Parity is running but seems to remain at the same block for a long time.
 
-1. Make sure you have up to date version of Parity.
+1. Make sure you have the latest version of Parity.
 2. Go to http://time.is/ and ensure it says "Your time is exact":
 
    ![image](https://cloud.githubusercontent.com/assets/138296/19265409/5e4a89ce-8fa5-11e6-8ec6-6c72c138ee48.png)
