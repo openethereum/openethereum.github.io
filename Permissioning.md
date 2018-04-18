@@ -7,7 +7,7 @@ _The development of this feature was supported by the [Energy Web Foundation](ht
 ## Overview
 In a basic [Proof-of-Work chain](Proof-of-Work-Chains.md) all participants are able to perform all roles within the network: connect, mine (validate), send transactions, inspect the state and see all transactions.
 
-At Parity Technologies we are introducing a number of features which enable the network participants to permission different aspects of a blockchain. Often conflated as simply “permissioned blockchains” we introduce permissions on a number of different layers:
+At Parity Technologies, we are introducing a number of features which enable the network participants to permission different aspects of a blockchain. Often conflated as simply “permissioned blockchains” we introduce permissions on a number of different layers:
 
 * [Network](Permissioning#network.md)
 * [Transaction type](Permissioning.md#transaction-type)
@@ -22,7 +22,7 @@ Permissions on this layer determine which nodes can connect to the network and i
 
 ### How it works
 A smart contract has to be deployed that regulates if two nodes can connect to each other given their enode IDs.
-The contract must be deployed on the corresponding chain and its address added to the chain spec file under `"params"/"nodePermissionContract"`.
+The contract must be deployed on the corresponding chain and its address added to the [chain spec file](Chain-specification) under `"params"/"nodePermissionContract"`.
 
 The contract must support the following ABI:
 ```json
@@ -69,26 +69,88 @@ The contract must support the following ABI:
 * `pl` is low 32 bytes of peer 2 enode Id
 * `ph` is hi 32 bytes of peer 2 enode Id
 
-Here's a sample contract that implements that ABI:
+The EVM architecture allows 32 bytes words. As enodes addresses are 64 bytes long, they need to be cut in two parts for a smart contract to handle them. For example the enode ` enode://841015562d43c8037b127ee2a89f861d39beb468fecab72ad4bf369d3db8a01a5adeee0e0422cb021acea7ffeb0516db9e1211510ad353dc353b8c52165003c8` would be represented using :
+- `sl: 0x5adeee0e0422cb021acea7ffeb0516db9e1211510ad353dc353b8c52165003c8`
+- `sh: 0x841015562d43c8037b127ee2a89f861d39beb468fecab72ad4bf369d3db8a01a`
+
+Here's a sample contract that implements this ABI. It contains 4 nodes and a definition of which nodes can connect to each other. In this example :
+- node 1 can connect to any other node. 
+- node 2 can connect to any other node except node 3.
+- node 3 can connect to any other node except node 2 and 4.
+- node 4 can connect to any other node except node 3.
+
 
 ```
 pragma solidity ^0.4.11;
 
 contract PeerManager {
-    mapping(bytes32 => bytes32) peers;
+    struct PeerInfo {
+        bytes32 public_low;
+        bytes32 public_high;
+    }
+
+    mapping(uint => PeerInfo) peers;
+
+    bool[5][5] allowedConnections;
 
     function PeerManager() {
-        peers[0x11] = 0x12;
-        peers[0x21] = 0x22;
-        peers[0x31] = 0x32;
-        peers[0x41] = 0x42;
+        peers[0] = PeerInfo(0x0a6e6d6729e9d185a575e867cd1f2b5557032fe9018e50fff328d0cbafd407c3, 0x28c7585ce5a69a136d1fe8427671b8a07633edb2f8371904d5123bc70d899983);
+        peers[1] = PeerInfo(0x85d0762d12a46b9ba6405eb36d440d4e04b8f99fd44f11e83eaacba5f690ff29, 0xe4af4ac11963719811e7bbf07f876e2e5ff211475bfaa862425ddb2261f2e861);
+        peers[2] = PeerInfo(0xa526541d1ae9460b4f01142d07d7fca57fef99cd14b477fe1c4facf29bd13375, 0x4c6fab9f6d8926f249cf79239309fb7923cc8ed31661fe01d40aa76689738e84);
+        peers[3] = PeerInfo(0x66279502cbf87e25bb915a6dfd59c79d4cbb5f848ee5327c43d55ba63682c809, 0x2b88f55414bcb53e691c8044cd72c7bffe534eb8a8f17bebee34ef63b526e487);
+        peers[4] = PeerInfo(0x96503b42181b03c632152e53d7a2a10851ec06e81dfa2dca9fb736c0f0a62f32, 0x8918d93907d19b1813ae8cc9e36e41f77b936040ab4228aeadf9108cb1ac587f);
+
+        allowedConnections[0][0] = true;
+        allowedConnections[0][1] = true;
+        allowedConnections[0][2] = true;
+        allowedConnections[0][3] = true;
+        allowedConnections[0][4] = true;
+        allowedConnections[1][0] = true;
+        allowedConnections[1][1] = true;
+        allowedConnections[1][2] = true;
+        allowedConnections[1][3] = true;
+        allowedConnections[1][4] = true;
+        allowedConnections[2][0] = true;
+        allowedConnections[2][1] = true;
+        allowedConnections[2][2] = true;
+        allowedConnections[2][3] = false;
+        allowedConnections[2][4] = true;
+        allowedConnections[3][0] = true;
+        allowedConnections[3][1] = true;
+        allowedConnections[3][2] = false;
+        allowedConnections[3][3] = true;
+        allowedConnections[3][4] = false;
+        allowedConnections[4][0] = true;
+        allowedConnections[4][1] = true;
+        allowedConnections[4][2] = true;
+        allowedConnections[4][3] = false;
+        allowedConnections[4][4] = true;
     }
 
     function connectionAllowed(bytes32 sl, bytes32 sh, bytes32 pl, bytes32 ph) constant returns (bool res) {
-        if (sl == 0x01 && sh == 0x02) {
-	    return true;
-	}
-	return pl != 0 && ph != 0 && peers[pl] == ph;
+        uint index1 = 0;
+        bool index1_found = false;
+        uint index2 = 0;
+        bool index2_found = false;
+        for (uint i = 0; i < 5; i++) {
+            PeerInfo storage peer = peers[i];
+
+            if (sh == peer.public_high && sl == peer.public_low) {
+                index1 = i;
+                index1_found = true;
+            }
+
+            if (ph == peer.public_high && pl == peer.public_low) {
+                index2 = i;
+                index2_found = true;
+            }
+        }
+
+        if (!index1_found || !index2_found) {
+            return false;
+        }
+
+        return allowedConnections[index1][index2];
     }
 }
 ```
@@ -175,7 +237,7 @@ This level of permissions is a rather important one. It determines which parties
 
 More are being implemented.
 
-For each consensus engine, there are two main varieties of permissioned validation: Proof-of-Authority and Proof-of-Stake. In Proof-of-Authority, validators typically represent some real world entities, which prevents Sybil attacks. These authorities can be added and removed according to a set of rules, such as via a voting process. The rules are specified in a smart contract on the blockchain. Proof-of-Stake on the other hand, relies on security deposits. This means that validators are added after submitting a sufficient amount of valuable tokens, which can be taken away in the case of misbehaviour.
+For each consensus engine, there are two main varieties of permissioned validation: Proof-of-Authority and Proof-of-Stake. In Proof-of-Authority, validators typically represent some real-world entities, which prevents Sybil attacks. These authorities can be added and removed according to a set of rules, such as via a voting process. The rules are specified in a smart contract on the blockchain. Proof-of-Stake, on the other hand, relies on security deposits. This means that validators are added after submitting a sufficient amount of valuable tokens, which can be taken away in the case of misbehaviour.
 
 In both cases, Parity Ethereum is able to automatically detect faults in the consensus process and respond immediately. Two types of misbehaviour are possible: malicious and benign. When a malicious misbehaviour is detected by a node, a proof of misbehaviour can be provided to the contract. Benign misbehaviour is more speculative: a node can be never sure if it actually occurred (e.g. differentiating between downtime and a network partition).
 
@@ -190,12 +252,12 @@ Currently, Parity already allows whitelisting of accounts for zero gas price tra
 ### How it works
 Service transaction checker contract is used by Parity to filter out transactions with zero gas price (aka service transactions).
 
-Default behaviour (to which you can always revert by using `--refuse-service-transactions` command line option) is to discard all service transactions, coming from network. If ['registrar'](https://github.com/paritytech/contracts/blob/master/Registry.sol) contract is deployed and registered for your chain, you can alter default behaviour by:
+The default behaviour (to which you can always revert by using `--refuse-service-transactions` command line option) is to discard all service transactions, coming from the network. If ['registrar'](https://github.com/paritytech/contracts/blob/master/Registry.sol) contract is deployed and registered for your chain, you can alter default behaviour by:
 1) deploying ['certifier'](https://github.com/paritytech/contracts/blob/master/SimpleCertifier.sol) contract
 2) registering address of this contract in registry with 'service_transaction_checker' name
-On startup, Parity will check if this contract is registered and will start checking author of each service transaction, coming from network. If author is **not** certified to create service transactions, transaction will be discarded. Otherwise, it will be accepted.
+On startup, Parity will check if this contract is registered and will start checking the author of each service transaction, coming from the network. If the author is **not** certified to create service transactions, the transaction will be discarded. Otherwise, it will be accepted.
 
-To register address, which is able to create service transactions, you should use `certify` method. To reverse this action, use `revoke` method. You can use `certified` method to check if address is certified for making service transactions.
+To register address, which is able to create service transactions, you should use `certify` method. To reverse this action, use `revoke` method. You can use `certified` method to check if the address is certified for making service transactions.
 
 Below is ABI of service transaction checker contract:
 ```
@@ -211,4 +273,5 @@ Below is ABI of service transaction checker contract:
 	{"constant":true,"inputs":[{"name":"_who","type":"address"}],"name":"certified","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},
 	{"constant":true,"inputs":[{"name":"_who","type":"address"},{"name":"_field","type":"string"}],"name":"get","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"}
 ]
+
 ```
