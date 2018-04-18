@@ -69,9 +69,10 @@ The contract must support the following ABI:
 * `pl` is low 32 bytes of peer 2 enode Id
 * `ph` is hi 32 bytes of peer 2 enode Id
 
-The EVM architecture allows 32 bytes words. As enodes addresses are 64 bytes long, they need to be cut in two parts for a smart contract to handle them. For example the enode ` enode://841015562d43c8037b127ee2a89f861d39beb468fecab72ad4bf369d3db8a01a5adeee0e0422cb021acea7ffeb0516db9e1211510ad353dc353b8c52165003c8` would be represented using :
-- `sl: 0x5adeee0e0422cb021acea7ffeb0516db9e1211510ad353dc353b8c52165003c8`
-- `sh: 0x841015562d43c8037b127ee2a89f861d39beb468fecab72ad4bf369d3db8a01a`
+The EVM architecture allows 32 bytes words. As enodes addresses are 64 bytes long, they need to be cut in two parts for a smart contract to handle them. For example the enode `enode://841015562d43c8037b127ee2a89f861d39beb468fecab72ad4bf369d3db8a01a5adeee0e0422cb021acea7ffeb0516db9e1211510ad353dc353b8c52165003c8` would be represented using :
+- `sl: 0x841015562d43c8037b127ee2a89f861d39beb468fecab72ad4bf369d3db8a01a`
+- `sh: 0x5adeee0e0422cb021acea7ffeb0516db9e1211510ad353dc353b8c52165003c8`
+
 
 Here's a sample contract that implements this ABI. It contains 4 nodes and a definition of which nodes can connect to each other. In this example :
 - node 1 can connect to any other node. 
