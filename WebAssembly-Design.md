@@ -4,16 +4,16 @@ title: WebAssembly Parity VM Design
 
 ## Choosing which VM to run.
 
-Parity Ethereum client currently supports 2 VM types - EVM and WebAssembly, with EVM being default. Parity can choose to run WebAssembly VM for the specific bytecode if and only if BOTH are true:
+Parity Ethereum client currently supports 2 VM types - EVM and WebAssembly, with EVM being default. Parity can choose to run WebAssembly VM for the specific contract if and only if BOTH are true:
 
-- WebAssembly is activated on the chain (`wasmActivationTransition` is present in json [chain specification file](Chain-specification.md).
-- Bytecode to run starts with WASM magic number (0x6d736100, i.e. same as '\0asm').
+- WebAssembly is activated on the chain (`wasmActivationTransition` is present in json [chain specification file](Chain-specification.md)).
+- The contract's code starts with 4 bytes WASM magic (`00 61 73 6d`, i.e. same as '\0asm').
 
 ## Contract ABI
 
 If Parity chooses WebAssembly VM to run the contract, its bytecode should pass ALL of the following checks (each check might represent multiple conditions and links for further reading).
 
-Contract byte code SHOULD:
+Contract bytecode MUST:
 
 - Be a valid WebAssembly module. WebAssembly validation is a complex process, and is fully covered by [WebAssembly specification](https://webassembly.github.io/spec/core/valid/index.html)
 - Contain export `call` resolved as a function with no arguments and no return type.
@@ -23,8 +23,9 @@ Contract byte code SHOULD:
 If any of those conditions are not met, Parity MUST finish execution of the code with error.
 
 Otherwise, if all conditions are met, Parity instruments the contract code with following modifications:
+
 - [Gas metering injection](WebAssembly-GasMetering.md)
-- [Deterministic stack height validation](WebAssembly-StackHeight.md)
+- [Deterministic stack height metering](WebAssembly-StackHeight.md)
 
 Each of the steps above can result in error described in the correspondng links, and Parity MUST stop execution and return error in this case.
 
