@@ -15,6 +15,7 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 - [`expanse`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
 - [`dev`](https://github.com/paritytech/parity/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
 - [`Musicoin`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
+- [`ellaism`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
 
 ## Private chains
 
