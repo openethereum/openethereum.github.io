@@ -53,6 +53,7 @@ title: The `parity` Module
 
 #### Network Information
 - [parity_chain](#parity_chain)
+- [parity_chainId](#parity_chainid)
 - [parity_chainStatus](#parity_chainstatus)
 - [parity_gasPriceHistogram](#parity_gaspricehistogram)
 - [parity_netChain](#parity_netchain)
@@ -1557,6 +1558,36 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "homestead"
+}
+```
+
+***
+
+### parity_chainId
+
+Returns the EIP155 chain ID used for transaction signing at the current best block. Null is returned if not available.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Quantity` - EIP155 Chain ID, or `null` if not available.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_chainId","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x1"
 }
 ```
 
