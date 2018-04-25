@@ -1,6 +1,7 @@
 ---
 title: Aura - Authority Round
-libs: {"mathjax":true}
+libs:
+  mathjax: true
 ---
 
 Aura _(Authority Round)_ is one of the Blockchain consensus algorithms available in Parity.
