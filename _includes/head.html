@@ -7,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
-    {% if page.title == "Home" %} {{ site.title }} &middot; {{ site.tagline }} {% else %} {{ page.title }} &middot; {{ site.title
-    }} {% endif %}
+    {% if page.title == "Home" %}
+      {{ site.title }} &middot; {{ site.tagline }} {% else %} {{ page.title }} &middot; {{ site.title }}
+    {% endif %}
   </title>
 
   <!-- CSS -->
@@ -35,6 +36,12 @@
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
+  {% if page.libs.mathjax %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w="
+    crossorigin="anonymous"></script> 
+  {% endif %}
+  
+
   <script src="{{ site.baseurl }}/public/tipuesearch/tipuesearch_content.js"></script>
   <script src="{{ site.baseurl }}/public/tipuesearch/tipuesearch_set.js"></script>
   <script src="{{ site.baseurl }}/public/tipuesearch/tipuesearch.min.js"></script>
