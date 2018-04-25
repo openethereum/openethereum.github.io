@@ -21,12 +21,8 @@ html {
   font-size: 16px !important;
 }
 
-.highlight {
-  overflow-x: auto;
-}
-
 pre {
-  
+  overflow-x: auto;
   white-space: pre !important;
 }
 
