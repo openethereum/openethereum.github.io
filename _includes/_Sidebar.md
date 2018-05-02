@@ -80,7 +80,7 @@
 - [Light Client](Light-Client)
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
-- [Polkadot](Polkadot)
+- [Polkadot](https://github.com/w3f/polkadot-overview)
 - [Parity Bridges](Bridge)
 - [Secret Store](Secret-Store)
   - [Secret Store Configuration](Secret-Store-Configuration)
