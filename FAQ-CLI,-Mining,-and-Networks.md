@@ -44,6 +44,65 @@ See also [Chain specification](Chain-specification.md).
 - See [Morden and Ropsten Faucets](http://ethereum.stackexchange.com/q/84).
 - See [Kovan Faucets](https://github.com/kovan-testnet/faucet).
 
+## What do Parity command line output mean?
+
+When running parity using the command line, a lot of information is displayed in the terminal. Here is a description of these logs.
+### While syncing the full node
+Example: `2018-04-30 16:10:13 Syncing #5532478 9ce2…0499 2 blk/s 391 tx/s 15 Mgas/s 0+ 17 Qed #5532493 25/25 peers 5 MiB chain 128 MiB db 2 MiB queue 3 MiB sync RPC: 0 conn, 0 req/s, 0 µs`
+- `2018-04-30 16:10:13`: timestamp of the log
+- `Syncing #5532478`: block number currently downloaded
+- `9ce2…0499`: block's hash
+- `2 blk/s`: average block(s) downloaded per second
+- `391 tx/s`: average transactions downloaded per second
+- `15 Mgas/s`: million gas processed per second
+- `0+`: unverified block queue size
+- `17 Qed`: block queue size
+- `#5532493`: highest block number seen on the network
+- `25/25 peers`: number of active peers  / configured maximum number of peers
+- `5 MiB db`: state database memory used
+- `128 MiB chain`: blockchain cache info memory used
+- `5 MiB queue`: queue memory used (contains information about the queued blocks)
+- `3 MiB sync`: sync memory used (contains information about the connected peers, last imported block, etc.)
+- `RPC 0 conn`: number of RPC connections to the node
+- `0 req/s`: number of RPC request per seconds 
+- `0 µs`: average RPC roundtrip time for a single request
+
+### Once the node is synced with the top of the chain
+Example: `2018-05-02 12:33:23  Imported #3153278 28e4…9981 (12 txs, 3.19 Mgas, 6.84 ms, 12.40 KiB) + another 1 block(s) containing 5 tx(s)`
+- `2018-05-02 12:33:23`: timestamp of the log
+- `Imported #3153278`: block number received from peers
+- `28e4…9981`: block's truncated hash
+- `12 txs`: number of transactions in the block
+- `3.19 Mgas`: million gas used in the imported block
+- `6.84 ms`: time it took to process the block
+- `12.40 KiB`: block size
+- `+ another 1 block(s) containing 5 tx(s)`: appears when 2 or more blocks are imported within 1 tick of informant (one line in the console) - In that particular example it means that 2 blocks were imported since last `Imported` line and the second had 5 transactions.
+
+### While syncing in light mode
+Example: `2018-05-02 14:51:02  Syncing   #14677 aa97…42d2  1568 hdr/s      0+20139 Qed    #14677    9/50 peers   9 MiB cache 18 MiB queue  RPC:  0 conn,  0 req/s,   0 µs`
+- `1568 hdr/s` average number of downloaded headers per second
+- `aa97…42d2`: header's truncated hash
+- `0+`: unverified header queue size
+- `20139 Qed`: header queue size
+- `#14677`: highest block number seen on the network
+- `9/50 peers`: number of active peers  / configured maximum number of peers
+- `5 MiB db`: state database memory used
+- `9 MiB cache`: blockchain cache info memory used
+- `18 MiB queue`: queue memory used (contains information about the queued headers)
+- `RPC 0 conn`: number of RPC connections to the node
+- `0 req/s`: number of RPC request per seconds 
+- `0 µs`: average RPC roundtrip time for a single request
+
+### Once the node is synced with the top of the chain in light mode
+Example: `2018-05-02 15:20:41  Imported #5543645 0x86ed…6288 (7.99 Mgas) + another 3 header(s)`
+- `2018-05-02 15:20:41`: timestamp of the log
+- `Imported #5543645`: header block number received from peers
+- `0x86ed…6288`: header's truncated hash
+- `7.99 Mgas`: million gas used in the imported block
+- `+ another 3 header(s)`: appears when 2 or more headers are imported within 1 tick of informant (one line in the console) - In that particular example it means that 4 headers were imported since last `Imported` line
+
+All other command line columns are described in full node logs above.
+
 ## Does Parity provide a JavaScript console?
 
 Yes, the Parity Wallet contains a Web3 console application. Navigate to the _'Applications'_ tab and open the _'Parity/Web3 Console'_.
