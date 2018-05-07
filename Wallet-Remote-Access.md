@@ -2,17 +2,17 @@
 title: Remote Access to the Parity Wallet
 ---
 
-Although our main focus is for the Wallet to work locally, there are couple of ways to access your remote Parity node's Wallet.
+Although our main focus is for the Wallet to work locally, there are a couple of ways to access your remote Parity node's Wallet.
 
 All described methods will require to manually type Wallet Authorization Token and requires that the time on both machines is in sync. Going to http://time.is/ should render:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/19265409/5e4a89ce-8fa5-11e6-8ec6-6c72c138ee48.png)
 
 
-**NOTE: Described options varies in the degree of security, so make sure to understand possible consequences- in case of any hesitance reach us out on [Gitter](https://gitter.im/ethcore/parity).**
+**NOTE: Described options vary in the degree of security, so make sure to understand possible consequences- in case of any hesitance reach us out on [Gitter](https://gitter.im/ethcore/parity).**
 
 
-## Recommended: SSH Tunneling
+## Recommended: SSH Tunnelling
 
 1. Make sure the time is exact on the Host (Node) and the Client (Browser).
 1. Setup SSH server on the Host
@@ -20,23 +20,21 @@ All described methods will require to manually type Wallet Authorization Token a
 1. On the Client connect to your Host with port forwarding and keep the session running
 
    ```
-   $ ssh -L 8545:127.0.0.1:8545 -L 8546:127.0.0.1:8546 -L 8180:127.0.0.1:8180 <user>@<host> -vv
+   $ ssh -L 8545:127.0.0.1:8545 -L 8546:127.0.0.1:8546 <user>@<host> -vv
    ```
-1. To access Parity Wallet on the Client open a browser and type in authorization token, or open
-
-   ```
-   $ open http://127.0.0.1:8180/#/auth/<token>
+1. To access Parity Wallet on the Client open Parity-UI
    ```
 
-1. To generate a new token on the Host:
+1. To generate a new token on the Host run:
 
    ```
    $ parity signer new-token
    ```
+For older Parity versions (<=v1.9). Forwarding the port 8180 using `-L 8180:127.0.0.1:8180` is needed to connect via the browser.
 
 ## Exposing using Nginx
 
-NOTE: It's recommended to setup authentication and SSL on your nginx server.
+NOTE: It's recommended to setup authentication and SSL on your Nginx server.
 
 1. Make sure the time is exact on the Host (Node) and the Client (Browser).
 1. Setup Nginx server on the Host.
@@ -105,7 +103,7 @@ NOTE: It's recommended to setup authentication and SSL on your nginx server.
 
 ## Directly exposing to external connections
 
-This method is the least secure, but doesn't require SSH tunnels. It exposes your node RPC to external connections and if you really need to use it we highly advise you to configure very strict firewall rules and use it read-only, otherwise your password are being sent unencrypted over the network. This method is not recommended in general anyway, be warned.
+This method is the least secure but doesn't require SSH tunnels. It exposes your node RPC to external connections and if you really need to use it we highly advise you to configure very strict firewall rules and use it read-only, otherwise, your password is being sent unencrypted over the network. This method is not recommended in general anyway, be warned.
 
 1. Make sure the time is exact on the Host (Node) and the Client (Browser).
 1. Figure out interface address you will use to access the Wallet-IP of the server (if you want the Wallet to be available on multiple interfaces see the note below)
@@ -127,4 +125,4 @@ This method is the least secure, but doesn't require SSH tunnels. It exposes you
    $ parity signer new-token
    ```
 
-NOTE: Parity will accept only connections coming to correct interface (IP), if you want to listen on multiple interfaces (IP=`0.0.0.0`; again - not recommended) you need to run with additional flags like: `--unsafe-expose`
+NOTE: Parity will accept only connections coming to correct interface (IP) if you want to listen on multiple interfaces (IP=`0.0.0.0`; again - not recommended) you need to run with additional flags like: `--unsafe-expose`
