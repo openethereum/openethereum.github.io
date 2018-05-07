@@ -30,6 +30,6 @@ To get the badge properly displayed in the Parity Wallet, it's handy to register
 
 To set a title, execute the Badge Registry Contract method `setMeta`, and put in the id of your badge entry in the registry, the TITLE key `0x5449544c45` and the actual title value.
 
-To set an icon, register the URL of the icon first with the [Parity Github Hint](Parity Github Hint) DApp, and register the returning hash as value for the IMG key `0x494d47`.
+To set an icon, register the URL of the icon first with the [Parity Github Hint](Parity-Github-Hint.md) DApp, and register the returning hash as value for the IMG key `0x494d47`.
 
 Your Icon and Title should be visible on all certified accounts now.
