@@ -45,7 +45,7 @@ To generate server key, you should carefully select following parameters:
 	- since `N` could decrease when nodes are going offline, or are excluded from Secret Store, it should not be too close to `N-1`;
 	- since any `t+1` subset of nodes are able to restore the private portion of server key, `t` should not be too close to zero. Otherwise there could be a chance that there are enough adversary nodes to access your private data;
 	- `t` equal to zero means that every node holds the private portion of server key and there are no advantages in using Secret Store over simple holding the key in safe place;
-	- *(possibly to be reconsidered)* if you're planning to use this key to generate ECDSA signatures, `t` must be choosen so that following is always true `2*t < N` (please also read note about `N` decreasing).
+	- *(possibly to be reconsidered)* if you're planning to use this key to generate ECDSA signatures, `t` must be chosen so that following is always true `2*t < N` (please also read note about `N` decreasing).
 
 To run session, execute following command (here and below we will use HTTP API of SecretStore for examples):
 ```
@@ -62,7 +62,7 @@ If session was successful, HTTP response code is 200 and body is the hex-encoded
 ```
 "0xe54804602b1b5675f429f64233c2a9461f4d00d146441c0c7296cddbb7f50e1eef91d88f92585b050aa2feca8e206d8d763d118ce45b9ebcd238893ca85e6092"
 ```
-If error has occured during session, HTTP response code is in errors range and body is the description of the error:
+If error has occurred during session, HTTP response code is in errors range and body is the description of the error:
 ```
 "\"Internal error: session with the same id is already registered\""
 ```
@@ -92,7 +92,7 @@ Here:
 - `b7ad0603946987f1a154ae7f074e45da224eaa83704aac16a2d43a675d219654cf087b5d7aacce0790a65abbc1a495b26e71a5c6e9a4a71b543bf0048935bc13`: is the hex-encoded encrypted point portion of encrypted document key.
 
 If session was successful, HTTP response code is 200 and the body is empty.
-If error has occured during session, HTTP response code is in errors range and body is the description of the error:
+If error has occurred during session, HTTP response code is in errors range and body is the description of the error:
 ```
 "\"Document not found\""
 ```
@@ -124,7 +124,7 @@ If session was successful, HTTP response code is 200 and body is the hex-encoded
 ```
 "0x04bfc447952f4d1818a49f6b30bbf42ef26d6a25844ea2d11cb93a8a7ac385de6c162edbd1c2b785061456b35075e620bd3991a7df5967a594c87bd199caf90810a463e02da8b3415d471495ad37fa069d287a830e72f27b565fc3f28b5888c1e16c4435ef801bc6ffd680767b82a3102268f53796b9fa61117138bd5c72bb5e0556d6d9e17ce850d499e344ae68c1b04cbde3077e9d2a4ba9cceb057d2d609133c479aa891adf38c3511424c2cbc86764"
 ```
-If error has occured during session, HTTP response code is in errors range and body is the description of the error:
+If error has occurred during session, HTTP response code is in errors range and body is the description of the error:
 ```
 "\"Internal error: session with the same id is already registered\""
 ```
@@ -148,7 +148,7 @@ Returning `true` means that the owner of `user` address has an access to the ser
 This contract must be registered under `secretstore_acl_checker` name in the Registry.
 
 ### Document key shadow retrieval session
-This session is a preferrable way of retrieving previously generated document key. To run this session, you will need to prepare following parameters:
+This session is a preferable way of retrieving previously generated document key. To run this session, you will need to prepare following parameters:
 - server key id: the id of previously generated server key, to which document key has been bound;
 - server key id signature: it is the server key id, signed with the private key of requester, having access to the server key.
 
@@ -167,9 +167,9 @@ If session was successful, HTTP response code is 200 and body is the json object
 {"decrypted_secret":"0x88adde1841690af21700e6ff37b8786733cede2ed2faf703f9d5d1a625fd45eb7e5e6efc3800d23482cbf8f1eead192b3123326aa5434c56bae2f99f3f7ca5bf","common_point":"0x2e350d872aef36f0baaf53c0b8b227240814e200e649493948e715487e09ac25957d269f97cd110e836ac48443f217c6a1ce443eecb51df8b1218c0558bd65a2","decrypt_shadows":["0x045f2f68a55d9823c5d618eda6e6687e1d16cb255ec9b4e8e91cee7910e0662e7fb696aa58cf141c44e1d26f7888cd2f3cdc817aa42ce719c2fae6ca5ae58655d161d97b791dd4734ffdd83920980107bf9f07cf49e69680068f490084e11ecd6f344d12bdfe1620ce2e36e5a77086970c9a20192e29fe8b64024ee2cd8eb48bd78595e5da81096f7f2e4165f85719b97e","0x04df05a7ae021b111777318f94ba677ed1e2b4857a3209acae25ca6a628dfe9f5f28aec46e528fd9ac8d35eb1e506851f699cb3715738106e226a4a4ab820af9310e059904a24e5851f7e28e163c35a0803ba13e4d3de9f7bea3aef94c63540193c89402080cde36aab7117b7918a11cb184bf40a08ab59a12d25a15ae581731fff1dba5889ab3b7f24e7b54d74538e342"]}
 ```
 
-If error has occured during session, HTTP response code is in errors range and body is the description of the error:
+If error has occurred during session, HTTP response code is in errors range and body is the description of the error:
 ```
-"\"Access dened\""
+"\"Access denied\""
 ```
 
 To reconstruct document key, Secret Store client must pass values of these fields to `secretstore_shadowDecrypt` RPC.
@@ -197,9 +197,9 @@ If session was successful, HTTP response code is 200 and body is the hex-encoded
 ```
 "0x04990dbe0a4bd6ade23a588ca94c8ba1961a512129b62c23b2a5984ee58e6a925115f7681168909f45a33d7ffe8b8994416b6a707a8838c6c5bfc2d332cfa0fdeb0d1bb0c098d4e7ea690d76abbfc28483665bf00aff8932f6b557efc232ed229709a9cd583bc25543ec2414c719524fa9e73b813c4258e9eb5e8fb95480175d4be89869c094590bf680783dd85da20856da3980f0d2245c4f6b2faa2c28645c355bb082f8759ecaa16b536ff483768d26"
 ```
-If error has occured during session, HTTP response code is in errors range and body is the description of the error:
+If error has occurred during session, HTTP response code is in errors range and body is the description of the error:
 ```
-"\"Access dened\""
+"\"Access denied\""
 ```
 
 Implementation is based on [ECDKG: A Distributed Key Generation Protocol Based on Elliptic Curve Discrete Logarithm](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.124.4128&rank=1).
@@ -225,9 +225,9 @@ If session was successful, HTTP response code is 200 and body is the hex-encoded
 ```
 "0x0410fe210ffdd38611b252e24c61b610d6ea8ec70f9f7186184441871839562cc18c94174af0c804973ce88a6f07ec7604b4b91821a6ca68ca348d16cd647fba494f8132ff36ad4654abd5cba6fb1fd98cacc12aaf3a0fe70010be91f5ab7b69db8f80e528be3baba70341721d6058ad66665363033f0cee963476da746e843d4006170ab549fa82f14eec7b420d542c3415a61fc3075f39e1529bc4e6f54f1170496393485f6ef271ad8b587c8fae8a18"
 ```
-If error has occured during session, HTTP response code is in errors range and body is the description of the error:
+If error has occurred during session, HTTP response code is in errors range and body is the description of the error:
 ```
-"\"Access dened\""
+"\"Access denied\""
 ```
 
 Implementation is based on [Efficient Multi-Party Digital Signature using Adaptive Secret Sharing for Low-Power Devices in Wireless Networks](https://www.researchgate.net/publication/224386852_Efficient_multi-party_digital_signature_using_adaptive_secret_sharing_for_low-power_devices_in_wireless_networksPLEASE_REFERENCE_IN_YOUR_PAPERS).
@@ -253,9 +253,9 @@ If session was successful, HTTP response code is 200 and body is the hex-encoded
 ```
 "0x0410fe210ffdd38611b252e24c61b610d6ea8ec70f9f7186184441871839562cc18c94174af0c804973ce88a6f07ec7604b4b91821a6ca68ca348d16cd647fba494f8132ff36ad4654abd5cba6fb1fd98cacc12aaf3a0fe70010be91f5ab7b69db8f80e528be3baba70341721d6058ad66665363033f0cee963476da746e843d4006170ab549fa82f14eec7b420d542c3415a61fc3075f39e1529bc4e6f54f1170496393485f6ef271ad8b587c8fae8a18"
 ```
-If error has occured during session, HTTP response code is in errors range and body is the description of the error:
+If error has occurred during session, HTTP response code is in errors range and body is the description of the error:
 ```
-"\"Access dened\""
+"\"Access denied\""
 ```
 
 *(possibly to be reconsidered)* Please note, that when generating key to be used in this session, choose threshold `t` so that the following is always true `2*t < N`.
