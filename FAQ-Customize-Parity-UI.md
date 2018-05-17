@@ -1,5 +1,7 @@
 ---
 title: FAQ - How to customize Parity UI?
+libs:
+  faq: true
 ---
 
 In dev mode:

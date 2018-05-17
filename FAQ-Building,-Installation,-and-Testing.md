@@ -1,5 +1,7 @@
 ---
 title: FAQ - Building, Installation, and Testing
+libs:
+  faq: true
 ---
 
 ## How do I install Parity?

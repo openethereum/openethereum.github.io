@@ -21,6 +21,9 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/public/tipuesearch/css/normalize.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/public/tipuesearch/css/tipuesearch.css">
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  {% if page.libs.faq %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/public/css/accordion.css">
+  {% endif %}
   
 <!-- Social -->
   <meta property="og:title" content="Parity Documentation - {{ page.title }}" />

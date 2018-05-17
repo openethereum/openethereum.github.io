@@ -1,5 +1,7 @@
 ---
 title: FAQ - User Interface, Wallet and DApps
+libs:
+  faq: true
 ---
 
 ## How can I access the Parity Wallet?

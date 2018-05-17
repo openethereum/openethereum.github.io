@@ -1,5 +1,7 @@
 ---
 title: FAQ - Basic Operations, Configuration, and Synchronization
+libs:
+  faq: true
 ---
 
 ## How do I run Parity?
@@ -14,7 +16,7 @@ After installing Parity, just run `parity` from command line. See also [how do I
 
 ## The UI isn't working when I visit 127.0.0.1:8180
 
-Since Parity v1.10 the User Interface (UI) has been separated from the Parity Ethereum client. You can now access the User Interface through a separated application calles Parity UI. The browser UI has therefore been disabled by default. Please follow [these instructions](https://wiki.parity.io/Parity-Wallet) to download and user Parity wallet using the Parity UI app.
+Since Parity v1.10, the User Interface (UI) has been separated from the Parity Ethereum client. The browser UI has been disabled by default. You can now access the User Interface through an application called Parity UI. Please follow [these instructions](https://wiki.parity.io/Parity-Wallet) to download and use Parity wallet using the Parity UI app.
 
 ## The Parity UI application isn't working the way I want
 

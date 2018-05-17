@@ -1,5 +1,7 @@
 ---
 title: FAQ - Troubleshooting (Yelp!!!!11)
+libs:
+  faq: true
 ---
 
 ## Double-clicking the Parity icon doesn't do anything!?!

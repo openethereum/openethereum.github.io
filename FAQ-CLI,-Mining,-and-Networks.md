@@ -1,5 +1,7 @@
 ---
 title: FAQ - CLI, Mining, and Networks
+libs:
+  faq: true
 ---
 
 ## How do I mine with Parity?
