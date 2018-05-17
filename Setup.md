@@ -190,17 +190,14 @@ A computer or mobile phone with single core CPU, 512MB RAM and a HDD with 128MB 
 
 #### Storage Requirements Overview
 
-Indicative data storage requirement from September 2017 syncing Ethereum Mainnet (ETH) and Classic (ETC) chains :
+Indicative data storage requirement from Mai 2018 syncing Ethereum Mainnet (ETH) with Parity 1.10.0 and Ubuntu 16.4 LTS, VPS instance with SSD backed storage:
 ```
-| ID | Pruning / DB Config | Verification    | Available History          | ETH        | ETC        | EXP        | MSC        | Parity CLI Options                         |
-|====|=====================|=================|============================|============|============|============|============|============================================|
-| 00 | archive +Fat +Trace | Full/No-Warp    | All Blocks + States        | 385     GB |  90.0   GB |   5.6   GB |  25.0   GB | --pruning archive --tracing on --fat-db on |
-| 01 | archive +Trace      | Full/No-Warp    | All Blocks + States        | 334     GB |  90.0   GB |   5.8   GB |  21.0   GB | --pruning archive --tracing on             |
-| 02 | archive             | Full/No-Warp    | All Blocks + States        | 326     GB |  91.0   GB |   5.5   GB |  30.0   GB | --pruning archive                          |
-| 03 | fast +Fat +Trace    | Full/No-Warp    | All Blocks + Recent States |  37.0   GB |  13.0   GB |   1.3   GB |   3.5   GB | --tracing on --fat-db on                   |
-| 04 | fast +Trace         | Full/No-Warp    | All Blocks + Recent States |  34.0   GB |  13.0   GB |   1.2   GB |   3.5   GB | --tracing on                               |
-| 05 | fast                | Full/No-Warp    | All Blocks + Recent States |  26.0   GB |   9.7   GB |   1.1   GB |   3.0   GB | --no-warp                                  |
-| 06 | fast +Warp          | PoW-Only/Warp   | All Blocks + Recent States |  25.0   GB |   9.6   GB |   0.96  GB |   2.6   GB |                                            |
-| 07 | fast +Warp -Ancient | No-Ancient/Warp | Recent Blocks + States     |   5.3   GB |   2.9   GB |   0.13  GB |   0.19  GB | --no-ancient-blocks                        |
-| 08 | light               | Headers/Light   | No Blocks + No State       |       5 MB |       3 MB |       5 MB |       4 MB | --light                                    |
+Client / Mode           | Block Number   | Disk Space | CLI flags                |
+========================|================|============|==========================|
+parity light            | 5_600_000      |  89M       | --light                  |
+parity -ancient         | 5_600_000      |  20G       | --no-ancient-blocks      |
+parity warp fast        | 5_600_000      |  82G       |                          |
+parity full fast        | 5_600_000      |  78G       | --no-wrap                |
+parity full fatdb trace | 5_600_000      | 108G       | --fat-db on --tracing on |
+parity full archive     | 5_600_000      | 1.1T       | --pruning archive        |
 ```
