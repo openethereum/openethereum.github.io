@@ -19,7 +19,7 @@ No, sending Bitcoin directly to an Ethereum address does not work. However, you 
 
 ## Can I create multi-signature wallets with Parity?
 
-Yes, open your wallet on the _A'ccounts'_ view and click _'New Wallet'_. This will deploy a multi-signature contract on the selected chain.
+No, Parity only allows watching wallets and interact with them (view and sign transactions, send funds..). It does not allow to create multi-sig wallets. To watch a multi-sig wallet within Parity UI, [follow these instructions](https://wiki.parity.io/Accounts%2C-Wallets%2C-Vaults#wallets).
 
 ## How can I compile and deploy contracts with Parity?
 
@@ -37,14 +37,28 @@ Parity comes with a couple of builtin DApps:
 - **Registry**: A global registry of addresses on the network.
 - **Token Deployment**: Deploy new basic tokens that you are able to send around.
 - **Token Registry**: A registry of transactable tokens on the network.
-- **TX-Queue Viewer**: Have a peak on internals of transaction queue of your node.
+- **TX-Queue Viewer**: Have a peak on the internals of transaction queue of your node.
 
 Additional DApps can be added, see [Writing Dapps for Parity](Writing Dapps for Parity).
 
 ## How can I write a DApp for Parity?
 
-Head over to the excellent [DApp Tutorial](Tutorial-Part-1.md) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head in to Parity, select your Dapp and see it in action.
+Head over to the excellent [DApp Tutorial](Tutorial-Part-1.md) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head into Parity, select your Dapp and see it in action.
 
 ## Does Parity support the Swarm and Whisper sub-protocols?
 
 Currently, Parity does neither support Swarm nor Whisper sub-protocols. However, [Whisper Support](https://github.com/paritytech/parity/issues/4685) is on the road-map.
+
+## How to connect Parity UI to a node on my network?
+
+You can specify the Websocket IP and port that Parity UI should use to connect to a node. To do so, launch `parity-ui` with the following flags:
+```bash
+    --ws-interface=[IP]
+        Specify the hostname portion of the WebSockets server 
+        Parity UI will connect to. IP should be an 
+        interface's IP address. (default: 127.0.0.1)
+
+    --ws-port=[PORT]
+        Specify the port portion of the WebSockets 
+        server Parity UI will connect to. (default: 8546)
+```
