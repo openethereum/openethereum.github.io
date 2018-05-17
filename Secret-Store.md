@@ -33,6 +33,32 @@ Terms that are being used on this page:
 	- **signing session**: process of computing message hash' signature with previously generated **server key**;
 - **key servers set change session**: process of migrating secret shares from 'old' **nodes** set to new **nodes** set, when one/some of **nodes** are being added/removed to/from **Secret Store**.
 
+## Glossary illustrated
+![Secret-Store-Glossary-Illustrated](images/Secret-Store-Glossary-Illustrated.png)
+
+Above is the illustration of **Secret Store**, which:
+- consists of 3 **nodes**, which are connected to each other, using encrypted connections;
+- contains 2 **server keys**:
+	- server key with **id** = 1, generated using **key scheme** 3-of-3 (**t** is 2 and **N** is 3). Every **node** holds the **share** of this **server key** (**shares** are: `S1_1`, `S1_2` and `S1_3`). Every node holds the public portion of this key (`PUB1`). All three shares are required to restore private portion of this key (`PRIV1 = S1_1 + S1_2 + S1_3`);
+	- server key with **id** = 2, generated using **key scheme** 2-of-3 (**t** is 1 and **N** is 3). Every **node** holds the **share** of this **server key** (**shares** are: `S2_1`, `S2_2` and `S2_3`). Every node holds the public portion of this key (`PUB2`). Any two shares are required to restore the private portion of this key (`PRIV2 = S2_1 + S2_2 = S2_1 + S2_3 = S2_2 + S2_3`);
+- contains one **document key** (`D2`), bound to server key with **id** 2. `D2` is stored in encrypted form and `PRIV2` is required to decrypt it.
+
+There are 4 entities, which are not a part of **Secret Store**:
+- `Alice` and `Bob` are clients of **Secret Store**, which are using its API to read and store keys;
+- **permissioning contract**, which contains rules that:
+	- allow `Alice` to run **permissioning sessions** with server key with **id** = 1. Since **server key** 1 doesn't have **document key** bound to it, it only makes sense for Alice to run **signing sessions** to sign messages with the private portion of key 1 (`PRIV1`);
+	- allow `Bob` to run **permissioning sessions** with server key with **id** = 2. Since **server key** 1 has **document key** bound to it, `Bob` can run **document key retrieval sessions** (to use `PRIV2` to decrypt `D2` and return it, encrypted with `Bob`' private key) along with **signing sessions** (to sign messages using `PRIV2`);
+- **node** (`NODE4`), that is not currently a part of **Secret Store**.
+
+Following are examples of API calls that will succeed:
+- `Alice` runs [**server key generation session**](#server-key-generation-session) to generate a new **server key** with **id** = 3;
+- `Alice` runs [**server and document key generation session**](#server-and-document-key-generation-session) to generate new **server key** with **id** = 4 and simultaneously bound **document key** to it;
+- `Alice` runs [**document key storing session**](#document-key-storing-session) to bound new document key to **server key** 1;
+- `Alice` runs [**Schnorr signing session**](#schnorr-signing-session) to sign message using private portion of **server key** 1 (`PRIV1`);
+- `Bob` runs [**document key shadow retrieval session**](#document-key-shadow-retrieval-session) to retrieve **document key**, bound to **server key** 2, without revealing it to any of **nodes**;
+- `Bob` runs [**document key retrieval session**](#document-key-retrieval-session) to retrieve **document key**, bound to **server key** 2;
+- administrator runs [**nodes set change session**](Secret-Store-Configuration.md#changing-servers-set-configuration) to add `NODE4` to the **Secret Store** so that it will receive additional shares of both **server keys**.
+
 ## Secret Store configuration
 Please see [Secret Store configuration](Secret-Store-Configuration.md) for detailed description of configuration options.
 
@@ -145,7 +171,7 @@ function checkPermissions(address user, bytes32 document) constant returns (bool
 ```
 Returning `true` means that the owner of `user` address has an access to the server key with server key id `document`.
 
-This contract must be registered under `secretstore_acl_checker` name in the Registry.
+The contract address is specified in `acl_contract` parameter of the configuration file (by default it is read from the `secretstore_acl_checker` entry in the Registry).
 
 ### Document key shadow retrieval session
 This session is a preferable way of retrieving previously generated document key. To run this session, you will need to prepare following parameters:
