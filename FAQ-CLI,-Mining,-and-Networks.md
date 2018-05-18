@@ -52,10 +52,10 @@ When running parity using the command line, a lot of information is displayed in
 ### While syncing the full node
 Example: `2018-04-30 16:10:13 Syncing #5532478 9ce2…0499 2 blk/s 391 tx/s 15 Mgas/s 0+ 17 Qed #5532493 25/25 peers 5 MiB chain 128 MiB db 2 MiB queue 3 MiB sync RPC: 0 conn, 0 req/s, 0 µs`
 - `2018-04-30 16:10:13`: timestamp of the log
-- `Syncing #5532478`: block number currently downloaded
+- `Syncing #5532478`: block number currently processed
 - `9ce2…0499`: block's hash
-- `2 blk/s`: average block(s) downloaded per second
-- `391 tx/s`: average transactions downloaded per second
+- `2 blk/s`: average block(s) processed per second
+- `391 tx/s`: average transactions processed per second
 - `15 Mgas/s`: million gas processed per second
 - `0+`: unverified block queue size
 - `17 Qed`: block queue size
@@ -82,7 +82,7 @@ Example: `2018-05-02 12:33:23  Imported #3153278 28e4…9981 (12 txs, 3.19 Mgas,
 
 ### While syncing in light mode
 Example: `2018-05-02 14:51:02  Syncing   #14677 aa97…42d2  1568 hdr/s      0+20139 Qed    #14677    9/50 peers   9 MiB cache 18 MiB queue  RPC:  0 conn,  0 req/s,   0 µs`
-- `1568 hdr/s` average number of downloaded headers per second
+- `1568 hdr/s` average number of processed headers per second
 - `aa97…42d2`: header's truncated hash
 - `0+`: unverified header queue size
 - `20139 Qed`: header queue size
