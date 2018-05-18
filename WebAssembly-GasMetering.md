@@ -9,15 +9,15 @@ title: Gas metering
 
 ## Trivia
 
-Since WebAssembly is a stack machine and does not contain any opcodes that can change "execution pointer" arbitrary (no "calculated jumps"), instrumenting WebAssembly bytecode to transform it to the gas-counting form is trivial and static.
+Since WebAssembly is a stack machine and does not contain any opcodes that can change "execution pointer" arbitrarily (no "calculated jumps"), instrumenting WebAssembly bytecode to transform it to the gas-counting form is trivial and static.
 
 Also, given the available memory for the WebAssembly program is managed with one [grow_memory](https://webassembly.github.io/spec/core/syntax/instructions.html#syntax-instr-memory) opcode, instrumenting memory usage is also trivial and static.
 
-By static we mean that there exist deterministic algorithm G(S, P), where S - schedule, P - oriignal contract program (code) to produce another program P<sup>'</sup> = G(S, P), such as P<sup>'</sup> will put virtual machine in the exact same observable intermediate and final states as P as long as gas limit is not exceeded.
+By static we mean that there exist a deterministic algorithm G(S, P), where S - schedule, P - original contract program (code) to produce another program P′ = G(S, P), such as P′ will put virtual machine in the exact same observable intermediate and final state as P as long as gas limit is not exceeded.
 
 ## Schedule
 
-Schedule is a table of execution costs of different WASM opcodes. Since WASM is a very low-level instruction set architecture, cost of most opcodes is 1. Memory costs are described as linear charge per WebAssembly memory page (64kb).
+Schedule is a table of execution costs of different Wasm opcodes. Since Wasm is a very low-level instruction set architecture, cost of most opcodes is 1. Memory costs are described as linear charge per WebAssembly memory page (64kb).
 
 ## Details
 
@@ -34,7 +34,7 @@ func $example
 end
 ```
 
-After instrucmentation it becomes
+After the instrumentation it becomes
 
 ```wasm
 import "env" "gas" ($gas)
@@ -59,7 +59,7 @@ func $example
 end
 ```
 
-After instrumentation with schedule where memory cost per page is 4098, it gets transformed into
+After instrumentation with schedule where memory cost per page is 4096, it gets transformed into
 
 ```wasm
 import "env" "gas" ($gas)
@@ -67,7 +67,7 @@ import "env" "gas" ($gas)
 func $grow_mem
   $get_local 0
   $get_local 0
-  i32.const 4098
+  i32.const 4096
   i32.mul
   call $gas
   grow_memory

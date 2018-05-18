@@ -87,7 +87,7 @@
   - [Secret Store RPC](JSONRPC-secretstore-module)
 - [Warp Sync](Warp-Sync)
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
-- [WebAssembly (WASM)](WebAssembly-Home)
+- [WebAssembly (Wasm)](WebAssembly-Home)
   - [General](WebAssembly-Home)
   - [Design](WebAssembly-Design)
   - [Links](WebAssembly-Links)
