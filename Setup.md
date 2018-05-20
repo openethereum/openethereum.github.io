@@ -30,7 +30,7 @@ This method is way faster than building, though you won't get the cutting edge f
 $ bash <(curl https://get.parity.io -kL)
 ```
 
-This will install and configure the Parity client for you. On Ubuntu this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [ethstats.net](https://ethstats.net). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
+This will install and configure the Parity client for you. On Ubuntu, this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [ethstats.net](https://ethstats.net). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
 ##### Experimental Installers
 There are also experimental installers for OS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity/releases).
@@ -178,15 +178,15 @@ There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository
 
 ##### Full Node
 
-Running a full node with the stadard configuration for the Ethereum Mainnet requires a lot of computer ressources. The blockchain download and validation process is particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and a SSD drive with at least 60GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
+Running a full node with the standard configuration for the Ethereum Mainnet requires a lot of computer resources. The blockchain download and validation process are particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and an SSD drive and at least 100GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
 
-Computer using HDD hard drive are advised to run a [Light Node](#light-node).
+Computers using HDD are advised to run a [Light Node](#light-node).
 
 ##### Light Node
 
-Running a light node using the flag `--light` does not require to download and perform validation of the whole blockchain. A light node relies on full node peers to receive block headers and verify transactions. It is therefore far less ressource demanding than a full node.
+Running a light node using the flag `--light` does not require to download and perform validation of the whole blockchain. A light node relies on full node peers to receive block headers and verify transactions. It is therefore far less resource demanding than a full node.
 
-A computer or mobile phone with single core CPU, 512MB RAM and a HDD with 128MB free space is recommended to run a light node.
+A computer or mobile phone with single core CPU, 512MB RAM and an HDD with 128MB free space are recommended to run a light node.
 
 #### Storage Requirements Overview
 
