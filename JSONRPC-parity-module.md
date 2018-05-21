@@ -1716,7 +1716,8 @@ Response
 
 ### parity_netPeers
 
-Returns number of peers.
+Returns connected peers. Peers with non-empty protocols have completed handshake.
+
 
 #### Parameters
 
