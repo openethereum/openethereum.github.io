@@ -190,7 +190,7 @@ A computer or mobile phone with single core CPU, 512MB RAM and an HDD with 128MB
 
 #### Storage Requirements Overview
 
-Indicative data storage requirement from Mai 2018 syncing Ethereum Mainnet (ETH) with Parity 1.10.0 and Ubuntu 16.4 LTS, VPS instance with SSD backed storage:
+Indicative data storage requirement from May 2018 syncing Ethereum Mainnet (ETH) with Parity 1.10.0 and Ubuntu 16.4 LTS, VPS instance with SSD backed storage:
 ```
 Client / Mode           | Block Number   | Disk Space | CLI flags                |
 ========================|================|============|==========================|
