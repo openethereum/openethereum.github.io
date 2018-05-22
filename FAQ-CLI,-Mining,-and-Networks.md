@@ -46,7 +46,7 @@ See also [Chain specification](Chain-specification.md).
 - See [Morden and Ropsten Faucets](http://ethereum.stackexchange.com/q/84).
 - See [Kovan Faucets](https://github.com/kovan-testnet/faucet).
 
-## What do Parity command line output mean?
+## What does Parity's command line output mean?
 
 When running parity using the command line, a lot of information is displayed in the terminal. Here is a description of these logs.
 ### While syncing the full node
