@@ -350,12 +350,16 @@ Returns traces matching given filter
     - `toBlock`: `Quantity` | `Tag` - (optional) To this block.
     - `fromAddress`: `Array` - (optional) Sent from these addresses.
     - `toAddress`: `Address` - (optional) Sent to these addresses.
+    - `after`: `Quantity` - (optional) The offset trace number.
+    - `count`: `Quantity` - (optional) Integer number of traces to display in a batch.    
 
 ```js
 params: [{
   "fromBlock": "0x2ed0c4", // 3068100
   "toBlock": "0x2ed128", // 3068200
-  "toAddress": ["0x8bbB73BCB5d553B5A556358d27625323Fd781D37"]
+  "toAddress": ["0x8bbB73BCB5d553B5A556358d27625323Fd781D37"],
+  "after": 1000,
+  "count": 100
 }]
 ```
 
