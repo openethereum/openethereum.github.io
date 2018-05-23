@@ -19,7 +19,7 @@ Finally, we need an icon for our token to be displayed in the wallet. This can b
 _Figure: To add an icon we have to click **Add Metadata** and provide the static URL to the image file._
 
 ![dapps-tokendeploy-a](./images/dapps-tokendeploy-a.png)
-_Figure: Adding an icon triggers two transactions: The first one is generating a hint for the [URL registry](Parity-github-hint) and the second one is setting the hint as token metadata._
+_Figure: Adding an icon triggers two transactions: The first one is generating a hint for the [URL registry](Parity-Github-Hint) and the second one is setting the hint as token metadata._
 
 ![dapps-tokendeploy-b](./images/dapps-tokendeploy-b.png)
 _Figure: Once both transactions are mined, we can look-up the image on the token registry DApp._

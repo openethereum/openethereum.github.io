@@ -4,7 +4,7 @@ title: Frequently Asked Questions
 
 ### What is Parity?
 
-Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularization, low-footprint and high-performance. To this end it utilizes the Rust language, a hybrid imperative/object-orientated/functional language with an emphasis on efficiency. It is professionally developed by _Parity Technologies_ (formerly _Ethcore_); we aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers, and follow a pipelined #6-ish-week release cycle similar to the Rust compiler. [Read more on our tenets](wiki.md#our-tenets).
+Parity is an Ethereum client, written from the ground-up for correctness-verifiability, modularization, low-footprint and high-performance. To this end it utilizes the Rust language, a hybrid imperative/object-orientated/functional language with an emphasis on efficiency. It is professionally developed by _Parity Technologies_ (formerly _Ethcore_); we aim to have all important logic 100% unit-tested, all public APIs 100% documented, all code reviewed by multiple peers, and follow a pipelined #6-ish-week release cycle similar to the Rust compiler. [Read more on our tenets](README.md#our-tenets).
 
 ### Contents
 

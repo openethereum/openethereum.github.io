@@ -15,7 +15,6 @@ This is a collection of articles written by community members about using Parity
 - [How to quickly upgrade an Ethereum Parity node using Docker](https://medium.com/decentralized-capital/how-to-quickly-upgrade-an-ethereum-parity-node-using-docker-e170fa2a2045#.ph7lxt2g7) Article on how to setup Parity in a Docker container and be able to upgrade quickly.
 - [Notes on Running Parity on a QNAP NAS box](https://github.com/benjaminion/eth-parity-qnap/wiki)
 - [Turning your RasberryPi into a full Ethereum node](https://github.com/diglos/pi-gen) EthRaspbian: A custom Linux image for the RaspberryPi that runs Parity as a boot service.
-- [Parity Wallet Integration](https://medium.com/decentralized-capital/parity-wallet-integration-and-demo-day-presentation-f20e7ecb1f82#.zce4g7vyu) A short article demonstrating Parity Wallet integration for Decentralised Capital assets.
 - [Creating A Free Kovan Testnet Node On Azure](https://medium.com/@attores/creating-a-free-kovan-testnet-node-on-azure-step-by-step-guide-8f10127985e4) A tutorial demonstrating setup of Parity node for the Kovan Testnet on Microsoft's Azure cloud platform.
 
 ## dApps

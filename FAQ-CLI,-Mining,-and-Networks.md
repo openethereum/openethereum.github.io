@@ -39,7 +39,7 @@ See also [Chain specification](Chain-specification.md).
 - Ethash (Ethereum Proof-of-Work Engine), see [Ethash](https://github.com/ethereum/wiki/wiki/Ethash).
 - Instant Seal (Development Engine), see [Private development chain](Private-development-chain.md).
 - Aura (Proof-of-Authority Validator Engine), see [Aura](Aura.md).
-- Tendermint (Experimental Validator Engine), see [Validator Engines](https://wiki.parity.io/Consensus-Engines#validator-engines)
+- Tendermint (Experimental Validator Engine), see [Validator Engines](Pluggable-Consensus.md#validator-engines)
 
 ## How do I get Ether for the Morden, Ropsten, or Kovan testnets?
 
@@ -66,7 +66,7 @@ Example: `2018-04-30 16:10:13 Syncing #5532478 9ce2…0499 2 blk/s 391 tx/s 15 M
 - `5 MiB queue`: queue memory used (contains information about the queued blocks)
 - `3 MiB sync`: sync memory used (contains information about the connected peers, last imported block, etc.)
 - `RPC 0 conn`: number of RPC connections to the node
-- `0 req/s`: number of RPC request per seconds 
+- `0 req/s`: number of RPC request per seconds
 - `0 µs`: average RPC roundtrip time for a single request
 
 ### Once the node is synced with the top of the chain
@@ -92,7 +92,7 @@ Example: `2018-05-02 14:51:02  Syncing   #14677 aa97…42d2  1568 hdr/s      0+2
 - `9 MiB cache`: blockchain cache info memory used
 - `18 MiB queue`: queue memory used (contains information about the queued headers)
 - `RPC 0 conn`: number of RPC connections to the node
-- `0 req/s`: number of RPC request per seconds 
+- `0 req/s`: number of RPC request per seconds
 - `0 µs`: average RPC roundtrip time for a single request
 
 ### Once the node is synced with the top of the chain in light mode

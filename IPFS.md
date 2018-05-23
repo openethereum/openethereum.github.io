@@ -33,7 +33,7 @@ This allows anyone on the network to access Ethereum objects by their canonical 
 http://localhost:5001/api/v0/block/get?arg=z43AaGF5tmkT9SEX6urrhwpEW5ZSaACY73Vw357ZXTsur2fR8BM
 ```
 
-See also the `explore-ethereum` examples provided by `js-ipfs`: [ipfs/js-ipfs/examples/explore-ethereum](https://github.com/ipfs/js-ipfs/tree/master/examples/explore-ethereum)
+See also the `explore-ethereum` examples provided by `js-ipfs`: [ipfs/js-ipfs/examples/explore-ethereum-blockchain](https://github.com/ipfs/js-ipfs/tree/master/examples/explore-ethereum-blockchain)
 
 ### CLI reference:
 

@@ -24,4 +24,4 @@ _Figure: To transfer tokens instead of Ether, simply switch the type of token tr
 ![accounts-token-2](./images/accounts-token-2.png)
 _Figure: ... and confirm with your password._
 
-All ERC20-Tokens are also fully supported by [multi-signature](Accounts%2C-Wallets%2C-Vaults.md) and [hardware](Ledger-Nano-S.md) wallets. Now, you probably want to read more about [Token Deployment](Token-Deployment.md) and the Parity [Token Registry](Token-Registry.md).
+All ERC20-Tokens are also fully supported by [multi-signature](https://wiki.parity.io/Accounts%2C-Wallets%2C-Vaults) and [hardware](Ledger-Nano-S.md) wallets. Now, you probably want to read more about [Token Deployment](Token-Deployment.md) and the Parity [Token Registry](Token-Registry.md).

@@ -27,7 +27,7 @@ If you still want to use the broswer UI (deprecated) you can launch Parity Ether
 
 You can configure your Parity client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://wiki.parity.io/Configuring-Parity#cli-options).
 
-In additoin, Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Config Generator](https://ethcore.github.io/parity-config-generator/). To start parity with a config file, the file needs to be located in:
+In additoin, Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Config Generator](https://paritytech.github.io/parity-config-generator/). To start parity with a config file, the file needs to be located in:
 
 * Windows: `%UserProfile%\AppData\Roaming\Parity\Ethereum\config.toml`
 * Linux: `~/.local/share/io.parity.ethereum/config.toml`
@@ -206,4 +206,3 @@ Parity light client allows you to set a hardcoded block from which the light cli
 1. Run `parity export-hardcoded-sync`.
 1. Copy the output of the previous command using the field : `"hardcodedSync": { COPY_OUTPUT_HERE }` into your new [chain specifications](https://wiki.parity.io/Chain-specification.html) file.
 1. Run the light client with your new specificatiions `parity --light --chain /path/to/your/new/specifications`
-

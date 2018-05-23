@@ -7,11 +7,11 @@ libs:
 ## How can I access the Parity Wallet?
 
 Since Parity v1.10, the Parity Wallet is accessible within Parity UI app.
-Please follow [these instructions](https://wiki.parity.io/Parity-Wallet)
+Please follow [these instructions](Parity-Wallet.md)
 
 ## Can I use Mist with Parity?
 
-Yes, run `parity --geth` in Geth-compatibility mode. This sets the IPC path to be the same as Geth's and allows Mist to connect to Parity. See also [Using Parity with Mist](Using Parity with Mist).
+Yes, run `parity --geth` in Geth-compatibility mode. This sets the IPC path to be the same as Geth's and allows Mist to connect to Parity. See also [Using Parity with Mist](Using-Parity-with-Mist.md).
 
 ## Can I send Bitcoin to my Parity wallet?
 
@@ -41,7 +41,7 @@ Parity comes with a couple of builtin DApps:
 - **Token Registry**: A registry of transactable tokens on the network.
 - **TX-Queue Viewer**: Have a peak on the internals of transaction queue of your node.
 
-Additional DApps can be added, see [Writing Dapps for Parity](Writing Dapps for Parity).
+Additional DApps can be added, see [Writing Dapps for Parity](Development-Overview.md).
 
 ## How can I write a DApp for Parity?
 
@@ -56,11 +56,11 @@ Currently, Parity does neither support Swarm nor Whisper sub-protocols. However,
 You can specify the Websocket IP and port that Parity UI should use to connect to a node. To do so, launch `parity-ui` with the following flags:
 ```bash
     --ws-interface=[IP]
-        Specify the hostname portion of the WebSockets server 
-        Parity UI will connect to. IP should be an 
+        Specify the hostname portion of the WebSockets server
+        Parity UI will connect to. IP should be an
         interface's IP address. (default: 127.0.0.1)
 
     --ws-port=[PORT]
-        Specify the port portion of the WebSockets 
+        Specify the port portion of the WebSockets
         server Parity UI will connect to. (default: 8546)
 ```
