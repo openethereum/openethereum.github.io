@@ -11,7 +11,7 @@ After building Parity from source:
 - On Windows run: `target/release/parity.exe`
 - On MacOS and Linux run: `target/release/parity`
 
-After installing Parity, just run `parity` from command line. See also [how do I configure Parity](https://wiki.parity.io/FAQ#how-do-i-configure-parity) below.
+After installing Parity, just run `parity` from the command line. See also [how do I configure Parity](https://wiki.parity.io/FAQ#how-do-i-configure-parity) below.
 
 
 ## The UI isn't working when I visit 127.0.0.1:8180
@@ -21,7 +21,7 @@ Since Parity v1.10, the User Interface (UI) has been separated from the Parity E
 ## The Parity UI application isn't working the way I want
 
 Please report any bug or unexpected behavior by [creating an issue in GitHub Parity UI repository](https://github.com/Parity-JS/shell/issues/new).
-If you still want to use the broswer UI (deprecated) you can launch Parity Ethereum Client with the flag `--force-ui` and visit 127.0.0.1:8180 in your favorit browser.
+If you still want to use the browser UI (deprecated) you can launch Parity Ethereum Client with the flag `--force-ui` and visit 127.0.0.1:8180 in your favorite browser.
 
 ## How do I configure Parity?
 
@@ -43,7 +43,7 @@ Install the following windows update: https://support.microsoft.com/en-us/kb/299
 
 ## Parity uses 100% of disk I/O during sync
 
-Parity needs high amount of disk usage, and by default your system will allow it to block other programs to access the disk while it's reading and writing. On Linux you can use [`ionice`](https://linux.die.net/man/1/ionice), and newer versions of Windows should allow you to navigate to the process (named "parity.exe") in Task Manager, right click, open the "Process priority" sub-menu and select "Background". If this menu doesn't appear, you may need to select "More details" at the bottom of the window. A WikiHow article with a description of this process on Windows 7 can be found [here](http://www.wikihow.com/Change-Process-Priorities-in-Windows-Task-Manager), and the process is much the same for newer versions of Windows.
+Parity is a disk IO intensive application. By default, your system will allow it to block other programs to access the disk while it's reading and writing. On Linux, you can use [`ionice`](https://linux.die.net/man/1/ionice), and newer versions of Windows should allow you to navigate to the process (named "parity.exe") in Task Manager, right click, open the "Process priority" sub-menu and select "Background". If this menu doesn't appear, you may need to select "More details" at the bottom of the window. A WikiHow article with a description of this process on Windows 7 can be found [here](http://www.wikihow.com/Change-Process-Priorities-in-Windows-Task-Manager), and the process is much the same for newer versions of Windows.
 
 ## What are the different Parity synchronization and pruning modes?
 
@@ -102,7 +102,7 @@ Parity is running but seems to remain at the same block for a long time.
 
    ![image](https://cloud.githubusercontent.com/assets/138296/19265409/5e4a89ce-8fa5-11e6-8ec6-6c72c138ee48.png)
 
-   If it isn't get it synced. Your machine will not automatically do this; my machine is routinely 1-2 seconds out of sync which is enough to disrupt peer discovery.
+   If it isn't, get it synced. Your machine will not automatically do this; my machine is routinely 1-2 seconds out of sync which is enough to disrupt peer discovery.
 
 3. Make sure your network does not block UDP traffic.
 4. Remove your nodes file (`$HOME/.local/share/io.parity.ethereum/network/nodes.json`) while Parity is not running.
@@ -164,7 +164,7 @@ sudo systemctl enable parity
 sudo systemctl start parity
 ```
 
-To manually run Parity in **daemon mode** in background, run `parity daemon`.
+To manually run Parity in **daemon mode** in the background, run `parity daemon`.
 
 ## How can I stop a Parity node cleanly?
 
@@ -176,7 +176,7 @@ To stop Parity started as system service, try to stop it with `systemctl` (Linux
 sudo launchctl stop io.parity.ethereum
 ```
 
-Another way, is to issue a _hang-up_ (HUP) call for the Parity client, i.e.:
+Another way is to issue a _hang-up_ (HUP) call for the Parity client, i.e.:
 
 ```bash
 killall -HUP parity
@@ -205,4 +205,4 @@ Parity light client allows you to set a hardcoded block from which the light cli
 1. Stop parity with `ctrl-c`.
 1. Run `parity export-hardcoded-sync`.
 1. Copy the output of the previous command using the field : `"hardcodedSync": { COPY_OUTPUT_HERE }` into your new [chain specifications](https://wiki.parity.io/Chain-specification.html) file.
-1. Run the light client with your new specificatiions `parity --light --chain /path/to/your/new/specifications`
+1. Run the light client with your new specifications `parity --light --chain /path/to/your/new/specifications`
