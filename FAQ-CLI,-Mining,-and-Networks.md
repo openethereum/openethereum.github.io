@@ -6,7 +6,7 @@ libs:
 
 ## How do I mine with Parity?
 
-Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork] (JSONRPC-eth-module.md#eth_getwork), [eth_submitWork](JSONRPC-eth-module.md#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
+Parity supports standard Ethereum JSON-RPC interface for mining ([eth_getWork](JSONRPC-eth-module.md#eth_getwork), [eth_submitWork](JSONRPC-eth-module.md#eth_submitwork) methods) and thus compatible with any miner which implements Ethereum Proof-of-Work.
 
 First get a Parity node up and running (either build yourself or install one of the packages; the [Setup](Setup.md) guide can help you). Next, you'll need to install your preferred miner. Read more on [Mining](Mining.md).
 
@@ -69,7 +69,7 @@ Example: `2018-04-30 16:10:13 Syncing #5532478 9ce2…0499 2 blk/s 391 tx/s 15 M
 - `0 req/s`: number of RPC request per seconds
 - `0 µs`: average RPC roundtrip time for a single request
 
-### Once the node is synced with the top of the chain
+### Imported blocks once the node is synced with the top of the chain
 Example: `2018-05-02 12:33:23  Imported #3153278 28e4…9981 (12 txs, 3.19 Mgas, 6.84 ms, 12.40 KiB) + another 1 block(s) containing 5 tx(s)`
 - `2018-05-02 12:33:23`: timestamp of the log
 - `Imported #3153278`: block number received from peers
@@ -79,6 +79,21 @@ Example: `2018-05-02 12:33:23  Imported #3153278 28e4…9981 (12 txs, 3.19 Mgas,
 - `6.84 ms`: time it took to process the block
 - `12.40 KiB`: block size
 - `+ another 1 block(s) containing 5 tx(s)`: appears when 2 or more blocks are imported within 1 tick of informant (one line in the console) - In that particular example it means that 2 blocks were imported since last `Imported` line and the second had 5 transactions.
+
+### Verifying blocks after a warp sync
+Example: `2018-05-11T15:25:27.225Z 2018-05-11 15:25:27 UTC     #40653   13/25 peers     37 MiB chain  182 MiB db  0 bytes queue   24 MiB sync  RPC:  0 conn,  0 req/s,   0 µs`
+
+The Warp sync feature lets the node download a snapshot of the state of the blockchain at a block number close to the top of the chain. It allows the node to get in sync with the top of the chain quickly. Nevertheless, a full node needs to verify every block from the genesis. This process is done in parallel with the sync. This line starting with a block number means that the node is currently processing and verifying an older block.
+
+- `#40653`: block number currently processed
+- `13/25 peers`: number of active peers  / configured maximum number of peers
+- `37 MiB db`: state database memory used
+- `182 MiB chain`: blockchain cache info memory used
+- `0 bytes queue`: queue memory used (contains information about the queued blocks)
+- `24 MiB sync`: sync memory used (contains information about the connected peers, last imported block, etc.)
+- `RPC 0 conn`: number of RPC connections to the node
+- `0 req/s`: number of RPC request per seconds
+- `0 µs`: average RPC roundtrip time for a single request
 
 ### While syncing in light mode
 Example: `2018-05-02 14:51:02  Syncing   #14677 aa97…42d2  1568 hdr/s      0+20139 Qed    #14677    9/50 peers   9 MiB cache 18 MiB queue  RPC:  0 conn,  0 req/s,   0 µs`
@@ -123,7 +138,7 @@ Your gas price is probably too low. Try increasing the gas price to 20Gwei by ap
 
 ## All my 'eth_sendTransaction' calls only return '0x00000000...00000000' as return value!?!
 
-You're probably trying to send from a locked account. Ensure you use the `--unlock` (to specify which account(s) to unlock) and `--password` (to pass in the file contain any passwords needed to unlock those acocunts) so that the account(s) from which you're sending the transaction are unlocked.
+You're probably trying to send from a locked account. Ensure you use the `--unlock` (to specify which accounts to unlock) and `--password` (to pass in the file contain any passwords needed to unlock those accounts) so that the accounts from which you're sending the transaction are unlocked.
 
 ## I've received an abuse message from my ISP/hosting provider. Something about malicious activity triggered by Parity.
 
