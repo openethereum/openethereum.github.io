@@ -10,12 +10,13 @@ Any data transfer from or to the App will happen using QR code scanning. By doin
 ## How to get it and use it?
 
 ### Device security
-Parity Signer Mobile App is built to be used offline. The mobile device used to run the App will hold important information that needs to be kept securely stored. It is therefore advised to :
+Parity Signer Mobile App is built to be used offline. The mobile device used to run the App will hold important information that needs to be kept securely stored. It is therefore advised to:
 - Get a separate mobile device.
 - Make a factory reset.
 - Enable full-disk encryption on the device, with a reasonable password (might not be on by default, for example for older Android devices).
-- Do not use any kind of biometrics such as fingerprint or face recognition for device decryption/unlocking.
+- Do not use any kind of biometrics such as fingerprint or face recognition for device decryption/unlocking, as those may be less secure than regular passwords.
 - Once the App has been installed, enable airplane mode and make sure to switch off Wifi, Bluetooth or any connection ability of the device.
+- Only charge the phone on a power outlet that is never connected to the internet. Only charge the phone with the manufacturer's charging adapter. Do not charge the phone on public USB chargers.
 
 ### Install the App
 The App is available in beta for Android and iOs :

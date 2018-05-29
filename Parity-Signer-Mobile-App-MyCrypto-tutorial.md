@@ -14,7 +14,21 @@ This tutorial will walk through setting up an account with Parity Signer Android
 
 
 ## 1. Get Parity Signer Mobile App
-Get a Smartphone and install the Parity Signer Mobile App making sure that it originated from **Parity Technologies**
+
+### Device security
+Parity Signer Mobile App is built to be used offline. The mobile device used to run the App will hold important information that needs to be kept securely stored. It is therefore advised to:
+- Get a separate mobile device.
+- Make a factory reset.
+- Enable full-disk encryption on the device, with a reasonable password (might not be on by default, for example for older Android devices).
+- Do not use any kind of biometrics such as fingerprint or face recognition for device decryption/unlocking, as those may be less secure than regular passwords.
+- Once the App has been installed, enable airplane mode and make sure to switch off Wifi, Bluetooth or any connection ability of the device.
+- Only charge the phone on a power outlet that is never connected to the internet. Only charge the phone with the manufacturer's charging adapter. Do not charge the phone on public USB chargers.
+
+Please find [here](Parity-Signer-Mobile-App) more info about the Parity Signer application.
+
+### Install Parity Signer Mobile App
+
+Install the Parity Signer Mobile App making sure that it originated from **Parity Technologies**
 - [Android](https://play.google.com/store/apps/details?id=com.nativesigner)
 - [iOs](https://itunes.apple.com/us/app/parity-signer/id1218174838)
 
