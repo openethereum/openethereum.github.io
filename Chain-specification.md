@@ -88,6 +88,8 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"maximumUncleCount"` Maximum number of accepted uncles starting from the block specified at `maximumUncleCountTransition`. Default `0` for Ethash chains, `2` for PoA chains before `maximumUncleCountTransition`.
   + `"emptyStepsTransition"` Block at which empty step messages should start.
   + `"maximumEmptySteps"` Maximum number of accepted empty steps.
+  + `"blockRewardContractAddress"` Address of the smart contract used for calculating block rewards. Use for [Block Reward Contract](Block-Reward-Contract).
+  + `"blockRewardContractTransition"` Block at which the block reward contract should start being used.
   + `"nodePermissionContract"` Address of the smart contract that sets nodes' interconnection permissions. Used for [advanced permssioning Networks](https://wiki.parity.io/Permissioning#how-it-works).
   + `"transactionPermissionContract"` Address of the smart contract that sets the transaction type permissions for network participants. Used for [Advanced permissioning Networks](https://wiki.parity.io/Permissioning#transaction-type).
 

@@ -144,3 +144,8 @@ This validator set can specify any combination of other validator sets. Switchin
 Note that transitions to a contract will not take effect immediately. Rather, they will take effect when the transition block is finalized by the previous set of validators. Again, this is to provide full security for warp and light sync.
 
 Transitions to a fixed list will take effect immediately because regardless of whether an attacker gives a light client a transition block with an invalid state, the subsequent validator set will always be the same.
+
+## Limitations
+
+Currently events emitted by the validator set contract when the engine calls `finalizeChange` are not
+observable. This is a limitation of how "system" transactions are implemented at the moment.
