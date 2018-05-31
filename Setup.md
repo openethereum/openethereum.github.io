@@ -27,7 +27,7 @@ There are a few ways of proceeding here. You can build Parity from the sources; 
 This method is way faster than building, though you won't get the cutting edge features and it only works on Ubuntu and Mac with Homebrew installed. To use the script just run:
 
 ```bash
-$ bash <(curl https://get.parity.io -kL)
+$ bash <(curl https://get.parity.io -L)
 ```
 
 This will install and configure the Parity client for you. On Ubuntu, this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [ethstats.net](https://ethstats.net). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
