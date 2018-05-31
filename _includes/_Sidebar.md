@@ -81,7 +81,7 @@
 - [Light Client](Light-Client)
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
-- [Polkadot](https://github.com/w3f/polkadot-overview)
+- [Polkadot](https://github.com/w3f/polkadot-overview) <i class="fa fa-external-link"></i>
 - [Parity Bridges](Bridge)
 - [Secret Store](Secret-Store)
   - [Secret Store Configuration](Secret-Store-Configuration)
@@ -102,7 +102,7 @@
 - [Known Issues](Known-Issues-Priorities)
 - [Fuzz Testing](Fuzz-Testing)
 - [Labeling](Labelling)
-- [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <sup>[+]</sup>
-- [Gitter](https://gitter.im/ethcore/parity) <sup>[+]</sup>
-- [GitHub](https://github.com/paritytech/parity) <sup>[+]</sup>
-- [Website](https://parity.io) <sup>[+]</sup>
+- [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <i class="fa fa-external-link"></i>
+- [Gitter](https://gitter.im/ethcore/parity) <i class="fa fa-external-link"></i>
+- [GitHub](https://github.com/paritytech/parity) <i class="fa fa-external-link"></i>
+- [Website](https://parity.io) <i class="fa fa-external-link"></i>
