@@ -10,6 +10,7 @@ title: The `parity` Module
 - [parity_decryptMessage](#parity_decryptmessage)
 - [parity_encryptMessage](#parity_encryptmessage)
 - [parity_futureTransactions](#parity_futuretransactions)
+- [parity_allTransactions](#parity_alltransactions)
 - [parity_getBlockHeaderByNumber](#parity_getblockheaderbynumber)
 - [parity_listOpenedVaults](#parity_listopenedvaults)
 - [parity_listStorageKeys](#parity_liststoragekeys)
@@ -274,6 +275,8 @@ Response
 
 ### parity_futureTransactions
 
+**This method is deprecated in favor of [parity_allTransactions](#parity_allTransactions)**
+
 Returns all future transactions from transaction queue.
 
 #### Parameters
@@ -343,6 +346,76 @@ Response
     },
     { ... }, { ... }, ...
   ]
+}
+```
+
+***
+
+### parity_allTransactions
+
+Returns all the transactions from the transaction queue.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Array` - Transaction list.
+    - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
+    - `blockNumber`: `Quantity` | `Tag` - Block number where this transaction was in. `null` when its pending.
+    - `chainId`: `Quantity` - the EIP155 chain ID.
+    - `condition`: `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.    
+    - `creates`: `Address` - (optional) Address of a created contract or `null`.   
+    - `from`: `Address` - 20 Bytes - address of the sender.
+    - `gas`: `Quantity` - Gas provided by the sender.
+    - `gasPrice`: `Quantity` - Gas price provided by the sender in Wei.
+    - `hash`: `Hash` - 32 Bytes - hash of the transaction.
+    - `input`: `Data` - The data send along with the transaction.
+    - `nonce`: `Quantity` - The number of transactions made by the sender prior to this one.
+    - `publicKey`: `Data` - Public key of the signer.
+    - `r`: `Quantity` - The R field of the signature.
+    - `raw`: `Data` - Raw transaction data.
+    - `s`: `Quantity` - The S field of the signature.
+    - `standardV`: `Quantity` - The standardized V field of the signature (0 or 1).    
+    - `to`: `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
+    - `transactionIndex`: `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
+    - `v`: `Quantity` - The V field of the signature.
+    - `value`: `Quantity` - Value transferred in Wei.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_allTransactions","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+    "jsonrpc": "2.0",
+    "result": [{
+        "blockHash": null,
+        "blockNumber": null,
+        "chainId": null,
+        "condition": null,
+        "creates": null,
+        "from": "0x5f3dffcf347944d3739b0805c934d86c8621997f",
+        "gas": "0x493e0",
+        "gasPrice": "0x12a05f200",
+        "hash": "0x045301a128ffcb4662dd199d1176bdf4cc9f0628e10d6bf120edfb52e3e39a78",
+        "input": "0x13f56f730...f3b4dc000",
+        "nonce": "0x577",
+        "publicKey": "0x3bb...9ce1b1",
+        "r": "0x6fd2c7a5dbb8795038ca258196083b3eabe15a20e3020c3f45e88f2e447be410",
+        "raw": "0xf88b8247d202...83eef3f8916bb818ce7",
+        "s": "0x5993992c547d20234aabfc8c32a58d25784255fef500383eef3f8916bb818ce7",
+        "standardV": "0x0",
+        "to": "0xe8b2d01ffa0a15736b2370b6e5064f9702c891b6",
+        "transactionIndex": null,
+        "v": "0x1b",
+        "value": "0x0"
+    }, { .. }, { .. }]
 }
 ```
 
