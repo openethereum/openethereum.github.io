@@ -393,6 +393,9 @@ Networking options:
         Override the port on which the node should listen.
         (default: 30303)
 
+    --interface=[IP]
+        Network interfaces. Valid values are 'all', 'local' or the ip of the interface you want parity to listen to. (default: all)
+
     --min-peers=[NUM]
         Try to maintain at least NUM peers.
 
