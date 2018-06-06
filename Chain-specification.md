@@ -92,6 +92,7 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"blockRewardContractTransition"` Block at which the block reward contract should start being used.
   + `"nodePermissionContract"` Address of the smart contract that sets nodes' interconnection permissions. Used for [advanced permssioning Networks](https://wiki.parity.io/Permissioning#how-it-works).
   + `"transactionPermissionContract"` Address of the smart contract that sets the transaction type permissions for network participants. Used for [Advanced permissioning Networks](https://wiki.parity.io/Permissioning#transaction-type).
+  + `"maxTransactionSize"` Maximum size of a transaction RLP payload. (Default `300*1024`).
 
 + **`"accounts"`** contains optional contents of the genesis block, such as simple accounts with balances or contracts. Parity does not include the standard Ethereum builtin contracts by default. These are necessary when writing new contracts in Solidity since compiled Solidity often refers to them. To make the chain behave like the public Ethereum chain the 4 contracts need to be included in the spec file, as shown in the example below:
 
