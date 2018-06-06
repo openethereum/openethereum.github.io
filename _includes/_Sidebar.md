@@ -36,6 +36,7 @@
   - [Token Registry](Token-Registry)
 - [Badge Registry](Badge-Registry)
 - [Smart Contracts](Smart-Contracts)
+- [Transaction Queue](Transactions-Queue)
 - [Dapp Tutorial](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-1)
   - [2: oo7 Bonds](Tutorial-Part-2)
