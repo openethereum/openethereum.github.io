@@ -168,7 +168,7 @@ By transaction types we mean:
 The ability of each address to execute any combination of these transaction types can be determined by a contract implementing a special interface.
 
 ### How it works
-A smart contract has to be deployed that regulates which participant (address) can perform certain types of transactions. The contract must be deployed on the corresponding chain and its address added to the chain spec file under `"params"/"transactionPermissionContract"`.
+A smart contract has to be deployed to regulate which participant (address) can perform certain types of transactions. The contract must be deployed on the corresponding chain and its address added to the chain spec file under `"params"/"transactionPermissionContract"`. Parity client will use this smart contract locally and call the `allowedTxTypes` method for every transaction to decide whether the sender is allowed to perform it. Since the `allowedTxTypes` method is called by Parity client during the local permission check (no transaction is broadcasted to the network), any state modification made during this call will not be visible on-chain.
 
 The contract must support the following ABI:
 
