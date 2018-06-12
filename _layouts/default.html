@@ -45,12 +45,12 @@
       //For FAQ pages, this function appends relevant html elements to show the FAQ as an accordion 
       function prepareAccordion(){
         //wrap each question and answer with li and div.answer
-        $('.container.content>h2').each(function() {
-              $(this).nextUntil('h2,.footer').wrapAll('<div class="answer"></div>');
-              $(this).nextUntil('h2,.footer').addBack().wrapAll('<li></li>');
+        $('.container.content>h3').each(function() {
+              $(this).nextUntil('h2, h3,.footer').wrapAll('<div class="answer"></div>');
+              $(this).nextUntil('h2, h3,.footer').addBack().wrapAll('<li></li>');
           });
-        //precede h2 with checkboxs and uses data params to be able to retrieve the deeplink position
-        $(".container.content>li>h2").each(function() {
+        //precede h3 with checkboxs and uses data params to be able to retrieve the deeplink position
+        $(".container.content>li>h3").each(function() {
               $("<input class=\"question\" data-id=\""+$(this).attr('id')+"\" type=\"checkbox\" checked><i></i>").insertBefore($(this));
           });
         //wraps FAQs with ul

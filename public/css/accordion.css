@@ -3,7 +3,7 @@
   transition: all 0.25s ease-in-out;
 }
 
-.no-select, h2 {
+.no-select, h3 {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -11,9 +11,16 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  padding-left: 20px;
+}
+ul.faq>h2, div.container.content>h2{
+  color: gray;
+  z-index: 3;
+  position: relative;
+  margin-top: 40px;
 }
 
-h2:hover .header-link, h3:hover .header-link, h4:hover .header-link, h5:hover .header-link, h6:hover .header-link {
+h3:hover .header-link, h4:hover .header-link, h5:hover .header-link, h6:hover .header-link {
     opacity: 0;
 }
 
@@ -34,7 +41,7 @@ ul.faq>li {
   padding: 0;
   margin: 0;
   padding-bottom: 4px;
-  border-top: 1px dotted #dce7eb;
+  border-bottom: 1px dotted #dce7eb;
 }
 
 ul.faq li:last-of-type {

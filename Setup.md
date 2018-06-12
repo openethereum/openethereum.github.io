@@ -12,10 +12,6 @@ title: Setup Parity
     - [Install and Build Parity](#install-and-build-parity)
     - [A note on backing up your datadir with Docker](#a-note-on-backing-up-your-datadir-with-docker)
 - [Ubuntu Snappy on Raspberry Pi](#ubuntu-snappy-on-raspberry-pi)
-- [Ethereum Mainnet Hardware Requirements](#ethereum-mainnet-hardware-requirements)
-    - [Full Node](#full-node)
-    - [Light Node](#light-node)
-    - [Storage Requirements Overview](#storage-requirements-overview)
 
 
 ### Binaries
@@ -173,31 +169,3 @@ $ docker run --name parity -v /srv/parity:/mnt ethcore/parity:beta --base-path /
 ### Ubuntu Snappy on Raspberry Pi
 
 There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](https://github.com/paritytech/parity-snappy).
-
-### Ethereum Mainnet Hardware Requirements
-
-##### Full Node
-
-Running a full node with the standard configuration for the Ethereum Mainnet requires a lot of computer resources. The blockchain download and validation process are particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and an SSD drive and at least 100GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
-
-Computers using HDD are advised to run a [Light Node](#light-node).
-
-##### Light Node
-
-Running a light node using the flag `--light` does not require to download and perform validation of the whole blockchain. A light node relies on full node peers to receive block headers and verify transactions. It is therefore far less resource demanding than a full node.
-
-A computer or mobile phone with single core CPU, 512MB RAM and an HDD with 128MB free space are recommended to run a light node.
-
-#### Storage Requirements Overview
-
-Indicative data storage requirement from May 2018 syncing Ethereum Mainnet (ETH) with Parity 1.10.0 and Ubuntu 16.4 LTS, VPS instance with SSD backed storage:
-```
-Client / Mode           | Block Number   | Disk Space | CLI flags                |
-========================|================|============|==========================|
-parity light            | 5_600_000      |  89M       | --light                  |
-parity -ancient         | 5_600_000      |  20G       | --no-ancient-blocks      |
-parity warp fast        | 5_600_000      |  82G       |                          |
-parity full fast        | 5_600_000      |  78G       | --no-wrap                |
-parity full fatdb trace | 5_600_000      | 108G       | --fat-db on --tracing on |
-parity full archive     | 5_600_000      | 1.1T       | --pruning archive        |
-```
