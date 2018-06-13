@@ -90,7 +90,7 @@ Example: `2018-05-02 12:33:23  Imported #3153278 28e4…9981 (12 txs, 3.19 Mgas,
 - `28e4…9981`: block's truncated hash
 - `12 txs`: number of transactions in the block
 - `3.19 Mgas`: million gas used in the imported block
-- `6.84 ms`: time it took to process the block
+- `6.84 ms`: the time it took to process the block
 - `12.40 KiB`: block size
 - `+ another 1 block(s) containing 5 tx(s)`: appears when 2 or more blocks are imported within 1 tick of informant (one line in the console) - In that particular example it means that 2 blocks were imported since last `Imported` line and the second had 5 transactions.
 
@@ -211,19 +211,21 @@ In additoin, Parity can be configured using a [TOML](https://github.com/toml-lan
 
 To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity config file here](https://wiki.parity.io/Configuring-Parity#config-file).
 
-### Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!
+### What are the security best practices?
 
-![parity_error](https://cloud.githubusercontent.com/assets/2982011/18855854/1d3b2c22-8424-11e6-8329-1dbe5edf6a5a.png)
-
-Install the following windows update: https://support.microsoft.com/en-us/kb/2999226
-
-### Parity uses 100% of disk I/O during sync
-
-Parity is a disk IO intensive application. By default, your system will allow it to block other programs to access the disk while it's reading and writing. On Linux, you can use [`ionice`](https://linux.die.net/man/1/ionice), and newer versions of Windows should allow you to navigate to the process (named "parity.exe") in Task Manager, right click, open the "Process priority" sub-menu and select "Background". If this menu doesn't appear, you may need to select "More details" at the bottom of the window. A WikiHow article with a description of this process on Windows 7 can be found [here](http://www.wikihow.com/Change-Process-Priorities-in-Windows-Task-Manager), and the process is much the same for newer versions of Windows.
+- Prefer [personal_sendTransaction](https://wiki.parity.io/JSONRPC-personal-module#personal_sendtransaction) over unlockAccount or the `--unlock` CLI flag to securely send transactions without leaving an account unlocked.
+- Do not use `all`/`0.0.0.0` for `--ws-interface`, `--ws-hosts`, `--ws-origins` and prefer a proper IP address/domain.
+- Do not use `all`/`0.0.0.0` for `--jsonrpc-interface`, `--jsonrpc-hosts`, `--jsonrpc-origins` and prefer a proper IP address/domain.
+- Do not use `*`/`all` for`--jsonrpc-cors`, `--ipfs-api-cors` and prefer a proper domain.
+- Do not use `--unsafe-expose` on a production server.
+- To access a server [SSH tunneling](Wallet-Remote-Access) is the way to go.
+- Regular users should not use `--unlock`.
+- Limit the `--jsonrpc-apis` if you don't need everything.
+- Disable unused servers: `--no-ws` `--no-ipc`.
 
 ### What are the different Parity synchronization and pruning modes?
 
-Since Parity 1.2 state-trie pruning is enabled by default (`--pruning fast`). You can disable it by setting the pruning method to `archive` which keeps all state trie data:
+Since Parity v1.2, state-trie pruning is enabled by default (`--pruning fast`). You can disable it by setting the pruning method to `archive` which keeps all state trie data:
 
     --pruning METHOD               Configure pruning of the state/storage trie. METHOD
                                    may be one of auto, archive, fast:
@@ -251,7 +253,7 @@ Parity is running but seems to remain at the same block for a long time.
 1. Make sure you have the latest version of Parity.
 2. Go to http://time.is/ and ensure it says "Your time is exact":
 
-   ![image](https://cloud.githubusercontent.com/assets/138296/19265409/5e4a89ce-8fa5-11e6-8ec6-6c72c138ee48.png)
+   ![your time is exact](images/time_is.jpg)
 
    If it isn't, get it synced. Your machine will not automatically do this; my machine is routinely 1-2 seconds out of sync which is enough to disrupt peer discovery.
 
@@ -439,6 +441,17 @@ parity daemon --log-file /path/to/parity.log
 
 See also: [Where are the parity log files in daemon mode](http://ethereum.stackexchange.com/questions/11363/where-are-the-parity-log-files-in-daemon-mode)?
 
+
+### Parity doesn't start on Windows, and fails with 'api-ms-win-crt-math-l1-1-0.dll' missing!?!
+
+![parity_error](https://cloud.githubusercontent.com/assets/2982011/18855854/1d3b2c22-8424-11e6-8329-1dbe5edf6a5a.png)
+
+Install the following windows update: https://support.microsoft.com/en-us/kb/2999226
+
+### Parity uses 100% of disk I/O during sync
+
+Parity is a disk IO intensive application. By default, your system will allow it to block other programs to access the disk while it's reading and writing. On Linux, you can use [`ionice`](https://linux.die.net/man/1/ionice), and newer versions of Windows should allow you to navigate to the process (named "parity.exe") in Task Manager, right click, open the "Process priority" sub-menu and select "Background". If this menu doesn't appear, you may need to select "More details" at the bottom of the window. A WikiHow article with a description of this process on Windows 7 can be found [here](http://www.wikihow.com/Change-Process-Priorities-in-Windows-Task-Manager), and the process is much the same for newer versions of Windows.
+
 ### How can I report an issue with Parity?
 
 If you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/paritytech/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
@@ -521,7 +534,7 @@ In local prod mode:
 - `cargo build --release --no-default-features --features ui`
 - Run parity, visit localhost:8180.
 
-Dev mode should be used as much as possible, since it allows fast iterations. Local prod mode is only used when you want the UI changes to be bundled into your parity when `cargo build`ing it.
+Dev mode should be used as much as possible since it allows fast iterations. Local prod mode is only used when you want the UI changes to be bundled into your parity when `cargo build`ing it.
 
 
 ## Building, Installing and Testing
@@ -599,7 +612,7 @@ $ brew link curl --force
 # reload shell session
 $ source ~/.bash_profile
 
-# show location of binaries and current version
+# show location of binaries and the current version
 $ which curl && which openssl && curl --version
 ```
 
@@ -617,7 +630,7 @@ See the documentation for [docker build for ARM](https://github.com/paritytech/p
 
 ### How can I build and run tests?
 
-First make sure you have the cross-client consensus tests installed:
+First, make sure you have the cross-client consensus tests installed:
 
 ```
 git submodule init
@@ -629,4 +642,3 @@ Then you just run `./test.sh`. You can run individual tests with `cargo test -p 
 ### I just scrolled all the way down here and didn't find what I'm looking for!?!
 
 Get in [touch with us on Gitter](https://gitter.im/paritytech/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new) or [here](https://github.com/parity-js/shell/issues/new) for Parity UI.
-
