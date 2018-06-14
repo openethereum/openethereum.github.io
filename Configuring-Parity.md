@@ -248,8 +248,8 @@ Operating Options:
         Specify the blockchain type. CHAIN may be either a JSON
         chain specification file or olympic, frontier, homestead,
         mainnet, morden, ropsten, classic, expanse, musicoin,
-        ellaism, easthub, social, testnet, kovan or dev. (default:
-        foundation)
+        ellaism, easthub, social, testnet, tobalaba, kovan or dev. 
+        (default: foundation)
 
     --keys-path=[PATH]
         Specify the path for JSON key files to be found (default:
