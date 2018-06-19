@@ -118,7 +118,7 @@ disable = true
 Alternative config files can be generated [here](https://paritytech.github.io/parity-config-generator/).
 
 We will create three accounts: two authorities and one user account. There are three main ways to create accounts, pick one that suits you best:
-### RPC
+### Method 1. Using RPC
 Start the node 0 using `parity --config node0.toml`.
 
 RPC can accessed via `web3`, `parity.js` or simply using `curl`. This will create the first authority address:
@@ -139,7 +139,7 @@ curl --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["
 ```
 Returned address should be `0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2`.
 
-### UI
+### Method 2. Using UI
 1. Start the node 0 using `parity --config node0.toml`
 2. Launch [Parity UI](https://wiki.parity.io/Parity-Wallet) and go through the initial setup
 3. Click on "RESTORE ACCOUNT"
@@ -150,7 +150,7 @@ Returned address should be `0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2`.
 9. Go to `localhost:8181`
 10. Again recover from phrase "node1" and password "node1" which will create account `0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2`
 
-### `parity account new`
+### Method 3. Using command `parity account new`
 You can also create an account without starting Parity using:
 ```
 parity account new --config node0.toml
