@@ -27,6 +27,14 @@ In the below example: Nodes A and C have access to the contract's key. Node B do
 
 ![private-transactions-solution](images/private-transactions-solution.png)
 
+### Account's rights overview
+
+| Type of account                                                | Can view private contract's data and code | Can modify private contract data |
+|----------------------------------------------------------------|-------------------------------------------|----------------------------------|
+| Regular account (without access to the private contract's key) | No                                        | No                               |
+| Account with access to the private contract's key              | Yes                                       | Yes                              |
+| Account specified in the system as Validator                   | Yes                                       | Yes                              |
+
 ### Flow description
 We use a trivial private contract as example:
 `contract Test1 { 
