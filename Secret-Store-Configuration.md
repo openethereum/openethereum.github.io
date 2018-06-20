@@ -52,9 +52,14 @@ port = 12000
 There are two ways to specify a set of Secret Store nodes. The easiest option is to hardcode the node's addresses and their respective public key in the configuration file:
 ```toml
 [secretstore]
-nodes = ["165872fc7999f12f8d5a4156d8cf95cdd363ab2dffb53effcef926863beead042e926df1c54e341708f9544668478dadb81467b3aae0c1afda57ad1c9aad7935@127.0.0.1:12001", "14326ed4da50bc7e9760a6ba0e5246fb850909a03078fe44036d09e6edf6d0bd782eff5c2def79ba5b7025daec9c79166585ad6a99353f79a728cdda94ab8929@127.0.0.1:12002", "62844fcd0c213a3bd4a7bcb67736725573bca9e09cf7777d83fd57f11cc7f7b43444dfced2868e3abdef1758dab56da5998e21f013aab2355e10d03ab7cd60c6@127.0.0.1:12003"]
+server_set_contract = "none"        # required option if you use hardcoded nodes set
+nodes = [
+    "165872fc7999f12f8d5a4156d8cf95cdd363ab2dffb53effcef926863beead042e926df1c54e341708f9544668478dadb81467b3aae0c1afda57ad1c9aad7935@127.0.0.1:12001",
+    "14326ed4da50bc7e9760a6ba0e5246fb850909a03078fe44036d09e6edf6d0bd782eff5c2def79ba5b7025daec9c79166585ad6a99353f79a728cdda94ab8929@127.0.0.1:12002",
+    "62844fcd0c213a3bd4a7bcb67736725573bca9e09cf7777d83fd57f11cc7f7b43444dfced2868e3abdef1758dab56da5998e21f013aab2355e10d03ab7cd60c6@127.0.0.1:12003"
+]
 ```
-The format of a node connection is `node_public_key@node_address`.
+The format of a node connection is `node_public_key@node_address`. The nodes set must be the same in all configuration files and have an entry for each node.
 
 The main disadvantage of a hardcoded list is that in case of a change in the set of nodes, all the nodes must be stopped,  have their configuration file manually updated and restarted. Another option is to use a smart contract to configure the nodes (see [Node set contracts](#node-set-contracts)), by using the following option in the configuration file:
 ```toml
@@ -114,12 +119,16 @@ This option can have one of the following values:
 - `address` - permissioning contract resides at given address.
 
 ### Configuration file example
-Some configuration files examples as well  as the scripts for their generation can be found in [Secret Store test repository](https://github.com/svyatonik/sstore_test). Here is one example:
+Some configuration files examples as well as the scripts for their generation can be found in [Secret Store test repository](https://github.com/svyatonik/sstore_test). Here is one example:
 ```toml
 [secretstore]
 disable = false # set to true to disable the overall Secret Store functionality
-self_secret = "30c11fa62e828a2f7d0e12ef0429dc2b5f79de4c89847d328c8418e618d8d5bb"
-nodes = ["165872fc7999f12f8d5a4156d8cf95cdd363ab2dffb53effcef926863beead042e926df1c54e341708f9544668478dadb81467b3aae0c1afda57ad1c9aad7935@127.0.0.1:12001"]
+self_secret = "6c26a76e9b31048d170873a791401c7e799a11f0cefc0171cc31a49800967509"
+server_set_contract = "none"
+nodes = [
+	"d01355a9e8858242ae190208716c48734a5bd2c417b0a9181bc563a18c8ca538cd095d8ab383ed62fba4872c5bd86bad1e82d015e6eabae18546c998d5621923@127.0.0.1:12000",
+	"cac6c205eb06c8308d65156ff6c862c62b000b8ead121a4455a8ddeff7248128d895692136f240d5d1614dc7cc4147b1bd584bd617e30560bb872064d09ea325@127.0.0.1:12001"
+]
 interface = "local"
 port = 12000
 http_interface = "local"
