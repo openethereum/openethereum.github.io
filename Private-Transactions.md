@@ -37,10 +37,10 @@ In the below example: Nodes A and C have access to the contract's key. Node B do
 
 ### Flow description
 We use a trivial private contract as example:
-`contract Test1 { 
-   bytes32 public x; 
+`contract Test1 {
+   bytes32 public x;
    function setX(bytes32 _x) {
-      x = _x; 
+      x = _x;
     }
 }`
 In order to call `setX` method of the deployed private contract, the user needs to:
@@ -91,10 +91,10 @@ It's up to the network's administrator to define the logic for providing access 
 
 2) Deploy the private contract.
 In the following example the same trivial private contract is used:
-`contract Test1 { 
-   bytes32 public x; 
+`contract Test1 {
+   bytes32 public x;
    function setX(bytes32 _x) {
-      x = _x; 
+      x = _x;
     }
 }`
 In order to deploy the private contract:
@@ -121,10 +121,10 @@ This method returns a transaction, which should be signed as well. See [API sect
 2.3) The transaction containing the specifically crafted public contract should be broadcasted using `eth_sendRawTransaction` method, resulting in the public contract being deployed on the blockchain.
 
 3) Specify the private contract key permissions:
-In order to obtain the key id associated with the contract, use the `private_contract_key` private API method (that can be called locally).
+In order to obtain the key id associated with the contract, use the `private_contractKey` private API method (that can be called locally).
 Example:
 ```bash
-curl --data '{"method":"private_contract_key","params":["0x52f5f1b8c785ab1c0e892b4c46b080fde9ad992b"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8549
+curl --data '{"method":"private_contractKey","params":["0x52f5f1b8c785ab1c0e892b4c46b080fde9ad992b"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8549
 ```
 
 Where `0x52f5f1b...d992b` is the public contract's address returned at step 2.2 ([see API description](#rpc-api) for more details).
@@ -208,14 +208,14 @@ View encrypted data of the private contract. The resulted call will be made inte
 `from`: 20 Bytes - Address of the account used to read the private contract's state
 `to`: 20 Bytes - Address of the public contract wrapping the private contract
 `num`: Integer - block number, or the string `'latest'`, `'earliest'`.
-`request`: CallRequest - call parameters in the form of regular transaction. For example: 
+`request`: CallRequest - call parameters in the form of regular transaction. For example:
 
 ```bash
 curl --data '{"method":"private_call","params":["latest",{"from":"0xcf9e2287227c5cc5978e7bdbbdaf293fe4992a24","to":"0xcd96d189596c690ff983e4e14d1838d0305186dc","data":"0x0c55699c","nonce":"0x0"}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8549
 ```
 The data field `0x0c55699c` corresponds to `getX()` method of the previously used trivial private contract. This call happens off-chain and no transaction gets broadcasted. It allows a user to read the state of a private contract, given that the account in from field has the key to decrypt the private contract's state.
 
-### `private_contract_key`
+### `private_contractKey`
 Returns key id associated with the deployed public contract.
 #### Parameters
 `contract_address`: H160 - address of the private contract
