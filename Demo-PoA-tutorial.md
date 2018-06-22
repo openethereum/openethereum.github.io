@@ -185,7 +185,6 @@ The complete `demo-spec.json` should look like this:
     "engine": {
         "authorityRound": {
             "params": {
-                "gasLimitBoundDivisor": "0x400",
                 "stepDuration": "5",
                 "validators" : {
                     "list": [
@@ -197,6 +196,7 @@ The complete `demo-spec.json` should look like this:
         }
     },
     "params": {
+        "gasLimitBoundDivisor": "0x400",
         "maximumExtraDataSize": "0x20",
         "minGasLimit": "0x1388",
         "networkID" : "0x2323",
