@@ -31,10 +31,14 @@ h3:hover .header-link, h4:hover .header-link, h5:hover .header-link, h6:hover .h
 .answer * {
   z-index: 2;
   position: relative;
+}
+
+.answer {
   background-color: #e1e1e133;
   margin: 10px 20px 0px 20px;
   padding: 10px 20px 5px 20px;
 }
+
 .answer > h4 {
     font-size: larger;
 }
