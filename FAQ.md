@@ -24,13 +24,13 @@ Read more about [Warp sync (also called fastsync)](Warp-Sync-Snapshot-Format.md)
 
 ### What are the Parity disk space needs and overall hardware requirements?
 
-##### Full Node
+#### Full Node
 
 Running a full node with the standard configuration for the Ethereum Mainnet requires a lot of computer resources. The blockchain download and validation process are particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and an SSD drive and at least 100GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
 
 Computers using HDD are advised to run a [Light Node](#light-node).
 
-##### Light Node
+#### Light Node
 
 Running a light node using the flag `--light` does not require to download and perform validation of the whole blockchain. A light node relies on full node peers to receive block headers and verify transactions. It is therefore far less resource demanding than a full node.
 
@@ -182,10 +182,10 @@ Yes, see [Importing a Chain from Geth](Importing-a-Chain-from-Geth.md).
 ### How to delete the blockchain to initiate full re-sync without deleting wallet info?
 
 - Stop parity, then execute `parity db kill`.
-- Relevant options are `--chain=*` `--pruning=*` and `--db-path/--base-path`, i.e. to delete `morden` run:
+- Relevant options are `--chain=*` `--pruning=*` and `--db-path/--base-path`, i.e. to delete `kovan` run:
 
 ```bash
-parity db kill --chain=morden
+parity db kill --chain=kovan
 ```
 
 ## Basic Operations, Configuration, and Synchronization
