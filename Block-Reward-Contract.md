@@ -40,7 +40,7 @@ The contract [ABI](https://github.com/parity-contracts/block-reward/blob/6c645a9
 ## AuthorityRound
 
 AuRa is currently the only engine supporting a block reward contract. It can be enabled by defining
-the address of the block reward contract in the [chainspec](Chain-Specification) and a block to
+the address of the block reward contract in the [chainspec](Chain-specification) and a block to
 activate it:
 
 ```json

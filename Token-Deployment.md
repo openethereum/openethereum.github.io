@@ -18,6 +18,6 @@ _Figure: And deploy it to the Ethereum blockchain._
 ![dapps-tokendeploy-4](./images/dapps-tokendeploy-4.png)
 _Figure: Once deployed, watch it on the Contracts tab._
 
-Deploying a new token is straight-forward with the Parity Ethereum wallet user interface. If you wish to deploy a token via RPC, grab the `BasicCoin.sol` [contract source code from GitHub](https://github.com/paritytech/contracts/blob/master/BasicCoin.sol), compile and deploy it via the **Contracts** tab.
+Deploying a new token is straight-forward with the Parity Ethereum wallet user interface. If you wish to deploy a token via RPC, grab the `BasicCoin.sol` [contract source code from GitHub](https://github.com/parity-contracts/token-registry/blob/master/contracts/BasicCoin.sol), compile and deploy it via the **Contracts** tab.
 
 Now, creating your own token is a nice thing to do. However, it would be nice if _all_ Parity Ethereum users could see and use your token in the wallet by default. Therefore, we need to register our token with the [Token Registry](Token-Registry.md) DApp.

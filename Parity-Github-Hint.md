@@ -2,7 +2,7 @@
 title: Parity Github Hint
 ---
 
-The Parity team has a simple content hash to github repo (and/or url) [mapping contract](https://github.com/paritytech/contracts/blob/master/GithubHint.sol) available. Parity has the ability to, given the content hash, do a reverse lookup against the contract and to retrieve the associated data.
+The Parity team has a simple content hash to github repo (and/or url) [mapping contract](https://github.com/parity-contracts/github-hint/blob/master/contracts/GithubHint.sol) available. Parity has the ability to, given the content hash, do a reverse lookup against the contract and to retrieve the associated data.
 
 This registering with the dapp and/or contract allows any URL be be identified by a hash of its content. For example, a dapp developer may want to associate and image with his dapp or a token developer may want to associate an image with his token that is to be displayed on the Parity UI. In addition, the registry is useful for developers to register versions of their dapps, the content of their manifests, etc.
 

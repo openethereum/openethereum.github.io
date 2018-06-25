@@ -2,7 +2,7 @@
 title: Parity DApp Registry
 ---
 
-The Parity UI uses an [underlying `DappReg` contract](https://github.com/paritytech/contracts/blob/master/DappReg.sol) to lookup and display dapps that have been registered on the network. Currently the contract does not have a DApp/UI yet, however it is available for both Homestead (mainnet), Ropsten, Kovan, and Morden (testnets):
+The Parity UI uses an [underlying `DappReg` contract](https://github.com/parity-contracts/dapp-registry/blob/master/contracts/DappReg.sol) to lookup and display dapps that have been registered on the network. Currently the contract does not have a DApp/UI yet, however it is available for both Homestead (mainnet), Ropsten, Kovan, and Morden (testnets):
 
 * Homestead: [`0xD70994d7020DF8052A1124561ff548f3b88744d8`](https://etherscan.io/address/0xD70994d7020DF8052A1124561ff548f3b88744d8#code)
 * Ropsten: [`0x724A8602fc0C2b346f8eC56Df2913710742d3fD0`](https://testnet.etherscan.io/address/0x724A8602fc0C2b346f8eC56Df2913710742d3fD0)

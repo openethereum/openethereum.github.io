@@ -22,7 +22,7 @@ A simple list of addresses specified at genesis.
 
 The list can be also a part of the blockchain state by being stored in an Ethereum contract.
 
-Example contracts can be found [here](https://github.com/paritytech/contracts/tree/master/validator_contracts) and [here for the contract used on Kovan Network](https://github.com/parity-contracts/kovan-validator-set).
+Example contracts can be found [here with the contract used on Kovan Network](https://github.com/parity-contracts/kovan-validator-set).
 
 It is best to include the contract in the genesis placing the bytecode as a "constructor" in the "accounts" field like so:
 
