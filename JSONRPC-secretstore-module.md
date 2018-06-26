@@ -47,7 +47,7 @@ Here:
 ## secretstore_serversSetHash
 Computes the hash of nodes ids, required to compute nodes set signature for manual [nodes set change session](Secret-Store-Configuration.md#changing-servers-set-configuration):
 ```bash
-curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_serversSetHash", "params": ["0x843645726384530ffb0c52f175278143b5a93959af7864460f5a4fec9afd1450cfb8aef63dec90657f43f55b13e0a73c7524d4e9a13c051b4e5f1e53f39ecd91", "0x07230e34ebfe41337d3ed53b186b3861751f2401ee74b988bba55694e2a6f60c757677e194be2e53c3523cc8548694e636e6acb35c4e8fdc5e29d28679b9b2f3"], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
+curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_serversSetHash", "params": [["0x843645726384530ffb0c52f175278143b5a93959af7864460f5a4fec9afd1450cfb8aef63dec90657f43f55b13e0a73c7524d4e9a13c051b4e5f1e53f39ecd91", "0x07230e34ebfe41337d3ed53b186b3861751f2401ee74b988bba55694e2a6f60c757677e194be2e53c3523cc8548694e636e6acb35c4e8fdc5e29d28679b9b2f3"]], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
 ```
 
 Here:
