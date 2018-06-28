@@ -30,6 +30,11 @@ It is best to include the contract in the genesis placing the bytecode as a "con
 "0x0000000000000000000000000000000000000005": { "balance": "1", "constructor" : "0x..." }
 ```
 
+If the constructor takes arguments they must be encoded and appended to the contract bytecode (using
+e.g. [ethabi](https://github.com/paritytech/ethabi)). Also if the contract initializes any address
+with `msg.sender` (for example as a contract owner) you must take into account that when defining
+the contract in genesis, `msg.sender` will be set to the system address (`SYSTEM_ADDRESS`: `2^160 - 2`).
+
 ### Non-reporting contract
 A simple validator contract has to have the following interface:
 ```json
