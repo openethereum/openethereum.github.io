@@ -9,7 +9,7 @@ Starting from Parity v1.10, [Parity Ethereum client](https://github.com/parityte
 To access Parity Wallet, you need to :
 * download and install Parity Ethereum client from the [release page](https://github.com/paritytech/parity/releases) or [build it](https://wiki.parity.io/Setup)
 * download and install [Parity UI](https://github.com/Parity-JS/shell/releases)
-* launch Parity UI
+* launch Parity UI (with your app launcher or in a terminal with `parity-ui`).
 
 ![Parity UI](images/parity-UI-0.jpg)
 
