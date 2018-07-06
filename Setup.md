@@ -20,7 +20,7 @@ There are a few ways of proceeding here. You can build Parity from the sources; 
 
 ##### One-line Binary Installer
 
-This method is way faster than building, though you won't get the cutting edge features and it only works on Ubuntu and Mac with Homebrew installed. To use the script just run:
+This method is way faster than building from the sources, though it only works on Ubuntu and Mac with Homebrew installed. To use the script just run:
 
 ```bash
 $ bash <(curl https://get.parity.io -L)
