@@ -146,7 +146,9 @@ curl --data '{"method":"trace_rawTransaction","params":["0xf86a8086d556983724318
 Response
 ```js
 {
-  {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
     "output": "0x",
     "stateDiff": null,
     "trace": [{
