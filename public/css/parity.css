@@ -47,6 +47,24 @@ code {
   text-align: center;
 }
 
+div.wrap h2{
+  font-size: 1.75rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+div.wrap h3{
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+div.wrap h4{
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+}
+
 @media (min-width: 30em) {
   .sidebar {
     font-size: 1rem;
