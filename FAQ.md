@@ -64,12 +64,12 @@ If you still want to use the browser UI (deprecated) you can launch Parity with 
 
 When running parity using the command line, a lot of information is displayed in the terminal. Here is a description of these logs.
 #### While syncing the full node
-Example: `2018-04-30 16:10:13 Syncing #5532478 9ce2…0499 2 blk/s 391 tx/s 15 Mgas/s 0+ 17 Qed #5532493 25/25 peers 5 MiB chain 128 MiB db 2 MiB queue 3 MiB sync RPC: 0 conn, 0 req/s, 0 µs`
+Example: `2018-04-30 16:10:13 Syncing #5532478 9ce2…0499  69.28 blk/s  235.7 tx/s 15 Mgas/s 0+ 17 Qed #5532493 25/25 peers 5 MiB chain 128 MiB db 2 MiB queue 3 MiB sync RPC: 0 conn, 0 req/s, 0 µs`
 - `2018-04-30 16:10:13`: timestamp of the log
 - `Syncing #5532478`: block number currently processed
 - `9ce2…0499`: block's hash
-- `2 blk/s`: average block(s) processed per second
-- `391 tx/s`: average transactions processed per second
+- `69.28`: average block(s) processed per second
+- `235.7`: average transactions processed per second
 - `15 Mgas/s`: million gas processed per second
 - `0+`: unverified block queue size
 - `17 Qed`: block queue size
@@ -110,14 +110,13 @@ The Warp sync feature lets the node download a snapshot of the state of the bloc
 - `0 µs`: average RPC roundtrip time for a single request
 
 #### While syncing in light mode
-Example: `2018-05-02 14:51:02  Syncing   #14677 aa97…42d2  1568 hdr/s      0+20139 Qed    #14677    9/50 peers   9 MiB cache 18 MiB queue  RPC:  0 conn,  0 req/s,   0 µs`
-- `1568 hdr/s` average number of processed headers per second
+Example: `2018-05-02 14:51:02  Syncing   #14677 aa97…42d2  1536.2 hdr/s      0+20139 Qed    9/50 peers   9 MiB cache 18 MiB queue  RPC:  0 conn,  0 req/s,   0 µs`
+- `#14677`: block number currently processed
 - `aa97…42d2`: header's truncated hash
+- `1536.2 hdr/s` average number of processed headers per second
 - `0+`: unverified header queue size
 - `20139 Qed`: header queue size
-- `#14677`: highest block number seen on the network
 - `9/50 peers`: number of active peers  / configured maximum number of peers
-- `5 MiB db`: state database memory used
 - `9 MiB cache`: blockchain cache info memory used
 - `18 MiB queue`: queue memory used (contains information about the queued headers)
 - `RPC 0 conn`: number of RPC connections to the node
@@ -129,7 +128,7 @@ Example: `2018-05-02 15:20:41  Imported #5543645 0x86ed…6288 (7.99 Mgas) + ano
 - `2018-05-02 15:20:41`: timestamp of the log
 - `Imported #5543645`: header block number received from peers
 - `0x86ed…6288`: header's truncated hash
-- `7.99 Mgas`: million gas used in the imported block
+- `(7.99 Mgas)`: million gas used in the imported block
 - `+ another 3 header(s)`: appears when 2 or more headers are imported within 1 tick of informant (one line in the console) - In that particular example it means that 4 headers were imported since last `Imported` line
 
 All other command line columns are described in full node logs above.
