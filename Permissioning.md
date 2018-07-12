@@ -253,12 +253,12 @@ Currently, Parity already allows whitelisting of accounts for zero gas price tra
 ### How it works
 Service transaction checker contract is used by Parity to filter out transactions with zero gas price (aka service transactions).
 
-The default behaviour (to which you can always revert by using `--refuse-service-transactions` command line option) is to discard all service transactions, coming from the network. If ['registrar'](https://github.com/paritytech/contracts/blob/master/Registry.sol) contract is deployed and registered for your chain, you can alter default behaviour by:
+The default behaviour (to which you can always revert by using `--refuse-service-transactions` command line option) is to discard all service transactions, coming from the network. If the ['registry'](https://github.com/parity-contracts/name-registry/blob/master/contracts/Registry.sol) contract is deployed and registered for your chain, you can alter the default behaviour by:
 1) deploying ['certifier'](https://github.com/parity-contracts/name-registry/blob/master/contracts/SimpleCertifier.sol) contract
-2) registering address of this contract in registry with 'service_transaction_checker' name
+2) registering the address of this contract under the name 'service_transaction_checker'
 On startup, Parity will check if this contract is registered and will start checking the author of each service transaction, coming from the network. If the author is **not** certified to create service transactions, the transaction will be discarded. Otherwise, it will be accepted.
 
-To register address, which is able to create service transactions, you should use `certify` method. To reverse this action, use `revoke` method. You can use `certified` method to check if the address is certified for making service transactions.
+To register an address and allow it to create service transactions, you should use the `certify` method. To revert this action, use the `revoke` method. Use the `certified` method to check if an address is certified.
 
 Below is ABI of service transaction checker contract:
 ```

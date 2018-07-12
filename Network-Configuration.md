@@ -26,7 +26,7 @@ If you run an internet facing node that can accept incoming connections and you 
 
 ## Reduce the bandwidth
 
-If browsing the internet or generally using it is slow with Parity running, then to use the internet normally again, you can download and install the Trickle program, e.g. via [here](https://trickle.en.uptodown.com/ubuntu). Then you can read docs [here](https://www.tuxradar.com/content/control-your-bandwidth-trickle), and run:
+If browsing the internet or generally using it is slow with Parity running, then to use the internet normally again, you can download and install the Trickle program, e.g. via [here](https://trickle.en.uptodown.com/ubuntu) or its repo [here](https://github.com/mariusae/trickle), and run:
 ```
 $ trickle -h
 Usage: trickle [-hvVs] [-d <rate>] [-u <rate>] [-w <length>] [-t <seconds>]
