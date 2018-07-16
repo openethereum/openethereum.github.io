@@ -32,6 +32,7 @@ This command requires the chain to be synced with --fat-db on.
 - `--format <FORMAT>`      Export in a given format. FORMAT must be either 'hex' or 'binary'. (default: binary)
 - `--max-balance <WEI>`    Don't export accounts with a balance greater than specified.
 - `--min-balance <WEI>`    Don't export accounts with balance less than specified.
+
 ### Example:
 `parity export state ./export-state-file.bin`
 
@@ -118,7 +119,8 @@ Print the hashed light clients' headers of the given --chain (default: foundatio
 To be used as hardcoded headers in a genesis file.
 
 ### Example:
-```parity export-hardcoded-sync --chain kovan
+```bash
+parity export-hardcoded-sync --chain kovan
 
 "hardcodedSync": {
     "header": "f90219a061d694007fbaca6e23e73e29c8c6a60099abc740ab7e27ae3cd1b9c6a47efef7a01dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347945a0b54d5dc17e0aadc383d2db43b0a0d3e029c4ca0a2f1bdabc1a72737de1c22a76cacc8fc162366904f759a99db7d6d19efee3090a0ac5f5b236e8977928a2ce43c7569ea5a74919643cb0b06d7540407b1ea1298f0a04356ddc5d77c83923a6541260308be167386e0969a608a017770c9e38091cfcab90100a00010002001009080011010141088000004000080081100000a002023000002204204801204084000c000010008000000000880080020c0000440200460000290005010c01c80800080004800100406003380000400402040000028084002a80087000008090a00200100544020019580022000000306100a0080100084020006809000e80000010000254810002000000a240050014200002002c10809202030006422022000203012000241089300080400000009001021020200012410348500028290230408100302000000058c0000020c08c20480081040020260004008481000080000800010010060020000e00020002140100a8988000004400201870b9af4a66df8038350a8018379d54483799eba845ab0426d984554482e45544846414e532e4f52472d3231323134313232a05eeccc80302d8fecca48a47be03654b5a41b5e5f296f271f910ebae631124f518890074810024c6c2b",
@@ -183,7 +185,6 @@ Generate new token for the given --chain (default: foundation).
 ```bash
 parity signer new-token --chain kovan
 
-Or use the generated token:
 xAtk-66Q1-lPu5-b2o8
 ```
 
