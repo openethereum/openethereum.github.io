@@ -88,6 +88,7 @@
 - [Secret Store](Secret-Store)
   - [Secret Store Configuration](Secret-Store-Configuration)
   - [Secret Store RPC](JSONRPC-secretstore-module)
+  - [Tutorial](Secret-Store-Tutorial-overview)
 - [Warp Sync](Warp-Sync)
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
 - [WebAssembly (Wasm)](WebAssembly-Home)
