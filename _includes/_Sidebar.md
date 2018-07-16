@@ -5,26 +5,31 @@
 - [FAQ](FAQ)
 
 ### Using Parity
-- [Parity Wallet](Parity-Wallet)
+- Parity Wallet
+  - [Parity Wallet Overview](Parity-Wallet)
   - [Back-up & Restore](Backing-up-&-Restoring)
   - [Wallets & Vaults](Accounts%2C-Wallets%2C-Vaults)
   - [Ledger Nano S](Ledger-Nano-S)
-- [Configuring Parity](Configuring-Parity)
+- Configuring Parity
+  - [Parity Configurations](Configuring-Parity)
   - [Available Chains](Chain-specification)
   - [For Mining](Mining)
   - [Wallet Remote Access](Wallet-Remote-Access)
   - [Network Config](Network-Configuration)
   - [Docker](Docker)
   - [CLI Sub-commands](CLI-Sub-commands)
-- [Parity Signer Mobile App](Parity-Signer-Mobile-App)
+- Parity Signer Mobile App
+  - [Parity Signer Overview](Parity-Signer-Mobile-App)
   - [Tutorial w/ Parity](Parity-Signer-Mobile-App-Parity-Wallet-tutorial)
   - [Tutorial w/ MyCrypto](Parity-Signer-Mobile-App-MyCrypto-tutorial)
-- [Public Node](Public-Node)
+- Public Node
+  - [Public Node](Public-Node)
   - [Wallet.Parity.Io](Wallet.Parity.Io)
 - [Community Guides](Community-Guides)
 
 ### Developing
-- [Writing DApps](Development-Overview)
+- Writing DApps
+  - [Development Overview](Development-Overview)
   - [oo7 Examples](oo7-Parity-Examples)
   - [oo7-parity.js Reference](oo7-Parity-Reference)
   - [Deploying Dapps](Deploying-Dapps-to-Parity-Wallet)
@@ -32,13 +37,15 @@
   - [Dapp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-Github-Hint)
-- [ERC20 Tokens](Tokens)
+- ERC20 Tokens
+  - [ERC20 Tokens Overview](Tokens)
   - [Token Deployment](Token-Deployment)
   - [Token Registry](Token-Registry)
 - [Badge Registry](Badge-Registry)
 - [Smart Contracts](Smart-Contracts)
 - [Transaction Queue](Transactions-Queue)
-- [Dapp Tutorial](Dapp-Tutorial)
+- Dapp Tutorial
+  - [Overview](Dapp-Tutorial)
   - [1: Get Started](Tutorial-Part-1)
   - [2: oo7 Bonds](Tutorial-Part-2)
   - [3: Parity Bonds](Tutorial-Part-3)
@@ -49,7 +56,8 @@
   - [8: Events](Tutorial-Part-8)
   - [9: Deploy Contracts](Tutorial-Part-9)
   - [10: Sign Data](Tutorial-Part-10)
-- [JSONRPC Guide](JSONRPC)
+- JSONRPC Guide
+  - [Overview](JSONRPC)
   - [web3](JSONRPC-web3-module)
   - [net](JSONRPC-net-module)
   - [eth](JSONRPC-eth-module)
@@ -65,37 +73,45 @@
   - [secretstore](JSONRPC-secretstore-module)
 
 ### Parity Chains
-- [Chain Specification](Chain-specification)
-  - [Pluggable Consensus](Pluggable-Consensus)
+- Chain Specification
+  - [Chain Specification Overview](Chain-specification)
+  - Pluggable Consensus
+    - [Pluggable Consensus Overview](Pluggable-Consensus)
     - [Aura](Aura)
-  - [Validator Set](Validator-Set)
+  - Validator Set
+    - [Validator Set Overview](Validator-Set)
     - [Validator contracts](Validator-contracts)
   - [Block Reward Contract](Block-Reward-Contract)
 - [Permissioning](Permissioning)
 - [Proof of Work Chains](Proof-of-Work-Chains)
-- [Proof of Authority Chains](Proof-of-Authority-Chains)
+- Proof of Authority Chains
+  - [PoA Chains Overview](Proof-of-Authority-Chains)
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
 - [Private Dev Chain](Private-development-chain)
 
 ### Technologies
 - [Automatic Updating](Automatic-Updating)
 - [Ethereum-IPFS API](IPFS)
-- [Light Client](Light-Client)
+- Light Client
+  - [Light Client Overview](Light-Client)
   - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
 - [Polkadot](https://github.com/w3f/polkadot-overview) <i class="fa fa-external-link"></i>
 - [Parity Bridges](Bridge)
-- [Secret Store](Secret-Store)
+- Secret Store
+  - [Secret Store Overview](Secret-Store)
   - [Secret Store Configuration](Secret-Store-Configuration)
   - [Secret Store RPC](JSONRPC-secretstore-module)
   - [Tutorial](Secret-Store-Tutorial-overview)
-- [Warp Sync](Warp-Sync)
+- Warp Sync
+  - [Warp Sync Overview](Warp-Sync)
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
-- [WebAssembly (Wasm)](WebAssembly-Home)
+- WebAssembly (Wasm)
   - [General](WebAssembly-Home)
   - [Design](WebAssembly-Design)
   - [Links](WebAssembly-Links)
-- [Whisper](Whisper)
+- Whisper
+  - [Whisper](Whisper)
   - [Overview](Whisper-Overview)
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
