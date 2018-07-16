@@ -1,4 +1,4 @@
-## [Parity](/)
+## [Parity Ethereum](/)
 - [Setup](Setup)
 - [Getting Synced](Getting-Synced)
 - [Basic Usage](Basic-Usage)
@@ -15,6 +15,7 @@
   - [Wallet Remote Access](Wallet-Remote-Access)
   - [Network Config](Network-Configuration)
   - [Docker](Docker)
+  - [CLI Sub-commands](CLI-Sub-commands)
 - [Parity Signer Mobile App](Parity-Signer-Mobile-App)
   - [Tutorial w/ Parity](Parity-Signer-Mobile-App-Parity-Wallet-tutorial)
   - [Tutorial w/ MyCrypto](Parity-Signer-Mobile-App-MyCrypto-tutorial)
