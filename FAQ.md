@@ -50,7 +50,7 @@ parity pruning fast fatdb trace   | 5_600_000      | 108G       | --fat-db on --
 parity pruning archive            | 5_600_000      | 1.1T       | --pruning archive        |
 ```
 
-### How to use Parity Ethereum Chrome Extension to browse a Web3 website instead of Metamask?
+### How to use Parity Ethereum Chrome Extension to browse a Web3 website?
 
 Using the [Parity Ethereum Chrome Extension](https://github.com/paritytech/parity-extension), you can browse web3 enabled website and use your Parity Ethereum accounts to send and sign transactions.
 All you need is a Parity Ethereum local node running with the flag `--force-ui`, it should also be fully synced.
@@ -429,13 +429,13 @@ Probably your node is already running (or another node is running, i.e., Geth) a
 You can control the logging level with `-l` and define a `--log_file` location:
 
 ```bash
-  -l --logging LOGGING           Specify the logging level. Must conform to the same
-                                 format as RUST_LOG. (default: None)
+  -l --logging LOGGING           Specify the general logging level (error, warn, info, debug or trace).
+                                 It can also be set for a specific module. Example: '-l sync=debug, rpc=trace'.
   --log-file FILENAME            Specify a filename into which logging should be
                                  appended. (default: None)
 ```
 LOGGING accepts the following modules:
-`account_bloom`, `basicauthority`, `blockchain`, `chain`, `client`, `dapps`, `discovery`, `diskmap`, `enact`, `engine`, `estimate_gas`, `ethash`, `executive`, `ext`, `externalities`, `external_tx`, `fatdb`, `fetch`, `finality`, `hypervisor`, `jdb`, `jdb.fine`, `jdb.ops`, `journaldb`, `les`, `light_fetch`, `local_store`, `migration`, `miner`, `mode`, `network`, `on_demand`, `own_tx`, `parity_whisper`, `perf`, `pip`, `pip_provider`, `poa`, `pubsub`, `rcdb`, `secretstore`, `secretstore_net`, `shutdown`, `signer`, `snapshot`, `snapshot_io`, `snapshot_watcher`, `spec`, `state`, `stats`, `stratum`, `sync`, `trie`, `txqueue`, `updater`, `warp`, `wasm`, `whisper`
+`account_bloom`,`basicauthority`,`blockchain`,`chain`,`client`,`cull`,`dapps`,`discovery`,`diskmap`,`enact`,`engine`,`estimate_gas`,`ethash`,`evm`,`executive`,`ext`,`externalities`,`external_tx`,`fatdb`,`fetch`,`finality`,`hw`,`hypervisor`,`import`,`jdb`,`jdb.fine`,`jdb.ops`,`journaldb`,`jsontests`,`les`,`light_fetch`,`local_store`,`migration`,`miner`,`mode`,`network`,`on_demand`,`own_tx`,`parity_whisper`,`perf`,`pip`,`pip_provider`,`poa`,`pubsub`,`rcdb`,`reorg`,`rpc`,`rpc-client`,`secretstore`,`secretstore_net`,`shutdown`,`signer`,`snapshot`,`snapshot_io`,`snapshot_watcher`,`spec`,`state`,`stats`,`stratum`,`sync`,`trace`,`tx`,`tx_filter`,`txpool`,`txqueue`,`updater`,`verification`,`warp`,`wasm`,`whisper`,`whisper-cli`
 
 Additionally, a logging level can  be set per module:
 `info`, `debug`, `trace` (default if no level is specified for a module)
