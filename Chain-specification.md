@@ -4,7 +4,7 @@ title: Chain Specification
 
 By default, when simply running `parity`, Parity Ethereum will connect to the official public Ethereum network.
 
-In order to run a chain different to the official public Ethereum one, Parity has to run with the `--chain` option or with a [config file](Configuring-Parity.md#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
+In order to run a chain different to the official public Ethereum one, Parity has to run with the `--chain` option or with a [config file](Configuring-Parity-Ethereum.md#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
 - [`mainnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network

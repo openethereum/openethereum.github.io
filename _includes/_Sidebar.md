@@ -10,8 +10,8 @@
   - [Back-up & Restore](Backing-up-&-Restoring)
   - [Wallets & Vaults](Accounts%2C-Wallets%2C-Vaults)
   - [Ledger Nano S](Ledger-Nano-S)
-- Configuring Parity
-  - [Parity Configurations](Configuring-Parity)
+- Configuring Parity Ethereum
+  - [Configurations](Configuring-Parity-Ethereum)
   - [Available Chains](Chain-specification)
   - [For Mining](Mining)
   - [Wallet Remote Access](Wallet-Remote-Access)

@@ -219,7 +219,7 @@ After building Parity Ethereum from source:
 
 ### How do I configure Parity?
 
-You can configure your Parity Ethereum client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://wiki.parity.io/Configuring-Parity#cli-options).
+You can configure your Parity Ethereum client by passing command-line flags to the executable. For usage instructions, see `parity --usage` and for a list of available flags, see `parity --help` or check out the [CLI Options here](https://wiki.parity.io/Configuring-Parity-Ethereum#cli-options).
 
 In additoin, Parity Ethereum can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Ethereum Config Generator](https://paritytech.github.io/parity-config-generator/). To start Parity Ethereum with a config file, the file needs to be located in:
 
@@ -227,7 +227,7 @@ In additoin, Parity Ethereum can be configured using a [TOML](https://github.com
 * Linux: `~/.local/share/io.parity.ethereum/config.toml`
 * macOS: `$HOME/Library/Application Support/io.parity.ethereum/config.toml`
 
-To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity Ethereum config file here](https://wiki.parity.io/Configuring-Parity#config-file).
+To use a custom path run `$ parity --config path/to/config.toml`. Read more on [Parity Ethereum config file here](https://wiki.parity.io/Configuring-Parity-Ethereum#config-file).
 
 ### What are the security best practices?
 
@@ -339,14 +339,14 @@ killall -HUP parity
 1. Navigate in Windows Explorer to the Parity Ethereum folder where parity.exe is, it should be located in `C:\Program Files\Parity Technologies\Parity`
 1. Highlight the complete folder path in the top pane, type `cmd` and hit Enter
 ![windows pane](/images/windows-explorer-cmd.jpeg)
-1. This opens a command line window in the Parity Ethereum folder, you can launch Parity Ethereum with [CLI flags](https://wiki.parity.io/Configuring-Parity.html#cli-options)
+1. This opens a command line window in the Parity Ethereum folder, you can launch Parity Ethereum with [CLI flags](https://wiki.parity.io/Configuring-Parity-Ethereum.html#cli-options)
 
 ### How to launch Parity Ethereum using the command line on Mac OSX?
 
 1. Make sure you close Parity Ethereum and that no `parity` process is running. ([See here how to kill a process](http://osxdaily.com/2012/03/02/force-quit-mac-apps/))
 1. Press <kbd>CMD</kbd> + <kbd>Space</kbd> to open spotlight search
 1. Type `terminal` and hit return to open Terminal app.
-1. Type or paste `/Applications/Parity\ Ethereum.app/Contents/MacOS/parity` in the terminal, you can launch Parity Ethereum with [CLI flags](https://wiki.parity.io/Configuring-Parity.html#cli-options) if needed.
+1. Type or paste `/Applications/Parity\ Ethereum.app/Contents/MacOS/parity` in the terminal, you can launch Parity Ethereum with [CLI flags](https://wiki.parity.io/Configuring-Parity-Ethereum.html#cli-options) if needed.
 
 ### How to generate a new hardcoded sync block for Parity Ethereum light client?
 
