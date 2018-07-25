@@ -63,7 +63,7 @@ Issues should have only one of these. Do not combine; if multiple labels are equ
 - ![F7-optimisation](http://i.imgur.com/DNym8en.png) An enhancement to provide better overall performance in terms of time-to-completion for a task.
 - ![F8-enhancement](http://i.imgur.com/ziRfEiW.png) An additional feature.
 - `F9-meta` A specific issue for grouping tasks or bugs of a specific category.
-- ![F9-release](http://i.imgur.com/zl4BiqW.png) A specific release. All such issues should be templated on [1387](https://github.com/paritytech/parity/issues/1387).
+- ![F9-release](http://i.imgur.com/zl4BiqW.png) A specific release. All such issues should be templated on [1387](https://github.com/paritytech/parity-ethereum/issues/1387).
 
 ### 'M' group
 

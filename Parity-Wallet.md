@@ -4,10 +4,10 @@ title: Parity Wallet
 
 Parity Wallet is designed to integrate seamlessly with all standard Ethereum based tokens as well as Ether itself.
 It is accessible in the Parity User Interface - [Parity UI](https://github.com/Parity-JS/shell/releases).
-Starting from Parity v1.10, [Parity Ethereum client](https://github.com/paritytech/parity/releases) has been separated from the Parity User Interface (UI). The user interface previously accessible from the browser in versions <=1.9 is now released as a standalone app.
+Starting from Parity v1.10, [Parity Ethereum client](https://github.com/paritytech/parity-ethereum/releases) has been separated from the Parity User Interface (UI). The user interface previously accessible from the browser in versions <=1.9 is now released as a standalone app.
 
 To access Parity Wallet, you need to :
-* download and install Parity Ethereum client from the [release page](https://github.com/paritytech/parity/releases) or [build it](https://wiki.parity.io/Setup)
+* download and install Parity Ethereum client from the [release page](https://github.com/paritytech/parity-ethereum/releases) or [build it](https://wiki.parity.io/Setup)
 * download and install [Parity UI](https://github.com/Parity-JS/shell/releases)
 * launch Parity UI (with your app launcher or in a terminal with `parity-ui`).
 

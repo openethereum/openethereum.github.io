@@ -30,7 +30,7 @@ assuming you are authority with `authority_address`.
 [build and install the bridge](https://github.com/paritytech/parity-bridge/#build)
 
 install parity.
-we tested it with [parity 1.8.10](https://github.com/paritytech/parity/releases/tag/v1.8.10)
+we tested it with [parity 1.8.10](https://github.com/paritytech/parity-ethereum/releases/tag/v1.8.10)
 though it should work with the latest stable release.
 
 start a parity node that connects to `home` chain, has `authority_address` unlocked

@@ -16,7 +16,7 @@ title: Setup Parity
 
 ## Binaries
 
-There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/paritytech/parity/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
+There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/paritytech/parity-ethereum/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
 ### One-line Binary Installer
 
@@ -29,7 +29,7 @@ $ bash <(curl https://get.parity.io -L)
 This will install and configure the Parity client for you. On Ubuntu, this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [ethstats.net](https://ethstats.net). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
 
 ### Experimental Installers
-There are also experimental installers for OS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity/releases).
+There are also experimental installers for OS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity-ethereum/releases).
 
 ## Dependencies
 
@@ -51,7 +51,7 @@ For linux systems:
 
 ## Building from source
 
-To simply build Parity from source follow the instructions in the [README](https://github.com/paritytech/parity/blob/master/README.md).
+To simply build Parity from source follow the instructions in the [README](https://github.com/paritytech/parity-ethereum/blob/master/README.md).
 
 For Ethereum key management [Ethstore](https://github.com/paritytech/ethstore) can be used. To compile it use
 

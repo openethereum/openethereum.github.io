@@ -6,7 +6,7 @@ title: Part 1 - Configuring each node
 
 Per default, Parity Ethereum client is built without the Secret Store feature. To enable it, you need to build it from the sources and specifically enable the Secret Store.
 
-- Make sure you have all the [build dependencies](https://github.com/paritytech/parity/#build-dependencies).
+- Make sure you have all the [build dependencies](https://github.com/paritytech/parity-ethereum/#build-dependencies).
 - Run
 ```
 $ git clone https://github.com/paritytech/parity
@@ -413,7 +413,7 @@ Find [here](https://github.com/Tbaut/Secret-Store-Tutorial-files/tree/master/no-
 
 You can now launch all the Secret Store nodes with the updated configuration. You might see some errors `'Connection refused (os error 111)' when establishing outbound connection with 127.0.0.1:8013` when launching node 1 and 2 because not all nodes are online, but once they are all up, you should see logs like this:
 ```bash
-$ ~/paritytech/parity/target/release/parity --config ss3.toml
+$ ~/paritytech/parity-ethereum/target/release/parity --config ss3.toml
 Loading config file from ss3.toml
 2018-06-29 22:26:46  Starting Parity/v1.12.0-unstable-458afcd-20180620/x86_64-linux-gnu/rustc1.26.1
 2018-06-29 22:26:46  Keys path db.ss3/keys/DevelopmentChain

@@ -210,4 +210,4 @@ You can also include extra nodes (e.g. [ethstats monitoring](https://github.com/
 - [Building Parity using Docker](Setup.md#Building-using-Docker).
 - [Docker build for ARM64](https://github.com/paritytech/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
 - [Parity on Docker Hub](https://hub.docker.com/r/parity/parity/).
-- [View the Dockerfile here](https://github.com/paritytech/parity/blob/master/docker/ubuntu/Dockerfile).
+- [View the Dockerfile here](https://github.com/paritytech/parity-ethereum/blob/master/docker/ubuntu/Dockerfile).

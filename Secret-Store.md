@@ -103,7 +103,7 @@ Implementation is based on [ECDKG: A Distributed Key Generation Protocol Based o
 After running server key generation session, you have an option to bind externally-generated document key to server key. You should prepare following parameters:
 - server key id: it is the same id, that was used in server key generation session;
 - server key id signature: it is the server key id, signed by the same entity (author) that has signed signed server key id in server key generation session;
-- 'common point' and 'encrypted point': is the document key, externally encrypted by public server key, using special procedure (RPCs for generating these values are coming). For now, please reference to Parity code [`encrypt_secret`](https://github.com/paritytech/parity/blob/4763887a68d78f12f0f8e39d353e9d852ab95c7a/secret_store/src/key_server_cluster/math.rs#L224).
+- 'common point' and 'encrypted point': is the document key, externally encrypted by public server key, using special procedure (RPCs for generating these values are coming). For now, please reference to Parity code [`encrypt_secret`](https://github.com/paritytech/parity-ethereum/blob/4763887a68d78f12f0f8e39d353e9d852ab95c7a/secret_store/src/key_server_cluster/math.rs#L224).
 
 To run session, execute following command:
 ```

@@ -279,7 +279,7 @@ Parity Ethereum is running but seems to remain at the same block for a long time
 4. Remove your nodes file (`$HOME/.local/share/io.parity.ethereum/network/nodes.json`) while Parity Ethereum is not running.
 5. Wait a bit longer.
 
-If the problem persists, please run Parity Ethereum with `-l sync=trace` option for a while and post the output [here](https://github.com/paritytech/parity/issues/2447).
+If the problem persists, please run Parity Ethereum with `-l sync=trace` option for a while and post the output [here](https://github.com/paritytech/parity-ethereum/issues/2447).
 
 ### Sync is stuck around block 2,421,000 or 2,675,000!?!
 
@@ -293,7 +293,7 @@ Docker images for Parity Ethereum are available via [Docker Hub](Docker), i.e.:
 docker pull ethcore/parity:beta
 ```
 
-You can view the [Dockerfile here](https://github.com/paritytech/parity/blob/master/docker/ubuntu/Dockerfile).
+You can view the [Dockerfile here](https://github.com/paritytech/parity-ethereum/blob/master/docker/ubuntu/Dockerfile).
 
 ### Can I run Parity Ethereum as a daemon or system service?
 
@@ -306,10 +306,10 @@ sudo launchctl enable io.parity.ethereum
 sudo launchctl start io.parity.ethereum
 ```
 
-To manually enable the system service for Parity Ethereum installed on **Linux**, get the [`parity.service` file](https://github.com/paritytech/parity/blob/master/scripts/parity.service) from GitHub.
+To manually enable the system service for Parity Ethereum installed on **Linux**, get the [`parity.service` file](https://github.com/paritytech/parity-ethereum/blob/master/scripts/parity.service) from GitHub.
 
 ```bash
-sudo wget https://raw.githubusercontent.com/paritytech/parity/master/scripts/parity.service -O /etc/systemd/system/parity.service
+sudo wget https://raw.githubusercontent.com/paritytech/parity-ethereum/master/scripts/parity.service -O /etc/systemd/system/parity.service
 sudo chmod +x /etc/systemd/system/parity.service
 sudo systemctl enable parity
 sudo systemctl start parity
@@ -374,15 +374,15 @@ Parity Ethereum supports multiple public chain configurations:
                                    homestead, mainnet, morden, ropsten, classic, expanse,
                                    testnet, kovan or dev (default: homestead).
 
-- [`mainnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
-- [`kovan` or `testnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config)
-- [`ropsten`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
-- [`classic`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
-- [`classic-testnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
-- [`expanse`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/paritytech/parity/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
-- [`Musicoin`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
-- [`ellaism`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
+- [`mainnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
+- [`kovan` or `testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config)
+- [`ropsten`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
+- [`classic`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
+- [`classic-testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
+- [`expanse`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
+- [`dev`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`Musicoin`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
+- [`ellaism`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
 
 See also [Chain specification](Chain-specification.md).
 
@@ -519,7 +519,7 @@ Head over to the excellent [DApp Tutorial](Tutorial-Part-1.md) documentation. It
 
 ### Does Parity Ethereum support the Swarm and Whisper sub-protocols?
 
-Currently, Parity Ethereum does neither support Swarm nor Whisper sub-protocols. However, [Whisper Support](https://github.com/paritytech/parity/issues/4685) is on the road-map.
+Currently, Parity Ethereum does neither support Swarm nor Whisper sub-protocols. However, [Whisper Support](https://github.com/paritytech/parity-ethereum/issues/4685) is on the road-map.
 
 ### How to connect Parity UI to a node on my network?
 
@@ -562,11 +562,11 @@ Dev mode should be used as much as possible since it allows fast iterations. Loc
 
 Yes, there are also experimental installers for MacOS X and Windows which will install Parity Ethereum as a system service. Parity Ethereum will always run in the background and hibernate when not being used with the bundled wallet.
 
-You can download the latest versions from the [releases page on GitHub](https://github.com/paritytech/parity/releases).
+You can download the latest versions from the [releases page on GitHub](https://github.com/paritytech/parity-ethereum/releases).
 
 ### Where can I find official releases?
 
-You can download the latest versions from the [releases page on GitHub](https://github.com/paritytech/parity/releases). :)
+You can download the latest versions from the [releases page on GitHub](https://github.com/paritytech/parity-ethereum/releases). :)
 
 Make sure you check the `md5sum`, on your command-line, type
 
@@ -574,7 +574,7 @@ Make sure you check the `md5sum`, on your command-line, type
 md5sum parity_1.5.7_amd64.deb
 ```
 
-and compare the output with the provided checksum at the [releases page on GitHub](https://github.com/paritytech/parity/releases).
+and compare the output with the provided checksum at the [releases page on GitHub](https://github.com/paritytech/parity-ethereum/releases).
 
 ```bash
 d8fbd5f71b5b436e1a45d7359e26bc0c  parity_1.5.7_amd64.deb

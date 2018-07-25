@@ -7,16 +7,16 @@ By default, when simply running `parity`, Parity Ethereum will connect to the of
 In order to run a chain different to the official public Ethereum one, Parity has to run with the `--chain` option or with a [config file](Configuring-Parity-Ethereum.md#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
-- [`mainnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
-- [`kovan` or `testnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config)
-- [`ropsten`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
-- [`classic`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
-- [`classic-testnet`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
-- [`expanse`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/paritytech/parity/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
-- [`musicoin`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
-- [`ellaism`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
-- [`tobalaba`](https://github.com/paritytech/parity/blob/master/ethcore/res/ethereum/tobalaba.json) EWF Tobalaba network
+- [`mainnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
+- [`kovan` or `testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config)
+- [`ropsten`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
+- [`classic`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
+- [`classic-testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
+- [`expanse`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
+- [`dev`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`musicoin`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
+- [`ellaism`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
+- [`tobalaba`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/tobalaba.json) EWF Tobalaba network
 
 ## Private chains
 

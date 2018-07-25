@@ -21,7 +21,7 @@ Parity implementation status overview:
 | `[x]`     |`eth-state-trie`      | Ethereum State Trie Node               | `0x96`|
 | `[ ]`     |`eth-storage-trie`    | Ethereum Contract Storage Trie Node    | `0x98`|
 
-Please subscribe to [#4172](https://github.com/paritytech/parity/issues/4172) for more details on Parity's implementation progress.
+Please subscribe to [#4172](https://github.com/paritytech/parity-ethereum/issues/4172) for more details on Parity's implementation progress.
 
 ### Example Requests
 

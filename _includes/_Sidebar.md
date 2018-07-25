@@ -121,7 +121,7 @@
 - [Known Issues](Known-Issues-Priorities)
 - [Fuzz Testing](Fuzz-Testing)
 - [Labeling](Labelling)
-- [Release Notes](https://github.com/paritytech/parity/blob/master/CHANGELOG.md) <i class="fa fa-external-link"></i>
+- [Release Notes](https://github.com/paritytech/parity-ethereum/blob/master/CHANGELOG.md) <i class="fa fa-external-link"></i>
 - [Gitter](https://gitter.im/ethcore/parity) <i class="fa fa-external-link"></i>
 - [GitHub](https://github.com/paritytech/parity) <i class="fa fa-external-link"></i>
 - [Website](https://parity.io) <i class="fa fa-external-link"></i>
