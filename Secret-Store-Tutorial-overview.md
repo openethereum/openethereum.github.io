@@ -20,7 +20,7 @@ The overall picture of this tutorial is the following:
 - Charlie should not be able to decrypt the document.
 
 
-## Table of content:
+## Table of contents:
 * [Part 1 - Configuring each node](Secret-Store-Tutorial-1.md)
   * [1. Enable the Secret Store feature of Parity](Secret-Store-Tutorial-1.md#1-enable-the-secret-store-feature-of-parity)
   * [2. Create and configure the users' nodes](Secret-Store-Tutorial-1.md#2-create-and-configure-the-users-nodes)
