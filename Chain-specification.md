@@ -86,7 +86,7 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"bombDefuseTransition"` block number at which the difficulty bomb (epsilon in Yellow Paper Eqs. 39, 44) is removed from the difficulty evolution
   + `"wasmActivationTransition"` block number at which bytecode (in storage or transactions) can be run as Wasm bytecode and by WebAssembly VM.
   + `"maximumUncleCountTransition"` Block at which maximum uncle count parameter should be considered. Default "0" for PoA chains, not set for Ethash chains.
-  + `"maximumUncleCount"` Maximum number of accepted uncles starting from the block specified at `maximumUncleCountTransition`. Default `0` for Ethash chains, `2` for PoA chains before `maximumUncleCountTransition`.
+  + `"maximumUncleCount"` Maximum number of accepted uncles starting from the block specified at `maximumUncleCountTransition`. Default `2` for Ethash chains, `0` for PoA chains before `maximumUncleCountTransition`.
   + `"emptyStepsTransition"` Block at which empty step messages should start.
   + `"maximumEmptySteps"` Maximum number of accepted empty steps.
   + `"blockRewardContractAddress"` Address of the smart contract used for calculating block rewards. Use for [Block Reward Contract](Block-Reward-Contract).
