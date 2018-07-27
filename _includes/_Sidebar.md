@@ -1,4 +1,5 @@
-## [Parity Ethereum](/)
+## Parity Ethereum
+- [Overview](/)
 - [Setup](Setup)
 - [Getting Synced](Getting-Synced)
 - [Basic Usage](Basic-Usage)
@@ -14,7 +15,7 @@
 - [CLI Sub-commands](CLI-Sub-commands)
 - [Community Guides](Community-Guides)
 
-### Blockhains support
+### Blockchains support
 - Chain Specification
   - [Chain Specification Overview](Chain-specification)
   - Pluggable Consensus
@@ -75,7 +76,7 @@
   - [Whisper PoC #2](Whisper-PoC-2)
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
 
-### Hacking on Parity
+### Hacking
 - [Coding Guide](Coding-guide)
 - [Known Issues](Known-Issues-Priorities)
 - [Fuzz Testing](Fuzz-Testing)
@@ -100,30 +101,30 @@
 - [Ledger Nano S](Ledger-Nano-S)
 
 ### Developing
+- [Development Overview](Development-Overview)
 - Writing DApps
-  - [Development Overview](Development-Overview)
-  - [oo7 Examples](oo7-Parity-Examples)
-  - [oo7-parity.js Reference](oo7-Parity-Reference)
-  - [Deploying Dapps](Deploying-Dapps-to-Parity-Wallet)
-  - [Parity Dapp Registry](Parity-dapp-registry)
+  - [Dapp Overview](Deploying-Dapps-to-Parity-UI)
   - [Dapp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-Github-Hint)
+  - [Parity Dapp Registry](Parity-dapp-registry)
+  - Dapp Tutorial
+    - [Overview](Dapp-Tutorial)
+    - [1: Get Started](Tutorial-Part-1)
+    - [2: oo7 Bonds](Tutorial-Part-2)
+    - [3: Parity Bonds](Tutorial-Part-3)
+    - [4: Call Contracts](Tutorial-Part-4)
+    - [5: Post Transactions](Tutorial-Part-5)
+    - [6: A New Contract](Tutorial-Part-6)
+    - [7: Interaction](Tutorial-Part-7)
+    - [8: Events](Tutorial-Part-8)
+    - [9: Deploy Contracts](Tutorial-Part-9)
+    - [10: Sign Data](Tutorial-Part-10)
+  - [oo7 Examples](oo7-Parity-Examples)
+  - [oo7-parity.js Reference](oo7-Parity-Reference)
 - ERC20 Tokens
   - [ERC20 Tokens Overview](Tokens)
   - [Token Deployment](Token-Deployment)
   - [Token Registry](Token-Registry)
 - [Badge Registry](Badge-Registry)
 - [Smart Contracts](Smart-Contracts)
-- Dapp Tutorial
-  - [Overview](Dapp-Tutorial)
-  - [1: Get Started](Tutorial-Part-1)
-  - [2: oo7 Bonds](Tutorial-Part-2)
-  - [3: Parity Bonds](Tutorial-Part-3)
-  - [4: Call Contracts](Tutorial-Part-4)
-  - [5: Post Transactions](Tutorial-Part-5)
-  - [6: A New Contract](Tutorial-Part-6)
-  - [7: Interaction](Tutorial-Part-7)
-  - [8: Events](Tutorial-Part-8)
-  - [9: Deploy Contracts](Tutorial-Part-9)
-  - [10: Sign Data](Tutorial-Part-10)

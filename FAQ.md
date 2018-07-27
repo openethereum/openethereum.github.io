@@ -497,9 +497,9 @@ No, Parity Ethereum only allows watching wallets and interact with them (view an
 
 ### How can I compile and deploy contracts with Parity?
 
-Open your Parity UI and navigate to the _'Contracts'_ tab, it allows you to write, compile and directly deploy contracts on the selected chain.
+Open Parity UI and navigate to the _'Develop Contracts'_ dapp. This dapp allows you to write, compile and directly deploy contracts on the selected chain.
 
-![Parity Ethereum Solidity Contracts](https://i.imgur.com/2xjUkiI.png)
+![Parity Ethereum Solidity Contracts](https://i.imgur.com/e4CTUDP.png)
 
 ### What DApps are available for Parity?
 
@@ -537,23 +537,11 @@ You can specify the WebSocket IP and port that Parity UI should use to connect t
 
 ### How to customize Parity UI?
 
-In dev mode:
 - Fork `https://github.com/parity-js/shell` and make your modifications to the UI
-- `npm start`
-- Run node with --ui-no-validation
-- Visit `localhost:3000`, the page should refresh on file changes.
+- Run your node with --ui-no-validation
+- Run `npm start`. This will watch the files and serve http://localhost:3000
+- In another terminal, run `npm run electron:dev`. This will spawn an Electron window serving http://localhost:3000. The Electron window will refresh on any code change.
 - (optional) Commit your changes, and submit a PR!
-
-In local prod mode:
-- Fork `https://github.com/parity-js/shell` and make your modifications to the UI
-- Push your changes, copy the latest commit reference
-- Clone/Fork `https://github.com/paritytech/parity`, and in `./dapps/ui/Cargo.toml` modify the line `parity-ui-dev = { ... }` to point to your forked repo and commit reference
-- Run `cargo update -p parity-ui` to update Cargo.lock
-- `cargo build --release --no-default-features --features ui`
-- Run Parity Ethereum, visit localhost:8180.
-
-Dev mode should be used as much as possible since it allows fast iterations. Local prod mode is only used when you want the UI changes to be bundled into your Parity Ethereum when `cargo build`ing it.
-
 
 ## Building, Installing and Testing
 

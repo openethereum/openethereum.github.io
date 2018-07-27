@@ -34,11 +34,9 @@ contract Counter {
 }
 ```
 
-You can compile it within the Parity Wallet by using the "Develop" page in the "Contracts" tab. After compiling it, you'll end up with two things: the EVM initialisation byte-code and the contract's ABI. For now we will assume the contract is already deployed: this can be done with Parity Wallet by using the "Deploy" function.
+You can compile it within Parity UI by going to the _'Develop Contracts'_ dapp and navigating to the _'Develop'_ tab. After compiling your contract, you'll end up with two things: the EVM initialisation byte-code and the contract's ABI. For now we will assume the contract is already deployed: this can be done on that same dapp by using the "Deploy" function.
 
-![image](https://cloud.githubusercontent.com/assets/138296/24465379/1a275082-14ad-11e7-88f4-140eb2c3ab74.png)
-
-Above I'm about to deploy the contract using Parity Wallet. After deploying, I'll be given an address for where the contract resides on the blockchain. In my case, it's at `0x7aC77Cb854E064f22E747F40b90FE6D6Bc1e3197` and looks like this:
+Once you've deployed the contract, you'll be given an address for where the contract resides on the blockchain. In my case, it's at `0x7aC77Cb854E064f22E747F40b90FE6D6Bc1e3197` and looks like this:
 
 ![image](https://cloud.githubusercontent.com/assets/138296/24465867/014d519a-14af-11e7-83f1-f39fa46a898a.png)
 

@@ -73,36 +73,32 @@ Open an editor to edit `dist/manifest.json`; you'll see something like:
 - You can change the `author` to your name.
 - The `iconUrl` is the path (within `dist`) to a square (best to make it 128x128) icon for your dapp. Feel free to move an alternative `title.png` into the `dist` directory.
 
-### 3. Getting it visible in Parity
+### 3. Getting it visible in Parity UI
 
-To get Parity to discover your dapp, it needs to be placed into a place that Parity will see it - its local "dapps" directory. We will make a symbolic link for our dapp's `dist` directory (containing all of the ready-built dapp) in Parity's dapp directory.
+To get Parity UI to discover your dapp, it needs to be placed into a place that Parity UI will see - its local "dapps" directory. We will make a symbolic link for our dapp's `dist` directory (containing all of the ready-built dapp) in Parity UI's dapp directory.
 
-Parity's directory structure is different depending on your system. For Mac, Parity's local dapp directory sits at `$HOME/Library/Application Support/io.parity.ethereum/dapps`, so you'll need to enter:
+Parity UI's directory structure is different depending on your system. For Mac, Parity UI's local dapp directory sits at `$HOME/Library/Application Support/parity-ui/dapps`, so you'll need to enter:
 
 ```
 # For Mac systems
-ln -s $PWD/dist $HOME/Library/Application\ Support/io.parity.ethereum/dapps/mydapp
+ln -s $PWD/dist $HOME/Library/Application\ Support/parity-ui/dapps/mydapp
 ```
 
-For Linux it's `$HOME/.local/share/io.parity.ethereum/dapps` - in this case you'd want to enter:
+For Linux it's `$HOME/.config/parity-ui/dapps` - in this case you'd want to enter:
 
 ```
 # For Linux systems
-ln -s $PWD/dist $HOME/.local/share/io.parity.ethereum/dapps/mydapp
+ln -s $PWD/dist $HOME/.config/parity-ui/dapps/mydapp
 ```
 
-For Windows, it's in `%APPDATA%/Parity/Ethereum/dapps` - here you'd want to enter:
+For Windows, it's in `%APPDATA%/Local/parity-ui/dapps` - here you'd want to enter:
 
 ```
 %=For Windows systems=%
-mklink /D "%APPDATA%/Parity/Ethereum/dapps/mydapp" "%cd%/dist"
+mklink /D "%APPDATA%/Local/parity-ui/dapps/mydapp" "%cd%/dist"
 ```
 
-Once you have it linked, you should start (or restart, if already running) Parity and head to the Applications page of Parity Wallet. There you'll see your new dapp:
-
-*Note: If you are not running `npm start` in parity/src/js to have a development instance your URL is likely **localhost:8180** instead of port 3000.*
-
-*Note: It can happen on older parity versions that firefox is blocking your dApp due to X-Frame-Options. You will see a warning in the development console. We recommend going on **127.0.0.1:8180** to fix the problem.*
+Once you have it linked, you should start (or restart, if already running) Parity UI. There you'll see your new dapp (in an Electron window – screenshots outdated):
 
 ![image](https://cloud.githubusercontent.com/assets/138296/22697933/f9d6449a-ed20-11e6-92d2-1afafaba86ea.png)
 

@@ -53,7 +53,7 @@ Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/Jav
 
 ##### Browser developer console
 
-The easiest way to interact with parity over the console is to use your browser and Parity's API console. Simply Head to the _Applications_ page and hit the _Console_ application.
+The easiest way to interact with Parity over the console is to launch Parity UI and navigate to the _"Parity/Web3 Console"_ dapp.
 
 ##### Node.js CLI Console
 

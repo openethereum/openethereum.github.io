@@ -38,6 +38,57 @@
       {% if page.libs.faq %}
         prepareAccordion();
       {% endif %}
+
+      // Dropdowns in the sidebar
+
+      // Create list structure
+      $('.sidebar-nav').wrapInner('<ul></ul>');
+      $('.sidebar-nav > ul > h2, .sidebar-nav > ul > h3').each(function(e) {
+        $(this).wrapInner('<a href="#" class="dropdown-toggle"></a>'); // Create dropdown-toggle for h2/h3
+        $(this).next().addBack().wrapAll('<li class="no-bullet"></li>');
+      });
+
+      // Nest h3 inside preceding h2
+      $('.sidebar-nav > ul > li > h3').each(function(e) {
+        var $li = $(this).parents('li').first();
+        var $prevLiUl = $li.prevAll(':has(h2)').first().find('> ul');
+        $li.appendTo($prevLiUl);
+      });
+
+      // Create dropdown-toggle for text nodes
+      $('.sidebar-nav li:has(ul)')
+        .contents()
+          .filter(function() {
+            return this.nodeType === 3 //Node.TEXT_NODE
+             && this.nodeValue.trim().length;
+          })
+          .wrap('<a href="#" class="dropdown-toggle"></a>');
+
+      // Collapse all
+      $('.sidebar-nav li:has(ul)')
+        .addClass('collapsible collapsed')
+        .find('> ul')
+          .hide()
+          .end()
+
+      // Handle dropdown-toggle
+      $('.sidebar-nav').on('click', '.dropdown-toggle', function (e) {
+        var $collapsible = $(this).parents('.collapsible').first();
+        $collapsible.find('> ul').slideToggle();
+        $collapsible.toggleClass('collapsed');
+        e.preventDefault();
+        return false;
+      });
+
+      // Expand path to link with current page
+      var currentPageLink = window.location.pathname.substr(1) || '/';
+      $(`a[href=${currentPageLink.replace(/\//g,'\\/')}]`)
+        .addClass('current-page')
+        .parents('.collapsed')
+        .each(function() {
+          $(this).find('> .dropdown-toggle, > h3 > .dropdown-toggle, > h2 > .dropdown-toggle').click();
+        });
+      
     });
     
 
@@ -68,6 +119,7 @@
         if(location.hash!=""){
             id = location.hash.replace("#","")
             $('*[data-id="'+id+'"]').prop('checked', false);
+            $(window).scrollTop($(location.hash).offset().top);
         }
       }
     {% endif %}

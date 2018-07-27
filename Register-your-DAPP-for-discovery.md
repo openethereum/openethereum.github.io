@@ -2,20 +2,17 @@
 title: Register your DApp for discovery
 ---
 
-The following page explains how to register your DAPP to allow Parity discovering it, loading it from the network and displaying it in the Applications tab of the Parity UI.
-
-The entire process requires using 2 Smart Contracts. At the time of this article, one of them as a UI, the other must be registered manually.
+This page explains how to register your DAPP to let Parity UI discover it, load it from the network and display it.
 
 We will be using the following Dapps/Contracts:
-
- - GitHubHint (GHH)
- - DappReg
+ - [GitHubHint (GHH)](Parity-Github-Hint)
+ - [DappReg](Parity-dapp-registry)
 
 ## Check your assets
 
 Before we get started, let´s check that you have everything we need at hand:
 
- - an ID for our DAPP
+ - an ID for our DAPP (the `id` field in your `manifest.json`)
  - 1 ETH to register it (this amount will be lost and not recoverable)
  - a `manifest.json` file
  - a logo image
@@ -28,14 +25,16 @@ Before we get started, let´s check that you have everything we need at hand:
 
 We will first generate a unique ID for our DAPP. Calculate the a sha3 checksum as:
 
-    web3.sha3('<DappId> v<DappVersion> from <yourName>')
+```
+web3.sha3('<DappId> v<DappVersion> from <yourName>')
+```
 
 Replace `DappId`, `DappVersion` and `YourName` by the appropriate values.
 This will produce our `UID`.
 
 ### Register/Watch the DappReg contract
 
-In Parity UI, go to the `Contracts` tab and click `Watch`. Select the `custom` option.
+In Parity UI, navigate to the _'Develop Contracts'_ dapp and click _'Watch'_. Select the _'custom'_ option.
 
 Provide the contract's address:
 
@@ -55,25 +54,25 @@ Confirm to add this contract to your list.
 
 ## GitHubHint
 
-You will find the DAPP for GitHubHint in the Applications.
+Navigate to the _'GitHub Hint'_ dapp in Parity UI.
 
-First ensure that the right account is selected. For each of the following, provide the path and register it to get a hash:
+First, ensure that the right account is selected. For each of the following, provide the path and register it to get a hash:
 
 - image (your DAPP logo)
 - manifest.json
 - content
 
-After confirming those transactions, the hashes will disappear. To recall them, paste your links again. This time the hashes will appears in Orange, confirming their registration.
+After confirming those transactions, the hashes will disappear. To recall them, paste your links again. This time the hashes will appears in orange, confirming their registration.
 
 Take note of the 3 hashes.
 
 ## DappReg
 
-At the moment, there is no DAPP/UI yet available for this contract so we will interact with it manually from the `Contracts` tab of the Parity UI.
+Here are the instructions to interact with the DappReg contract manually using the _'Develop Contracts_' dapp in Parity UI. More information on the `DappReg` smart contract can be found [here](Parity-dapp-registry). It is also possible to use the _'Dapp Registration'_ dapp instead.
 
-First `Execute` the the register function and make sure to:
+Click on the DappReg contract in _'Develop Contracts_', then _'Execute'_ the `register` function and make sure to:
 
-- select the right 'owner' account. This is the only account allowed to make changes later
+- select the right _'owner'_ account. This is the only account allowed to make changes later
 - provide the `UID` we got from the sha3 call at the beginning
 - send 1 ETH while calling this function
 
@@ -89,5 +88,5 @@ Once your `UID` has been registered, you can use the `setMeta` function on the f
 
 For each, you will pass the corresponding hash we got in the previous step.
 
-Once all the transactions are processed (this can take a few minutes), your DAPP will be registered and will appear in the Applications tab in the Parity UI.
+Once all the transactions are processed (this can take a few minutes), your DAPP will be registered and will appear in the Applications tab in Parity UI.
 

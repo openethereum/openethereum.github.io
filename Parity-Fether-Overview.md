@@ -38,7 +38,7 @@ Get in touch with us on Gitter:
 [![Gitter](https://img.shields.io/badge/Gitter-Fether-brightgreen.svg)](https://gitter.im/paritytech/fether)
 
 
-Official website: https://parity.io
+Official website: [https://parity.io](https://parity.io)
 
 ## Launch using the binaries
 ### Linux

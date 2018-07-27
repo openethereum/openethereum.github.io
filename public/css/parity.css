@@ -7,13 +7,40 @@
   position: fixed;
 }
 
+.sidebar a {
+  text-decoration: none;
+  outline: none;
+}
+
 nav.sidebar-nav {
   padding-left: 30px;
-  padding-right: 30px;
+  padding-right: 15px;
+}
+
+nav.sidebar-nav > ul {
+  padding-left: 0;
+}
+
+nav.sidebar-nav .no-bullet {
+  list-style-type: none;
+}
+
+nav.sidebar-nav a.current-page {
+  font-weight: bold;
 }
 
 nav.sidebar-nav h2, nav.sidebar-nav h3 {
   color: white;
+}
+
+nav.sidebar-nav .dropdown-toggle:before {
+  content: "▾ ";
+}
+
+nav.sidebar-nav .collapsed > .dropdown-toggle:before,
+nav.sidebar-nav .collapsed > h2 > .dropdown-toggle:before,
+nav.sidebar-nav .collapsed > h3 > .dropdown-toggle:before {
+  content: "▸ ";
 }
 
 html {
