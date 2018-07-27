@@ -1,39 +1,44 @@
 ---
-title: Setup Parity
+title: Setup Parity Ethereum
 ---
 
 - [Binaries](#binaries)
     - [One-line Binary Installer](#one-line-binary-installer)
-    - [Experimental Installers](#experimental-installers)
+    - [Use the Binaries](#use-the-binaries-for-your-platform)
 - [Dependencies](#dependencies)
 - [Building from Source](#building-from-source)
 - [Building using Docker](#building-using-docker)
     - [Grab Rust](#grab-rust)
-    - [Install and Build Parity](#install-and-build-parity)
+    - [Install and Build Parity Ethereum](#install-and-build-parity)
     - [A note on backing up your datadir with Docker](#a-note-on-backing-up-your-datadir-with-docker)
 - [Ubuntu Snappy on Raspberry Pi](#ubuntu-snappy-on-raspberry-pi)
 
 
 ## Binaries
 
-There are a few ways of proceeding here. You can build Parity from the sources; you can install Parity from our [binary releases](https://github.com/paritytech/parity-ethereum/releases) for Ubuntu, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
+There are a few ways of proceeding here. You can build Parity Ethereum from the sources; you can launch Parity Ethereum using the binaries built [for the latest releases](https://github.com/paritytech/parity-ethereum/releases) for Linux, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
 ### One-line Binary Installer
 
-This method is way faster than building from the sources, though it only works on Ubuntu and Mac with Homebrew installed. To use the script just run:
+This method is way faster than building from the sources, though it only works on Ubuntu and Mac with Homebrew installed. It will install and configure the Parity Ethereum client for you. To use the script just run:
 
 ```bash
 $ bash <(curl https://get.parity.io -L)
 ```
 
-This will install and configure the Parity client for you. On Ubuntu, this script will also offer to install the [Netstats client](https://github.com/cubedro/eth-net-intelligence-api) and connect it to [ethstats.net](https://ethstats.net). The script will prompt you for entering the secret key needed for connecting to the Netstats server. You can learn the key by joining the Netstats [Skype group](http://is.gd/iwSaR9).
-
-### Experimental Installers
-There are also experimental installers for OS X and Windows which will install Parity as a system service. Parity will always run in the background and hibernate when not being used with the bundled wallet. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity-ethereum/releases).
+### Use the binaries for your platform
+Binaries for Parity Ethereum are provided. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity-ethereum/releases).
+- Linux 
+    - Download the latest release from the link above
+    - Make the `parity` file executable by running `chmod u+x parity`
+    - Launch Parity Ethereum with your favourite flags: `./parity --chain dev --jsonrpc-apis personal`
+    
+- Windows and Mac  
+Download the Binary and double click on it.
 
 ## Dependencies
 
-For linux systems:
+For Linux systems:
 
 - Ubuntu, Debian
 
@@ -51,7 +56,7 @@ For linux systems:
 
 ## Building from source
 
-To simply build Parity from source follow the instructions in the [README](https://github.com/paritytech/parity-ethereum/blob/master/README.md).
+To build Parity Ethereum from source follow the instructions in the [README](https://github.com/paritytech/parity-ethereum/blob/master/README.md).
 
 For Ethereum key management [Ethstore](https://github.com/paritytech/ethstore) can be used. To compile it use
 
@@ -59,7 +64,7 @@ For Ethereum key management [Ethstore](https://github.com/paritytech/ethstore) c
 $ cargo build --release -p ethstore --features=ethstore-cli
 ```
 
-in the root Parity directory and for usage instructions:
+in the root Parity Ethereum directory and for usage instructions:
 
 ```bash
 $ ./target/release/deps/ethstore --help
@@ -67,7 +72,7 @@ $ ./target/release/deps/ethstore --help
 
 ## Building using Docker
 
-Docker is great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll just use docker to set up a minimal Ubuntu installation and take it from there. However, you don't need Docker - similar instructions can be used to get things working on pretty much any Linux installation or a Mac Homebrew system, just don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) or *nix with 6 months of cruft caking it up. Rather, get the docker image working and then figure out what the differences are.
+Docker is great for making sure differences between operating systems, distributions, installations and build environments don't get in the way of coding fun. For this quick start, we'll use docker to set up a minimal Ubuntu installation and take it from there. However, you don't need Docker - similar instructions can be used to get things working on pretty much any Linux installation or a Mac Homebrew system, just don't come complaining if it doesn't work for you on some niche distribution (Arch, I'm looking at you!) or *nix with 6 months of cruft caking it up. Instead, get the docker image working and then figure out what the differences are.
 
 *NOTE*: Ensure you have docker to begin with.
 
@@ -88,7 +93,7 @@ This will download and install Rust on Linux and OS X:
 $ curl https://sh.rustup.rs -sSf | sh
 ```
 
-If you are using Windows make sure you have Visual Studio 2015 with C++ support installed. Ensure you run all of the next stuff in the `VS2015 x64 Native Tools Command Prompt`.
+If you are using Windows make sure Visual Studio 2015 with C++ support is installed. Ensure you run all of the next stuff in the `VS2015 x64 Native Tools Command Prompt`.
 
 *NOTE*: We do not support the GNU toolset on Windows. Do not install it, and do not install any Rust version that uses it. If you see `x86_64-pc-windows-gnu` anywhere, you've done it wrong!
 
@@ -100,7 +105,7 @@ $ rustup default stable-x86_64-pc-windows-msvc
 
 ### Install and Build Parity
 
-Next, grab the Parity repository:
+Next, grab the Parity Ethereum repository:
 
 ```bash
 $ git clone https://github.com/paritytech/parity
@@ -132,7 +137,7 @@ You can run just the consensus tests with:
 $ cargo test --release --features ethcore/json-tests -p ethcore
 ```
 
-To install Parity on Linux and Mac OS, just build it and copy it to `/usr/local/bin`:
+To install Parity Ethereum on Linux and Mac OS, just build it and copy it to `/usr/local/bin`:
 
 ```bash
 $ cargo build --release && cp target/release/parity /usr/local/bin
@@ -168,4 +173,4 @@ $ docker run --name parity -v /srv/parity:/mnt ethcore/parity:beta --base-path /
 
 ## Ubuntu Snappy on Raspberry Pi
 
-There are Ubuntu Snappy builds for the RasPi, found in [Parity Snappy repository](https://github.com/paritytech/parity-snappy).
+There are Ubuntu Snappy builds for the RasPi, found in [Parity Ethereum Snappy repository](https://github.com/paritytech/parity-snappy).
