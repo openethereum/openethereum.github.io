@@ -1,3 +1,7 @@
+input.sidebar-checkbox {
+  position: fixed;
+}
+
 .sidebar {
   width: 17rem;
 }
