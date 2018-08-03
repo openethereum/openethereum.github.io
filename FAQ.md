@@ -52,8 +52,18 @@ parity pruning archive            | 5_600_000      | 1.1T       | --pruning arch
 
 ### How to use Parity Ethereum Chrome Extension to browse a Web3 website?
 
-Using the [Parity Ethereum Chrome Extension](https://github.com/paritytech/parity-extension), you can browse web3 enabled website and use your Parity Ethereum accounts to send and sign transactions.
-All you need is a Parity Ethereum local node running with the flag `--force-ui`, it should also be fully synced.
+The chrome extension is no longer actively maintained and does not work from v1.11 as Parity Ethereum is focusing on being a fast and reliable node, without any accessory. 
+
+We advise using Metamask connected to a local Parity Ethereum node to browse web3 websites in a fully decentralised manner. To continue using your local account, you will need to import it in Metamask, to do so you need to:
+
+- Export the keystore file for your account using [Parity UI](https://wiki.parity.io/Backing-up-&-Restoring.html) or find it on your local machine at the following location:
+  -  OSX : `~/Library/Application\ Support/io.parity.ethereum/keys/`
+  -  Linux : `~/.local/share/io.parity.ethereum/keys/`
+  -  Windows: `%APPDATA%\Parity\Ethereum\keys`
+
+- Import your keystore file into [Metamask](https://consensys.zendesk.com/hc/en-us/articles/360004134212-Importing-Accounts)
+- Point Metamask to your local node to access the Ethereum blockchain in a fully decentralised manner.
+![point metamask to parity node](/images/faq-metamask-0.jpg)
 
 ### The UI isn't working when I visit 127.0.0.1:8180
 
