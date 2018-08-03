@@ -58,16 +58,16 @@ For Linux systems:
 
 To build Parity Ethereum from source follow the instructions in the [README](https://github.com/paritytech/parity-ethereum/blob/master/README.md).
 
-For Ethereum key management [Ethstore](https://github.com/paritytech/ethstore) can be used. To compile it use
+For Ethereum key management [Ethstore](https://github.com/paritytech/parity-ethereum/tree/master/ethstore) can be used. To compile it use
 
 ```bash
-$ cargo build --release -p ethstore --features=ethstore-cli
+$ cargo build --release -p ethstore-cli
 ```
 
 in the root Parity Ethereum directory and for usage instructions:
 
 ```bash
-$ ./target/release/deps/ethstore --help
+$ ./target/release/ethstore --help
 ```
 
 ## Building using Docker
