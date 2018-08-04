@@ -56,7 +56,7 @@ The chrome extension is no longer actively maintained and does not work from v1.
 
 We advise using Metamask connected to a local Parity Ethereum node to browse web3 websites in a fully decentralised manner. To continue using your local account, you will need to import it in Metamask, to do so you need to:
 
-- Export the keystore file for your account using [Parity UI](https://wiki.parity.io/Backing-up-&-Restoring.html) or find it on your local machine at the following location:
+- Export the keystore file for your account using [Parity UI](Backing-up-&-Restoring) or find it on your local machine at the following location:
   -  OSX : `~/Library/Application\ Support/io.parity.ethereum/keys/`
   -  Linux : `~/.local/share/io.parity.ethereum/keys/`
   -  Windows: `%APPDATA%\Parity\Ethereum\keys`
@@ -349,14 +349,14 @@ killall -HUP parity
 1. Navigate in Windows Explorer to the Parity Ethereum folder where parity.exe is, it should be located in `C:\Program Files\Parity Technologies\Parity`
 1. Highlight the complete folder path in the top pane, type `cmd` and hit Enter
 ![windows pane](/images/windows-explorer-cmd.jpeg)
-1. This opens a command line window in the Parity Ethereum folder, you can launch Parity Ethereum with [CLI flags](https://wiki.parity.io/Configuring-Parity-Ethereum.html#cli-options)
+1. This opens a command line window in the Parity Ethereum folder, you can launch Parity Ethereum with [CLI flags](Configuring-Parity-Ethereum#cli-options)
 
 ### How to launch Parity Ethereum using the command line on Mac OSX?
 
 1. Make sure you close Parity Ethereum and that no `parity` process is running. ([See here how to kill a process](http://osxdaily.com/2012/03/02/force-quit-mac-apps/))
 1. Press <kbd>CMD</kbd> + <kbd>Space</kbd> to open spotlight search
 1. Type `terminal` and hit return to open Terminal app.
-1. Type or paste `/Applications/Parity\ Ethereum.app/Contents/MacOS/parity` in the terminal, you can launch Parity Ethereum with [CLI flags](https://wiki.parity.io/Configuring-Parity-Ethereum.html#cli-options) if needed.
+1. Type or paste `/Applications/Parity\ Ethereum.app/Contents/MacOS/parity` in the terminal, you can launch Parity Ethereum with [CLI flags](Configuring-Parity-Ethereum#cli-options) if needed.
 
 ### How to generate a new hardcoded sync block for Parity Ethereum light client?
 
@@ -364,7 +364,7 @@ Parity Ethereum light client allows you to set a hardcoded block from which the 
 1. Run `parity --light` and make sure to reach the top of the chain.
 1. Stop Parity Ethereum with `ctrl-c`.
 1. Run `parity export-hardcoded-sync`.
-1. Copy the output of the previous command using the field : `"hardcodedSync": { COPY_OUTPUT_HERE }` into your new [chain specifications](https://wiki.parity.io/Chain-specification.html) file.
+1. Copy the output of the previous command using the field : `"hardcodedSync": { COPY_OUTPUT_HERE }` into your new [chain specifications](Chain-specification) file.
 1. Run the light client with your new specifications `parity --light --chain /path/to/your/new/specifications`
 
 ## CLI, Mining, and Networks
@@ -390,7 +390,7 @@ Parity Ethereum supports multiple public chain configurations:
 - [`classic`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
 - [`classic-testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
 - [`expanse`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`dev`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](Private-development-chain) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
 - [`Musicoin`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
 - [`ellaism`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
 
@@ -426,7 +426,7 @@ You're probably trying to send from a locked account. Ensure you use the `--unlo
 
 ### I've received an abuse message from my ISP/hosting provider. Something about malicious activity triggered by Parity.
 
-See [Network Configuration](https://wiki.parity.io/Network-Configuration) for some tips on how to configure Parity Ethereum to behave.
+See [Network Configuration](Network-Configuration) for some tips on how to configure Parity Ethereum to behave.
 
 ## Troubleshooting (Yelp!!!!11)
 
@@ -503,7 +503,7 @@ No, sending Bitcoin directly to an Ethereum address does not work. However, you 
 
 ### Can I create multi-signature wallets with Parity?
 
-No, Parity Ethereum only allows watching wallets and interact with them (view and sign transactions, send funds..). It does not allow to create multi-sig wallets. To watch a multi-sig wallet within Parity UI, [follow these instructions](https://wiki.parity.io/Accounts%2C-Wallets%2C-Vaults#wallets).
+No, Parity Ethereum only allows watching wallets and interact with them (view and sign transactions, send funds..). It does not allow to create multi-sig wallets. To watch a multi-sig wallet within Parity UI, [follow these instructions](Accounts%2C-Wallets%2C-Vaults#wallets).
 
 ### How can I compile and deploy contracts with Parity?
 

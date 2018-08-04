@@ -14,10 +14,10 @@ Parity light client version >=1.11 will start the synchronization from a hardcod
 
 Use the flag `--no-hardcoded-sync` to prevent this behavior and sync all headers starting from the genesis block.
 
-Read more about the `hardcodedSync` parameters in the FAQ - [How to generate a new hardcoded sync block for Parity light client](FAQ#how-to-generate-a-new-hardcoded-sync-block-for-parity-light-client) and [chain specifications](https://wiki.parity.io/Chain-specification.html) wiki pages.
+Read more about the `hardcodedSync` parameters in the FAQ - [How to generate a new hardcoded sync block for Parity light client](FAQ#how-to-generate-a-new-hardcoded-sync-block-for-parity-light-client) and [chain specifications](Chain-specification) wiki pages.
 
 By default, each Parity node serves state data for connected light peers. To disable this, use the `--no-serve-light` command-line flag.
 
     --no-serve-light               Disable serving of light peers. (default: false)
 
-Read more on the [Parity Light Protocol](https://wiki.parity.io/The-Parity-Light-Protocol-%28PIP%29) and check the [road map](https://github.com/paritytech/parity-ethereum/projects/2) on GitHub.
+Read more on the [Parity Light Protocol](The-Parity-Light-Protocol-%28PIP%29) and check the [road map](https://github.com/paritytech/parity-ethereum/projects/2) on GitHub.

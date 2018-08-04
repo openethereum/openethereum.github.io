@@ -9,7 +9,7 @@ In this section, we will see how Bob can retrieve the keys from the Secret Store
 
 ## 1. Sign the `Document key id` with Bob's account
 Just like we did for Alice, as a mean to sign our messages, we need to first sign this `Document key id` with the address of Bob.
-A Parity client local method can be used:  [secretstore_signRawHash](https://wiki.parity.io/JSONRPC-secretstore-module.html#secretstore_signrawhash00a329c0648769A73afAc7F9381E08FB43dBEA72)
+A Parity client local method can be used:  [secretstore_signRawHash](JSONRPC-secretstore-module#secretstore_signrawhash)
 
 ```bash
 curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_signRawHash", "params": ["0xfeacd0d28fd158ba2d3adb6d69d20c723214edc9", "bobpwd", "0x45ce99addb0f8385bd24f30da619ddcc0cadadab73e2a4ffb7801083086b3fc2"], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
@@ -31,7 +31,7 @@ The result is the signed `Document key id` with Bob's account.
 
 ## 2. Ask the Secret Store for the decryption keys
 
-Bob can now call the Secret Store to [retrieve the document's keys](Secret-Store.html#document-key-shadow-retrieval-session).
+Bob can now call the Secret Store to [retrieve the document's keys](Secret-Store#document-key-shadow-retrieval-session).
 
 ```bash
 curl http://localhost:8010/shadow/45ce99addb0f8385bd24f30da619ddcc0cadadab73e2a4ffb7801083086b3fc2/a589bebde7944fd4e01bd3a984fadb1ac0345aec445742e6ff34bb8b81cee5ba01dabfd199a3c90faea62b34051dd12f56e4af70027fd66b19e7f0038bfc158301

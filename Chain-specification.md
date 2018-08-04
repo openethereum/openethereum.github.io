@@ -13,7 +13,7 @@ In order to run a chain different to the official public Ethereum one, Parity ha
 - [`classic`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
 - [`classic-testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
 - [`expanse`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](https://wiki.parity.io/Private-development-chain.html) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`dev`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](Private-development-chain) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
 - [`musicoin`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
 - [`ellaism`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
 - [`tobalaba`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/tobalaba.json) EWF Tobalaba network
@@ -91,8 +91,8 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"maximumEmptySteps"` Maximum number of accepted empty steps.
   + `"blockRewardContractAddress"` Address of the smart contract used for calculating block rewards. Use for [Block Reward Contract](Block-Reward-Contract).
   + `"blockRewardContractTransition"` Block at which the block reward contract should start being used.
-  + `"nodePermissionContract"` Address of the smart contract that sets nodes' interconnection permissions. Used for [advanced permssioning Networks](https://wiki.parity.io/Permissioning#how-it-works).
-  + `"transactionPermissionContract"` Address of the smart contract that sets the transaction type permissions for network participants. Used for [Advanced permissioning Networks](https://wiki.parity.io/Permissioning#transaction-type).
+  + `"nodePermissionContract"` Address of the smart contract that sets nodes' interconnection permissions. Used for [advanced permssioning Networks](Permissioning#how-it-works).
+  + `"transactionPermissionContract"` Address of the smart contract that sets the transaction type permissions for network participants. Used for [Advanced permissioning Networks](Permissioning#transaction-type).
   + `"maxTransactionSize"` Maximum size of a transaction RLP payload. (Default `300*1024`).
   + `"eip150Transition"` [EIP150](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-150.md) transition block number.
   + `"eip160Transition"` [EIP160](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-160.md) transition block number.
@@ -114,7 +114,7 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"dustProtectionTransition"` Dust cleanup (EIP-168 and EIP169) transition block number.
   + `"nonceCapIncrement"` - U64 - Nonce cap increase per block. Nonce cap is only checked if dust protection is enabled..
   + `"removeDustContracts"` - bool - Enable dust cleanup for contracts.
-  + `"gasLimitBoundDivisor"` U256 - How much the block gas limit can change between blocks. Miners can vote to bring the block gas limit up or down (via the flag [`--gas-floor-target`](https://wiki.parity.io/Configuring-Parity-Ethereum)), the new gas limit is callculated according to the formula: `current_gas_limit*(1 ± 1/gasLimitBoundDivisor)`.                         
+  + `"gasLimitBoundDivisor"` U256 - How much the block gas limit can change between blocks. Miners can vote to bring the block gas limit up or down (via the flag [`--gas-floor-target`](Configuring-Parity-Ethereum)), the new gas limit is callculated according to the formula: `current_gas_limit*(1 ± 1/gasLimitBoundDivisor)`.
   + `"registrar"` Registrar contract address.
   + `"maxCodeSize"` - U64 - Maximum contract code size that can be deployed in a transaction.
   + `"maxCodeSizeTransition"` transition block number for `maxCodeSize` .

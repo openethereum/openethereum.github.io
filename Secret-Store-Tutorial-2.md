@@ -26,7 +26,7 @@ At this stage, it is very important to understand when we interact with the Secr
 ### 2.1 Sign the Document Key id
 
 We need to tell the Secret store about this document (identified by its `Document key id`). As a mean to sign our messages, we need to first sign this `Document key id` with the address of Alice.
-A Parity client local method can be used:  [secretstore_signRawHash](https://wiki.parity.io/JSONRPC-secretstore-module.html#secretstore_signrawhash00a329c0648769A73afAc7F9381E08FB43dBEA72)
+A Parity client local method can be used:  [secretstore_signRawHash](JSONRPC-secretstore-module#secretstore_signrawhash00a329c0648769A73afAc7F9381E08FB43dBEA72)
 ```bash
 curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_signRawHash", "params": ["0xe5a4b6f39b4c3e7203ca8caeecbad58d8f29b046", "alicepwd", "0x45ce99addb0f8385bd24f30da619ddcc0cadadab73e2a4ffb7801083086b3fc2"], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
 ```
@@ -45,7 +45,7 @@ The result is the signed `Document key id` with Alice's account.
 
 ### 2.2 Generate the Secret Store Server key 
 
-Making sure that all Secret Store nodes are running, we can now [generate a `Server-key`](https://wiki.parity.io/Secret-Store.html#server-key-generation-session)
+Making sure that all Secret Store nodes are running, we can now [generate a `Server-key`](Secret-Store#server-key-generation-session)
 
 ```bash
 curl -X POST http://localhost:8010/shadow/45ce99addb0f8385bd24f30da619ddcc0cadadab73e2a4ffb7801083086b3fc2/5fcf1622c1301cb8332ab589f4f7abd66a21f27636382d57b5ae6d376bab010a2e47c4ad027c96e8e41660d29292c2844454f212b36a7834b64be71f9bd3ac0400/1
@@ -64,7 +64,7 @@ Note that the Secret Store server logs show something like:
 `0x83a0…75b4: generation session completed`
 
 ## 3. Generate the Document key from the Secret Store key 
-Alice can now use the local method [`secretstore_generateDocumentKey`](https://wiki.parity.io/JSONRPC-secretstore-module#secretstore_generatedocumentkey) to generate Secret Store keys.
+Alice can now use the local method [`secretstore_generateDocumentKey`](JSONRPC-secretstore-module#secretstore_generatedocumentkey) to generate Secret Store keys.
 
 ```bash
 curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_generateDocumentKey", "params": ["0xe5a4b6f39b4c3e7203ca8caeecbad58d8f29b046", "alicepwd","0xddb96b9bb227273121486bef7ffd9a5549f1f73b28e46d5c0592854b7545b0c59846eecd84e7180dec60fe673168d5e789eda21438030eee56dbaaa5b2279e10"], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
@@ -87,7 +87,7 @@ The result is the `encrypted_key` and pair (`common_point`,  `encrypted_point`) 
 ```
 
 ## 4. Document encryption
-Using the  `encrypted_key`  generated in the previous step, Alice can now encrypt her document using the local method: [`secretstore_encrypt`](https://wiki.parity.io/JSONRPC-secretstore-module#secretstore_encrypt)
+Using the  `encrypted_key`  generated in the previous step, Alice can now encrypt her document using the local method: [`secretstore_encrypt`](JSONRPC-secretstore-module#secretstore_encrypt)
 
 The document must be encoded (locally) in Hex. We use the xxd command for this:
 ```bash

@@ -13,7 +13,7 @@ Parity client is listening to the network for transactions in order to include t
 ### Accepting conditions
 
 As a transaction is received from the network, a verification is performed before adding it to the queue. The following criteria are checked:
-- the transaction's gas price is above the minimum set (configurable with the flag `--min-gas-price`) unless it is a [zero gas price transactions aka service transaction](https://wiki.parity.io/Permissioning.html#gas-price) allowed by an on-chain managed contract.
+- the transaction's gas price is above the minimum set (configurable with the flag `--min-gas-price`) unless it is a [zero gas price transactions aka service transaction](Permissioning#gas-price) allowed by an on-chain managed contract.
 - the amount of gas used by the transaction is lower than the current block gas limit.
 - the amount of gas used by the transaction is below the maximum set (configurable with the flag `--tx-queue-gas`).
 - the account sending the transaction has a sufficient balance to cover the fee costs (`gas * gas price`) on top of the `value` transfer.
@@ -49,7 +49,7 @@ Where `nonce=1` is in the past, `nonce=2` is current, `nonce=3` and `nonce=4` ar
 ## RPC APIs
 
 The RPC API will only show the external transactions that are in the queue. They will never return rejected transactions. 
-- [`parity_localTransactions`](https://wiki.parity.io/JSONRPC-parity-module#parity_localtransactions) will show up to 25 local transactions, be they already mined, pending or [dropped](#dropping-conditions). This RPC method is used in the top section of the Parity UI TxQueueViewer Dapp.
-- [`parity_pendingTransactions`](https://wiki.parity.io/JSONRPC-parity-module#parity_pendingtransactions) will show the transactions added to the queue that will be processed soon (and do not fulfill any of the [droping conditions](#dropping-conditions)). This RPC method is used in the bottom section of the Parity UI TxQueueViewer Dapp.
-- [`parity_allTransactions`](https://wiki.parity.io/JSONRPC-parity-module#parity_alltransactions) will show the transactions added to the queue that will be processed soon as well as the ones that might get dropped.
-- [`parity_futureTransactions`](https://wiki.parity.io/JSONRPC-parity-module#parity_futuretransactions) is deprecated in favor of `parity_allTransactions`. It can be computed by subtracting `parity_pendingTransactions` to `parity_allTransactions`.
+- [`parity_localTransactions`](JSONRPC-parity-module#parity_localtransactions) will show up to 25 local transactions, be they already mined, pending or [dropped](#dropping-conditions). This RPC method is used in the top section of the Parity UI TxQueueViewer Dapp.
+- [`parity_pendingTransactions`](JSONRPC-parity-module#parity_pendingtransactions) will show the transactions added to the queue that will be processed soon (and do not fulfill any of the [droping conditions](#dropping-conditions)). This RPC method is used in the bottom section of the Parity UI TxQueueViewer Dapp.
+- [`parity_allTransactions`](/JSONRPC-parity-module#parity_alltransactions) will show the transactions added to the queue that will be processed soon as well as the ones that might get dropped.
+- [`parity_futureTransactions`](JSONRPC-parity-module#parity_futuretransactions) is deprecated in favor of `parity_allTransactions`. It can be computed by subtracting `parity_pendingTransactions` to `parity_allTransactions`.

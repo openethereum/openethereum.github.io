@@ -9,7 +9,7 @@ To verify this, let's suppose that Charlie intercepted the email in which Alice 
 ## 1. Sign the `Document key id` with Charlie's account
 
 Just like we did for Alice and Bob, as a mean to sign our messages, we need to first sign this `Document key id` with the address of Charlie.
-Using  [secretstore_signRawHash](https://wiki.parity.io/JSONRPC-secretstore-module.html#secretstore_signrawhash00a329c0648769A73afAc7F9381E08FB43dBEA72):
+Using  [secretstore_signRawHash](JSONRPC-secretstore-module#secretstore_signrawhash00a329c0648769A73afAc7F9381E08FB43dBEA72):
 
 ```bash
 curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_signRawHash", "params": ["0xdab0055e3abb40d7281b058bb5e6966c50582951", "charliepwd", "0x45ce99addb0f8385bd24f30da619ddcc0cadadab73e2a4ffb7801083086b3fc2"], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
@@ -30,7 +30,7 @@ The result is the signed `Document key id` with Charlie's account.
 
 ## 2. Ask the Secret Store for the decryption keys
 
-Charlie can now call the Secret Store to [retrieve the document's keys](Secret-Store.html#document-key-shadow-retrieval-session).
+Charlie can now call the Secret Store to [retrieve the document's keys](Secret-Store#document-key-shadow-retrieval-session).
 
 ```bash
 curl http://localhost:8010/shadow/45ce99addb0f8385bd24f30da619ddcc0cadadab73e2a4ffb7801083086b3fc2/0183e3274d2bde058c881e347e95a489e5ae85a3ca530376c2891adfe7aa92462af43e72450552208cc1e73404f354af5cdb7927f85c866dbfc3edf4f40b7acf01
@@ -55,7 +55,7 @@ This is expected, but annoying as Alice would like to make sure that only Bob ca
 
 ## 3. Create and deploy a Permissioning contract
 
-As explained in the [Secret Store documentation](https://wiki.parity.io/Secret-Store.html#permissioning-sessions), a permissioning contract can be deployed and specified for the nodes to verify the permission of the keys requester.
+As explained in the [Secret Store documentation](Secret-Store#permissioning-sessions), a permissioning contract can be deployed and specified for the nodes to verify the permission of the keys requester.
 
 To deploy and test the permissioning contract, we will use [http://remix.ethereum.org](http://remix.ethereum.org) connected to our local parity node running with the `users.toml` configuration as it uses standard ports. We will unlock Alice's account so that it can be used to deploy the contract.
 To allow Remix to access our node from the browser and deploy a contract, we need to enable the `eth` and `net` JSON-RPC HTTP API as well as specify the CORS header for remix.
