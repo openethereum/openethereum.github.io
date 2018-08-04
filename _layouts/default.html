@@ -45,7 +45,7 @@
       $('.sidebar-nav').wrapInner('<ul></ul>');
       $('.sidebar-nav > ul > h2, .sidebar-nav > ul > h3').each(function(e) {
         $(this).wrapInner('<a href="#" class="dropdown-toggle"></a>'); // Create dropdown-toggle for h2/h3
-        $(this).next().addBack().wrapAll('<li class="no-bullet"></li>');
+        $(this).next().addBack().wrapAll('<li></li>');
       });
 
       // Nest h3 inside preceding h2
