@@ -49,13 +49,6 @@ unlock = ["0xdeadbeefcafe0000000000000000000000000000"]
 password = ["/home/user/.safe/password.file"]
 keys_iterations = 10240
 
-[ui]
-force = false
-disable = false
-port = 8180
-interface = "127.0.0.1"
-path = "$HOME/.local/share/io.parity.ethereum/signer"
-
 [network]
 port = 30303
 min_peers = 25
