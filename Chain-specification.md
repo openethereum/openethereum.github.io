@@ -93,6 +93,7 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"blockRewardContractTransition"` Block at which the block reward contract should start being used.
   + `"nodePermissionContract"` Address of the smart contract that sets nodes' interconnection permissions. Used for [advanced permssioning Networks](Permissioning#how-it-works).
   + `"transactionPermissionContract"` Address of the smart contract that sets the transaction type permissions for network participants. Used for [Advanced permissioning Networks](Permissioning#transaction-type).
+  + `"transactionPermissionContractTransition"` Block at which the transaction permission contract should start being used (Default: 0 if not set).
   + `"maxTransactionSize"` Maximum size of a transaction RLP payload. (Default `300*1024`).
   + `"eip150Transition"` [EIP150](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-150.md) transition block number.
   + `"eip160Transition"` [EIP160](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-160.md) transition block number.
