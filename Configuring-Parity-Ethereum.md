@@ -215,8 +215,8 @@ Operating Options:
     --auto-update=[SET]
         Set a releases set to automatically update and install.
         SET can be one of: all - All updates in the our release
-        track; critical - Only consensus/security updates; none -
-        No updates will be auto-installed. (default: critical)
+        track; critical - Only consensus/security updates; none
+        - No updates will be auto-installed. (default: critical)
 
     --auto-update-delay=[NUM]
         Specify the maximum number of blocks used for randomly
@@ -230,19 +230,20 @@ Operating Options:
         Set which release track we should use for updates. TRACK
         can be one of: stable - Stable releases; beta - Beta
         releases; nightly - Nightly releases (unstable); testing
-        - Testing releases (do not use); current - Whatever track
-        this executable was released on. (default: current)
+        - Testing releases (do not use); current - Whatever
+        track this executable was released on. (default:
+        current)
 
     --chain=[CHAIN]
         Specify the blockchain type. CHAIN may be either a JSON
-        chain specification file or olympic, frontier, homestead,
-        mainnet, morden, ropsten, classic, expanse, tobalaba,
-        musicoin, ellaism, easthub, social, testnet, kovan or
-        dev. (default: foundation)
+        chain specification file or olympic, frontier,
+        homestead, mainnet, morden, ropsten, classic, expanse,
+        tobalaba, musicoin, ellaism, easthub, social, testnet,
+        kovan or dev. (default: foundation)
 
     --keys-path=[PATH]
-        Specify the path for JSON key files to be found (default:
-        $BASE/keys)
+        Specify the path for JSON key files to be found
+        (default: $BASE/keys)
 
     --identity=[NAME]
         Specify your node's name. (default: )
@@ -261,8 +262,8 @@ Convenience Options:
         -api,secretstore,stratum,dapps,secretstore-
         http]-interface=all
          
-        --*-hosts=all    This option is UNSAFE and should be used
-        with great care!
+        --*-hosts=all    This option is UNSAFE and should be
+        used with great care!
 
     -c, --config=[CONFIG]
         Specify a configuration. CONFIG may be either a
@@ -281,18 +282,18 @@ Account Options:
 
     --fast-unlock
         Use drastically faster unlocking mode. This setting
-        causes raw secrets to be stored unprotected in memory, so
-        use with care.
+        causes raw secrets to be stored unprotected in memory,
+        so use with care.
 
     --keys-iterations=[NUM]
-        Specify the number of iterations to use when deriving key
-        from the password (bigger is more secure) (default:
+        Specify the number of iterations to use when deriving
+        key from the password (bigger is more secure) (default:
         10240)
 
     --accounts-refresh=[TIME]
-        Specify the cache time of accounts read from disk. If you
-        manage thousands of accounts set this to 0 to disable
-        refresh. (default: 5)
+        Specify the cache time of accounts read from disk. If
+        you manage thousands of accounts set this to 0 to
+        disable refresh. (default: 5)
 
     --unlock=[ACCOUNTS]
         Unlock ACCOUNTS for the duration of the execution.
@@ -313,11 +314,13 @@ Private Transactions Options:
         created upon verified private transaction.
 
     --private-validators=[ACCOUNTS]
-        Specify the accounts for validating private transactions.
-        ACCOUNTS is a comma-delimited list of addresses.
+        Specify the accounts for validating private
+        transactions. ACCOUNTS is a comma-delimited list of
+        addresses.
 
     --private-account=[ACCOUNT]
-        Specify the account for signing requests to secret store.
+        Specify the account for signing requests to secret
+        store.
 
     --private-sstore-url=[URL]
         Specify secret store URL used for encrypting private
@@ -347,8 +350,8 @@ Networking Options:
         Connect only to reserved nodes.
 
     --no-ancient-blocks
-        Disable downloading old blocks after snapshot restoration
-        or warp sync. Not recommended.
+        Disable downloading old blocks after snapshot
+        restoration or warp sync. Not recommended.
 
     --no-serve-light
         Disable serving of light peers.
@@ -373,8 +376,8 @@ Networking Options:
         Allow up to NUM peers.
 
     --snapshot-peers=[NUM]
-        Allow additional NUM peers for a snapshot sync. (default:
-        0)
+        Allow additional NUM peers for a snapshot sync.
+        (default: 0)
 
     --nat=[METHOD]
         Specify method to use for determining public address.
@@ -391,7 +394,8 @@ Networking Options:
         Allow up to NUM pending connections. (default: 64)
 
     --network-id=[INDEX]
-        Override the network identifier from the chain we are on.
+        Override the network identifier from the chain we are
+        on.
 
     --bootnodes=[NODES]
         Override the bootnodes from our chain. NODES should be
@@ -411,8 +415,8 @@ API and Console Options – HTTP JSON-RPC:
         Disable the HTTP JSON-RPC API server.
 
     --jsonrpc-port=[PORT]
-        Specify the port portion of the HTTP JSON-RPC API server.
-        (default: 8545)
+        Specify the port portion of the HTTP JSON-RPC API
+        server. (default: 8545)
 
     --jsonrpc-interface=[IP]
         Specify the hostname portion of the HTTP JSON-RPC API
@@ -423,14 +427,15 @@ API and Console Options – HTTP JSON-RPC:
         Specify the APIs available through the HTTP JSON-RPC
         interface using a comma-delimited list of API names.
         Possible names are: all, safe, web3, net, eth, pubsub,
-        personal, signer, parity, parity_pubsub, parity_accounts,
-        parity_set, traces, rpc, secretstore, shh, shh_pubsub.
-        You can also disable a specific API by putting '-' in the
-        front, example: all,-personal. 'safe' enables the
-        following APIs: web3, net, eth, pubsub, parity,
-        parity_pubsub, traces, rpc, shh, shh_pubsub (default:
-        web3,eth,pubsub,net,parity,private,parity_pubsub,traces,r
-        pc,shh,shh_pubsub)
+        personal, signer, parity, parity_pubsub,
+        parity_accounts, parity_set, traces, rpc, secretstore,
+        shh, shh_pubsub. You can also disable a specific API by
+        putting '-' in the front, example: all,-personal. 'safe'
+        enables the following APIs: web3, net, eth, pubsub,
+        parity, parity_pubsub, traces, rpc, shh, shh_pubsub
+        (default:
+        web3,eth,pubsub,net,parity,private,parity_pubsub,traces,
+        rpc,shh,shh_pubsub)
 
     --jsonrpc-hosts=[HOSTS]
         List of allowed Host header values. This option will
@@ -479,8 +484,8 @@ API and Console Options – WebSockets:
         enables the following APIs: web3, net, eth, pubsub,
         parity, parity_pubsub, traces, rpc, shh, shh_pubsub
         (default:
-        web3,eth,pubsub,net,parity,parity_pubsub,private,traces,r
-        pc,shh,shh_pubsub)
+        web3,eth,pubsub,net,parity,parity_pubsub,private,traces,
+        rpc,shh,shh_pubsub)
 
     --ws-origins=[URL]
         Specify Origin header values allowed to connect. Special
@@ -507,16 +512,16 @@ API and Console Options – IPC:
 
     --ipc-apis=[APIS]
         Specify custom API set available via JSON-RPC over IPC
-        using a comma-delimited list of API names. Possible names
-        are: all, safe, web3, net, eth, pubsub, personal, signer,
-        parity, parity_pubsub, parity_accounts, parity_set,
-        traces, rpc, secretstore, shh, shh_pubsub. You can also
-        disable a specific API by putting '-' in the front,
-        example: all,-personal. 'safe' enables the following
-        APIs: web3, net, eth, pubsub, parity, parity_pubsub,
-        traces, rpc, shh, shh_pubsub (default:
-        web3,eth,pubsub,net,parity,parity_pubsub,parity_accounts,
-        private,traces,rpc,shh,shh_pubsub)
+        using a comma-delimited list of API names. Possible
+        names are: all, safe, web3, net, eth, pubsub, personal,
+        signer, parity, parity_pubsub, parity_accounts,
+        parity_set, traces, rpc, secretstore, shh, shh_pubsub.
+        You can also disable a specific API by putting '-' in
+        the front, example: all,-personal. 'safe' enables the
+        following APIs: web3, net, eth, pubsub, parity,
+        parity_pubsub, traces, rpc, shh, shh_pubsub (default:
+        web3,eth,pubsub,net,parity,parity_pubsub,parity_accounts
+        ,private,traces,rpc,shh,shh_pubsub)
 
 API and Console Options – IPFS:
     --ipfs-api
@@ -541,6 +546,15 @@ API and Console Options – IPFS:
         Specify CORS header for IPFS API responses. Special
         options: "all", "none". (default: none)
 
+Light Client Options:
+    --on_demand_nb_retry=[RETRIES]
+        Specify maximum number of retry query to send to other
+        node for a query.
+
+    --on_demand_inactive_time_limit=[MS]
+        Specify maximum total time limit for a light client
+        query to stay inactive. O for no limit.
+
 Secret Store Options:
     --no-secretstore
         Disable Secret Store functionality.
@@ -554,8 +568,8 @@ Secret Store Options:
         servers set is read from configuration file.
 
     --secretstore-acl-contract=[SOURCE]
-        Secret Store permissioning contract address source: none,
-        registry (contract address is read from
+        Secret Store permissioning contract address source:
+        none, registry (contract address is read from
         'secretstore_acl_checker' entry in registry) or address.
         (default: registry)
 
@@ -573,8 +587,8 @@ Secret Store Options:
     --secretstore-srv-retr-contract=[SOURCE]
         Secret Store Service server key retrieval contract
         address source: none, registry (contract address is read
-        from 'secretstore_service_srv_retr' entry in registry) or
-        address.
+        from 'secretstore_service_srv_retr' entry in registry)
+        or address.
 
     --secretstore-doc-store-contract=[SOURCE]
         Secret Store Service document key store contract address
@@ -584,9 +598,9 @@ Secret Store Options:
 
     --secretstore-doc-sretr-contract=[SOURCE]
         Secret Store Service document key shadow retrieval
-        contract address source: none, registry (contract address
-        is read from 'secretstore_service_doc_sretr' entry in
-        registry) or address.
+        contract address source: none, registry (contract
+        address is read from 'secretstore_service_doc_sretr'
+        entry in registry) or address.
 
     --secretstore-nodes=[NODES]
         Comma-separated list of other secret store cluster nodes
@@ -637,15 +651,22 @@ Sealing/Mining Options:
         block is imported.
 
     --remove-solved
-        Move solved blocks from the work package queue instead of
-        cloning them. This gives a slightly faster import speed,
-        but means that extra solutions submitted for the same
-        work package will go unused.
+        Move solved blocks from the work package queue instead
+        of cloning them. This gives a slightly faster import
+        speed, but means that extra solutions submitted for the
+        same work package will go unused.
 
     --tx-queue-no-unfamiliar-locals
         Local transactions sent through JSON-RPC (HTTP,
         WebSockets, etc) will be treated as 'external' if the
         sending account is unknown.
+
+    --tx-queue-no-early-reject
+        Disables transaction queue optimization to early reject
+        transactions below minimal effective gas price. This
+        allows local transactions to always enter the pool,
+        despite it being full, but requires additional ecrecover
+        on every transaction.
 
     --refuse-service-transactions
         Always refuse service transactions.
@@ -665,8 +686,8 @@ Sealing/Mining Options:
 
     --reseal-on-txs=[SET]
         Specify which transactions should force the node to
-        reseal a block. SET is one of: none - never reseal on new
-        transactions; own - reseal only on a new local
+        reseal a block. SET is one of: none - never reseal on
+        new transactions; own - reseal only on a new local
         transaction; ext - reseal only on a new external
         transaction; all - reseal on all new transactions.
         (default: own)
@@ -683,33 +704,34 @@ Sealing/Mining Options:
 
     --work-queue-size=[ITEMS]
         Specify the number of historical work packages which are
-        kept cached lest a solution is found for them later. High
-        values take more memory but result in fewer unusable
-        solutions. (default: 20)
+        kept cached lest a solution is found for them later.
+        High values take more memory but result in fewer
+        unusable solutions. (default: 20)
 
     --relay-set=[SET]
         Set of transactions to relay. SET may be: cheap - Relay
         any transaction in the queue (this may include invalid
         transactions); strict - Relay only executed transactions
-        (this guarantees we don't relay invalid transactions, but
-        means we relay nothing if not mining); lenient - Same as
-        strict when mining, and cheap when not. (default: cheap)
+        (this guarantees we don't relay invalid transactions,
+        but means we relay nothing if not mining); lenient -
+        Same as strict when mining, and cheap when not.
+        (default: cheap)
 
     --usd-per-tx=[USD]
         Amount of USD to be paid for a basic transaction. The
         minimum gas price is set accordingly. (default: 0.0001)
 
     --usd-per-eth=[SOURCE]
-        USD value of a single ETH. SOURCE may be either an amount
-        in USD, a web service or 'auto' to use each web service
-        in turn and fallback on the last known good value.
-        (default: auto)
+        USD value of a single ETH. SOURCE may be either an
+        amount in USD, a web service or 'auto' to use each web
+        service in turn and fallback on the last known good
+        value. (default: auto)
 
     --price-update-period=[T]
         T will be allowed to pass between each gas price update.
         T may be daily, hourly, a number of seconds, or a time
-        string of the form "2 days", "30 minutes" etc.. (default:
-        hourly)
+        string of the form "2 days", "30 minutes" etc..
+        (default: hourly)
 
     --gas-floor-target=[GAS]
         Amount of gas per block to target when sealing a new
@@ -730,19 +752,13 @@ Sealing/Mining Options:
 
     --tx-queue-per-sender=[LIMIT]
         Maximum number of transactions per sender in the queue.
-        By default it's 1% of the entire queue, but not less than
-        16.
-
-    --tx-queue-gas=[LIMIT]
-        Maximum amount of total gas for external transactions in
-        the queue. LIMIT can be either an amount of gas or 'auto'
-        or 'off'. 'auto' sets the limit to be 20x the current
-        block gas limit. (default: off)
+        By default it's 1% of the entire queue, but not less
+        than 16.
 
     --tx-queue-strategy=[S]
-        Prioritization strategy used to order transactions in the
-        queue. S may be: gas_price - Prioritize txs with high gas
-        price (default: gas_price)
+        Prioritization strategy used to order transactions in
+        the queue. S may be: gas_price - Prioritize txs with
+        high gas price (default: gas_price)
 
     --stratum-interface=[IP]
         Interface address for Stratum server. (default: local)
@@ -757,8 +773,8 @@ Sealing/Mining Options:
 
     --gas-price-percentile=[PCT]
         Set PCT percentile gas price value from last 100 blocks
-        as default gas price when sending transactions. (default:
-        50)
+        as default gas price when sending transactions.
+        (default: 50)
 
     --poll-lifetime=[S]
         Set the lifetime of the internal index filter to S
@@ -788,8 +804,8 @@ Sealing/Mining Options:
         than 32 characters.
 
     --notify-work=[URLS]
-        URLs to which work package notifications are pushed. URLS
-        should be a comma-delimited list of HTTP URLs.
+        URLs to which work package notifications are pushed.
+        URLS should be a comma-delimited list of HTTP URLs.
 
     --stratum-secret=[STRING]
         Secret for authorizing Stratum server for peers.
@@ -808,20 +824,14 @@ Miscellaneous Options:
     --no-config
         Don't load a configuration file.
 
-    --ntp-servers=[HOSTS]
-        Comma separated list of NTP servers to provide current
-        time (host:port). Used to verify node health. Parity uses
-        pool.ntp.org NTP servers; consider joining the pool:
-        http://www.pool.ntp.org/join.html (default:
-        0.parity.pool.ntp.org:123,1.parity.pool.ntp.org:123,2.par
-        ity.pool.ntp.org:123,3.parity.pool.ntp.org:123)
-
     -l, --logging=[LOGGING]
-        Specify the logging level. Must conform to the same
-        format as RUST_LOG.
+        Specify the general logging level (error, warn, info,
+        debug or trace). It can also be set for a specific
+        module, example: '-l sync=debug,rpc=trace'
 
     --log-file=[FILENAME]
-        Specify a filename into which logging should be appended.
+        Specify a filename into which logging should be
+        appended.
 
 Footprint Options:
     --scale-verifiers
@@ -831,16 +841,17 @@ Footprint Options:
     --tracing=[BOOL]
         Indicates if full transaction tracing should be enabled.
         Works only if client had been fully synced with tracing
-        enabled. BOOL may be one of auto, on, off. auto uses last
-        used value of this option (off if it does not exist).
-        (default: auto)
+        enabled. BOOL may be one of auto, on, off. auto uses
+        last used value of this option (off if it does not
+        exist). (default: auto)
 
     --pruning=[METHOD]
         Configure pruning of the state/storage trie. METHOD may
         be one of auto, archive, fast: archive - keep all state
         trie data. No pruning. fast - maintain journal overlay.
         Fast but 50MB used. auto - use the method most recently
-        synced or default to fast if none synced. (default: auto)
+        synced or default to fast if none synced. (default:
+        auto)
 
     --pruning-history=[NUM]
         Set a minimum number of recent states to keep in memory
@@ -873,10 +884,10 @@ Footprint Options:
         HDDs; auto - determine automatically. (default: auto)
 
     --fat-db=[BOOL]
-        Build appropriate information to allow enumeration of all
-        accounts and storage keys. Doubles the size of the state
-        database. BOOL may be one of on, off or auto. (default:
-        auto)
+        Build appropriate information to allow enumeration of
+        all accounts and storage keys. Doubles the size of the
+        state database. BOOL may be one of on, off or auto.
+        (default: auto)
 
     --cache-size=[MB]
         Set total amount of discretionary memory to use for the
