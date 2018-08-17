@@ -78,7 +78,7 @@ Executes the given call and returns a number of possible traces for it.
     - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
     - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
 0. `Array` - Type of trace, one or more of: `"vmTrace"`, `"trace"`, `"stateDiff"`.
-0. `Quantity` | `Tag` - (optional) Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
+0. `Quantity` or `Tag` - (optional) Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
 
 #### Returns
 
@@ -233,7 +233,7 @@ Replays all transactions in a block returning the requested traces for each tran
 
 #### Parameters
 
-0. `Quantity` | `Tag` - Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
+0. `Quantity` or `Tag` - Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
 0. `Array` - Type of trace, one or more of: `"vmTrace"`, `"trace"`, `"stateDiff"`.
 
 ```js
@@ -288,7 +288,7 @@ Returns traces created at given block.
 
 #### Parameters
 
-0. `Quantity` | `Tag` - Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
+0. `Quantity` or `Tag` - Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
 
 ```js
 params: [
@@ -348,8 +348,8 @@ Returns traces matching given filter
 #### Parameters
 
 0. `Object` - The filter object
-    - `fromBlock`: `Quantity` | `Tag` - (optional) From this block.
-    - `toBlock`: `Quantity` | `Tag` - (optional) To this block.
+    - `fromBlock`: `Quantity` or `Tag` - (optional) From this block.
+    - `toBlock`: `Quantity` or `Tag` - (optional) To this block.
     - `fromAddress`: `Array` - (optional) Sent from these addresses.
     - `toAddress`: `Address` - (optional) Sent to these addresses.
     - `after`: `Quantity` - (optional) The offset trace number.
