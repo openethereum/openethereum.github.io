@@ -145,7 +145,7 @@ Optional spec fields:
 
 + **`"nodes"`** a list of boot nodes in the [enode format](https://github.com/ethereum/wiki/wiki/enode-url-format)
 
-+ **`"hardcodedSync"`**  Set of information required for light clients to start syncing from a hardcoded block. Can be generated using `parity export-hardcoded-sync` once the light client is synced.
++ **`"hardcodedSync"`**  Set of information required for light clients to start syncing from a hardcoded block. Can be generated using [`export-hardcoded-sync`](https://wiki.parity.io/FAQ.html#how-to-generate-a-new-hardcoded-sync-block-for-parity-ethereum-light-client) CLI subcommand once the light client is synced.
   + `"header"` header of the block the light clients will start syncing from.
   + `"totalDifficulty"` total difficulty of this block.
   + `"CHTs"` Array of merkle tree root hashes of groups of 2048 blocks.

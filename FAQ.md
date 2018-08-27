@@ -363,7 +363,7 @@ killall -HUP parity
 Parity Ethereum light client allows you to set a hardcoded block from which the light client will sync to reach the top of the chain faster. Note that this hardcoded block will only be used if no prior light database is found. Here is how you can generate the needed info to create a chain specifications file:
 1. Run `parity --light` and make sure to reach the top of the chain.
 1. Stop Parity Ethereum with `ctrl-c`.
-1. Run `parity export-hardcoded-sync`.
+1. Run `parity --light export-hardcoded-sync`.
 1. Copy the output of the previous command using the field : `"hardcodedSync": { COPY_OUTPUT_HERE }` into your new [chain specifications](Chain-specification) file.
 1. Run the light client with your new specifications `parity --light --chain /path/to/your/new/specifications`
 
