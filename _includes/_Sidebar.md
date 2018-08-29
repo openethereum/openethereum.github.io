@@ -7,7 +7,6 @@
 
 ### Using Parity Ethereum
 - [Configuring Parity Ethereum](Configuring-Parity-Ethereum)
-- [Available Chains](Chain-specification)
 - [For Mining](Mining)
 - [Wallet Remote Access](Wallet-Remote-Access)
 - [Network Config](Network-Configuration)
@@ -17,18 +16,13 @@
 
 ### Blockchains support
 - Chain Specification
-  - [Chain Specification Overview](Chain-specification)
+  - [Overview](Chain-specification)
   - Pluggable Consensus
-    - [Pluggable Consensus Overview](Pluggable-Consensus)
+    - [Overview](Pluggable-Consensus)
     - [Aura](Aura)
-  - Validator Set
-    - [Validator Set Overview](Validator-Set)
-    - [Validator contracts](Validator-contracts)
-  - [Block Reward Contract](Block-Reward-Contract)
-- [Permissioning](Permissioning)
 - [Proof of Work Chains](Proof-of-Work-Chains)
 - Proof of Authority Chains
-  - [PoA Chains Overview](Proof-of-Authority-Chains)
+  - [Overview](Proof-of-Authority-Chains)
   - [Demo PoA Tutorial](Demo-PoA-tutorial)
 - [Private Dev Chain](Private-development-chain)
 
@@ -47,22 +41,31 @@
 - [trace](JSONRPC-trace-module)
 - [shh](JSONRPC-shh-Module)
 - [secretstore](JSONRPC-secretstore-module)
+- [private](JSONRPC-private-module)
 
 ### Technologies
 - [Transaction Queue](Transactions-Queue)
 - [Automatic Updating](Automatic-Updating)
 - [Ethereum-IPFS API](IPFS)
 - Light Client
-  - [Light Client Overview](Light-Client)
-  - [Parity Light (PIP)](The-Parity-Light-Protocol-(PIP))
+  - [Overview](Light-Client)
+  - [Parity-Light-Protocol (PIP)](The-Parity-Light-Protocol-(PIP))
   - [Light Ethereum (LES)](Light-Ethereum-Subprotocol-(LES))
 - [Polkadot](https://github.com/w3f/polkadot-overview) <i class="fa fa-external-link"></i>
 - [Parity Bridges](Bridge)
 - Secret Store
-  - [Secret Store Overview](Secret-Store)
-  - [Secret Store Configuration](Secret-Store-Configuration)
-  - [Secret Store RPC](JSONRPC-secretstore-module)
+  - [Overview](Secret-Store)
+  - [Configuration](Secret-Store-Configuration)
   - [Tutorial](Secret-Store-Tutorial-overview)
+- Permissioning
+  - [Overview](Permissioning)
+  - Private Transactions
+    - [Overview](Private-Transactions)
+    - [Tutorial](Private-Transactions-Tutorial-Overview)
+  - Validator Set
+    - [Overview](Validator-Set)
+    - [Validator contracts](Validator-contracts)
+  - [Block Reward Contract](Block-Reward-Contract)
 - Warp Sync
   - [Warp Sync Overview](Warp-Sync)
   - [Snapshot Format](Warp-Sync-Snapshot-Format)
@@ -103,7 +106,7 @@
 ### Developing
 - [Development Overview](Development-Overview)
 - Writing DApps
-  - [Dapp Overview](Deploying-Dapps-to-Parity-UI)
+  - [Overview](Deploying-Dapps-to-Parity-UI)
   - [Dapp Discovery](Register-your-DAPP-for-discovery)
   - [Parity Name Registry](Parity-name-registry)
   - [Parity GitHub Hint](Parity-Github-Hint)
@@ -123,7 +126,7 @@
   - [oo7 Examples](oo7-Parity-Examples)
   - [oo7-parity.js Reference](oo7-Parity-Reference)
 - ERC20 Tokens
-  - [ERC20 Tokens Overview](Tokens)
+  - [Overview](Tokens)
   - [Token Deployment](Token-Deployment)
   - [Token Registry](Token-Registry)
 - [Badge Registry](Badge-Registry)
