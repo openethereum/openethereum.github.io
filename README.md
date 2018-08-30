@@ -3,7 +3,7 @@ title: Parity Technologies
 permalink: index.html
 ---
 
-![Parity Technologies](images/logo-parity.svg)
+![Parity Technologies](images/logo-parity.jpg)
 Parity Technologies is an infrastructure and innovation focused company building platforms and applications.
 Our work combines cutting-edge cryptography, cellular system, peer-to-peer technology and decentralised consensus architectures. 
 

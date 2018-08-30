@@ -2,7 +2,7 @@
 title: Parity Ethereum
 ---
 
-![Parity Ethereum](images/logo-parity-ethereum.svg)
+![Parity Ethereum](images/logo-parity-ethereum.jpg)
 
 ## The fastest and most advanced Ethereum client.
 

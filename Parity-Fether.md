@@ -2,7 +2,7 @@
 title: Parity Fether
 ---
 
-![Parity Fether](images/logo-parity-fether.svg)
+![Parity Fether](images/logo-parity-fether.jpg)
 
 Parity Fether is a fast and decentralised wallet based on Parity Ethereum light-client.
 

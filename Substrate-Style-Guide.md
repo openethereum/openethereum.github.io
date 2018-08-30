@@ -101,8 +101,9 @@ if condition {
 ```rust
 match meal {
 	Meal::Breakfast => "eggs",
-	Meal::Lunch => { check_diet(); recipe() }
+	Meal::Lunch => { check_diet(); recipe() },
 //	Meal::Dinner => { return Err("Fasting") }   // WRONG
 	Meal::Dinner => return Err("Fasting"),
 }
 ```
+

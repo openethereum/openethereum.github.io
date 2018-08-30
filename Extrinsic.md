@@ -6,7 +6,7 @@ _Extrinsic_ is a [Substrate](Parity-Substrate) specific generalization of the _t
 
 In classic cryptocurrency blockchains, blocks usually contain transactions to transfer funds from one account to another. But Substrate is way more flexible than that. Basically, Substrate itself neither expects nor defines any specific transaction format. To reflect that, we use the term _extrinsic_ (as opposed to intrinsic) meaning that it's something from the outer world. 
 
-For example, default [runtime](Runtime) for Polkadot expects extrinsics to be of a certain format. For more info, see the [Extrinsic Format](Extrinsic). Still, please keep in mind that it's not the only possible option. Other chains may define a different format more suitable for their needs.
+For example, default [runtime](Runtime) for Polkadot expects extrinsics to be of a certain format. For more info, see the [Extrinsic Format](https://github.com/paritytech/polkadot/wiki/Polkadot-Extrinsic-format). Still, please keep in mind that it's not the only possible option. Other chains may define a different format more suitable for their needs.
 
 Extrinsics are expected to be decodable. See the `Decode` trait.
 
