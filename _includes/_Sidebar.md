@@ -1,5 +1,5 @@
 ## Parity Ethereum
-- [Overview](/)
+- [Overview](Parity-Ethereum)
 - [Setup](Setup)
 - [Getting Synced](Getting-Synced)
 - [Basic Usage](Basic-Usage)
@@ -89,8 +89,21 @@
 - [GitHub](https://github.com/paritytech/parity) <i class="fa fa-external-link"></i>
 - [Website](https://parity.io) <i class="fa fa-external-link"></i>
 
+## Parity Substrate
+- [Overview](Parity-Substrate)
+- [Consensus](Consensus)
+- [decl_storage!](decl_storage)
+- [Extrinsic](Extrinsic)
+- [Full-client](Substrate-Full-Client)
+- [Genesis](Genesis)
+- [impl_stubs!](impl_stubs)
+- [Light-client](Substrate-Light-Client)
+- [P2P](P2P)
+- [Runtime](Runtime)
+- [Style Guide](Substrate-Style-Guide)
+
 ## Parity Fether
-- [Overview](Parity-Fether-Overview)
+- [Overview](Parity-Fether)
 
 ## Parity Signer Mobile App
 - [Overview](Parity-Signer-Mobile-App)

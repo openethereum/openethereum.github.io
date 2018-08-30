@@ -2,6 +2,7 @@
 title: Parity Signer Mobile App
 ---
 
+![Parity Signer](images/logo-parity-signer.svg)
 ## What is it?
 Parity Signer Mobile App is a secure air-gapped wallet that allows users to use a smartphone as cold storage. It means that, once the App has been installed, users can create Ethereum accounts, sign transactions and [transfer funds](Parity-Signer-Mobile-App-Parity-Wallet-tutorial) from and to these accounts without any sort of connectivity enabled on the device. Wifi, Mobile Network, Bluetooth can be shut down and even removed physically to ensure that the mobile phone containing these accounts will not be exposed to any online threat.
 
