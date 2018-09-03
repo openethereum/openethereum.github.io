@@ -16,6 +16,9 @@ If you run into problems while using Parity Fether, feel free to file an issue i
 
 Parity Fether connects to the light node using light.js, a Javascript library specifically crafted for Wallets to connect with light clients. It is licensed under the BSD 3-Clause and can be used for all your Ethereum needs.
 
+## Screenshots
+![Parity Fether wallet](/images/fether-screenshot-0.jpg)
+
 ## Passing Parity Ethereum flags
 
 You can pass specific flags for Fether to launch the underlying Parity Ethereum with:
