@@ -21,7 +21,8 @@ input.sidebar-checkbox {
 }
 
 nav.sidebar-nav a.current-page {
-  font-weight: bold;
+  color: black;
+  background-color: white;
 }
 
 nav.sidebar-nav h2, nav.sidebar-nav h3 {
@@ -29,11 +30,28 @@ nav.sidebar-nav h2, nav.sidebar-nav h3 {
 }
 
 .collapsible {
-    list-style-type: disclosure-open;
+    list-style-type: none;
 }
 
-.collapsible.collapsed {
-    list-style-type: disclosure-closed;
+.collapsible {
+    list-style-type: none;
+    margin-left: -15px;
+}
+
+li.collapsible > :first-child::before {
+    content: "▾";
+    margin-right: 10px;
+    font-style: normal;
+    color: lightgray;
+    font-size: unset;
+}
+
+li.collapsible.collapsed > :first-child::before {
+    content: "▸";
+    margin-right: 10px;
+    font-style: normal;
+    color: lightgray;
+    font-size: unset;
 }
 
 html {
