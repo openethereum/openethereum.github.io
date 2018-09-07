@@ -234,7 +234,6 @@ This level of permissions is a rather important one. It determines which parties
 
 * Ethash (PoW)
 * Aura
-* Tendermint (PBFT)
 
 More are being implemented.
 

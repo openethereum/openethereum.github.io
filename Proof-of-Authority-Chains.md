@@ -98,4 +98,4 @@ An example template that can be used for the consensus algorithms:
 }
 ```
 
-The two available algorithms are the [Aura](Pluggable-Consensus.md#aura) and [Tendermint](Pluggable-Consensus.md#tendermint). More details on other chain parameters are available on the [Chain specification](Chain-specification.md) page.
+The only available algorithm for PoA is [Aura](Pluggable-Consensus.md#aura), other consensus might be added in the future. More details on other chain parameters are available on the [Chain specification](Chain-specification.md) page.

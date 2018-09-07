@@ -65,7 +65,7 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 
 The following `Engine`s achieve consensus by referring to a list of "validators" (referred to as authorities, when they are linked to physical entities). Validator set is a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them.
 
-In the simplest case they can be specified at genesis using a simple `"list"` (as shown in the Authority Round and Tendermint sections):
+In the simplest case they can be specified at genesis using a simple `"list"` (as shown in the Authority Round section):
 ```json
 "validators": {
   "list": [
