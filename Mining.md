@@ -35,6 +35,11 @@ ethminer -G
 ```
 Where `-G` for GPU mining (opencl)
 
+For ethminer, you should use:
+```
+ethminer -G -P http://127.0.0.1:8545
+```
+
 ## Stratum
 
 Since 1.6, Parity offers Stratum protocol support (beta). This protocol has number of advantages compared to the JSON-RPC polling, which results in better hashrate and less node strain. To run parity with Stratum on, use
@@ -52,6 +57,11 @@ parity --author 0037a6b811ffeb6e072da21179d11b1406371c63 --stratum --stratum-int
 To utilize Stratum, miner also needs to be started in Stratum mode. For genoil, it will be
 ```
 ethminer -G -S 127.0.0.1:8008
+```
+
+For ethminer, you should use:
+```
+ethminer -G -P stratum+tcp://127.0.0.1:8008
 ```
 
 ## HTTP Notification
