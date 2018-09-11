@@ -11,7 +11,7 @@ The `Engine` is chosen by placing an appropriate entry in the `"engine"` field o
 
 ```json
 "engine": {
-  "Ethash": {
+  "ethash": {
     "params": {
       "minimumDifficulty": "0x020000",
       "difficultyBoundDivisor": "0x0800",
@@ -51,7 +51,9 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 
 ```json
 "engine": {
-  "instantSeal": null
+  "instantSeal": {
+    "params": {}
+  }
 }
 ```
 
@@ -60,6 +62,10 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
   "generic": "0x0"
 }
 ```
+
+The `"params"` object for `"instantSeal"` may contain the following keys:
+
+- `"millisecondTimestamp"` if true, then use millisecond timestamp instead of second timestamp. This sometimes avoids timestamp collusion if sending more than one transaction per second.
 
 ## Validator engines
 
