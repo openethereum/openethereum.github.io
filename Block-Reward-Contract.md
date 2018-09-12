@@ -28,11 +28,11 @@ increase.
 Currently the engine supports the following types of rewards:
 
 - 0 - Author - Reward attributed to the block author
-- 1 - Uncle - Reward attributed to the block uncle(s)
 - 2 - Empty step - Reward attributed to the author(s) of empty step(s) included in the block (AuthorityRound engine)
 - 3 - External - Reward attributed by an external protocol (e.g. block reward contract)
+- 101-106 - Uncle - Reward attributed to uncles, with distance 1 to 6 (Ethash engine)
 
-The reward contract will receive as input reward types of 0 to 2, and any reward attributed by it
+The reward contract will receive as input reward types of 0, 2 or 101-106, and any reward attributed by it
 will be labelled as external (this is visible when tracing rewards).
 
 The contract [ABI](https://github.com/parity-contracts/block-reward/blob/6c645a93a0ae1eb0a34bfe85071e4ce36deed3b3/abis/BlockReward.json) as well as an example contract can be found [here](https://github.com/parity-contracts/block-reward).
