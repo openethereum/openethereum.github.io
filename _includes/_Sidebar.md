@@ -91,6 +91,7 @@
 
 ## Parity Substrate
 - [Overview](Parity-Substrate)
+- [Byzantine Fault Tolerance](Byzantine-Fault-Tolerance)
 - [Consensus](Consensus)
 - [decl_storage!](decl_storage)
 - [Extrinsic](Extrinsic)
