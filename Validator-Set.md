@@ -68,10 +68,9 @@ contract ValidatorSet {
 }
 ```
 
-There is a notion of an "active" validator set: this is the set of the most recently finalized signal (InitiateChange event). The initial set is
+The function `getValidators` should always return the active set or the initial set of validators if the contract hasn't been activated yet. The "active" validator set is the set of the most recently finalized signal (finalizeChange event).  
 
-The function `getValidators` should always return the active set or the initial set if the contract hasn't been activated yet.
-Switching the set should be done by issuing a `InitiateChange` event with the parent block hash and new set, storing the pending set, and then waiting for call to `finalizeChange` (by the `SYSTEM_ADDRESS`: `2^160 - 2`) before setting the active set to the pending set. This mechanism is used to ensure that the previous validator set "signs off" on the changes before activation, leading to full security in situations like warp and light sync, where state transitions aren't checked.
+Switching the set should be done by issuing an `InitiateChange` event with the parent block hash and the new set, storing the pending set, and then waiting for the call to `finalizeChange` (by the `SYSTEM_ADDRESS`: `2^160 - 2`) before setting the active set to the pending set. This mechanism is used to ensure that the previous validator set "signs off" on the changes before activation, leading to full security in situations like warp and light sync, where state transitions aren't checked.
 
 Other than these restrictions, the switching rules are fully determined by the contract implementing that method. The spec should contain the contract address:
 
