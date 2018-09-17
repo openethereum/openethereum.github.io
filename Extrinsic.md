@@ -27,7 +27,3 @@ Inherents, meanwhile, are not passed on the network and are not signed. They rep
 To give an example, there is the timestamp inherent which sets the current timestamp of the block. This is not a fixed part of Substrate, but does come as part of the Substrate Runtime Module Library to be used as desired. No signature could fundamentally prove that a block were authored at a given time in quite the same way that a signature can "prove" the desire to spend some particular funds. Rather, it is the business of each validator to ensure that they believe the timestamp is set to something reasonable before they agree that the block candidate is valid.
 
 Other examples include the parachain-heads extrinsic in Polkadot and the "note-missed-proposal" extrinsic used in the Substrate Runtime Module Library to determine and punish or deactivate offline validators.
-
-### Checked vs Unchecked vs Bare
-
-TODO
