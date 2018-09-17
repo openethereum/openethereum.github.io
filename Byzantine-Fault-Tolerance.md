@@ -2,7 +2,7 @@
 title: Byzantine Fault Tolerance
 ---
 
-_Byzantine Fault Tolerance_ is one of the consensus algorithms and is a way for several parties to vote for something without explicitly or implicitly trusting each other.
+_Byzantine Fault Tolerance_ is one of the consensus algorithms and is a way for several parties to vote for something (usually for the next block in the chain) without explicitly or implicitly trusting each other.
 
 ### Introduction
 
