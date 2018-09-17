@@ -2,25 +2,25 @@
 title: Docker
 ---
 
-Build and run Parity anywhere with Docker:
+Build and run Parity Ethereum anywhere with Docker:
 
 - [Pick a container](#pick-a-container)
 - [Run container](#run-container)
-- [Configure parity](#configure-parity)
+- [Configure Parity Ethereum](#configure-parity-ethereum)
     - [Open ports](#open-ports)
     - [Pass arguments](#pass-arguments)
     - [Config file](#config-file)
     - [Persistent data directory](#persistent-data-directory)
     - [Run in background](#run-in-background)
-- [Parity Deploy Scripts](#parity-deploy-scripts)
+- [Parity Ethereum Deploy Scripts](#parity-ethereum-deploy-scripts)
     - [Prepare the Node](#prepare-the-node)
-    - [Launching Parity](#launching-parity)
+    - [Launching Parity Ethereum](#launching-parity-ethereum)
     - [More Options](#more-options)
 - [Further reading](#further-reading)
 
 ### Pick a container
 
-Docker containers for Parity are available via [Docker Hub](https://hub.docker.com/r/parity/parity/):
+Docker containers for Parity Ethereum are available via [Docker Hub](https://hub.docker.com/r/parity/parity/):
 
 ```bash
 $ docker search parity/parity
@@ -50,13 +50,13 @@ $ docker pull parity/parity:v1.7.0
 
 ### Run container
 
-To run Parity with an interactive pseudo-tty shell, run:
+To run Parity Ethereum with an interactive pseudo-tty shell, run:
 
 ```bash
 $ docker run -ti parity/parity:v1.7.0
 ```
 
-### Configure parity
+### Configure Parity Ethereum
 
 Parity can be configured using either the [CLI options or a config file](Configuring-Parity.md). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence. You can list all CLI options by running:
 
@@ -68,19 +68,19 @@ For Docker specific options, please refer to the [Docker documentation](https://
 
 ##### Open ports
 
-To publish Parity's ports to the host machine, use the `-p` option:
+To publish Parity Ethereum's ports to the host machine, use the `-p` option:
 
 ```bash
-$ docker run -ti -p 8180:8180 -p 8545:8545 -p 8546:8546 -p 30303:30303 -p 30303:30303/udp parity/parity:v1.7.0 --ui-interface all --jsonrpc-interface all
+$ docker run -ti -p 8545:8545 -p 8546:8546 -p 30303:30303 -p 30303:30303/udp parity/parity:v1.7.0 --ui-interface all --jsonrpc-interface all
 ```
 
-For example, this will expose the User Interface, the JSONRPC-API, and the listen port to the host. Now you can open [Parity UI](https://wiki.parity.io/Parity-Wallet) from the Docker host computer to access the Parity Wallet.
+For example, this will expose the HTTP and WebSockets JSONRPC APIs, and the listen port to the host. Now you can send RPC calls from the Docker host computer.
 
-To enable external discovery where desired (for example for PoA sealing nodes), specify the external IP by appending the flag `--nat extip:133.3.3.37`, where `133.3.3.37` is to be replaced by your actual external IP of the host.
+To enable external discovery (for example for PoA sealing nodes), specify the external IP by appending the flag `--nat extip:133.3.3.37`, where `133.3.3.37` is to be replaced by your actual external IP of the host.
 
 ##### Pass arguments
 
-To pass further operating options to Parity, simply append them to the `docker run` command:
+To pass further operating options to Parity Ethereum, simply append them to the `docker run` command:
 
 ```bash
 $ docker run -ti parity/parity:v1.7.0 --no-ui --no-dapps --no-discovery
@@ -97,7 +97,7 @@ $ mkdir -p ~/.local/share/io.parity.ethereum/docker/
 $ touch ~/.local/share/io.parity.ethereum/docker/config.toml
 ```
 
-You can use the [Config File Generator](https://paritytech.github.io/parity-config-generator/) to configure your Parity node and save it on your host's disk, i.e., at `~/.local/share/io.parity.ethereum/docker/config.toml`. To mount the configuration, use the `docker run -v` option:
+You can use the [Config File Generator](https://paritytech.github.io/parity-config-generator/) to configure your Parity Ethereum node and save it on your host's disk, i.e., at `~/.local/share/io.parity.ethereum/docker/config.toml`. To mount the configuration, use the `docker run -v` option:
 
 ```bash
 $ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/root/.local/share/io.parity.ethereum/ parity/parity:v1.7.0 --config /root/.local/share/io.parity.ethereum/config.toml
@@ -117,14 +117,14 @@ This will expose the whole data dir to the host machine at `~/.local/share/io.pa
 
 ##### Run in background
 
-To run a detached Parity instance, use `docker run -d`:
+To run a detached Parity Ethereum instance, use `docker run -d`:
 
 ```bash
 $ docker run -d parity/parity:v1.7.0
 245f312f3f39ad0a518091b1ee4cdc0c1f6d74fb9609395ed3fdcf43acae4b62
 ```
 
-It will run Parity in background. `docker ps` shows the instance:
+It will run Parity Ethereum in background. `docker ps` shows the instance:
 
 ```bash
 $ docker ps
@@ -140,9 +140,9 @@ $ docker attach --sig-proxy=false 245f312f3f39
 
 Disabling the signal proxy [allows to detach again](http://stackoverflow.com/a/22894096) with `CTRL`+`C`.
 
-### Parity Deploy Scripts
+### Parity Ethereum Deploy Scripts
 
-A Parity deployment script generator is available at [paritytech/parity-deploy](https://github.com/paritytech/parity-deploy). It uses `docker` and `docker-compose`. On Ubuntu systems these will automatically be installed if not already present on the system.
+A Parity Ethereum deployment script generator is available at [paritytech/parity-deploy](https://github.com/paritytech/parity-deploy). It uses `docker` and `docker-compose`. On Ubuntu systems these will automatically be installed if not already present on the system.
 
 Currently these scripts supports two types of chains, either [instant sealing](https://wiki.parity.io/Pluggable-Consensus#instant-seal) for development and [authority round](https://wiki.parity.io/Pluggable-Consensus#aura) for proof of authority with multiple validators.
 
@@ -162,7 +162,7 @@ Some examples of using the script are:
   $ ./parity-deploy.sh --name testchain --config aura --nodes 3
   ```
 
-##### Launching Parity
+##### Launching Parity Ethereum
 
 Once the configuration is created you just need to run the docker-compose command to launch the machine or machines. This can be done via:
 
@@ -176,7 +176,7 @@ You will then be able to see the logs by running:
 $ docker-compose logs -f
 ```
 
-In these logs you should see a token being generated to login to parity. Alternatively you can run the command:
+In these logs you should see a token being generated to login to Parity Ethereum. Alternatively you can run the command:
 
 ```bash
 $ docker-compose logs | grep token
@@ -209,5 +209,5 @@ You can also include extra nodes (e.g. [ethstats monitoring](https://github.com/
 - [Docker compose for running integration tests](https://github.com/illya13/parity-poa).
 - [Building Parity using Docker](Setup.md#Building-using-Docker).
 - [Docker build for ARM64](https://github.com/paritytech/parity-snappy/wiki/Docker-build-for-ARM-ARM64).
-- [Parity on Docker Hub](https://hub.docker.com/r/parity/parity/).
+- [Parity Ethereum on Docker Hub](https://hub.docker.com/r/parity/parity/).
 - [View the Dockerfile here](https://github.com/paritytech/parity-ethereum/blob/master/docker/ubuntu/Dockerfile).
