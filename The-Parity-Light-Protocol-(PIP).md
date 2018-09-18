@@ -103,8 +103,8 @@ Request::BlockBody {
     Inputs:
         Loose(H256) // block hash
     Outputs:
-        [Header] // uncles
         [Transaction] // txs
+        [Header] // uncles
 }
 
 // Request for proof of specific account in the state.
