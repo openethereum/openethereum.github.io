@@ -236,10 +236,10 @@ Operating Options:
 
     --chain=[CHAIN]
         Specify the blockchain type. CHAIN may be either a JSON
-        chain specification file or olympic, frontier,
-        homestead, mainnet, morden, ropsten, classic, expanse,
-        tobalaba, musicoin, ellaism, easthub, social, testnet,
-        kovan or dev. (default: foundation)
+        chain specification file or ethereum, classic, poacore,
+        tobalaba, expanse, musicoin, ellaism, easthub, social,
+        olympic, morden, ropsten, kovan, poasokol, testnet, or
+        dev. (default: foundation)
 
     --keys-path=[PATH]
         Specify the path for JSON key files to be found
@@ -426,8 +426,8 @@ API and Console Options – HTTP JSON-RPC:
     --jsonrpc-apis=[APIS]
         Specify the APIs available through the HTTP JSON-RPC
         interface using a comma-delimited list of API names.
-        Possible names are: all, safe, web3, net, eth, pubsub,
-        personal, signer, parity, parity_pubsub,
+        Possible names are: all, safe, debug, web3, net, eth,
+        pubsub, personal, signer, parity, parity_pubsub,
         parity_accounts, parity_set, traces, rpc, secretstore,
         shh, shh_pubsub. You can also disable a specific API by
         putting '-' in the front, example: all,-personal. 'safe'
@@ -444,9 +444,10 @@ API and Console Options – HTTP JSON-RPC:
         options: "all", "none",. (default: none)
 
     --jsonrpc-threads=[THREADS]
-        Turn on additional processing threads in all HTTP JSON
-        -RPC servers. Setting this to non-zero value allows
-        parallel execution of cpu-heavy queries. (default: 4)
+        Turn on additional processing threads for JSON-RPC
+        servers (all transports). Setting this to a non-zero
+        value allows parallel execution of cpu-heavy queries.
+        (default: 4)
 
     --jsonrpc-cors=[URL]
         Specify CORS header for HTTP JSON-RPC API responses.
@@ -547,13 +548,12 @@ API and Console Options – IPFS:
         options: "all", "none". (default: none)
 
 Light Client Options:
-    --on_demand_nb_retry=[RETRIES]
-        Specify maximum number of retry query to send to other
-        node for a query.
+    --on-demand-retry-count=[RETRIES]
+        Specify the query retry count.
 
-    --on_demand_inactive_time_limit=[MS]
-        Specify maximum total time limit for a light client
-        query to stay inactive. O for no limit.
+    --on-demand-inactive-time-limit=[MS]
+        Specify light client query inactive time limit. O for no
+        limit.
 
 Secret Store Options:
     --no-secretstore
@@ -735,11 +735,11 @@ Sealing/Mining Options:
 
     --gas-floor-target=[GAS]
         Amount of gas per block to target when sealing a new
-        block. (default: 4700000)
+        block. (default: 8000000)
 
     --gas-cap=[GAS]
         A cap on how large we will raise the gas limit per block
-        due to transaction volume. (default: 6283184)
+        due to transaction volume. (default: 10000000)
 
     --tx-queue-mem-limit=[MB]
         Maximum amount of memory that can be used by the
@@ -905,6 +905,9 @@ Snapshot Options:
     --no-periodic-snapshot
         Disable automated snapshots which usually occur once
         every 10000 blocks.
+
+    --snapshot-threads=[NUM]
+        Enables multiple threads for snapshots creation.
 
 Whisper Options:
     --whisper
