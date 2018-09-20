@@ -34,7 +34,7 @@ Other examples include the parachain-heads extrinsic in Polkadot and the "note-m
 
 ## The Extrinsic format for Node
 
-Substrate Node, as of genesis, defines a specific Extrinsic format, based around the generic `UncheckedMortalExtrinsic` with a standard `Era` format, a Node-specific function format, a 64-bit block number, 64-bit transaction index, a standard `Address` format combining 256-bit `AccountId` with a variable-width 64-bit enumerated `AccountIndex`,  and Ed25519 crpypto:
+Substrate Node, as of genesis, defines a specific Extrinsic format, based around the generic `UncheckedMortalExtrinsic` with a standard `Era` format, a Node-specific function format, a 64-bit block number, 64-bit transaction index, a standard `Address` format combining 256-bit `AccountId` with a variable-width 64-bit enumerated `AccountIndex`, and Ed25519 crpypto:
 
 Fields:
 - 4 bytes: Length of the rest of the extrinsic, in bytes.
@@ -47,7 +47,7 @@ Fields:
     - 0xfc: 2 byte Account Index, value to follow.
     - 0xfd: 4 byte Account Index, value to follow.
     - 0xfe: 8 byte Account Index, value to follow.
-    - 0xff: 64 byte Account ID, value to follow.
+    - 0xff: 32 byte Account ID, value to follow.
   - 64 bytes: The Ed25519 signature of the Signing Payload (detailed below).
   - 8 bytes: The Transaction Index of the signing account (number of signed transactions from the account preceeding this one).
   - 2 bytes: The Transaction Era (detailed below).
