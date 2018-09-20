@@ -92,6 +92,7 @@ More formally, given `low4` and `hi12`, we can define `enabled`:
 Assuming `enabled` then we can define:
 
 `period := 2 ** (low4 + 1)`
+
 `phase := hi12 * factor`
 
 Where:
