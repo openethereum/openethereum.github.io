@@ -68,10 +68,11 @@ The translation from AccountIndex to AccountId, if necessary, is done through a 
 
 ### Signing Payload
 
-The signing payload is a simple concatenation of three essential fields from the transaction:
+The signing payload is a simple concatenation of four fields, three from the transaction and one derived:
 
 - 8 bytes: The Transaction Index as provided in the transaction itself.
 - 2+ bytes: The Function Descriptor as provided in the transaction itself.
+- 2 bytes: The Transaction Era as provided in the transaction itself.
 - 32 bytes: The hash of the authoring block implied by the Transaction Era and the current block.
 
 ### Transaction Era
