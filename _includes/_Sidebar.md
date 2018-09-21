@@ -95,6 +95,7 @@
 - [Consensus](Consensus)
 - [decl_storage!](decl_storage)
 - [Extrinsic](Extrinsic)
+- [External Address Format (SS58)](External-Address-Format-(SS58))
 - [Full-client](Substrate-Full-Client)
 - [Genesis](Genesis)
 - [impl_stubs!](impl_stubs)
