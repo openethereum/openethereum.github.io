@@ -46,6 +46,7 @@ usd_per_tx = "0" // Allows for free transactions.
 When deploying PoC it is useful to get a centrally managed network going first. With Parity the nodes can be identical and simply expose the RPC interface to a central managing node, all further setup can be done via those interfaces.
 
 #### Community built setups
+- [Microsoft's guide to setup a PoA network on Azure](https://docs.microsoft.com/de-de/azure/blockchain-workbench/ethereum-poa-deployment)
 - [Docker compose network with 3 authorities and netstats dashboard](https://github.com/dstarcev/parity-poa-playground)
 - [Docker compose for running integration tests](https://github.com/illya13/parity-poa)
 - [Docker compose with demo PoA setup](https://github.com/vincentserpoul/parityPoA)
