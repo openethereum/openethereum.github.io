@@ -1,6 +1,4 @@
----
-title: The `net` Module
----
+# The `net` Module
 
 ## JSON-RPC methods
 
@@ -97,3 +95,4 @@ Response
   "result": "8995"
 }
 ```
+
