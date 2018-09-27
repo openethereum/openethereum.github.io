@@ -34,7 +34,20 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 - `"durationLimit"` is the equilibrium block interval for the pre-Homestead era difficulty evolution, irrelevant for block numbers above `homesteadTransition`, redefines the value in (YP:42), originally 13 = `0xd`
 - `"difficultyIncrementDivisor"` is related to the equilibrium block intervals for the Homestead era difficulty evolution, redefines the value in (YP:43), originally 10 = `0xa`
 - `"homesteadTransition"` is `N_H` of (YP:13, 39) etc., or the block number after which the second line of (YP:39) is superseded by the third line, changing the difficulty evolution function
-- `"blockReward"` specifies the reward in wei given for authoring a block
+- `"difficultyBombDelays"` specifies delays of difficulty bomb in dict, where keys are activating block numbers and values are delayed blocks. Note that this field is cummulative. Below example would delay the difficulty bomb by 1000 blocks from block 30, and add another 1000 blocks delay at block 40. The resulting difficulty bomb would be delayed by a total of 2000 blocks.
+    ```json
+    "difficultyBombDelays": {
+      "30": "1000",
+      "40": "1000"
+    }
+    ```
+- `"blockReward"` specifies the reward in wei given for authoring a block, or a key value array where values are rewards in wei, and keys are activating block numbers. Below example would give `0x1` reward at block 0, and switch to `0x2` reward at block 5.
+    ````json
+    "blockReward": {
+      "0": "0x1",
+      "5": "0x2"
+    }
+    ````
 - `"blockRewardContractTransition"` Block at which the block reward contract should start being used.
 - `"blockRewardContractAddress"` Block reward contract address, setting the block reward contract. This option overrides the static block reward definition.
 - `"blockRewardContractCode"` Bytecode of the block reward contract. This option overrides `"BlockRewardContractAddress"`. In this mode, code are executed in static call, so it must be pure.
