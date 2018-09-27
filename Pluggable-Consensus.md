@@ -35,6 +35,9 @@ The `"params"` object for `"Ethash"` may contain the following keys (YP refers t
 - `"difficultyIncrementDivisor"` is related to the equilibrium block intervals for the Homestead era difficulty evolution, redefines the value in (YP:43), originally 10 = `0xa`
 - `"homesteadTransition"` is `N_H` of (YP:13, 39) etc., or the block number after which the second line of (YP:39) is superseded by the third line, changing the difficulty evolution function
 - `"blockReward"` specifies the reward in wei given for authoring a block
+- `"blockRewardContractTransition"` Block at which the block reward contract should start being used.
+- `"blockRewardContractAddress"` Block reward contract address, setting the block reward contract. This option overrides the static block reward definition.
+- `"blockRewardContractCode"` Bytecode of the block reward contract. This option overrides `"BlockRewardContractAddress"`. In this mode, code are executed in static call, so it must be pure.
 
 ```json
 "seal": {
@@ -121,6 +124,7 @@ Optional:
 - `"immediateTransitions"` - bool - Determines whether the validator set transition is applied immediately without waiting for finality (`true`) or not (`false`).
 - `"blockRewardContractTransition"` Block at which the block reward contract should start being used.
 - `"blockRewardContractAddress"` Block reward contract address, setting the block reward contract. This option overrides the static block reward definition.
+- `"blockRewardContractCode"` Bytecode of the block reward contract. This option overrides `"BlockRewardContractAddress"`. In this mode, code are executed in static call, so it must be pure.
 - `"maximumUncleCountTransition"` Block at which maximum uncle count should be considered.
 - `"maximumUncleCount"` Maximum number of accepted uncles.
 - `"emptyStepsTransition"` Block at which empty step messages should start.
