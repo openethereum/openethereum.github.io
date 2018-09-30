@@ -37,8 +37,8 @@ Other examples include the parachain-heads extrinsic in Polkadot and the "note-m
 Substrate Node, as of genesis, defines a specific Extrinsic format, based around the generic `UncheckedMortalExtrinsic` with a standard `Era` format, a Node-specific function format, a 64-bit block number, 64-bit transaction index, a standard `Address` format combining 256-bit `AccountId` with a variable-width 64-bit enumerated `AccountIndex`, and Ed25519 crpypto:
 
 Fields:
-- 4 bytes: Length of the rest of the extrinsic, in bytes.
-- 1 byte: Version information:
+- 1-5 bytes: Length of the rest of the extrinsic, as a `Compact` integer in `parity-codec`.
+- 1 byte: version information:
   - 7 low bits: version identifier (should be 0b0000001).
   - 1 high bit: signed flag: 1 if this is a transaction (e.g. contains a signature).
 - Optional, depending on previous bit: The signature information:
