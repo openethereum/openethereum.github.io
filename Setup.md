@@ -43,7 +43,7 @@ For Linux systems:
 - Ubuntu, Debian
 
     ```bash
-    $ apt-get install build-essential openssl libssl-dev libudev-dev
+    $ apt-get install build-essential cmake openssl libssl-dev libudev-dev
     ```
 
 - CentOS
