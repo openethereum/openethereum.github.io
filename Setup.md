@@ -43,14 +43,14 @@ For Linux systems:
 - Ubuntu, Debian
 
     ```bash
-    $ apt-get install build-essential cmake openssl libssl-dev libudev-dev
+    $ apt-get install build-essential cmake libudev-dev
     ```
 
 - CentOS
 
 
     ```bash
-    $ yum install openssl libssl-devel libudev-devel openssl-devel
+    $ yum install libudev-devel
     $ yum group install "Development Tools"
     ```
 
