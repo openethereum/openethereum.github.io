@@ -21,7 +21,7 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 ### Handshake
 
 **Status**
-[`+0x00`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Inform a peer of the sender's current LES state. This message should be sent _after_ the initial handshake and _prior_ to any LES related messages. The following keys should be present in order to be accepted by a LES/1 node: (value types are noted after the key string)
+`+0x00`[[`key_0`, `value_0`], [`key_1`, `value_1`], ...] Inform a peer of the sender's current LES state. This message should be sent _after_ the initial handshake and _prior_ to any LES related messages. The following keys should be present in order to be accepted by a LES/1 node: (value types are noted after the key string)
 
 * "protocolVersion" `P`: is 1 for the LPV1 protocol version.
 * "networkId" `P`: should be 0 for testnet, 1 for mainnet.
@@ -39,67 +39,67 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 ### Header synchronisation
 
 **NewBlockHashes**
-[`+0x01`, [`hash_0`: `B_32`, `number_0`: `P`, `td_0`: `P`], [`hash_1`: `B_32`, `number_1`: `P`, `td_1`: `P`], ...] Specify one or more new blocks which have appeared on the network. To be maximally helpful, nodes should inform peers of all blocks that they may not be aware of. Including hashes that the sending peer could reasonably be considered to know (due to the fact they were previously informed of because that node has itself advertised knowledge of the hashes through `NewBlockHashes`) is considered Bad Form, and may reduce the reputation of the sending node. Including hashes that the sending node later refuses to honour with a proceeding `GetBlockHeaders` message is considered Bad Form, and may reduce the reputation of the sending node.
+`+0x01`[[`hash_0`: `B_32`, `number_0`: `P`, `td_0`: `P`], [`hash_1`: `B_32`, `number_1`: `P`, `td_1`: `P`], ...] Specify one or more new blocks which have appeared on the network. To be maximally helpful, nodes should inform peers of all blocks that they may not be aware of. Including hashes that the sending peer could reasonably be considered to know (due to the fact they were previously informed of because that node has itself advertised knowledge of the hashes through `NewBlockHashes`) is considered Bad Form, and may reduce the reputation of the sending node. Including hashes that the sending node later refuses to honour with a proceeding `GetBlockHeaders` message is considered Bad Form, and may reduce the reputation of the sending node.
 
 **GetBlockHeaders**
-[`+0x02`, `reqID`: `P`, `block`: { `P` , `B_32` }, `maxHeaders`: `P`, `skip`: `P`, `reverse`: `P` in { `0` , `1` } ] Require peer to return a `BlockHeaders` message. Reply must contain a number of block headers, of rising number when `reverse` is `0`, falling when `1`, `skip` blocks apart, beginning at block `block` (denoted by either number or hash) in the canonical chain, and with at most `maxHeaders` items.
+`+0x02`[`reqID`: `P`, `block`: { `P` , `B_32` }, `maxHeaders`: `P`, `skip`: `P`, `reverse`: `P` in { `0` , `1` } ] Require peer to return a `BlockHeaders` message. Reply must contain a number of block headers, of rising number when `reverse` is `0`, falling when `1`, `skip` blocks apart, beginning at block `block` (denoted by either number or hash) in the canonical chain, and with at most `maxHeaders` items.
 
 **BlockHeaders**
-[`+0x03`, `reqID`: `P`, `BV`: `P`, `blockHeader_0`, `blockHeader_1`, ...] Reply to `GetBlockHeaders`. The items in the list (following the message ID) are block headers in the format described in the main Ethereum specification, previously asked for in a `GetBlockHeaders` message. This may validly contain no block headers if no block headers were able to be returned for the `GetBlockHeaders` query.
+`+0x03`[`reqID`: `P`, `BV`: `P`, `blockHeader_0`, `blockHeader_1`, ...] Reply to `GetBlockHeaders`. The items in the list (following the message ID) are block headers in the format described in the main Ethereum specification, previously asked for in a `GetBlockHeaders` message. This may validly contain no block headers if no block headers were able to be returned for the `GetBlockHeaders` query.
 
 ### On-demand data retrieval
 
 **GetBlockBodies**
-[`+0x04`, `reqID`: `P`, `hash_0`: `B_32`, `hash_1`: `B_32`, ...] Require peer to return a `BlockBodies` message. Specify the set of blocks that we're interested in with the hashes.
+`+0x04`[`reqID`: `P`, `hash_0`: `B_32`, `hash_1`: `B_32`, ...] Require peer to return a `BlockBodies` message. Specify the set of blocks that we're interested in with the hashes.
 
 **BlockBodies**
-[`+0x05`, `reqID`: `P`, `BV`: `P`, [`transactions_0`, `uncles_0`] , ...] Reply to `GetBlockBodies`. The items in the list (following the message ID) are some of the blocks, minus the header, in the format described in the main Ethereum specification, previously asked for in a `GetBlockBodies` message.
+`+0x05`[`reqID`: `P`, `BV`: `P`, [`transactions_0`, `uncles_0`] , ...] Reply to `GetBlockBodies`. The items in the list (following the message ID) are some of the blocks, minus the header, in the format described in the main Ethereum specification, previously asked for in a `GetBlockBodies` message.
 
 **GetReceipts**
-[`+0x06`, `reqID`: `P`, `hash_0`: `B_32`, `hash_1`: `B_32`, ...] Require peer to return a `Receipts` message.
+`+0x06`[`reqID`: `P`, `hash_0`: `B_32`, `hash_1`: `B_32`, ...] Require peer to return a `Receipts` message.
 
 **Receipts**
-[`+0x07`, `reqID`: `P`, `BV`: `P`, [`receipt_0`, `receipt_1`], ...] Provide a set of receipts which correspond to the block hashes previously asked in `GetReceipts`.
+`+0x07`[`reqID`: `P`, `BV`: `P`, [`receipt_0`, `receipt_1`], ...] Provide a set of receipts which correspond to the block hashes previously asked in `GetReceipts`.
 
 **GetProofs**
-[`+0x08`, `reqID`: `P`, [`blockhash`: `B_32`, `key`: `B_32`, `key2`: `B_32`, `fromLevel`: `P`], ...] Require peer to return a `Proofs` message, containing one or more Merkle proofs, each proving the value of index `key` from the state trie of the given block (if `key2` is empty), or the storage value of index `key2` from the storage trie referenced in the account at `key`. If `fromLevel` is greater than zero, the given number of trie nodes closest to the root can be omitted from the proof.
+`+0x08`[`reqID`: `P`, [`blockhash`: `B_32`, `key`: `B_32`, `key2`: `B_32`, `fromLevel`: `P`], ...] Require peer to return a `Proofs` message, containing one or more Merkle proofs, each proving the value of index `key` from the state trie of the given block (if `key2` is empty), or the storage value of index `key2` from the storage trie referenced in the account at `key`. If `fromLevel` is greater than zero, the given number of trie nodes closest to the root can be omitted from the proof.
 
 **Proofs**
-[`+0x09`, `reqID`: `P`, `BV`: `P`, [`node_1`, `node_2`...], ...] Return a set of Merkle proofs, each consisting of a set of nodes that must be processed in order to access the trie entry value (or prove the absence of an entry) requested in `GetProofs`
+`+0x09`[`reqID`: `P`, `BV`: `P`, [`node_1`, `node_2`...], ...] Return a set of Merkle proofs, each consisting of a set of nodes that must be processed in order to access the trie entry value (or prove the absence of an entry) requested in `GetProofs`
 
 **GetContractCodes**
-[`+0x0a`, `reqID`: `P`, [`blockhash`: `B_32`, `key`: `B_32`], ...] Require peer to return a `ContractCodes` message.
+`+0x0a`[`reqID`: `P`, [`blockhash`: `B_32`, `key`: `B_32`], ...] Require peer to return a `ContractCodes` message.
 
 **ContractCodes**
 [`+0x0b`, `reqID`: `P`, `BV`: `P`, `value_0`: `B`, `value_1`: `B`, ...] Provide a set of contract codes which correspond to the block hashes and account keys previously asked in `GetContractCodes`.
 
 **GetHeaderProofs**
-[`+0x0d`, `reqID`: `P`, [`chtNumber`: `P`, `blockNumber`: `P`, `fromLevel`: `P`], ...] Require peer to return a `HeaderProofs` message, containing one or more canonical block headers (of block number `blockNumber`) and corresponding Merkle proofs of the CHT (Canonical Hash Trie) identified by `chtNumber`. If `fromLevel` is greater than zero, the given number of trie nodes closest to the root can be omitted from the proof.
+`+0x0d`[`reqID`: `P`, [`chtNumber`: `P`, `blockNumber`: `P`, `fromLevel`: `P`], ...] Require peer to return a `HeaderProofs` message, containing one or more canonical block headers (of block number `blockNumber`) and corresponding Merkle proofs of the CHT (Canonical Hash Trie) identified by `chtNumber`. If `fromLevel` is greater than zero, the given number of trie nodes closest to the root can be omitted from the proof.
 
 **HeaderProofs**
-[`+0x0e`, `reqID`: `P`, `BV`: `P`, [`blockHeader`, [`node_1`, `node_2`...]], ...] Return a set of structures, each containing a block header and a Merkle proof proving the header hash and belonging TD against a given CHT requested in `GetHeaderProofs`
+`+0x0e`[`reqID`: `P`, `BV`: `P`, [`blockHeader`, [`node_1`, `node_2`...]], ...] Return a set of structures, each containing a block header and a Merkle proof proving the header hash and belonging TD against a given CHT requested in `GetHeaderProofs`
 
 **GetBlockDeltas**
-[`+0x10`, `reqID`: `P`, `blockhash1`: B_32, `blockhash2`: B_32, ...] Require peer to return a `BlockDeltas` message, containing a set of block delta structures, each containing a list of altered trie nodes and contract code.
+`+0x10`[`reqID`: `P`, `blockhash1`: B_32, `blockhash2`: B_32, ...] Require peer to return a `BlockDeltas` message, containing a set of block delta structures, each containing a list of altered trie nodes and contract code.
 
 **BlockDeltas**
-[`+0x11`, `reqID`: `P`, [ [`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...] ], ... ] Return a list of block deltas, each corresponding to the block hash. Each block delta contains a list of altered trie nodes (in no particular order) and contract code within the block.
+`+0x11`[`reqID`: `P`, [ [`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...] ], ... ] Return a list of block deltas, each corresponding to the block hash. Each block delta contains a list of altered trie nodes (in no particular order) and contract code within the block.
 
 **GetTransactionProofs**
-[`+0x12`, `reqID`: `P`, [`blockhash`: B_32, `from`: B_20, `transaction`: B], ...] Request the peer to execute and prove the given transactions as though they were coming from the given address and at the state corresponding to the given block hash and return merkle proofs which can be used to re-enact the transactions locally.
+`+0x12`[`reqID`: `P`, [`blockhash`: B_32, `from`: B_20, `transaction`: B], ...] Request the peer to execute and prove the given transactions as though they were coming from the given address and at the state corresponding to the given block hash and return merkle proofs which can be used to re-enact the transactions locally.
 
 **TransactionProofs**
-[`+0x13`, `reqID`: `P`, [ [`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...] ], ...] Return a list of transaction proofs, each corresponding to the requested transaction. Each transaction proof consists of a set of required trie nodes (from various tries, in no particular order) and code.
+`+0x13`[`reqID`: `P`, [ [`node1`: B, `node2`: B, ...] [`code1`: B, `code2`: B, ...] ], ...] Return a list of transaction proofs, each corresponding to the requested transaction. Each transaction proof consists of a set of required trie nodes (from various tries, in no particular order) and code.
 
 ### Transaction relaying
 
 **SendTransactions**
-[`+0x0c`, `txdata_1`, `txdata_2`, ...] Require peer to add a set of transactions into its transaction pool and relay them to the ETH network.
+`+0x0c`[`txdata_1`, `txdata_2`, ...] Require peer to add a set of transactions into its transaction pool and relay them to the ETH network.
 
 ### Dynamic capabilities
 
 **Capabilities**
-[`+0x0f`, `reqID`: `P`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Broadcast new capabilities to a peer.
+`+0x0f`[`reqID`: `P`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Broadcast new capabilities to a peer.
 This can be done impromptu or as part of a request. Potential key, value pairs are:
 * "firstBlock" `B_32`. The first block (by hash) which queries may request state data for.
 * "lastBlock" `B_32`. The last block (by hash) which queries may request state data for.

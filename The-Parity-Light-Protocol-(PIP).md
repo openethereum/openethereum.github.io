@@ -178,7 +178,7 @@ Allowing only back-references allows us to never process requests in worse than 
 
 All loose inputs are marked as `Loose(T)` in the request definition. Any other input is fixed.
 Fixed inputs are just the RLP-encoded value. Loose inputs are a RLP-encoded list of two elements:
-[`discriminant`: `U8`, `data`].
+`discriminant`[`U8`, `data`].
 
 If the `discriminant` is 0, `data` is an RLP-encoded value of the expected type.
 If the `discriminant` is 1, `data` is an output back-reference, as described above.
@@ -237,7 +237,7 @@ The rate of recharge (in credits) of our local credits per second.
 
 ### Handshake
 **Status**: 
-[`+0x00`, [`key_0`, `value_0`], [`key_1`, `value_1`], ...] Inform a peer of the sender's current state. This message should be sent _after_ the initial handshake and _prior_ to any PIP related messages. The following keys should be present (except the optional ones) in order to be accepted by a PIP/1 node: (value types are noted after the key string)
+`+0x00`[[`key_0`, `value_0`], [`key_1`, `value_1`], ...] Inform a peer of the sender's current state. This message should be sent _after_ the initial handshake and _prior_ to any PIP related messages. The following keys should be present (except the optional ones) in order to be accepted by a PIP/1 node: (value types are noted after the key string)
 
 * "protocolVersion" `P`: is 1 for the PIPV1 protocol version.
 * "networkId" `P`: should be 0 for testnet, 1 for mainnet.
@@ -256,26 +256,26 @@ The rate of recharge (in credits) of our local credits per second.
 If any of the flow control keys are missing, this peer is not a server and cannot be requested from.
 
 **Announcement**
-[`+0x01`, `headHash`: `B_32`, `headNum`: `U`, `headTd`: `U`, `reorgDepth`: `U`, [`key_1`: `val_1`], [`key_2: `val_2`], ...]
+`+0x01`[`headHash`: `B_32`, `headNum`: `U`, `headTd`: `U`, `reorgDepth`: `U`, [`key_1`: `val_1`], [`key_2: `val_2`], ...]
 
 Announce a new chain head, along with a reorganization depth to the common ancestor of the new head and the last announced head. Also update any of the key-value pairs given in the handshake. 
 
 ### Request-response
 **Request**:
-[`+0x02`, `req_id`: `U`, [`req_1`, `req_2`, ...]]
+`+0x02`[`req_id`: `U`, [`req_1`, `req_2`, ...]]
 
 A unique request identifier followed by a list of requests, in the format described in the requests section.
 The base cost of a request packet plus the cumulative cost of all the requests contained therein may not exceed the current number of request credits held by the peer.
 
 **Response**:
-[`+0x03`, `req_id`: `U`, `CR`: `U`, [`res_1`, `res_2`, ...]]
+`+0x03`[`req_id`: `U`, `CR`: `U`, [`res_1`, `res_2`, ...]]
 
 A response to a set of requests. The request ID must correspond to the request ID of a corresponding `Request` packet. The `CR` field contains the updated amount of request credits. Each response must be an RLP-encoded list of the correct outputs for its corresponding request. It is permitted to only answer a prefix of the list of requests given, but all responses must be _complete_.
 
 ### Modifying request credits parameters mid-connection.
 
 **UpdateCreditParameters**:
-[`+0x04`, `max`: `U`, `recharge`: `U`, `cost_table`: `CT`]
+`+0x04` [`max`: `U`, `recharge`: `U`, `cost_table`: `CT`]
 
 Send a remote peer new request credits parameters: a new maximum, rate of recharge per second, and cost table.
 
@@ -286,12 +286,12 @@ When the acknowledgement is received, recharge will be applied to the old parame
 No updates can be made to a peer while another update remains unacknowledged.
 
 **AcknowledgeUpdate**
-[`+0x05`]
+`+0x05`
 
 Acknowledge an update in request credit parameters. It is considered misbehavior to acknowledge an update where none has been made, or to acknowledge an update more than once. Apply the transition to the new parameters upon sending this packet.
 
 ### Transaction relay
 **RelayTransactions**
-[`+0x06`, [`tx_1`: `P`, `tx_2`: `P`, ...]]
+`+0x06` [`tx_1`: `P`, `tx_2`: `P`, ...]
 
 Send transactions to a peer to relay to the main network.
