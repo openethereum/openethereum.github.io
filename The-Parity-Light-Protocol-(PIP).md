@@ -256,7 +256,7 @@ The rate of recharge (in credits) of our local credits per second.
 If any of the flow control keys are missing, this peer is not a server and cannot be requested from.
 
 **Announcement**
-`+0x01`[`headHash`: `B_32`, `headNum`: `U`, `headTd`: `U`, `reorgDepth`: `U`, [`key_1`: `val_1`], [`key_2: `val_2`], ...]
+`+0x01`[`headHash`: `B_32`, `headNum`: `U`, `headTd`: `U`, `reorgDepth`: `U`, [`key_1`: `val_1`], [`key_2`: `val_2`], ...]
 
 Announce a new chain head, along with a reorganization depth to the common ancestor of the new head and the last announced head. Also update any of the key-value pairs given in the handshake. 
 
