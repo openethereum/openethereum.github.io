@@ -101,6 +101,7 @@
 - [impl_stubs!](impl_stubs)
 - [Light-client](Substrate-Light-Client)
 - [P2P](P2P)
+- [Reclaiming an index](Reclaiming-an-index)
 - [Runtime](Runtime)
 - [Style Guide](Substrate-Style-Guide)
 
