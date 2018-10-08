@@ -34,7 +34,7 @@ Other examples include the parachain-heads extrinsic in Polkadot and the "note-m
 
 ## The Extrinsic format for Node
 
-Substrate Node, as of genesis, defines a specific Extrinsic format, based around the generic `UncheckedMortalExtrinsic` with a standard `Era` format, a Node-specific function format, a 64-bit block number, 64-bit transaction index, a standard `Address` format combining 256-bit `AccountId` with a variable-width 64-bit enumerated `AccountIndex`, and Ed25519 crpypto:
+Substrate Node, as of genesis, defines a specific Extrinsic format, based around the generic `UncheckedMortalExtrinsic` with a standard `Era` format, a Node-specific function format, a 64-bit block number, 64-bit transaction index, a standard `Address` format combining 256-bit `AccountId` with a variable-width 64-bit enumerated `AccountIndex`, and Ed25519 crypto:
 
 Fields:
 - 1-5 bytes: Length of the rest of the extrinsic, as a `Compact` integer in `parity-codec`.
@@ -79,7 +79,7 @@ The signing payload is a simple concatenation of four fields, three from the tra
 
 The Transaction Era is a data structure that, with the help of the Signing Payload, restricts a transaction's validity to a particular period of blocks in a specific blockchain.
 
-Given a Transaction Era instance and a block number from a time recent to when the transaction was authored, it can be used to calculate the *exact* block number at which the transaction was authored. Crucially, if the block number provided is not sufficiently recent (or is before the block that the transaction was authored), then it will provide the wrong answer, which helps make a "out of date" transaction invalid. The level of recent-ness required before the transaction becomes invalid can be configured from 4 blocks through to 65536 blocks, or can be disabled entirely.
+Given a Transaction Era instance and a block number from a time recent to when the transaction was authored, it can be used to calculate the *exact* block number at which the transaction was authored. Crucially, if the block number provided is not sufficiently recent (or is before the block that the transaction was authored), then it will provide the wrong answer, which helps make an "out of date" transaction invalid. The level of recent-ness required before the transaction becomes invalid can be configured from 4 blocks through to 65536 blocks, or can be disabled entirely.
 
 It is defined as a 16-bit quantity:
 
