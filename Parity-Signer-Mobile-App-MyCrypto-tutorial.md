@@ -57,7 +57,7 @@ You will then be asked to chose a pin code. This pin will be needed later on to 
 ### Recover an account with your recovery phrase
 
 If you already have an account created with either Parity Signer or Parity UI, you can recover it by doing so:
-- Click on `Add account`  `Recover account`.
+- Click on `Add account` > `Recover account`.
 - Select the network you want to recover this account for.
 - Name this account.
 - Type in the recovery phrase, word suggestion helps you prevent any typo.
@@ -80,7 +80,7 @@ To be able to follow this tutorial and send Ether from a freshly created account
 
 Assuming that your Parity Signer account now has funds, you will be able to send some Ether securely to anyone, without transferring your private key, and without needing any internet connection on your mobile phone.
 
-- To do so, click on `Parity Signer` from MyCrpto Desktop app.
+- To do so, click on `Parity Signer` from MyCrypto Desktop app.
 ![Mycrypto parity mobile signer app](images/MyCrypto-Parity-Signer-1.jpg)
 
 - On your phone, select in the account list the account you want to send funds from of and tap `Show account QR code`.
