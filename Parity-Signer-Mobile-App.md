@@ -21,7 +21,7 @@ Parity Signer Mobile App is built to be used offline. The mobile device used to 
 
 ### Install the App
 The App is available in beta for Android and iOs :
-- [Android](https://play.google.com/store/apps/details?id=com.nativesigner)
+- [Android](https://play.google.com/store/apps/details?id=io.parity.signer)
 - [iOs](https://itunes.apple.com/us/app/parity-signer/id1218174838)
 
 Please double check carefully the origin of the App, and make sure that the company distributing it is **Parity Technologies**. Usual security advice apply to this air-gapped wallet: 

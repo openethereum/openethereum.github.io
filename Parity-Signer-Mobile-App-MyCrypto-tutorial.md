@@ -30,7 +30,7 @@ Please find [here](Parity-Signer-Mobile-App) more info about the Parity Signer a
 ### Install Parity Signer mobile application
 
 Install Parity Signer making sure that it originated from **Parity Technologies**
-- [Android](https://play.google.com/store/apps/details?id=com.nativesigner)
+- [Android](https://play.google.com/store/apps/details?id=io.parity.signer)
 - [iOs](https://itunes.apple.com/us/app/parity-signer/id1218174838)
 
 
