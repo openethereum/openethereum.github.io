@@ -9,7 +9,7 @@ Run a development chain using:
 parity --config dev
 ```
 
-An address containing a lot of Ether (`0x00a329c0648769a73afac7f9381e08fb43dbea72`) has automatically added with a password being an empty string.
+An address containing a lot of Ether (`0x00a329c0648769a73afac7f9381e08fb43dbea72`) will be automatically added after startup with it's password being an empty string. 
 
 ## Customizing the development chain
 
