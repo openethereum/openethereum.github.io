@@ -65,6 +65,7 @@
   - Validator Set
     - [Overview](Validator-Set)
     - [Validator contracts](Validator-contracts)
+    - [Tutorial](Validator-Set-Tutorial-Overview)
   - [Block Reward Contract](Block-Reward-Contract)
 - Warp Sync
   - [Warp Sync Overview](Warp-Sync)
