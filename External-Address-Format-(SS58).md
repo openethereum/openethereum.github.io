@@ -25,8 +25,6 @@ Currently, there exist six valid values:
 - 00000001b (1) Polkadot Live (AccountId checksum preimage)
 - 00101010b (42) Generic Substrate (testnets &c.) (SS58 checksum preimage)
 - 00101011b (43) Generic Substrate (testnets &c.) (AccountId checksum preimage)
-- 01000100b (68) EW Live (SS58 checksum preimage)
-- 01000101b (69) EW Live (AccountId checksum preimage)
 
 ## Address Formats for Polkadot
 
