@@ -78,9 +78,6 @@ Create `Validator-set-tutorial.json` file containing:
 
 This genesis file is defining a network called `Validator-set-tutorial` with many parameters similar to the ones the Kovan Network has. You are encouraged to visit [Aura consensus](Pluggable-Consensus#aura) as well as the [general chain specifications](Chain-specification) pages to understand the parameters used here. This genesis file is incomplete as we miss `Node0`'s address in the list of validators. We will create it in the next steps.
 
-If you intend to use the files from the [full setup repository](https://github.com/Tbaut/Validator-set-tutorial/tree/master/Full-setup), note that the genesis file does not contains all the builtins contracts. You can safely ignore this message instead.
-
-
 ## 2. Create and configure the validators' nodes
 
 ### 2.1 Create and configure `Node0`
