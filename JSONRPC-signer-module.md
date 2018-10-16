@@ -1,6 +1,4 @@
----
-title: The `signer` Module
----
+# The `signer` Module
 
 ## JSON-RPC methods
 
@@ -288,7 +286,7 @@ An example notification received by subscribing to this event:
 
 You can unsubscribe using `signer_unsubscribePending` RPC method. Subscriptions are also tied to a transport
 connection, disconnecting causes all subscriptions to be canceled.
-
+    
 
 #### Parameters
 
@@ -347,3 +345,4 @@ Response
   "result": true
 }
 ```
+
