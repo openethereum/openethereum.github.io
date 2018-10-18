@@ -33,8 +33,14 @@ Binaries for Parity Ethereum are provided. If you'd like to try these out, downl
     - Make the `parity` file executable by running `chmod u+x parity`
     - Launch Parity Ethereum with your favourite flags: `./parity --chain dev --jsonrpc-apis personal`
     
-- Windows and Mac  
-Download the Binary and double click on it.
+- Mac
+  - Download the mac binary.
+  - Open a terminal and navigate to the directory using `cd /path/to/binary/folder/`.
+  - Make the binary executable by running `chmod +x parity`.
+  - You can now double click on the binary.
+  
+- Windows
+Download the binary and double click on it.
 
 ## Dependencies
 
