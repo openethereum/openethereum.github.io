@@ -13,7 +13,7 @@ The basic format conforms to:
 base58encode ( concat ( <address-type>, <address>, <checksum> ) )
 ```
 
-This is, the concatenated byte series of address type, address and checksum then passed into a base-58 encoder. The `base58encode` function is exactly as [defined](https://en.wikipedia.org/wiki/Base58) in Bitcoin and IPFS, using the same alphabet as both.
+That is, the concatenated byte series of address type, address and checksum then passed into a base-58 encoder. The `base58encode` function is exactly as [defined](https://en.wikipedia.org/wiki/Base58) in Bitcoin and IPFS, using the same alphabet as both.
 
 ## Address Type
 
@@ -23,10 +23,12 @@ Currently, there exist four valid values:
 
 - 00000000b (0) Polkadot Live (SS58 checksum preimage)
 - 00000001b (1) Polkadot Live (AccountId checksum preimage)
-- 00101010b (42) Generic Substrate (testnets &c.) (SS58 checksum preimage)
-- 00101011b (43) Generic Substrate (testnets &c.) (AccountId checksum preimage)
+- 00101010b (42) Generic Substrate wildcard (SS58 checksum preimage)
+- 00101011b (43) Generic Substrate wildcard (AccountId checksum preimage)
 
-## Address Formats for Polkadot
+The latter two are "wildcard" addresses that are meant to be equally valid on all Substrate networks that support fixed-length addresses and/or indexed addresses. For production networks, however, a network-specific version may be desirable to help avoid the key-reuse between networks and some of the problems that it can cause. Substrate Node will default to printing keys in address type 42, though alternative Substrate-based node implementations (e.g. Polkadot) may elect to default to some other type.
+
+## Address Formats for Substrate
 
 There are 16 different address formats, identified by the length (in bytes) of the total payload (i.e. including the checksum).
 
@@ -49,9 +51,9 @@ There are 16 different address formats, identified by the length (in bytes) of t
 
 ## Checksum types
 
-Several potential checksum strategies exist within Polkadot, giving different length and longevity guarantees. There are two types of checksum preimage (known as SS58 and AccountID) and many different checksum lengths (1 to 8 bytes).
+Several potential checksum strategies exist within Substrate, giving different length and longevity guarantees. There are two types of checksum preimage (known as SS58 and AccountID) and many different checksum lengths (1 to 8 bytes).
 
-In all cases for Polkadot, the [Blake2-256](https://en.wikipedia.org/wiki/BLAKE_(hash_function)) hash function is used. The variants simply select the preimage used as the input to the hash function and the number of bytes taken from its output.
+In all cases for Substrate, the [Blake2-256](https://en.wikipedia.org/wiki/BLAKE_(hash_function)) hash function is used. The variants simply select the preimage used as the input to the hash function and the number of bytes taken from its output.
 
 The bytes used are always the left most bytes. The input to be used is one of:
 
