@@ -19,7 +19,7 @@ This is, the concatenated byte series of address type, address and checksum then
 
 The `<address-type>` is one or more bytes that describe the precise format of the following bytes.
 
-Currently, there exist six valid values:
+Currently, there exist four valid values:
 
 - 00000000b (0) Polkadot Live (SS58 checksum preimage)
 - 00000001b (1) Polkadot Live (AccountId checksum preimage)
