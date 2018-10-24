@@ -94,6 +94,7 @@
 - [Overview](Parity-Substrate)
 - [Byzantine Fault Tolerance](Byzantine-Fault-Tolerance)
 - [Consensus](Consensus)
+- [decl_module!](decl_module)
 - [decl_storage!](decl_storage)
 - [Extrinsic](Extrinsic)
 - [External Address Format (SS58)](External-Address-Format-(SS58))
