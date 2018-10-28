@@ -1,21 +1,21 @@
----
-title: The `parity` Module
----
+# The `parity` Module
 
 ## JSON-RPC methods
 
+- [parity_chainId](#parity_chainid)
 - [parity_cidV0](#parity_cidv0)
 - [parity_composeTransaction](#parity_composetransaction)
 - [parity_consensusCapability](#parity_consensuscapability)
 - [parity_decryptMessage](#parity_decryptmessage)
 - [parity_encryptMessage](#parity_encryptmessage)
 - [parity_futureTransactions](#parity_futuretransactions)
-- [parity_allTransactions](#parity_alltransactions)
 - [parity_getBlockHeaderByNumber](#parity_getblockheaderbynumber)
+- [parity_hardwarePinMatrixAck](#parity_hardwarepinmatrixack)
 - [parity_listOpenedVaults](#parity_listopenedvaults)
 - [parity_listStorageKeys](#parity_liststoragekeys)
 - [parity_listVaults](#parity_listvaults)
 - [parity_localTransactions](#parity_localtransactions)
+- [parity_lockedHardwareAccountsInfo](#parity_lockedhardwareaccountsinfo)
 - [parity_releasesInfo](#parity_releasesinfo)
 - [parity_signMessage](#parity_signmessage)
 - [parity_versionInfo](#parity_versioninfo)
@@ -54,7 +54,6 @@ title: The `parity` Module
 
 #### Network Information
 - [parity_chain](#parity_chain)
-- [parity_chainId](#parity_chainid)
 - [parity_chainStatus](#parity_chainstatus)
 - [parity_gasPriceHistogram](#parity_gaspricehistogram)
 - [parity_netChain](#parity_netchain)
@@ -77,6 +76,36 @@ title: The `parity` Module
 - [parity_wsUrl](#parity_wsurl)
 
 ## JSON-RPC API Reference
+
+### parity_chainId
+
+Returns the current chain ID used for tranaction signing.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Quantity` - The current blockchain chain ID
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_chainId","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0x1"
+}
+```
+
+***
 
 ### parity_cidV0
 
@@ -275,8 +304,6 @@ Response
 
 ### parity_futureTransactions
 
-**This method is deprecated in favor of [parity_allTransactions](#parity_allTransactions)**
-
 Returns all future transactions from transaction queue.
 
 #### Parameters
@@ -300,7 +327,7 @@ None
     - `creates`: `Address` - (optional) Address of a created contract or `null`.
     - `raw`: `Data` - Raw transaction data.
     - `publicKey`: `Data` - Public key of the signer.
-    - `networkId`: `Quantity` - The network id of the transaction, if any.
+    - `chainId`: `Quantity` - The chain id of the transaction, if any.
     - `standardV`: `Quantity` - The standardized V field of the signature (0 or 1).
     - `v`: `Quantity` - The V field of the signature.
     - `r`: `Quantity` - The R field of the signature.
@@ -335,7 +362,7 @@ Response
       "creates": null,
       "raw": "0xf86c018504a817c80082520894f5d405530dabfbd0c1cab7a5812f008aa5559adf882efc004ac03a49968025a0b40c6967a7e8bbdfd99a25fd306b9ef23b80e719514aeb7ddd19e2303d6fc139a06bf770ab08119e67dc29817e1412a0e3086f43da308c314db1b3bca9fb6d32bd",
       "publicKey": "0xeba33fd74f06236e17475bc5b6d1bac718eac048350d77d3fc8fbcbd85782a57c821255623c4fd1ebc9d555d07df453b2579ee557b7203fc256ca3b3401e4027",
-      "networkId": 1,
+      "chainId": 1,
       "standardV": "0x0",
       "v": "0x25",
       "r": "0xb40c6967a7e8bbdfd99a25fd306b9ef23b80e719514aeb7ddd19e2303d6fc139",
@@ -351,79 +378,9 @@ Response
 
 ***
 
-### parity_allTransactions
-
-Returns all the transactions from the transaction queue.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Array` - Transaction list.
-    - `blockHash`: `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
-    - `blockNumber`: `Quantity` | `Tag` - Block number where this transaction was in. `null` when its pending.
-    - `chainId`: `Quantity` - the EIP155 chain ID.
-    - `condition`: `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.    
-    - `creates`: `Address` - (optional) Address of a created contract or `null`.   
-    - `from`: `Address` - 20 Bytes - address of the sender.
-    - `gas`: `Quantity` - Gas provided by the sender.
-    - `gasPrice`: `Quantity` - Gas price provided by the sender in Wei.
-    - `hash`: `Hash` - 32 Bytes - hash of the transaction.
-    - `input`: `Data` - The data send along with the transaction.
-    - `nonce`: `Quantity` - The number of transactions made by the sender prior to this one.
-    - `publicKey`: `Data` - Public key of the signer.
-    - `r`: `Quantity` - The R field of the signature.
-    - `raw`: `Data` - Raw transaction data.
-    - `s`: `Quantity` - The S field of the signature.
-    - `standardV`: `Quantity` - The standardized V field of the signature (0 or 1).    
-    - `to`: `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
-    - `transactionIndex`: `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
-    - `v`: `Quantity` - The V field of the signature.
-    - `value`: `Quantity` - Value transferred in Wei.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_allTransactions","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-    "jsonrpc": "2.0",
-    "result": [{
-        "blockHash": null,
-        "blockNumber": null,
-        "chainId": null,
-        "condition": null,
-        "creates": null,
-        "from": "0x5f3dffcf347944d3739b0805c934d86c8621997f",
-        "gas": "0x493e0",
-        "gasPrice": "0x12a05f200",
-        "hash": "0x045301a128ffcb4662dd199d1176bdf4cc9f0628e10d6bf120edfb52e3e39a78",
-        "input": "0x13f56f730...f3b4dc000",
-        "nonce": "0x577",
-        "publicKey": "0x3bb...9ce1b1",
-        "r": "0x6fd2c7a5dbb8795038ca258196083b3eabe15a20e3020c3f45e88f2e447be410",
-        "raw": "0xf88b8247d202...83eef3f8916bb818ce7",
-        "s": "0x5993992c547d20234aabfc8c32a58d25784255fef500383eef3f8916bb818ce7",
-        "standardV": "0x0",
-        "to": "0xe8b2d01ffa0a15736b2370b6e5064f9702c891b6",
-        "transactionIndex": null,
-        "v": "0x1b",
-        "value": "0x0"
-    }, { .. }, { .. }]
-}
-```
-
-***
-
 ### parity_getBlockHeaderByNumber
 
-Get block header. Same as [`eth_getBlockByNumber`](JSONRPC-eth-module.md#eth_getblockbynumber) but without uncles and transactions.
+Get block header. Same as [`eth_getBlockByNumber`](JSONRPC-eth-module#eth_getblockbynumber) but without uncles and transactions.
 
 #### Parameters
 
@@ -475,6 +432,44 @@ Response
     "timestamp": "0x55ba467c",
     "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
   }
+}
+```
+
+***
+
+### parity_hardwarePinMatrixAck
+
+Send a pin to a hardware wallet at a specific path to unlock it
+
+#### Parameters
+
+0. `String` - path to the device
+0. `String` - the pin as recieved from the pin matrix
+
+```js
+params: [
+  "USB_2b24_0001_14100000",
+  "1234"
+]
+```
+
+#### Returns
+
+- `Boolean` - Whether or not the pin entry successfully unlocked the device
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_hardwarePinMatrixAck","params":["USB_2b24_0001_14100000","1234"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
 }
 ```
 
@@ -628,7 +623,7 @@ Response
         "condition": {
           "block": 1
         },
-        "networkId": null,
+        "chainId": null,
         "nonce": "0x0",
         "publicKey": "0x3fa8c08c65a83f6b4ea3e04e1cc70cbe3cd391499e3e05ab7dedf28aff9afc538200ff93e3f2b2cb5029f03c7ebee820d63a4c5a9541c83acebe293f54cacf0e",
         "raw": "0xf868808502d20cff33830e57e09400a289b43e1e4825dbedf2a78ba60a640634dc40830fffff801ca034c333b0b91cd832a3414d628e3fea29a00055cebf5ba59f7038c188404c0cf3a0524fd9b35be170439b5ffe89694ae0cfc553cb49d1d8b643239e353351531532",
@@ -641,6 +636,36 @@ Response
     },
     "0x...": { ... }
   }
+}
+```
+
+***
+
+### parity_lockedHardwareAccountsInfo
+
+Provides a list of paths to locked hardware wallets
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Array` - Paths of all locked hardware wallets
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_lockedHardwareAccountsInfo","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "['/dev/hidraw0']"
 }
 ```
 
@@ -762,7 +787,7 @@ Response
 
 ### parity_changeVault
 
-Changes the current vault for the account
+Changes the current valut for the account
 
 #### Parameters
 
@@ -1271,23 +1296,23 @@ Response
 
 ### parity_postSign
 
-Request a standard Ethereum message to be signed by an account.
+Request an arbitrary transaction to be signed by an account.
 
 #### Parameters
 
 0. `Address` - Account address.
-0. `Data` - The message.
+0. `Hash` - Transaction hash.
 
 ```js
 params: [
   "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
-  "0x414243"
+  "0x8cda01991ae267a539135736132f1f987e76868ce0269b7537d3aab37b7b185e"
 ]
 ```
 
 #### Returns
 
-- `Quantity` - The id of the request to the signer.
+- `Quantity` - The id of the request to the signer. If the account was already unlocked, returns `Hash` of the transaction instead.
 
 #### Example
 
@@ -1313,7 +1338,7 @@ Posts a transaction to the signer without waiting for the signer response.
 
 #### Parameters
 
-0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module.md#eth_sendtransaction).
+0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
     - `from`: `Address` - 20 Bytes - The address the transaction is send from.
     - `to`: `Address` - (optional) 20 Bytes - The address the transaction is directed to.
     - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
@@ -1333,7 +1358,7 @@ params: [{
   "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
   "condition": {
     "block": 354221,
-    "time": "2017-07-31T08:53:46.544Z"
+    "time": "2018-10-28T15:59:28.923Z"
   }
 }]
 ```
@@ -1346,7 +1371,7 @@ params: [{
 
 Request
 ```bash
-curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2017-07-31T08:53:46.544Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2018-10-28T15:59:28.923Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -1608,7 +1633,7 @@ Response
 
 ### parity_chain
 
-Returns the name of the connected chain.
+Returns the name of the connected chain. 
 
 #### Parameters
 
@@ -1631,36 +1656,6 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": "homestead"
-}
-```
-
-***
-
-### parity_chainId
-
-Returns the EIP155 chain ID used for transaction signing at the current best block. Null is returned if not available.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Quantity` - EIP155 Chain ID, or `null` if not available.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_chainId","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": "0x1"
 }
 ```
 
@@ -1789,8 +1784,7 @@ Response
 
 ### parity_netPeers
 
-Returns connected peers. Peers with non-empty protocols have completed handshake.
-
+Returns number of peers.
 
 #### Parameters
 
@@ -1916,7 +1910,7 @@ None
     - `creates`: `Address` - (optional) Address of a created contract or `null`.
     - `raw`: `Data` - Raw transaction data.
     - `publicKey`: `Data` - Public key of the signer.
-    - `networkId`: `Quantity` - The network id of the transaction, if any.
+    - `chainId`: `Quantity` - The chain id of the transaction, if any.
     - `standardV`: `Quantity` - The standardized V field of the signature (0 or 1).
     - `v`: `Quantity` - The V field of the signature.
     - `r`: `Quantity` - The R field of the signature.
@@ -1948,7 +1942,7 @@ Response
       "condition": {
         "block": 1
       },
-      "networkId": 1,
+      "chainId": 1,
       "nonce": "0x5",
       "publicKey": "0x96157302dade55a1178581333e57d60ffe6fdf5a99607890456a578b4e6b60e335037d61ed58aa4180f9fd747dc50d44a7924aa026acbfb988b5062b629d6c36",
       "r": "0x92e8beb19af2bad0511d516a86e77fa73004c0811b2173657a55797bdf8558e1",
@@ -2065,7 +2059,7 @@ params: ["0x2547ea3382099c7c76d33dd468063b32d41016aacb02cbd51ebc14ff5d2b6a43"]
     - `creates`: `Address` - (optional) Address of a created contract or `null`.
     - `raw`: `Data` - Raw transaction data.
     - `publicKey`: `Data` - Public key of the signer.
-    - `networkId`: `Quantity` - The network id of the transaction, if any.
+    - `chainId`: `Quantity` - The chain id of the transaction, if any.
     - `standardV`: `Quantity` - The standardized V field of the signature (0 or 1).
     - `v`: `Quantity` - The V field of the signature.
     - `r`: `Quantity` - The R field of the signature.
@@ -2097,7 +2091,7 @@ Response
       "condition": {
         "block": 1
       },
-      "networkId": 1,
+      "chainId": 1,
       "nonce": "0x5",
       "publicKey": "0x96157302dade55a1178581333e57d60ffe6fdf5a99607890456a578b4e6b60e335037d61ed58aa4180f9fd747dc50d44a7924aa026acbfb988b5062b629d6c36",
       "r": "0x92e8beb19af2bad0511d516a86e77fa73004c0811b2173657a55797bdf8558e1",
@@ -2366,3 +2360,4 @@ Response
   "result": "localhost:8546"
 }
 ```
+
