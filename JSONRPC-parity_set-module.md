@@ -1,12 +1,11 @@
----
-title: The `parity_set` Module
----
+# The `parity_set` Module
 
 ## JSON-RPC methods
 
 - [parity_acceptNonReservedPeers](#parity_acceptnonreservedpeers)
 - [parity_addReservedPeer](#parity_addreservedpeer)
 - [parity_dappsList](#parity_dappslist)
+- [parity_dappsRefresh](#parity_dappsrefresh)
 - [parity_dropNonReservedPeers](#parity_dropnonreservedpeers)
 - [parity_executeUpgrade](#parity_executeupgrade)
 - [parity_hashContent](#parity_hashcontent)
@@ -126,6 +125,36 @@ Response
 
 ***
 
+### parity_dappsRefresh
+
+Returns a boolean value upon success and error upon failure
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Boolean` - True for success. error details for failure
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_dappsRefresh","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
+}
+```
+
+***
+
 ### parity_dropNonReservedPeers
 
 Set Parity to drop all non-reserved peers. To restore default behavior call [parity_acceptNonReservedPeers](#parity_acceptnonreservedpeers).
@@ -195,7 +224,7 @@ Creates a hash of a file at a given URL.
 0. `String` - The url of the content.
 
 ```js
-params: ["https://raw.githubusercontent.com/paritytech/parity-ethereum/master/README.md"]
+params: ["https://raw.githubusercontent.com/paritytech/parity/master/README.md"]
 ```
 
 #### Returns
@@ -206,7 +235,7 @@ params: ["https://raw.githubusercontent.com/paritytech/parity-ethereum/master/RE
 
 Request
 ```bash
-curl --data '{"method":"parity_hashContent","params":["https://raw.githubusercontent.com/paritytech/parity-ethereum/master/README.md"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_hashContent","params":["https://raw.githubusercontent.com/paritytech/parity/master/README.md"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -294,7 +323,7 @@ Sets the network spec file Parity is using.
 
 #### Parameters
 
-0. `String` - Chain spec name, one of: "foundation", "ropsten", "morden", "kovan", "olympic", "classic", "dev", "expanse" or a filename.
+0. `String` - Chain spec name, one of: "foundation", "ropsten", "morden", "kovan", "olympic", "classic", "dev", "expanse", "musicoin" or a filename.
 
 ```js
 params: ["foundation"]
@@ -324,7 +353,7 @@ Response
 
 ### parity_setEngineSigner
 
-Sets an authority account for signing consensus messages. For more information check the [Proof of Authority Chains](Proof-of-Authority-Chains.md) page.
+Sets an authority account for signing consensus messages. For more information check the [[Proof of Authority Chains]] page.
 
 #### Parameters
 
@@ -644,3 +673,4 @@ Response
   "result": null
 }
 ```
+
