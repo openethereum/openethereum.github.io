@@ -2,6 +2,10 @@
 title: Docker
 ---
 
+> #### Updating from an old container
+> Since v2.0.7, the Docker container no longer uses the root user by default and therefore old setups may break.
+> You can either force the old behaviour by adding the `--user root` flag to `docker run`, or make sure to change your config and data directories to ones accessible by the `parity` user (uid 1000) within the docker container or before adding the directories as volumes to docker.
+
 Build and run Parity Ethereum anywhere with Docker:
 
 - [Pick a container](#pick-a-container)
@@ -17,6 +21,7 @@ Build and run Parity Ethereum anywhere with Docker:
     - [Launching Parity Ethereum](#launching-parity-ethereum)
     - [More Options](#more-options)
 - [Further reading](#further-reading)
+
 
 ### Pick a container
 
