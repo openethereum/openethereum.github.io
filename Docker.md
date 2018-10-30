@@ -35,17 +35,22 @@ To get a list of available versions, use `curl` and `jq`:
 
 ```bash
 $ curl -sS 'https://registry.hub.docker.com/v2/repositories/parity/parity/tags/'  | jq '."results"[]["name"]' | sort
+"beta"
 "nightly"
-"v1.6.8"
-"v1.6.9"
-"v1.6.10"
-"v1.7.0"
+"stable"
+"v2.0.6"
+"v2.0.7"
+"v2.0.8"
+"v2.1.2"
+"v2.1.3"
+"v2.1.4"
+"v2.2.0-rc6"
 ```
 
 To get the latest beta release, run:
 
 ```bash
-$ docker pull parity/parity:v1.7.0
+$ docker pull parity/parity:v2.1.3
 ```
 
 ### Run container
@@ -53,7 +58,7 @@ $ docker pull parity/parity:v1.7.0
 To run Parity Ethereum with an interactive pseudo-tty shell, run:
 
 ```bash
-$ docker run -ti parity/parity:v1.7.0
+$ docker run -ti parity/parity:v2.1.3
 ```
 
 ### Configure Parity Ethereum
@@ -61,7 +66,7 @@ $ docker run -ti parity/parity:v1.7.0
 Parity can be configured using either the [CLI options or a config file](Configuring-Parity.md). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence. You can list all CLI options by running:
 
 ```bash
-$ docker run parity/parity:v1.7.0 --help
+$ docker run parity/parity:v2.1.3 --help
 ```
 
 For Docker specific options, please refer to the [Docker documentation](https://docs.docker.com/engine/), or run `docker --help` or `docker run --help`.
@@ -71,7 +76,7 @@ For Docker specific options, please refer to the [Docker documentation](https://
 To publish Parity Ethereum's ports to the host machine, use the `-p` option:
 
 ```bash
-$ docker run -ti -p 8545:8545 -p 8546:8546 -p 30303:30303 -p 30303:30303/udp parity/parity:v1.7.0 --ui-interface all --jsonrpc-interface all
+$ docker run -ti -p 8545:8545 -p 8546:8546 -p 30303:30303 -p 30303:30303/udp parity/parity:v2.1.3 --ui-interface all --jsonrpc-interface all
 ```
 
 For example, this will expose the HTTP and WebSockets JSONRPC APIs, and the listen port to the host. Now you can send RPC calls from the Docker host computer.
@@ -83,7 +88,7 @@ To enable external discovery (for example for PoA sealing nodes), specify the ex
 To pass further operating options to Parity Ethereum, simply append them to the `docker run` command:
 
 ```bash
-$ docker run -ti parity/parity:v1.7.0 --no-ui --no-dapps --no-discovery
+$ docker run -ti parity/parity:v2.1.3 --no-ui --no-dapps --no-discovery
 ```
 
 In this case, it disables the Wallet, the DApps Server, and discovery.
@@ -100,17 +105,17 @@ $ touch ~/.local/share/io.parity.ethereum/docker/config.toml
 You can use the [Config File Generator](https://paritytech.github.io/parity-config-generator/) to configure your Parity Ethereum node and save it on your host's disk, i.e., at `~/.local/share/io.parity.ethereum/docker/config.toml`. To mount the configuration, use the `docker run -v` option:
 
 ```bash
-$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/root/.local/share/io.parity.ethereum/ parity/parity:v1.7.0 --config /root/.local/share/io.parity.ethereum/config.toml
+$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/home/parity/.local/share/io.parity.ethereum/ parity/parity:v2.1.3 --config /home/parity/.local/share/io.parity.ethereum/config.toml
 ```
 
-This will mount `~/.local/share/io.parity.ethereum/docker/` of the host machine at `/root/.local/share/io.parity.ethereum/` inside the docker container. Therefore, the config file will be available via `--config /root/.local/share/io.parity.ethereum/config.toml`.
+This will mount `~/.local/share/io.parity.ethereum/docker/` of the host machine at `/home/parity/.local/share/io.parity.ethereum/` inside the docker container. Therefore, the config file will be available via `--config /home/parity/.local/share/io.parity.ethereum/config.toml`.
 
 ##### Persistent data directory
 
 In case you need to persist the blockchain files, keys etc., you should run the image with the `--base-path` option and then mount it, e.g.:
 
 ```
-$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/root/.local/share/io.parity.ethereum/ parity/parity:v1.7.0 --base-path /root/.local/share/io.parity.ethereum/
+$ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/home/parity/.local/share/io.parity.ethereum/ parity/parity:v2.1.3 --base-path /home/parity/.local/share/io.parity.ethereum/
 ```
 
 This will expose the whole data dir to the host machine at `~/.local/share/io.parity.ethereum/docker/`.
@@ -120,7 +125,7 @@ This will expose the whole data dir to the host machine at `~/.local/share/io.pa
 To run a detached Parity Ethereum instance, use `docker run -d`:
 
 ```bash
-$ docker run -d parity/parity:v1.7.0
+$ docker run -d parity/parity:v2.1.3
 245f312f3f39ad0a518091b1ee4cdc0c1f6d74fb9609395ed3fdcf43acae4b62
 ```
 
@@ -129,7 +134,7 @@ It will run Parity Ethereum in background. `docker ps` shows the instance:
 ```bash
 $ docker ps
 CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                          NAMES
-245f312f3f39        parity/parity:v1.7.0   "/parity/parity"    7 seconds ago       Up 6 seconds        8080/tcp, 8180/tcp, 8545/tcp   epic_pike
+245f312f3f39        parity/parity:v2.1.3   "/parity/parity"    7 seconds ago       Up 6 seconds        8080/tcp, 8180/tcp, 8545/tcp   epic_pike
 ```
 
 To attach the container, use `docker attach`:
