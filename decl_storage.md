@@ -83,7 +83,7 @@ pub trait StorageValue<T: Codec> {
 	/// Load the value from the provided storage instance.
 	fn get() -> Self::Query;
 
-	/// Store a value under this key into the provded storage instance.
+	/// Store a value under this key into the provided storage instance.
 	fn put<Arg: Borrow<T>>(val: Arg);
 
 	/// Clear the storage value.
@@ -106,7 +106,7 @@ let value = <Number<T>>::get();
 let value = Self::block_number();
 ```
 
-The only thing that may cause issues is that type parameter `T`. The thing is that you may access stored data from the module's `impl` block. For example, this is how `set_block_number` is defined in the `system` module:
+The only thing that may cause issues is the type parameter `T`. The issue is that you may access stored data from the module's `impl` block. For example, this is how `set_block_number` is defined in the `system` module:
 
 ```rust
 impl<T: Trait> Module<T> {
