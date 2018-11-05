@@ -74,7 +74,7 @@ Every reply message contains a `BV` (Buffer Value) flow control feedback field, 
 [`+0x0b`, `reqID`: `P`, `BV`: `P`, `value_0`: `B`, `value_1`: `B`, ...] Provide a set of contract codes which correspond to the block hashes and account keys previously asked in `GetContractCodes`.
 
 **GetHeaderProofs**
-`+0x0d`[`reqID`: `P`, [`chtNumber`: `P`, `blockNumber`: `P`, `fromLevel`: `P`], ...] Require peer to return a `HeaderProofs` message, containing one or more canonical block headers (of block number `blockNumber`) and corresponding Merkle proofs of the CHT (Canonical Hash Trie) identified by `chtNumber`. If `fromLevel` is greater than zero, the given number of trie nodes closest to the root can be omitted from the proof.
+`+0x0d`[`reqID`: `P`, [`chtNumber`: `P`, `blockNumber`: `P`, `fromLevel`: `P`], ...] Require peer to return a `HeaderProofs` message, containing one or more canonical block headers (of block number `blockNumber`) and corresponding Merkle proofs of the CHT (Canonical Hash Trie) identified by `chtNumber`. If `fromLevel` is greater than zero, the given number of trie nodes closest to the root can be omitted from the proof. For the last 2048 blocks no results are returned.
 
 **HeaderProofs**
 `+0x0e`[`reqID`: `P`, `BV`: `P`, [`blockHeader`, [`node_1`, `node_2`...]], ...] Return a set of structures, each containing a block header and a Merkle proof proving the header hash and belonging TD against a given CHT requested in `GetHeaderProofs`
