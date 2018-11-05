@@ -125,6 +125,19 @@ $ docker run -ti -v ~/.local/share/io.parity.ethereum/docker/:/home/parity/.loca
 
 This will expose the whole data dir to the host machine at `~/.local/share/io.parity.ethereum/docker/`.
 
+Windows machines don't support unix permissions, which means you will likely experience errors when mounting a local volume as a non-root user. One workaround for this is to create a volume using:
+
+```
+docker volume create --driver=local --opt o=uid=1000 --opt type=tmpfs --opt device=tmpfs paritydb
+```
+This ensures that the volume has the correct permissions to give the `parity` user access to it.
+
+Your can then mount the volume with:
+
+```
+$ docker run -ti -v paritydb:/home/parity/.local/share/io.parity.ethereum/ parity/parity:v2.1.3 --base-path /home/parity/.local/share/io.parity.ethereum/
+```
+
 ##### Run in background
 
 To run a detached Parity Ethereum instance, use `docker run -d`:
