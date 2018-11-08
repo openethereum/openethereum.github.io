@@ -3,7 +3,7 @@ title: Visualize misbehaviours
 ---
 
 Now that we have two validators responsible for creating blocks on the network, we need to make sure they perform their task.
-Misbehaviour reporting is implemented in the contracts we've deployed, and it will allow any other validator to report misbehaviour as well as the users of the Network such as Alice to see which node misbehaved.
+Misbehaviour reporting is implemented in the contracts we've deployed, and it will allow any other validator to report misbehaviour as well as the users of the network such as Alice to see which node misbehaved.
 
 ## 1. Let `Node0` be down
 
@@ -18,7 +18,7 @@ Let's shut down `Node0` for a moment and see what happens for `Alice`. In this c
 2018-09-30 19:21:35  Imported #1004 0xd043…f833 (0 txs, 0.00 Mgas, 0 ms, 0.57 KiB)
 ```
 
-Having a look at the block time, it went from every 5sec to every 10sec. This is expected as `Node0` misses his turn and does not issue any block anymore.
+Having a look at the block time, it went from every 5sec to every 10sec. This is expected as `Node0` misses his turn and does not issue blocks anymore.
 
 In the same time, having a look at `Node1`'s console output shows the following:
 

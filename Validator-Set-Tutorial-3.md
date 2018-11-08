@@ -4,9 +4,9 @@ title: Hardfork to use the Validator Set contract
 
 Now that the needed contract is deployed, `Node0`, the only authority in the network has to agree to update its chain specification file to add the block from which the Validator Set contract will be used.
 
-## 1. Chose the hardfork block
+## 1. Choose the hardfork block
 
-Depending on how long the network has been up, you should choose an adequate hardfork block. In this example the chain is currently at around block #800. We will decide to perform the hardfork at block #900. **Note that the selected hardfork block has to be in the future**. 
+Depending on how long the network has been up, you should choose an adequate hardfork block. In this example, the chain is currently at around block #800. We will decide to perform the hardfork at block #900. **Note that the selected hardfork block has to be in the future**. 
 
 Before this block is reached, update the `Validator-set-tutorial.json` chain spec file to add the hardfork block. It should look like:
 ```json
@@ -22,7 +22,7 @@ Before this block is reached, update the `Validator-set-tutorial.json` chain spe
 }
 ```
 
-This tells that the fixed list of validator (containing `Node0`'s address) will be used from block 0 until block 900. From block 900, the network will use the Validator-Set contract deployed at the address `0x79dd..9de3` to determine the validators.
+This tells that the fixed list of validators (containing `Node0`'s address) will be used from block 0 until block 900. From block 900, the network will use the Validator-Set contract deployed at the address `0x79dd..9de3` to determine the validators.
 
 Before the hardfork block has been reached, make sure to stop and restart all the nodes from the network. Once you reach this block, you should see the following in the console.
 
@@ -41,8 +41,8 @@ This indicates that the move from a fixed list to a Validator Set contract was e
 
 As explained before, we now have the flexibility to add and remove validator nodes. As `node1` has initially been set up like a validator, we can now add it to the Validator Set.
 
-To do this, in Remix, call the `addValidator` function from the `RelayedOwnedSet` contract with `Node1`'s address as the argument.
-Once you deploy this transaction the nodes connected to the network should print the following:
+To do this, in Remix call the `addValidator` function from the `RelayedOwnedSet` contract with `Node1`'s address as the argument.
+Once you deploy this transaction, the nodes connected to the network should print the following:
 
 ```bash
 2018-09-30 19:17:40  Imported #960 0x84bf…5725 (0 txs, 0.00 Mgas, 2 ms, 0.57 KiB)
