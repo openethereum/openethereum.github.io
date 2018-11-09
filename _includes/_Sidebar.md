@@ -108,6 +108,7 @@
 
 ## Parity Fether
 - [Overview](Parity-Fether)
+- [FAQ](Fether-FAQ)
 
 ## Parity Signer Mobile App
 - [Overview](Parity-Signer-Mobile-App)
