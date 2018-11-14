@@ -6,7 +6,6 @@ title: The `parity_set` Module
 
 - [parity_acceptNonReservedPeers](#parity_acceptnonreservedpeers)
 - [parity_addReservedPeer](#parity_addreservedpeer)
-- [parity_dappsList](#parity_dappslist)
 - [parity_dropNonReservedPeers](#parity_dropnonreservedpeers)
 - [parity_executeUpgrade](#parity_executeupgrade)
 - [parity_hashContent](#parity_hashcontent)
@@ -84,43 +83,6 @@ Response
   "id": 1,
   "jsonrpc": "2.0",
   "result": true
-}
-```
-
-***
-
-### parity_dappsList
-
-Returns a list of available local dapps.
-
-#### Parameters
-
-None
-
-#### Returns
-
-- `Array` - The list of dapps
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"parity_dappsList","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": [{
-    "author": "Parity Technologies Ltd",
-    "description": "A skeleton dapp",
-    "iconUrl": "title.png",
-    "id": "skeleton",
-    "name": "Skeleton",
-    "version": "0.1"
-  }]
 }
 ```
 
@@ -294,7 +256,7 @@ Sets the network spec file Parity is using.
 
 #### Parameters
 
-0. `String` - Chain spec name, one of: "foundation", "ropsten", "morden", "kovan", "olympic", "classic", "dev", "expanse" or a filename.
+0. `String` - Chain spec name, one of: "foundation", "ropsten", "morden", "kovan", "classic", "dev", "expanse", "musicoin" or a filename.
 
 ```js
 params: ["foundation"]
@@ -624,10 +586,10 @@ None
 #### Returns
 
 - `Object` - Details or `null` if no new release is available.
-    - `version`: `Object` - Information on the version.
-    - `is_critical`: `Boolean` - Does this release contain critical security updates?
-    - `fork`: `Quantity` - The latest fork that this release can handle.
-    - `binary`: `Data` - (optional) Keccak-256 checksum of the release parity binary, if known.
+    - `version`:   `Object` - Information on the version.
+    - `is_critical`:   `Boolean` - Does this release contain critical security updates?
+    - `fork`:   `Quantity` - The latest fork that this release can handle.
+    - `binary`:   `Data` - (optional) Keccak-256 checksum of the release parity binary, if known.
 
 #### Example
 
@@ -644,3 +606,4 @@ Response
   "result": null
 }
 ```
+
