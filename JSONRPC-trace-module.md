@@ -52,9 +52,10 @@ then it should look something like:
 
 #### Ad-hoc Tracing
 - [trace_call](#trace_call)
+- [trace_callMany](#trace_callmany)
 - [trace_rawTransaction](#trace_rawtransaction)
-- [trace_replayTransaction](#trace_replaytransaction)
 - [trace_replayBlockTransactions](#trace_replayblocktransactions)
+- [trace_replayTransaction](#trace_replaytransaction)
 
 #### Transaction-Trace Filtering
 - [trace_block](#trace_block)
@@ -71,12 +72,12 @@ Executes the given call and returns a number of possible traces for it.
 #### Parameters
 
 0. `Object` - Call options, same as `eth_call`.
-    - `from`: `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`: `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
-    - `gas`: `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`: `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`: `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`: `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+    - `from`:   `Address` - (optional) 20 Bytes - The address the transaction is send from.
+    - `to`:   `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
+    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
+    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
+    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
 0. `Array` - Type of trace, one or more of: `"vmTrace"`, `"trace"`, `"stateDiff"`.
 0. `Quantity` or `Tag` - (optional) Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
 
@@ -116,6 +117,106 @@ Response
 
 ***
 
+### trace_callMany
+
+Performs multiple call traces on top of the same block. i.e. transaction `n` will be executed on top of a pending block with all `n-1` transactions applied (traced) first. Allows to trace dependent transactions.
+
+#### Parameters
+
+0. `Array` - List of trace calls with the type of trace, one or more of: `"vmTrace"`, `"trace"`, `"stateDiff"`.
+0. `Quantity` or `Tag` - (optional) integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
+
+```js
+params: [
+  [
+    [
+      {
+        "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+        "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+        "value": "0x186a0"
+      },
+      ["trace"]
+    ],
+    [
+      {
+        "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+        "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+        "value": "0x186a0"
+      },
+      ["trace"]
+    ]
+  ],
+  "latest"
+]
+```
+
+#### Returns
+
+- `Array` - Array of the given transactions' traces
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"trace_callMany","params":[[[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","value":"0x186a0"},["trace"]],[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","value":"0x186a0"},["trace"]]],"latest"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "output": "0x",
+      "stateDiff": null,
+      "trace": [{
+        "action": {
+          "callType": "call",
+          "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+          "gas": "0x1dcd12f8",
+          "input": "0x",
+          "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+          "value": "0x186a0"
+        },
+        "result": {
+          "gasUsed": "0x0",
+          "output": "0x"
+        },
+        "subtraces": 0,
+        "traceAddress": [],
+        "type": "call"
+      }],
+      "vmTrace": null
+    },
+    {
+      "output": "0x",
+      "stateDiff": null,
+      "trace": [{
+        "action": {
+          "callType": "call",
+          "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+          "gas": "0x1dcd12f8",
+          "input": "0x",
+          "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+          "value": "0x186a0"
+        },
+        "result": {
+          "gasUsed": "0x0",
+          "output": "0x"
+        },
+        "subtraces": 0,
+        "traceAddress": [],
+        "type": "call"
+      }],
+      "vmTrace": null
+    }
+  ]
+}
+```
+
+***
+
 ### trace_rawTransaction
 
 Traces a call to `eth_sendRawTransaction` without making the call, returning the traces
@@ -140,66 +241,7 @@ params: [
 
 Request
 ```bash
-curl --data '{"method":"trace_rawTransaction","params":["0xf86a8086d55698372431831e848094f0109fc8df283027b6285cc889f5aa624eac1f55843b9aca008025a009ebb6ca057a0535d6186462bc0b465b561c94a295bdb0621fc19208ab149a9ca0440ffd775ce91a833ab410777204d5341a6f9fa91216a6f3ee2c051fea6a0428",["trace"]],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
-```
-
-Response
-```js
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "output": "0x",
-    "stateDiff": null,
-    "trace": [{
-      "action": {
-        "callType": "call",
-        "from": "0x2c7536e3605d9c16a7a3d7b1898e529396a65c23",
-        "gas": "0x1e3278",
-        "input": "0x",
-        "to": "0xf0109fc8df283027b6285cc889f5aa624eac1f55",
-        "value": "0x3b9aca00"
-      },
-      "result": {
-        "gasUsed": "0x0",
-        "output": "0x"
-      },
-      "subtraces": 0,
-      "traceAddress": [],
-      "type": "call"
-    }],
-    "vmTrace": null
-  }, "id": 1
-}
-```
-
-***
-
-### trace_replayTransaction
-
-Replays a transaction, returning the traces.
-
-#### Parameters
-
-0. `Hash` - Transaction hash.
-0. `Array` - Type of trace, one or more of: `"vmTrace"`, `"trace"`, `"stateDiff"`.
-
-```js
-params: [
-  "0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",
-  ["trace"]
-]
-```
-
-#### Returns
-
-- `Object` - Block traces.
-
-#### Example
-
-Request
-```bash
-curl --data '{"method":"trace_replayTransaction","params":["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",["trace"]],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"trace_rawTransaction","params":["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",["trace"]],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -275,8 +317,60 @@ Response
       }],
       "vmTrace": null
     },
-    ...
+    { ... }
   ]
+}
+```
+
+***
+
+### trace_replayTransaction
+
+Replays a transaction, returning the traces.
+
+#### Parameters
+
+0. `Hash` - Transaction hash.
+0. `Array` - Type of trace, one or more of: `"vmTrace"`, `"trace"`, `"stateDiff"`.
+
+```js
+params: [
+  "0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",
+  ["trace"]
+]
+```
+
+#### Returns
+
+- `Object` - Block traces.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"trace_replayTransaction","params":["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",["trace"]],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "output": "0x",
+    "stateDiff": null,
+    "trace": [{
+      "action": { ... },
+      "result": {
+        "gasUsed": "0x0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "type": "call"
+    }],
+    "vmTrace": null
+  }
 }
 ```
 
@@ -348,12 +442,12 @@ Returns traces matching given filter
 #### Parameters
 
 0. `Object` - The filter object
-    - `fromBlock`: `Quantity` or `Tag` - (optional) From this block.
-    - `toBlock`: `Quantity` or `Tag` - (optional) To this block.
-    - `fromAddress`: `Array` - (optional) Sent from these addresses.
-    - `toAddress`: `Address` - (optional) Sent to these addresses.
-    - `after`: `Quantity` - (optional) The offset trace number.
-    - `count`: `Quantity` - (optional) Integer number of traces to display in a batch.    
+    - `fromBlock`:   `Quantity` or `Tag` - (optional) From this block.
+    - `toBlock`:   `Quantity` or `Tag` - (optional) To this block.
+    - `fromAddress`:   `Array` - (optional) Sent from these addresses.
+    - `toAddress`:   `Address` - (optional) Sent to these addresses.
+    - `after`:   `Quantity` - (optional) The offset trace number
+    - `count`:   `Quantity` - (optional) Integer number of traces to display in a batch.
 
 ```js
 params: [{
@@ -373,7 +467,7 @@ params: [{
 
 Request
 ```bash
-curl --data '{"method":"trace_filter","params":[{"fromBlock":"0x2ed0c4","toBlock":"0x2ed128","toAddress":["0x8bbB73BCB5d553B5A556358d27625323Fd781D37"]}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"trace_filter","params":[{"fromBlock":"0x2ed0c4","toBlock":"0x2ed128","toAddress":["0x8bbB73BCB5d553B5A556358d27625323Fd781D37"],"after":1000,"count":100}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -526,3 +620,4 @@ Response
   ]
 }
 ```
+

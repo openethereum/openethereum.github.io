@@ -28,20 +28,21 @@
 
 ### JSONRPC Guide
 - [Overview](JSONRPC)
-- [web3](JSONRPC-web3-module)
-- [net](JSONRPC-net-module)
+- [debug](JSONRPC-debug-module)
 - [eth](JSONRPC-eth-module)
 - [eth_pubsub](JSONRPC-eth_pubsub-module)
-- [personal](JSONRPC-personal-module)
+- [net](JSONRPC-net-module)
 - [parity](JSONRPC-parity-module)
 - [parity_accounts](JSONRPC-parity_accounts-module)
-- [parity_set](JSONRPC-parity_set-module)
 - [parity_pubsub](JSONRPC-parity_pubsub-module)
+- [parity_set](JSONRPC-parity_set-module)
+- [personal](JSONRPC-personal-module)
+- [private](JSONRPC-private-module)
+- [secretstore](JSONRPC-secretstore-module)
+- [shh](JSONRPC-shh-module)
 - [signer](JSONRPC-signer-module)
 - [trace](JSONRPC-trace-module)
-- [shh](JSONRPC-shh-module)
-- [secretstore](JSONRPC-secretstore-module)
-- [private](JSONRPC-private-module)
+- [web3](JSONRPC-web3-module)
 
 ### Technologies
 - [Transaction Queue](Transactions-Queue)

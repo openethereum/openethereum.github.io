@@ -9,13 +9,13 @@ title: The `eth_pubsub` Module
 
 ## JSON-RPC API Reference
 
-Below examples use `wscat`, a simple command line WebSocket client. Find out how to install and use it by visiting [wscat GitHub repository](https://github.com/websockets/wscat).
-
 ### eth_subscribe
 
 
 Starts a subscription (on WebSockets / IPC / TCP transports) to a particular event. For every event that
 matches the subscription a JSON-RPC notification with event details and subscription ID will be sent to a client.
+
+Below examples use `wscat`, a simple command line WebSockets client. Find out how to install and use it by visiting [wscat GitHub repository](https://github.com/websockets/wscat).
 
 An example notification received by subscribing to `newHeads` event:
 ```js
@@ -56,7 +56,7 @@ connection, disconnecting causes all subscriptions to be canceled.
 #### Parameters
 
 0. `String` - Subscription type: one of `newHeads`, `logs`
-0. `Object` -
+0. `Object` - 
 Subscription type-specific parameters. It must be left empty for
 `newHeads` and must contain filter object for `logs`.
 
@@ -80,15 +80,15 @@ params: [
 Request
 ```bash
 wscat -c localhost:8546
-> {"method":"eth_subscribe","params":["newHeads"],"id":1,"jsonrpc":"2.0"}
+>{"method":"eth_subscribe","params":["logs",{"fromBlock":"latest","toBlock":"latest"}],"id":1,"jsonrpc":"2.0"}
 ```
 
 Response
 ```js
 {
-    "jsonrpc": "2.0",
-    "result": "0xb53c4832f1dca4a5",
-    "id": 1
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": "0xb53c4832f1dca4a5"
 }
 ```
 
@@ -115,14 +115,15 @@ params: ["0xb53c4832f1dca4a5"]
 Request
 ```bash
 wscat -c localhost:8546
-> {"method":"eth_unsubscribe","params":["0xb53c4832f1dca4a5"],"id":1,"jsonrpc":"2.0"}
+>{"method":"eth_unsubscribe","params":["0xb53c4832f1dca4a5"],"id":1,"jsonrpc":"2.0"}
 ```
 
 Response
 ```js
 {
-    "jsonrpc": "2.0",
-    "result": true,
-    "id": 1
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": true
 }
 ```
+
