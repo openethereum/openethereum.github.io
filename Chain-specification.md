@@ -114,12 +114,12 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"eip145Transition"` (Constantinople) [EIP145](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-145.md) transition block number. 
   + `"eip1014Transition"` (Constantinople) [EIP1014](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1014.md) transition block number.
   + `"eip1052Transition"` (Constantinople) [EIP1052](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1052.md) transition block number.
-  + `"dustProtectionTransition"` Dust cleanup (EIP-168 and EIP169) transition block number.
+  + `"dustProtectionTransition"` - Activates Mainnet specific [EIP-168](https://github.com/ethereum/EIPs/issues/168) and [EIP169](https://github.com/ethereum/EIPs/issues/168) - Not active by default.
   + `"nonceCapIncrement"` - U64 - Nonce cap increase per block. Nonce cap is only checked if dust protection is enabled..
   + `"removeDustContracts"` - bool - Enable dust cleanup for contracts.
   + `"gasLimitBoundDivisor"` U256 - How much the block gas limit can change between blocks. Miners can vote to bring the block gas limit up or down (via the flag [`--gas-floor-target`](Configuring-Parity-Ethereum)), the new gas limit is callculated according to the formula: `current_gas_limit*(1 ± 1/gasLimitBoundDivisor)`.
-  + `"registrar"` Registrar contract address.
-  + `"maxCodeSize"` - U64 - Maximum contract code size that can be deployed in a transaction.
+  + `"registrar"` Address of the [registrar contract](https://wiki.parity.io/Parity-name-registry.html) which enables the client to locate system contracts like [Automatic Updating](https://wiki.parity.io/Automatic-Updating).
+  + `"maxCodeSize"` - U64 - Maximum contract code size that can be deployed in a transaction. Introduced in [EIP170](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-170.md) to mitigate a vulnerability in Ethereum.
   + `"maxCodeSizeTransition"` transition block number for `maxCodeSize` .
 
 [ + "eip86Transition" EIP-86 (Metropolis) transition block number. Commented out before paritytech/parity-ethereum#9140 is merged.]: # ()
