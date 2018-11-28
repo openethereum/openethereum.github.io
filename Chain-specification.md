@@ -73,15 +73,15 @@ A JSON file which specifies rules of a blockchain, some fields are optional whic
   + `"extraData"` extra data of the genesis block.
 
 + **`"params"`** contains general chain parameters:
-  + `"networkID"` DevP2P supports multiple networks, and ID is used to uniquely identify each one which is used to connect to correct peers and to prevent transaction replay across chains.
-  + `"maximumExtraDataSize"` determines how much extra data the block issuer can place in the block header.
-  + `"minGasLimit"` gas limit can adjust across blocks, this parameter determines the absolute minimum it can reach.
-    
+  + `"networkID"` DevP2P supports multiple networks, and ID is used to uniquely identify each one which is used to connect to correct peers and to prevent transaction replay across chains. See [here](https://ethereum.stackexchange.com/questions/17051/how-to-select-a-network-id-or-is-there-a-list-of-network-ids/17101#17101) for network IDs that are not available anymore.
+  + `"maximumExtraDataSize"` integer specifying the maximum size in bytes of the extra_data field of the header. This must be 32 bytes or fewer as per the Ethereum Yellow Paper (see extraData under 4.3). It is an optional value, used by some Ethereum mining pools to log their blocks. The current value for Ethereum and Kovan is "32".
+  + `"minGasLimit"` the minimum gas limit. Most chains like Ethereum and Kovan use 5000 (less than the minimum 21000 needed to perform a transaction) in a deliberate process called "thawing", more info about it [here](https://ethereum.gitbooks.io/frontier-guide/content/frontier.html/).
+  
   Optional:
   + `"accountStartNonce"` in the past this was used for transaction replay protection
-  + `"chainID"` chain identifier, if not present then equal to `networkID`
-  + `"subprotocolName"` by default its the `eth` subprotocol
-  + `"forkBlock"` block number of the latest fork that should be checked
+  + `"chainID"` chain identifier, was introduced in [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) to prevent replay attacks between the main ETH and ETC chains, which both have a `networkID` of `1`. `ChainID` is an additional way to tell chains apart. Subsequent to EIP-155, ETH had a `chainID` of 1, while ETC had a `chainID` of `61`. `networkID` and chainID are  required for the chain to operate in general - e.g. it's required when signing transactions. Default value is equal to `networkID`.
+  + `"subprotocolName"` Devp2p subprotocol name. Default is `eth`.
+  + `"forkBlock"` block number of the latest fork that should be verified. In case of chain split, a node would only warp-sync with a peer whose block hash matches the `forkBlockHash` for a given `forkBlock` to make sure to sync with a given side of a fork.
   + `"forkCanonHash"` hash of the canonical block at `forkBlock`
   + `"bombDefuseTransition"` block number at which the difficulty bomb (epsilon in Yellow Paper Eqs. 39, 44) is removed from the difficulty evolution
   + `"wasmActivationTransition"` block number at which bytecode (in storage or transactions) can be run as Wasm bytecode and by WebAssembly VM.
