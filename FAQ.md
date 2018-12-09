@@ -26,7 +26,7 @@ Read more about [Warp sync (also called fastsync)](Warp-Sync-Snapshot-Format.md)
 
 #### Full Node
 
-Running a full node with the standard configuration for the Ethereum Mainnet requires a lot of computer resources. The blockchain download and validation process are particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and an SSD drive and at least 100GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
+Running a full node with the standard configuration for the Ethereum Mainnet requires a lot of computer resources. The blockchain download and validation process are particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and an SSD drive and at least 200GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
 
 Computers using HDD are advised to run a [Light Node](#light-node).
 
@@ -34,21 +34,26 @@ Computers using HDD are advised to run a [Light Node](#light-node).
 
 Running a light node using the flag `--light` does not require to download and perform validation of the whole blockchain. A light node relies on full node peers to receive block headers and verify transactions. It is therefore far less resource demanding than a full node.
 
-A computer or mobile phone with single core CPU, 512MB RAM and an HDD with 128MB free space are recommended to run a light node.
+A computer or mobile phone with single core CPU, 512MB RAM and any disk with 100MB free space are recommended to run a light node.
 
 #### Storage Requirements Overview
 
-Indicative data storage requirement from May 2018 syncing Ethereum Mainnet (ETH) with Parity Ethereum 1.10.0 and Ubuntu 16.4 LTS, VPS instance with SSD backed storage:
+Indicative data storage requirement from December 2018 syncing Ethereum Mainnet (ETH) with Parity Ethereum 2.2.4 and Ubuntu 18.10 with SSD backed storage:
 ```
-Client / Mode                     | Block Number   | Disk Space | CLI flags                |
-==================================|================|============|==========================|
-parity light                      | 5_600_000      |  89M       | --light                  |
-parity warp pruning fast -ancient | 5_600_000      |  20G       | --no-ancient-blocks      |
-parity warp pruning fast          | 5_600_000      |  82G       |                          |
-parity pruning fast               | 5_600_000      |  78G       | --no-warp                |
-parity pruning fast fatdb trace   | 5_600_000      | 108G       | --fat-db on --tracing on |
-parity pruning archive            | 5_600_000      | 1.1T       | --pruning archive        |
+Client / Mode            | Block Number   | Disk Space | CLI flags                    |
+=========================|================|============|==============================|
+parity +light +hardcoded |      6_850_000 |        14M | --light                      |
+parity +light            |      5_600_000 |        89M | --light ---no-hardcoded-sync |
+parity +warp -ancient    |      6_850_000 |        29G | --no-ancient-blocks          |
+parity +warp             |      6_850_000 |       133G |                              |
+parity -warp             |      6_850_000 |       133G | --no-warp                    |
+parity -warp +archive    |      6_850_000 |       1.8T | --pruning archive            |
 ```
+
+Live data:
+
+- for full nodes: http://didtheethereumblockchainreach1tbyet.5chdn.co/
+- for archive nodes: http://whataboutarchivenodes.5chdn.co/
 
 ### How to use Parity Ethereum Chrome Extension to browse a Web3 website?
 
