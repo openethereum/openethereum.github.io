@@ -12,9 +12,9 @@ Internally such storage is represented by some persistent data structure. That m
 
 ### Persistent storage in a nutshell
 
-For programmers, the easiest way to grasp the idea is to associate it with how Git works. Here, for the sake of simplicity, treat git commit as a block. When working with a Git repo, you have access to the individual commits by their hashes. You may check out particular commit and obtain the snapshot of all files in a repo at that particular point in time. You may also edit some files, add them to the index and commit to the repository. Note, that once pushed upstream, such commit is considered persistent (irreversible). 
+For programmers, the easiest way to grasp the idea is to associate it with how Git works. Here, for the sake of simplicity, treat `git commit` as a block. When working with a Git repo, you have access to the individual commits by their hashes. You may check out a particular commit and obtain the snapshot of all files in a repo at that particular point in time. You may also edit some files, add them to the index and commit to the repository. Note, that once pushed upstream, such commit is considered persistent (irreversible). 
 
-In the same manner, you may modify the storage during the block creation phase and then, once the block is sealed, such storage is considered irreversible. You may switch back to any point in block history and get values actual for that block.
+In the same manner, you may modify the storage during the block creation phase and then, once the block is sealed, such storage is considered irreversible. You may switch back to any point in block history and get values current for that block.
 
 So, the most important thing to understand is that in such persistent storage data is never lost. It may be overwritten by new values, but older ones would still remain in the history.
 
@@ -26,7 +26,7 @@ So, `timestamp` module defines its storage to contain three types of values, two
 
 ```rust
 decl_storage! {
-        // Here we implementing the storage for the current module
+        // Here we are implementing the storage for the current module
 	trait Store for Module<T: Trait>;
 
 	pub Now get(now): b"tim:val" => required T::Moment;
@@ -39,7 +39,7 @@ decl_storage! {
 }
 ```
 
-Storage definition starts from the access specifier (`pub` or empty), then goes the accessor identifiers and, separated by `:`, the namespace and the identifier of the value to be used in the storage. Next goes the type of the value which is separated by `=>`. 
+Storage definitions start with the access specifier (`pub` or empty), then the accessor identifiers and, separated by `:`, the namespace and the identifier of the value to be used in the storage. Next goes the type of the value which is separated by `=>`. 
 
 Types may be prepended with the `default` or `required` specifiers, that control the behavior when an attempt is made to read a nonexistent value from the storage: `default` returns the default value associated with a type, `require` panics instead. Otherwise, `Option<T>` is returned where `T` is the actual data type that was specified in a macro.
 
@@ -94,7 +94,7 @@ pub trait StorageValue<T: Codec> {
 }
 ```
 
-So, for example, block number from the module above may be accessed like this:
+So, for example, the block number from the module above may be accessed like this:
 ```rust
 // Accessing value using generic interface.
 // Type would be `Option<T::BlockNumber>`.

@@ -14,13 +14,13 @@ Despite Substrate not caring about the extrinsic format at its core, the Substra
 
 Extrinsics are expected to be encodable and decodable. See the `Encode` and `Decode` traits.
 
-**Note:** It may seem strange, but currently, Substrate does not define how extrinsics should be encoded. In case of a Polkadot, extrinsics are formed and encoded in the JS part of the code, so you would not find this in the Rust codebase.
+**Note:** It may seem strange, but currently, Substrate does not define how extrinsics should be encoded. In case of Polkadot, extrinsics are formed and encoded in the JS part of the code, so you would not find this in the Rust codebase.
 
 ### Future-proof
 
 In Polkadot runtime, extrinsics are said to be future-proof. Basically, that means that the actual details of the extrinsic are defined by the runtime, whereas external logic, such as network or storage, treats and handles them as opaque byte vectors.
 
-This allows us to update or extend extrinsic definition by changing the runtime only, without forcing clients to update their software.
+This allows us to update or extend an extrinsic definition by changing the runtime only, without forcing clients to update their software.
 
 ### Extrinsic types
 
@@ -28,19 +28,20 @@ Extrinsics fall into two broad categories of which only one is conventional _tra
 
 Inherents, meanwhile, are not passed on the network and are not signed. They represent data which describes the environment but which cannot call upon anything to prove it per se such as a signature. Rather they are assumed to be "true" simply because a sufficiently large number of validators have agreed on them being reasonable.
 
-To give an example, there is the timestamp inherent which sets the current timestamp of the block. This is not a fixed part of Substrate, but does come as part of the Substrate Runtime Module Library to be used as desired. No signature could fundamentally prove that a block were authored at a given time in quite the same way that a signature can "prove" the desire to spend some particular funds. Rather, it is the business of each validator to ensure that they believe the timestamp is set to something reasonable before they agree that the block candidate is valid.
+To give an example, there is the timestamp _inherent_ which sets the current timestamp of the block. This is not a fixed part of Substrate, but does come as part of the Substrate Runtime Module Library to be used as desired. No signature could fundamentally prove that a block were authored at a given time in quite the same way that a signature can "prove" the desire to spend some particular funds. Rather, it is the business of each validator to ensure that they believe the timestamp is set to something reasonable before they agree that the block candidate is valid.
 
-Other examples include the parachain-heads extrinsic in Polkadot and the "note-missed-proposal" extrinsic used in the Substrate Runtime Module Library to determine and punish or deactivate offline validators.
+Other examples include the parachain-heads _extrinsic_ in Polkadot and the "note-missed-proposal" _extrinsic_ used in the Substrate Runtime Module Library to determine and punish or deactivate offline validators.
 
 ## The Extrinsic format for Node
 
-Substrate Node, as of genesis, defines a specific Extrinsic format, based around the generic `UncheckedMortalExtrinsic` with a standard `Era` format, a Node-specific function format, a 64-bit block number, 64-bit transaction index, a standard `Address` format combining 256-bit `AccountId` with a variable-width 64-bit enumerated `AccountIndex`, and Ed25519 crypto:
+Substrate Node, as of genesis, defines a specific Extrinsic format, based around the generic `UncheckedMortalExtrinsic` with a standard `Era` format, a Node-specific function format, a 64-bit block number, 64-bit transaction index, a standard `Address` format combining 256-bit `AccountId` with a variable-width 64-bit enumerated `AccountIndex`, and _Ed25519_ crypto.
 
-Fields:
+### Fields
+
 - 1-5 bytes: Length of the rest of the extrinsic, as a `Compact` integer in `parity-codec`.
-- 1 byte: version information:
+- 1 byte: Version information:
   - 7 low bits: version identifier (should be 0b0000001).
-  - 1 high bit: signed flag: 1 if this is a transaction (e.g. contains a signature).
+  - 1 high bit: signed flag; 1 if this is a transaction (e.g. contains a signature).
 - Optional, depending on previous bit: The signature information:
   - 1/3/5/9/33 bytes: The signing account identity, in `Address` format:
     - 0...0xef: 1 byte Account Index, to be interpreted as the value of the byte.
@@ -48,7 +49,7 @@ Fields:
     - 0xfd: 4 byte Account Index, value to follow.
     - 0xfe: 8 byte Account Index, value to follow.
     - 0xff: 32 byte Account ID, value to follow.
-  - 64 bytes: The Ed25519 signature of the Signing Payload (detailed below).
+  - 64 bytes: The _Ed25519_ signature of the Signing Payload (detailed below).
   - 8 bytes: The Transaction Index of the signing account (number of signed transactions from the account preceeding this one).
   - 2 bytes: The Transaction Era (detailed below).
 - 2+ bytes: The Function Descriptor:
@@ -64,7 +65,7 @@ The `AccountId` should be considered the canonical means to identify an account.
 
 To get maximum efficiency with on-chain storage, `Address`es are encoded as variable length quantities: if it's an index whose value is small enough, the value is encoded as a single byte. If it's an index that fits into 2, 4 or 8 bytes, then it'll be encoded into 3, 5 and 9 bytes respectively. If it's a straight 32-byte identifier, then it'll be encoded into 33 bytes.
 
-The translation from AccountIndex to AccountId, if necessary, is done through a on-chain query provided by the *Balances* module. Account Indexes can be reused if the account becomes dead, implying that any transaction which refers to the account using an Index must be executed in a timely fashion, i.e. while the account is still alive. If the account holder keeps ample funds in it, then it'll be fine, but if they spend it all, then the transaction could become invalid since the Account ID that it is signed with could no longer match the account to which the index later refers.
+The translation from `AccountIndex` to `AccountId`, if necessary, is done through a on-chain query provided by the *Balances* module. Account Indexes can be reused if the account becomes dead, implying that any transaction which refers to the account using an Index must be executed in a timely fashion, i.e. while the account is still alive. If the account holder keeps ample funds in it, then it'll be fine, but if they spend it all, then the transaction could become invalid since the Account ID that it is signed with could no longer match the account to which the index later refers.
 
 ### Signing Payload
 
