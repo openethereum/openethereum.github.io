@@ -64,6 +64,8 @@ For ethminer, you should use:
 ethminer -G -P stratum+tcp://127.0.0.1:8008
 ```
 
+Parity currently implements stratum without any authentication, nor does it match the proxy modes used by mining pools and certain mining software. Attempting to use these features with Parity will result in it rejecting your connections. 
+
 ## HTTP Notification
 
 Parity can push work package notifications to a set of URLs by using the option `--notify-work URLS`, where URLS should be a comma-delimited list of HTTP URLs. For example,
