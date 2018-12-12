@@ -26,16 +26,15 @@ So, `timestamp` module defines its storage to contain three types of values, two
 
 ```rust
 decl_storage! {
-        // Here we are implementing the storage for the current module
-	trait Store for Module<T: Trait>;
+	trait Store for Module<T: Trait> as Timestamp {
+		/// Current time for the current block.
+		pub Now get(now) build(|_| T::Moment::sa(0)): T::Moment;
+		/// The minimum (and advised) period between blocks.
+		pub BlockPeriod get(block_period) config(period): T::Moment = T::Moment::sa(5);
 
-	pub Now get(now): b"tim:val" => required T::Moment;
-
-	// The minimum (and advised) period between blocks.
-	pub BlockPeriod get(block_period): b"tim:block_period" => required T::Moment;
-
-	// Did the timestamp get updated in this block?
-	DidUpdate: b"tim:did" => default bool;
+		/// Did the timestamp get updated in this block?
+		DidUpdate: bool;
+	}
 }
 ```
 
@@ -47,20 +46,20 @@ Storage supports lists and maps as well. The next example shows how to use the m
 
 ```rust
 decl_storage! {
-	trait Store for Module<T: Trait>;
+	trait Store for Module<T: Trait> as System {
 
-	pub AccountNonce get(account_nonce): b"sys:non" => default map [ T::AccountId => T::Index ];
-	pub BlockHash get(block_hash): b"sys:old" => required map [ T::BlockNumber => T::Hash ];
+		pub AccountNonce get(account_nonce): map T::AccountId => T::Index;
 
-	pub ExtrinsicIndex get(extrinsic_index): b"sys:xti" => required u32;
-	pub ExtrinsicData get(extrinsic_data): b"sys:xtd" => required map [ u32 => Vec<u8> ];
-	RandomSeed get(random_seed): b"sys:rnd" => required T::Hash;
-	
-	// The current block number being processed. Set by `execute_block`.
-	Number get(block_number): b"sys:num" => required T::BlockNumber;
-	ParentHash get(parent_hash): b"sys:pha" => required T::Hash;
-	ExtrinsicsRoot get(extrinsics_root): b"sys:txr" => required T::Hash;
-	Digest get(digest): b"sys:dig" => default T::Digest;
+		ExtrinsicCount: Option<u32>;
+		pub BlockHash get(block_hash) build(|_| vec![(T::BlockNumber::zero(), [69u8; 32])]): map T::BlockNumber => T::Hash;
+		ExtrinsicData get(extrinsic_data): map u32 => Vec<u8>;
+		RandomSeed get(random_seed) build(|_| [0u8; 32]): T::Hash;
+		/// The current block number being processed. Set by `execute_block`.
+		Number get(block_number) build(|_| 1u64): T::BlockNumber;
+		ParentHash get(parent_hash) build(|_| [69u8; 32]): T::Hash;
+		ExtrinsicsRoot get(extrinsics_root): T::Hash;
+		Digest get(digest): T::Digest;
+	}
 }
 ```
 
