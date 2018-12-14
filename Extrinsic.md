@@ -4,33 +4,41 @@ title: Extrinsic
 
 _Extrinsic_ is a [Substrate](Parity-Substrate) specific generalization which includes _transactions_ (a normal term from the blockchain world) as well as _inherents_ (also Substrate-specific).
 
-In classic blockchains, blocks usually contain pieces of information called transactions that give instructions from "the outside world" (i.e. you and me) to the blockchain logic. For crypto-currency blockchains such instructions are generally confined to variations on the theme of transfering funds from one account to another. Substrate generalises this by removing the assumption that this piece of information be signed, instead merely characterising it on the fact that it "comes from the outside world" and is thus "extrinsic" to the blockchain and its state.
+### Extrinsic types
 
-For pieces of information that do nonetheless contain a signature to authenticate whatever data it contains, then we reuse the classic term "transaction". Conversely for those that do not contain a signature, we say they are "inherents", since the chain assumes that by the fact they are finalised means that what they contain is deemed "inherently true". This is reminiscent of the timestamp field in the header of classical chains, which is true simply because enough of the network maintainers (miners or validators) accepted it as being reasonable.
+In classic blockchains, blocks usually contain pieces of information called transactions that give instructions from "the outside world" (i.e. you and me) to the blockchain logic. For crypto-currency blockchains such instructions are generally confined to variations on the theme of transferring funds from one account to another. Substrate generalises this by removing the assumption that this piece of information be signed, instead merely characterising it on the fact that it "comes from the outside world" and is thus "extrinsic" to the blockchain and its state.
+
+Extrinsics fall into two broad categories, of which only one is conventional _transactions_. The other is known as _inherents_. The difference between these two is that transactions are signed and gossiped on the network and can be deemed useful per se. This fits the mould of what you would call transactions in Bitcoin or Ethereum.
+
+Inherents, meanwhile, are not passed on the network and are not signed. They represent data which describes the environment but which cannot call upon anything to prove it per se such as a signature. Rather they are assumed to be "true" simply because a sufficiently large number of validators have agreed on them being reasonable.
+
+This is reminiscent of the timestamp field in the header of classical chains, which is true simply because enough of the network maintainers (miners or validators) accepted it as being reasonable. In Substrate, there is the timestamp _inherent_ which sets the current timestamp of the block. This is not a fixed part of Substrate, but does come as part of the Substrate Runtime Module Library to be used as desired. No signature could fundamentally prove that a block were authored at a given time in quite the same way that a signature can "prove" the desire to spend some particular funds. Rather, it is the business of each validator to ensure that they believe the timestamp is set to something reasonable before they agree that the block candidate is valid.
+
+Other examples include the parachain-heads _extrinsic_ in Polkadot and the "note-missed-proposal" _extrinsic_ used in the Substrate Runtime Module Library to determine and punish or deactivate offline validators.
+
+### Practical Notes
+
+Inherents go into the block and are not written in the header. The default header format in Substrate includes only the hash of a parent block, a block number, a digest of the data in the block, and a storage root (representation of the state after `execute_block`). Note that timestamps are _not_ in the header of Substrate chains, but in the block as an inherent.
+
+Normally, only the block author would add inherents. The mempool only stores transactions (in the context of Substrate, anything that is signed), so there is no queue for non-authors to submit inherents. Of course, Substrate is customizable and you could define a runtime that allows anyone to submit inherents.
+
+Inherents change the state and the block must pass `execute_block` before the author can propagate it. This has implications for light clients, which only download the block headers: they cannot see the inherents and trust full nodes to validate them. For example, timestamps are used to punish inactive validators in Aura, so full nodes need to inspect inherents and ensure they follow protocol rules.
+
+### Format
 
 Substrate makes almost no assumptions about the extrinsic format: rather it is up to the [runtime](Runtime.md) to determine whether an extrinsic is valid, and if so what to do about it. The only requirement is that it is prefixed with a 4-byte LE-encoded length of the extrinsic (not including the 4-bytes itself) (making it compatible with `Vec<u8>` in terms of the general Parity Codec). This allows it to be opaquely encoded and decoded and thus be sent around the network and included in transaction pools easily.
 
-Despite Substrate not caring about the extrinsic format at its core, the Substrate Runtime Module Library (SRML) does provide generic implementations of extrinsics which imply their transaction format. Currently two are provided: `UncheckedExtrinsic` and `UncheckedMortalExtrinsic`. The Substrate Node implementation uses the latter. Do note: it's not the only possible option. Other chains, for example a UTXO chain, may define a wildly different format more suitable for their needs.
+Despite Substrate not caring about the extrinsic format at its core, the Substrate Runtime Module Library (SRML) does provide generic implementations of extrinsics that imply their transaction format. Currently two are provided: `UncheckedExtrinsic` and `UncheckedMortalExtrinsic`. The Substrate Node implementation uses the latter. Do note: it's not the only possible option. Other chains, for example a UTXO chain, may define a wildly different format more suitable for their needs.
 
 Extrinsics are expected to be encodable and decodable. See the `Encode` and `Decode` traits.
 
-**Note:** It may seem strange, but currently, Substrate does not define how extrinsics should be encoded. In case of Polkadot, extrinsics are formed and encoded in the JS part of the code, so you would not find this in the Rust codebase.
+**Note:** It may seem strange, but currently, Substrate does not define how extrinsics should be encoded. In the case of Polkadot, extrinsics are formed and encoded in the JS part of the code, so you would not find this in the Rust codebase.
 
 ### Future-proof
 
 In Polkadot runtime, extrinsics are said to be future-proof. Basically, that means that the actual details of the extrinsic are defined by the runtime, whereas external logic, such as network or storage, treats and handles them as opaque byte vectors.
 
 This allows us to update or extend an extrinsic definition by changing the runtime only, without forcing clients to update their software.
-
-### Extrinsic types
-
-Extrinsics fall into two broad categories of which only one is conventional _transactions_. The other is known as _inherents_. The difference between these two is that transactions are signed and gossipped on the network and can be deemed useful per se. This fits the mould of what you would call transactions in Bitcoin or Ethereum.
-
-Inherents, meanwhile, are not passed on the network and are not signed. They represent data which describes the environment but which cannot call upon anything to prove it per se such as a signature. Rather they are assumed to be "true" simply because a sufficiently large number of validators have agreed on them being reasonable.
-
-To give an example, there is the timestamp _inherent_ which sets the current timestamp of the block. This is not a fixed part of Substrate, but does come as part of the Substrate Runtime Module Library to be used as desired. No signature could fundamentally prove that a block were authored at a given time in quite the same way that a signature can "prove" the desire to spend some particular funds. Rather, it is the business of each validator to ensure that they believe the timestamp is set to something reasonable before they agree that the block candidate is valid.
-
-Other examples include the parachain-heads _extrinsic_ in Polkadot and the "note-missed-proposal" _extrinsic_ used in the Substrate Runtime Module Library to determine and punish or deactivate offline validators.
 
 ## The Extrinsic format for Node
 
