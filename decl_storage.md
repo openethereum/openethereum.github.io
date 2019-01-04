@@ -20,7 +20,7 @@ So, the most important thing to understand is that in such persistent storage da
 
 ### How to define `decl_storage!` 
 
-The easiest way to understand the syntax of this macro is to look at examples of how it's used in the real code. Below you may find two examples that were taken from the Substrate modules `runtime/timestamp` and `runtime/system` respectively. Instead of trying to grasp the implementation logic (which is irrelevant here), just pay attention to the overall syntax.
+The easiest way to understand the syntax of this macro is to look at examples of how it's used in the real code. Below you may find two examples that were taken from the Substrate modules `srml/timestamp` and `srml/system` respectively. Instead of trying to grasp the implementation logic (which is irrelevant here), just pay attention to the overall syntax.
 
 So, `timestamp` module defines its storage to contain three types of values, two of which are publicly accessible and the last one is private to the module. They are the timestamp for the current block `Now`, the period between the blocks `BlockPeriod` and the private `DidUpdate` value that's used internally:
 
