@@ -103,7 +103,7 @@ Unsubscribes from a subscription.
 0. `String` - Subscription ID
 
 ```js
-params: ["0xb53c4832f1dca4a5un"]
+params: ["0xb53c4832f1dca4a5"]
 ```
 
 #### Returns
@@ -115,7 +115,7 @@ params: ["0xb53c4832f1dca4a5un"]
 Request
 ```bash
 wscat -c localhost:8546
->{"method":"eth_unsubscribe","params":["0xb53c4832f1dca4a5un"],"id":1,"jsonrpc":"2.0"}
+>{"method":"eth_unsubscribe","params":["0xb53c4832f1dca4a5"],"id":1,"jsonrpc":"2.0"}
 ```
 
 Response
