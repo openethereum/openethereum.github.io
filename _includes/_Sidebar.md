@@ -113,6 +113,7 @@
 
 ## Parity Signer Mobile App
 - [Overview](Parity-Signer-Mobile-App)
+- [Tutorial w/ Fether](Parity-Signer-Mobile-App-Fether-tutorial)
 - [Tutorial w/ MyCrypto](Parity-Signer-Mobile-App-MyCrypto-tutorial)
 
 ## Parity UI - Parity Wallet
