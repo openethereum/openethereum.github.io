@@ -7,6 +7,7 @@ title: Style Guide for Rust in Substrate
 - Indent levels should be greater than 5 only in exceptional circumstances and certainly no greater than 8. If they are greater than 5, then consider using `let` or auxiliary functions in order to strip out complex inline expressions.
 - Never have spaces on a line prior to a non-whitespace character
 - Follow-on lines are only ever a single indent from the original line.
+
 ```rust
 fn calculation(some_long_variable_a: i8, some_long_variable_b: i8) -> bool {
 	let x = some_long_variable_a * some_long_variable_b
@@ -16,6 +17,7 @@ fn calculation(some_long_variable_a: i8, some_long_variable_b: i8) -> bool {
 }
 ```
 - Indent level should follow open parens/brackets, but should be collapsed to the smallest number of levels actually used:
+
 ```rust
 fn calculate(
 	some_long_variable_a: f32,
@@ -79,6 +81,7 @@ fn foo(really_long_parameter_name_1: SomeLongTypeName, really_long_parameter_nam
 ```
 
 - Always end last item of a multi-line comma-delimited set with `,` when legal:
+
 ```rust
 struct Point<T> {
 	x: T,
@@ -90,6 +93,7 @@ enum Meal { Breakfast, Lunch, Dinner };
 ```
 
 - Avoid trailing `;`s where unneeded.
+
 ```rust
 if condition {
 	return 1    // <-- no ; here
@@ -98,6 +102,7 @@ if condition {
 
 - `match` arms may be either blocks or have a trailing `,` but not both.
 - Blocks should not be used unnecessarily.
+
 ```rust
 match meal {
 	Meal::Breakfast => "eggs",
