@@ -172,7 +172,7 @@ Imported #1 0x4947…92ef (0 txs, 0.00 Mgas, 0 ms, 0.57 KiB)
 ```
 This assesses that blocks are generated.
 
-You should also copy in a text file the Pubic node address as we will use it later on. It looks like the following:
+You should also copy in a text file the Public node address as we will use it later on. It looks like the following:
 ```bash
 Public node URL: enode://dd87dbdb2ce7eec42cc4655a3e5abe12cdd0ede81b44f5492c84c892a9b209d91f8f0fb12fca44a5206711ae91d68d6bd643a1a018e3f59de30cd0415691b91e@172.18.0.1:30300
 ```
