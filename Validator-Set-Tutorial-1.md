@@ -244,7 +244,7 @@ force_sealing = true
 
 To make sure the file is valid, launch `Node1` using the command `parity --config ./node1.toml` and verify that you do not get any error in the console. As `Node1` and `Node0` might not be connected to each other yet, it is normal that `Node1` does not import any block from `Node0`.
 
-Also, copy in a text file the Pubic node address as we will use is later on.
+Also, copy in a text file the Public node address as we will use is later on.
 ```bash
 Public node URL: enode://70f8784653cb189b6e2daf925f25f1ca3dfad266370b6ddd258551e48159bd5b9c23bdd39367155136a0ee7d6331d4107c0a765850ccc706c37686baefb039a1@172.18.0.1:30301
 ```
@@ -307,7 +307,7 @@ unlock = ["0x12db1ee91481573302f63ebf3d735820081c68a2"]      # Alice's account t
 password = ["alice.pwd"]
 ```
 To make sure the file is valid, launch `Alice`'s node using the command `parity --config ./alice.toml` and verify that you do not get any error in the console. 
-Also, copy in a text file the Pubic node address as we will use is later on. It should look similar to:
+Also, copy in a text file the Public node address as we will use is later on. It should look similar to:
 ```bash
 Public node URL: enode:////20d155e5b7279055257ae20d6c0e1a3935dc38cbc941fc5039d1b889e298ce34b5e9f082c84d3f1394984b341553a9ae426ce4372f33efc83b98afa50f51c3aa@172.18.0.1
 ```
