@@ -541,6 +541,8 @@ Response
 
 ### parity_setTransactionsLimit
 
+> This method is currently deprecated due to significant changes in the txqueue
+
 Changes limit for transactions in queue.
 
 #### Parameters
