@@ -6,92 +6,27 @@ title: Parity Fether
 
 Parity Fether is a fast and decentralised wallet based on Parity Ethereum light-client.
 
-[» Download the latest release «](https://github.com/paritytech/fether/releases)
-
-Parity Fether aims to be the lightest and simplest decentralized wallet. It supports Ether and ERC-20 tokens, and runs on top of [Parity Ethereum](https://github.com/paritytech/parity-ethereum) light client. This allows smooth synchronization and interaction with the Ethereum blockchain, in a decentralized manner.
-
-By default, Parity Fether alpha runs on the Kovan test network. You can receive free Kovan Ether by posting your address in the [Kovan Faucet](https://gitter.im/kovan-testnet/faucet) Gitter channel. Fether will download and launch Parity Ethereum node at startup if it's not found on the computer. You can also separately launch your Ethereum client, Fether will automatically connect to it.
-
-Parity Fether connects to the light node using [`@parity/light.js`](https://github.com/paritytech/js-libs/tree/master/packages/light.js), a Javascript library specifically crafted for wallets to connect with light clients. It is licensed under the BSD 3-Clause, and can be used for all your Ethereum needs.
-
-If you run into problems while using Parity Fether, feel free to file an issue in this repository or hop on our [Gitter](https://gitter.im/paritytech/fether) or [Riot](https://riot.im/app/#/group/+parity:matrix.parity.io) chat room to ask a question. We are glad to help! **For security-critical issues**, please refer to the security policy outlined in [SECURITY.md](https://github.com/paritytech/parity/blob/master/SECURITY.md).
-
-## Screenshots
-![Parity Fether wallet](/images/fether-screenshot-0.jpg)
-
-## Passing Parity Ethereum flags
-
-You can pass specific flags for Fether to launch the underlying Parity Ethereum with:
-```bash
-# Launch Parity Ethereum light client on Ropsten and connect Fether to it
-$ /path/to/fether --chain ropsten --light
-```
-## Separately launch Parity Ethereum node
-
-You can launch Parity Ethereum before Fether:
-```bash
-$ parity --chain ropsten --light
-```
-In another console launch Fether:
-```bash
-# Fether will connect to the running node
-$ /path/to/fether
-```
-
-## Join the chat!
-
-Get in touch with us on Gitter:
-[![Gitter](https://img.shields.io/badge/Gitter-Fether-brightgreen.svg)](https://gitter.im/paritytech/fether)
+## [» Download the latest release «](https://github.com/paritytech/fether/releases)
 
 
-Official website: [https://parity.io](https://parity.io)
+---
 
-## Launch using the binaries
-### Linux
-```bash
-wget https://github.com/paritytech/fether/releases/download/v0.1.0-alpha2/fether-0.1.0.tar.xz
-tar -xf fether-0.1.0.tar.xz 
-cd fether-0.1.0/
-./fether
-```
+## About Parity Fether
 
+Parity Fether aims to be the lightest and simplest decentralized wallet. It supports Ether and ERC-20 tokens.It runs on top of [Parity Ethereum](https://github.com/paritytech/parity-ethereum) light client. This allows smooth synchronization and interaction with the Ethereum blockchain, in a decentralized manner.
 
-## Build from sources
+By default, Parity Fether beta version runs on the Kovan test network. You can receive free Kovan Ether by posting your address in the [Kovan Faucet](https://gitter.im/kovan-testnet/faucet) Gitter channel. Fether will download and launch Parity Ethereum node at startup if it's not found on the computer. You can also separately launch your Ethereum client, Fether will automatically connect to it.
 
-```bash
-git clone https://github.com/paritytech/fether
-cd ./fether
-yarn install
-```
+As of v0.2 Fether supports Parity Signer. This lets you add another level of security to your funds. You can keep your private keys on an offline phone that is dedicated to Parity Signer and let Fether broadcast signed transactions. Not only will your private key never be exposed to the dark side of the internet, but the transaction that it signed will be sent in a decentralized manner using a light client! [Here is a tutorial](Parity-Signer-Mobile-App-Fether-tutorial) to get you started. We think we’ve made this process easy, but if you encounter bumps on the way, please let us know.
 
-### Dependencies
-Make sure you have at least `yarn` version 1.4.2
+Parity Fether connects to the light node using [`@parity/light.js`](https://github.com/paritytech/js-libs/tree/master/packages/light.js), a Javascript library specifically crafted for wallets to connect with light clients. 
 
-```bash
-yarn --version // Should be at least 1.4.2
-```
-### Clone this repo
+Parity Fether is licensed under the BSD 3-Clause, and can be used for all your Ethereum needs.
 
-```bash
-git clone https://github.com/paritytech/fether
-cd ./fether
-yarn install
-```
+If you run into problems while using Parity Fether, please [file an issue](https://github.com/paritytech/fether/issues/new) in Fether repository, hop on our [Gitter](https://gitter.im/paritytech/fether) or [Riot](https://riot.im/app/#/group/+parity:matrix.parity.io) chat room to get support. We are glad to help! **For security-critical issues**, please refer to the security policy outlined in [SECURITY.md](https://github.com/paritytech/parity/blob/master/SECURITY.md).
 
-### Build this repo and run
+![Parity Fether](https://wiki.parity.io/images/fether-screenshot-0.jpg)
 
-```bash
-yarn electron
-```
+## Building instructions
 
-### Build binaries
-
-```bash
-yarn package
-```
-
-### Run with live reload for development
-
-```bash
-yarn start
-```
+Find more information about how to build Fether from the source code here: https://github.com/paritytech/fether
