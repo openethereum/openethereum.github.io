@@ -8,7 +8,17 @@ libs:
 
 The background process to synchronize the blockchain does not restart from scratch. The sync continues from the point it was left at the last time Fether was launched.
 
-### How to delete an account?
+### How to add my ERC-20 Token to Fether?
+
+We use the following repository to get the token list: [https://github.com/ethereum-lists/tokens](https://github.com/ethereum-lists/tokens).
+To see your token in Fether, you need first to open a pull request to this repository. Once it is merged it will be added in Fether's next release.
+
+### Why doesn't a token have an icon?
+
+We use the following repository to get the token list: [https://github.com/ethereum-lists/tokens](https://github.com/ethereum-lists/tokens).
+If you don't see an image for a token in Fether, it means that the `logo` field for this token was left empty or the url given is not reachable. Either way, you need to open a pull request or an [issue](https://github.com/ethereum-lists/tokens/issues/new) to this repository to fix it. Once it is merged it will be added in Fether's next release.
+
+### How to delete an account in Fether?
 
 We chose not to allow the deletion of accounts from the Fether user interface. In case you really know what you are doing and do not want an account to appear in Fether, you can locate and move the keystore file from the 'keys' folder. You will find it here:
 
@@ -71,7 +81,7 @@ You can pass specific flags (such as `--chain`) for Fether to launch the underly
 $ /path/to/fether --chain ropsten --light
 ```
 
-### How to launch Fether with a separately launched Parity Ethereum node
+### How to launch Fether with a separately launched Parity Ethereum node?
 
 Fether will download and install Parity Ethereum if it is not already installed. Fether will run a Parity Ethereum light client node if Parity Ethereum has not already been launched separately.
 
@@ -98,7 +108,7 @@ $ parity --chain ropsten
 
 2) Launch Fether (from the application launcher menu or in a terminal session), it will automatically detect the local node and connect to it.
 
-### How to access logs to troubleshoot errors
+### How to access logs to troubleshoot errors?
 
 To help users understand what is going on if Fether crashes, it is essential to provide logs.
 
@@ -126,7 +136,7 @@ If you want to monitor the latest changes to the log file whilst running Fether 
 
 If you want to troubleshoot errors in the user interface (UI) whilst running Fether then add [line-of-code breakpoints](https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints) in Developer Tools by clicking the 'Sources' tab, choosing 'Page > top > webpack-internal://', and then setting line-of-code breakpoints.
 
-### What is "taskbar mode"
+### What is "taskbar mode"?
 
 Fether runs by default as a [tray](https://electronjs.org/docs/api/tray) application that is [frameless](https://electronjs.org/docs/api/frameless-window#frameless-window), so it doesn't have any window decoration (basically a frame and the usual minimize/full screen/close buttons)
 
@@ -181,7 +191,7 @@ Taskbar mode is `true` by default.
   * Fether window - "window context menu" shown upon right-click in the Fether window
   * Fether window - position is saved upon moving, minimising, or closing so it is restored in the same position.
 
-### How to run Fether without "taskbar mode"
+### How to run Fether without "taskbar mode"?
 
 #### Development Environment
 
@@ -191,7 +201,7 @@ Disable the `TASKBAR` environment variable prior to launching Fether as follows:
 TASKBAR=false yarn start
 ```
 
-### How to open Developer Tools automatically when Fether launches
+### How to open Developer Tools automatically when Fether launches?
 
 #### Development Environment
 
@@ -201,7 +211,7 @@ Open Developer Tools automatically by running Fether with the `DEBUG` environmen
 DEBUG=true yarn start
 ```
 
-### What to do if the Fether window appears unresponsive or does not load
+### What to do if the Fether window appears unresponsive or does not load?
 
 #### Development Environment
 
