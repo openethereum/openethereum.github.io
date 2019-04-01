@@ -45,17 +45,23 @@ To see your token in Fether, you need first to open a pull request to this repos
 We use the following repository to get the token list: [https://github.com/ethereum-lists/tokens](https://github.com/ethereum-lists/tokens).
 If you don't see an image for a token in Fether, it means that the `logo` field for this token was left empty or the url given is not reachable. Either way, you need to open a pull request or an [issue](https://github.com/ethereum-lists/tokens/issues/new) to this repository to fix it. Once it is merged it will be added in Fether's next release.
 
-### How to delete an account in Fether?
+### Where are Fether accounts stored?
 
-We chose not to allow the deletion of accounts from the Fether user interface. In case you really know what you are doing and do not want an account to appear in Fether, you can locate and move the keystore file from the 'keys' folder. You will find it here:
+Keys for Fether accounts are stored in chain-specific subdirectories within the Parity Ethereum 'keys' folder. You will find them here:
 
-- macOS: `~/Library/Application\ Support/io.parity.ethereum/keys/ethereum/`
+- macOS: `~/Library/Application\ Support/io.parity.ethereum/keys`
 - Linux: `$HOME/.local/share/io.parity.ethereum/keys`
 - Windows 7/10: `%HOMEPATH%/AppData/Roaming/Parity/Ethereum/keys`
 
+### How to delete an account in Fether?
+
+We chose not to allow the deletion of accounts from the Fether user interface. In case you really know what you are doing and do not want an account to appear in Fether, you can locate and move the keystore file from the 'keys' folder. You will find them here: [Where are Fether accounts stored errors](#where-are-fether-accounts-stored).
+
 ### Where is Fether installed?
 
-- macOS: `/Applications/Parity Ethereum.app/Contents/MacOS/parity`
+Fether binary executable files are stored here:
+
+- macOS: `/Applications/Parity Fether.app/Contents/MacOS/Parity Fether`
 - Linux:
   - `.deb`
     - Parity Fether: `/opt/Parity\ Fether/fether`
@@ -65,6 +71,14 @@ We chose not to allow the deletion of accounts from the Fether user interface. I
     - Parity Fether: `/wherever_you_store_it/fether`
 - Windows:
   - Parity Fether: `C:\Users\fether\AppData\Local\Programs\fether\fether`
+
+### Where is the light client blockchain data used by Fether stored?
+
+Light client blockchain data for Fether is stored in chain-specific subdirectories within the Parity Ethereum 'chains_light' folder. You will find them here:
+
+- macOS: `~/Library/Application\ Support/io.parity.ethereum/chains_light`
+- Linux: `$HOME/.local/share/io.parity.ethereum/chains_light`
+- Windows 7/10: `%HOMEPATH%/AppData/Roaming/Parity/Ethereum/chains_light`
 
 ### Where are Fether logs stored?
 
