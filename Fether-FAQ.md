@@ -4,6 +4,33 @@ libs:
   faq: true
 ---
 
+### How to fix a webcam error?
+
+Accounts may be imported into Fether from [Parity Signer](https://github.com/paritytech/parity-signer) if they were created for the chain that you are running with Fether (see FAQ [How to launch Fether on a different network](#how-to-launch-fether-on-a-different-network)).
+
+The webcam on your computer is required for the following reasons:
+
+- Importing an account that was created with Parity Signer
+- Signing transactions that are sent using Fether using a Parity Signer account that was imported
+
+If you encounter a webcam error when using Fether, then try the following steps and try using Fether again:
+
+- Check the webcam is connected
+- Check the webcam power is turned on
+- Check the webcam permissions on your computer
+- Restart your computer
+- Obtain another webcam
+
+#### macOS
+
+When running Fether in the development environment on macOS Mojave, you need to allow the Terminal application to access your webcam. Try the following steps and try using Fether again:
+
+* Open System Preferences `open '/Applications/System Preferences.app'`
+* Open 'Security & Privacy'
+* Click 'Privacy' tab
+* Click 'Camera' from the list
+* Ensure the checkbox for the 'Terminal' application is checked
+
 ### Why does the sync starts back at 0% when I restart Fether?
 
 The background process to synchronize the blockchain does not restart from scratch. The sync continues from the point it was left at the last time Fether was launched.
