@@ -133,6 +133,12 @@ remove_solved = false
 notify_work = ["http://localhost:3001"]
 refuse_service_transactions = false
 
+[stratum]
+disable = false
+interface = "local"
+port = 8008
+secret = "p4ssw0rd"
+
 [footprint]
 tracing = "auto"
 pruning = "auto"
