@@ -21,9 +21,9 @@ Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file.
 
 To use a custom path run `$ parity --config path/to/config.toml`.
 
-## Default config.toml
+## Example config.toml
 
-The following is a representation of a configuration file with all default values.
+The following is an example of a configuration file. Consider using [Parity Config Generator](https://paritytech.github.io/parity-config-generator/) to generate your own. 
 
 ```toml
 [parity]
