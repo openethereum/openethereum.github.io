@@ -122,6 +122,20 @@ You can pass specific flags (such as `--chain`) for Fether to launch the underly
 $ /path/to/fether --chain ropsten --light
 ```
 
+Fether only supports networks that are compatible with running a light client node using the `--light` option of the Fether CLI that is shown above, and as mentioned in the FAQ [What networks are supported by Fether?](#what-networks-are-supported-by-fether?).
+
+### What networks are supported by Fether?
+
+Fether currently supports: 
+- Ethereum Mainnet
+- Ethereum Classic
+- Kovan Testnet
+- Ropsten Testnet
+
+Görli Testnet support will be added soon.
+
+Read here about [how to launch Fether on a different network](#how-to-launch-fether-on-a-different-network).
+
 ### How to launch Fether with a separately launched Parity Ethereum node?
 
 Fether will download and install Parity Ethereum if it is not already installed. Fether will run a Parity Ethereum light client node if Parity Ethereum has not already been launched separately.
