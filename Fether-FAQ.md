@@ -35,6 +35,20 @@ When running Fether in the development environment on macOS Mojave, you need to 
 
 The background process to synchronize the blockchain does not restart from scratch. The sync continues from the point it was left at the last time Fether was launched.
 
+### Why isn't Fether syncing?
+
+In this example we will assume that you have encountered the issue after:
+
+- Starting Fether with the default configuration and it has connected to the Ethereum Mainnet (`foundation`).
+- The blockchain database that has been stored on your device has synchronised up to certain block.
+
+You may encounter issues syncing Fether on any network. You know you have the issue due to a corrupt database when:
+
+- In the Fether window on the page with the title "Accounts" it displays "Syncing... foundation" at the bottom left but without showing a percentage progress such as "Syncing... (x%) foundation".
+- In the [logs](#how-to-access-logs-to-troubleshoot-errors) the block number that is currently being synced is no longer changing and is not the [latest Ethereum Mainnet block number](https://blockscout.com/eth/mainnet).
+
+To resolve the issue simply delete the corrupted blockchain database for that network in the [subdirectory where the light client blockchain database used by Fether is stored](#where-is-the-light-client-blockchain-database-used-by-fether-stored). Then restart Fether and it will start synchronizing with that network from scratch.
+
 ### How to add my ERC-20 Token to Fether?
 
 We use the following repository to get the token list: [https://github.com/ethereum-lists/tokens](https://github.com/ethereum-lists/tokens).
@@ -72,9 +86,9 @@ Fether binary executable files are stored here:
 - Windows:
   - Parity Fether: `C:\Users\fether\AppData\Local\Programs\fether\fether`
 
-### Where is the light client blockchain data used by Fether stored?
+### Where is the light client blockchain database used by Fether stored?
 
-Light client blockchain data for Fether is stored in chain-specific subdirectories within the Parity Ethereum 'chains_light' folder. You will find them here:
+Light client blockchain databases for Fether are stored in chain-specific subdirectories within the Parity Ethereum 'chains_light' folder. You will find them here:
 
 - macOS: `~/Library/Application\ Support/io.parity.ethereum/chains_light`
 - Linux: `$HOME/.local/share/io.parity.ethereum/chains_light`
