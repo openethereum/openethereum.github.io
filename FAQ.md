@@ -52,8 +52,8 @@ parity -warp +archive    |      6_850_000 |       1.8T | --pruning archive      
 
 Live data:
 
-- for full nodes: http://didtheethereumblockchainreach1tbyet.5chdn.co/
-- for archive nodes: http://whataboutarchivenodes.5chdn.co/
+- [Nodestats](https://nodestats.org)
+
 
 ### How to use Parity Ethereum Chrome Extension to browse a Web3 website?
 
