@@ -9,8 +9,8 @@ libs:
 - [Backup, Restore and Files](#backup-restore-and-files)
 - [Basic Operations, Configuration, and Synchronization](#basic-operations-configuration-and-synchronization)
 - [CLI, Mining, and Networks](#cli-mining-and-networks)
-- [Troubleshooting (Yelp!!!!11)](#troubleshooting-yelp11)
-- [User Interface, Wallet and DApps](#user-interface-wallet-and-dapps)
+- [Troubleshooting](#troubleshooting)
+
 
 ## Most asked questions
 
