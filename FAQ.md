@@ -28,7 +28,7 @@ Read more about [Warp sync (also called fastsync)](Warp-Sync-Snapshot-Format.md)
 
 Running a full node with the standard configuration for the Ethereum Mainnet requires a lot of computer resources. The blockchain download and validation process are particularly heavy on CPU and disk IO. It is therefore recommended to run a full node on a computer with multi-core CPU, 4GB RAM and an SSD drive and at least 200GB free space. Internet connection can also be a limiting factor. A decent DSL connection is required.
 
-Node performance can also be improved significantly by using Parity Ethereum's caching features, and accessing state from memory instead of from your disk by specifying the `--cache-size` flag - optimally this requires you to have additional RAM equivalent to the state size of the blockchain you are connected to, over 8GB on Ethereum mainnet, for a total of over 12GB of ram. 
+Node performance can also be improved significantly by using Parity Ethereum's caching features, and accessing state from memory instead of from your disk by specifying the `--cache-size` flag - optimally this requires you to have additional RAM equivalent to the state size of the blockchain you are connected to, over 8GB on Ethereum mainnet, for a total of over 12GB of RAM. 
 
 Computers using HDD are advised to run a [Light Node](#light-node).
 
@@ -75,7 +75,7 @@ We advise using Metamask connected to a local Parity Ethereum node to browse web
 ### The UI isn't working when I visit 127.0.0.1:8180
 
 Since Parity Ethereum v1.10, the User Interface (UI) has been separated from the Parity Ethereum client. The browser UI has been disabled by default and totally removed from v2.0. You can now access the User Interface through an application called Parity UI. Please follow [these instructions](https://wiki.parity.io/Parity-Wallet) to download and use Parity Ethereum wallet using the Parity UI app. Please report any bug or unexpected behavior by [creating an issue in GitHub Parity UI repository](https://github.com/Parity-JS/shell/issues/new).
-If you still want to use the browser UI (deprecated) using a version older than 2.0, you can launch Parity Ethereum with the flag `--force-ui` and visit 127.0.0.1:8180 in your favorite browser.
+
 
 ### What does Parity's command line output mean?
 
@@ -191,9 +191,7 @@ They get imported automatically. :)
 
 ### Can I import accounts not created with Parity Ethereum or Geth (e.g., MyEtherWallet)?
 
-- Simply use Parity Ethereum Wallet's "New Account" function on the "Accounts" page.
-
-- Or complicated: copy it into your `$HOME/.local/share/io.parity.ethereum/keys` directory. Parity Ethereum will import all keys found there.
+Copy your keyfiles into your `$HOME/.local/share/io.parity.ethereum/keys` directory. Parity Ethereum will import all keys found there.
 
 ### How do I backup my blockchain?
 
@@ -382,26 +380,6 @@ Parity Ethereum supports standard Ethereum JSON-RPC interface for mining ([eth_g
 
 First get a Parity Ethereum node up and running (either build yourself or install one of the packages; the [Setup](Setup.md) guide can help you). Next, you'll need to install your preferred miner. Read more on [Mining](Mining.md).
 
-### Which chains are supported by Parity?
-
-Parity Ethereum supports multiple public chain configurations:
-
-    --chain CHAIN                  Specify the blockchain type. CHAIN may be either a
-                                   JSON chain specification file or olympic, frontier,
-                                   homestead, mainnet, morden, ropsten, classic, expanse,
-                                   testnet, kovan or dev (default: homestead).
-
-- [`mainnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network
-- [`kovan` or `testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config)
-- [`ropsten`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
-- [`classic`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/classic.json) Ethereum Classic network
-- [`classic-testnet`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/morden.json) original Morden testnet and current Ethereum Classic testnet
-- [`expanse`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/expanse.json) Expanse network
-- [`dev`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](Private-development-chain) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
-- [`Musicoin`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
-- [`ellaism`](https://github.com/paritytech/parity-ethereum/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
-
-See also [Chain specification](Chain-specification.md).
 
 ### What are the different consensus engines available for Parity?
 
@@ -435,13 +413,17 @@ You're probably trying to send from a locked account. Ensure you use the `--unlo
 
 See [Network Configuration](Network-Configuration) for some tips on how to configure Parity Ethereum to behave.
 
-## Troubleshooting (Yelp!!!!11)
+### Does Parity Ethereum support the Swarm and Whisper sub-protocols?
+
+Currently, Parity Ethereum only partially supports Whisper and does not support Swarm. 
+
+## Troubleshooting
 
 ### Double-clicking the Parity Ethereum icon doesn't do anything!?!
 
 Probably your node is already running (or another node is running, i.e., Geth) and another instance of Parity Ethereum cannot be launched with the same configuration (ports, dapps, web interface, etc.).
 
-### How can I make Parity Ethereum to write logs?
+### How can I make Parity Ethereum write logs?
 
 You can control the logging level with `-l` and define a `--log_file` location:
 
@@ -491,78 +473,9 @@ Parity Ethereum is a disk IO intensive application. By default, your system will
 
 If you have any urgent matters, get in [touch with us on Gitter](https://gitter.im/paritytech/Parity). If you run into issues with Parity, please consider [creating a ticket on Github](https://github.com/paritytech/Parity/issues/new).
 
-## User Interface, Wallet and DApps
-
-### How can I access the Parity Ethereum Wallet?
-
-Since Parity Ethereum v1.10, the Parity Ethereum Wallet is accessible within Parity UI app.
-Please follow [these instructions](Parity-Wallet.md)
-
-### Can I use Mist with Parity?
-
-Yes, run `parity --geth` in Geth-compatibility mode. This sets the IPC path to be the same as Geth's and allows Mist to connect to Parity. See also [Using Parity Ethereum with Mist](Using-Parity-with-Mist.md).
-
-### Can I send Bitcoin to my Parity Ethereum wallet?
-
-No, sending Bitcoin directly to an Ethereum address does not work. However, you can use the Shapeshift integration. Open an account on your wallet and click the blue fox icon.
-
-![Parity Ethereum Shapeshift Integration](https://i.imgur.com/C7cAYeb.png)
-
-### Can I create multi-signature wallets with Parity?
-
-No, Parity Ethereum only allows watching wallets and interact with them (view and sign transactions, send funds..). It does not allow to create multi-sig wallets. To watch a multi-sig wallet within Parity UI, [follow these instructions](Accounts%2C-Wallets%2C-Vaults#wallets).
-
-### How can I compile and deploy contracts with Parity?
-
-Open Parity UI and navigate to the _'Develop Contracts'_ dapp. This dapp allows you to write, compile and directly deploy contracts on the selected chain.
-
-![Parity Ethereum Solidity Contracts](https://i.imgur.com/e4CTUDP.png)
-
-### What DApps are available for Parity?
-
-Parity UI comes with a couple of builtin DApps:
-
-- **Method registry**: A registry of method signatures for lookups on transactions.
-- **Registry**: A global registry of addresses on the network.
-- **Token Deployment**: Deploy new basic tokens that you are able to send around.
-- **Token Registry**: A registry of transactable tokens on the network.
-- **TX-Queue Viewer**: Have a peak on the internals of transaction queue of your node.
-
-Additional DApps can be added, see [Writing Dapps for Parity](Development-Overview.md).
-
-### How can I write a DApp for Parity?
-
-Head over to the excellent [DApp Tutorial](Tutorial-Part-1.md) documentation. It walks you through making a simple Ethereum-powered, distributed app. By the end of it, you'll be able to head into Parity, select your Dapp and see it in action.
-
-### Does Parity Ethereum support the Swarm and Whisper sub-protocols?
-
-Currently, Parity Ethereum does neither support Swarm nor Whisper sub-protocols. However, [Whisper Support](https://github.com/paritytech/parity-ethereum/issues/4685) is on the road-map.
-
-### How to connect Parity UI to a node on my network?
-
-You can specify the WebSocket IP and port that Parity UI should use to connect to a node. To do so, launch `parity-ui` with the following flags:
-```bash
-    --ws-interface=[IP]
-        Specify the hostname portion of the WebSockets server
-        Parity UI will connect to. IP should be an
-        interface's IP address. (default: 127.0.0.1)
-
-    --ws-port=[PORT]
-        Specify the port portion of the WebSockets
-        server Parity UI will connect to. (default: 8546)
-```
-
-### How to customize Parity UI?
-
-- Fork `https://github.com/parity-js/shell` and make your modifications to the UI
-- Run your node with --ui-no-validation
-- Run `npm start`. This will watch the files and serve http://localhost:3000
-- In another terminal, run `npm run electron:dev`. This will spawn an Electron window serving http://localhost:3000. The Electron window will refresh on any code change.
-- (optional) Commit your changes, and submit a PR!
-
-## Building, Installing and Testing
 
 
+## Building, Installing and Testing 
 ### Are there any installers available?
 
 Yes, there are also experimental installers for MacOS X and Windows which will install Parity Ethereum as a system service. Parity Ethereum will always run in the background and hibernate when not being used with the bundled wallet.
