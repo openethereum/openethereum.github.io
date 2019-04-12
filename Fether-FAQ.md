@@ -291,3 +291,51 @@ If Fether is otherwise unresponsive or does not load then please follow the step
 #### Production Environment
 
 Please follow the steps in the FAQ [How to access logs to troubleshoot errors](#how-to-access-logs-to-troubleshoot-errors).
+
+### How to switch between languages that Fether supports?
+
+In the Fether window you can switch between supported languages by simply right-clicking the Fether window to reveal the Fether menu, then choosing the menu item 'Preferences > Language', and selecting one of the available languages from the list (i.e. English).
+
+The Fether window will then automatically refresh and its contents will now be in the language you chose. The active language that you chose will now have a tick next to it in the menu.
+
+### How to add support for a new language to Fether?
+
+Contributors are invited to create a Pull Request that translates Fether other languages.
+
+English language support is currently the default.
+
+#### Example: Add language support for the German language
+
+**Solution:** See the following Pull Request that shows the changes that were required to add German language support https://github.com/paritytech/fether/pull/464
+
+
+1) Find the [internationalisation abbreviation](https://www.w3.org/International/O-charset-lang.html) of the new language that you want to add. In this example the new language will be referred to as <LANG>. Example: 'de' for Deutsch (German), or 'en' for English. So if you wanted to add the French language then <LANG> would be 'fr'.
+2) Convert the Fether menu into the new language as follows.
+* Create a file named <LANG>.json within the fether-electron folder. Example: fether-electron/src/main/app/menu/i18n/locales/de.json.
+* Copy and paste into that file the contents of the existing English file that is located in fether-electron/src/main/app/menu/i18n/locales/en.json.
+* Find someone who is a native speaker of the new language to translate each **'value'** (DO NOT translate the 'keys', they must remain in English) into the new language.
+* Update fether-electron/src/main/app/menu/i18n/locales/index.js. See how it was done in the 'Solution' mentioned above.
+* Update fether-electron/src/main/app/menu/template/index.js:
+  * Add an item for the new language as a value of the `submenu`.
+* Update fether-electron/src/main/app/menu/i18n/index.js:
+  * Import the <LANG> that you added in the 'locales' subdirectory.
+  * Add the new language as a fallback language in the desired order to the `fallbackLng`.
+  * Add a key named <LANG> to `resources` using the imported <LANG>.json file as the namespace.
+3) Language conversion of the Fether window contents to the new language.
+* Create a file named <LANG>.json within the fether-react folder. Example: fether-react/src/i18n/locales/de.json. Copy/paste into it the contents of the English file fether-react/src/i18n/locales/en.json. Find a native speaker in that language to convert each **value** (not key) into the new language.
+* Update fether-react/src/i18n/locales/index.js.
+* Update fether-react/src/i18n/index.js, which includes:
+  * Import the <LANG> from the 'locales' subdirectory.
+  * Adding the new language as a fallback language in the desired order to the [`fallbackLng`](https://www.i18next.com/principles/fallback#fallback-language).
+  * Add a subkey named <LANG> under the `resources` key using the imported <LANG>.json file as the namespace. See how it was done in the 'Solution' mentioned above.
+
+#### Limitations
+
+* After choosing a new language to switch to, the Fether window will refresh automatically and the contents of Fether will now be in the new language, **except** for the menu items "Show/Hide Fether" and "Quit" that are shown when you click the taskbar icon. These menu items will only change to the language that you chose after you **restart** Fether.
+
+* The Fether Terms & Conditions are only available in English.
+
+* Full support for translating the UI is provided, however only limited support is provided for translating the logs is provided. For example the following files are not translated:
+  * fether-electron/src/main/app/menu/i18n/index.js
+  * fether-react/src/i18n/index.js
+  * fether/scripts/fetch-latest-parity.js
