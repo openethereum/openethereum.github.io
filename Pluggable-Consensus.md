@@ -121,7 +121,7 @@ Simple and fast consensus algorithm, each validator gets an assigned time slot i
 }
 ```
 
-`"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, too high leads to slow block issuance
+`"stepDuration"` determines the lowest interval between blocks in seconds, too low might cause reorgs if the system clocks are not synchronized, or [may lead to unintentional misbehavior as gasLimit increases](Pluggable-Consensus.md#operational-tradeoffs), too high leads to slow block issuance
 
 - `"validators"` 
   - `"list"` is the list of addresses of the entities which will be allowed to issue blocks
@@ -156,3 +156,15 @@ Optional:
 The genesis seal should not be changed unless a hard fork is conducted.
 
 If malicious authorities are possible then `--force-sealing` is advised, this will ensure that the correct chain is the longest (making it BFT with finality of authorities_count * step_duration given no network partitions).
+
+### Operational tradeoffs
+
+As blocks in Aura must be generated and broadcast within the span of `stepDuration`, configuring your chain specification or validator node to allow specific transactions or a maximum `gasLimit` that would exceed `stepDuration` to process can lead to persistent consensus failures. This can include repetitive forking, reorgs, and missed steps. 
+
+Some good rules-of-thumb are:
+
+- restrict a network's maximum block gasLimit to roughly 8M gas, given a 5 second stepduration, using  `--gas-cap` (maximum) and `--gas-floor-target`(target minimum) command line/config parameters. 
+- be aware of your validators' ability to restrict gas usage and execution time of individual adresses' transactions using the `--tx-gas-limit` and `--tx-time-limit` command line/config parameters - use these parameters judiciously on your validator if you begin seeing missed steps.
+- be aware of the time required to propagate your blocks throughout the network to your other validators - a geographically diverse network may require you further decrease your `--gas-cap` if you consistently miss your step locally (as this would speed up block production), or a higher `stepDuration`, if numerous validators on your network appear to miss steps (likely due to network latency).
+
+Due to how block gasLimits are "voted on" by all miners/validators on a network, settings like `--gas-cap` are most effective if set on all active validators - `--tx-gas-limit` and `--tx-time-limit` are useful for individual validators. These configuration options do not effect consensus, and can therefore be used to modify network capacity without requiring a hard fork, accommodating altered hardware or network conditions. 

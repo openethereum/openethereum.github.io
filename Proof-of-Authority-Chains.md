@@ -99,4 +99,4 @@ An example template that can be used for the consensus algorithms:
 }
 ```
 
-The only available algorithm for PoA is [Aura](Pluggable-Consensus.md#aura), other consensus might be added in the future. More details on other chain parameters are available on the [Chain specification](Chain-specification.md) page.
+The only available algorithm for PoA is [Aura](Pluggable-Consensus.md#aura), other consensus might be added in the future. More details on other chain parameters are available on the [Chain specification](Chain-specification.md) page, there are also [important considerations](Pluggable-Consensus.md#operational-tradeoffs) when setting up your Proof of Authority chain in order to ensure it works reliably.
