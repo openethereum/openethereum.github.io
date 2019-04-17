@@ -2,18 +2,12 @@
 title: Basic Usage
 ---
 
-
-To use Parity make sure to follow [these steps](https://wiki.parity.io/Parity-Wallet).
-
-![Parity UI](images/parity-UI-0.jpg)
-
 Once the [syncing](Getting-Synced.md) is complete, new transactions can be sent. Before relaying a transaction Secure Transaction Signer has to be used to sign it.
 
 - [Configuration](#configuration)
 - [Networking](#networking)
 - [JSON-RPC API](#json-rpc-api)
 - [JavaScript Console](#javascript-console)
-    - [Browser developer console](#browser-developer-console)
     - [Node.js CLI Console](#nodejs-cli-console)
     - [Legacy Geth Console](#legacy-geth-console)
 
@@ -50,10 +44,6 @@ $ curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","met
 ### JavaScript Console
 
 Ethereum has the [web3 Javascript API](https://github.com/ethereum/wiki/wiki/JavaScript-API) for interacting with an Ethereum client.
-
-##### Browser developer console
-
-The easiest way to interact with Parity over the console is to launch Parity UI and navigate to the _"Parity/Web3 Console"_ dapp.
 
 ##### Node.js CLI Console
 

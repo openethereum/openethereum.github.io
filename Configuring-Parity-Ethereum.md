@@ -21,6 +21,25 @@ Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file.
 
 To use a custom path run `$ parity --config path/to/config.toml`.
 
+
+## Presets
+
+Parity can be launched with a [preset configuration file](https://github.com/paritytech/parity-ethereum/tree/1d9542fe88044d0831471510beb23626050f1bbf/parity/cli/presets) using `--config` flag with one of the following value:
+- `dev`: uses [dev chain specifications](Private-development-chain) with [Instant-seal](Pluggable-Consensus#instant-seal) consensus engine. The gas price is set to 0.
+- `dev-insecure`: uses the same configuration as `dev`, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
+- `insecure`: uses the Mainnet default configuration, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
+- `mining`: uses the Mainnet default configuration, plus increases the number of peers to min 50 and max 100, it disables the Dapps and IPC interface. It forces the sealing of blocks with a minimum of 4 seconds interval, forces the reseal for any new transaction (external or local), reduces the transaction queue size to 2048 while increasing the cache size to 256 MB and setting the `trace` logging level for the `miner` and `own_tx` modules.
+- `non-standard-ports`: sets the client to listen to the port 30305 and 8645 for RPC connections.
+
+## (In)secure Operation
+
+As implied by the `dev`, `dev-insecure`, and `insecure` presets, by default, Parity runs as securely as possible while allowing the local machine access to all `safe` APIs (as detailed in the `--jsonrpc-apis` docstring). 
+
+- Altering `--rpc-hosts` or `--ws-hosts` allows the specified hosts to access any APIs your node has open, setting either of these to `all` or `*` is not recommended, and is a DoS vector in the safest case, and will lead to losses of funds or highjacking or reconfiguration of your node if you have insecure APIs enabled.
+- `eth_sendRawTransaction` and `eth_estimateGas` are both considered safe - they do not allow people to send transactions from accounts they do not already have control over - but they still have a significant processing cost when called, so it is not recommended to open the `eth` API directly to the internet without first sanitizing inputs.
+- There are additional security considerations [if you are running a private network](Pluggable-Consensus.md#operational-tradeoffs), but a miner on any network should be aware of the tools available to maintain quality of the txpool - specifically `--tx-gas-limit` and `--tx-time-limit` and the other `--tx-queue-...` related settings can effectively help maintain your miner's competitiveness while still maintaining a positive effect on the network.
+
+
 ## Example config.toml
 
 The following is an example of a configuration file. Consider using [Parity Config Generator](https://paritytech.github.io/parity-config-generator/) to generate your own. 
@@ -166,14 +185,6 @@ logging = "own_tx=trace"
 log_file = "/var/log/parity.log"
 color = true
 ```
-
-## Presets
-Parity can be launched with a [preset configuration file](https://github.com/paritytech/parity-ethereum/tree/1d9542fe88044d0831471510beb23626050f1bbf/parity/cli/presets) using `--config` flag with one of the following value:
-- `dev`: uses [dev chain specifications](Private-development-chain) with [Instant-seal](Pluggable-Consensus#instant-seal) consensus engine. The gas price is set to 0.
-- `dev-insecure`: uses the same configuration as `dev`, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
-- `insecure`: uses the Mainnet default configuration, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
-- `mining`: uses the Mainnet default configuration, plus increases the number of peers to min 50 and max 100, it disables the Dapps and IPC interface. It forces the sealing of blocks with a minimum of 4 seconds interval, forces the reseal for any new transaction (external or local), reduces the transaction queue size to 2048 while increasing the cache size to 256 MB and setting the `trace` logging level for the `miner` and `own_tx` modules.
-- `non-standard-ports`: sets the client to listen to the port 30305 and 8645 for RPC connections.
 
 ## CLI Options for Parity Ethereum client
 ```bash

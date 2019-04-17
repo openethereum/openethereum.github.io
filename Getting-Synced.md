@@ -20,7 +20,7 @@ $ parity --warp
 
 ... to automatically fetch a recent snapshot from the network, restore from it, and continue syncing. When using Parity **1.6** or **1.7**, `--warp` does nothing as it is enabled by default.
 
-Note, at present, snapshotting does not place all of the block or receipt data into the database. This means you will not get information relating to transactions more than a few days old. This is fine for some usages such as mining, but if you have or need access to historical transaction data (e.g. if you have an account that you've been using with Geth and wish to browse sent transactions) then you probably want to sync normally.
+Note, at present, snapshotting does not place all of the block or receipt data into the database. This means you will not get information relating to transactions more than a few days old until after initially syncing to the chain head. This is fine for some usages such as mining, but if you have or need access to historical transaction data (e.g. if you have an account that you've been using with Geth and wish to browse sent transactions) then you probably want to sync normally.
 
 To disable snapshotting, run Parity with:
 
@@ -34,6 +34,8 @@ CLI reference:
   --warp                         Does nothing; Warp sync is on by default. (default: true)
   --no-warp                      Disable syncing from the snapshot over the network. (default: false)
 ```
+
+To verify the status of warp sync, you can use the [`parity_chainStatus`](JSONRPC-parity-module.md#parity_chainstatus) RPC method.
 
 ### Database Pruning
 
