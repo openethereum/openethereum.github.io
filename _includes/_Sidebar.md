@@ -82,7 +82,7 @@
   - [Wire Protocol](Whisper-PoC-2-Wire-Protocol)
 
 ### Hacking
-- [Coding Guide](Coding-guide)
+- [Parity Ethereum Style Guide](Parity-Ethereum-Style-Guide)
 - [Known Issues](Known-Issues-Priorities)
 - [Fuzz Testing](Fuzz-Testing)
 - [Labeling](Labelling)

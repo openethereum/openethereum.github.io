@@ -28,5 +28,5 @@ Some help:
 - If you're interested in mining with Parity Ethereum, see the [Mining](Mining) guide.
 - If you'd like to use the JSON-RPC interface with Parity, see the [JSON-RPC](JSONRPC) guide.
 - For [Private chains](Private-chains) and [Proof of Authority Chains](Proof-of-Authority-Chains), you might find the [Chain specification](Chain-specification) useful.
-- If you're interested in hacking on the Parity code base see the [Coding guide](Coding-guide).
+- If you're interested in hacking on the Parity code base see the [Parity Ethereum Style Guide](Parity-Ethereum-Style-Guide).
 
