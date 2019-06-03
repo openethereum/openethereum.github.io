@@ -83,7 +83,7 @@
 
 ### Hacking
 - [Parity Ethereum Style Guide](Parity-Ethereum-Style-Guide)
-- [Known Issues](Known-Issues-Priorities)
+- [Known Issues](https://github.com/paritytech/parity-ethereum/issues) <i class="fa fa-external-link"></i>
 - [Fuzz Testing](Fuzz-Testing)
 - [Labeling](Labelling)
 - [Release Notes](https://github.com/paritytech/parity-ethereum/blob/master/CHANGELOG.md) <i class="fa fa-external-link"></i>
