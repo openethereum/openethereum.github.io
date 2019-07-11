@@ -9,6 +9,7 @@ title: Parity Ethereum CLI Sub-commands
 * [Account list](#account-list)
 * [Account import](#account-import)
 * [Db kill](#db-kill)
+* [Db reset](#db-reset) 
 * [Export hardcoded sync](#export-hardcoded-sync)
 * [Daemon](#daemon)
 * [Snapshot](#snapshot)
@@ -112,6 +113,14 @@ parity db kill --chain kovan
 Database deleted.
 ```
 
+## Db reset 
+
+Removes `<NUM>` latest blocks from the db
+### Example:
+```
+parity db reset --chain kovan 5
+Successfully reset db!
+```
 
 ## Export hardcoded sync
 
