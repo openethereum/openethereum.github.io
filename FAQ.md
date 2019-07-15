@@ -52,10 +52,6 @@ parity -warp             |      6_850_000 |       133G | --no-warp              
 parity -warp +archive    |      6_850_000 |       1.8T | --pruning archive            |
 ```
 
-Live data:
-
-- [Nodestats](https://nodestats.org)
-
 
 ### How to use Parity Ethereum Chrome Extension to browse a Web3 website?
 
