@@ -113,6 +113,7 @@
 
 ## Parity Signer Mobile App
 - [Overview](Parity-Signer-Mobile-App)
+- [Tutorial w/ Polkadot-js apps on Kusama](Parity-Signer-Mobile-App-Apps-Kusama-tutorial)
 - [Tutorial w/ Fether](Parity-Signer-Mobile-App-Fether-tutorial)
 - [Tutorial w/ MyCrypto](Parity-Signer-Mobile-App-MyCrypto-tutorial)
 
