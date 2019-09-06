@@ -94,7 +94,7 @@ You will now be presented with a QR code that represents the transaction. Since 
 - Review the transaction addresses and the amount to send on your phone. The amount and addresses must match what you've entered in apps. If you got phished, this is where you can realise it and reject the transaction.
 - Once you're sure, scroll down and click `Sign Transaction` to enter your pin and get the QR code of the scanned transaction.
 
-![Sign Polkadot apps transaction](images/Parity-signer-android-apps-0.png)
+![Sign Polkadot apps transaction](images/Parity-Signer-android-apps-1.png)
 
 Your phone has now *signed the transaction offline* using your Parity Signer account private key. The QR code that is now displayed on your phone represents a signed transaction that can be broadcasted. We will do this in the next steps:
 - On Polkadot-js apps, click on `Scan Signature QR`, this will ask to turn on your webcam again.
