@@ -21,7 +21,7 @@ An example notification received by subscribing to `newHeads` event:
 ```js
 {
     "jsonrpc": "2.0",
-    "method": "eth_subscription",
+    "method": "eth_subscribe",
     "params": {
         "result": {
             "author": "0xea674fdde714fd979de3edf0f56aa9716b898ec8",
