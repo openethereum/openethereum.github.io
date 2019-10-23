@@ -2183,7 +2183,45 @@ Returns a list of transactions currently in the queue.
 
 #### Parameters
 
-None
+0. `limit` - (optional) The max amount of transactions to return. If there should be no limit and `filter` is specified, this value must be `null`.
+1. `filter` - (optional) Filter transactions.
+    - `from`: - The address the transaction is sent from.
+        - `eq`: `Address`  - equal to
+    - `to`: - The address the transaction is directed to.
+        - `eq`: `Address` - equal to
+        - `action`: `Value` - Set to `contract_creation` for contract creation transactions.
+    - `gas`: - Integer of the gas provided by the transaction.
+        - `eq`: `Quantity` - equal to
+        - `gt`: `Quantity` - greater than
+        - `lt`: `Quantity` - lesser than
+    - `gas_price`: - Integer of the gas price used by the transaction.
+        - `eq`: `Quantity` - equal to
+        - `gt`: `Quantity` - greater than
+        - `lt`: `Quantity` - lesser than
+    - `value`: - Integer of the value sent with the transaction.
+        - `eq`: `Quantity` - equal to
+        - `gt`: `Quantity` - greater than
+        - `lt`: `Quantity` - lesser than
+    - `nonce`: - Integer of a nonce.
+        - `eq`: `Quantity` - equal to
+        - `gt`: `Quantity` - greater than
+        - `lt`: `Quantity` - lesser than
+
+Note that only one operator for each filter type can be used.
+
+```js
+"params": [
+  15,
+  {
+    "to": {
+        "eq": "0xe8b2d01ffa0a15736b2370b6e5064f9702c891b6"
+    },
+    "gas": {
+        "gt": "0x493e0"
+    },
+  }
+]
+```
 
 #### Returns
 
