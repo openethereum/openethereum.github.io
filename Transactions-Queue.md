@@ -52,7 +52,7 @@ Local transactions can be submitted via two RPC methods: `eth_sendTransaction` a
 - `--tx-queue-no-unfamiliar-locals`: This flag disables treating all transactions received using `eth_sendRawTransaction` as local. Only transactions that are signed by one of the local accounts (private key) will get marked as local, others will be treated in the same way as if they were received over the network.
 The flag is recommended in case your RPC is exposed for external (potentially untrusted) clients.
 
-- `--tx-queue-no-early-exit`: Disables early-rejection of the transactions in case the queue is at it's limits. By default if the pool is full we omit most of the (heavy) verification logic for the transactions and reject transactions early only by looking at their gas price. As a consequence we are not able to identify transactions received from the network as the ones that should be prioritized (local), because the node is managing the private key for them. If that behavior is undesired (i.e. you sign/submit local transactions on node A, then want them to be propagated to node B and prioritized there) you can use the flag to disable early rejection.
+- `--tx-queue-no-early-reject`: Disables early-rejection of the transactions in case the queue is at it's limits. By default if the pool is full we omit most of the (heavy) verification logic for the transactions and reject transactions early only by looking at their gas price. As a consequence we are not able to identify transactions received from the network as the ones that should be prioritized (local), because the node is managing the private key for them. If that behavior is undesired (i.e. you sign/submit local transactions on node A, then want them to be propagated to node B and prioritized there) you can use the flag to disable early rejection.
 
 #### Recap
 The table below shows when transaction is considered as local:
@@ -61,7 +61,7 @@ The table below shows when transaction is considered as local:
 |:-------------------------------:	|:----------------------------------------:	|:------------------------------------------:	|:----------------------------------------------------------:	|
 | no flag                         	|                    YES                   	|                     YES                    	|                             NO*                            	|
 | `tx-queue-no-unfamiliar-locals` 	|                    YES                   	|                    NO**                    	|                             NO*                            	|
-| `tx-queue-no-early-exit`        	|                    YES                   	|                     YES                    	|                             YES                            	|
+| `tx-queue-no-early-reject`        	|                    YES                   	|                     YES                    	|                             YES                            	|
 | both                            	|                    YES                   	|                    NO**                    	|                             YES                            	|
 
 ```
