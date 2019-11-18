@@ -460,12 +460,6 @@ API and Console Options – HTTP JSON-RPC:
         additional security against some attack vectors. Special
         options: "all", "none",. (default: none)
 
-    --jsonrpc-threads=[THREADS]
-        Turn on additional processing threads for JSON-RPC
-        servers (all transports). Setting this to a non-zero
-        value allows parallel execution of cpu-heavy queries.
-        (default: 4)
-
     --jsonrpc-cors=[URL]
         Specify CORS header for HTTP JSON-RPC API responses.
         Special options: "all", "none". (default: none)
@@ -925,12 +919,4 @@ Snapshot Options:
 
     --snapshot-threads=[NUM]
         Enables multiple threads for snapshots creation.
-
-Whisper Options:
-    --whisper
-        Enable the Whisper network.
-
-    --whisper-pool-size=[MB]
-        Target size of the whisper message pool in megabytes.
-        (default: 10)
 ```
