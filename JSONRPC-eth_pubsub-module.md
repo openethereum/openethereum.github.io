@@ -21,7 +21,7 @@ An example notification received by subscribing to `newHeads` event:
 ```js
 {
     "jsonrpc": "2.0",
-    "method": "eth_subscribe",
+    "method": "eth_subscription",
     "params": {
         "result": {
             "author": "0xea674fdde714fd979de3edf0f56aa9716b898ec8",
@@ -103,7 +103,7 @@ Unsubscribes from a subscription.
 0. `String` - Subscription ID
 
 ```js
-params: ["0xb53c4832f1dca4a5"]
+params: ["0xb53c4832f1dca4a5un"]
 ```
 
 #### Returns
@@ -115,7 +115,7 @@ params: ["0xb53c4832f1dca4a5"]
 Request
 ```bash
 wscat -c localhost:8546
->{"method":"eth_unsubscribe","params":["0xb53c4832f1dca4a5"],"id":1,"jsonrpc":"2.0"}
+>{"method":"eth_unsubscribe","params":["0xb53c4832f1dca4a5un"],"id":1,"jsonrpc":"2.0"}
 ```
 
 Response
