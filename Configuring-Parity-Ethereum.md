@@ -67,6 +67,7 @@ light = false
 unlock = ["0xdeadbeefcafe0000000000000000000000000000"]
 password = ["/home/user/.safe/password.file"]
 keys_iterations = 10240
+enable_signing_queue = false
 
 [network]
 port = 30303
@@ -102,6 +103,7 @@ apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces", "rp
 hosts = ["none"]
 
 [ipc]
+chmod = 775
 disable = false
 path = "$HOME/.local/share/io.parity.ethereum/jsonrpc.ipc"
 apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "parity_accounts", "traces", "rpc", "shh", "shh_pubsub"]
@@ -317,6 +319,10 @@ Account Options:
         ACCOUNTS is a comma-delimited list of addresses. Implies
         --no-ui.
 
+    --enable-signing-queue=[BOOLEAN]
+        Enables the signing queue for external transaction signing either via CLI or personal_unlockAccount, turned off
+        by default. (default: false)
+
     --password=[FILE]...
         Provide a file containing a password for unlocking an
         account. Leading and trailing whitespace is trimmed.
@@ -521,6 +527,9 @@ API and Console Options – IPC:
     --ipc-path=[PATH]
         Specify custom path for JSON-RPC over IPC service.
         (default: $BASE/jsonrpc.ipc)
+
+   --ipc-chmod=[NUM]
+        Specify octal value for ipc socket permissions (unix/bsd only) (default: 660)
 
     --ipc-apis=[APIS]
         Specify custom API set available via JSON-RPC over IPC
