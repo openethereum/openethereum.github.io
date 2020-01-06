@@ -50,5 +50,5 @@ For technical information about the soft and hard derivations on Substrate, plea
 * Each derived account is prefixed with its network path id, which prevents it to be misused in another network.
 
 ## References:
-1. https://github.com/w3f/schnorrkel
-2. https://wiki.polkadot.network/docs/en/learn-keys
+1. [https://github.com/w3f/schnorrkel](https://github.com/w3f/schnorrkel)
+2. [https://wiki.polkadot.network/docs/en/learn-keys](https://wiki.polkadot.network/docs/en/learn-keys)

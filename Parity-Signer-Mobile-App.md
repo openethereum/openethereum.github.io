@@ -9,7 +9,7 @@ title: Parity Signer Mobile Application
 
 Any data transfer from or to the app will happen using QR code scanning. By doing so, the most sensitive piece of information, the private keys, will never leave the phone. The Parity Signer Mobile app can be used to store any Ethereum account, this includes KSM, ETH, ETC as well as Ether from various testnets (Kovan, Ropsten...).
 
-![screenshot Parity Signer](images/Parity-signer-introduction.png)
+![screenshot Parity Signer](images/Parity-Signer-introduction.png)
 
 ## Device security
 Parity Signer is built to be used offline. The mobile device used to run the app will hold important information that needs to be kept securely stored. It is therefore advised to:
