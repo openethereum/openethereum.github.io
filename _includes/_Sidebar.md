@@ -113,6 +113,7 @@
 
 ## Parity Signer Mobile App
 - [Overview](Parity-Signer-Mobile-App)
+- [HDKD on Signer](Parity-Signer-Hierarchical-Deterministic-Key-Derivation)
 - [Tutorial w/ Polkadot-js apps on Kusama](Parity-Signer-Mobile-App-Apps-Kusama-tutorial)
 - [Tutorial w/ Fether](Parity-Signer-Mobile-App-Fether-tutorial)
 - [Tutorial w/ MyCrypto](Parity-Signer-Mobile-App-MyCrypto-tutorial)

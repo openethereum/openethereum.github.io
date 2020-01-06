@@ -35,35 +35,32 @@ Install Parity Signer making sure that it originated from **Parity Technologies*
 
 
 ## 2. Setup or recover an account
-When launching the app for the first time, no account has been set up yet. At this stage, you will either want to create an account directly from your mobile device or recover an account previously created with Parity Signer or [Parity UI / Wallet](https://wiki.parity.io/Parity-Wallet) (Desktop)
+When launching the app for the first time, no account has been set up yet. At this stage, you will either want to create an identity (root account) directly from your mobile device or recover an identity (root account) previously created with Parity Signer or [Parity UI / Wallet](https://wiki.parity.io/Parity-Wallet) (Desktop)
  
 ### Create an account
  
-Click on the `create new account` button.
-
-The next screen will allow you to select a network for your account between Ethereum mainnet, Kovan and Ropsten are supported.
-You can choose your account identicon and view the related address.
-Finally, you can define a name for this account.
+Tap on the `Create` button after you first entered into the app, and then you can give the identity any name you like.
 
 In the next step, your recovery phrase will be presented to you. Think of it as a master key. If you lose it, you lose your money.
 **Write this recovery phrase down and store it in a safe place**.
 If your phone gets stolen/broken/forgotten this will be the only way to [recover your account](#recover-an-account-with-your-recovery-phrase).
 
-You will then be asked to chose a pin code. This pin will be needed later on to unlock your account to sign a transaction.
+You will then be asked to choose a pin code. This pin will be needed later on to unlock your account to manage the identity or sign a transaction.
 
-![create account](images/Parity-Signer-android-0.png)
+The next screen you will allow you to select a network for generating an account.
+
+![create account](images/Parity-Signer-apps-0.png)
 
 
 ### Recover an account with your recovery phrase
 
-If you already have an account created with either Parity Signer or Parity UI, you can recover it by doing so:
-- Click on `Add account` > `Recover account`.
-- Select the network you want to recover this account for.
-- Name this account.
-- Type in the recovery phrase, word suggestion helps you prevent any typo.
-- Tap `Next step`.
+If you already have an account created with either Parity Signer or any other wallet, you can recover it by doing so:
+- Tap on the top right side user icon, and choose ` + Add Identity`.
+- Input the new identity name and tap the `Recover Identity` button.
+- Type in the recovery phrase, word suggestion helps you prevent any typo. The field will turn red if the recovery phrase is not a bip39.
+- Tap `Recover Identity`.
 - Select a PIN number and confirm it by typing it again.
-- Your recovered account will appear in the account list.
+- Once your Identity is generated, you can select a network to create your first account.
 
 ## 3. Add Parity Signer's account to Fether
 
@@ -72,7 +69,7 @@ To be able to follow this tutorial and send Ether from a freshly created account
 - [Download](https://github.com/paritytech/fether/releases), install and launch Parity Fether.
 - On Fether's first screen, click the + button and then `recover an account`.
 - Click `Recover from Parity Signer`, it will show the image of the webcam for you to scan the Parity Signer's account QR code.
-- On Parity Signer account list, select the account you want to copy the address of and tap `Show account QR code`.
+- On Parity Signer app, select the account you want to copy the address.
 - Scan the QR code displayed on your phone with your computer's webcam. Make sure the QR code is fully displayed on your mobile's screen.
 - You can now name this account on Fether. Parity Signer's account will be recognizable thanks to the Parity Signer's logo next to the identicon.
 
@@ -89,7 +86,7 @@ Assuming that your Parity Signer account now has funds, you will be able to send
 ![Parity Signer Fether send transaction](images/Parity-Signer-Fether-tx-workflow.jpg)
 
 You will now be presented with a QR code that represents the transaction. Since this transaction is sending funds from your Parity Signer mobile app account, only this account (sitting on your phone) can sign and authorise this transaction. This is what we'll do in the next steps:
-- From the Parity Signer mobile app, switch to the `Scanner` tab and scan the QR code presented by Fether.
+- From the Parity Signer mobile app, tap the scan button on the top right and scan the QR code presented by Fether.
 - Review the transaction addresses and the amount to send on your phone. The amount and addresses must match what you've entered in Fether. If you got phished, this is where you can realise it and reject the transaction.
 - Once you're sure, scroll down and click `Sign Transaction` to enter your pin and get the QR code of the scanned transaction.
 

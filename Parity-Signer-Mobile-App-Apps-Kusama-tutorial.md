@@ -7,9 +7,9 @@ This tutorial will walk you through setting up a Kusama account with the Parity 
 
 ## Summary
 - [1. Get Parity Signer mobile application](#1-get-parity-signer-mobile-application)
-- [2. Setup or recover an account](#2-setup-or-recover-an-account)
-  - [Create an account](#create-an-account)
-  - [Recover an account with your recovery phrase](#recover-an-account-with-your-recovery-phrase)
+- [2. Setup or recover an identity](#2-setup-or-recover-an-account)
+  - [Create an identity](#create-an-account)
+  - [Recover an identity with your recovery phrase](#recover-an-account-with-your-recovery-phrase)
 - [3. Add Parity Signer's account to Polkadot-js apps](#3-add-parity-signers-account-to-polkadot-js-apps)
 - [4. Sign a transaction](#4-sign-a-transaction)
 
@@ -34,36 +34,41 @@ Install Parity Signer making sure that it originated from **Parity Technologies*
 - [iOS](https://itunes.apple.com/us/app/parity-signer/id1218174838)
 
 
-## 2. Setup or recover an account
-When launching the app for the first time, no account has been set up yet. At this stage, you will either want to create an account directly from your mobile device or recover an account previously created.
+## 2. Setup or recover an Identity
+When launching the app for the first time, no identity has been set up yet. At this stage, you will either want to create an identity directly from your mobile device or recover an identity previously created.
  
-### Create an account
+### Create an identity
  
-Click on the `+` button and select `New Account`.
-
-The next screen will allow you to select a network for your account. Kusama is selected by default.
-You should choose your account identicon and view the related address.
-Finally, you should define a name for this account. Don't worry, you can change it later on.
+Tap on the `Create` button, and give a name to this identity.
 
 In the next step, your recovery phrase will be presented to you. Think of it as a master key. If you lose it, you lose your money.
 **Write this recovery phrase down and store it in a safe place**.
 If your phone gets stolen/broken/forgotten this will be the only way to [recover your account](#recover-an-account-with-your-recovery-phrase).
 
-You will then be asked to choose a pin code. This pin will be needed later on to unlock your account to sign a transaction.
+You will then be asked to choose a pin code. This pin will be needed later on to unlock your account to manage the identity or sign a transaction.
 
-![create account](images/Parity-signer-android-apps-0.png)
+The next screen will allow you to select a network to generate an account.
+If you choose an Ethereum network, the related Ethereum account will be generated for the identity,
+
+If you choose a Substrate network (like Kusama), you will first create a root account, and then you will be able to derive more accounts with specified paths and names. The name can be changed later on, but once the path is set, it can not be changed. More information about path derivation see [here](Parity-Signer-Hierarchical-Deterministic-Key-Derivation).
+
+For each derived account, you will be able to see the address and its related QR code.
+
+![create account](images/Parity-Signer-apps-0.png)
 
 
-### Recover an account with your recovery phrase
+### Recover an identity with your recovery phrase
 
 If you already have an account created with either Parity Signer or any other waller, you can recover it by doing so:
-- Click on `+` > `Recover Account`.
-- Select the network you want to recover this account for.
-- Name this account.
-- Type in the recovery phrase, word suggestion helps you prevent any typo. The field will turn green if the recovery phrase is a  bip39.
-- Tap `Next step`.
+- Tap on the top right side user icon, and choose ` + Add Identity`.
+- Input the new identity name and tap the `Recover Identity` button.
+- Type in the recovery phrase, word suggestion helps you prevent any typo. The field will turn red if the recovery phrase is not a bip39.
+- Tap `Recover Identity`.
 - Select a PIN number and confirm it by typing it again.
-- Your recovered account will appear in the account list.
+- Identity generated, now you can select the network to create the first account.
+
+NOTICE: For V3 user, after recovering the seed phrase of Kusama account, the account will appear as an identity root account aside with identity name in the network selection screen.
+ 
 
 ## 3. Add Parity Signer's account to Polkadot-js apps
 
@@ -73,7 +78,7 @@ To be able to follow this tutorial and interact with the Blockchain from a fresh
 - Go to `Accounts` from the left sidebar.
 - Click on `Add via QR` button in the top right-hand corner.
 - It will ask for the webcam permission for you to scan the Parity Signer's account QR code, accept it.
-- On Parity Signer account's list, tap on the account you want to copy the address of.
+- On Parity Signer, choose on the account you want to copy the address of.
 - Scan the QR code displayed on your phone with your computer's webcam. Make sure the QR code is fully displayed on your mobile's screen.
 - You can now name this account on Polkadot-js apps.
 
@@ -90,11 +95,11 @@ Assuming that your Parity Signer account now has funds, you will be able to send
 ![Parity Signer Polkadot send transaction](images/Parity-Signer-apps-tx-workflow.png)
 
 You will now be presented with a QR code that represents the transaction. Since this transaction is sending funds from your Parity Signer mobile app account, only this account (sitting on your phone) can sign and authorise this transaction. This is what we'll do in the next steps:
-- From the Parity Signer account overview, tap the `Scan` button and scan the QR code presented by the Polkadot-js apps website.
+- From the Parity Signer account overview, tap the scan button on the top right and scan the QR code presented by the Polkadot-js apps website.
 - Review the transaction addresses and the amount to send on your phone. The amount and addresses must match what you've entered in apps. If you got phished, this is where you can realise it and reject the transaction.
 - Once you're sure, scroll down and click `Sign Transaction` to enter your pin and get the QR code of the scanned transaction.
 
-![Sign Polkadot apps transaction](images/Parity-Signer-android-apps-1.png)
+![Sign Polkadot apps transaction](images/Parity-Signer-apps-1.png)
 
 Your phone has now *signed the transaction offline* using your Parity Signer account private key. The QR code that is now displayed on your phone represents a signed transaction that can be broadcasted. We will do this in the next steps:
 - On Polkadot-js apps, click on `Scan Signature QR`, this will ask to turn on your webcam again.

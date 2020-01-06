@@ -9,7 +9,7 @@ title: Parity Signer Mobile Application
 
 Any data transfer from or to the app will happen using QR code scanning. By doing so, the most sensitive piece of information, the private keys, will never leave the phone. The Parity Signer Mobile app can be used to store any Ethereum account, this includes KSM, ETH, ETC as well as Ether from various testnets (Kovan, Ropsten...).
 
-![screenshot Parity Signer](images/Parity-signer-android-apps-0.png)
+![screenshot Parity Signer](images/Parity-signer-introduction.png)
 
 ## Device security
 Parity Signer is built to be used offline. The mobile device used to run the app will hold important information that needs to be kept securely stored. It is therefore advised to:
@@ -36,6 +36,7 @@ Please double check carefully the origin of the app, and make sure that the comp
 ## How to update Parity Signer securely
 Once Parity Signer is installed, your device should never go online. This would put your private keys at threat. To update, you will need to :
 1. Make sure you possess the recovery phrase for each of your accounts. You can find it on Parity Signer by :
+- v4.0 choosing an identity > click the user icon at the top right > “Show Recovery Phrase”
 - v2.2 tapping an account > 3 dots menu at the top right > “Backup Recovery Phrase”
 - v2.0 tapping an account > tap on the account address >   “Backup Recovery Phrase”
 2. Factory reset the device.
