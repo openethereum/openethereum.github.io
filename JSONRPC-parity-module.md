@@ -1650,7 +1650,7 @@ params: [{
   "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
   "condition": {
     "block": 354221,
-    "time": "2018-11-16T15:59:08.596Z"
+    "time": "2020-01-30T21:10:04.628Z"
   }
 }]
 ```
@@ -1663,7 +1663,7 @@ params: [{
 
 Request
 ```bash
-curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2018-11-16T15:59:08.596Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_postTransaction","params":[{"from":"0xb60e8dd61c5d32be8058bb8eb970870f07233155","to":"0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas":"0x76c0","gasPrice":"0x9184e72a000","value":"0x9184e72a","data":"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675","condition":{"block":354221,"time":"2020-01-30T21:10:04.628Z"}}],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -2183,45 +2183,7 @@ Returns a list of transactions currently in the queue.
 
 #### Parameters
 
-0. `limit` - (optional) The max amount of transactions to return. If there should be no limit and `filter` is specified, this value must be `null`.
-1. `filter` - (optional) Filter transactions.
-    - `from`: - The address the transaction is sent from.
-        - `eq`: `Address`  - equal to
-    - `to`: - The address the transaction is directed to.
-        - `eq`: `Address` - equal to
-        - `action`: `Value` - Set to `contract_creation` for contract creation transactions.
-    - `gas`: - Integer of the gas provided by the transaction.
-        - `eq`: `Quantity` - equal to
-        - `gt`: `Quantity` - greater than
-        - `lt`: `Quantity` - lesser than
-    - `gas_price`: - Integer of the gas price used by the transaction.
-        - `eq`: `Quantity` - equal to
-        - `gt`: `Quantity` - greater than
-        - `lt`: `Quantity` - lesser than
-    - `value`: - Integer of the value sent with the transaction.
-        - `eq`: `Quantity` - equal to
-        - `gt`: `Quantity` - greater than
-        - `lt`: `Quantity` - lesser than
-    - `nonce`: - Integer of a nonce.
-        - `eq`: `Quantity` - equal to
-        - `gt`: `Quantity` - greater than
-        - `lt`: `Quantity` - lesser than
-
-Note that only one operator for each filter type can be used.
-
-```js
-"params": [
-  15,
-  {
-    "to": {
-        "eq": "0xe8b2d01ffa0a15736b2370b6e5064f9702c891b6"
-    },
-    "gas": {
-        "gt": "0x493e0"
-    },
-  }
-]
-```
+None
 
 #### Returns
 
