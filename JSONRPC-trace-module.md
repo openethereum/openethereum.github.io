@@ -315,7 +315,6 @@ Response
         "traceAddress": [],
         "type": "call"
       }],
-      "transactionHash": "0x...",
       "vmTrace": null
     },
     { ... }
