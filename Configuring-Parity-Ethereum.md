@@ -103,7 +103,7 @@ apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces", "rp
 hosts = ["none"]
 
 [ipc]
-chmod = 775
+chmod = "775"
 disable = false
 path = "$HOME/.local/share/io.parity.ethereum/jsonrpc.ipc"
 apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "parity_accounts", "traces", "rpc", "shh", "shh_pubsub"]
