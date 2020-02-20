@@ -5,7 +5,7 @@ title: The `trace` Module
 The trace module is for getting a deeper insight into transaction processing.
 It includes two sets of calls; the transaction trace filtering API and the ad-hoc tracing API.
 
-**Note:** In order to use these API Parity must be fully synced with flags `$ parity --tracing on`.
+**Note:** In order to use the Transaction-Trace Filtering API, Parity must be fully synced with flags `$ parity --tracing on`. As for the Ad-hoc Tracing API, as long the blocks have not yet been pruned, the RPC calls will work.
 
 ## The Ad-hoc Tracing API
 
