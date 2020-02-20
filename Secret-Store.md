@@ -47,7 +47,7 @@ There are 4 entities, which are not a part of **Secret Store**:
 - `Alice` and `Bob` are clients of **Secret Store**, which are using its API to read and store keys;
 - **permissioning contract**, which contains rules that:
 	- allow `Alice` to run **permissioning sessions** with server key with **id** = 1. Since **server key** 1 doesn't have **document key** bound to it, it only makes sense for Alice to run **signing sessions** to sign messages with the private portion of key 1 (`PRIV1`);
-	- allow `Bob` to run **permissioning sessions** with server key with **id** = 2. Since **server key** 1 has **document key** bound to it, `Bob` can run **document key retrieval sessions** (to use `PRIV2` to decrypt `D2` and return it, encrypted with `Bob`' public key) along with **signing sessions** (to sign messages using `PRIV2`);
+	- allow `Bob` to run **permissioning sessions** with server key with **id** = 2. Since **server key** 2 has **document key** bound to it, `Bob` can run **document key retrieval sessions** (to use `PRIV2` to decrypt `D2` and return it, encrypted with `Bob`' public key) along with **signing sessions** (to sign messages using `PRIV2`);
 - **node** (`NODE4`), that is not currently a part of **Secret Store**.
 
 Following are examples of API calls that will succeed:
