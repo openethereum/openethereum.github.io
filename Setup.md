@@ -18,14 +18,6 @@ title: Setup Parity Ethereum
 
 There are a few ways of proceeding here. You can build Parity Ethereum from the sources; you can launch Parity Ethereum using the binaries built [for the latest releases](https://github.com/paritytech/parity-ethereum/releases) for Linux, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
-### One-line Binary Installer
-
-This method is way faster than building from the sources, though it only works on Ubuntu and Mac with Homebrew installed. It will install and configure the Parity Ethereum client for you. To use the script just run:
-
-```bash
-$ bash <(curl https://get.parity.io -L)
-```
-
 ### Use the binaries for your platform
 Binaries for Parity Ethereum are provided. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity-ethereum/releases).
 - Linux 
