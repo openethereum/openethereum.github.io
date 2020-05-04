@@ -1998,7 +1998,7 @@ None
 
 - `Object` - Historic values
     - `bucketBounds`:   `Array` - Array of bound values.
-    - `count`:   `Array` - Array of counts.
+    - `counts`:   `Array` - Array of counts.
 
 #### Example
 
