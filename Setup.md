@@ -1,5 +1,5 @@
 ---
-title: Setup Parity Ethereum
+title: Setup OpenEthereum
 ---
 
 - [Binaries](#binaries)
@@ -9,26 +9,30 @@ title: Setup Parity Ethereum
 - [Building from Source](#building-from-source)
 - [Building using Docker](#building-using-docker)
     - [Grab Rust](#grab-rust)
-    - [Install and Build Parity Ethereum](#install-and-build-parity)
+    - [Install and Build OpenEthereum](#install-and-build-openethereum)
     - [A note on backing up your datadir with Docker](#a-note-on-backing-up-your-datadir-with-docker)
 - [Ubuntu Snappy on Raspberry Pi](#ubuntu-snappy-on-raspberry-pi)
 
 
 ## Binaries
 
-There are a few ways of proceeding here. You can build Parity Ethereum from the sources; you can launch Parity Ethereum using the binaries built [for the latest releases](https://github.com/paritytech/parity-ethereum/releases) for Linux, Mac/Homebrew and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
+There are a few ways of proceeding here. You can build OpenEthereum from the sources; you can launch OpenEthereum using the binaries built [for the latest releases](https://github.com/openethereum/openethereum/releases) for Linux, macOS and Windows or, if you're on an Ubuntu Snappy platform, just use our Snappy App. Other Unix-like environments should work (assuming you have the latex *nix installed); we're not going to expend much effort supporting them, though build PRs are welcome.
 
-### Use the binaries for your platform
-Binaries for Parity Ethereum are provided. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/paritytech/parity-ethereum/releases).
+### Homebrew (macOS)
+- `brew tap openethereum/openethereum`
+- `brew install openethereum`
+
+### Manual
+Binaries for OpenEthereum are provided. If you'd like to try these out, downloads are available on the [Releases page](https://github.com/openethereum/openethereum/releases).
 - Linux 
     - Download the latest release from the link above
-    - Make the `parity` file executable by running `chmod u+x parity`
-    - Launch Parity Ethereum with your favourite flags: `./parity --chain dev --jsonrpc-apis personal`
+    - Make the `openethereum` file executable by running `chmod u+x openethereum`
+    - Launch OpenEthereum with your favourite flags: `./openethereum --chain dev --jsonrpc-apis personal`
     
-- Mac
-  - Download the mac binary.
+- macOS
+  - Download the macOS binary.
   - Open a terminal and navigate to the directory using `cd /path/to/binary/folder/`.
-  - Make the binary executable by running `chmod +x parity`.
+  - Make the binary executable by running `chmod +x openethereum`.
   - You can now double click on the binary.
   
 - Windows
@@ -54,15 +58,15 @@ For Linux systems:
 
 ## Building from source
 
-To build Parity Ethereum from source follow the instructions in the [README](https://github.com/paritytech/parity-ethereum/blob/master/README.md).
+To build OpenEthereum from source follow the instructions in the [README](https://github.com/openethereum/openethereum/blob/master/README.md).
 
-For Ethereum key management [Ethstore](https://github.com/paritytech/parity-ethereum/tree/master/accounts/ethstore) can be used. To compile it use
+For Ethereum key management [Ethstore](https://github.com/openethereum/openethereum/tree/master/accounts/ethstore) can be used. To compile it use
 
 ```bash
 $ cargo build --release -p ethstore-cli
 ```
 
-in the root Parity Ethereum directory and for usage instructions:
+in the root OpenEthereum directory and for usage instructions:
 
 ```bash
 $ ./target/release/ethstore --help
@@ -101,13 +105,13 @@ Download and run [rustup](https://static.rust-lang.org/rustup/dist/x86_64-pc-win
 $ rustup default stable-x86_64-pc-windows-msvc
 ```
 
-### Install and Build Parity
+### Install and Build OpenEthereum
 
-Next, grab the Parity Ethereum repository:
+Next, grab the OpenEthereum repository:
 
 ```bash
-$ git clone https://github.com/paritytech/parity
-$ cd parity
+$ git clone https://github.com/openethereum/openethereum
+$ cd openethereum
 ```
 
 For tests, also update submodules:
@@ -135,17 +139,17 @@ You can run just the consensus tests with:
 $ cargo test --release --features ethcore/json-tests -p ethcore
 ```
 
-To install Parity Ethereum on Linux and Mac OS, just build it and copy it to `/usr/local/bin`:
+To install OpenEthereum on Linux and Mac OS, just build it and copy it to `/usr/local/bin`:
 
 ```bash
-$ cargo build --release && cp target/release/parity /usr/local/bin
+$ cargo build --release && cp target/release/openethereum /usr/local/bin
 ```
 
-For Windows, use `copy` it into `C:/Windows`:
+For Windows, use `copy` it into `C:\Windows`:
 
 ```bash
 $ cargo build --release
-$ copy target/release/parity C:/Windows
+$ copy target/release/openethereum C:\Windows
 ```
 
 You can start a client and sync with the network with:
@@ -154,7 +158,7 @@ You can start a client and sync with the network with:
 $ cargo run --release
 ```
 
-To get help on the command line options for the `parity` client, use `--help`:
+To get help on the command line options for the `openethereum` client, use `--help`:
 
 ```bash
 $ cargo run --release --help
@@ -165,10 +169,5 @@ $ cargo run --release --help
 In case you need to persist the blockchain files, keys etc., you should run the image with the `--base-path` option and then mount it, e.g.:
 
 ```bash
-$ docker run --name parity -v /srv/parity:/mnt ethcore/parity:beta --base-path /mnt
+$ docker run --name openethereum -v /srv/openethereum:/mnt openethereum/openethereum --base-path /mnt
 ```
-
-
-## Ubuntu Snappy on Raspberry Pi
-
-There are Ubuntu Snappy builds for the RasPi, found in [Parity Ethereum Snappy repository](https://github.com/paritytech/parity-snappy).

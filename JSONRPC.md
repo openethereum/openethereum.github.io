@@ -9,7 +9,7 @@ title: JSON RPC API
 ## Transport
 * HTTP: Listens on port `8545`
 * WebSockets: Listens on port `8546`
-* IPC Socket: Listens on `$BASE/jsonrpc.ipc` (defaults to `~/.local/share/io.parity.ethereum/jsonrpc.ipc` on Linux)
+* IPC Socket: Listens on `$BASE/jsonrpc.ipc` (defaults to `~/.local/share/openethereum/jsonrpc.ipc` on Linux)
 
 ## Types in the JSONRPC
 
@@ -32,7 +32,7 @@ When encoding **UNFORMATTED DATA** (byte arrays, account addresses, hashes, byte
 Aside from `DATA` and `QUANTITIES`, there are also normative JSON types, which we describe as `STR` (strings) and `INT` (integer numbers).
 
 ## Enabled APIs (default)
-As documented in the options, available under `parity --help` not all API's are exposed by default. However you can simply enable them by running parity with the flag: 
+As documented in the options, available under `openethereum --help` not all API's are exposed by default. However you can simply enable them by running OpenEthereum with the flag: 
 `--jsonrpc-apis APIS `                  
 > _Specify the APIs available through the JSONRPC interface. APIS is a comma-delimited list of API name. Possible name are all, safe, web3, eth, net, personal, parity, parity_set, traces, rpc, parity_accounts, signer. You can also disable a specific API by putting '-' in the front: all,-personal._
 
@@ -40,16 +40,15 @@ As documented in the options, available under `parity --help` not all API's are 
 
 ## Full API Documentation
 
-- [web3](JSONRPC-web3-module.md)
-- [net](JSONRPC-net-module.md)
-- [eth](JSONRPC-eth-module.md)
-- [eth_pubsub](JSONRPC-eth_pubsub-module.md)
-- [personal](JSONRPC-personal-module.md)
-- [parity](JSONRPC-parity-module.md)
-- [parity_accounts](JSONRPC-parity_accounts-module.md)
-- [parity_set](JSONRPC-parity_set-module.md)
-- [pubsub](JSONRPC-parity_pubsub-module.md)
-- [signer](JSONRPC-signer-module.md)
-- [trace](JSONRPC-trace-module.md)
-- [shh](JSONRPC-shh-module.md)
-- [secretstore](JSONRPC-secretstore-module.md)
+- [web3](JSONRPC-web3-module)
+- [net](JSONRPC-net-module)
+- [eth](JSONRPC-eth-module)
+- [eth_pubsub](JSONRPC-eth_pubsub-module)
+- [personal](JSONRPC-personal-module)
+- [parity](JSONRPC-parity-module)
+- [parity_accounts](JSONRPC-parity_accounts-module)
+- [parity_set](JSONRPC-parity_set-module)
+- [pubsub](JSONRPC-parity_pubsub-module)
+- [signer](JSONRPC-signer-module)
+- [trace](JSONRPC-trace-module)
+- [secretstore](JSONRPC-secretstore-module)

@@ -2,7 +2,7 @@
 title: Validator Sets
 ---
 
-A number of Engines available in Parity achieve consensus by referring to a list of "validators" (referred to as authorities if they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them. The validator set can be specified in a number of different ways.
+A number of Engines available in OpenEthereum achieve consensus by referring to a list of "validators" (referred to as authorities if they are linked to physical entities). Validators are a group of accounts which are allowed to participate in the consensus, they validate the transactions and blocks to later sign messages about them. The validator set can be specified in a number of different ways.
 
 ## Immutable list
 
@@ -22,7 +22,7 @@ A simple list of addresses specified at genesis.
 
 The list can be also a part of the blockchain state by being stored in an Ethereum contract.
 
-Example contracts can be found [here with the contract used on Kovan Network](https://github.com/parity-contracts/kovan-validator-set).
+Example contracts can be found [here with the contract used on Kovan Network](https://github.com/openethereum/kovan-validator-set).
 
 It is best to include the contract in the genesis placing the bytecode as a "constructor" in the "accounts" field like so:
 
@@ -31,7 +31,7 @@ It is best to include the contract in the genesis placing the bytecode as a "con
 ```
 
 If the constructor takes arguments they must be encoded and appended to the contract bytecode (using
-e.g. [ethabi](https://github.com/paritytech/ethabi)). Also if the contract initializes any address
+e.g. [ethabi](https://github.com/openethereum/ethabi)). Also if the contract initializes any address
 with `msg.sender` (for example as a contract owner) you must take into account that when defining
 the contract in genesis, `msg.sender` will be set to the system address (`SYSTEM_ADDRESS`: `2^160 - 2`).
 

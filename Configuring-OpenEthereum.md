@@ -1,10 +1,10 @@
 ---
-title: Configuring Parity Ethereum
+title: Configuring OpenEthereum
 ---
 
-Parity can be configured using either the [CLI options](#cli-options) or a [config file](#config-file). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence.
+OpenEthereum can be configured using either the [CLI options](#CLI-Options) or a [config file](#Config-File). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence.
 
-You can list all CLI options by running `$parity --help`. The vast majority of CLI options map to a setting in the TOML file, for example `--mode-timeout 500` can be set by creating a config file:
+You can list all CLI options by running `$openethereum --help`. The vast majority of CLI options map to a setting in the TOML file, for example `--mode-timeout 500` can be set by creating a config file:
 
 ```toml
 [parity]
@@ -13,55 +13,52 @@ mode_timeout = 500
 
 ## Config File
 
-Parity can be configured using a [TOML](https://github.com/toml-lang/toml) file. The file can be generated using the [Parity Config Generator](https://paritytech.github.io/parity-config-generator/). To start parity with a config file, the file needs to be located in:
+OpenEthereum can be configured using a [TOML](https://github.com/toml-lang/toml) file. To start OpenEthereum with a config file, the file needs to be located in:
 
-* Windows: `%UserProfile%\AppData\Roaming\Parity\Ethereum\config.toml`
-* Linux: `~/.local/share/io.parity.ethereum/config.toml`
-* macOS: `$HOME/Library/Application Support/io.parity.ethereum/config.toml`
+* Windows: `%UserProfile%\AppData\Roaming\OpenEthereum\config.toml`
+* Linux: `~/.local/share/openethereum/config.toml`
+* macOS: `$HOME/Library/Application Support/OpenEthereum/config.toml`
 
-To use a custom path run `$ parity --config path/to/config.toml`.
+To use a custom path run `$ openethereum --config path/to/config.toml`.
 
 
 ## Presets
 
-Parity can be launched with a [preset configuration file](https://github.com/paritytech/parity-ethereum/tree/1d9542fe88044d0831471510beb23626050f1bbf/parity/cli/presets) using `--config` flag with one of the following value:
+OpenEthereum can be launched with a [preset configuration file](https://github.com/openethereum/openethereum/tree/1d9542fe88044d0831471510beb23626050f1bbf/parity/cli/presets) using `--config` flag with one of the following value:
 - `dev`: uses [dev chain specifications](Private-development-chain) with [Instant-seal](Pluggable-Consensus#instant-seal) consensus engine. The gas price is set to 0.
-- `dev-insecure`: uses the same configuration as `dev`, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
-- `insecure`: uses the Mainnet default configuration, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
+- `dev-insecure`: uses the same configuration as `dev`, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts. 
+- `insecure`: uses the Mainnet default configuration, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts. 
 - `mining`: uses the Mainnet default configuration, plus increases the number of peers to min 50 and max 100, it disables the Dapps and IPC interface. It forces the sealing of blocks with a minimum of 4 seconds interval, forces the reseal for any new transaction (external or local), reduces the transaction queue size to 2048 while increasing the cache size to 256 MB and setting the `trace` logging level for the `miner` and `own_tx` modules.
 - `non-standard-ports`: sets the client to listen to the port 30305 and 8645 for RPC connections.
 
 ## (In)secure Operation
 
-As implied by the `dev`, `dev-insecure`, and `insecure` presets, by default, Parity runs as securely as possible while allowing the local machine access to all `safe` APIs (as detailed in the `--jsonrpc-apis` docstring). 
+As implied by the `dev`, `dev-insecure`, and `insecure` presets, by default, OpenEthereum runs as securely as possible while allowing the local machine access to all `safe` APIs (as detailed in the `--jsonrpc-apis` docstring). 
 
 - Altering `--rpc-hosts` or `--ws-hosts` allows the specified hosts to access any APIs your node has open, setting either of these to `all` or `*` is not recommended, and is a DoS vector in the safest case, and will lead to losses of funds or highjacking or reconfiguration of your node if you have insecure APIs enabled.
 - `eth_sendRawTransaction` and `eth_estimateGas` are both considered safe - they do not allow people to send transactions from accounts they do not already have control over - but they still have a significant processing cost when called, so it is not recommended to open the `eth` API directly to the internet without first sanitizing inputs.
-- There are additional security considerations [if you are running a private network](Pluggable-Consensus.md#operational-tradeoffs), but a miner on any network should be aware of the tools available to maintain quality of the txpool - specifically `--tx-gas-limit` and `--tx-time-limit` and the other `--tx-queue-...` related settings can effectively help maintain your miner's competitiveness while still maintaining a positive effect on the network.
+- There are additional security considerations [if you are running a private network](Pluggable-Consensus#operational-tradeoffs), but a miner on any network should be aware of the tools available to maintain quality of the txpool - specifically `--tx-gas-limit` and `--tx-time-limit` and the other `--tx-queue-...` related settings can effectively help maintain your miner's competitiveness while still maintaining a positive effect on the network.
 
 
 ## Example config.toml
 
-The following is an example of a configuration file. Consider using [Parity Config Generator](https://paritytech.github.io/parity-config-generator/) to generate your own. 
+The following is an example of a configuration file.
 
 ```toml
 [parity]
 mode = "last"
 mode_timeout = 300
 mode_alarm = 3600
-auto_update = "critical"
-release_track = "current"
 public_node = false
 no_download = false
 no_consensus = false
 no_persistent_txqueue = false
 
 chain = "homestead"
-base_path = "$HOME/.local/share/io.parity.ethereum"
-db_path = "$HOME/.local/share/io.parity.ethereum/chains"
-keys_path = "$HOME/.local/share/io.parity.ethereum/keys"
+base_path = "$HOME/.local/share/openethereum"
+db_path = "$HOME/.local/share/openethereum/chains"
+keys_path = "$HOME/.local/share/openethereum/keys"
 identity = ""
-light = false
 
 [account]
 unlock = ["0xdeadbeefcafe0000000000000000000000000000"]
@@ -81,7 +78,6 @@ warp = true
 allow_ips = "all"
 snapshot_peers = 0
 max_pending_peers = 64
-no_serve_light = false
 
 reserved_only = false
 reserved_peers = "./path_to_file"
@@ -99,18 +95,18 @@ disable = false
 port = 8546
 interface = "local"
 origins = ["none"]
-apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces", "rpc", "shh", "shh_pubsub"]
+apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces", "rpc"]
 hosts = ["none"]
 
 [ipc]
 chmod = "775"
 disable = false
-path = "$HOME/.local/share/io.parity.ethereum/jsonrpc.ipc"
-apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "parity_accounts", "traces", "rpc", "shh", "shh_pubsub"]
+path = "$HOME/.local/share/openethereum/jsonrpc.ipc"
+apis = ["web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "parity_accounts", "traces", "rpc"]
 
 [dapps]
 disable = false
-path = "$HOME/.local/share/io.parity.ethereum/dapps"
+path = "$HOME/.local/share/openethereum/dapps"
 
 [secretstore]
 disable = false
@@ -119,7 +115,7 @@ http_interface = "local"
 http_port = 8082
 interface = "local"
 port = 8083
-path = "$HOME/.local/share/io.parity.ethereum/secretstore"
+path = "$HOME/.local/share/openethereum/secretstore"
 
 [ipfs]
 enable = false
@@ -149,7 +145,7 @@ tx_queue_ban_count = 1
 tx_queue_ban_time = 180 #s
 tx_gas_limit = "6283184"
 tx_time_limit = 100 #ms
-extra_data = "Parity"
+extra_data = "OpenEthereum"
 remove_solved = false
 notify_work = ["http://localhost:3001"]
 refuse_service_transactions = false
@@ -184,11 +180,11 @@ jit = false
 
 [misc]
 logging = "own_tx=trace"
-log_file = "/var/log/parity.log"
+log_file = "/var/log/openethereum.log"
 color = true
 ```
 
-## CLI Options for Parity Ethereum client
+## CLI Options
 ```bash
 Operating Options:
     --no-download
@@ -199,29 +195,17 @@ Operating Options:
         Force the binary to run even if there are known issues
         regarding consensus. Not recommended.
 
-    --light
-        Experimental: run in light client mode. Light clients
-        synchronize a bare minimum of data and fetch necessary
-        data on-demand from the network. Much lower in storage,
-        potentially higher in bandwidth. Has no effect with
-        subcommands.
-
-    --no-hardcoded-sync
-        By default, if there is no existing database the light
-        client will automatically jump to a block hardcoded in
-        the chain's specifications. This disables this feature.
-
     --force-direct
-        Run the originally installed version of Parity, ignoring
+        Run the originally installed version of the client, ignoring
         any updates that have since been installed.
 
     --mode=[MODE]
         Set the operating mode. MODE can be one of: last - Uses
-        the last-used mode, active if none; active - Parity
-        continuously syncs the chain; passive - Parity syncs
+        the last-used mode, active if none; active - client
+        continuously syncs the chain; passive - client syncs
         initially, then sleeps and wakes regularly to resync;
-        dark - Parity syncs only when the JSON-RPC is active;
-        offline - Parity doesn't sync. (default: last)
+        dark - client syncs only when the JSON-RPC is active;
+        offline - client doesn't sync. (default: last)
 
     --mode-timeout=[SECS]
         Specify the number of seconds before inactivity timeout
@@ -230,28 +214,6 @@ Operating Options:
     --mode-alarm=[SECS]
         Specify the number of seconds before auto sleep reawake
         timeout occurs when mode is passive (default: 3600)
-
-    --auto-update=[SET]
-        Set a releases set to automatically update and install.
-        SET can be one of: all - All updates in the our release
-        track; critical - Only consensus/security updates; none
-        - No updates will be auto-installed. (default: critical)
-
-    --auto-update-delay=[NUM]
-        Specify the maximum number of blocks used for randomly
-        delaying updates. (default: 100)
-
-    --auto-update-check-frequency=[NUM]
-        Specify the number of blocks between each auto-update
-        check. (default: 20)
-
-    --release-track=[TRACK]
-        Set which release track we should use for updates. TRACK
-        can be one of: stable - Stable releases; beta - Beta
-        releases; nightly - Nightly releases (unstable); testing
-        - Testing releases (do not use); current - Whatever
-        track this executable was released on. (default:
-        current)
 
     --chain=[CHAIN]
         Specify the blockchain type. CHAIN may be either a JSON
@@ -291,7 +253,7 @@ Convenience Options:
         $BASE/config.toml)
 
     --ports-shift=[SHIFT]
-        Add SHIFT to all port numbers Parity is listening on.
+        Add SHIFT to all port numbers client is listening on.
         Includes network port and all servers (HTTP JSON-RPC,
         WebSockets JSON-RPC, IPFS, SecretStore). (default: 0)
 
@@ -328,35 +290,6 @@ Account Options:
         account. Leading and trailing whitespace is trimmed.
         (default: [])
 
-Private Transactions Options:
-    --private-tx-enabled
-        Enable private transactions.
-
-    --private-signer=[ACCOUNT]
-        Specify the account for signing public transaction
-        created upon verified private transaction.
-
-    --private-validators=[ACCOUNTS]
-        Specify the accounts for validating private
-        transactions. ACCOUNTS is a comma-delimited list of
-        addresses.
-
-    --private-account=[ACCOUNT]
-        Specify the account for signing requests to secret
-        store.
-
-    --private-sstore-url=[URL]
-        Specify secret store URL used for encrypting private
-        transactions.
-
-    --private-sstore-threshold=[NUM]
-        Specify secret store threshold used for encrypting
-        private transactions.
-
-    --private-passwords=[FILE]...
-        Provide a file containing passwords for unlocking
-        accounts (signer, private account, validators).
-
 UI Options:
     --ui-path=[PATH]
         Specify directory where Trusted UIs tokens should be
@@ -376,9 +309,6 @@ Networking Options:
         Disable downloading old blocks after snapshot
         restoration or warp sync. Not recommended.
 
-    --no-serve-light
-        Disable serving of light peers.
-
     --warp-barrier=[NUM]
         When warp enabled never attempt regular sync before
         warping to block NUM.
@@ -389,7 +319,7 @@ Networking Options:
 
     --interface=[IP]
         Network interfaces. Valid values are 'all', 'local' or
-        the ip of the interface you want parity to listen to.
+        the ip of the interface you want client to listen to.
         (default: all)
 
     --min-peers=[NUM]
@@ -451,14 +381,14 @@ API and Console Options – HTTP JSON-RPC:
         interface using a comma-delimited list of API names.
         Possible names are: all, safe, debug, web3, net, eth,
         pubsub, personal, signer, parity, parity_pubsub,
-        parity_accounts, parity_set, traces, rpc, secretstore,
-        shh, shh_pubsub. You can also disable a specific API by
+        parity_accounts, parity_set, traces, rpc, secretstore.
+        You can also disable a specific API by
         putting '-' in the front, example: all,-personal. 'safe'
         enables the following APIs: web3, net, eth, pubsub,
-        parity, parity_pubsub, traces, rpc, shh, shh_pubsub
+        parity, parity_pubsub, traces, rpc
         (default:
         web3,eth,pubsub,net,parity,private,parity_pubsub,traces,
-        rpc,shh,shh_pubsub)
+        rpc)
 
     --jsonrpc-hosts=[HOSTS]
         List of allowed Host header values. This option will
@@ -496,14 +426,14 @@ API and Console Options – WebSockets:
         WebSockets interface using a comma-delimited list of API
         names. Possible names are: all, safe, web3, net, eth,
         pubsub, personal, signer, parity, parity_pubsub,
-        parity_accounts, parity_set, traces, rpc, secretstore,
-        shh, shh_pubsub. You can also disable a specific API by
+        parity_accounts, parity_set, traces, rpc, secretstore.
+        You can also disable a specific API by
         putting '-' in the front, example: all,-personal. 'safe'
         enables the following APIs: web3, net, eth, pubsub,
-        parity, parity_pubsub, traces, rpc, shh, shh_pubsub
+        parity, parity_pubsub, traces, rpc
         (default:
         web3,eth,pubsub,net,parity,parity_pubsub,private,traces,
-        rpc,shh,shh_pubsub)
+        rpc)
 
     --ws-origins=[URL]
         Specify Origin header values allowed to connect. Special
@@ -566,14 +496,6 @@ API and Console Options – IPFS:
     --ipfs-api-cors=[URL]
         Specify CORS header for IPFS API responses. Special
         options: "all", "none". (default: none)
-
-Light Client Options:
-    --on-demand-retry-count=[RETRIES]
-        Specify the query retry count.
-
-    --on-demand-inactive-time-limit=[MS]
-        Specify light client query inactive time limit. O for no
-        limit.
 
 Secret Store Options:
     --no-secretstore

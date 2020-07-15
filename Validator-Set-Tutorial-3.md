@@ -57,4 +57,4 @@ This indicates that `Node1` is now sealing blocks and the network accepts these.
 
 ![validator set tutorial overview](images/Validator-set-tutorial-overview.png)
 
-|[ ← Part 2 - Deploy the Validator-set contract ](Validator-Set-Tutorial-2.md)| [ Part 4 - Visualize misbehaviors → ](Validator-Set-Tutorial-4.md)|
+|[ ← Part 2 - Deploy the Validator-set contract ](Validator-Set-Tutorial-2)| [ Part 4 - Visualize misbehaviors → ](Validator-Set-Tutorial-4)|

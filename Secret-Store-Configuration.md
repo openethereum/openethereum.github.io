@@ -2,21 +2,21 @@
 title: Secret Store Configuration
 ---
 
-## Building Parity with Secret Store support
-By default, Parity is built without Secret Store support. To enable Secret Store, build it with the `--features secretstore` argument:
+## Building OpenEthereum with Secret Store support
+By default, OpenEthereum is built without Secret Store support. To enable Secret Store, build it with the `--features secretstore` argument:
 ```bash
-git clone https://github.com/paritytech/parity.git
-cd parity
+git clone https://github.com/openethereum/openethereum
+cd openethereum
 cargo build --features secretstore --release
 ```
 
 ## Configuring nodes
-Every Secret Store node must be properly configured. The best way is to create a [configuration file](Configuring-Parity.md#config-file). The Secret Store specific configuration options must be placed in the `[secretstore]` section of this file.
+Every Secret Store node must be properly configured. The best way is to create a [configuration file](Configuring-OpenEthereum#config-file). The Secret Store specific configuration options must be placed in the `[secretstore]` section of this file.
 
 ### Configuring key pairs
 Secret Store is a closed group of nodes - i.e. the nodes are connecting and accepting connections to/from known nodes only. This means that the address of each node is known to the whole Secret Store. To prove that the expected node is listening to each address, key pairs are assigned to each node.
 
-The best option to specify a key pair is to use an account created in Parity. It can be created either manually, or by using the `ethstore` utility. You'll also need a file with this account's password. After creating an account, add the following lines to your configuration file:
+The best option to specify a key pair is to use an account created in OpenEthereum. It can be created either manually, or by using the `ethstore` utility. You'll also need a file with this account's password. After creating an account, add the following lines to your configuration file:
 ```toml
 [account]
 password = ["password.file"] # file containing the account's password
@@ -94,10 +94,10 @@ service_contract_doc_sretr = "registry"
 ```
 
 Every service contract provides access to one of the follwoing session types:
-- `service_contract_srv_gen` - allows its clients to start [Server key generation session](Secret-Store.md#server-key-generation-session);
+- `service_contract_srv_gen` - allows its clients to start [Server key generation session](Secret-Store#server-key-generation-session);
 - `service_contract_srv_retr` - allows its clients to start Server key retrieval session;
-- `service_contract_doc_store` - allows its clients to start [Document key storing session](Secret-Store.md#document-key-storing-session);
-- `service_contract_doc_sretr` - allows its clients to start [Document key shadow retrieval session](Secret-Store.md#document-key-shadow-retrieval-session).
+- `service_contract_doc_store` - allows its clients to start [Document key storing session](Secret-Store#document-key-storing-session);
+- `service_contract_doc_sretr` - allows its clients to start [Document key shadow retrieval session](Secret-Store#document-key-shadow-retrieval-session).
 
 Each option can have one of the following values:
 - `"none"` - this node won't serve requests coming from this kind of a contract;
@@ -158,7 +158,7 @@ There are 4 kinds of nodes in a "node set change session":
 "Nodes set change session" requires all `added`, `removed` and `stable` nodes to be online for the duration of the session. Before starting the session, you'll need to generate two administrator's signatures:
 - 'old set' signature: ECDSA signature of all online nodes ids `keccak(ordered_list(staying + added + removing))`;
 - 'new set' signature: ECDSA signature of nodes ids, that should stay in the Secret Store after the session ends `keccak(ordered_list(staying + added))`.
-To generate these signatures, the Secret Store RPC methods should be used - [`secretstore_serversSetHash`](JSONRPC-secretstore-module.md#secretstore_serverssethash) and [`secretstore_signRawHash`](JSONRPC-secretstore-module.md#secretstore_signrawhash). Use following command to start the session:
+To generate these signatures, the Secret Store RPC methods should be used - [`secretstore_serversSetHash`](JSONRPC-secretstore-module#secretstore_serverssethash) and [`secretstore_signRawHash`](JSONRPC-secretstore-module#secretstore_signrawhash). Use following command to start the session:
 ```bash
 curl --data-binary '["0xa7cc7a8ef336189c2bfabfeab8eed55598fa2b480adf98eeb66e006f2811319550222122bd37fb25dbc35709ccd5d9793dc829d208b73ffbce893d63a393101b", "0x54319671ca191b9e08e2064d8b9eaa43cb246e698dc7d995d557ebef3428dc69b93ca3caa20c43552414132448425c9333aa33b2231caa082ddcec7e12a56963"]' -X POST http://localhost:8084/admin/servers_set_change/17374292b9e1a026e1e87fe37ae4e987156d1979461b6daa8ec804ed667e8d100d8129295172a86db63c12b1aa6bb861e89b3ea4330e4b8ae27e0e1917485c1e01/ff5fbcfa6c05d6a1353023e5ade51c3ab53bead7466c1bacd510ee3ef93814ef2a3340cdd7991bea362aac9f111795a470b70d5f4e9ad9877338089c9aacbdb200
 ```
@@ -364,4 +364,4 @@ All the service contracts described above are deployed on the Kovan testnet (**t
 - processing the requests could take some time (up to 10 blocks for [Document Key shadow retrieval](#document-key-shadow-retrieval-service-contract) requests and 4-5 blocks for all other requests). It could be even more when key server misses the request (because of synchronization). As a rule of thumb - if your request wasn't processed for >100 blocks, then something is definitely wrong;
 - you are not the only user of this Secret Store, so expect keys with IDs like '0x0000000000000000000000000000000000000000000000000000000000000001' to be occupied and some requests to fail because of this.
 
-If you experience any problem with the service contracts on Kovan, please report it on our [Riot Parity Support Channel](https://riot.im/app/#/room/#support:matrix.parity.io).
+If you experience any problem with the service contracts on Kovan, please report it on our [Discord Support Channel](https://discord.io/openethereum).

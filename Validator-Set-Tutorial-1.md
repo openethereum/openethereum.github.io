@@ -117,7 +117,7 @@ force_sealing = true
 At this point in the tutorial, we miss the address and password file for `Node0`'s account as well as the bootnodes' addresses corresponding to all the nodes that we will use in this tutorial. These fields are commented (notice the `#`) for the moment.
 Let's create an account for `Node0` using the passwords: `node0pwd`.
 
-To do this, simply run `parity --config ./node0.toml account new` using the passwords given above.
+To do this, simply run `openethereum --config ./node0.toml account new` using the passwords given above.
 ```bash
 Loading config file from ./node0.toml
 Please note that password is NOT RECOVERABLE.
@@ -164,7 +164,7 @@ Add `Node0`'s address to the `Validator-set-tutorial.json` genesis file in the v
 ```
 
 This means that a fixed list of validators will be used from block 0. `Node0`'s address is the only one authorised to seal blocks.
-To make sure the file is valid, launch `Node0` using the command `parity --config ./node0.toml` and verify that you do not get any error in the console.
+To make sure the file is valid, launch `Node0` using the command `openethereum --config ./node0.toml` and verify that you do not get any error in the console.
 
 You should see lines like the following every 5s:
 ```bash
@@ -212,7 +212,7 @@ force_sealing = true
 We are missing here also the address and password file for `Node1`'s account as well as the bootnodes' addresses corresponding to all the nodes that we will use in this tutorial. These fields are commented (notice the `#`) for the moment.
 Let's create an account for `Node1` using the passwords: `node1pwd`.
 
-To do this, simply run `parity --config ./node1.toml account new` using the passwords given above.
+To do this, simply run `openethereum --config ./node1.toml account new` using the passwords given above.
 ```bash
 Loading config file from ./node1.toml
 Please note that password is NOT RECOVERABLE.
@@ -242,7 +242,7 @@ reseal_on_txs = "none"
 force_sealing = true
 ```
 
-To make sure the file is valid, launch `Node1` using the command `parity --config ./node1.toml` and verify that you do not get any error in the console. As `Node1` and `Node0` might not be connected to each other yet, it is normal that `Node1` does not import any block from `Node0`.
+To make sure the file is valid, launch `Node1` using the command `openethereum --config ./node1.toml` and verify that you do not get any error in the console. As `Node1` and `Node0` might not be connected to each other yet, it is normal that `Node1` does not import any block from `Node0`.
 
 Also, copy in a text file the Public node address as we will use is later on.
 ```bash
@@ -281,7 +281,7 @@ interface = "local"
 We are missing here also the address and password file for `Alice`'s account as well as the bootnodes' addresses corresponding to all the nodes that we will use in this tutorial.
 Let's create an account for `Alice` using the passwords: `alicepwd`.
 
-To do this, simply run `parity --config ./alice.toml account new` using the passwords given above.
+To do this, simply run `openethereum --config ./alice.toml account new` using the passwords given above.
 ```bash
 Loading config file from ./alice.toml
 Please note that password is NOT RECOVERABLE.
@@ -306,7 +306,7 @@ We will use this address and password file right away in our `alice.toml` config
 unlock = ["0x12db1ee91481573302f63ebf3d735820081c68a2"]      # Alice's account to sign transactions from Remix.
 password = ["alice.pwd"]
 ```
-To make sure the file is valid, launch `Alice`'s node using the command `parity --config ./alice.toml` and verify that you do not get any error in the console. 
+To make sure the file is valid, launch `Alice`'s node using the command `openethereum --config ./alice.toml` and verify that you do not get any error in the console. 
 Also, copy in a text file the Public node address as we will use is later on. It should look similar to:
 ```bash
 Public node URL: enode:////20d155e5b7279055257ae20d6c0e1a3935dc38cbc941fc5039d1b889e298ce34b5e9f082c84d3f1394984b341553a9ae426ce4372f33efc83b98afa50f51c3aa@172.18.0.1
@@ -330,4 +330,4 @@ To make sure that each node sees the others, launch the nodes simultaneously in 
 
 Find [here](https://github.com/Tbaut/Validator-set-tutorial/tree/master/Part-1-files) example files that you can compare yours with.
 
-|[ ← Validator Set Tutorial Overview ](Validator-Set-Tutorial-Overview.md)| [ Part 2 - Deploy the Validator Set contract → ](Validator-Set-Tutorial-2.md)|
+|[ ← Validator Set Tutorial Overview ](Validator-Set-Tutorial-Overview)| [ Part 2 - Deploy the Validator Set contract → ](Validator-Set-Tutorial-2)|

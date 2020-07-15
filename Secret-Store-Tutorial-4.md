@@ -57,7 +57,7 @@ This is expected, but annoying as Alice would like to make sure that only Bob ca
 
 As explained in the [Secret Store documentation](Secret-Store#permissioning-sessions), a permissioning contract can be deployed and specified for the nodes to verify the permission of the keys requester.
 
-To deploy and test the permissioning contract, we will use [http://remix.ethereum.org](http://remix.ethereum.org) connected to our local parity node running with the `users.toml` configuration as it uses standard ports. We will unlock Alice's account so that it can be used to deploy the contract.
+To deploy and test the permissioning contract, we will use [http://remix.ethereum.org](http://remix.ethereum.org) connected to our local client running with the `users.toml` configuration as it uses standard ports. We will unlock Alice's account so that it can be used to deploy the contract.
 To allow Remix to access our node from the browser and deploy a contract, we need to enable the `eth` and `net` JSON-RPC HTTP API as well as specify the CORS header for remix.
 To do so, modify the `[rpc]` and `[account]` section of `users.toml` to have the following:
 
@@ -157,5 +157,5 @@ Date: Thu, 28 Jun 2018 16:06:44 GMT
 
 Charlie gets an HTTP Header 403 forbidden, he can not access the keys.
 
-|[ ← Part 3 - Key retrieval](Secret-Store-Tutorial-3.md)|
+|[ ← Part 3 - Key retrieval](Secret-Store-Tutorial-3)|
 

@@ -2,9 +2,9 @@
 title: The `secretstore` Module
 ---
 
-Parity has separate RPC API set - secretstore, which:
+OpenEthereum has separate RPC API set - secretstore, which:
 
-- is available in default Parity client (i.e. does not requires Parity to be built with `--features secretstore`);
+- is available in default OpenEthereum client (i.e. does not requires OpenEthereum to be built with `--features secretstore`);
 - is considered unsafe and must be enabled separately (by passing secretstore, all or safe as an `--jsonrpc-apis` argument value);
 - contains dangerous methods and must be enabled with caution.
 

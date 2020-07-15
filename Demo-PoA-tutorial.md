@@ -2,7 +2,7 @@
 title: Demo PoA-Tutorial
 ---
 
-This tutorial will walk through setting up two Parity nodes locally and sending transactions between them. If you want to learn more about different parameters specified in this tutorial please refer to the [Chain specification](Chain-specification.md) page.
+This tutorial will walk through setting up two OpenEthereum nodes locally and sending transactions between them. If you want to learn more about different parameters specified in this tutorial please refer to the [Chain specification](Chain-specification) page.
 
 Each node will act as an authority on the network issuing blocks when necessary, there will be also one additional user account with a high initial balance. All files produced in this tutorial can be found [here](https://github.com/keorn/parity-poa-tutorial).
 
@@ -68,20 +68,20 @@ Save the above under `demo-spec.json`.
 
 ## 2. Setting up the two nodes
 
-Now that a bare bones chain specification is complete the two nodes can be set up. Parity stores accounts for each chain with a different genesis hash in a separate folder, so in order to create the accounts in the correct one we will need to run with the `--chain` option.
+Now that a bare bones chain specification is complete the two nodes can be set up. OpenEthereum stores accounts for each chain with a different genesis hash in a separate folder, so in order to create the accounts in the correct one we will need to run with the `--chain` option.
 Normally the two nodes would be started on separate machines, however since we are using the same one we will need to resolve some possible collisions:
-- `-d` determines the directory that a Parity instance uses for data and keys
-- `--port` determines the port via which Parity communicates with other nodes
+- `-d` determines the directory that a OpenEthereum instance uses for data and keys
+- `--port` determines the port via which OpenEthereum communicates with other nodes
 - `--jsonrpc-port` is the RPC port
 - `--ws-port` is the port used by the wallet to talk to the node
 We will also want to expose all RPC apis to make interacting with the nodes easier `--jsonrpc-apis web3, eth, net, personal, parity, parity_set, traces, rpc, parity_accounts`.
 
-Putting it all together gives us the following command to start Parity:
+Putting it all together gives us the following command to start OpenEthereum:
 ```
-parity  --chain demo-spec.json -d /tmp/parity0 --port 30300 --jsonrpc-port 8540 --ws-port 8450 --jsonrpc-apis web3,eth,net,personal,parity,parity_set,traces,rpc,parity_accounts
+openethereum  --chain demo-spec.json -d /tmp/parity0 --port 30300 --jsonrpc-port 8540 --ws-port 8450 --jsonrpc-apis web3,eth,net,personal,parity,parity_set,traces,rpc,parity_accounts
 ```
 
-Since the command is becoming rather clunky we can use a [config files](Configuring-Parity#config-file.md) instead, which are passed using `--config` option. Node 0 will have this config file saved under `node0.toml`:
+Since the command is becoming rather clunky we can use a [config files](Configuring-OpenEthereum#Config-File) instead, which are passed using `--config` option. Node 0 will have this config file saved under `node0.toml`:
 ```
 [parity]
 chain = "demo-spec.json"
@@ -110,11 +110,10 @@ port = 8451
 [ipc]
 disable = true
 ```
-Alternative config files can be generated [here](https://paritytech.github.io/parity-config-generator/).
 
 We will create three accounts: two authorities and one user account. There are different methods to create accounts, pick one that suits you best:
 ### Method 1. Using RPC
-Start the node 0 using `parity --config node0.toml`.
+Start the node 0 using `openethereum --config node0.toml`.
 
 RPC can accessed via `web3`, `parity.js` or simply using `curl`. This will create the first authority address:
 ```
@@ -128,16 +127,16 @@ curl --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["
 ```
 Returned address should be `0x004ec07d2329997267ec62b4166639513386f32e`.
 
-Now start the other node with `parity --config node1.toml` and create the second authority account:
+Now start the other node with `openethereum --config node1.toml` and create the second authority account:
 ```
 curl --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":["node1", "node1"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8541
 ```
 Returned address should be `0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2`.
 
-### Method 2. Using command `parity account new`
-You can also create an account without starting Parity using:
+### Method 2. Using command `openethereum account new`
+You can also create an account without starting OpenEthereum using:
 ```
-parity account new --config node0.toml
+openethereum account new --config node0.toml
 ```
 This does not give you control over what address will be created, so for the remainder of the tutorial we will stick with the accounts created by the previous methods.
 
@@ -264,11 +263,11 @@ reseal_on_txs = "none"
 
 The two nodes can now be started. Node 0:
 ```
-parity --config node0.toml
+openethereum --config node0.toml
 ```
 and node 1:
 ```
-parity --config node1.toml
+openethereum --config node1.toml
 ```
 
 ## 5. Connecting the nodes
@@ -314,7 +313,7 @@ curl --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Aa39d30F0
 
 You can now create more accounts, send value around, write contracts and deploy them. All the tools that are used to develop and use the Ethereum network can be also used in this network.
 
-To deploy Parity on multiple machines you may find the [docker builds](Docker) useful.
+To deploy OpenEthereum on multiple machines you may find the [docker builds](Docker) useful.
 
 To add a non-authority node this simpler config can be used:
 ```
@@ -340,4 +339,4 @@ chain = "demo-spec.json"
 [rpc]
 apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
 ```
-or simply running `parity --chain demo-spec.json`!
+or simply running `openethereum --chain demo-spec.json`!

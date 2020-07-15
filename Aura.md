@@ -4,7 +4,7 @@ libs:
   mathjax: true
 ---
 
-Aura _(Authority Round)_ is one of the Blockchain consensus algorithms available in Parity.
+Aura _(Authority Round)_ is one of the Blockchain consensus algorithms available in OpenEthereum.
 
 ### Parameters
   - $$n$$, the number of nodes
@@ -43,7 +43,7 @@ To enable empty step messages set the `emptyStepsTransition` to enable it at the
 
 ### Node Configuration
 
-This consensus requires a [`ValidatorSet`](Validator-Set.md) to be specified, which determines the list of $$n$$ blockchain addresses at each height $$h$$ which participate in the consensus.
+This consensus requires a [`ValidatorSet`](Validator-Set) to be specified, which determines the list of $$n$$ blockchain addresses at each height $$h$$ which participate in the consensus.
 
 A node can represent a validator when it is run with `--engine-signer VALIDATOR-ADDRESS`.
 

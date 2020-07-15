@@ -33,7 +33,7 @@ Response
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": "Parity//v1.5.0-unstable-9db3f38-20170103/x86_64-linux-gnu/rustc1.14.0"
+  "result": "OpenEthereum//v3.0.1-stable-8ca8089-20200601/x86_64-unknown-linux-gnu/rustc1.43.1"
 }
 ```
 

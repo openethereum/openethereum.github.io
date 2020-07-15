@@ -26,7 +26,7 @@ At this stage, it is very important to understand when we interact with the Secr
 ### 2.1 Sign the Document Key id
 
 We need to tell the Secret store about this document (identified by its `Document key id`). As a mean to sign our messages, we need to first sign this `Document key id` with the address of Alice.
-A Parity client local method can be used:  [secretstore_signRawHash](JSONRPC-secretstore-module#secretstore_signrawhash00a329c0648769A73afAc7F9381E08FB43dBEA72)
+[secretstore_signRawHash](JSONRPC-secretstore-module#secretstore_signrawhash00a329c0648769A73afAc7F9381E08FB43dBEA72) local client method can be used:  
 ```bash
 curl --data-binary '{"jsonrpc": "2.0", "method": "secretstore_signRawHash", "params": ["0xe5a4b6f39b4c3e7203ca8caeecbad58d8f29b046", "alicepwd", "0x45ce99addb0f8385bd24f30da619ddcc0cadadab73e2a4ffb7801083086b3fc2"], "id":1 }' -H 'content-type: application/json' http://127.0.0.1:8545/
 ```
@@ -132,9 +132,9 @@ All Secret Store servers should show something like:
 
 ## 6. Section overview
 
-Here is a flow diagram that represents what calls Alice has performed either to her own Parity node or to the Secret Store.
+Here is a flow diagram that represents what calls Alice has performed either to her own OpenEthereum node or to the Secret Store.
 ![system overview](images/ss-overview-2.jpg)
 
 
-|[ ← Part 1 - Configuring each node](Secret-Store-Tutorial-1.md) | [ Part 3 - Key retrieval → ](Secret-Store-Tutorial-3.md)|
+|[ ← Part 1 - Configuring each node](Secret-Store-Tutorial-1) | [ Part 3 - Key retrieval → ](Secret-Store-Tutorial-3)|
 

@@ -2,7 +2,7 @@
 title: Transaction Queue
 ---
 
-Parity Ethereum client is listening to the network for transactions to include in blocks (if mining/validating) or to broadcast. These transactions emitted locally or externally are verified and ordered in a transaction queue. This document aims at describing the process of selecting or rejecting these transactions.
+OpenEthereum client is listening to the network for transactions to include in blocks (if mining/validating) or to broadcast. These transactions emitted locally or externally are verified and ordered in a transaction queue. This document aims at describing the process of selecting or rejecting these transactions.
 
 ## Terminology
 - `rejected` - means that a transaction was not added to the queue.
@@ -22,7 +22,7 @@ Transactions received from the network must fulfil the following criteria in ord
 Note that a transaction would be included in the queue if it fulfils the criteria mentioned above and:
 - the nonce is `current`: equals to state nonce + number of already pending transactions.
 or
-- the nonce is `future`: there is a nonce gap, meaning that the transaction seems to have been received out of order, parity will, therefore, keep it, anticipating that transactions with lower nonces will fill the gap (gap = `expected nonce` vs `transaction nonce`). A `future` transactions will not be propagated nor will it get included in the pending block as it would be invalid.
+- the nonce is `future`: there is a nonce gap, meaning that the transaction seems to have been received out of order, OpenEthereum will, therefore, keep it, anticipating that transactions with lower nonces will fill the gap (gap = `expected nonce` vs `transaction nonce`). A `future` transactions will not be propagated nor will it get included in the pending block as it would be invalid.
 
 ## Dropping conditions
 Once a transaction has been added to the queue, it might get dropped if:
@@ -72,7 +72,7 @@ The table below shows when transaction is considered as local:
 ## RPC APIs
 
 The RPC API will only show the external transactions that are in the queue. They will never return rejected transactions. 
-- [`parity_localTransactions`](JSONRPC-parity-module#parity_localtransactions) will show up to 25 local transactions, be they already mined, pending or [dropped](#dropping-conditions). This RPC method is used in the top section of the Parity UI TxQueueViewer Dapp.
-- [`parity_pendingTransactions`](JSONRPC-parity-module#parity_pendingtransactions) will show the transactions added to the queue that will be processed soon (and do not fulfil any of the [droping conditions](#dropping-conditions)). This RPC method is used in the bottom section of the Parity UI TxQueueViewer Dapp.
+- [`parity_localTransactions`](JSONRPC-parity-module#parity_localtransactions) will show up to 25 local transactions, be they already mined, pending or [dropped](#dropping-conditions).
+- [`parity_pendingTransactions`](JSONRPC-parity-module#parity_pendingtransactions) will show the transactions added to the queue that will be processed soon (and do not fulfil any of the [droping conditions](#dropping-conditions)).
 - [`parity_allTransactions`](/JSONRPC-parity-module#parity_alltransactions) will show the transactions added to the queue that will be processed soon as well as the ones that might get dropped.
 - [`parity_futureTransactions`](JSONRPC-parity-module#parity_futuretransactions) is deprecated in favor of `parity_allTransactions`. It can be computed by subtracting `parity_pendingTransactions` to `parity_allTransactions`.

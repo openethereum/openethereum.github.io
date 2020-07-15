@@ -26,7 +26,7 @@ title: The `parity_set` Module
 
 ### parity_acceptNonReservedPeers
 
-Set Parity to accept non-reserved peers (default behavior).
+Set OpenEthereum to accept non-reserved peers (default behavior).
 
 #### Parameters
 
@@ -90,7 +90,7 @@ Response
 
 ### parity_dropNonReservedPeers
 
-Set Parity to drop all non-reserved peers. To restore default behavior call [parity_acceptNonReservedPeers](#parity_acceptnonreservedpeers).
+Set the client to drop all non-reserved peers. To restore default behavior call [parity_acceptNonReservedPeers](#parity_acceptnonreservedpeers).
 
 #### Parameters
 
@@ -120,7 +120,7 @@ Response
 
 ### parity_executeUpgrade
 
-Attempts to upgrade Parity to the version specified in [parity_upgradeReady](#parity_upgradeready).
+Attempts to upgrade OpenEthereum to the version specified in [parity_upgradeReady](#parity_upgradeready).
 
 #### Parameters
 
@@ -157,7 +157,7 @@ Creates a hash of a file at a given URL.
 0. `String` - The url of the content.
 
 ```js
-params: ["https://raw.githubusercontent.com/paritytech/parity-ethereum/master/README.md"]
+params: ["https://raw.githubusercontent.com/openethereum/openethereum/master/README.md"]
 ```
 
 #### Returns
@@ -168,7 +168,7 @@ params: ["https://raw.githubusercontent.com/paritytech/parity-ethereum/master/RE
 
 Request
 ```bash
-curl --data '{"method":"parity_hashContent","params":["https://raw.githubusercontent.com/paritytech/parity-ethereum/master/README.md"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+curl --data '{"method":"parity_hashContent","params":["https://raw.githubusercontent.com/openethereum/openethereum/master/README.md"],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
@@ -252,11 +252,11 @@ Response
 
 ### parity_setChain
 
-Sets the network spec file Parity is using.
+Sets the network spec file the client is using.
 
 #### Parameters
 
-0. `String` - Chain spec name, one of: "foundation", "ropsten", "morden", "kovan", "classic", "dev", "expanse", "musicoin" or a filename.
+0. `String` - Chain spec name, one of the [chain presets](Chain-specification#Chain-presets-available) or a filename.
 
 ```js
 params: ["foundation"]
@@ -286,7 +286,7 @@ Response
 
 ### parity_setEngineSigner
 
-Sets an authority account for signing consensus messages. For more information check the [Proof of Authority Chains](Proof-of-Authority-Chains.md) page.
+Sets an authority account for signing consensus messages. For more information check the [Proof of Authority Chains](Proof-of-Authority-Chains) page.
 
 #### Parameters
 
@@ -502,15 +502,15 @@ Response
 
 ### parity_setMode
 
-Changes the operating mode of Parity.
+Changes the client operating mode.
 
 #### Parameters
 
 0. `String` - The mode to set, one of:
-  * `"active"` - Parity continuously syncs the chain.
-  * `"passive"` - Parity syncs initially, then sleeps and wakes regularly to resync.
-  * `"dark"` - Parity syncs only when the RPC is active.
-  * `"offline"` - Parity doesn't sync.
+  * `"active"` - Client continuously syncs the chain.
+  * `"passive"` - Client syncs initially, then sleeps and wakes regularly to resync.
+  * `"dark"` - Client syncs only when the RPC is active.
+  * `"offline"` - Client doesn't sync.
 
 
 ```js
@@ -591,7 +591,7 @@ None
     - `version`:   `Object` - Information on the version.
     - `is_critical`:   `Boolean` - Does this release contain critical security updates?
     - `fork`:   `Quantity` - The latest fork that this release can handle.
-    - `binary`:   `Data` - (optional) Keccak-256 checksum of the release parity binary, if known.
+    - `binary`:   `Data` - (optional) Keccak-256 checksum of the release `openethereum` binary, if known.
 
 #### Example
 

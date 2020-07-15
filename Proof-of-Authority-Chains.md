@@ -2,32 +2,30 @@
 title: Proof-of-Authority Chains
 ---
 
-Parity supports a Proof-of-Authority consensus engine to be used with EVM based chains. Proof-of-Authority is a replacement for Proof-of-Work, which can be used for private chain setups.
+OpenEthereum supports a Proof-of-Authority consensus engine to be used with EVM based chains. Proof-of-Authority is a replacement for Proof-of-Work, which can be used for private chain setups.
 
 It does not depend on nodes solving arbitrarily difficult mathematical problems, but instead uses
 a set of "authorities" - nodes that are explicitly allowed to create new blocks and secure the blockchain. The chain has to be signed off by the majority of authorities, in which case it becomes a part of the permanent record. This makes it easier to maintain a private chain and keep the block issuers accountable.
 
-For consortium setting there are no disadvantages of PoA network as compared to PoW. It is more secure (since an attacker with unwanted connection or hacked authority can not overwhelm a network potentially reverting all transactions), less computationally intensive (mining with difficulty which provides security requires lots of computation), more performant (Aura consensus provides lower transaction acceptance latency) and more predictable (blocks are issued at steady time intervals). PoA deployments are used by the enterprise and by the public (e.g. popular Kovan test network).
-
-[![Gitter](https://badges.gitter.im/ethcore/parity-poa.svg)](https://gitter.im/ethcore/parity-poa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+For consortium setting there are no disadvantages of PoA network as compared to PoW. It is more secure (since an attacker with unwanted connection or hacked authority can not overwhelm a network potentially reverting all transactions), less computationally intensive (mining with difficulty which provides security requires lots of computation), more performant (Aura consensus provides lower transaction acceptance latency) and more predictable (blocks are issued at steady time intervals). PoA deployments are used by the enterprise and by the public (e.g. popular Görli test network).
 
 ## Setting up a Proof of Authority network
 1. Pick real world entities that should control the network, so called authorities.
-2. Each authority should run a Parity node and create an account.
-3. Authorities should exchange their account addresses and place them in the [spec or validator contract](Pluggable-Consensus.md#validator-engines).
-4. All authority nodes should run an instance Parity with the agreed on specification.
+2. Each authority should run an OpenEthereum node and create an account.
+3. Authorities should exchange their account addresses and place them in the [spec or validator contract](Pluggable-Consensus#validator-engines).
+4. All authority nodes should run an instance OpenEthereum with the agreed on specification.
 5. Additional user nodes can connect to the network as well.
 6. Use the network just as a public Ethereum network (transactions, contracts etc.).
 
-A [Demo PoA tutorial](Demo-PoA-tutorial.md) describes how to set up two nodes and connect them to each other.
+A [Demo PoA tutorial](Demo-PoA-tutorial) describes how to set up two nodes and connect them to each other.
 
 ## Running the authority nodes
 
-Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described on the [Chain specification](Chain-specification.md) page.
+Each node on the network should run its node with chain spec JSON file provided to `--chain` option. Format of such file depends on the consensus `Engine` used and is described on the [Chain specification](Chain-specification) page.
 
-If you're expecting to issue blocks, make sure you have `--engine-signer` set to an account address (`0xADDRESS`) listed in the engine configuration under `authorities` and password file for that account is provided to `--password`. Parity has a separate directory for each chain, so make sure that the account is visible on the specified chain (create an account with `--chain`, import the keys or use `--keys-path`). You should ensure anyone else you want issuing on the network is similarly configured. Each authority can only run a **single node** and to utilize the full network capacity each authority should run a node.
+If you're expecting to issue blocks, make sure you have `--engine-signer` set to an account address (`0xADDRESS`) listed in the engine configuration under `authorities` and password file for that account is provided to `--password`. OpenEthereum has a separate directory for each chain, so make sure that the account is visible on the specified chain (create an account with `--chain`, import the keys or use `--keys-path`). You should ensure anyone else you want issuing on the network is similarly configured. Each authority can only run a **single node** and to utilize the full network capacity each authority should run a node.
 To make the transactions free, authority nodes can run with `--usd-per-tx 0`.
-The configuration can also be done via the [config file](Configuring-Parity.md#config-file) with the following fields:
+The configuration can also be done via the [config file](Configuring-OpenEthereum#config-file) with the following fields:
 
 ```
 [parity]
@@ -43,7 +41,7 @@ usd_per_tx = "0" // Allows for free transactions.
 ```
 
 ### Private centralized network setup
-When deploying PoC it is useful to get a centrally managed network going first. With Parity the nodes can be identical and simply expose the RPC interface to a central managing node, all further setup can be done via those interfaces.
+When deploying PoC it is useful to get a centrally managed network going first. With OpenEthereum the nodes can be identical and simply expose the RPC interface to a central managing node, all further setup can be done via those interfaces.
 
 #### Community built setups
 - [Microsoft's guide to setup a PoA network on Azure](https://docs.microsoft.com/de-de/azure/blockchain-workbench/ethereum-poa-deployment)
@@ -63,7 +61,7 @@ Create accounts:
 Validate the blocks:
 - `parity_setEngineSigner(address, password)` set this to one of authority addresses in order to participate in the consensus
 
-Further methods for actually using the nodes can be found [here](JSONRPC-eth-module.md).
+Further methods for actually using the nodes can be found [here](JSONRPC-eth-module).
 
 ## Chain Engine specification
 
@@ -99,4 +97,4 @@ An example template that can be used for the consensus algorithms:
 }
 ```
 
-The only available algorithm for PoA is [Aura](Pluggable-Consensus.md#aura), other consensus might be added in the future. More details on other chain parameters are available on the [Chain specification](Chain-specification.md) page, there are also [important considerations](Pluggable-Consensus.md#operational-tradeoffs) when setting up your Proof of Authority chain in order to ensure it works reliably.
+[Aura](Pluggable-Consensus#Aura) and Clique are the two available consensus algorithms for PoA. More details on other chain parameters are available on the [Chain specification](Chain-specification) page, there are also [important considerations](Pluggable-Consensus#Operational-tradeoffs) when setting up your Proof of Authority chain in order to ensure it works reliably.

@@ -85,4 +85,4 @@ $ node watchEvents.js
 ```
 
 
-|[ ← Part 3 - Hardfork to use the Validator Set contract ](Validator-Set-Tutorial-3.md)|
+|[ ← Part 3 - Hardfork to use the Validator Set contract ](Validator-Set-Tutorial-3)|

@@ -2,20 +2,19 @@
 title: Part 1 - Configuring each node
 ---
 
-## 1. Enable the Secret Store feature of Parity
+## 1. Enable the Secret Store feature of OpenEthereum
 
-Per default, Parity Ethereum client is built without the Secret Store feature. To enable it, you need to build it from the sources and specifically enable the Secret Store.
+Per default, OpenEthereum client is built without the Secret Store feature. To enable it, you need to build it from the sources and specifically enable the Secret Store.
 
-- Make sure you have all the [build dependencies](https://github.com/paritytech/parity-ethereum/#build-dependencies).
+- Make sure you have all the [build dependencies](https://github.com/openethereum/openethereum/#build-dependencies).
 - Run
 ```
-$ git clone https://github.com/paritytech/parity
-$ cd parity
-$ git checkout beta
+$ git clone https://github.com/openethereum/openethereum
+$ cd openethereum
 $ cargo build --features secretstore --release
 ```
 
-You can then launch the freshly built parity using `$ ./target/release/parity [OPTION]`.
+You can then launch the freshly built OpenEthereum using `$ ./target/release/openethereum [OPTION]`.
 In the following steps of the tutorial, `./target/release/` will be omitted for better readability.
 
 ## 2. Create and configure the users' nodes
@@ -50,7 +49,7 @@ port = 30300
 
 We can now create an account for Alice, Bob, and Charlie using the passwords: `alicepwd`, `bobpwd` and `charliepwd`.
 
-To do this, simply run `parity --config users.toml account new` using the passwords given above starting with Alice and repeat the operation for Bob and Charlie.
+To do this, simply run `openethereum --config users.toml account new` using the passwords given above starting with Alice and repeat the operation for Bob and Charlie.
 ```bash
 Loading config file from users.toml
 Please note that password is NOT RECOVERABLE.
@@ -80,31 +79,6 @@ Let's create the file `ss1.toml` with the following content:
 chain = "dev"
 base_path = "db.ss1"
 
-[ui]
-disable = true
-
-[rpc]
-disable = true
-
-[ipc]
-disable = true
-
-[dapps]
-disable = true
-
-[websockets]
-disable = true
-
-[network]
-port = 30301
-bootnodes = []
-
-[ipfs]
-enable = false
-
-[snapshots]
-disable_periodic = true
-
 [secretstore]
 disable = false
 disable_http = false      # This node will expose a Secret Store HTTP API
@@ -119,7 +93,7 @@ path = "db.ss1/secretstore"
 ```
 
 This configuration file is not complete yet but it allows us to create an account for our first node.
-Run `parity --config ss1.toml account new` with the password `ss1pwd` to create an account for our first Secret Store node.
+Run `openethereum --config ss1.toml account new` with the password `ss1pwd` to create an account for our first Secret Store node.
 ```bash
 Loading config file from users.toml
 Please note that password is NOT RECOVERABLE.
@@ -153,31 +127,6 @@ The configuration file now looks like:
 chain = "dev"
 base_path = "db.ss1"
 
-[ui]
-disable = true
-
-[rpc]
-disable = true
-
-[ipc]
-disable = true
-
-[dapps]
-disable = true
-
-[websockets]
-disable = true
-
-[network]
-port = 30301
-bootnodes = []
-
-[ipfs]
-enable = false
-
-[snapshots]
-disable_periodic = true
-
 [secretstore]
 self_secret = "93f22c0fa2e4e0750669add48dd8d9dfb8af36f4" # account address without the "0x"
 disable = false
@@ -195,10 +144,10 @@ path = "db.ss1/secretstore"
 password = ["ss1.pwd"]
 ```
 
-Starting the node with this configuration file should now be possible with `parity --config ss1.toml`
+Starting the node with this configuration file should now be possible with `openethereum --config ss1.toml`
 ```bash
 Loading config file from ss1.toml
-Starting Parity/v1.12.0-unstable-458afcd-20180620/x86_64-linux-gnu/rustc1.26.1
+Starting OpenEthereum/v3.0.0-unstable-44f088bb4-20200505/x86_64-unknown-linux-gnu/rustc1.43.0
 Keys path db.ss1/keys/DevelopmentChain
 DB path db.ss1/chains/DevelopmentChain/db/1484bce8c021f2ca
 Path to dapps db.ss1/dapps
@@ -224,30 +173,8 @@ Let's create `ss2.toml` with the following content:
 chain = "dev"
 base_path = "db.ss2"
 
-[ui]
-disable = true
-
-[rpc]
-disable = true
-
-[ipc]
-disable = true
-
-[dapps]
-disable = true
-
-[websockets]
-disable = true
-
 [network]
 port = 30302
-bootnodes = []
-
-[ipfs]
-enable = false
-
-[snapshots]
-disable_periodic = true
 
 [secretstore]
 disable = false
@@ -260,7 +187,7 @@ port = 8012
 path = "db.ss2/secretstore"
 ```
 
-Now create an account for `ss2` with the password `ss2pwd` by running `parity --config ss2.toml account new`:
+Now create an account for `ss2` with the password `ss2pwd` by running `openethereum --config ss2.toml account new`:
 ```bash
 Loading config file from users.toml
 Please note that password is NOT RECOVERABLE.
@@ -334,7 +261,7 @@ port = 8013
 path = "db.ss3/secretstore"
 ```
 
-Now create an account for `ss3` with the password `ss3pwd` by running `parity --config ss3.toml account new`:
+Now create an account for `ss3` with the password `ss3pwd` by running `openethereum --config ss3.toml account new`:
 ```bash
 Loading config file from users.toml
 Please note that password is NOT RECOVERABLE.
@@ -413,37 +340,37 @@ Find [here](https://github.com/Tbaut/Secret-Store-Tutorial-files/tree/master/no-
 
 You can now launch all the Secret Store nodes with the updated configuration. You might see some errors `'Connection refused (os error 111)' when establishing outbound connection with 127.0.0.1:8013` when launching node 1 and 2 because not all nodes are online, but once they are all up, you should see logs like this:
 ```bash
-$ ~/paritytech/parity-ethereum/target/release/parity --config ss3.toml
+$ ~/openethereum/openethereum/target/release/openethereum --config ss3.toml
 Loading config file from ss3.toml
-2018-06-29 22:26:46  Starting Parity/v1.12.0-unstable-458afcd-20180620/x86_64-linux-gnu/rustc1.26.1
-2018-06-29 22:26:46  Keys path db.ss3/keys/DevelopmentChain
-2018-06-29 22:26:46  DB path db.ss3/chains/DevelopmentChain/db/1484bce8c021f2ca
-2018-06-29 22:26:46  Path to dapps db.ss3/dapps
-2018-06-29 22:26:46  State DB configuration: fast
-2018-06-29 22:26:46  Operating mode: active
-2018-06-29 22:26:46  Configured for DevelopmentChain using InstantSeal engine
-2018-06-29 22:26:46  Starting SecretStore node: 0x7b42943621c70020e62163ff24cc57366d820d5280495c8d9088b9a6bafbfef5b7a79bc3a56d324c325b970415692e48b9dd85102bd07fbaa7b05c6093697355
-2018-06-29 22:26:46  Running SecretStore with disabled ACL check: everyone has access to stored keys
-2018-06-29 22:26:46  Public node URL: enode://58815b57d8af2bc04963bde42b27deca674c18dca4098b8891296479ce0a83c2398a141babb835f181c6447bb1ac2ce4dca88ec20908d41b86166018d842fab4@127.0.0.1:30303
-2018-06-29 22:27:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:27:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:28:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:28:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:29:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:29:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:30:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:30:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:31:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
-2018-06-29 22:31:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:26:46  Starting OpenEthereum/v3.0.0-unstable-44f088bb4-20200505/x86_64-unknown-linux-gnu/rustc1.43.0
+2020-05-12 22:26:46  Keys path db.ss3/keys/DevelopmentChain
+2020-05-12 22:26:46  DB path db.ss3/chains/DevelopmentChain/db/1484bce8c021f2ca
+2020-05-12 22:26:46  Path to dapps db.ss3/dapps
+2020-05-12 22:26:46  State DB configuration: fast
+2020-05-12 22:26:46  Operating mode: active
+2020-05-12 22:26:46  Configured for DevelopmentChain using InstantSeal engine
+2020-05-12 22:26:46  Starting SecretStore node: 0x7b42943621c70020e62163ff24cc57366d820d5280495c8d9088b9a6bafbfef5b7a79bc3a56d324c325b970415692e48b9dd85102bd07fbaa7b05c6093697355
+2020-05-12 22:26:46  Running SecretStore with disabled ACL check: everyone has access to stored keys
+2020-05-12 22:26:46  Public node URL: enode://58815b57d8af2bc04963bde42b27deca674c18dca4098b8891296479ce0a83c2398a141babb835f181c6447bb1ac2ce4dca88ec20908d41b86166018d842fab4@127.0.0.1:30303
+2020-05-12 22:27:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:27:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:28:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:28:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:29:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:29:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:30:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:30:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:31:16     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
+2020-05-12 22:31:46     2/25 peers   10 KiB chain 31 KiB db 0 bytes queue 10 KiB sync  RPC:  0 conn,    0 req/s,    0 µs
 ```
 
 Most interestingly, `2/25 peers` means that this node is connected with the 2 others on the blockchain.
 
 ## 5. Network overview
-Here is an overview of the ports used by each node of the system configured in this section. Note that each user has the same ports as they will use the same node (not at the same time though). The RPC HTTP API port (8545) gives access to the Parity client's internal RPC API methods. SS1 exposes an HTTP API the users will use later on.
+Here is an overview of the ports used by each node of the system configured in this section. Note that each user has the same ports as they will use the same node (not at the same time though). The RPC HTTP API port (8545) gives access to the OpenEthereum client's internal RPC API methods. SS1 exposes an HTTP API the users will use later on.
 ![system port overview](images/ss-overview-1.jpg)
 
-|[ ← Tutorial overview](Secret-Store-Tutorial-overview.md) | [Part 2 - Document encryption → ](Secret-Store-Tutorial-2.md)|
+|[ ← Tutorial overview](Secret-Store-Tutorial-overview) | [Part 2 - Document encryption → ](Secret-Store-Tutorial-2)|
 
 
 

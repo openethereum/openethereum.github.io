@@ -2,7 +2,7 @@
 title: Labeling
 ---
 
-This page is to explain the conventions over Parity's labeling system.
+This page is to explain the conventions over OpenEthereum's labeling system.
 
 Labels are split into several groups.
 
@@ -63,7 +63,7 @@ Issues should have only one of these. Do not combine; if multiple labels are equ
 - ![F7-optimisation](http://i.imgur.com/DNym8en.png) An enhancement to provide better overall performance in terms of time-to-completion for a task.
 - ![F8-enhancement](http://i.imgur.com/ziRfEiW.png) An additional feature.
 - `F9-meta` A specific issue for grouping tasks or bugs of a specific category.
-- ![F9-release](http://i.imgur.com/zl4BiqW.png) A specific release. All such issues should be templated on [1387](https://github.com/paritytech/parity-ethereum/issues/1387).
+- ![F9-release](http://i.imgur.com/zl4BiqW.png) A specific release. All such issues should be templated on [1387](https://github.com/openethereum/openethereum/issues/1387).
 
 ### 'M' group
 
@@ -72,7 +72,7 @@ Used to denote the affected component or sub-project. Each issue and pull reques
 - ![M0-build](http://i.imgur.com/vGzi4al.png) Building and build system
 - ![M1-ci](http://i.imgur.com/KzZMc2p.png) Continuous integration
 - `M2-config` Chain specifications and node configurations
-- ![M2-installer](http://i.imgur.com/9nEQ4RW.png) Installers for MacOS and Windows
+- ![M2-installer](http://i.imgur.com/9nEQ4RW.png) Installers for macOS and Windows
 - ![M4-core](http://i.imgur.com/Pf9himB.png) Core client
 - ![M5-binaries](http://i.imgur.com/W5ECLIM.png) External binaries (ethkey, ethstore, ethvm, etc.)
 - ![M6-rpcapi](http://i.imgur.com/kZGX67C.png) RPC API
@@ -119,10 +119,10 @@ Used only on issues which will (or _may_, in the case of Z5) be closed immediate
 
 0. Have you tried turning it off and on again?
 1. Are you fully synchronized?
-2. Which version of Parity are you running? ("master" or "git" is not a version)
+2. Which version of OpenEthereum are you running? ("master" or "git" is not a version)
 3. Which operating system are you running?
-4. How did you install Parity? (binary, installer, from source, which branch?)
-5. What flags are you running Parity with?
+4. How did you install OpenEthereum? (binary, installer, from source, which branch?)
+5. What flags are you running OpenEthereum with?
 6. Do you use any config file?
 7. Please, share the exact error message!
 8. Is there anything in the logs?

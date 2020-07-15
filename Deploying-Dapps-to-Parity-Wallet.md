@@ -1,1 +1,0 @@
-This page has moved to [Deploying Dapps to Parity UI](Deploying-Dapps-to-Parity-UI)

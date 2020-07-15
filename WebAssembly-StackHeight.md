@@ -4,11 +4,11 @@ title: Deterministic Stack Height
 
 ## Rationale
 
-Wasm VM in order to execute code uses a stack. Typically the stack contains local variables, call parameters and return addresses. 
-This is similar to the stack used in native programs, however, with the exception that in wasm this stack is managed by
+WASM VM in order to execute code uses a stack. Typically the stack contains local variables, call parameters and return addresses. 
+This is similar to the stack used in native programs, however, with the exception that in WASM this stack is managed by
 the VM and isn't aliasable via linear memory (i.e the stack can't be treated as a byte array and changed arbitrarily). 
 Because of this implementation details of the stack aren't observable. Thus it can be implemented in various ways.
-Simple implementation of wasm VM could use a heap allocated vector (this is the case for [`wasmi`](https://github.com/paritytech/wasmi)).
+Simple implementation of WASM VM could use a heap allocated vector (this is the case for [`wasmi`](https://github.com/paritytech/wasmi)).
 More sophisticated implementations (e.g. the ones that use JITs) typically use the native stack.
 
 Native stacks have a few restrictions: they should be continuous and they can't be relocated. This typically means that the whole stack space must be allocated upfront. While this doesn't typically require allocation of physical memory it requires allocation of virtual memory. And this can be a problem for 32-bit machines where address space is scarce.
@@ -23,10 +23,10 @@ Furthermore, the demand for stack space by the programs doesn't grow these days 
 All these facts make it complicated to do the metering only by gas. The problem might get even worse as gas limit typically grows with the time, thus requiring to allocate more and more virtual memory upfront only serving a purpose for handling degenerative cases.
 
 There are some techniques that might allow to lift restrictions of the native stack such as segmented stacks. But they are generally inferior 
-to the straight stack and typically isn't implemented by the production wasm execution environments.
+to the straight stack and typically isn't implemented by the production WASM execution environments.
 
 Because of this, our implementation uses deterministic stack limiting instrumentation. This instrumentation counts
-how much stack size might use naive wasm VM that puts everything (locals, parameters, stack operands, etc) on the native stack. This limitation provides a way to calculate an upper bound of the native stack usage.
+how much stack size might use naive WASM VM that puts everything (locals, parameters, stack operands, etc) on the native stack. This limitation provides a way to calculate an upper bound of the native stack usage.
 
 ## Instrumentation Pass
 
@@ -68,7 +68,7 @@ and the maximal size of the operand stack.
 
 All values are treated equally, as they have the same size.
 
-The rationale behind this is to allow the use of this very naive wasm executor, that is:
+The rationale behind this is to allow the use of this very naive WASM executor, that is:
 
 - values are implemented by a union, so each value takes a size equal to the size of the largest possible value type this union can hold. (In MVP it is 8 bytes)
 - each value from the operand stack is placed on the native stack.

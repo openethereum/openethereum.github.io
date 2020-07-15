@@ -2,7 +2,7 @@
 title: Block Reward Contract
 ---
 
-Parity's consensus engine allows using a smart contract for block reward calculation. The engine
+OpenEthereum's consensus engine allows using a smart contract for block reward calculation. The engine
 passes a list of benefactors and reward types to the contract which then returns a list of addresses
 and respective rewards.
 
@@ -35,7 +35,7 @@ Currently the engine supports the following types of rewards:
 The reward contract will receive as input reward types of 0, 2 or 101-106, and any reward attributed by it
 will be labelled as external (this is visible when tracing rewards).
 
-The contract [ABI](https://github.com/parity-contracts/block-reward/blob/6c645a93a0ae1eb0a34bfe85071e4ce36deed3b3/abis/BlockReward.json) as well as an example contract can be found [here](https://github.com/parity-contracts/block-reward).
+The contract [ABI](https://github.com/openethereum/block-reward/blob/6c645a93a0ae1eb0a34bfe85071e4ce36deed3b3/abis/BlockReward.json) as well as an example contract can be found [here](https://github.com/openethereum/block-reward).
 
 ## AuthorityRound
 

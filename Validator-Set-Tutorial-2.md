@@ -12,7 +12,7 @@ The Validator Set contract used for Kovan Network is in fact a set of contracts.
 
 - Run the following command to copy the Validator Set contract's repository and navigate to the contract's directory:
 ```bash
-git clone https://github.com/parity-contracts/kovan-validator-set.git && cd ./kovan-validator-set/contracts
+git clone https://github.com/openethereum/kovan-validator-set.git && cd ./kovan-validator-set/contracts
 ```
 - Launch `remixd` from here to share the content of this directory with Remix:
 ```
@@ -35,7 +35,7 @@ We will now connect remix to `Alice`'s node. We've set it up earlier to accept c
 ## 2. Deploy RelaySet and RelayedOwnedSet
 
 The contract used in this tutorial is not trivial to understand as it consists of a set of contracts using a proxy as well as libraries.
-You can read more about the internals in the [dedicated repository](https://github.com/parity-contracts/kovan-validator-set). The important concept to understand is that `RelaySet` is a proxy contract that will point to the main contract that itself allows to add and remove validators. Proxy contracts allow to be flexible and update the "proxied" contract in the future if needed. In our case, `RelayedOwnedSet` will be the "proxied" contract.
+You can read more about the internals in the [dedicated repository](https://github.com/openethereum/kovan-validator-set). The important concept to understand is that `RelaySet` is a proxy contract that will point to the main contract that itself allows to add and remove validators. Proxy contracts allow to be flexible and update the "proxied" contract in the future if needed. In our case, `RelayedOwnedSet` will be the "proxied" contract.
 
 We will need to deploy `RelaySet`, then deploy `RelayedOwnedSet`, and finally, link the former with the later.
 
@@ -49,4 +49,4 @@ We will need to deploy `RelaySet`, then deploy `RelayedOwnedSet`, and finally, l
 
 The Validator Set contract is now deployed. You can make sure `Node0` is the only allowed validator by calling `getValidators`.
 
-|[ ← Part 1 - Configuring each node ](Validator-Set-Tutorial-1.md)| [ Part 3 - Hardfork to use the Validator Set contract → ](Validator-Set-Tutorial-3.md)|
+|[ ← Part 1 - Configuring each node ](Validator-Set-Tutorial-1)| [ Part 3 - Hardfork to use the Validator Set contract → ](Validator-Set-Tutorial-3)|
