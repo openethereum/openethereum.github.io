@@ -17,3 +17,7 @@ This Wiki is open source, anybody can contribute! If you spot an error, a typo, 
 1. Double check the modifications you made and click on `Create a Pull Request` when you are sure  
 1. Describe your changes and submit it!
 
+# Build
+
+This project is made with Jekyll, for you to run it download ruby and install needed gem's.
+To start project you can call: `bundle exec jekyll serve`
