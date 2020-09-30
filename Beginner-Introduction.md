@@ -49,8 +49,8 @@ You can read more on warping protocol in sections: [Warp Sync](Warp-Sync), [Snap
 ## Expected time and hardware:
 Now, expected syncing time with code from 3.1RC1 codebase with no changes in config on high end server machine ( NVMe SSD, Intel Xeon, 62gb ram etc.) where most important part of it is NVMe SSD because hard disk is the bottleneck of syncing, is for rough estimation around:
 
-| Timestamp | time diff | Stage |
-| -------- | -------- | -------- |
+| Timestamp | time diff | Stage | Description |
+| -------- | -------- | -------- | -------- | 
 | 2020-09-24 09:29:22     | +0     | Snapshot initializing     | Warping starts |
 | 2020-09-24 10:26:52     | +00:57:30     | Syncing snapshot 5112/5112     | Warping finishes |
 | 2020-09-24 10:26:57     | +00:00:05     | Syncing #10300002     | Syncing new blocks started |
