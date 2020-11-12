@@ -1,31 +1,44 @@
-## OpenEthereum
+# OpenEthereum
 - [Overview](index)
-- [Setup](Setup)
-- [Getting Synced](Getting-Synced)
-- [Basic Usage](Basic-Usage)
+- [Build](Setup)
+- [Download =>](https://github.com/openethereum/openethereum/releases)
+- [Beginner Introduction](Beginner-Introduction)
 - [FAQ](FAQ)
 
-### Using OpenEthereum
-- [Configuring OpenEthereum](Configuring-OpenEthereum)
+### Usage and Config
+- [Full Config](Configuring-OpenEthereum)
 - [For Mining](Mining)
-- [Wallet Remote Access](Wallet-Remote-Access)
 - [Network Config](Network-Configuration)
 - [Docker](Docker)
 - [CLI Sub-commands](CLI-Sub-commands)
+- [Chain Specification](Chain-specification)
 
-### Blockchains support
-- Chain Specification
-  - [Overview](Chain-specification)
-  - Pluggable Consensus
-    - [Overview](Pluggable-Consensus)
-    - [Aura](Aura)
-- [Proof of Work Chains](Proof-of-Work-Chains)
-- Proof of Authority Chains
-  - [Overview](Proof-of-Authority-Chains)
-  - [Demo PoA Tutorial](Demo-PoA-tutorial)
+### Technical Documentation
+- [Pluggable Consensus](Pluggable-Consensus)
+- [Autority Round(AuRa)](Aura)
+- [Proof of Authority (PoA)](Proof-of-Authority-Chains)
+- [Demo PoA Tutorial](Demo-PoA-tutorial)
 - [Private Dev Chain](Private-development-chain)
+- [Transaction Queue](Transactions-Queue)
+- [Warp Sync](Warp-Sync)
+- [Snapshot Format](Warp-Sync-Snapshot-Format)
+- Secret Store
+  - [Overview](Secret-Store)
+  - [Configuration](Secret-Store-Configuration)
+  - [Tutorial](Secret-Store-Tutorial-overview)
+- Permissioning
+  - [Overview](Permissioning)
+  - Validator Set
+    - [Overview](Validator-Set)
+    - [Validator contracts](Validator-contracts)
+    - [Tutorial](Validator-Set-Tutorial-Overview)
+  - [Block Reward Contract](Block-Reward-Contract)
+- WebAssembly (Deprecated)
+  - [General](WebAssembly-Home)
+  - [Design](WebAssembly-Design)
+  - [Links](WebAssembly-Links) 
 
-### JSONRPC Guide
+### JSONRPC API
 - [Overview](JSONRPC)
 - [debug](JSONRPC-debug-module)
 - [eth](JSONRPC-eth-module)
@@ -41,32 +54,3 @@
 - [signer](JSONRPC-signer-module)
 - [trace](JSONRPC-trace-module)
 - [web3](JSONRPC-web3-module)
-
-### Technologies
-- [Transaction Queue](Transactions-Queue)
-- Secret Store
-  - [Overview](Secret-Store)
-  - [Configuration](Secret-Store-Configuration)
-  - [Tutorial](Secret-Store-Tutorial-overview)
-- Permissioning
-  - [Overview](Permissioning)
-  - Validator Set
-    - [Overview](Validator-Set)
-    - [Validator contracts](Validator-contracts)
-    - [Tutorial](Validator-Set-Tutorial-Overview)
-  - [Block Reward Contract](Block-Reward-Contract)
-- Warp Sync
-  - [Warp Sync Overview](Warp-Sync)
-  - [Snapshot Format](Warp-Sync-Snapshot-Format)
-- WebAssembly (Wasm)
-  - [General](WebAssembly-Home)
-  - [Design](WebAssembly-Design)
-  - [Links](WebAssembly-Links)
-
-### Hacking
-- [Known Issues](https://github.com/openethereum/openethereum/issues) <i class="fa fa-external-link"></i>
-- [Labeling](Labelling)
-- [Release Notes](https://github.com/openethereum/openethereum/blob/master/CHANGELOG.md) <i class="fa fa-external-link"></i>
-- [Discord](https://discord.io/openethereum) <i class="fa fa-external-link"></i>
-- [GitHub](https://github.com/openethereum/openethereum) <i class="fa fa-external-link"></i>
-- [Website](https://openethereum.org) <i class="fa fa-external-link"></i>

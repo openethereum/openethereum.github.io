@@ -25,6 +25,10 @@ nav.sidebar-nav a.current-page {
   background-color: white;
 }
 
+nav.sidebar-nav h1 {
+  color: white;
+}
+
 nav.sidebar-nav h2, nav.sidebar-nav h3 {
   color: white;
 }
