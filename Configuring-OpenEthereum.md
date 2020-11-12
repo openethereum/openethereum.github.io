@@ -2,7 +2,7 @@
 title: Configuring OpenEthereum
 ---
 
-OpenEthereum can be configured using either the [CLI options](#CLI-Options) or a [config file](#Config-File). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence.
+OpenEthereum can be configured using either the [CLI options](#cli-options) or a [config file](#config-file). Should the CLI flags and the config file disagree about a setting, the CLI takes precedence.
 
 You can list all CLI options by running `$openethereum --help`. The vast majority of CLI options map to a setting in the TOML file, for example `--mode-timeout 500` can be set by creating a config file:
 
