@@ -22,6 +22,8 @@
 - [Transaction Queue](Transactions-Queue)
 - [Warp Sync](Warp-Sync)
 - [Snapshot Format](Warp-Sync-Snapshot-Format)
+- Code flow
+  - [New Block](Trace-NewBlock)
 - Secret Store
   - [Overview](Secret-Store)
   - [Configuration](Secret-Store-Configuration)
@@ -37,6 +39,7 @@
   - [General](WebAssembly-Home)
   - [Design](WebAssembly-Design)
   - [Links](WebAssembly-Links) 
+
 
 ### JSONRPC API
 - [Overview](JSONRPC)
