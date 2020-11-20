@@ -1,4 +1,4 @@
-# The wiki is available at [openethereum.github.io/wiki](https://openethereum.github.io/wiki)
+# The wiki is available at [openethereum.github.io/wiki](https://openethereum.github.io)
 
 This Wiki is open source, anybody can contribute! If you spot an error, a typo, or feel like creating or amending some content, feel free to do so. Here is a quick how-to:
 
