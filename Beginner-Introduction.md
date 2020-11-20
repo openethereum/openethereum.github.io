@@ -2,35 +2,35 @@
 title: Beginner Introduction
 ---
 
-With this section We want to bridge that gap and give you a small intro that you can read to better understand how to run OpenEthereum and what to expect.
+This section shows the most usual configuration parameters for nodes users with practical examples. It can be used as an intro to better understand how to run OpenEthereum.
 
-## Full information
-Important options that new users need to know at beginning:
-In current [wiki](https://openethereum.github.io) you can find more information on the client such as all RPC calls and some explanation on technology that we use. 
+In the current [wiki](https://openethereum.github.io) more information on the client can be found such as all RPC calls and some explanations on the technology used.
 
-For CLI or config parameters you can check `./openethereum --help` or visit [Configuring page](Configuring-OpenEthereum) and read all of the possible configurations of the client.
+## Most important options for beginners
 
-For all JSONRPC APIs you can visit this: [JSONRPC API](JSONRPC)
+For CLI or config parameters check `./openethereum --help` or visit [Configuring page](Configuring-OpenEthereum) and read the possible configurations of the client.
+
+For all JSONRPC APIs visit: [JSONRPC API](JSONRPC)
 
 ## \-\-chain
-For the most basic usage of application you can just start OpenEthereum with default configuration `./openethereum` and this will be enough to sync onto Ethereum mainnet. You can choose another network or testnet by specifying `--chain` (for example `--chain ropsten`). About more information chains you can look at [Chain specification](Chain-specification)
+For the the most basic usage, just start OpenEthereum with the default configuration `./openethereum`. This will be enough to sync into the Ethereum mainnet. You can choose other networks or testnets by specifying `--chain` (for example `--chain ropsten`). For more information about chains look at [Chain specification](Chain-specification)
 
 ## \-\-pruning
-This option tells us how much blocks history are we going to save. There are two types of nodes: **archive** and **pruning** nodes.
-* **Archive** node is node that has all block history saved in its database (you will need at least 4TB of harddisk to fully sync on mainnet, and it will take you few months to do it),
+This option shows how much block history we are going to save. There are two types of nodes: **archive** and **pruning** nodes.
+* **Archive** node has all of the block history saved in its database (It is needed at least +4TB of hard drive to fully sync on mainnet, and it  probably takes a few months to do it),
 ```bash
 $ openethereum --pruning archive
 ```
-* while **Pruning** (or it is somewhere called **fast**) is default option and what it does it prunes old blocks and saves only for example 64 newest blocks (this is configurable with `--pruning-history=[NUM]`). For hard disk usage you can see how much etherscan takes: https://etherscan.io/chartsync/chaindefault . For me it was in range of ~420gb with tracing enabled.
+*  **Pruning** (sometimes called **fast**) node is the default option. It removes old blocks and saves a configurable amount of blocks. For example, 64 newest blocks (this is configurable with `--pruning-history=[NUM]`). For hard disk usage check Etherscan live charts: https://etherscan.io/chartsync/chaindefault 
 
 ```bash
     --pruning=[METHOD]
-        Configure pruning of the state/storage trie. METHOD may be one of auto, archive, fast: archive - keep all state
-        trie data. No pruning. fast - maintain journal overlay. Fast but 50MB used. auto - use the method most recently
+        It configure pruning of the state/storage trie. METHOD options are archive, fast and auto: archive - it keeps full state
+        trie data. No pruning. fast - it maintains journal overlay. Fast but 50MB used. auto - use the method most recently
         synced or default to fast if none synced. (default: auto)
 
     --pruning-history=[NUM]
-        Set a minimum number of recent states to keep in memory when pruning is active. (default: 64)
+        It sets a minimum number of recent states to keep in memory when pruning is active. (default: 64)
 
     --pruning-memory=[MB]
         The ideal amount of memory in megabytes to use to store recent states. As many states as possible will be kept
@@ -39,15 +39,16 @@ $ openethereum --pruning archive
 ```
 
 ## Warping (\-\-no-warp)
-For the time needed to do fast sync, it still depends on options used. There is an additional feature in OE that speeds it up and that is warp. Warp is a process where we download a state snapshot, at a particular block, from other OE nodes and take that as our starting point, with this we are speeding up the process of initial syncing. This process can be unreliable in tearms is it going to finish or not for reasons that there are not a lot of OE with snapshots and there is a limit on how many peers you can sync from one peer, and it can happen that you just get disconnected from peer you were warping from and there is no mechanism to continue downloading, you need to start from beginning again. But either way it is the fastest way to do full sync.
-Snapshot is made every 5000 blocks and when you do warping it depends on what peer are you going to take snapshot from. In my example I got snapshoted to very low block `10300000` and it took a long time to sync to the highest block (2 days). You can use `--warp-barrier` to say that you will only start warping on block snapshots that are newer than the specified number.
+Warp is an additional feature that speeds sync up. It is a process where a state snapshot is downloaded at a particular block from other OE nodes and it takes it as the starting point. This procedure speeds up the initial syncing. It can be unreliable due to a low amount of peers and lack of nodes with snapshots. If this is the case and the node gets disconnected from the peer, there is not a mechanism to continue and the procedure must start again from the beginning. Even considering these inefficiencies , this is the fastest way to do a full sync.
+A snapshot is made every 5000 blocks and it is dependant on what peer you are going to take it from. From a user: "In an example I got snapshoted to very low block `10300000` and it took a long time to sync to the highest block (2 days)." It can used `--warp-barrier` to state that it will only start warping on block snapshots that are newer than the specified number.
 
-> Default values: warp is on (disable it with --no-warp). Creating of snapshot is by default off and you can enable it with (--periodic-snapshot)
+> Default values: warp is on (disable it with --no-warp). The creation of snapshot is by default off and it can enable it with (--periodic-snapshot)
 
-You can read more on warping protocol in sections: [Warp Sync](Warp-Sync), [Snapshot Format](Warp-Sync-Snapshot-Format)
+Please read more on warping protocol in the following sections: [Warp Sync](Warp-Sync), [Snapshot Format](Warp-Sync-Snapshot-Format)
 
-## Expected time and hardware:
-Now, expected syncing time with code from 3.1RC1 codebase with no changes in config on high end server machine ( NVMe SSD, Intel Xeon, 62gb ram etc.) where most important part of it is NVMe SSD because hard disk is the bottleneck of syncing, is for rough estimation around:
+
+## Expected syncing time and hardware:
+Currently (Oct 2020), this is an example of the expected syncing time using the code from the 3.1RC1 codebase without changes in the config on a high end server machine ( NVMe SSD, Intel Xeon, 62gb ram etc.) where the most important part of it is NVMe SSD because hard drive is the bottleneck of syncing.
 
 | Timestamp | time diff | Stage | Description |
 | -------- | -------- | -------- | -------- | 
@@ -57,12 +58,12 @@ Now, expected syncing time with code from 3.1RC1 codebase with no changes in con
 | 2020-09-24 20:59:4     | +09:01:27     | Syncing #10400006     | Synced 100,000 blocks | 
 | 2020-09-26 20:17:52     | +47:18:09     | Syncing #10900009     | Synced 500,000 blocks |
 
-Warping usually lasts for ~1hour on this machine . And for 100,000 it takes approximetly around ~9h. You can check full log [here](public/31rc1_mainnet_full_warp_sync.log)
+Warping usually lasts for ~1hour on this machine . For 100,000 it takes approximately around ~9 hours. You can check the full log [here](public/31rc1_mainnet_full_warp_sync.log)
 
-Additionaly if you start syncing OE without warp and with pruning mode, the first few millions of blocks will be synced fast but that speed will gradually decrease as you climb closer to the highest block and you can expect few blocks per second when you are closer to top of the chain, this behaviour is expected.
+Additionaly, if syncing is started without warp and with pruning mode, the first few millions of blocks will be synced quickly but that speed will gradually decrease as it gets closer to the highest block and it can be expected a few blocks per seconds closer to top of the chain. This behaviour is expected.
 
 ## \-\-tracing
-Trace logs are EVM output of transaction execution; they contain additional information on input/output/changes that transaction made to state. For traces to work you need to start client with “./openethereum --tracing on” For more information on what is contained in trace here is the link: [JSONRPC-trace-module](JSONRPC-trace-module)
+Trace logs are EVM output of transaction execution; they contain additional information on input/output/changes that transaction made to state. For traces to work it is needed to start the client with “./openethereum --tracing on” For more information on the content in trace follow this link: [JSONRPC-trace-module](JSONRPC-trace-module)
 
 > Note: by default tracing is turned off
 
