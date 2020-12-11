@@ -161,7 +161,7 @@ $ cargo run --release
 To get help on the command line options for the `openethereum` client, use `--help`:
 
 ```bash
-$ cargo run --release --help
+$ cargo run --release -- --help
 ```
 
 ### A note on backing up your datadir with Docker
