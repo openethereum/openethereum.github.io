@@ -165,7 +165,7 @@ After building OpenEthereum from source:
 
 You can configure your OpenEthereum client by passing command-line flags to the executable. For usage instructions, see `openethereum --usage` and for a list of available flags, see `openethereum --help` or check out the [CLI Options here](Configuring-OpenEthereum#cli-options).
 
-In additoin, OpenEthereum can be configured using a [TOML](https://github.com/toml-lang/toml) file. To start OpenEthereum with a config file, the file needs to be located in:
+In addition, OpenEthereum can be configured using a [TOML](https://github.com/toml-lang/toml) file. To start OpenEthereum with a config file, the file needs to be located in:
 
 * Windows: `%UserProfile%\AppData\Roaming\OpenEthereum\config.toml`
 * Linux: `~/.local/share/openethereum/config.toml`
