@@ -31,6 +31,30 @@ When encoding **UNFORMATTED DATA** (byte arrays, account addresses, hashes, byte
 
 Aside from `DATA` and `QUANTITIES`, there are also normative JSON types, which we describe as `STR` (strings) and `INT` (integer numbers).
 
+## Objects in the JSONRPC
+
+There are multiple objects in JSONRPC that are repeating itself throughout the spec.
+
+### Transaction
+
+Depending on the type of transaction object can be:
+- Legacy transaction is only transaction available before EIP-2718. It contain fields:
+    - `from`:   `Address` - 20 Bytes - The address the transaction is send from.
+    - `to`:   `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
+    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
+    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
+    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
+    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+- AccessList transaction, EIP-2930: Contains all field from legacy transaction with addition of:
+  - `type`: `0x1` transaction type.
+  - `accessList`: `List` of objects
+    - `address`: 20 Bytes - address that will be accessed
+    - `storageKeys`: `List` of 32 Bytes items - storage keys that will be accessed
+
+Additional field that can be found in transaction object for few rpc calls:
+  - `condition`:   `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+
 ## Enabled APIs (default)
 As documented in the options, available under `openethereum --help` not all API's are exposed by default. However you can simply enable them by running OpenEthereum with the flag: 
 `--jsonrpc-apis APIS `                  

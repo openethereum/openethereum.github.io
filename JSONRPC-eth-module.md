@@ -134,13 +134,7 @@ Executes a new message call immediately without creating a transaction on the bl
 
 #### Parameters
 
-0. `Object` - The transaction call object.
-    - `from`:   `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`:   `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
-    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+0. `Object` - [Transaction object](./JSONRPC.md#transaction) where `from` field is optional and `nonce` field is ommited.
 0. `Quantity` or `Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 ```js
@@ -239,13 +233,7 @@ Makes a call or transaction, which won't be added to the blockchain and returns 
 
 #### Parameters
 
-0. `Object` - Same as [eth_call](#eth_call) parameters, except that all properties are optional.
-    - `from`:   `Address` - (optional) 20 Bytes - The address the transaction is send from.
-    - `to`:   `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
-    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
+0. `Object` - [Transaction object](./JSONRPC.md#transaction) where `from` field is optional and `nonce` field is ommited.
 0. `Quantity` or `Tag` - (optional) Integer block number, or the string `'latest'`, `'earliest'` or `'pending'`, see the [default block parameter](#the-default-block-parameter).
 
 #### Returns
@@ -1607,15 +1595,7 @@ Creates new message call transaction or a contract creation, if the data field c
 
 #### Parameters
 
-0. `Object` - The transaction object.
-    - `from`:   `Address` - 20 Bytes - The address the transaction is send from.
-    - `to`:   `Address` - (optional) 20 Bytes - The address the transaction is directed to.
-    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    - `condition`:   `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transaction).
 
 ```js
 params: [{
@@ -1697,15 +1677,7 @@ Signs transactions without dispatching it to the network. It can be later submit
 
 #### Parameters
 
-0. `Object` - Transaction object, see [eth_sendTransaction](#eth_sendTransaction).
-    - `from`:   `Address` - 20 Bytes - The address the transaction is send from.
-    - `to`:   `Address` - (optional) 20 Bytes - The address the transaction is directed to.
-    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    - `condition`:   `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+1. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transaction). See [eth_sendTransaction](#eth_sendTransaction).
 
 #### Returns
 

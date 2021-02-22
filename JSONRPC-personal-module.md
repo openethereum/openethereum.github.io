@@ -279,15 +279,7 @@ Signs a transaction without dispatching it to the network. It can later be submi
 
 #### Parameters
 
-0. `Object` - The transaction object
-    - `from`:   `Address` - 20 Bytes - The address the transaction is send from.
-    - `to`:   `Address` - (optional) 20 Bytes - The address the transaction is directed to.
-    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    - `condition`:   `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transaction). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
 0. `String` - Passphrase to unlock the `from` account.
 
 ```js

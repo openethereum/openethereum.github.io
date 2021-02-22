@@ -2,7 +2,7 @@
 title: The `private` Module
 ---
 
-## JSON-RPC methods
+## JSON-RPC methods (deprecated and removed from OE)
 
 - [private_call](#private_call)
 - [private_composeDeploymentTransaction](#private_composedeploymenttransaction)
