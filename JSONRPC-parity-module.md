@@ -281,7 +281,7 @@ Given partial transaction request produces transaction with all fields filled in
 
 #### Parameters
 
-0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transaction). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
+0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transactions). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
 
 
 ```js
@@ -580,7 +580,7 @@ params: ["0x8D2B29"]
 
 #### Returns
 
-- `Array` - The list of all the transaction's receipts of the given block
+- `Array` - The list of [Receipt object](./JSONRPC.md#Receipts) of the given block
 
 #### Example
 
@@ -1623,7 +1623,7 @@ Posts a transaction to the signer without waiting for the signer response.
 
 #### Parameters
 
-0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transaction). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
+0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transactions). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
 
 ```js
 params: [{

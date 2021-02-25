@@ -71,7 +71,7 @@ Executes the given call and returns a number of possible traces for it.
 
 #### Parameters
 
-0. `Object` - [Transaction object](./JSONRPC.md#transaction) where `from` field is optional and `nonce` field is ommited.
+0. `Object` - [Transaction object](./JSONRPC.md#transactions) where `from` field is optional and `nonce` field is ommited.
 0. `Array` - Type of trace, one or more of: `"vmTrace"`, `"trace"`, `"stateDiff"`.
 0. `Quantity` or `Tag` - (optional) Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.
 

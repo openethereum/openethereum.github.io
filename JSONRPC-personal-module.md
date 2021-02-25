@@ -279,7 +279,7 @@ Signs a transaction without dispatching it to the network. It can later be submi
 
 #### Parameters
 
-0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transaction). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
+0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transactions). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
 0. `String` - Passphrase to unlock the `from` account.
 
 ```js
