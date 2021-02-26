@@ -52,7 +52,6 @@
 - [parity_pubsub](JSONRPC-parity_pubsub-module)
 - [parity_set](JSONRPC-parity_set-module)
 - [personal](JSONRPC-personal-module)
-- [private](JSONRPC-private-module)
 - [secretstore](JSONRPC-secretstore-module)
 - [signer](JSONRPC-signer-module)
 - [trace](JSONRPC-trace-module)

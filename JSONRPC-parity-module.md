@@ -127,27 +127,7 @@ None
 
 #### Returns
 
-- `Array` - Transaction list.
-    - `hash`:   `Hash` - 32 Bytes - hash of the transaction.
-    - `nonce`:   `Quantity` - The number of transactions made by the sender prior to this one.
-    - `blockHash`:   `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
-    - `blockNumber`:   `Quantity` or `Tag` - Block number where this transaction was in. `null` when its pending.
-    - `transactionIndex`:   `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
-    - `from`:   `Address` - 20 Bytes - address of the sender.
-    - `to`:   `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
-    - `value`:   `Quantity` - Value transferred in Wei.
-    - `gasPrice`:   `Quantity` - Gas price provided by the sender in Wei.
-    - `gas`:   `Quantity` - Gas provided by the sender.
-    - `input`:   `Data` - The data send along with the transaction.
-    - `creates`:   `Address` - (optional) Address of a created contract or `null`.
-    - `raw`:   `Data` - Raw transaction data.
-    - `publicKey`:   `Data` - Public key of the signer.
-    - `chainId`:   `Quantity` - The chain id of the transaction, if any.
-    - `standardV`:   `Quantity` - The standardized V field of the signature (0 or 1).
-    - `v`:   `Quantity` - The V field of the signature.
-    - `r`:   `Quantity` - The R field of the signature.
-    - `s`:   `Quantity` - The S field of the signature.
-    - `condition`:   `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.
+- `Array` - List of [Transaction Response Object](./JSONRPC.md#transaction-responses).
 
 #### Example
 
@@ -281,15 +261,8 @@ Given partial transaction request produces transaction with all fields filled in
 
 #### Parameters
 
-0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
-    - `from`:   `Address` - 20 Bytes - The address the transaction is send from.
-    - `to`:   `Address` - (optional) 20 Bytes - The address the transaction is directed to.
-    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    - `condition`:   `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transactions). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
+
 
 ```js
 params: [{
@@ -448,27 +421,7 @@ None
 
 #### Returns
 
-- `Array` - Transaction list.
-    - `hash`:   `Hash` - 32 Bytes - hash of the transaction.
-    - `nonce`:   `Quantity` - The number of transactions made by the sender prior to this one.
-    - `blockHash`:   `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
-    - `blockNumber`:   `Quantity` or `Tag` - Block number where this transaction was in. `null` when its pending.
-    - `transactionIndex`:   `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
-    - `from`:   `Address` - 20 Bytes - address of the sender.
-    - `to`:   `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
-    - `value`:   `Quantity` - Value transferred in Wei.
-    - `gasPrice`:   `Quantity` - Gas price provided by the sender in Wei.
-    - `gas`:   `Quantity` - Gas provided by the sender.
-    - `input`:   `Data` - The data send along with the transaction.
-    - `creates`:   `Address` - (optional) Address of a created contract or `null`.
-    - `raw`:   `Data` - Raw transaction data.
-    - `publicKey`:   `Data` - Public key of the signer.
-    - `chainId`:   `Quantity` - The chain id of the transaction, if any.
-    - `standardV`:   `Quantity` - The standardized V field of the signature (0 or 1).
-    - `v`:   `Quantity` - The V field of the signature.
-    - `r`:   `Quantity` - The R field of the signature.
-    - `s`:   `Quantity` - The S field of the signature.
-    - `condition`:   `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.
+- `Array` - List of [Transaction Response Object](./JSONRPC.md#transaction-responses)
 
 #### Example
 
@@ -587,7 +540,7 @@ params: ["0x8D2B29"]
 
 #### Returns
 
-- `Array` - The list of all the transaction's receipts of the given block
+- `Array` - The list of [Receipt object](./JSONRPC.md#Receipts) of the given block
 
 #### Example
 
@@ -1630,15 +1583,7 @@ Posts a transaction to the signer without waiting for the signer response.
 
 #### Parameters
 
-0. `Object` - see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
-    - `from`:   `Address` - 20 Bytes - The address the transaction is send from.
-    - `to`:   `Address` - (optional) 20 Bytes - The address the transaction is directed to.
-    - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
-    - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
-    - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
-    - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-    - `condition`:   `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
+0. `Object` - [Transaction object with optional `condition` field](./JSONRPC.md#transactions). see [`eth_sendTransaction`](JSONRPC-eth-module#eth_sendtransaction).
 
 ```js
 params: [{
@@ -2195,27 +2140,7 @@ Note that only one operator for each filter type can be used.
 
 #### Returns
 
-- `Array` - Transactions ordered by priority
-    - `hash`:   `Hash` - 32 Bytes - hash of the transaction.
-    - `nonce`:   `Quantity` - The number of transactions made by the sender prior to this one.
-    - `blockHash`:   `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
-    - `blockNumber`:   `Quantity` or `Tag` - Block number where this transaction was in. `null` when its pending.
-    - `transactionIndex`:   `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
-    - `from`:   `Address` - 20 Bytes - address of the sender.
-    - `to`:   `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
-    - `value`:   `Quantity` - Value transferred in Wei.
-    - `gasPrice`:   `Quantity` - Gas price provided by the sender in Wei.
-    - `gas`:   `Quantity` - Gas provided by the sender.
-    - `input`:   `Data` - The data send along with the transaction.
-    - `creates`:   `Address` - (optional) Address of a created contract or `null`.
-    - `raw`:   `Data` - Raw transaction data.
-    - `publicKey`:   `Data` - Public key of the signer.
-    - `chainId`:   `Quantity` - The chain id of the transaction, if any.
-    - `standardV`:   `Quantity` - The standardized V field of the signature (0 or 1).
-    - `v`:   `Quantity` - The V field of the signature.
-    - `r`:   `Quantity` - The R field of the signature.
-    - `s`:   `Quantity` - The S field of the signature.
-    - `condition`:   `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.
+- `Array` - List of [Transaction Response Object](./JSONRPC.md#transaction-responses)
 
 #### Example
 
@@ -2344,27 +2269,7 @@ params: ["0x2547ea3382099c7c76d33dd468063b32d41016aacb02cbd51ebc14ff5d2b6a43"]
 
 #### Returns
 
-- `Object` - Removed transaction or `null`.
-    - `hash`:   `Hash` - 32 Bytes - hash of the transaction.
-    - `nonce`:   `Quantity` - The number of transactions made by the sender prior to this one.
-    - `blockHash`:   `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
-    - `blockNumber`:   `Quantity` or `Tag` - Block number where this transaction was in. `null` when its pending.
-    - `transactionIndex`:   `Quantity` - Integer of the transactions index position in the block. `null` when its pending.
-    - `from`:   `Address` - 20 Bytes - address of the sender.
-    - `to`:   `Address` - 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
-    - `value`:   `Quantity` - Value transferred in Wei.
-    - `gasPrice`:   `Quantity` - Gas price provided by the sender in Wei.
-    - `gas`:   `Quantity` - Gas provided by the sender.
-    - `input`:   `Data` - The data send along with the transaction.
-    - `creates`:   `Address` - (optional) Address of a created contract or `null`.
-    - `raw`:   `Data` - Raw transaction data.
-    - `publicKey`:   `Data` - Public key of the signer.
-    - `chainId`:   `Quantity` - The chain id of the transaction, if any.
-    - `standardV`:   `Quantity` - The standardized V field of the signature (0 or 1).
-    - `v`:   `Quantity` - The V field of the signature.
-    - `r`:   `Quantity` - The R field of the signature.
-    - `s`:   `Quantity` - The S field of the signature.
-    - `condition`:   `Object` - (optional) Conditional submission, Block number in `block` or timestamp in `time` or `null`.
+- `Object` - [Transaction Response Object](./JSONRPC.md#transaction-responses)
 
 #### Example
 

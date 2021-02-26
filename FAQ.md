@@ -38,45 +38,45 @@ openethereum -warp +archive    |      6_850_000 |       1.8T | --pruning archive
 ### What does OpenEthereum's command line output mean?
 When running OpenEthereum using the command line, a lot of information is displayed in the terminal. Here is a description of these logs.
 #### While syncing the full node
-Example: `2018-04-30 16:10:13 Syncing #5532478 9ce2…0499  69.28 blk/s  235.7 tx/s 15 Mgas/s 0+ 17 Qed #5532493 25/25 peers 5 MiB chain 128 MiB db 2 MiB queue 3 MiB sync RPC: 0 conn, 0 req/s, 0 µs`
-- `2018-04-30 16:10:13`: timestamp of the log
-- `Syncing #5532478`: block number currently processed
-- `9ce2…0499`: block's hash
-- `69.28`: average block(s) processed per second
-- `235.7`: average transactions processed per second
-- `15 Mgas/s`: million gas processed per second
+Example: `2020-12-16 16:32:22 UTC Syncing #11464865 0x2ead…34be 2.00 blk/s  452.2 tx/s 24.9 Mgas/s 0+ 332 Qed Ancient:#10268069 LI:#11465198 38/50 peers 5 MiB chain 61 MiB queue  RPC: 0 conn,  0 req/s, 0 µs`
+- `2020-12-16 16:32:22`: timestamp of the log
+- `Syncing #11464865`: Newest block's number
+- `0x2ead…34be`: Newest block's hash
+- `2.00 blk/s`: average block(s) processed per second
+- `452.2 tx/s`: average transactions processed per second
+- `24.9 Mgas/s`: million gas processed per second
 - `0+`: unverified block queue size
-- `17 Qed`: block queue size
-- `#5532493`: highest block number seen on the network
+- `332 Qed`: Queueed blocks for execution.
+- `Ancient:#10268069` Best ancient block. Only visible if we warped. Will dissapear when all ancient blocks are inserted.
+- `LI:#11465198`: Last inserted block number.
 - `25/25 peers`: number of active peers  / configured maximum number of peers
-- `5 MiB db`: state database memory used
 - `128 MiB chain`: blockchain cache info memory used
 - `5 MiB queue`: queue memory used (contains information about the queued blocks)
-- `3 MiB sync`: sync memory used (contains information about the connected peers, last imported block, etc.)
 - `RPC 0 conn`: number of RPC connections to the node
 - `0 req/s`: number of RPC request per seconds
 - `0 µs`: average RPC roundtrip time for a single request
 
 #### Imported blocks once the node is synced with the top of the chain
-Example: `2018-05-02 12:33:23  Imported #3153278 28e4…9981 (12 txs, 3.19 Mgas, 6.84 ms, 12.40 KiB) + another 1 block(s) containing 5 tx(s)`
-- `2018-05-02 12:33:23`: timestamp of the log
-- `Imported #3153278`: block number received from peers
-- `28e4…9981`: block's truncated hash
-- `12 txs`: number of transactions in the block
-- `3.19 Mgas`: million gas used in the imported block
-- `6.84 ms`: the time it took to process the block
-- `12.40 KiB`: block size
-- `+ another 1 block(s) containing 5 tx(s)`: appears when 2 or more blocks are imported within 1 tick of informant (one line in the console) - In that particular example it means that 2 blocks were imported since last `Imported` line and the second had 5 transactions.
+Example: `2020-12-16 17:49:28 UTC Imported #11465619 0x1e4e…016f (239 txs, 12.41 Mgas, 631 ms, 42.82 KiB) + another 1 block(s) containing 132 tx(s)`
+- `2020-12-16 17:49:28 UTC`: timestamp of the log
+- `Imported #11465619`: block number received from peers
+- `0x1e4e…016f`: block's truncated hash
+- `239 txs`: number of transactions in the block
+- `12.41 Mgas`: million gas used in the imported block
+- `631 ms`: the time it took to process the block
+- `42.82 KiB`: block size
+- `+ another 1 block(s) containing 132 tx(s)`: appears when 2 or more blocks are imported within 1 tick of informant (one line in the console) - In that particular example it means that 2 blocks were imported since last `Imported` line and the second had 132 transactions.
 
 #### Verifying blocks after warp sync
-Example: `2018-05-11T15:25:27.225Z 2018-05-11 15:25:27 UTC     #40653   13/25 peers     37 MiB chain  182 MiB db  0 bytes queue   24 MiB sync  RPC:  0 conn,  0 req/s,   0 µs`
+Example: `2020-12-16 17:58:54 UTC  Ancient:#11199806 AB:#11199806   42/50 peers   744 bytes chain 0 bytes queue  RPC:  0 conn,    0 req/s,    0 µs`
 
 Warp Sync allows the node download a snapshot of the state of the blockchain at a block number close to the top of the chain. It allows the node to get in sync with the top of the chain quickly. Nevertheless, a full node needs to verify every block from the genesis. This process is done in parallel with the sync. This line starting with a block number means that the node is currently processing and verifying an older block.
 
-- `#40653`: block number currently processed
-- `13/25 peers`: number of active peers  / configured maximum number of peers
-- `37 MiB db`: state database memory used
-- `182 MiB chain`: blockchain cache info memory used
+- `2020-12-16 17:58:54 UTC`: timestamp of the log
+- `Ancient:#11199806`: Best ancient block's number
+- `AB:#11199806`: Ancient block currently queued.
+- `42/50 peers`: number of active peers  / configured maximum number of peers
+- `744 bytes chain`: blockchain cache info memory used
 - `0 bytes queue`: queue memory used (contains information about the queued blocks)
 - `24 MiB sync`: sync memory used (contains information about the connected peers, last imported block, etc.)
 - `RPC 0 conn`: number of RPC connections to the node
