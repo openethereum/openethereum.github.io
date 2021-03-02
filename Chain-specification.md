@@ -7,7 +7,7 @@ By default, when simply running `openethereum`, OpenEthereum will connect to the
 In order to run a chain different to the official public Ethereum one, OpenEthereum has to run with the `--chain` option or with a [config file](Configuring-OpenEthereum#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
-- [`foundation`] (https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network (eth,ethereum,mainnet)
+- [`foundation`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network (eth,ethereum,mainnet)
 - [`goerli`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/goerli.json) and [`rinkeby`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/rinkeby.json) the fast Ethereum test networks using Clique consensus engine.
 - [`kovan`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config) using PoA consensus engine.
 - [`ropsten`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
