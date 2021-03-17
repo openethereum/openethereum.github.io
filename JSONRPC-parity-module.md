@@ -2109,7 +2109,7 @@ Returns a list of transactions currently in the queue.
         - `eq`: `Quantity` - equal to
         - `gt`: `Quantity` - greater than
         - `lt`: `Quantity` - lesser than
-    - `gas_price`: - Integer of the gas price used by the transaction.
+    - `gasPrice`: - Integer of the gas price used by the transaction.
         - `eq`: `Quantity` - equal to
         - `gt`: `Quantity` - greater than
         - `lt`: `Quantity` - lesser than
