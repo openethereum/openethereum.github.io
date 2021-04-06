@@ -37,22 +37,22 @@ There are multiple objects in JSONRPC that are repeating itself throughout the s
 
 ### Transactions
 
-Depending on the type of transaction object can be:
-- Legacy transaction is only transaction available before EIP-2718. It contain fields:
-    - `from`:   `Address` - 20 Bytes - The address the transaction is send from.
+Depending on the type of the transaction, the object can be:
+- Legacy transaction, the only transaction available before EIP-2718. It contains fields:
+    - `from`:   `Address` - 20 Bytes - The address the transaction is sent from.
     - `to`:   `Address` - (optional when creating new contract) 20 Bytes - The address the transaction is directed to.
     - `gas`:   `Quantity` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.
     - `gasPrice`:   `Quantity` - (optional) Integer of the gas price used for each paid gas.
     - `value`:   `Quantity` - (optional) Integer of the value sent with this transaction.
     - `data`:   `Data` - (optional) 4 byte hash of the method signature followed by encoded parameters. For details see [Ethereum Contract ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI).
-    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-- AccessList transaction, EIP-2930: Contains all field from legacy transaction with addition of:
+    - `nonce`:   `Quantity` - (optional) Integer of a nonce. This allows you to overwrite your own pending transactions that use the same nonce.
+- AccessList transaction, EIP-2930: Contains all fields from a legacy transaction in addition to:
   - `type`:   `0x1` - transaction type, hardcoded.
   - `accessList`:   `List` - of objects
     - `address`:   `Address` - 20 Bytes - address that will be accessed
     - `storageKeys`:   `List` - of 32 Byte items - storage keys that will be accessed
 
-Additional field that can be found in transaction object for few rpc calls:
+Additional field that can be found in the transaction object for a few rpc calls:
   - `condition`:   `Object` - (optional) Conditional submission of the transaction. Can be either an integer block number `{ block: 1 }` or UTC timestamp (in seconds) `{ time: 1491290692 }` or `null`.
 
 ### Transaction Responses
