@@ -57,7 +57,7 @@ Additional field that can be found in the transaction object for a few rpc calls
 
 ### Transaction Responses
 Depending on the transaction type of transaction response object can be:
-- Legacy transaction is only transaction available before EIP-2718. It contain fields:
+- Legacy transaction, the only transaction available before EIP-2718. It contains fields:
     - `hash`:   `Hash` - 32 Bytes - hash of the transaction.
     - `nonce`:   `Quantity` - the number of transactions made by the sender prior to this one.
     - `blockHash`:   `Hash` - 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
@@ -77,7 +77,7 @@ Depending on the transaction type of transaction response object can be:
     - `chainId`:   `Quantity` - the chain id of the transaction, if any.
     - `creates`:   `Hash` - creates contract hash
     - `condition`:   `Object` - (optional) conditional submission, Block number in `block` or timestamp in `time` or `null`.
-- AccessList transaction, EIP-2930: Contains all field from legacy transaction but with removed `standardV` (`standardV` is ommited because `v` in spec is decupled from `chainId` and represent parityV/`standardV` from signature) and with addition fields:
+- AccessList transaction, EIP-2930: Contains all fields from legacy transaction but with `standardV` removed (`standardV` is omitted because `v` in spec is decoupled from `chainId` and represents parityV/`standardV` from signature) and with additional fields:
   - `type`:   `"0x1"` - transaction type, hardcoded.
   - `accessList`:   `List` - of objects
     - `address`:   `Address` - 20 Bytes - address that will be accessed
@@ -86,9 +86,9 @@ Depending on the transaction type of transaction response object can be:
 ### Receipts
 
 Depending on the type of transaction we have different receipt types:
-- Legacy receipt is only receipt available before EIP-2718. It contain fields:
-    - `blockHash`:   `Hash` - 32 Bytes - hash of the block where this transaction was in.
-    - `blockNumber`:   `Quantity` or `Tag` - block number where this transaction was in.
+- Legacy receipt, the only receipt available before EIP-2718. It contains fields:
+    - `blockHash`:   `Hash` - 32 Bytes - hash of the block this transaction was in.
+    - `blockNumber`:   `Quantity` or `Tag` - block number this transaction was in.
     - `contractAddress`:   `Address` - 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise `null`.
     - `cumulativeGasUsed`:   `Quantity` - The total amount of gas used when this transaction was executed in the block.
     - `from`:   `Address` - 20 Bytes - The address of the sender.
@@ -99,8 +99,8 @@ Depending on the type of transaction we have different receipt types:
     - `root`:   `Hash` - 32 Bytes - Merkle root of the state trie after the transaction has been executed (optional after Byzantium hard fork [EIP609](https://eips.ethereum.org/EIPS/eip-609))
     - `status`:   `Quantity` - `0x0` indicates transaction failure , `0x1` indicates transaction success. Set for blocks mined after Byzantium hard fork [EIP609](https://eips.ethereum.org/EIPS/eip-609), `null` before.
     - `transactionHash`:   `Hash` - 32 Bytes - hash of the transaction.
-    - `transactionIndex`:   `Quantity` - Integer of the transactions index position in the block.
-- AccessList receipt, EIP-2930: Contains all field from legacy receipt with addition of:
+    - `transactionIndex`:   `Quantity` - Integer of the transaction's index position in the block.
+- AccessList receipt, EIP-2930: Contains all fields from legacy receipt in addition to:
   - `type:`   `0x1` - receipt type, hardcoded
 
 
