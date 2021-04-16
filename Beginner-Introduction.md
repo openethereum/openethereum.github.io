@@ -60,7 +60,7 @@ Currently (Oct 2020), this is an example of the expected syncing time using the 
 
 Warping usually lasts for ~1hour on this machine . For 100,000 it takes approximately around ~9 hours. You can check the full log [here](public/31rc1_mainnet_full_warp_sync.log)
 
-Additionaly, if syncing is started without warp and with pruning mode, the first few millions of blocks will be synced quickly but that speed will gradually decrease as it gets closer to the highest block and it can be expected a few blocks per seconds closer to top of the chain. This behaviour is expected.
+Additionally, if syncing is started without warp and with pruning mode, the first few millions of blocks will be synced quickly but that speed will gradually decrease as it gets closer to the highest block and it can be expected a few blocks per seconds closer to top of the chain. This behaviour is expected.
 
 ## \-\-tracing
 Trace logs are EVM output of transaction execution; they contain additional information on input/output/changes that transaction made to state. For traces to work it is needed to start the client with “./openethereum --tracing on” For more information on the content in trace follow this link: [JSONRPC-trace-module](JSONRPC-trace-module)
