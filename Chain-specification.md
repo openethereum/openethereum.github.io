@@ -7,21 +7,21 @@ By default, when simply running `openethereum`, OpenEthereum will connect to the
 In order to run a chain different to the official public Ethereum one, OpenEthereum has to run with the `--chain` option or with a [config file](Configuring-OpenEthereum#config-file) specifying `chain = "path"` under `[parity]`. There are a few named presets that can be selected from or a custom JSON spec file can be supplied.
 
 ## Chain presets available
-- [`foundation`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/foundation.json) (default) main Ethereum network (eth,ethereum,mainnet)
-- [`goerli`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/goerli.json) and [`rinkeby`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/rinkeby.json) the fast Ethereum test networks using Clique consensus engine.
-- [`kovan`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config) using PoA consensus engine.
-- [`ropsten`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/ropsten.json) the old Ethereum test network
-- [`poanet`](https://github.com/openethereum/openethereum/tree/master/ethcore/res/ethereum/poanet.json) Poanet network
-- [`xdai`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/xdai.json) xDai network
-- [`volta`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/volta.json) Volta network
-- [`ewc`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/ewc.json) ewc network
-- [`mix`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/mix.json) Mix network
-- [`callisto`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/callisto.json) Callisto network
-- [`morden`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/morden.json) Morden network
-- [`sokol`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/classic.json) Sokol network
-- [`dev`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/instant_seal.json) a [Private development chain](Private-development-chain) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
-- [`musicoin`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/musicoin.json) Musicoin network
-- [`ellaism`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/ellaism.json) Ellaism network
+- [`foundation`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/foundation.json) (default) main Ethereum network (eth,ethereum,mainnet)
+- [`goerli`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/goerli.json) and [`rinkeby`](https://github.com/openethereum/openethereum/blob/master/ethcore/res/ethereum/rinkeby.json) the fast Ethereum test networks using Clique consensus engine.
+- [`kovan`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/kovan.json) the [fast Ethereum test network](https://github.com/kovan-testnet/config) using PoA consensus engine.
+- [`ropsten`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/ropsten.json) the old Ethereum test network
+- [`poacore`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/poacore.json) POA Core network
+- [`xdai`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/xdai.json) xDai network
+- [`volta`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/volta.json) Volta network
+- [`ewc`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/ewc.json) ewc network
+- [`mix`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/mix.json) Mix network
+- [`callisto`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/callisto.json) Callisto network
+- [`morden`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/morden.json) Morden network
+- [`poasokol`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/poasokol.json) POA Sokol network
+- [`dev`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/instant_seal.json) a [Private development chain](Private-development-chain) to be used locally, submitted transactions are inserted into blocks instantly without the need to mine
+- [`musicoin`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/musicoin.json) Musicoin network
+- [`ellaism`](https://github.com/openethereum/openethereum/blob/main/crates/ethcore/res/chainspec/ellaism.json) Ellaism network
 
 ## Private chains
 
