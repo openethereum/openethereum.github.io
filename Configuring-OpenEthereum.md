@@ -467,6 +467,9 @@ Sealing/Mining Options:
     --max-round-blocks-to-import=[S]
         Maximal number of blocks to import for each import round. (default: 12)
 
+    --new-transactions-stats-period=[N]
+        Specify number of blocks for which new transactions will be returned in a result of `parity_newTransactionsStats` RPC call. Setting this parameter to 0 will return only transactions imported during the current block. (default: 0)
+
 Internal Options:
     --can-restart
         Executable will auto-restart if exiting with 69
