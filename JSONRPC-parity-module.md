@@ -69,6 +69,7 @@ title: The `parity` Module
 - [parity_nextNonce](#parity_nextnonce)
 - [parity_pendingTransactions](#parity_pendingtransactions)
 - [parity_pendingTransactionsStats](#parity_pendingtransactionsstats)
+- [parity_newTransactionsStats](#parity_newtransactionsstats)
 - [parity_registryAddress](#parity_registryaddress)
 - [parity_removeTransaction](#parity_removetransaction)
 - [parity_rpcSettings](#parity_rpcsettings)
@@ -2204,6 +2205,44 @@ None
 Request
 ```bash
 curl --data '{"method":"parity_pendingTransactionsStats","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
+```
+
+Response
+```js
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "0xdff37270050bcfba242116c745885ce2656094b2d3a0f855649b4a0ee9b5d15a": {
+      "firstSeen": 3032066,
+      "propagatedTo": {
+        "0x605e04a43b1156966b3a3b66b980c87b7f18522f7f712035f84576016be909a2798a438b2b17b1a8c58db314d88539a77419ca4be36148c086900fba487c9d39": 1,
+        "0xbab827781c852ecf52e7c8bf89b806756329f8cbf8d3d011e744a0bc5e3a0b0e1095257af854f3a8415ebe71af11b0c537f8ba797b25972f519e75339d6d1864": 1
+      }
+    }
+  }
+}
+```
+
+***
+
+### parity_newTransactionsStats
+
+Returns propagation stats for transactions recently added into the queue.
+
+#### Parameters
+
+None
+
+#### Returns
+
+- `Object` - mapping of transaction hashes to stats.
+
+#### Example
+
+Request
+```bash
+curl --data '{"method":"parity_newTransactionsStats","params":[],"id":1,"jsonrpc":"2.0"}' -H "Content-Type: application/json" -X POST localhost:8545
 ```
 
 Response
